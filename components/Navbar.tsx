@@ -64,12 +64,7 @@ export default function Navbar() {
 			{/* Main Navbar (2/3 of total height => 80px) */}
 			<div className="flex-2 bg-white text-black min-h-[80px] px-[8vw] py-2 flex items-center justify-between relative">
 				<Link href="/" className="flex-shrink-0">
-					<Image
-						src={LogoImage}
-						alt="logo"
-						// height={40} // Relative to navbar height
-						className="h-[30px] w-auto object-contain"
-					/>
+					<Image src={LogoImage} alt="logo" className="h-[30px] w-auto object-contain" />
 				</Link>
 
 				{/* Mobile Toggle */}
