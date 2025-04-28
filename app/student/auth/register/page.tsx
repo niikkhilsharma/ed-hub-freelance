@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
-import { motion } from "framer-motion";
 import SuccessCard from "@/components/student/auth/success-card";
 import Link from "next/link";
 import {
@@ -27,7 +26,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export default function () {
+export default function RegisterPage() {
   const [success, setSuccess] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

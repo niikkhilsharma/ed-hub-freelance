@@ -121,7 +121,7 @@ function ForgotPasswordForm({
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Forgot password</h1>
         <p className="text-gray-500">
-          Enter your email address and we'll send you a link to reset your
+          Enter your email address and we&apos;ll send you a link to reset your
           password.
         </p>
       </div>
@@ -167,7 +167,7 @@ function VerifyEmailForm({
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Verify Email Address</h1>
         <p className="text-gray-500">
-          We've sent a verification code to your email. Please enter it below.
+          We&apos;ve sent a verification code to your email. Please enter it below.
         </p>
       </div>
 
