@@ -8,7 +8,6 @@ import {
   ShoppingCart,
   ChevronDown,
   LayoutDashboard,
-  UserCircle,
 } from "lucide-react";
 import { Button } from "./ui/button";
 import {

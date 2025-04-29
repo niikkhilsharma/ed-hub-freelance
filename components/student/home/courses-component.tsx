@@ -14,11 +14,6 @@ interface Course {
   priceRange: string;
 }
 
-// Props
-interface CoursesPageProps {
-  masked?: boolean;
-}
-
 // Sample courses array
 const courses: Course[] = [
   {
@@ -357,7 +352,7 @@ export default function CoursesPage({
                     </ul>
 
                     <div className="flex items-center mt-4">
-                      <img
+                      <Image
                         src={course.teacher.image || "/placeholder.svg"}
                         alt={course.teacher.name}
                         className="w-8 h-8 rounded-full mr-2"

@@ -16,7 +16,7 @@ import { ReactNode } from 'react'
 import Footer from '@/components/footer'
 import LandingWrapper from '@/components/landing-wrapper'
 import { BookOpen, Brain, Users, Activity, UserCheck, Layers, Clock, ChevronRight } from 'lucide-react'
-import { useState, useEffect, JSX } from 'react'
+import { useState, useEffect } from 'react'
 
 const fadeInUp = {
 	hidden: { opacity: 0, y: 20 },
