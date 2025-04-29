@@ -261,7 +261,7 @@ function ForgotPasswordImage() {
             src={"/student/auth/forgot-password/forgot.png"}
             width={3375}
             height={3375}
-            className="rounded-xl w-full h-full object-cover"
+            className="w-full h-full object-cover"
             alt="forgot"
           />
         </div>
@@ -280,7 +280,7 @@ function VerifyEmailImage() {
             src={"/student/auth/forgot-password/verify-email.png"}
             width={3375}
             height={3375}
-            className="rounded-xl w-full h-full object-cover"
+            className="w-full h-full object-cover"
             alt="forgot"
           />
         </div>

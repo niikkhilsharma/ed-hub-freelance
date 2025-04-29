@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar'
 import { ADLaM_Display } from 'next/font/google'
 
 const adlam = ADLaM_Display({
@@ -29,7 +28,6 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={(poppins.className, adlam.variable)}>
 			<body className="font-sans overflow-x-hidden">
-				<Navbar />
 				{children}
 			</body>
 		</html>
