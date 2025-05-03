@@ -231,7 +231,7 @@ const Result = () => {
     setFilteredData(filtered);
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
     if (e.key === "Enter") {
       handleSearch();
     }
