@@ -66,12 +66,9 @@ export default function Footer() {
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       className="w-screen relative flex flex-col bg-[#3466ff] items-center justify-between bg-cover bg-center bg-no-repeat"
-      style={{
-        minHeight: "calc(100vh - 7.5rem)",
-      }}
     >
       <div className="z-40 min-h-80 w-full absolute top-0 translate-y-[-100%] flex justify-center text-white">
-        <div className="min-h-24 bg-[#f9346d] w-full max-w-5/7 p-4 rounded-2xl flex px-16 items-center justify-between relative top-40 overflow-hidden shadow-xl">
+        <div className="min-h-24 max-w-6xl bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between relative top-40 overflow-hidden shadow-xl">
           {/* Left side with arrow graphic */}
           <motion.div
             initial={{ x: -50, opacity: 0 }}

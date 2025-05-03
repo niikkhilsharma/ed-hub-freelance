@@ -25,6 +25,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import Image from "next/image";
 
 export default function RegisterPage() {
   const [success, setSuccess] = useState(false);
@@ -44,9 +45,20 @@ export default function RegisterPage() {
           {success ? (
             <SuccessCard successUrl="/student/auth/login" />
           ) : (
-            <div className="w-2/3 m-auto max-w-6xl bg-[#feedf2] rounded-lg overflow-hidden shadow-lg">
-              <div className="flex flex-col px-24 md:flex-row min-h-[400px] md:min-h-[600px] h-full">
+            <div className="w-2/3 m-auto max-w-3xl bg-[#feedf2] rounded-lg overflow-hidden shadow-lg">
+              <div className="flex flex-col px-12 md:flex-row min-h-[400px] md:min-h-[600px] h-full">
                 <div className="w-full p-8 flex flex-col justify-center">
+                  <div className="flex items-start gap-4">
+                    <Image
+                      src="/student/auth/register.png"
+                      alt="teacher and student"
+                      width={60}
+                      height={60}
+                      className="object-contain rounded full"
+                      priority
+                    />
+                    <div>
+
                   <h2 className="font-adlam text-3xl">
                     Student/Parent Registration
                   </h2>
@@ -54,6 +66,9 @@ export default function RegisterPage() {
                     Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry.
                   </p>
+                    </div>
+                    </div>
+
 
                   <div className="mt-8 space-y-4">
                     <div>

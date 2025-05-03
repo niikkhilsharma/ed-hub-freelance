@@ -353,8 +353,10 @@ export default function CoursesPage({
 
                     <div className="flex items-center mt-4">
                       <Image
-                        src={course.teacher.image || "/placeholder.svg"}
+                        src={course.teacher.image}
                         alt={course.teacher.name}
+                        width={300}
+                        height={300}
                         className="w-8 h-8 rounded-full mr-2"
                       />
                       <div>
