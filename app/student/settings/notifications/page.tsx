@@ -1,8 +1,8 @@
 "use client";
 import Footer from "@/components/footer";
 import StudentWrapper from "@/components/student-wrapper";
-import SettingsTestResult from "@/components/student/settings/tests";
-export default function SettingsTests() {
+import Notifications from "@/components/student/settings/notifications";
+export default function SettingsNotifications() {
   return (
     
     <StudentWrapper>
@@ -18,7 +18,7 @@ export default function SettingsTests() {
       ></div>
 
       <div className="relative z-10 mt-8 px-8 pb-40">
-        <SettingsTestResult />
+        <Notifications />
       </div>
 
       <Footer />

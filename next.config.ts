@@ -1,7 +1,9 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ["hebbkx1anhila5yf.public.blob.vercel-storage.com"], // Add the hostname here
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

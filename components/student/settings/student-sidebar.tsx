@@ -23,7 +23,7 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   const items = [
-    { icon: BookOpen, label: "My Course", href: "/student/settings" },
+    { icon: BookOpen, label: "My Course", href: "/student/settings/course" },
     { icon: User, label: "Profile", href: "/student/settings/profile" },
     {
       icon: ClipboardList,
@@ -49,6 +49,7 @@ export function AppSidebar() {
     { icon: MessageSquare, label: "Chat", href: "/student/settings/chat" },
     { icon: LogOut, label: "Logout", href: "/student/settings/logout" },
   ];
+
   return (
     <div className="sticky left-4 top-4 z-50">
       <div className="h-fit rounded-xl bg-blue-50 shadow-md border border-blue-100 overflow-hidden">
@@ -59,15 +60,15 @@ export function AppSidebar() {
           <SidebarContent className="p-2">
             <SidebarMenu>
               {items.map(({ icon: Icon, label, href, badge }) => {
-                const isActive = pathname.startsWith(href);
+                const isActive = pathname === href;
                 return (
-                  <SidebarMenuItem key={label}>
+                  <SidebarMenuItem key={href}>
                     <Link
                       href={href}
                       className={`flex items-center gap-2 rounded-lg px-2 py-2 transition-colors ${
                         isActive
-                           ? "bg-blue-600 text-white"
-                          : "hover:bg-blue-600 hover:text-white"
+                          ? "bg-blue-600 text-white"
+                          : "text-gray-700 hover:bg-blue-100 hover:text-blue-600"
                       }`}
                     >
                       <Icon className="h-5 w-5" />

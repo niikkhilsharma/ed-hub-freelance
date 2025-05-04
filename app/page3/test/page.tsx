@@ -190,11 +190,11 @@ export default function ExaminationTest() {
 
   // Level status
   const [levels, setLevels] = useState<Level[]>([
-    { id: 1, questions: generateQuestions(1), status: "current" },
-    { id: 2, questions: generateQuestions(2), status: "not-started" },
-    { id: 3, questions: generateQuestions(3), status: "not-started" },
-    { id: 4, questions: generateQuestions(4), status: "not-started" },
-    { id: 5, questions: generateQuestions(5), status: "not-started" },
+    { id: 1, questions: generateQuestions(), status: "current" },
+    { id: 2, questions: generateQuestions(), status: "not-started" },
+    { id: 3, questions: generateQuestions(), status: "not-started" },
+    { id: 4, questions: generateQuestions(), status: "not-started" },
+    { id: 5, questions: generateQuestions(), status: "not-started" },
   ]);
 
   // Handle exam submission
@@ -233,7 +233,7 @@ export default function ExaminationTest() {
   };
 
   // Generate questions for each level
-  function generateQuestions(level: number): Question[] {
+  function generateQuestions(): Question[] {
     // In a real app, these would come from an API or database
     // For this example, we'll use placeholder questions
     return Array(10)
