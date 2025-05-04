@@ -328,7 +328,7 @@ export default function Landing() {
 				{/* Foreground Content */}
 				<div className="relative z-10 p-6 md:p-12 px-4 md:px-8 flex flex-col gap-6 items-center w-full h-full">
 					<motion.h1
-						className="mb-6 text-2xl md:text-4xl text-center font-semibold text-black"
+						className="mb-6 text-3xl md:text-4xl text-center font-bold text-black"
 						initial={{ opacity: 0, y: -20 }}
 						whileInView={{ opacity: 1, y: 0 }}
 						transition={{ duration: 0.5 }}
@@ -346,7 +346,7 @@ export default function Landing() {
 							<Image src={Banner1} alt="Eduunique Card Image" width={1100} priority className="rounded-4xl shadow-md" />
 						</motion.div>
 						<div className="md:w-2/3 px-4 md:px-12 flex flex-col justify-center">
-							<h2 className="text-2xl font-bold mb-2">{`Welcome to Edunique!`}</h2>
+							<h2 className="text-xl font-bold mb-2">{`Welcome to Edunique!`}</h2>
 							<p className="text-gray-700 mb-4">{`We are an AI mapped personalised, comprehensive after-school program designed for children aged 3 to 16 years, being a one stop solution for parents we offering a diverse range of 31 programs across Building Academic Foundation , Not so extra circular activities , Skill Development, and Brain Development for a child.`}</p>
 							<h3 className="text-xl font-semibold mb-2">{`What Makes Edunique Unique?`}</h3>
 							<p className="text-gray-600">{`Our strength lies in understanding the unique educational needs of each child and parent. We provide individualized education plans, top-class content, world-class test series, and highly trained teachers. Every child receives a perfect blend of academic support and life-skill development to help them excel both in school and beyond.`}</p>

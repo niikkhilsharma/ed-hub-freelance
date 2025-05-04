@@ -83,7 +83,7 @@ export default function StudentHome() {
         </section>
 
         {/* page2 */}
-        <CoursesPage />
+        <CoursesPage/>
 
         {/* page3 */}
         <TeachersList className="pb-20"/>

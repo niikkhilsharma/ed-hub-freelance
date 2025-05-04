@@ -1,3 +1,5 @@
+"use client"
+
 import Footer from "@/components/footer";
 import StudentWrapper from "@/components/student-wrapper";
 import TeachersList from "@/components/student/home/teachers-component";
@@ -48,7 +50,7 @@ export default function Teachers() {
 
       </section>
       
-      <TeachersList className="pb-20"/>
+      <TeachersList className="pb-20" masked/>
 
       <Footer />
     </StudentWrapper>

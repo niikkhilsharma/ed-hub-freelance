@@ -12,37 +12,56 @@ import { Button } from '@/components/ui/button'
 import { format } from 'date-fns'
 import { CalendarIcon } from 'lucide-react'
 
-import { cn } from '@/lib/utils'
-import { Calendar } from '@/components/ui/calender'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calender";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import Image from "next/image";
 
 export default function RegisterPage() {
-	const [success, setSuccess] = useState(false)
-	const [password, setPassword] = useState('')
-	const [confirmPassword, setConfirmPassword] = useState('')
-	const [date, setDate] = React.useState<Date>()
-	const handleSubmit = (e: React.FormEvent) => {
-		e.preventDefault()
-		if (password && password === confirmPassword) {
-			setSuccess(true)
-		}
-	}
+  const [success, setSuccess] = useState(false);
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [date, setDate] = React.useState<Date>();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password && password === confirmPassword) {
+      setSuccess(true);
+    }
+  };
+  return (
+    <MaxWidthWrapper>
+      <div className="relative w-full min-h-screen flex flex-col overflow-hidden">
+        <div className="relative z-10 flex items-center justify-center w-full min-h-screen p-4">
+          {success ? (
+            <SuccessCard successUrl="/student/auth/login" />
+          ) : (
+            <div className="w-2/3 m-auto max-w-3xl bg-[#feedf2] rounded-lg overflow-hidden shadow-lg">
+              <div className="flex flex-col px-12 md:flex-row min-h-[400px] md:min-h-[600px] h-full">
+                <div className="w-full p-8 flex flex-col justify-center">
+                  <div className="flex items-start gap-4">
+                    <Image
+                      src="/student/auth/register.png"
+                      alt="teacher and student"
+                      width={60}
+                      height={60}
+                      className="object-contain rounded full"
+                      priority
+                    />
+                    <div>
 
-	return (
-		<MaxWidthWrapper>
-			<div className="relative w-full min-h-screen flex flex-col overflow-hidden">
-				<div className="relative z-10 flex items-center justify-center w-full min-h-screen p-4">
-					{success ? (
-						<SuccessCard successUrl="/student/auth/login" />
-					) : (
-						<div className="w-2/3 m-auto max-w-6xl bg-[#feedf2] rounded-lg overflow-hidden shadow-lg">
-							<div className="flex flex-col px-24 md:flex-row min-h-[400px] md:min-h-[600px] h-full">
-								<div className="w-full p-8 flex flex-col justify-center">
-									<h2 className="font-adlam text-3xl">Student/Parent Registration</h2>
-									<p className="mt-2 max-w-[50ch] text-gray-600">
-										Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-									</p>
-
+                  <h2 className="font-adlam text-3xl">
+                    Student/Parent Registration
+                  </h2>
+                  <p className="mt-2 max-w-[50ch] text-gray-600">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
+                    </div>
+                    </div> 
 									<div className="mt-8 space-y-4">
 										<div>
 											<Label htmlFor="guardian">Student Name</Label>
@@ -78,7 +97,7 @@ export default function RegisterPage() {
 													<Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
 												</PopoverContent>
 											</Popover>
-										</div>
+										</div> 
 
 										<div>
 											<Label htmlFor="email">Email Id</Label>

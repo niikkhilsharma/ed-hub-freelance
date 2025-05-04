@@ -16,7 +16,14 @@ type Section = {
 	title: string
 	videos: Array<{ id: string; title: string; videoLink: string; aboutLecture: string; status: boolean }>
 }
-
+interface CourseData {
+	// Define the structure of course data here
+	// Example:
+	title: string
+	description: string
+	duration: number
+	// Add other fields as needed
+}
 export default function AddPedagogyPage() {
 	const tabs = [
 		{ id: 'course', label: 'Course Details' },
@@ -25,7 +32,7 @@ export default function AddPedagogyPage() {
 	const [activeTab, setActiveTab] = useState<'course' | 'curriculum'>('course')
 
 	// --- course details state
-	const [courseData, setCourseData] = useState(null)
+	const [courseData, setCourseData] = useState<CourseData | null>(null)
 
 	// --- curriculum state
 	const [sections, setSections] = useState<Section[]>([])
@@ -33,10 +40,13 @@ export default function AddPedagogyPage() {
 	const [videoSectionId, setVideoSectionId] = useState<string | null>(null)
 
 	// handlers for course form
-	const handleCourseSubmit = data => {
+	const handleCourseSubmit = (data: CourseData) => {
 		setCourseData(data)
 		setActiveTab('curriculum')
+		console.log(courseData)
 	}
+
+	
 
 	// handlers for sections
 	const handleAddSection = (title: string) => {
@@ -65,7 +75,7 @@ export default function AddPedagogyPage() {
 			<main className="flex-1 p-8">
 				{/* <UserHeader title="Add Pedagogy" subtitle="Create a new course" className="mb-6" /> */}
 
-				<TabNavigation tabs={tabs} activeTabId={activeTab} onChange={id => setActiveTab(id)} className="mb-6" />
+				<TabNavigation tabs={tabs} activeTabId={activeTab} onChange={(id: string) => setActiveTab(id as 'course' | 'curriculum')} className="mb-6" />
 
 				{activeTab === 'course' && (
 					<CourseDetailsForm className="max-w-2xl mx-auto" onSubmit={handleCourseSubmit} onCancel={() => window.history.back()} />

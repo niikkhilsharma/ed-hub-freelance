@@ -25,76 +25,81 @@ export default function Footer() {
 		visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 	}
 
-	const staggerChildren = {
-		hidden: { opacity: 0 },
-		visible: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.1,
-			},
-		},
-	}
-	const linkHover = {
-		hover: {
-			x: 5,
-			color: '#fff',
-			transition: { duration: 0.2 },
-		},
-	}
-	const socialIconHover = {
-		hover: {
-			y: -5,
-			scale: 1.1,
-			transition: { type: 'spring', stiffness: 300, damping: 10 },
-		},
-	}
-	return (
-		<motion.div
-			initial="hidden"
-			whileInView="visible"
-			viewport={{ once: true, amount: 0.3 }}
-			className="w-screen relative flex flex-col bg-[#3466ff] items-center justify-between bg-cover bg-center bg-no-repeat"
-			style={{
-				minHeight: 'calc(100vh - 7.5rem)',
-			}}>
-			<div className="z-40 min-h-80 w-full absolute top-0 translate-y-[-100%] flex justify-center text-white">
-				<div className="min-h-24 bg-[#f9346d] w-full max-w-5/7 p-4 rounded-2xl flex px-16 items-center justify-between relative top-40 overflow-hidden shadow-xl">
-					{/* Left side with arrow graphic */}
-					<motion.div
-						initial={{ x: -50, opacity: 0 }}
-						whileInView={{ x: 0, opacity: 1 }}
-						transition={{ delay: 0.7, duration: 0.6 }}
-						className="absolute bottom-8 left-8 hidden md:block">
-						<svg width="60" height="50" viewBox="0 0 60 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<motion.path
-								initial={{ pathLength: 0 }}
-								whileInView={{ pathLength: 1 }}
-								transition={{ delay: 1, duration: 1 }}
-								d="M5 30C25 15 40 35 58 25"
-								stroke="#FF8A65"
-								strokeWidth="4"
-								strokeLinecap="round"
-							/>
-							<motion.path
-								initial={{ pathLength: 0 }}
-								whileInView={{ pathLength: 1 }}
-								transition={{ delay: 1.2, duration: 0.6 }}
-								d="M5 30L15 25"
-								stroke="#FF8A65"
-								strokeWidth="4"
-								strokeLinecap="round"
-							/>
-							<motion.path
-								initial={{ pathLength: 0 }}
-								whileInView={{ pathLength: 1 }}
-								transition={{ delay: 1.4, duration: 0.6 }}
-								d="M5 30L13 38"
-								stroke="#FF8A65"
-								strokeWidth="4"
-								strokeLinecap="round"
-							/>
-						</svg>
-					</motion.div>
+  const staggerChildren = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+  const linkHover = {
+    hover: {
+      x: 5,
+      color: "#fff",
+      transition: { duration: 0.2 },
+    },
+  };
+  const socialIconHover = {
+    hover: {
+      y: -5,
+      scale: 1.1,
+      transition: { type: "spring", stiffness: 300, damping: 10 },
+    },
+  };
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="w-screen relative flex flex-col bg-[#3466ff] items-center justify-between bg-cover bg-center bg-no-repeat"
+    >
+      <div className="z-40 min-h-80 w-full absolute top-0 translate-y-[-100%] flex justify-center text-white">
+        <div className="min-h-24 max-w-6xl bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between relative top-40 overflow-hidden shadow-xl">
+          {/* Left side with arrow graphic */}
+          <motion.div
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="absolute bottom-8 left-8 hidden md:block"
+          >
+            <svg
+              width="60"
+              height="50"
+              viewBox="0 0 60 50"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <motion.path
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ delay: 1, duration: 1 }}
+                d="M5 30C25 15 40 35 58 25"
+                stroke="#FF8A65"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+              <motion.path
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ delay: 1.2, duration: 0.6 }}
+                d="M5 30L15 25"
+                stroke="#FF8A65"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+              <motion.path
+                initial={{ pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                transition={{ delay: 1.4, duration: 0.6 }}
+                d="M5 30L13 38"
+                stroke="#FF8A65"
+                strokeWidth="4"
+                strokeLinecap="round"
+              />
+            </svg>
+          </motion.div>
 
 					{/* Central content */}
 					<div className="flex flex-col items-center justify-center w-full">

@@ -272,20 +272,22 @@ export default function CoursesPage({ masked, className = '' }: { masked?: boole
 											))}
 										</ul>
 
-										<div className="flex items-center mt-4">
-											<Image
-												width={40}
-												height={40}
-												src={course.teacher.image || '/placeholder.svg'}
-												alt={course.teacher.name}
-												className="w-8 h-8 rounded-full mr-2"
-											/>
-											<div>
-												<p className="text-xs text-gray-500">Teacher</p>
-												<p className="text-sm font-medium">{course.teacher.name}</p>
-											</div>
-										</div>
-									</CardContent>
+                    <div className="flex items-center mt-4">
+                      <Image
+                        src={course.teacher.image}
+                        alt={course.teacher.name}
+                        width={300}
+                        height={300}
+                        className="w-8 h-8 rounded-full mr-2"
+                      />
+                      <div>
+                        <p className="text-xs text-gray-500">Teacher</p>
+                        <p className="text-sm font-medium">
+                          {course.teacher.name}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
 
 									<CardFooter className="flex justify-between items-center p-4 pt-0 border-t border-gray-100">
 										<div className="text-sm font-medium text-pink-600">{course.priceRange}</div>

@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 import { Eye, EyeOff } from 'lucide-react'
 
 function Input({ className, type, masked = false, ...props }: React.ComponentProps<'input'> & { masked?: boolean }) {
-	const [showValue, setShowValue] = React.useState(false)
+	const [showValue, setShowValue] = React.useState(!masked)
 
 	return (
 		<div className="relative">
