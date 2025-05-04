@@ -1,6 +1,7 @@
 'use client';
 
 import MaxWidthWrapper from '@/components/max-width-wrapper';
+import Image from 'next/image';
 import { FiMail, FiEyeOff } from 'react-icons/fi';
 
 export default function TeacherLoginForm() {
@@ -65,12 +66,13 @@ export default function TeacherLoginForm() {
 
           {/* Right side: Image */}
           <div className="relative w-full lg:w-1/2 bg-white hidden lg:flex items-center justify-center p-8">
-            <img
+            <Image
               src="/teacher/auth/login/star.png"
               alt="Decoration"
               className="absolute inset-0 w-full h-full object-cover opacity-90"
+              priority
             />
-            <img
+            <Image
               src="/teacher/auth/login/login.png"
               alt="Teacher Login"
               className="relative z-10 object-contain max-h-[90%]"

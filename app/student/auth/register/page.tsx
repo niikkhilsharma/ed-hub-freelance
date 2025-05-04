@@ -61,9 +61,7 @@ export default function RegisterPage() {
                     typesetting industry.
                   </p>
                     </div>
-                    </div>
-
-
+                    </div> 
 									<div className="mt-8 space-y-4">
 										<div>
 											<Label htmlFor="guardian">Student Name</Label>
@@ -99,7 +97,7 @@ export default function RegisterPage() {
 													<Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
 												</PopoverContent>
 											</Popover>
-										</div>
+										</div> 
 
 										<div>
 											<Label htmlFor="email">Email Id</Label>

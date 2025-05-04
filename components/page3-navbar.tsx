@@ -3,9 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ChevronDown,
-} from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import {
   DropdownMenu,
@@ -39,8 +37,8 @@ export default function Navbar() {
       }`}
     >
       <nav className="bg-[#3366FF] text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+        <div className="container mx-auto px-16">
+          <div className="flex items-center justify-between h-15">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <div className="relative h-10 w-32">
@@ -54,13 +52,8 @@ export default function Navbar() {
               </div>
             </Link>
 
-            
-
             {/* Right Side - User Actions */}
             <div className="flex items-center space-x-4">
-              
-              
-
               <div className="hidden sm:flex items-center gap-2">
                 <div className="relative h-10 w-10 rounded-full overflow-hidden">
                   <Image
@@ -75,36 +68,36 @@ export default function Navbar() {
                   <span className="font-medium">Jane Cooper</span>
                 </div>
                 <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="flex items-center gap-2 text-white hover:bg-[#ff749e]"
-                  >
-                    <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-[#2d000d] p-2 rounded-lg w-48 flex flex-col gap-0.5">
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href="/dashboard" className="w-full">
-                      Dashboard
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      className="flex items-center gap-2 text-white hover:bg-[#ff749e]"
+                    >
+                      <ChevronDown className="h-4 w-4" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-[#2d000d] p-2 rounded-lg w-48 flex flex-col gap-0.5">
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <Link href="/dashboard" className="w-full">
+                        Dashboard
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
 
-                  <DropdownMenuItem>
-                    <Link href="/dashboard" className="w-full">
-                      Profile Settings
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href="/dashboard" className="w-full">
-                      Logout
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+                    <DropdownMenuItem>
+                      <Link href="/dashboard" className="w-full">
+                        Profile Settings
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem>
+                      <Link href="/dashboard" className="w-full">
+                        Logout
+                      </Link>
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
               </div>
 
               {/* Mobile menu button */}

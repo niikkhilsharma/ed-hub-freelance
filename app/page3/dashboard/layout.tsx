@@ -1,7 +1,7 @@
 "use client";
 
-import Navbar from "./page3-navbar";
-
+import Navbar from "@/components/page3-navbar";
+import Footer2 from "@/components/footer2";
 
 export default function page3Wrapper({
   children,
@@ -10,8 +10,9 @@ export default function page3Wrapper({
 }) {
   return (
     <div>
-        <Navbar />
-        {children}
+      <Navbar />
+      {children}
+      <Footer2 />
     </div>
   );
 }
