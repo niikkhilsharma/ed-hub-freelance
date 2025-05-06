@@ -1,10 +1,9 @@
 "use client";
 import Footer from "@/components/footer";
 import StudentWrapper from "@/components/student-wrapper";
-import SettingsTestResult from "@/components/student/settings/tests";
-export default function SettingsTests() {
+import CourseDashboard from "@/components/student/settings/course";
+export default function CourseDetail() {
   return (
-    
     <StudentWrapper>
       {/* Background */}
       <div
@@ -18,7 +17,7 @@ export default function SettingsTests() {
       ></div>
 
       <div className="relative z-10 mt-8 px-8 pb-40">
-        <SettingsTestResult />
+        <CourseDashboard />
       </div>
 
       <Footer />

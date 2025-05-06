@@ -1,8 +1,8 @@
 "use client";
 import Footer from "@/components/footer";
 import StudentWrapper from "@/components/student-wrapper";
-import CourseDashboard from "@/components/student/settings/my-course";
-export default function CourseDetail() {
+import Chat from "@/components/student/settings/chat";
+export default function SettingsChats() {
   return (
     
     <StudentWrapper>
@@ -18,7 +18,7 @@ export default function CourseDetail() {
       ></div>
 
       <div className="relative z-10 mt-8 px-8 pb-40">
-        <CourseDashboard />
+        <Chat />
       </div>
 
       <Footer />
