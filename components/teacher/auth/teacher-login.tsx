@@ -68,12 +68,16 @@ export default function TeacherLoginForm() {
           <div className="relative w-full lg:w-1/2 bg-white hidden lg:flex items-center justify-center p-8">
             <Image
               src="/teacher/auth/login/star.png"
+              width = {100}
+              height={100}
               alt="Decoration"
               className="absolute inset-0 w-full h-full object-cover opacity-90"
               priority
             />
             <Image
               src="/teacher/auth/login/login.png"
+              width = {1920}
+              height={1080}
               alt="Teacher Login"
               className="relative z-10 object-contain max-h-[90%]"
             />
