@@ -4,6 +4,7 @@ import { FiMoreHorizontal } from 'react-icons/fi'
 import Image from 'next/image'
 import { useState } from 'react'
 import Sidebar from '@/components/teacher/layout';
+import Header from '../header';
 
 export default function TeacherPedagogyPage() {
   const pedagogyList = new Array(8).fill({
@@ -19,17 +20,21 @@ export default function TeacherPedagogyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pl-64">
-      <div className="flex">
+    <div className="flex min-h-screen bg-gray-100">
+      
         {/* Sidebar */}
         <Sidebar />
+        {/* Sidebar End */}
 
+        {/* Header */}
+        
         {/* Main Content Area */}
 
         {/* Main Content */}
-        <main className="flex-1 p-6">
+        <main className="flex-1 ml-64 p-6 md:p-8">
+          <Header title="Pedagogy" subtitle="Dashboard" />
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-bold">Pedagogy</h2>
+            <h2 className="text-2xl font-bold"></h2>
             <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold">
               + Add Pedagogy
             </button>
@@ -100,6 +105,6 @@ export default function TeacherPedagogyPage() {
           </div>
         </main>
       </div>
-    </div>
+    
   )
 }

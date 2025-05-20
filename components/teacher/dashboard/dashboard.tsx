@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import Sidebar from '@/components/teacher/layout'; // Adjust import path as needed
 import Image from 'next/image';
 import { FiSearch, FiBell, FiChevronDown, FiFileText, FiUsers, FiBookOpen, FiBarChart, FiInfo } from 'react-icons/fi'; // Using react-icons
-
+import Header from '@/components/teacher/header'; // Adjust import path as needed
 // Sample Data (Replace with your actual data fetching)
 const statData = [
     { title: 'Current Add Test', value: '20', icon: FiFileText, bgColor: 'bg-yellow-400' },
@@ -34,41 +35,7 @@ export default function DashboardPage() {
             {/* Main Content Area */}
             <main className="flex-1 ml-64 p-6 md:p-8">
                 {/* Header */}
-                <header className="flex flex-col sm:flex-row justify-between items-center mb-8">
-                    <div>
-                        <h1 className="text-2xl font-semibold text-gray-800">Bi-Weekly Test</h1>
-                        <p className="text-sm text-gray-500">Dashboard</p>
-                    </div>
-                    <div className="flex items-center space-x-4 mt-4 sm:mt-0">
-                        <div className="relative">
-                            <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                            <input
-                                type="text"
-                                placeholder="Search"
-                                className="pl-10 pr-4 py-2 w-full sm:w-48 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                            />
-                        </div>
-                        <button className="p-2 bg-white border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 relative">
-                            <FiBell className="w-5 h-5" />
-                            {/* Optional: Notification Badge */}
-                            {/* <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"></span> */}
-                        </button>
-                        <div className="flex items-center space-x-2 bg-white border border-gray-300 rounded-lg p-2 cursor-pointer hover:bg-gray-50">
-                             <Image
-                                src="/teacher/dashboard/pedagogy.png" 
-                                alt="Robert Allen"
-                                width={32}
-                                height={32}
-                                className="rounded-full"
-                            />
-                            <div>
-                                <p className="text-sm font-medium text-gray-800">Robert Allen</p>
-                                <p className="text-xs text-gray-500">Teacher</p>
-                            </div>
-                            <FiChevronDown className="w-4 h-4 text-gray-500" />
-                        </div>
-                    </div>
-                </header>
+                <Header title="Bi-Weekly Test" subtitle="Dashboard" />
 
                 {/* Stats Cards */}
                 <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

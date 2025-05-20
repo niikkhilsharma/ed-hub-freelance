@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // pages/teacher/add-pedagogy.tsx
 'use client'
 
 import { useState } from 'react'
 import Sidebar from '@/components/teacher/layout'
-//import UserHeader           from '@/components/teacher/addpedagogy/UserHeader'
+import UserHeader           from '@/components/teacher/addpedagogy/UserHeader'
 import TabNavigation from '@/components/teacher/addpedagogy/TabNavigation'
 import CourseDetailsForm from '@/components/teacher/addpedagogy/CourseDetailsForm'
 import CurriculumSection from '@/components/teacher/addpedagogy/CurriculumSection'
@@ -73,7 +74,7 @@ export default function AddPedagogyPage() {
 			<Sidebar />
 
 			<main className="flex-1 p-8">
-				{/* <UserHeader title="Add Pedagogy" subtitle="Create a new course" className="mb-6" /> */}
+				<UserHeader title="Add Pedagogy" subtitle="Create a new course" className="mb-6" />
 
 				<TabNavigation tabs={tabs} activeTabId={activeTab} onChange={(id: string) => setActiveTab(id as 'course' | 'curriculum')} className="mb-6" />
 

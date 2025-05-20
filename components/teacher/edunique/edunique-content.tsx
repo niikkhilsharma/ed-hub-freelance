@@ -7,6 +7,7 @@ import {
     FiSearch, FiBell, FiChevronDown, FiFilter, FiPlusCircle, FiMoreVertical
 } from 'react-icons/fi';
 import Link from 'next/link';
+import Header from '../header';
 
 // --- Toggle Switch Component (Reused) ---
 const ToggleSwitch = ({ enabled, setEnabled }: { enabled: boolean, setEnabled: (enabled: boolean) => void }) => {
@@ -68,28 +69,9 @@ export default function EduNiqueContentPage() {
         <div className="flex min-h-screen bg-gray-100">
             <Sidebar />
 
-            <main className="flex-1 ml-64"> {/* ml-64 for sidebar */}
+            <main className="flex-1 ml-64 p-6 md:p-8"> {/* ml-64 for sidebar */}
                 {/* Top Bar */}
-                <header className="bg-white shadow-sm sticky top-0 z-30">
-                    <div className="max-w-full mx-auto px-6 md:px-8 h-16 flex justify-between items-center">
-                        <div>
-                            <h1 className="text-xl font-semibold text-gray-800">EduNique Content</h1>
-                            <p className="text-xs text-gray-500">Dashboard</p>
-                        </div>
-                        <div className="flex items-center space-x-4">
-                            <div className="relative hidden sm:block">
-                                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                                <input type="text" placeholder="Search" className="pl-10 pr-4 py-2 w-48 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm" />
-                            </div>
-                            <button className="p-2 bg-white border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 relative"> <FiBell className="w-5 h-5" /> </button>
-                            <div className="flex items-center space-x-2 bg-white border border-gray-300 rounded-lg p-1.5 pr-2 cursor-pointer hover:bg-gray-50">
-                                <Image src="/placeholder-avatar.jpg" alt="User Avatar" width={28} height={28} className="rounded-full" />
-                                <div className="hidden md:block"> <p className="text-xs font-medium text-gray-800">Robert Allen</p> <p className="text-xs text-gray-500">Teacher</p> </div>
-                                <FiChevronDown className="w-4 h-4 text-gray-500" />
-                            </div>
-                        </div>
-                    </div>
-                </header>
+                <Header title="EduNique Content" subtitle="Dashboard" />
 
                 {/* Main Content Area */}
                 <div className="p-6 md:p-8">
