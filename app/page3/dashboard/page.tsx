@@ -327,14 +327,12 @@ const Dashboard = () => {
                     <TabsTrigger
                       value="active"
                       className="data-[state=active]:border-b-2 data-[state=active]:border-blue-500 data-[state=active]:text-blue-500 rounded-none pb-2 font-medium"
-                      onClick={() => setActiveTab("active")}
                     >
                       Active
                     </TabsTrigger>
                     <TabsTrigger
                       value="completed"
                       className="data-[state=active]:border-b-2 data-[state=active]:border-blue-500 data-[state=active]:text-blue-500 rounded-none pb-2 font-medium"
-                      onClick={() => setActiveTab("completed")}
                     >
                       Completed
                     </TabsTrigger>
