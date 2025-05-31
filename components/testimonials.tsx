@@ -161,7 +161,7 @@ export default function Testimonials() {
               {duplicatedSlides.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="px-2"
+                  className="px-2 "
                   style={{ width: `${100 / duplicatedSlides.length}%` }}
                 >
                   <div className="bg-[#a8f0c7] rounded-3xl p-6 h-full">

@@ -1,519 +1,772 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import StudentWrapper from "@/components/student-wrapper";
 import Image from "next/image";
 
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { ChevronLeft, ChevronRight, Minus, Plus, Star } from "lucide-react";
-import Footer from "@/components/footer";
+import {
+  ArrowLeft,
+  BarChart3,
+  BookOpen,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  User,
+} from "lucide-react";
+import FooterNew from "@/components/footer3";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
+interface Review {
+  id: number;
+  customerName: string;
+  type: "Student" | "Parent";
+  rating: number;
+  description: string;
+  profileImage: string;
+}
+
+const reviews: Review[] = [
+  {
+    id: 1,
+    customerName: "Customer Name",
+    type: "Student",
+    rating: 4,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius. Fusce turpis enim, hendrerit facilisis nisl nec, dictum faucibus nisl. Aliquam erat volutpat. Duis non molestie augue.",
+    profileImage: "/student/courses/detail/profile.png",
+  },
+  {
+    id: 2,
+    customerName: "Customer Name",
+    type: "Parent",
+    rating: 4,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius. Fusce turpis enim, hendrerit facilisis nisl nec, dictum faucibus nisl. Aliquam erat volutpat. Duis non molestie augue.",
+    profileImage: "/student/courses/detail/profile.png",
+  }
+];
+interface Course {
+  id: string;
+  title: string;
+  category: string;
+  image: string;
+  features: string[];
+  teacher: {
+    name: string;
+    image: string;
+  };
+  priceRange: string;
+}
+
+const courses: Course[] = [
+  {
+    id: "academics",
+    title: "Academics",
+    category: "Science",
+    image: "/student/home/acadmics.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+  {
+    id: "foundation",
+    title: "Foundation",
+    category: "Technology Programs",
+    image: "/student/home/foundation.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+  {
+    id: "brain-development",
+    title: "Brain Development",
+    category: "Science",
+    image: "/student/home/basic-dev.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+  {
+    id: "skill-development",
+    title: "Skill Development",
+    category: "Public speaking",
+    image: "/student/home/learn-peace.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+  {
+    id: "stem-programs",
+    title: "STEM Programs",
+    category: "Technology Programs",
+    image: "/student/home/learn-peace2.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+  {
+    id: "robotics",
+    title: "Robotics",
+    category: "Technology Programs",
+    image: "/student/home/robotics.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+  {
+    id: "phonics",
+    title: "Phonics",
+    category: "English",
+    image: "/student/home/phonics.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+  {
+    id: "personality-development",
+    title: "Personality Development",
+    category: "Public speaking",
+    image: "/student/home/pers-dev.png",
+    features: [
+      "Customized Curriculums & Plans",
+      "Individualized Classes",
+      "Skill Development",
+      "Mentoring",
+    ],
+    teacher: {
+      name: "Mrs. Sandeep Kaur",
+      image: "/student/home/teacher.png",
+    },
+    priceRange: "₹2,000.00 - ₹5,000.00",
+  },
+];
+const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
+  return (
+    <div className="flex gap-1">
+      {[1, 2, 3, 4, 5].map((star) => (
+        <Star
+          key={star}
+          className={`w-4 h-4 ${
+            star <= rating
+              ? "fill-yellow-400 text-yellow-400"
+              : "fill-gray-200 text-gray-200"
+          }`}
+        />
+      ))}
+    </div>
+  );
+};
+
+const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
+  return (
+    <div className="bg-gray-100 rounded-xl p-3 mb-3">
+      <div className="flex items-start gap-3 mb-2">
+        <Avatar className="w-14 h-14 self-center flex-shrink-0">
+          <AvatarImage src={review.profileImage || "/placeholder.svg"} alt={review.customerName} />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
+        <div className="flex flex-col gap-1 min-w-0">
+          <h3 className="font-semibold text-sm text-gray-900 truncate">{review.customerName}</h3>
+          <p className="text-gray-600 text-xs">{review.type} / Parent</p>
+          <StarRating rating={review.rating} />
+        </div>
+      </div>
+      <p className="text-gray-600 text-xs leading-relaxed line-clamp-3">{review.description}</p>
+    </div>
+  )
+}
 
 export default function CourseDetail() {
-  const [quantity, setQuantity] = useState(1);
-  const [batch, setBatch] = useState("");
-  const [day, setDay] = useState("");
-  const [time, setTime] = useState("");
+  const [activeTab, setActiveTab] = useState("about");
 
-  const courses = [
-    {
-      id: 1,
-      title: "STEM Diploma In Technology Programs",
-      image: "/student/courses/detail/card1.png",
-      rating: 4.0,
-      teacher: "Dennis Barrett",
-      teacherImage: "/student/courses/detail/teacher.png",
-      price: "₹2,000.00 - ₹5,000.00",
-      features: [
-        "Customized Curriculums & Plans",
-        "Individualized Classes",
-        "Skill Development",
-        "Mentoring",
-      ],
-    },
-    {
-      id: 2,
-      title: "Scratch Programming And Animation",
-      image: "/student/courses/detail/card2.png",
-      rating: 4.0,
-      teacher: "Dennis Barrett",
-      teacherImage: "/student/courses/detail/teacher.png",
-      price: "₹2,000.00 - ₹5,000.00",
-      features: [
-        "Customized Curriculums & Plans",
-        "Individualized Classes",
-        "Skill Development",
-        "Mentoring",
-      ],
-    },
-    {
-      id: 3,
-      title: "AR, VR, Scratch Programming, Coding In 5 Languages",
-      image: "/student/courses/detail/card3.png",
-      rating: 4.0,
-      teacher: "Dennis Barrett",
-      teacherImage: "/student/courses/detail/teacher.png",
-      price: "₹2,000.00 - ₹5,000.00",
-      features: [
-        "Customized Curriculums & Plans",
-        "Individualized Classes",
-        "Skill Development",
-        "Mentoring",
-      ],
-    },
-    {
-      id: 4,
-      title: "Advance Coding In 7 Languages With Gamifications",
-      image: "/student/courses/detail/card4.png",
-      rating: 4.0,
-      teacher: "Dennis Barrett",
-      teacherImage: "/student/courses/detail/teacher.png",
-      price: "₹2,000.00 - ₹5,000.00",
-      features: [
-        "Customized Curriculums & Plans",
-        "Individualized Classes",
-        "Skill Development",
-        "Mentoring",
-      ],
-    },
-    {
-      id: 5,
-      title: "Python Programming For Beginners",
-      image: "/student/courses/detail/card1.png",
-      rating: 4.0,
-      teacher: "Dennis Barrett",
-      teacherImage: "/student/courses/detail/teacher.png",
-      price: "₹2,000.00 - ₹5,000.00",
-      features: [
-        "Customized Curriculums & Plans",
-        "Individualized Classes",
-        "Skill Development",
-        "Mentoring",
-      ],
-    },
+  const menuItems = [
+    { id: "about", label: "About Course", icon: User },
+    { id: "benefits", label: "Benefits", icon: Star },
+    { id: "pedagogy", label: "Pedagogy", icon: User },
+    { id: "curriculum", label: "Curriculum", icon: BookOpen },
+    { id: "levels", label: "Levels", icon: BarChart3 },
   ];
 
-  const teacher = {
-    id: "kristin-watson",
-    name: "Kristin Watson",
-    category: "Technology Programs",
-    image: "/student/home/prof1.png",
-    role: "Programmer",
-    experience: "Experience: 6 Year",
-    rating: 4.9,
-    description:
-      "Perceived and knowledge certainly day sweetness why cordiality. Ask a quick six seven offer see among.",
+  const contentMap = {
+    about: {
+      title: "About Course",
+      content: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tristique rhoncus risus, nec sagittis sapien bibendum non. Aenean suscipit, tortor sed tempor ornare, purus enim aliquet sapien, vitae fringilla ipsum massa in justo. Maecenas venenatis mauris vitae ligula tincidunt volutpat. Fusce id enim velit. Fusce ornare, nulla ut malesuada sagittis, libero sem aliquam tortor, vel aliquet nisl mauris a nisl. Nam vestibulum egestas nibh sit amet malesuada. Proin erat risus, mollis in metus vestibulum, auctor maximus metus. Morbi ac dictum sem. Nullam vitae congue tellus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam aliquam nisl quis nisl tincidunt, nec aliquam lectus gravida. Pellentesque varius purus vel dignissim pulvinar. Proin viverra elit eget leo dictum aliquam. Nam ornare arcu sed pretium ornare. Vestibulum vel dignissim dolor.
+
+Etiam ornare arcu in lorem mollis eleifend. Curabitur blandit tortor vitae augue cursus, eu efficitur tellus rhoncus. Aenean vestibulum enim ac lobortis pharetra. Vestibulum aliquet nisl a odio lacinia, a porttitor mi bibendum. Maecenas non auctor ante. In pulvinar erat nulla, ac vehicula mauris semper a. Nullam posuere tortor vitae odio venenatis, quis imperdiet neque placerat.`,
+    },
+    benefits: {
+      title: "Benefits",
+      content: `Discover the numerous advantages this course offers. From skill development to career advancement, you'll gain valuable insights and practical knowledge that will benefit you professionally and personally. Our comprehensive approach ensures you get the most out of your learning experience.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
+    },
+    pedagogy: {
+      title: "Pedagogy",
+      content: `Our teaching methodology is designed to maximize learning outcomes through interactive sessions, hands-on practice, and real-world applications. We employ modern educational techniques that cater to different learning styles and preferences.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+    },
+    curriculum: {
+      title: "Curriculum",
+      content: `The curriculum is carefully structured to provide a progressive learning path. Starting with fundamentals and gradually building up to advanced concepts, each module is designed to reinforce previous learning while introducing new challenges.
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.`,
+    },
+    levels: {
+      title: "Levels",
+      content: `This course is designed for multiple proficiency levels, from beginners to advanced learners. Each level has specific objectives and outcomes, ensuring that every participant can progress at their own pace while meeting established benchmarks.
+
+Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.`,
+    },
   };
 
-  const [cardsToShow, setCardsToShow] = useState(4);
-  const [currentIndex, setCurrentIndex] = useState(cardsToShow);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const totalCourses = courses.length;
-  const duplicatedSlides = [
-    ...courses.slice(-cardsToShow),
-    ...courses,
-    ...courses.slice(0, cardsToShow),
-  ];
-
+  const [showLeftArrow, setShowLeftArrow] = useState(false);
+  const [showRightArrow, setShowRightArrow] = useState(true);
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const checkScrollPosition = () => {
+    if (scrollContainerRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } =
+        scrollContainerRef.current;
+      setShowLeftArrow(scrollLeft > 0);
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
+    }
+  };
+  // Update arrow visibility on category change
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setCardsToShow(1);
-      } else if (window.innerWidth < 768) {
-        setCardsToShow(2);
-      } else if (window.innerWidth < 1024) {
-        setCardsToShow(3);
-      } else {
-        setCardsToShow(4);
-      }
-    };
+    checkScrollPosition();
+  }, [courses]);
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+  // Add scroll event listener
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", checkScrollPosition);
+      return () => container.removeEventListener("scroll", checkScrollPosition);
+    }
   }, []);
+  const scroll = (direction: string) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 320; // Width of one card plus gap
+      const currentScroll = scrollContainerRef.current.scrollLeft;
+      const targetScroll =
+        direction === "left"
+          ? currentScroll - scrollAmount
+          : currentScroll + scrollAmount;
 
-  useEffect(() => {
-    // Reset index to avoid out-of-bounds when screen size changes
-    setCurrentIndex(cardsToShow);
-  }, [cardsToShow]);
-
-  const nextSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => prev + 1);
-  };
-
-  const prevSlide = () => {
-    if (isAnimating) return;
-    setIsAnimating(true);
-    setCurrentIndex((prev) => prev - 1);
-  };
-
-  const handleTransitionEnd = () => {
-    setIsAnimating(false);
-    if (currentIndex >= totalCourses + cardsToShow) {
-      setCurrentIndex(cardsToShow);
-    } else if (currentIndex === 0) {
-      setCurrentIndex(totalCourses);
+      scrollContainerRef.current.scrollTo({
+        left: targetScroll,
+        behavior: "smooth",
+      });
     }
   };
 
-  const increaseQuantity = () => setQuantity((prev) => prev + 1);
-  const decreaseQuantity = () =>
-    quantity > 1 && setQuantity((prev) => prev - 1);
-
-  const handleSubmit = () => {
-    console.log({ batch, day, time, quantity });
-    alert("Form submitted! Check console.");
-  };
-
   return (
-    <StudentWrapper>
-      {/* Background */}
-      <div
-        className="fixed inset-0 bg-center bg-repeat z-0"
-        style={{
-          backgroundImage: "url('/Background2.png')",
-          backgroundSize: "400px",
-          filter: "grayscale(10%) brightness(1.1) blur(0.5px)",
-          opacity: 0.08,
-        }}
-      ></div>
-
-      <div className="relative z-10">
-        {/* headers */}
-        <div className="bg-[#f9326f] text-white h-40 gap-4 flex flex-col items-center justify-center">
-          <div className="text-4xl font-bold">Course Details</div>
-          <div className="flex gap-4 text-lg items-center">
-            <div>Home</div>
-            <div className="h-1 w-1 bg-[#d9d9d9] rounded-full" />
-            <div className="text-yellow-400">
-              STEM Diploma in Technology Programs
-            </div>
+    <StudentWrapper blue>
+      <div className="bg-white border-b">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center py-4">
+            <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
+            <h1 className="text-2xl font-semibold text-[#FF3366]">
+              Course Name
+            </h1>
           </div>
         </div>
+      </div>
 
-        {/* page1 */}
-        <div className="w-full max-w-7xl mx-auto px-4 py-8 md:py-16 md:px-6">
-          <div className="flex flex-col lg:flex-row gap-24">
-            {/* Left side - Course Image */}
-            <div className="lg:w-1/2">
-              <Card className="overflow-hidden">
-                <Image
-                  priority
-                  width={715}
-                  height={649}
-                  src="/student/courses/detail/hero.png"
-                  alt="Child using VR headset"
-                  className="w-full h-full object-cover"
-                />
-              </Card>
-            </div>
-
-            {/* Right side - Course Details */}
-            <div className="lg:w-1/2">
-              <div className="mb-6">
-                <p className="text-gray-500">Technology Programs</p>
-                <h1 className="text-3xl font-bold mb-6">
-                  STEM Diploma in Technology Programs
-                </h1>
-              </div>
-
-              <div className="space-y-4">
-                {/* Select Batch */}
-                <div>
-                  <label className="text-sm font-medium mb-1 block">
-                    Select Batch
-                  </label>
-                  <Select value={batch} onValueChange={setBatch}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select batch" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="8A">8A</SelectItem>
-                      <SelectItem value="8B">8B</SelectItem>
-                      <SelectItem value="9A">9A</SelectItem>
-                      <SelectItem value="9B">9B</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-medium text-pink-500 my-2">
-                    Price : ₹5,000.00
-                  </h3>
-                </div>
-
-                {/* Select Day */}
-                <div>
-                  <label className="text-sm font-medium mb-1 block">
-                    Select Day
-                  </label>
-                  <Select value={day} onValueChange={setDay}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select day" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="monday-thursday">
-                        Monday - Thursday
-                      </SelectItem>
-                      <SelectItem value="tuesday-friday">
-                        Tuesday - Friday
-                      </SelectItem>
-                      <SelectItem value="wednesday-saturday">
-                        Wednesday - Saturday
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {/* Select Time */}
-                <div>
-                  <label className="text-sm font-medium mb-1 block">
-                    Select Time
-                  </label>
-                  <Select value={time} onValueChange={setTime}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select time" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="morning">Morning</SelectItem>
-                      <SelectItem value="afternoon">Afternoon</SelectItem>
-                      <SelectItem value="evening">Evening</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                {/* Quantity and Cart */}
-                <div className="flex items-center justify-between mt-6">
-                  <div className="flex items-center">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={decreaseQuantity}
-                      className="h-10 w-10 rounded-l-md"
-                    >
-                      <Minus className="h-4 w-4" />
-                    </Button>
-                    <div className="h-10 w-10 flex items-center justify-center bg-blue-100">
-                      {quantity}
-                    </div>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={increaseQuantity}
-                      className="h-10 w-10 rounded-r-md"
-                    >
-                      <Plus className="h-4 w-4" />
-                    </Button>
+      <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-16 pb-70">
+        <div className="mx-auto">
+          <div className="grid lg:grid-cols-11 gap-4">
+            {/* Left Section */}
+            <div className="bg-[#FFFFFF] rounded-2xl p-2 col-span-8">
+              <div className="flex gap-6">
+                {/* Course Image */}
+                <div className="flex-2">
+                  <div className="rounded-2xl overflow-hidden">
+                    <Image
+                      src="/student/courses/detail/hero.png"
+                      alt="Technology Course"
+                      width={500}
+                      height={700}
+                      className="w-full h-[600px] object-cover"
+                    />
                   </div>
+                </div>
 
+                {/* Course Details */}
+                <div className="flex-1 flex flex-col justify-start px-4 py-6">
+                  <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                    Course Name
+                  </h1>
+                  <p className="text-gray-600 text-lg mb-8">Category</p>
+                  <div className="text-5xl font-bold text-blue-600 mb-8">
+                    ₹2,000
+                  </div>
                   <Button
-                    onClick={handleSubmit}
-                    className="bg-[#3366ff] hover:bg-[#6087ff] text-white px-8 py-2 h-10"
+                    className="bg-blue-600 hover:bg-blue-700 text-white text-lg py-6 px-8 rounded-full w-full"
+                    size="lg"
                   >
-                    Add To Cart
+                    Add to Cart
                   </Button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* page2 */}
-        <div className="w-full max-w-7xl mx-auto px-4 pb-8 md:pb-16 md:px-6">
-          <div>
-            <h1 className="text-4xl font-bold mb-6">About Course</h1>
-            <p className="text-gray-700 text-sm">
-              Satisfied conveying a dependent contented he gentleman agreeable
-              do be. Warrant private blushes removed an in equally totally if.
-              Delivered dejection necessary objection do Mr prevailed. Mr
-              feeling does chiefly cordial in do. <br />
-              <br />
-              We focus a great deal on the understanding of behavioral
-              psychology and influence triggers which are crucial for becoming a
-              well-rounded Digital Marketer. We understand that theory is
-              important to build a solid foundation, we understand that theory
-              alone isn’t going to get the job done so that’s why this course is
-              packed with practical hands-on examples that you can follow step
-              by step.
-            </p>
-          </div>
-        </div>
-
-        {/* teacher */}
-        <div className="w-full max-w-7xl mx-auto px-4 pb-8 md:pb-16 md:px-6">
-          <div>
-            <h1 className="text-4xl font-bold mb-6">Teacher</h1>
-            <div className="max-w-xl bg-white rounded-4xl overflow-hidden shadow-md border border-gray-100">
-              <div className="flex flex-col md:flex-row">
-                <div className="relative h-64 md:h-auto md:w-1/3 bg-gray-100">
-                  <Image
-                    src={teacher.image}
-                    alt={teacher.name}
-                    className="w-full h-full object-cover transition-transform duration-300 ease-in-out hover:scale-[1.05]"
-                    width={300}
-                    height={300}
-                  />
-                </div>
-                <div className="p-6 md:w-2/3">
-                  <div className="flex items-center mb-1">
-                    <span className="text-pink-500 font-medium text-sm">
-                      {teacher.role}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold mb-1 text-gray-800">
-                    {teacher.name}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-2">
-                    {teacher.experience}
-                  </p>
-
-                  <div className="flex items-center mb-3">
-                    <Star className="h-4 w-4 text-green-500 fill-current" />
-                    <span className="text-sm font-medium text-gray-700 ml-1">
-                      {teacher.rating}
-                    </span>
-                  </div>
-
-                  <p className="text-gray-600 text-sm">{teacher.description}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* slider */}
-        <div className="w-full pt-16 pb-56 px-4 md:px-8 lg:px-16 relative">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-                Related Courses
-              </h2>
-              <div className="flex space-x-2">
-                <button
-                  onClick={prevSlide}
-                  className="p-2 rounded-full bg-gray-100 text-blue-500 hover:bg-gray-200 transition-colors"
-                  aria-label="Previous courses"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="p-2 rounded-full bg-gray-100 text-blue-500 hover:bg-gray-200 transition-colors"
-                  aria-label="Next courses"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-
-            <div className="relative overflow-hidden">
+            {/* Right Section - Reviews */}
+            <div className="bg-[#FFFFFF] rounded-2xl p-4 col-span-3">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Reviews</h2>
               <div
-                className="flex transition-transform duration-500 ease-in-out"
-                onTransitionEnd={handleTransitionEnd}
+                className="h-[550px] overflow-y-auto pr-2"
                 style={{
-                  transform: `translateX(-${
-                    (100 / duplicatedSlides.length) * currentIndex
-                  }%)`,
-                  width: `${(duplicatedSlides.length / cardsToShow) * 100}%`,
+                  scrollbarWidth: "thin",
+                  scrollbarColor: "#FFA500 transparent",
                 }}
               >
-                {duplicatedSlides.map((course, index) => (
-                  <div
-                    key={index}
-                    className="px-2"
-                    style={{ width: `${100 / duplicatedSlides.length}%` }}
-                  >
-                    <div className="bg-white border border-gray-200 rounded-lg shadow-md overflow-hidden h-full flex flex-col">
-                      <div className="relative h-48">
-                        <div className="absolute top-2 right-2 bg-yellow-400 text-black text-sm font-medium px-2 py-1 rounded-md z-10 flex items-center">
-                          <svg
-                            className="w-4 h-4 mr-1 text-black"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                          </svg>
-                          {course.rating}
-                        </div>
-                        <Image
-                          src={course.image}
-                          alt={course.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className="p-4 flex-grow">
-                        <h3 className="font-bold text-lg mb-2 text-gray-900">
-                          {course.title}
-                        </h3>
-                        <ul className="mb-4 space-y-1">
-                          {course.features.map((feature, i) => (
-                            <li key={i} className="flex items-start">
-                              <svg
-                                className="w-5 h-5 text-green-500 mr-2 mt-0.5"
-                                viewBox="0 0 20 20"
-                                fill="currentColor"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              <span className="text-sm text-gray-600">
-                                {feature}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <div className="border-t border-gray-200 p-4">
-                        <div className="flex items-center mb-3">
-                          <div className="relative w-8 h-8 mr-2 rounded-full overflow-hidden">
-                            <Image
-                              src={course.teacherImage}
-                              alt={course.teacher}
-                              fill
-                              className="object-cover"
-                            />
-                          </div>
-                          <div>
-                            <p className="text-xs text-gray-500">Teacher</p>
-                            <p className="text-sm font-medium">
-                              {course.teacher}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-pink-500">
-                            {course.price}
-                          </span>
-                          <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded transition-colors">
-                            Enroll Now
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                <style jsx>{`
+                  div::-webkit-scrollbar {
+                    width: 8px;
+                  }
+                  div::-webkit-scrollbar-track {
+                    background: transparent;
+                  }
+                  div::-webkit-scrollbar-thumb {
+                    background: #ffa500;
+                    border-radius: 4px;
+                  }
+                  div::-webkit-scrollbar-thumb:hover {
+                    background: #ff8c00;
+                  }
+                `}</style>
+                {reviews.map((review) => (
+                  <ReviewCard key={review.id} review={review} />
                 ))}
               </div>
             </div>
           </div>
         </div>
 
-        <Footer />
+        <div className="flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
+          {/* Fixed Sidebar */}
+          <div className="w-64 flex-shrink-0">
+            <div className="p-6">
+              <nav className="space-y-2">
+                {menuItems.map((item) => {
+                  const IconComponent = item.icon;
+                  const isActive = activeTab === item.id;
+
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => setActiveTab(item.id)}
+                      className={`
+                    w-full flex items-center gap-3 px-4 py-3 rounded-full text-left transition-all duration-200
+                    ${
+                      isActive
+                        ? "bg-pink-500 text-white"
+                        : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                    }
+                  `}
+                    >
+                      <IconComponent size={20} />
+                      <span className="font-medium">{item.label}</span>
+                    </button>
+                  );
+                })}
+              </nav>
+            </div>
+          </div>
+
+          {/* Main Content Area */}
+          <div className="flex-1 overflow-auto">
+            <div className="p-8">
+              <h1 className="text-3xl font-bold text-gray-900 mb-6">
+                {contentMap[activeTab as keyof typeof contentMap].title}
+              </h1>
+
+              <div className="max-w-none">
+                <p className="text-gray-700 leading-relaxed text-base whitespace-pre-line">
+                  {contentMap[activeTab as keyof typeof contentMap].content}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#E5E7EB] p-4 rounded-2xl">
+          <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
+            Related Courses
+          </h1>
+          {/* Course Slider */}
+          <div className="relative">
+            {/* Left Navigation Button */}
+            {showLeftArrow && (
+              <button
+                onClick={() => scroll("left")}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-700" />
+              </button>
+            )}
+
+            {/* Right Navigation Button */}
+            {showRightArrow && (
+              <button
+                onClick={() => scroll("right")}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-700" />
+              </button>
+            )}
+
+            {/* Scrollable Container */}
+            <div
+              ref={scrollContainerRef}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
+                showLeftArrow ? "pl-16" : "pl-0"
+              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {courses.map((course) => (
+                <div
+                  key={course.id}
+                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative p-4">
+                    <Image
+                      src={course.image || "/placeholder.svg"}
+                      alt={course.title}
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-xl"
+                    />
+                  </div>
+
+                  <div className="p-4 pt-0">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      Course Name
+                    </h3>
+
+                    <div className="space-y-1">
+                      {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
+                        (detail, index) => (
+                          <div key={index} className="flex items-center gap-2">
+                            <div className="relative h-4 w-4 rounded-full overflow-hidden">
+                              <Image
+                                src="/student/home/tick2.png"
+                                alt="tick2"
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="text-gray-600">{detail}</span>
+                          </div>
+                        )
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2 mt-3">
+                      <Image
+                        src={course.teacher.image || "/placeholder.svg"}
+                        alt={course.teacher.name}
+                        width={24}
+                        height={24}
+                        className="w-8 h-8 rounded-full"
+                      />
+                      <div>
+                        <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+                        <p className="text-xs text-[#FF3366]">Teacher</p>
+                      </div>
+                      <div className="ml-auto flex gap-1 text-yellow-400">
+                        {[1, 2, 3, 4].map((star) => (
+                          <Star key={star} className="w-3 h-3 fill-current" />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                      <span className="text-[#50C878] font-bold">
+                        ₹2,000 - ₹5,000
+                      </span>
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                        Add to cart
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#E5E7EB] p-4 rounded-2xl">
+          <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
+            Recommended Courses
+          </h1>
+          {/* Course Slider */}
+          <div className="relative">
+            {/* Left Navigation Button */}
+            {showLeftArrow && (
+              <button
+                onClick={() => scroll("left")}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-700" />
+              </button>
+            )}
+
+            {/* Right Navigation Button */}
+            {showRightArrow && (
+              <button
+                onClick={() => scroll("right")}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-700" />
+              </button>
+            )}
+
+            {/* Scrollable Container */}
+            <div
+              ref={scrollContainerRef}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
+                showLeftArrow ? "pl-16" : "pl-0"
+              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {courses.map((course) => (
+                <div
+                  key={course.id}
+                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative p-4">
+                    <Image
+                      src={course.image || "/placeholder.svg"}
+                      alt={course.title}
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-xl"
+                    />
+                  </div>
+
+                  <div className="p-4 pt-0">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      Course Name
+                    </h3>
+
+                    <div className="space-y-1">
+                      {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
+                        (detail, index) => (
+                          <div key={index} className="flex items-center gap-2">
+                            <div className="relative h-4 w-4 rounded-full overflow-hidden">
+                              <Image
+                                src="/student/home/tick2.png"
+                                alt="tick2"
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="text-gray-600">{detail}</span>
+                          </div>
+                        )
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2 mt-3">
+                      <Image
+                        src={course.teacher.image || "/placeholder.svg"}
+                        alt={course.teacher.name}
+                        width={24}
+                        height={24}
+                        className="w-8 h-8 rounded-full"
+                      />
+                      <div>
+                        <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+                        <p className="text-xs text-[#FF3366]">Teacher</p>
+                      </div>
+                      <div className="ml-auto flex gap-1 text-yellow-400">
+                        {[1, 2, 3, 4].map((star) => (
+                          <Star key={star} className="w-3 h-3 fill-current" />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                      <span className="text-[#50C878] font-bold">
+                        ₹2,000 - ₹5,000
+                      </span>
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                        Add to cart
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-[#E5E7EB] p-4 rounded-2xl">
+          <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
+            Our Best Sellers
+          </h1>
+          {/* Course Slider */}
+          <div className="relative">
+            {/* Left Navigation Button */}
+            {showLeftArrow && (
+              <button
+                onClick={() => scroll("left")}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-700" />
+              </button>
+            )}
+
+            {/* Right Navigation Button */}
+            {showRightArrow && (
+              <button
+                onClick={() => scroll("right")}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-700" />
+              </button>
+            )}
+
+            {/* Scrollable Container */}
+            <div
+              ref={scrollContainerRef}
+              className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
+                showLeftArrow ? "pl-16" : "pl-0"
+              } ${showRightArrow ? "pr-16" : "pr-0"}`}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {courses.map((course) => (
+                <div
+                  key={course.id}
+                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                >
+                  <div className="relative p-4">
+                    <Image
+                      src={course.image || "/placeholder.svg"}
+                      alt={course.title}
+                      width={400}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-xl"
+                    />
+                  </div>
+
+                  <div className="p-4 pt-0">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      Course Name
+                    </h3>
+
+                    <div className="space-y-1">
+                      {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
+                        (detail, index) => (
+                          <div key={index} className="flex items-center gap-2">
+                            <div className="relative h-4 w-4 rounded-full overflow-hidden">
+                              <Image
+                                src="/student/home/tick2.png"
+                                alt="tick2"
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <span className="text-gray-600">{detail}</span>
+                          </div>
+                        )
+                      )}
+                    </div>
+
+                    <div className="flex items-center gap-2 mt-3">
+                      <Image
+                        src={course.teacher.image || "/placeholder.svg"}
+                        alt={course.teacher.name}
+                        width={24}
+                        height={24}
+                        className="w-8 h-8 rounded-full"
+                      />
+                      <div>
+                        <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+                        <p className="text-xs text-[#FF3366]">Teacher</p>
+                      </div>
+                      <div className="ml-auto flex gap-1 text-yellow-400">
+                        {[1, 2, 3, 4].map((star) => (
+                          <Star key={star} className="w-3 h-3 fill-current" />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                      <span className="text-[#50C878] font-bold">
+                        ₹2,000 - ₹5,000
+                      </span>
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                        Add to cart
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
+      <FooterNew />
     </StudentWrapper>
   );
 }

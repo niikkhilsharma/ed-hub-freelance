@@ -3,22 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  Bell,
-  ShoppingCart,
-  ChevronDown,
-  LayoutDashboard,
-} from "lucide-react";
-import { Button } from "./ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuSeparator,
-  DropdownMenuItem,
-} from "@radix-ui/react-dropdown-menu";
+import { Bell, ShoppingCart } from "lucide-react";
 
-export default function Navbar() {
+export default function Navbar({blue}:{blue?:boolean}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -41,18 +28,18 @@ export default function Navbar() {
         isScrolled ? "shadow-md" : ""
       }`}
     >
-      <nav className="bg-[#f9326f] text-white">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-20">
+      <nav className={`${blue? "bg-[#3366FF]" : "bg-[#f9326f]"} text-white`}>
+        <div className="container mx-auto px-12">
+          <div className="flex items-center justify-between h-17">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <div className="relative h-10 w-32">
                 {/* Replace src below with your logo path */}
                 <Image
-                  src="/mianLogo.png"
+                  src={blue? "/mianLogo2.png" : "/mianLogo.png"}
                   alt="EduHub Logo"
                   fill
-                  className="object-contain"
+                  className={`object-contain ${blue? "" :"invert brightness-0"}`}
                 />
               </div>
             </Link>
@@ -64,7 +51,7 @@ export default function Navbar() {
                   <Link
                     key={href}
                     href={href}
-                    className="text-base font-medium hover:text-blue-600"
+                    className={`text-base font-medium ${blue? "hover:text-[#f9326f]" :"hover:text-blue-600"}`}
                   >
                     {
                       [
@@ -83,29 +70,20 @@ export default function Navbar() {
 
             {/* Right Side - User Actions */}
             <div className="flex items-center space-x-4">
-              <Button
-                variant="secondary"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 text-sm"
-              >
-                <LayoutDashboard className="h-4 w-4 mr-2" />
-                Dashboard
-              </Button>
-
               <button className="relative p-1.5 rounded-full hover:bg-pink-600 transition-colors">
                 <Bell className="h-5 w-5" />
-                <span className="absolute top-0 right-0 h-2 w-2 bg-blue-600 rounded-full"></span>
+                <span className="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full"></span>
               </button>
 
               <button className="relative p-1.5 rounded-full hover:bg-pink-600 transition-colors">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 h-5 w-5 bg-blue-600 rounded-full flex items-center justify-center text-xs">
+                <span className="absolute -top-1 -right-1 h-5 w-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs">
                   2
                 </span>
               </button>
-              
 
               <div className="hidden sm:flex items-center gap-2">
-                <div className="relative h-10 w-10 rounded-full overflow-hidden">
+                <div className="relative h-12 w-12 rounded-full overflow-hidden">
                   <Image
                     src="/student/home/student-profile.jpg"
                     alt="User profile"
@@ -113,41 +91,6 @@ export default function Navbar() {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex flex-col text-xs">
-                  <span className="text-pink-200">Student</span>
-                  <span className="font-medium">Jane Cooper</span>
-                </div>
-                <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    className="flex items-center gap-2 text-white hover:bg-[#ff749e]"
-                  >
-                    <ChevronDown className="h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-[#2d000d] p-2 rounded-lg w-48 flex flex-col gap-0.5">
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href="/dashboard" className="w-full">
-                      Dashboard
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-
-                  <DropdownMenuItem>
-                    <Link href="/dashboard" className="w-full">
-                      Profile Settings
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>
-                    <Link href="/dashboard" className="w-full">
-                      Logout
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
               </div>
 
               {/* Mobile menu button */}
@@ -213,12 +156,6 @@ export default function Navbar() {
               className="block py-2 hover:bg-[#ff749e] px-3 rounded-md"
             >
               Contact
-            </Link>
-            <Link
-              href="/dashboard"
-              className="block py-2 hover:bg-[#ff749e] px-3 rounded-md"
-            >
-              Dashboard
             </Link>
           </div>
         </div>

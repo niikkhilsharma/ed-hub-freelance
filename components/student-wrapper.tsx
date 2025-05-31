@@ -2,16 +2,17 @@
 
 import StudentNavbar from "./student-navbar";
 
-
 export default function StudentWrapper({
   children,
+  blue,
 }: {
   children: React.ReactNode;
+  blue?: boolean;
 }) {
   return (
     <div>
-        <StudentNavbar />
-        {children}
+      <StudentNavbar blue={!!blue} />
+      {children}
     </div>
   );
 }

@@ -45,7 +45,7 @@ interface Message {
 }
 
 export default function Chat() {
-  const [contacts, setContacts] = useState<Contact[]>([
+  const [contacts] = useState<Contact[]>([
     {
       id: "1",
       name: "Elmer Laverty",

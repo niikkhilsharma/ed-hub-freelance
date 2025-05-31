@@ -1,5 +1,6 @@
 'use client'
 import mapImage from '@/public/mapImage.png'
+import wave from '@/public/wave.png'
 import Image from 'next/image'
 
 import mainLogo from '@/public/mianLogo2.png'
@@ -55,6 +56,8 @@ export default function Footer() {
       viewport={{ once: true, amount: 0.3 }}
       className="w-screen relative flex flex-col bg-[#3466ff] items-center justify-between bg-cover bg-center bg-no-repeat"
     >
+		<Image src={wave} alt="wave" className="h-fit absolute -top-15 z-20 w-screen object-contain" priority />
+		
       <div className="z-40 min-h-80 w-full absolute top-0 translate-y-[-100%] flex justify-center text-white">
         <div className="min-h-24 max-w-6xl bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between relative top-40 overflow-hidden shadow-xl">
           {/* Left side with arrow graphic */}
@@ -231,7 +234,7 @@ export default function Footer() {
 						<motion.svg
 							initial={{ scale: 0, opacity: 0 }}
 							whileInView={{ scale: 1, opacity: 1 }}
-							transition={{ delay: 1.2, duration: 0.8 }}
+							transition={{ delay: 1.2, duration: 0.3 }}
 							width="100"
 							height="100"
 							viewBox="0 0 100 100"
@@ -303,8 +306,8 @@ export default function Footer() {
 				</div>
 			</div>
 			<footer className="text-white pt-28 md:pt-40 w-full px-6 md:px-28">
-				<div className="container mx-auto py-8 md:py-12">
-					<motion.div variants={staggerChildren} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+				<div className="container mx-auto py-8">
+					<motion.div variants={staggerChildren} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 ">
 						{/* Logo and Description Column */}
 						<motion.div variants={fadeInUp} className="md:col-span-1">
 							<motion.div
@@ -356,12 +359,6 @@ export default function Footer() {
 							<motion.h3 variants={fadeInUp} className="text-xl font-medium mb-4 relative pl-0">
 								<span className="relative">
 									Company
-									<motion.span
-										className="absolute bottom-[-5px] left-0 h-[2px] bg-white/60 w-12"
-										initial={{ width: 0 }}
-										animate={{ width: '2rem' }}
-										transition={{ delay: 0.5, duration: 0.5 }}
-									/>
 								</span>
 							</motion.h3>
 							<motion.ul variants={staggerChildren} className="space-y-3">
@@ -372,7 +369,7 @@ export default function Footer() {
 											initial="initial"
 											whileHover="hover"
 											variants={linkHover}
-											className="hover:underline flex items-center group transition-all duration-300">
+											className="hover:underline flex items-center group transition-all duration-300 text-sm text-white/90">
 											<span className="text-white/80 mr-2 group-hover:text-white">•</span> {item}
 										</motion.a>
 									</motion.li>
@@ -385,12 +382,6 @@ export default function Footer() {
 							<motion.h3 variants={fadeInUp} className="text-xl font-medium mb-4 relative pl-0">
 								<span className="relative">
 									Support
-									<motion.span
-										className="absolute bottom-[-5px] left-0 h-[2px] bg-white/60 w-12"
-										initial={{ width: 0 }}
-										animate={{ width: '2rem' }}
-										transition={{ delay: 0.7, duration: 0.5 }}
-									/>
 								</span>
 							</motion.h3>
 							<motion.ul variants={staggerChildren} className="space-y-3">
@@ -401,7 +392,7 @@ export default function Footer() {
 											initial="initial"
 											whileHover="hover"
 											variants={linkHover}
-											className="hover:underline flex items-center group transition-all duration-300">
+											className="hover:underline flex items-center group transition-all duration-300 text-sm text-white/90">
 											<span className="text-white/80 mr-2 group-hover:text-white">•</span> {item}
 										</motion.a>
 									</motion.li>
@@ -414,12 +405,6 @@ export default function Footer() {
 							<motion.h3 variants={fadeInUp} className="text-xl font-medium mb-4 relative pl-0">
 								<span className="relative">
 									Contact Info
-									<motion.span
-										className="absolute bottom-[-5px] left-0 h-[2px] bg-white/60 w-12"
-										initial={{ width: 0 }}
-										animate={{ width: '2rem' }}
-										transition={{ delay: 0.9, duration: 0.5 }}
-									/>
 								</span>
 							</motion.h3>
 							<motion.div variants={fadeInUp} className="mb-4">
@@ -457,7 +442,7 @@ export default function Footer() {
 								].map((item, index) => (
 									<motion.p key={index} variants={fadeInUp} className="flex flex-wrap items-start">
 										<strong className="mr-2">{item.label}</strong>
-										<motion.span whileHover={{ color: '#f9326f' }} className="text-white/90 hover:underline cursor-pointer">
+										<motion.span whileHover={{ color: '#f9326f' }} className="text-[#8FDDAA] hover:underline cursor-pointer">
 											{item.value}
 										</motion.span>
 									</motion.p>

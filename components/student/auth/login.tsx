@@ -17,17 +17,16 @@ import Link from 'next/link'
 export default function StudentLoginForm() {
   return (
     <MaxWidthWrapper>
-      <div className="relative w-full min-h-screen flex flex-col overflow-hidden">
-        <div className="relative z-10 flex items-center justify-center w-full min-h-screen p-4">
-          <div className="w-full max-w-6xl bg-[#feedf2] rounded-lg overflow-hidden shadow-lg">
-            <div className="flex flex-col md:flex-row-reverse min-h-[400px] md:min-h-[600px] h-full">
+      <div className="relative w-full min-h-screen flex flex-col overflow-hidden items-center justify-center">
+        <div className="relative z-10 flex items-center justify-center w-full">
+            <div className="flex flex-col md:flex-row-reverse min-h-[400px] md:min-h-[600px] w-full max-w-6xl bg-white rounded-3xl overflow-hidden shadow-lg">
               {/* Right Column - Image */}
-              <div className="w-full hidden md:block md:w-[55%]">
+              <div className="w-full hidden md:block md:w-[55%] p-6 ">
                 <Image
                   src={'/student/auth/login/login.png'}
                   width={3375}
                   height={3375}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-3xl"
                   alt="Login"
                 />
               </div>
@@ -40,11 +39,11 @@ export default function StudentLoginForm() {
                   typesetting industry.
                 </p>
 
-                <div className="mt-8 space-y-4">
+                <div className="mt-8 space-y-4 flex flex-col">
                   <div>
                     <Label htmlFor="school">Select School</Label>
                     <Select>
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className="w-full rounded-full bg-[#F9FAFB]">
                         <SelectValue placeholder="Theme" />
                       </SelectTrigger>
                       <SelectContent>
@@ -58,7 +57,7 @@ export default function StudentLoginForm() {
                   <div>
                     <Label htmlFor="class">Class</Label>
                     <Select>
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className="w-full rounded-full bg-[#F9FAFB]">
                         <SelectValue placeholder="Theme" />
                       </SelectTrigger>
                       <SelectContent>
@@ -71,44 +70,43 @@ export default function StudentLoginForm() {
 
                   <div>
                     <Label htmlFor="email">Email Id</Label>
-                    <Input type="email" placeholder="Email Id" masked />
+                    <Input type="email" placeholder="Email Id" masked className=" rounded-full bg-[#F9FAFB]"/>
                   </div>
 
                   <div>
                     <Label htmlFor="guardian">Parents/Guardian Name</Label>
-                    <Input type="text" placeholder="Enter Parent/Guardian Name" />
+                    <Input type="text" placeholder="Enter Parent/Guardian Name" className=" rounded-full bg-[#F9FAFB]"/>
                   </div>
 
                   <div>
                     <Label htmlFor="password">Password</Label>
-                    <Input type="text" placeholder="********" masked />
+                    <Input type="text" placeholder="********" masked className=" rounded-full bg-[#F9FAFB]"/>
                   </div>
 
-                  <Button className="w-full mt-2">Login</Button>
+                  <Button className="self-center rounded-full w-40 mt-2">Login</Button>
                 </div>
 
-                <div className="flex items-center justify-end mt-6">
-                  <Link
-                    href={'/student/auth/forgot-password'}
-                    className="text-sm text-gray-500/80 hover:underline"
-                  >
-                    Forgot Password?
-                  </Link>
-                </div>
-
-                <div className="flex justify-center items-center mt-4">
+                <div className="flex items-center justify-between mt-6">
+                  <div className="ml-2 text-sm flex gap-1 text-gray-500/80">
+                    <p>Don&apos;t Have An Account?</p>
                   <Link
                     href={'/student/auth/register'}
-                    className="ml-2 text-sm text-gray-500/80 hover:underline"
+                    className="text-[#F9326F] hover:underline"
+                    >
+                    Register
+                  </Link>
+                    </div>
+                  <Link
+                    href={'/student/auth/forgot-password'}
+                    className="text-sm text-[#F9326F] hover:underline"
                   >
-                    Don&apos;t Have An Account? Register
+                    Forgot Password?
                   </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
     </MaxWidthWrapper>
   )
 }

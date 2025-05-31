@@ -260,7 +260,7 @@ function CourseCard({
   subtitle: string;
   startTime: string;
   endTime: string;
-  type: string;
+  type?: string;
 }) {
   return (
     <div className="bg-white rounded-lg border p-4 flex flex-col">

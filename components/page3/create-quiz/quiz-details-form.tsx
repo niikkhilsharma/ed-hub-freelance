@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -23,8 +22,6 @@ interface TestDetailsFormProps {
 }
 
 export function QuizDetailsForm({ onNext }: TestDetailsFormProps) {
-  const [testName, setTestName] = useState("");
-  const [description, setDescription] = useState("");
   const [selectedClass, setSelectedClass] = useState("");
   const [selectedGroup, setSelectedGroup] = useState("");
   const [expiryDate, setExpiryDate] = useState("");

@@ -13,7 +13,7 @@ export default function MyClassesComponent() {
   const [expandedSection, setExpandedSection] = useState<string | null>("Learning Videos (Week1)")
   const [currentView, setCurrentView] = useState<"list" | "detail">("list")
   const [selectedTopic, setSelectedTopic] = useState<string | null>(null)
-  const [currentMonth, setCurrentMonth] = useState("May 2023")
+  const [currentMonth] = useState("May 2023")
   const [currentWeekView, setCurrentWeekView] = useState("Week1")
 
   // Main navigation tabs

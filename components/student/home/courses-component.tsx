@@ -154,7 +154,7 @@ interface Course {
 const categories: Category[] = ['All', ...(Array.from(new Set(courses.map(c => c.category))) as Category[])]
 
 // Accept masked prop
-export default function CoursesPage({ masked, className = '' }: { masked?: boolean; className?: string }) {
+export default function CoursesComponent({ masked, className = '' }: { masked?: boolean; className?: string }) {
 	const [selectedCategory, setSelectedCategory] = useState<Category>('All')
 	const [hoveredCourse, setHoveredCourse] = useState<string | null>(null)
 

@@ -60,10 +60,10 @@ export default function ForgotPassword() {
           {resetState === "success" ? (
             <SuccessCard successUrl="/student/auth/login" />
           ) : (
-            <div className="w-full max-w-6xl bg-[#feedf2] rounded-lg overflow-hidden shadow-lg">
+            <div className="w-full max-w-6xl bg-white rounded-3xl overflow-hidden shadow-lg">
               <div className="flex flex-col md:flex-row min-h-[400px] md:min-h-[600px] h-full">
                 {/* Left Column - Form */}
-                <div className="w-full md:w-1/2 p-8">
+                <div className="w-full md:w-1/2 p-8 pt-28">
                   {resetState === "forgot" && (
                     <ForgotPasswordForm
                       email={email}
@@ -90,8 +90,8 @@ export default function ForgotPassword() {
                 </div>
 
                 {/* Right Column - Image */}
-                <div className="w-full md:w-1/2 bg-blue-50 relative">
-                  <div className="h-full">
+                <div className="w-full md:w-1/2 relative">
+                  <div className="h-full p-6">
                     {resetState === "forgot" && <ForgotPasswordImage />}
                     {resetState === "verify" && <VerifyEmailImage />}
                     {resetState === "reset" && <ResetImage />}
@@ -117,7 +117,7 @@ function ForgotPasswordForm({
   onSubmit: (e: React.FormEvent) => void;
 }) {
   return (
-    <form onSubmit={onSubmit} className="space-y-6">
+    <form onSubmit={onSubmit} className="space-y-6 flex flex-col">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Forgot password</h1>
         <p className="text-gray-500">
@@ -127,7 +127,7 @@ function ForgotPasswordForm({
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="email">Email Address</Label>
+        <Label htmlFor="email" className=" mb-3 font-bold">Email ID</Label>
         <div className="relative">
           <Input
             id="email"
@@ -137,16 +137,16 @@ function ForgotPasswordForm({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="pr-10"
+            className="pr-10 rounded-full bg-[#F9FAFB]"
           />
         </div>
       </div>
 
       <Button
         type="submit"
-        className="w-full bg-blue-600 hover:bg-blue-700 cursor-pointer"
+        className="bg-blue-600 hover:bg-blue-700 cursor-pointer self-center rounded-full w-40"
       >
-        Next
+        Proceed
       </Button>
     </form>
   );
@@ -163,7 +163,7 @@ function VerifyEmailForm({
   onSubmit: (e: React.FormEvent) => void;
 }) {
   return (
-    <form onSubmit={onSubmit} className="space-y-6">
+    <form onSubmit={onSubmit} className="space-y-6 flex flex-col">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Verify Email Address</h1>
         <p className="text-gray-500">
@@ -172,7 +172,7 @@ function VerifyEmailForm({
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="otp">OTP</Label>
+        <Label htmlFor="otp" className="font-bold mb-3">OTP</Label>
         <Input
           id="otp"
           type="text"
@@ -180,10 +180,11 @@ function VerifyEmailForm({
           value={otp}
           onChange={(e) => setOtp(e.target.value)}
           required
+          className=" rounded-full bg-[#F9FAFB]"
         />
       </div>
 
-      <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
+      <Button type="submit" className="bg-blue-600 hover:bg-blue-700 cursor-pointer self-center rounded-full w-40">
         Proceed
       </Button>
     </form>
@@ -212,7 +213,7 @@ function ResetPasswordForm({
       </div>
 
       <div className="space-y-2">
-        <Label htmlFor="password">New Password</Label>
+        <Label htmlFor="password" className="font-bold mb-3">New Password</Label>
         <Input
           id="password"
           type="password"
@@ -221,6 +222,7 @@ function ResetPasswordForm({
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className=" rounded-full bg-[#F9FAFB]"
         />
       </div>
 
@@ -234,6 +236,7 @@ function ResetPasswordForm({
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
+          className="rounded-full bg-[#F9FAFB]"
         />
         {password && confirmPassword && password !== confirmPassword && (
           <p className="text-red-500 text-sm">Passwords do not match</p>
@@ -256,12 +259,12 @@ function ForgotPasswordImage() {
   return (
     <div className="relative h-full">
       <div className="absolute inset-0 flex flex-col">
-        <div className="flex-1 relative">
+        <div className="flex-1 relative ">
           <Image
             src={"/student/auth/forgot-password/forgot.png"}
             width={3375}
             height={3375}
-            className="w-full h-full object-cover"
+            className="w-full h-full rounded-3xl object-cover"
             alt="forgot"
           />
         </div>
@@ -280,7 +283,7 @@ function VerifyEmailImage() {
             src={"/student/auth/forgot-password/verify-email.png"}
             width={3375}
             height={3375}
-            className="w-full h-full object-cover"
+            className="w-full h-full rounded-3xl object-cover"
             alt="forgot"
           />
         </div>
@@ -299,7 +302,7 @@ function ResetImage() {
             src={"/student/auth/forgot-password/reset.png"}
             width={3375}
             height={3375}
-            className="w-full h-full object-cover"
+            className="w-full h-full rounded-3xl object-cover"
             alt="forgot"
           />
         </div>

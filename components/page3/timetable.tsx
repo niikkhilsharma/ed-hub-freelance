@@ -5,7 +5,7 @@ import { Clock } from "lucide-react";
 
 export function Timetable() {
   // Current selected day (Tuesday/16 in the image)
-  const [selectedDay, setSelectedDay] = useState(2); // 0-based index, 2 = Tuesday
+  const [selectedDay] = useState(2); // 0-based index, 2 = Tuesday
 
   // Days of the week and their numbers
   const weekDays = [

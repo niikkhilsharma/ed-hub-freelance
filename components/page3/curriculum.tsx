@@ -3,17 +3,6 @@
 import { useState } from "react"
 import { ChevronDown, ChevronRight, Play, FileText } from "lucide-react"
 
-interface CurriculumLesson {
-  id: string
-  title: string
-  type: "video" | "document"
-}
-
-interface CurriculumSession {
-  id: string
-  title: string
-  lessons: CurriculumLesson[]
-}
 
 export  function Curriculum() {
   const [expandedLessons, setExpandedLessons] = useState<Record<string, boolean>>({
@@ -79,7 +68,7 @@ export  function Curriculum() {
           </div>
 
           <div className="space-y-2 overflow-y-auto pr-2">
-            {sessions.slice(0, 4).map((session, idx) => (
+            {sessions.slice(0, 4).map((session) => (
               <div key={session.id} className="bg-gray-100 rounded-md overflow-hidden">
                 <div className="p-3 flex items-center text-pink-500">
                   <div className="pr-2">
@@ -115,7 +104,7 @@ export  function Curriculum() {
                       <div className="pl-9 pr-3 pb-3 space-y-3">
                         <div className="flex items-center">
                           <Play className="h-4 w-4 mr-2" />
-                          <span className="text-sm">What's is Webflow?</span>
+                          <span className="text-sm">What&apos;s is Webflow?</span>
                         </div>
                         <div className="flex items-center">
                           <Play className="h-4 w-4 mr-2" />

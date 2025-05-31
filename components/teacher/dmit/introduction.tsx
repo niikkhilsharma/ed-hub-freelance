@@ -2,7 +2,6 @@
 
 import Sidebar from '@/components/teacher/layout'; 
 import Image from 'next/image';
-import { FiSearch, FiBell, FiChevronDown } from 'react-icons/fi';
 import Header from '@/components/teacher/header'; // Adjust import path as needed
 export default function DmtiIntroductionPage() {
     const descriptionText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
