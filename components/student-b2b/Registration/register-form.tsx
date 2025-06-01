@@ -55,7 +55,7 @@ export default function StudentInfoPage() {
           w-full
           max-w-5xl
           lg:max-w-6xl
-          gap-2
+          gap-7
         "
       >
         {/* ─── Left Panel: the white “form” box ─── */}
