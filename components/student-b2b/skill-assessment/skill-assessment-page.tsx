@@ -71,17 +71,17 @@ export default function TestStartPage() {
                     <div
                         className="absolute inset-0 z-0 opacity-80" // Slightly transparent pattern
                         style={{
-                            backgroundImage: 'url(/images/colorful-bg-pattern.png)', // <-- UPDATE PATH to your colorful pattern
+                            backgroundImage: 'url(/1782364.png)', // <-- UPDATE PATH to your colorful pattern
                             backgroundRepeat: 'repeat',
                             backgroundSize: 'auto',
                         }}
                     ></div>
                      {/* Image */}
-                    <div className="relative z-10 w-full h-full flex items-center justify-center p-4 md:p-0">
+                    <div className="relative z-10 w-full h-full flex items-center justify-center p-0 md:p-0">
                         <Image
-                            src="/images/student-with-laptop.png" // <-- UPDATE PATH to your student image
+                            src="/images/student_with_laptop.svg" // <-- UPDATE PATH to your student image
                             alt="Student with laptop"
-                            width={400} // Adjust based on image aspect ratio
+                            width={600} // Adjust based on image aspect ratio
                             height={500} // Adjust based on image aspect ratio
                             className="w-auto h-full max-h-[90%] object-contain" // Ensure image fits and doesn't overflow
                         />
