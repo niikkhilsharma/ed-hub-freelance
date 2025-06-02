@@ -1,7 +1,9 @@
-import EditStudentProfilePage from "@/components/student-b2b/student-dashboard/profile";
+import EditStudentProfilePage from '@/components/student-b2b/student-dashboard/profile'
 
-export default function EditStudentProfile(){
-    return <div>
-        <EditStudentProfilePage />
-    </div>
+export default function EditStudentProfile() {
+	return (
+		<div>
+			<EditStudentProfilePage />
+		</div>
+	)
 }

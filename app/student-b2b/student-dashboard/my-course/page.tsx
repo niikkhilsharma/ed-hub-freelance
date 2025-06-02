@@ -1,7 +1,9 @@
-import MyCoursePage from "@/components/student-b2b/student-dashboard/my-course";
+import MyCoursePage from '@/components/student-b2b/student-dashboard/my-course'
 
-export default function MyCourse(){
-    return <div>
-        <MyCoursePage />
-    </div>
+export default function MyCourse() {
+	return (
+		<div>
+			<MyCoursePage />
+		</div>
+	)
 }
