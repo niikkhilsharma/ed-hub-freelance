@@ -6,111 +6,127 @@ import { Card, CardContent } from "@/components/ui/card";
 import StudentWrapper from "@/components/student-wrapper";
 import Image from "next/image";
 import Footer from "@/components/footer";
+import FooterNew from "@/components/footer3";
 
 const features = [
   {
-    icon: <User className="text-white w-5 h-5" />,
-    bgColor: "bg-blue-500",
-    title: "One on One Monitor",
+    icon: <User className="text-[#FF892A] w-16 h-16" />,
+    bgColor: "bg-[#FFC79A]",
+    title: "Title",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting",
   },
   {
-    icon: <Clock className="text-white w-5 h-5" />,
-    bgColor: "bg-lime-500",
-    title: "24/7 Mentor",
+    icon: <Clock className="text-[#3366FF] w-16 h-16" />,
+    bgColor: "bg-[#99DEFF]",
+    title: "Title",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting",
   },
   {
-    icon: <Monitor className="text-white w-5 h-5" />,
-    bgColor: "bg-pink-500",
-    title: "Whiteboard",
+    icon: <Monitor className="text-[#FF3366] w-16 h-16" />,
+    bgColor: "bg-[#FF99B7]",
+    title: "Title",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting",
   },
   {
-    icon: <DollarSign className="text-white w-5 h-5" />,
-    bgColor: "bg-orange-500",
-    title: "Affordable Price",
+    icon: <DollarSign className="text-[#07733D] w-16 h-16" />,
+    bgColor: "bg-[#8DD9B3]",
+    title: "Title",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting",
   },
 ];
 export default function CourseDetail() {
   return (
-    <StudentWrapper>
+    <StudentWrapper blue>
       {/* Background */}
       <div
         className="fixed inset-0 bg-center bg-repeat z-0"
         style={{
           backgroundImage: "url('/Background2.png')",
-          backgroundSize: "400px",
-          filter: "grayscale(10%) brightness(1.1) blur(0.5px)",
-          opacity: 0.08,
+          backgroundSize: "500px",
+          filter: "brightness(1.1) blur(0.1px)",
+          opacity: 0.8,
         }}
       ></div>
 
-      <div className="relative z-10 pb-40">
+      <div className="bg-[#FF3366]/75 text-white min-h-[calc(100vh-68px)] px-16 py-8 flex flex-col items-center justify-center relative overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 w-full items-center">
+  {/* Left Content */}
+  <div className="space-y-6 text-center lg:text-left">
+    <h1 className="font-bold text-3xl lg:text-4xl leading-tight">
+      Eduport education theme, built specifically for the education
+      centers which is dedicated to teaching and involve learners.
+    </h1>
+    <p className="font-medium text-md opacity-90 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+      Ut eget egestas risus. Mauris sed justo quam. Sed eget porttitor
+      metus. Nam purus arcu, congue sed mi sit amet, bibendum imperdiet
+      mauris. Nunc luctus quis sem volutpat lobortis. Interdum et
+      malesuada fames ac ante ipsum primis in faucibus. Donec non augue
+      lectus.
+    </p>
+  </div>
+
+  {/* Right Images */}
+  <div className="flex flex-col gap-4 max-w-xl mx-auto w-full">
+    {/* Main Image */}
+    <div className="w-full">
+      <Image
+        src="/student/about/image1-top.png"
+        alt="Main Visual"
+        width={500}
+        height={300}
+        className="w-full h-auto object-cover rounded-2xl shadow-md"
+        priority
+      />
+    </div>
+
+    {/* Two Side-by-Side Images */}
+    <div className="flex flex-col sm:flex-row gap-4">
+      <Image
+        src="/student/about/image2-top.png"
+        alt="Secondary 1"
+        width={240}
+        height={160}
+        className="w-full sm:w-1/2 h-auto object-cover rounded-2xl shadow-md"
+        priority
+      />
+      <Image
+        src="/student/about/image3-top.png"
+        alt="Secondary 2"
+        width={240}
+        height={160}
+        className="w-full sm:w-1/2 h-auto object-cover rounded-2xl shadow-md"
+        priority
+      />
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      <div className="relative z-10 pb-55 bg-white">
         {/* headers */}
-        <div className="bg-[#f9326f] text-white min-h-40 px-6 py-8 md:px-16 flex flex-col items-center justify-center relative overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-8 w-full max-w-7xl relative">
-            {/* Text Content */}
-            <div className="space-y-6 z-10">
-              <h2 className="text-3xl lg:text-4xl font-bold leading-snug max-w-xl">
-                Eduport education theme, built specifically for the education
-                centers which is dedicated to teaching and involve learners.
-              </h2>
-            </div>
-
-            {/* Image Layout */}
-            <div className="relative w-full h-full flex justify-around items-center">
-              {/* Main Image */}
-              <Image
-                src="/student/about/image1.png"
-                alt="Classroom"
-                width={70}
-                height={70}
-                priority
-                className=" right-[200px] left-0 rounded-2xl shadow-xl w-[150px] h-[200px] object-cover"
-              />
-
-              {/* Top Right Image */}
-              <Image
-                src="/student/about/image2.png"
-                alt="Student"
-                width={150}
-                height={150}
-                priority
-                className=" top-0 right-0 rounded-2xl shadow-xl w-[150px] h-[200px] object-cover"
-              />
-
-              {/* Bottom Right Image */}
-              <Image
-                src="/student/about/image3.png"
-                alt="Teacher"
-                width={160}
-                height={160}
-                priority
-                className=" bottom-0 right-2 rounded-2xl shadow-xl w-[150px] h-[200px] object-cover"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="container min-h-7xl max-w-7xl mx-auto py-12 px-6 lg:px-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="container mx-auto py-16 flex flex-col gap-16 px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start rounded-2xl bg-[#F9FAFB] p-6 border shadow">
             {/* Left Content */}
             <div className="space-y-6 text-center lg:text-left">
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-gray-900">
+              <h1 className="text-4xl lg:text-5xl font-bold leading-tight text-[#3366FF]">
                 About Us
               </h1>
-              <p className="text-gray-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry&apos;s standard dummy
-                text ever since the 1500s. It has survived not only five
-                centuries, but also the leap into electronic typesetting,
-                remaining essentially unchanged.
+              <p className="text-black text-md max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularized in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
               </p>
               <div className="space-y-4">
                 {[
@@ -120,9 +136,13 @@ export default function CourseDetail() {
                   "Setup and installation too fast",
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-3">
-                    <FiCheckCircle
-                      className="text-teal-500 mt-1 flex-shrink-0 animate-pulse"
-                      size={22}
+                    <Image
+                      src="/student/home/tick2.png"
+                      alt="tick2"
+                      height={22}
+                      width={22}
+                      priority
+                      className="object-cover"
                     />
                     <p className="text-gray-700 text-left">{item}</p>
                   </div>
@@ -133,52 +153,54 @@ export default function CourseDetail() {
             {/* Right Image */}
             <div className="flex justify-center lg:justify-end">
               <Image
-                src="/student/about/image.png" // Replace with your actual image
+                src="/student/about/image.png"
                 alt="About illustration"
                 width={500}
                 height={500}
-                className="w-full max-w-md h-auto"
+                className="w-full max-w-sm sm:max-w-md lg:max-w-lg h-auto object-contain"
               />
             </div>
           </div>
-        </div>
 
-        <section className="pb-20 px-4 lg:px-20 text-center">
-          <h2 className="text-4xl md:text-4xl font-bold text-gray-900 mb-2">
-            Benefits of online Education
-          </h2>
-          <p className="text-gray-500 max-w-xl mx-auto mb-10 text-sm md:text-base">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking
-          </p>
+          <section className="px-4 mx-auto lg:px-20 text-center">
+            <h2 className="text-5xl lg:text-6xl font-extrabold text-[#FF3366] mb-4">
+              Benefits of online Education
+            </h2>
+            <p className="text-[#6B7280] max-w-xl mx-auto mb-10 text-sm md:text-base">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non
+              magna ac nisl dignissim condimentum eu ac ante. Ut nec dui
+              volutpat, tristique nulla quis, luctus justo. Sed vel ipsum magna.
+            </p>
 
-<div className="flex items-center justify-center">
-
-          <div className="px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="bg-[#f5f5f5] rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-left"
-              >
-                <CardContent className="p-6 space-y-4">
-                  <div
-                    className={`w-10 h-10 rounded-md flex items-center justify-center ${feature.bgColor}`}
+            <div className="flex items-center justify-center">
+              <div className="px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {features.map((feature, index) => (
+                  <Card
+                    key={index}
+                    className="bg-[#f5f5f5] rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-left"
                   >
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-500 text-sm">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-</div>
-</div>
-        </section>
+                    <CardContent className="p-2 rounded-2xl space-y-2">
+                      <div
+                        className={`w-20 h-20 mb-6 rounded-xl flex items-center justify-center ${feature.bgColor}`}
+                      >
+                        {feature.icon}
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-500 text-md">
+                        {feature.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
 
-      <Footer />
+      <FooterNew />
     </StudentWrapper>
   );
 }

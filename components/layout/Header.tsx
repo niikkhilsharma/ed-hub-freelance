@@ -23,7 +23,7 @@ const NavItem = ({
   active?: boolean;
 }) => (
   <Link href={href} className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
-    active ? "text-yellow-400" : "text-white hover:bg-blue-700/70"
+    active ? "text-yellow-400" : "text-white hover:bg-[#3366FF]/70"
   }`}>
     <Icon className="w-5 h-5" />
     {label}
@@ -51,7 +51,7 @@ export default function Header({ user }: HeaderProps) {
   ];
 
   return (
-    <header className="bg-blue-600 text-white sticky top-0 z-50 shadow-md print:hidden">
+    <header className="bg-[#3366FF] text-white sticky top-0 z-50 shadow-md print:hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
         {/* Logo */}
         <div className="flex-shrink-0">
@@ -64,7 +64,7 @@ export default function Header({ user }: HeaderProps) {
         </div>
 
         {/* Main Navigation */}
-        <nav className="hidden md:flex items-center bg-blue-500 rounded-full px-4 py-2 space-x-2 shadow-md">
+        <nav className="hidden md:flex items-center bg-[#3366FF] rounded-full px-4 py-2 space-x-2 shadow-md">
           {navItems.map(({ icon, label, href }) => (
             <NavItem
               key={label}
@@ -78,7 +78,7 @@ export default function Header({ user }: HeaderProps) {
 
         {/* Right Side */}
         <div className="flex items-center space-x-3 lg:space-x-5">
-          <button className="flex items-center gap-2 px-4 py-2.5 bg-white/20 text-white text-sm font-medium rounded-full hover:bg-white/30 transition-colors">
+          <button className="flex items-center gap-2 px-4 py-2.5 bg-[#6B7280] text-white text-sm font-medium rounded-full hover:bg-white/30 transition-colors">
             <Image
               src="/page3/student_b2b/AI Button.svg"
               alt="Ask me bot"
@@ -87,7 +87,7 @@ export default function Header({ user }: HeaderProps) {
             />
             Ask me!
           </button>
-          <button className="p-2 rounded-full hover:bg-blue-700/70 focus:outline-none">
+          <button className="p-2 rounded-full hover:bg-[#3366FF]/70 focus:outline-none">
             <FiBell className="w-5 h-5" />
           </button>
           <div className="flex items-center space-x-2 cursor-pointer">
