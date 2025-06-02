@@ -30,7 +30,7 @@ const ContentTab = ({
     className={`px-4 py-2 text-sm font-medium whitespace-nowrap focus:outline-none border-b-2 transition-colors ${
       isActive
         ? "border-[#3366FF] text-[#3366FF]"
-        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+        : "border-transparent text-gray-500 hover:text-gray-700 hover:border-[#E5E7EB]-300"
     }`}
   >
     {label}
@@ -82,7 +82,7 @@ const LearningAccordion = ({
       )}
     </button>
     {isOpen && (
-      <div className="p-4 border-t border-[#E5E7EB] bg-gray-50 space-y-2">
+      <div className="p-4 border-t border-[#E5E7EB] bg-[#F9FAFB] space-y-2">
         {week.videos.map((video) => (
           <VideoItem key={video.id} topic={video.topic} />
         ))}
@@ -101,18 +101,21 @@ interface UpcomingClass {
   date: string;
 }
 const UpcomingClassItem = ({ uClass }: { uClass: UpcomingClass }) => (
-  <div className="bg-gray-50/70 p-4 rounded-xl border border-gray-100 flex justify-between items-start">
+  <div className="bg-[#F9FAFB]/70 p-4 rounded-2xl border border-[#E5E7EB]/100 flex justify-between items-stretch">
+    {/* Left Content */}
     <div>
-      <h4 className="text-sm font-semibold text-gray-800">{uClass.title}</h4>
-      <p className="text-xs text-yellow-600 font-medium mt-0.5">
+      <h4 className="text-md font-bold text-black">{uClass.title}</h4>
+      <p className="text-sm text-yellow-600 font-semibold mt-0.5">
         {uClass.teacher}
       </p>
       <p className="text-xs text-gray-500 mt-1">{uClass.description}</p>
       <p className="text-xs text-gray-500 mt-0.5">{uClass.time}</p>
     </div>
-    <div className="text-right flex-shrink-0 ml-4">
-      <p className="text-xs text-gray-400 mb-1.5">{uClass.date}</p>
-      <button className="px-6 py-2 bg-[#3366FF] text-white text-xs font-semibold rounded-full hover:bg-[#3366FF] transition-colors">
+
+    {/* Right Content */}
+    <div className="flex flex-col justify-between items-end text-right ml-4">
+      <p className="text-xs text-gray-400">{uClass.date}</p>
+      <button className="px-6 py-2 bg-[#3366FF] text-white text-sm font-semibold rounded-full hover:bg-[#3366FF] transition-colors mt-2">
         Join
       </button>
     </div>
@@ -127,16 +130,28 @@ const CourseMaterialItem = ({
   fileName: string;
   date: string;
 }) => (
-  <div className="bg-white p-4 rounded-xl border border-[#E5E7EB] shadow-sm flex flex-col items-center text-center">
-    <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-3">
-      <FiFileIcon className="w-8 h-8 text-green-600" />
+  <div className="bg-[#F9FAFB] p-4 rounded-2xl border border-[#E5E7EB] shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow">
+    {/* File Icon Section */}
+    <div className="w-24 h-26 bg-[#8DD9B3] rounded-2xl flex items-center justify-center flex-shrink-0">
+      <FiFileIcon className="w-12 h-12 text-black" />
     </div>
-    <h4 className="text-sm font-semibold text-gray-700">{fileName}</h4>
-    <p className="text-xs text-gray-500 mb-3">{date}</p>
-    <button className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 text-gray-600 text-xs font-medium rounded-lg hover:bg-[#E5E7EB] transition-colors">
-      <FiDownload className="w-3.5 h-3.5" />
-      Download
-    </button>
+
+    {/* Content Section */}
+    <div className="flex-1 min-w-0">
+      {/* File Name */}
+      <h4 className="text-lg font-semibold text-black mb-1 truncate">
+        {fileName}
+      </h4>
+
+      {/* File Date */}
+      <p className="text-sm text-[#6B7280] mb-3">{date}</p>
+
+      {/* Download Button */}
+      <button className="flex w-full text-center justify-center gap-2 px-4 py-2.5 bg-[#F9FAFB] text-[#6B7280] text-md font-medium rounded-full hover:bg-[#E5E7EB] transition-colors">
+        <FiDownload className="w-4 h-4 self-center text-black" />
+        Download
+      </button>
+    </div>
   </div>
 );
 
@@ -200,16 +215,16 @@ export default function CourseDetailPage() {
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
 
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-        {/* Back Button and Page Title */}
-        <div className="flex items-center gap-3 mb-6">
-          <button className="p-1.5 text-gray-600 hover:text-[#3366FF] focus:outline-none">
-            <FiArrowLeft className="w-5 h-5" />
-          </button>
-          <h1 className="text-xl font-semibold text-pink-600">Course Name</h1>{" "}
-          {/* Or dynamic course name */}
-        </div>
+      {/* Back Button and Page Title */}
+      <div className="flex items-center gap-2 bg-white px-6 py-4">
+        <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
+          <FiArrowLeft className="w-5 h-5 font-extrabold" />
+        </button>
+        <h1 className="text-xl font-bold text-[#FF3366]">Course Name</h1>{" "}
+        {/* Or dynamic course name */}
+      </div>
 
+      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
           {/* Left Column (Learning Content & Course Material) */}
@@ -231,25 +246,24 @@ export default function CourseDetailPage() {
                   ))}
                   <div className="flex items-center gap-3 flex-shrink-0"></div>
                 </nav>
-                
-                <div className="flex gap-3">
 
-                <div className="relative">
-                  <select
-                    value={currentWeekFilter}
-                    onChange={(e) => setCurrentWeekFilter(e.target.value)}
-                    className="appearance-none border border-[#E5E7EB] text-sm font-medium text-black bg-[#F9FAFB] px-4 py-2 rounded-lg pr-8 focus:outline-none focus:ring-1 focus:ring-[#3366FF]"
-                  >
-                    <option value="Week 1">Week 1</option>
-                    <option value="Week 2">Week 2</option>
-                  </select>
-                  <FiChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
-                </div>
-                <div className="flex items-center gap-2 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-lg">
-                  <FiMonthLeft className="w-4 h-4 cursor-pointer hover:text-black" />
-                  <span>{currentMonth}</span>
-                  <FiMonthRight className="w-4 h-4 cursor-pointer hover:text-black" />
-                </div>
+                <div className="flex gap-3">
+                  <div className="relative">
+                    <select
+                      value={currentWeekFilter}
+                      onChange={(e) => setCurrentWeekFilter(e.target.value)}
+                      className="appearance-none border border-[#E5E7EB] text-sm font-medium text-black bg-[#F9FAFB] px-4 py-2 rounded-xl pr-8 focus:outline-none focus:ring-1 focus:ring-[#3366FF]"
+                    >
+                      <option value="Week 1">Week 1</option>
+                      <option value="Week 2">Week 2</option>
+                    </select>
+                    <FiChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
+                  </div>
+                  <div className="flex items-center gap-2 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                    <FiMonthLeft className="w-4 h-4 cursor-pointer hover:text-black" />
+                    <span>{currentMonth}</span>
+                    <FiMonthRight className="w-4 h-4 cursor-pointer hover:text-black" />
+                  </div>
                 </div>
               </div>
 
@@ -286,10 +300,10 @@ export default function CourseDetailPage() {
 
             {/* Course Material Card */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-lg font-semibold text-pink-600 mb-6">
+              <h2 className="text-xl font-bold text-[#FF3366] mb-6">
                 Course Material
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {courseMaterialData.map((material) => (
                   <CourseMaterialItem key={material.id} {...material} />
                 ))}
@@ -302,21 +316,28 @@ export default function CourseDetailPage() {
             {/* Upcoming Classes Card */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-md font-semibold text-pink-600">
+                <h3 className="text-xl font-bold text-[#FF3366]">
                   Upcoming Classes
                 </h3>
                 {/* Date filters for upcoming classes */}
-                <div className="flex items-center gap-1.5">
+              </div>
+              <div className="flex justify-center">
+                <div className="flex gap-3 mb-4">
                   <div className="relative">
-                    <select className="appearance-none text-xs font-medium text-gray-500 bg-gray-100 px-3 py-1.5 rounded-md pr-7 focus:outline-none focus:ring-1 focus:ring-[#3366FF]">
-                      <option value="date">Date</option> {/* Example filter */}
+                    <select
+                      value={currentWeekFilter}
+                      onChange={(e) => setCurrentWeekFilter(e.target.value)}
+                      className="appearance-none border border-[#E5E7EB] text-sm font-medium text-black bg-[#F9FAFB] px-4 py-2 rounded-xl pr-8 focus:outline-none focus:ring-1 focus:ring-[#3366FF]"
+                    >
+                      <option value="Week 1">Week 1</option>
+                      <option value="Week 2">Week 2</option>
                     </select>
-                    <FiChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-400 pointer-events-none" />
+                    <FiChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
                   </div>
-                  <div className="flex items-center gap-1 text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-md">
-                    <FiMonthLeft className="w-3 h-3 cursor-pointer hover:text-gray-700" />
+                  <div className="flex items-center gap-2 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                    <FiMonthLeft className="w-4 h-4 cursor-pointer hover:text-black" />
                     <span>{currentMonth}</span>
-                    <FiMonthRight className="w-3 h-3 cursor-pointer hover:text-gray-700" />
+                    <FiMonthRight className="w-4 h-4 cursor-pointer hover:text-black" />
                   </div>
                 </div>
               </div>
@@ -331,30 +352,31 @@ export default function CourseDetailPage() {
 
             {/* Attendance Card */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h3 className="text-md font-semibold text-gray-800 mb-3">
+              <h3 className="text-lg font-semibold text-black mb-2">
                 Attendance
               </h3>
-              <p className="text-xs text-gray-500 mb-2">
+              <p className="text-xs text-black mb-3">
                 Total : {attendanceData.total}   Attended :{" "}
                 {attendanceData.attended}   Missed : {attendanceData.missed}
               </p>
-              <div className="w-full bg-[#E5E7EB] rounded-full h-2.5">
+              <div className="w-full flex rounded-full h-3">
                 <div
-                  className="bg-[#3366FF] h-2.5 rounded-full"
+                  className="bg-[#3366FF] relative h-3 rounded-full"
                   style={{ width: `${attendanceData.percentage}%` }}
-                ></div>
+                >
+                  <p className="absolute right-0 bottom-0 self-center translate-x-[115%] translate-y-[2px] text-sm text-[#B0B0B0] font-medium text-right mt-1">
+                    {attendanceData.percentage}%
+                  </p>
+                </div>
               </div>
-              <p className="text-xs text-[#3366FF] font-medium text-right mt-1">
-                {attendanceData.percentage}%
-              </p>
             </div>
 
             {/* Download Certificate Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6 text-center">
-              <h3 className="text-md font-semibold text-gray-800 mb-4">
+            <div className="bg-white rounded-2xl shadow-lg p-6 text-start font-semibold">
+              <h3 className="text-lg font-semibold text-black mb-4">
                 Download Certificate
               </h3>
-              <button className="w-full max-w-xs mx-auto flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 text-gray-600 text-sm font-medium rounded-lg hover:bg-[#E5E7EB] transition-colors">
+              <button className="w-full mx-auto flex items-center justify-center gap-2 px-4 py-2 bg-[#F3F4F6] text-[#B0B0B0] text-lg font-medium rounded-full hover:bg-[#E5E7EB] transition-colors">
                 <FiDownload className="w-4 h-4" />
                 Download
               </button>
