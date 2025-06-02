@@ -250,7 +250,7 @@ export default function MyCoursePage() {
 						{/* Text Content */}
 						<div className="text-center md:text-left">
 							<div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-								<h2 className="text-3xl tracking-wider md:text-5xl font-bold">AI suggests</h2>
+								<h2 className="text-3xl tracking-wider md:text-4xl font-bold">AI suggests</h2>
 								{/* Sparkle icon - using a simple SVG or you can find a react-icon */}
 								<Image src="/star.png" alt="star" width={180} height={180} className="w-16" />
 							</div>
