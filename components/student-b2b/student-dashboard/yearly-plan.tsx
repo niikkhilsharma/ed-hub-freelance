@@ -148,7 +148,7 @@ const modulesData: Unit[] = Array.from({ length: 8 }, (_, i) => ({
   name: `Unit Name`,
   periods: i === 0 ? 18 : undefined,
   marks: i === 0 ? 20 : undefined,
-  patternSrc: i === 0 ? '/unit-description-pattern.png' : undefined,
+  patternSrc: i === 0 ? '/Background2.png' : undefined,
   details:
     i === 0
       ? unitDetailsSample
