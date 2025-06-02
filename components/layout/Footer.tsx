@@ -6,7 +6,7 @@ import { FaLinkedinIn, FaFacebookF } from 'react-icons/fa6';
 const FooterLink = ({ label, href = "#" }: { label: string; href?: string }) => (
   <a
     href={href}
-    className="text-white text-[16px] font-medium leading-relaxed hover:underline underline-offset-4 transition"
+    className="block text-white text-sm leading-relaxed hover:underline underline-offset-4 transition"
   >
     {label}
   </a>
@@ -15,77 +15,92 @@ const FooterLink = ({ label, href = "#" }: { label: string; href?: string }) => 
 export default function Footer() {
   return (
     <footer className="bg-[#3366FF] text-white font-sans pt-16 pb-6 print:hidden">
-      <div className="max-w-9xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Logo + Text */}
-          <div className="md:col-span-1">
-            <Image
-              src="/page3/student_b2b/Clip path group.svg"
-              alt="Edunique Logo"
-              width={180}
-              height={50}
-              className="mb-6"
-            />
-            <p className="text-[18px] leading-8 text-white font-normal">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy a type specimen book.
-            </p>
+      <div className="max-w-[1440px] mx-auto px-6">
+        {/* Grid Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
+          {/* Column 1 */}
+          <div className="space-y-2">
+            <FooterLink label="Home" />
+            <FooterLink label="About us" />
+            <FooterLink label="Academics" />
+            <FooterLink label="Co - Parent" />
+            <FooterLink label="STEAM" />
+            <FooterLink label="Forum" />
+            <FooterLink label="Franchises" />
+            <FooterLink label="Foundation" />
           </div>
 
-          {/* Company */}
-          <div>
-            <h3 className="text-white font-bold text-xl mb-5">Company</h3>
-            <ul className="space-y-4">
-              <li><FooterLink label="About us" /></li>
-              <li><FooterLink label="Blogs" /></li>
-              <li><FooterLink label="Instructor List" /></li>
-            </ul>
+          {/* Column 2 */}
+          <div className="space-y-2">
+            <FooterLink label="Skill Development" />
+            <FooterLink label="Brain Development" />
+            <FooterLink label="Schools Collaboration" />
+            <FooterLink label="Teacher Collaboration" />
+            <FooterLink label="Skill Development Centers" />
+            <FooterLink label="Notsoextra curricular" />
+            <FooterLink label="Summer Courses" />
+            <FooterLink label="Competitions" />
+            <FooterLink label="Steamnology" />
           </div>
 
-          {/* Support */}
-          <div>
-            <h3 className="text-white font-bold text-xl mb-5">Support</h3>
-            <ul className="space-y-4">
-              <li><FooterLink label="FAQ" /></li>
-              <li><FooterLink label="Privacy" /></li>
-              <li><FooterLink label="Terms and Condition" /></li>
-            </ul>
+          {/* Column 3 */}
+          <div className="space-y-2">
+            <FooterLink label="Products" />
+            <FooterLink label="Blogs" />
+            <FooterLink label="Privacy Policy" />
+            <FooterLink label="Shipping Policy" />
+            <FooterLink label="Terms & Conditions" />
+            <FooterLink label="Disclaimers" />
           </div>
 
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-white font-bold text-xl mb-5">Contact info</h3>
-            <ul className="space-y-3 text-white text-[18px] font-normal">
-              <li>+91 0000000000</li>
-              <li>example@gm.com</li>
-              <li>Sector 4, New Delhi</li>
-            </ul>
+          {/* Column 4 & 5: Map and Contact Info */}
+          <div className="lg:col-span-2 flex flex-col gap-4">
+            <div className="w-full h-30 rounded-4xl overflow-hidden">
+              <Image
+                src="/map-static.png"
+                alt="Map"
+                width={500}
+                height={150}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="text-white text-sm leading-relaxed space-y-1">
+              <p>Eldeco Centre, Malviya Nagar</p>
+              <p>WeWork Eldeco Centre, Malviya Nagar, Eldeco Centre,</p>
+              <p>Block A, Shivalik Colony, Malviya Nagar, Delhi, DL 110017</p>
+              <p>Phone: (+91) 922-044-2129</p>
+              <p>Email for Queries or Info: <a href="mailto:info@edunique.in">info@edunique.in</a></p>
+              <p>Email for Support or Concerns: <a href="mailto:supportyou@edunique.in">supportyou@edunique.in</a></p>
+              <p>Email for Careers: <a href="mailto:rightfit@edunique.in">rightfit@edunique.in</a></p>
+            </div>
           </div>
         </div>
 
-        {/* Bottom Line */}
-        <div className="relative mt-12 pt-5">
-            {/* Icons container absolutely positioned at the top right */}
-            <div className="absolute right-0 -top-8 flex items-center gap-3 pr-2">
-                <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-white text-[#3366FF] hover:bg-blue-100 transition">
-                <FiInstagram className="w-5 h-5" />
-                </a>
-                <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-white text-[#3366FF] hover:bg-blue-100 transition">
-                <RxCross2 className="w-5 h-5" />
-                </a>
-                <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-white text-[#3366FF] hover:bg-blue-100 transition">
-                <FaLinkedinIn className="w-5 h-5" />
-                </a>
-                <a href="#" className="w-10 h-10 flex items-center justify-center rounded-md bg-white text-[#3366FF] hover:bg-blue-100 transition">
-                <FaFacebookF className="w-5 h-5" />
-                </a>
-            </div>
+        {/* Social Icons & Bottom */}
+        <div className="mt-12 pt-8 relative">
+          <div className="absolute right-0 -top-8 flex gap-3">
+            {[{
+              icon: <FiInstagram className="w-5 h-5" />,
+              href: "#",
+            }, {
+              icon: <RxCross2 className="w-5 h-5" />,
+              href: "#",
+            }, {
+              icon: <FaLinkedinIn className="w-5 h-5" />,
+              href: "#",
+            }, {
+              icon: <FaFacebookF className="w-5 h-5" />,
+              href: "#",
+            }].map(({ icon, href }, i) => (
+              <a key={i} href={href} className="w-10 h-10 bg-white text-[#3366FF] rounded-md flex items-center justify-center hover:bg-blue-100 transition">
+                {icon}
+              </a>
+            ))}
+          </div>
 
-            {/* The line and text below */}
-            <div className="border-t border-white pt-5">
-                <p className="text-white text-[16px] text-center">
-                Edunique All Rights Reserved 2025
-                </p>
-            </div>
+          <div className="border-t border-white pt-6 text-center">
+            <p className="text-white text-sm">Edunique All Rights Reserved 2025</p>
+          </div>
         </div>
       </div>
     </footer>

@@ -66,18 +66,19 @@ export default function FooterNew() {
       viewport={{ once: true, amount: 0.3 }}
       className="w-screen relative flex flex-col bg-[#3466ff] items-center justify-between bg-cover bg-center bg-no-repeat"
     >
-      <div className="z-40 min-h-60 w-full pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
-        <div className="min-h-24 max-w-6xl bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between overflow-hidden shadow-xl relative">
+      <div className="z-40 min-h-65 w-full pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
+        <div className="min-h-24 max-w-[80vw] bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between overflow-hidden shadow-xl relative">
           {/* Background Layer */}
           <div
             className="absolute inset-0 bg-center bg-repeat z-0"
             style={{
               backgroundImage: 'url("/background6.png")',
               backgroundSize: "cover",
-              filter: "brightness(1.2) opacity(.25) blur(0.1px)",
+              filter: "brightness(1.2) opacity(.5) blur(0.1px)",
               opacity: 0.3,
             }}
           />
+          <div className="absolute inset-0 bg-black/15 z-1"/>
 
           {/* Central content */}
           <div className="absolute inset-0 z-10 flex flex-col mx-auto py-4 items-center justify-center w-full">
