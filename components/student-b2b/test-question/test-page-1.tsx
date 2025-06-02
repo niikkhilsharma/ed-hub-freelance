@@ -168,7 +168,7 @@ export default function DmittTestPage() {
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
 				<div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-8">
 					{/* Test Title */}
-					<h1 className="text-lg md:text-xl font-medium text-gray-800 mb-6">
+					<h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
 						DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
 					</h1>
 
@@ -191,39 +191,37 @@ export default function DmittTestPage() {
 					{/* Test Info: Questions, Time Limit, Progress, Timer */}
 					<div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
 						<div className="text-left">
-							<p className="text-md font-semibold text-gray-700">Questions : {TOTAL_QUESTIONS}</p>
-							<p className="text-xs text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
+							<p className="text-lg font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS}</p>
+							<p className="text-xs mt-2 text-gray-500">Time Limit: {TIME_LIMIT_MINUTES} Minutes</p>
 							<div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
 								{currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
 							</div>
 						</div>
 						<div className="text-right">
-							<div className="flex items-center gap-1.5 text-pink-500">
+							<div className="flex items-center gap-1.5 text-[#FF3366]">
 								<FiClock className="w-5 h-5" />
-								<span className="text-2xl font-bold">{formatTime(timeLeft)}</span>
+								<span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
 							</div>
-							<p className="text-xs text-pink-500">Min Left</p>
+							<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
 						</div>
 					</div>
 
 					{/* Current Question */}
 					{currentQuestion && (
-						<div className="bg-gray-50 p-6 rounded-xl shadow-inner">
-							<p className="text-xs text-gray-500 mb-1">Question {currentQuestionIndex + 1}</p>
-							<h2 className="text-md font-semibold text-gray-800 mb-6">{currentQuestion.text}</h2>
+						<div className="bg-gray-50 p-6 rounded-2xl">
+							<p className="text-sm mb-2 text-gray-500">Question {currentQuestionIndex + 1}</p>
+							<h2 className="text-lg font-semibold text-gray-800 mb-6">{currentQuestion.text}</h2>
 							<div className="space-y-3">
 								{currentQuestion.options.map(option => (
 									<button
 										key={option.id}
 										onClick={() => handleOptionSelect(option.id)}
-										className={`w-full text-left flex items-center p-3.5 border-2 rounded-xl transition-all duration-150 focus:outline-none ${
-											selectedOptionId === option.id
-												? 'bg-blue-100 border-blue-500 ring-1 ring-blue-500'
-												: 'bg-white border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+										className={`hover:cursor-pointer w-full text-left flex items-center p-3.5 rounded-full transition-all duration-150 font-semibold focus:outline-none bg-white hover:bg-blue-100 ${
+											selectedOptionId === option.id && 'border-2 border-blue-500'
 										}`}>
 										{/* Optional: Add a visual radio button if needed */}
 										{/* <div className={`w-4 h-4 rounded-full border-2 mr-3 ${selectedOptionId === option.id ? 'bg-blue-500 border-blue-500' : 'border-gray-400'}`}></div> */}
-										<span className="text-sm text-gray-700">{option.text}</span>
+										<span className="text-sm text-[#6B7280]">{option.text}</span>
 									</button>
 								))}
 							</div>
@@ -231,11 +229,11 @@ export default function DmittTestPage() {
 					)}
 
 					{/* Navigation */}
-					<div className="mt-10 flex justify-end">
+					<div className="mt-10 flex justify-center rounded-full">
 						<button
 							onClick={handleNextQuestion}
 							disabled={!selectedOptionId && currentQuestionIndex < TOTAL_QUESTIONS - 1} // Disable if no option selected (except for last question which might be a submit)
-							className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed">
+							className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
 								? 'Submit'
 								: 'Next'}
