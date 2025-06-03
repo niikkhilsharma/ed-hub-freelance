@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect, useRef} from 'react';
 
 import { useState } from "react";
 import Header from "@/components/layout/Header";
@@ -13,6 +14,8 @@ import {
   FiChevronLeft as FiMonthLeft,
   FiChevronRight as FiMonthRight,
   FiChevronRight,
+  FiArrowRightCircle,
+  FiArrowLeftCircle,
 } from "react-icons/fi";
 
 // --- Content Tab Component (Reused from Yearly Plan) ---
@@ -39,9 +42,9 @@ const ContentTab = ({
 
 // --- Learning Video Item (Reused from Yearly Plan) ---
 const VideoItem = ({ topic }: { topic: string }) => (
-  <button className="w-full flex items-center justify-between p-3 text-left border border-[#E5E7EB] bg-[#F3F4F6] hover:bg-[#E5E7EB]/70 rounded-2xl transition-colors">
+  <button className="w-full flex items-center justify-between p-3 text-left border border-[#E5E7EB] bg-[#F3F4F6] hover:bg-[#E5E7EB]/70 rounded-3xl transition-colors">
     <div className="flex items-center gap-3">
-      <FiPlayCircle className="w-5 h-5 text-black" />
+      <FiPlayCircle className="w-8 h-8 text-black" strokeWidth={1}/>
       <span className="text-md text-black font-semibold">{topic}</span>
     </div>
     <FiChevronRight className="w-4 h-4 text-black" />
@@ -82,7 +85,7 @@ const LearningAccordion = ({
       )}
     </button>
     {isOpen && (
-      <div className="p-4 border-t border-[#E5E7EB] bg-[#F9FAFB] space-y-2">
+      <div className="p-4 bg-[#F9FAFB] space-y-2">
         {week.videos.map((video) => (
           <VideoItem key={video.id} topic={video.topic} />
         ))}
@@ -105,7 +108,7 @@ const UpcomingClassItem = ({ uClass }: { uClass: UpcomingClass }) => (
     {/* Left Content */}
     <div>
       <h4 className="text-md font-bold text-black">{uClass.title}</h4>
-      <p className="text-sm text-yellow-600 font-semibold mt-0.5">
+      <p className="text-sm text-[#FFCC00] font-semibold mt-0.5">
         {uClass.teacher}
       </p>
       <p className="text-xs text-gray-500 mt-1">{uClass.description}</p>
@@ -144,10 +147,10 @@ const CourseMaterialItem = ({
       </h4>
 
       {/* File Date */}
-      <p className="text-sm text-[#6B7280] mb-3">{date}</p>
+      <p className="text-xs text-[#6B7280] mb-3">{date}</p>
 
       {/* Download Button */}
-      <button className="flex w-full text-center justify-center gap-2 px-4 py-2.5 bg-[#F9FAFB] text-[#6B7280] text-md font-medium rounded-full hover:bg-[#E5E7EB] transition-colors">
+      <button className="flex w-full text-center justify-center gap-2 px-4 py-2.5 bg-[#F3F4F6] text-[#6B7280] text-md font-medium rounded-full hover:bg-[#E5E7EB] transition-colors">
         <FiDownload className="w-4 h-4 self-center text-black" />
         Download
       </button>
@@ -173,7 +176,7 @@ const learningWeeksData: LearningWeek[] = Array.from({ length: 5 }, (_, i) => ({
 }));
 
 const upcomingClassesData: UpcomingClass[] = Array.from(
-  { length: 6 },
+  { length: 8 },
   (_, i) => ({
     id: i + 1,
     title: "Title",
@@ -195,11 +198,15 @@ const attendanceData = { total: 20, attended: 17, missed: 3, percentage: 85 };
 
 export default function CourseDetailPage() {
   const [activeContentTab, setActiveContentTab] = useState(contentTabsData[0]);
+  
+  const leftColumnRef = useRef<HTMLDivElement>(null);
+  const rightColumnRef = useRef<HTMLDivElement>(null);
+  
   const [openAccordionId, setOpenAccordionId] = useState<string | null>(
     learningWeeksData[0].id
   );
   const [currentMonth] = useState("June 2025");
-  const [currentWeekFilter, setCurrentWeekFilter] = useState("Week 1"); // Or date filter for upcoming classes
+  const [currentWeekFilter, setCurrentWeekFilter] = useState("Date"); // Or date filter for upcoming classes
 
   const headerUser = {
     name: "Shlok Agheda",
@@ -210,6 +217,56 @@ export default function CourseDetailPage() {
   const handleAccordionToggle = (weekId: string) => {
     setOpenAccordionId((prevId) => (prevId === weekId ? null : weekId));
   };
+
+  // Function to sync heights
+  const syncHeights = () => {
+    if (leftColumnRef.current && rightColumnRef.current) {
+      // Reset right column height to auto to get natural height
+      rightColumnRef.current.style.height = 'auto';
+      
+      // Force a reflow to ensure we get the correct height
+      leftColumnRef.current.offsetHeight;
+      
+      // Get the height of the left column
+      const leftHeight = leftColumnRef.current.offsetHeight;
+      
+      // Apply the left column's height to the right column
+      rightColumnRef.current.style.height = `${leftHeight}px`;
+      
+      console.log(`Synced height: ${leftHeight}px`);
+    }
+  };
+
+  // Sync heights on initial render and when content changes
+  useEffect(() => {
+    // Use setTimeout to ensure DOM has updated
+    const timer = setTimeout(syncHeights, 100); // Increased timeout for better reliability
+    return () => clearTimeout(timer);
+  }, [activeContentTab, openAccordionId, currentWeekFilter]);
+
+  // Sync heights on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      syncHeights();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Use ResizeObserver for more precise height tracking
+  useEffect(() => {
+    if (!leftColumnRef.current) return;
+
+    const observer = new ResizeObserver(() => {
+      // Add a small delay to ensure the resize has completed
+      setTimeout(syncHeights, 10);
+    });
+
+    observer.observe(leftColumnRef.current);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -224,11 +281,11 @@ export default function CourseDetailPage() {
         {/* Or dynamic course name */}
       </div>
 
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-          {/* Left Column (Learning Content & Course Material) */}
-          <div className="lg:col-span-2 space-y-8">
+          {/* Left Column (Learning Content & Course Material) - FIXED: Ref moved here */}
+          <div ref={leftColumnRef} className="lg:col-span-2 space-y-8">
             {/* Learning Content Card */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <div className="mb-6 flex justify-between items-center">
@@ -259,17 +316,17 @@ export default function CourseDetailPage() {
                     </select>
                     <FiChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                    <FiMonthLeft className="w-4 h-4 cursor-pointer hover:text-black" />
+                  <div className="flex items-center gap-2.5 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                    <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
                     <span>{currentMonth}</span>
-                    <FiMonthRight className="w-4 h-4 cursor-pointer hover:text-black" />
+                    <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
                   </div>
                 </div>
               </div>
 
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
                 <div>
-                  <h2 className="text-2xl font-extrabold text-[#3366FF]">
+                  <h2 className="text-2xl font-bold text-[#3366FF]">
                     Earth and Space Science
                   </h2>
                   <p className="text-lg text-[#3366FF] mt-1">
@@ -297,29 +354,16 @@ export default function CourseDetailPage() {
                 </div>
               )}
             </div>
-
-            {/* Course Material Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-[#FF3366] mb-6">
-                Course Material
-              </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {courseMaterialData.map((material) => (
-                  <CourseMaterialItem key={material.id} {...material} />
-                ))}
-              </div>
-            </div>
           </div>
 
-          {/* Right Column (Upcoming Classes, Attendance, Certificate) */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* Upcoming Classes Card */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
+          {/* Right Column (Upcoming Classes, Attendance, Certificate) - FIXED: Added flex layout */}
+          <div ref={rightColumnRef} className="lg:col-span-1 space-y-6">
+            {/* Upcoming Classes Card - FIXED: Added flex layout */}
+            <div className="bg-white rounded-2xl shadow-lg p-6 flex flex-col h-full">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-bold text-[#FF3366]">
                   Upcoming Classes
                 </h3>
-                {/* Date filters for upcoming classes */}
               </div>
               <div className="flex justify-center">
                 <div className="flex gap-3 mb-4">
@@ -334,22 +378,46 @@ export default function CourseDetailPage() {
                     </select>
                     <FiChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
                   </div>
-                  <div className="flex items-center gap-2 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                    <FiMonthLeft className="w-4 h-4 cursor-pointer hover:text-black" />
+                  <div className="flex items-center gap-2.5 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                    <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
                     <span>{currentMonth}</span>
-                    <FiMonthRight className="w-4 h-4 cursor-pointer hover:text-black" />
+                    <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
                   </div>
                 </div>
               </div>
-              <div className="space-y-3 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
-                {" "}
-                {/* Scrollable list */}
-                {upcomingClassesData.map((uClass) => (
-                  <UpcomingClassItem key={uClass.id} uClass={uClass} />
+              {/* FIXED: Added flex-1 and min-h-0 for proper scrolling */}
+              <div className="flex-1 min-h-0">
+                <div className="space-y-3 h-full overflow-y-auto pr-2 custom-scrollbar">
+                  {upcomingClassesData.map((uClass) => (
+                    <UpcomingClassItem key={uClass.id} uClass={uClass} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Lower */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+          {/* Left Column (Learning Content & Course Material) */}
+          <div className="lg:col-span-2 space-y-8">
+            
+            {/* Course Material Card */}
+            <div className="bg-white rounded-2xl shadow-lg p-6">
+              <h2 className="text-xl font-bold text-[#FF3366] mb-6">
+                Course Material
+              </h2>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {courseMaterialData.map((material) => (
+                  <CourseMaterialItem key={material.id} {...material} />
                 ))}
               </div>
             </div>
+          </div>
 
+
+          {/* Right Column (Upcoming Classes, Attendance, Certificate) */}
+          <div className="lg:col-span-1 space-y-6">
             {/* Attendance Card */}
             <div className="bg-white rounded-2xl shadow-lg p-6">
               <h3 className="text-lg font-semibold text-black mb-2">

@@ -107,7 +107,7 @@ const mockTestQuestions: QuestionData[] = Array.from({ length: 3 }, (_, i) => ({
 
 const TIME_LIMIT_MINUTES_MOCK_TEST = 17; // As per image timer
 
-export default function MockTestPage() {
+export default function QuizTestPage() {
   const [activeMainCategory, setActiveMainCategory] = useState(
     mainCategories[0]
   );
@@ -197,9 +197,9 @@ export default function MockTestPage() {
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
                 <h2 className="text-2xl font-bold text-[#FF3366]">
-                  Addition Mock Test{" "}
+                  Quiz{" "}
                 </h2>
-                <p className="text-md text-black mt-1">Assessment </p>
+                <p className="text-md text-black mt-1">Topic name </p>
               </div>
             </div>
           </div>

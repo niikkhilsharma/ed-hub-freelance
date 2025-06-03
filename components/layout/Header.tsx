@@ -35,12 +35,24 @@ interface UserProfile {
 interface HeaderProps {
 	user: UserProfile
 }
+const Smilie = () => {
+	return (
+		<Image
+			src="/images/smile.svg"
+			alt="Smilie"
+			width={24}
+			height={24}
+			className="w-6 h-6"
+			priority
+		/>
+	)
+}
 
 export default function Header({ user }: HeaderProps) {
 	const pathname = usePathname()
 
 	const navItems = [
-		{ icon: FiGrid, label: 'Dashboard', href: '/student-b2b/student-dashboard/dashboard' },
+		{ icon: Smilie, label: 'Dashboard', href: '/student-b2b/student-dashboard/dashboard' },
 		{ icon: FiBookOpen, label: 'My course', href: '/student-b2b/student-dashboard/my-course' },
 		{ icon: FiMessageSquare, label: 'Chat', href: '/student-b2b/student-dashboard/chat' },
 		{ icon: FiVideo, label: 'Recordings', href: '/student-b2b/student-dashboard/recording' },

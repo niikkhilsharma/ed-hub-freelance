@@ -26,7 +26,7 @@ const MainCategoryTab = ({
 }) => (
   <button
     onClick={onClick}
-    className={`flex items-center gap-1.5 px-4 py-2.5 text-sm font-semibold rounded-2xl transition-colors whitespace-nowrap ${
+    className={`flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold rounded-2xl transition-colors whitespace-nowrap ${
       isActive
         ? "bg-[#FF3366] text-white shadow-md"
         : "text-[#6B7280] hover:bg-[#ff33660f]"
@@ -120,7 +120,9 @@ const QuestionReviewBlock = ({
             className={`w-full flex items-center p-3.5 rounded-full transition-all duration-150 ${optionStyle}`}
           >
             {icon && <span className="mr-2">{icon}</span>}
-            <span className={`text-sm font-semibold ${textColor}`}>{option.text}</span>
+            <span className={`text-sm font-semibold ${textColor}`}>
+              {option.text}
+            </span>
           </div>
         );
       })}
@@ -234,7 +236,7 @@ const scorePercentage = Math.round(
   (correctAnswersCount / totalQuestionsInTest) * 100
 );
 
-export default function MockTestReviewPage() {
+export default function QuizTestResultPage() {
   const [activeMainCategory, setActiveMainCategory] = useState(
     mainCategories[0]
   );
@@ -253,9 +255,9 @@ export default function MockTestReviewPage() {
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         {/* Main Category Tabs (Horizontal Scroll) */}
         <div className="mb-6 bg-white px-3 py-2 rounded-3xl shadow-sm overflow-x-auto">
-          <div className="flex space-x-2 justify-center items-center relative">
+          <div className="flex space-x-4 justify-center items-center relative">
             <button className="absolute left-0 p-1.5 text-black cursor-pointer focus:outline-none">
-              <FiArrowLeft className="w-5 h-5" strokeWidth={2} />
+              <FiArrowLeft className="w-5 h-5" strokeWidth={3} />
             </button>
             {mainCategories.map((category) => (
               <MainCategoryTab
@@ -277,10 +279,8 @@ export default function MockTestReviewPage() {
             </button>
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
               <div>
-                <h2 className="text-2xl font-bold text-[#FF3366]">
-                  Addition Mock Test{" "}
-                </h2>
-                <p className="text-md text-black mt-1">Assessment </p>
+                <h2 className="text-2xl font-bold text-[#FF3366]">Quiz </h2>
+                <p className="text-md text-black mt-1">Topic name </p>
               </div>
             </div>
           </div>
@@ -301,16 +301,14 @@ export default function MockTestReviewPage() {
             <div className="lg:col-span-1 flex flex-col gap-6 items-center justify-center lg:sticky lg:top-24">
               {" "}
               {/* Sticky for score */}
-              <div className="bg-[#F9FAFB] min-h-[450px] flex flex-col justify-between rounded-2xl p-6 md:p-8 w-full">
+              <div className="bg-[#F9FAFB] border border-[#E5E7EB] min-h-[450px] flex flex-col justify-between rounded-2xl p-6 md:p-8 w-full">
                 <ScoreChart
                   percentage={scorePercentage}
                   correct={correctAnswersCount}
                   total={totalQuestionsInTest}
                 />
                 <div className="text-center">
-                  <p className="text-6xl font-bold text-[#8DD9B3]">
-                    90%
-                  </p>
+                  <p className="text-6xl font-bold text-[#8DD9B3]">90%</p>
                   <p className="text-lg text-[#6B7280] mt-2">
                     You got {2} correct out of {3} !
                   </p>
