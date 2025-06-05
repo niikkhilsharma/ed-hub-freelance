@@ -31,7 +31,7 @@ const SystemErrorModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
 				{/* Error Icon Image */}
 				<div className="mb-6 flex justify-center">
 					<Image
-						src="/images/nework_issue.png" // <-- UPDATE PATH to your error icon image
+						src="/images/system_issue.png" // <-- UPDATE PATH to your error icon image
 						alt="System Error"
 						width={200} // Adjust size as needed
 						height={200}
@@ -40,7 +40,7 @@ const SystemErrorModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
 				</div>
 
 				{/* Error Message */}
-				<p className="text-md font-semibold text-red-600">Network issues detected.</p>
+				<p className="text-md font-semibold text-red-600">A system error has occurred.</p>
 				<p className="text-md font-semibold text-red-600">The &quot;module&quot; will now restart.</p>
 
 				{/* Optional Action Button (if needed beyond just closing) */}
@@ -79,7 +79,7 @@ const TIME_LIMIT_MINUTES = 20
 const tabCategories = ['Academic Skills', 'Brain Development', 'Personality Development', 'Emotional Intelligence']
 
 // --- Main Test Page Component (from previous, with modal integration) ---
-export default function DmittTestPageWithErrorModal() {
+export default function DmittTestPageWithSystemErrorModal() {
 	const [activeCategory, setActiveCategory] = useState(tabCategories[0])
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 	const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null)

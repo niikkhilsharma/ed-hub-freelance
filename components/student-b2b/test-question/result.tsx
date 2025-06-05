@@ -1,15 +1,17 @@
 import React from 'react';
+import { FaStar, FaSmile } from 'react-icons/fa';
+import Image from 'next/image';
 
 interface ScoreItem {
   name: string;
   score: number;
-  color: string;
+  color: string; // Tailwind background color class, e.g., 'bg-blue-500'
 }
 
 interface SummaryStat {
   label: string;
   value: number | string;
-  colorClass?: string;
+  colorClass?: string; // Tailwind text color class, e.g., 'text-blue-600'
 }
 
 const ResultsCard: React.FC = () => {
@@ -19,7 +21,7 @@ const ResultsCard: React.FC = () => {
     { name: 'Academic Skills', score: 40, color: 'bg-blue-500' },
     { name: 'Brain Development', score: 60, color: 'bg-yellow-400' },
     { name: 'Personality Development', score: 50, color: 'bg-pink-400' },
-    { name: 'Emotional Intelligence', score: 20, color: 'bg-teal-400' },
+    { name: 'Emotional Intelligence', score: 20, color: 'bg-teal-400' }, // Using teal for a nice green
     { name: 'Pedagogy learning', score: 40, color: 'bg-orange-400' },
   ];
 
@@ -31,101 +33,100 @@ const ResultsCard: React.FC = () => {
     { label: 'Incorrect', value: 10, colorClass: 'text-red-500' },
   ];
 
+  const circumference = 2 * Math.PI * 15.9155; // Radius of the circle in SVG's viewBox
+
   return (
     <div className="bg-white rounded-4xl shadow-2xl p-6 md:p-8 w-full max-w-4xl font-sans">
       {/* Header */}
       <div className="flex items-center mb-6">
-        <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="#FACC15" strokeWidth="2">
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-          />
-        </svg>
-        <h1 className="text-2xl font-bold text-gray-800 ml-3">Results</h1>
+
+        <Image
+          src="/images/Frame.png"
+          width={25}
+          alt="smille"
+          height={25} // Adjust aspect ratio as needed
+          className="mr-2 not-odd:w-[25px] object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+
+        <h1 className="text-2xl font-bold text-gray-800">Results</h1>
       </div>
 
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8">
-        {/* Left: Overall Score */}
-        <div className="bg-slate-50 rounded-4xl p-6 flex flex-col items-center justify-center md:w-1/3 space-y-4">
-          {/* Half-circle arc + smile */}
-          <div className="relative w-36 h-24 flex items-end justify-center">
-            <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 44 22" preserveAspectRatio="xMidYMid meet">
+        {/* Left Pane: Overall Score */}
+        <div className=" bg-slate-50 bg-grey rounded-4xl p-6 flex flex-col items-center justify-center md:w-1/3 space-y-3">
+          <div className="relative w-36 h-36">
+            <svg className="w-full h-full" viewBox="0 0 36 36">
+              {/* Background Circle */}
               <path
-                d="M2 22 A20 20 0 0 1 42 22"
+                className="text-gray-200"
+                d="M18 2.0845
+     a 15.9155 15.9155 0 0 1 0 31.831
+     a 15.9155 15.9155 0 0 1 0 -31.831"
                 fill="none"
-                stroke="#E2E8F0"
-                strokeWidth="4"
-              />
-              <path
-                d="M2 22 A20 20 0 0 1 42 22"
-                fill="none"
-                stroke="#3366FF"
-                strokeWidth="4"
-                strokeDasharray={`${(overallScore / 100) * 63}, 63`}
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeDasharray="25, 50"
                 strokeLinecap="round"
+
+              />
+
+              {/* Progress Circle */}
+              <path
+                className="text-blue-500"
+                d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeDasharray={`${(overallScore / 100) * circumference}, ${circumference}`}
+                strokeLinecap="round"
+                style={{ transform: 'rotate(-90deg)', transformOrigin: 'center' }}
               />
             </svg>
-
-            {/* Smile SVG */}
-            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect width="44" height="44" rx="22" fill="#E9EDF0" />
-              <g clipPath="url(#clip0)">
-                <path d="M22.0002 33.6668C28.4435 33.6668 33.6668 28.4435 33.6668 22.0002C33.6668 15.5568 28.4435 10.3335 22.0002 10.3335C15.5568 10.3335 10.3335 15.5568 10.3335 22.0002C10.3335 28.4435 15.5568 33.6668 22.0002 33.6668Z" stroke="#3366FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M17.3335 24.3335C17.3335 24.3335 19.0835 26.6668 22.0002 26.6668C24.9168 26.6668 26.6668 24.3335 26.6668 24.3335" stroke="#3366FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M18.5 18.5H18.5117" stroke="#3366FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M25.5 18.5H25.5117" stroke="#3366FF" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-              </g>
-              <defs>
-                <clipPath id="clip0">
-                  <rect width="28" height="28" fill="white" transform="translate(8 8)"/>
-                </clipPath>
-              </defs>
-            </svg>
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <Image
+                src="/images/Smile.png"
+                width={35}
+                alt="smille"
+                height={35} // Adjust aspect ratio as needed
+                className="mr-2 not-odd:w-[35px] object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
           </div>
-
-          <div className="text-4xl font-bold text-green-500">{overallScore}%</div>
-          <p className="text-sm text-gray-600 text-center max-w-xs">
+          <div className="text-3xl font-bold text-green-500 mt-0 mb-10">{overallScore}%</div>
+          <p className="text-sm text-black font-bold text-center max-w-xs">
             Great effort! A little more focus will take you to the top.
           </p>
         </div>
 
-        {/* Right: Individual Scores */}
-<div className="bg-slate-50 rounded-4xl p-6 md:w-2/3">
-  <h2 className="text-xl font-semibold text-gray-800 mb-5">Individual Scores</h2>
-  <div className="space-y-4">
-    {individualScores.map((item) => (
-      <div key={item.name} className="flex items-center gap-4">
-        {/* Title aligned right */}
-        <div className="w-2/5 text-sm font-bold text-gray-700 text-right">
-          {item.name}
-        </div>
-
-        {/* Progress Bar */}
-        <div className="flex-1 flex items-center gap-2">
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div
-              className={`${item.color} h-2 rounded-full`}
-              style={{ width: `${item.score}%` }}
-            ></div>
-          </div>
-
-          {/* Percentage */}
-          <div className="text-xs font-medium text-gray-500 min-w-[30px] text-right">
-            {item.score}%
+        {/* Right Pane: Individual Scores */}
+        <div className="bg-slate-50 rounded-x2 rounded-4xl p-6 md:w-2/3 flex justify-center flex-col">
+          <h2 className="font-bold text-gray-800 mb-5 text-2xl">Individual Scores</h2>
+          <div className="space-y-4">
+            {individualScores.map((item) => (
+              <div key={item.name} className='flex items-center justify-center'>
+                <div className="flex justify-end items-center mb-1 pr-3 w-[40%]">
+                  <span className="text-sm font-medium text-gray-700">{item.name}</span>
+                </div>
+                <div className="flex items-center bg-white rounded-full h-2.4 w-[60%] p-[4px]">
+                  <div
+                    className={`${item.color} h-2.5 rounded-full`}
+                    style={{ width: `${item.score}%` }}
+                  ></div>
+                  <span className="text-xs font-medium text-gray-500 ml-1">{item.score}%</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    ))}
-  </div>
-</div>
-      </div>
 
-      {/* Summary Stats */}
+      {/* Bottom Bar: Summary Stats */}
       <div className="bg-slate-50 rounded-4xl p-4 md:p-5 flex flex-wrap justify-around items-center text-center mb-8">
         {summaryStats.map((stat) => (
           <div key={stat.label} className="p-2 min-w-[80px]">
-            <p className="text-xs text-gray-500 uppercase tracking-wider">{stat.label}</p>
+            <p className="text-xs font-bold  text-gray-800 uppercase tracking-wider">{stat.label}</p>
             <p className={`text-2xl font-bold ${stat.colorClass || 'text-gray-800'}`}>
               {stat.value}
             </p>
