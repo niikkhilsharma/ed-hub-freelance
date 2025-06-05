@@ -138,8 +138,8 @@ export default function DmittTest_2_Page() {
                     {/* Logo */}
                     <div className="flex items-center">
                         {/* Replace with your actual logo */}
-                        <span className="text-2xl font-bold italic">EDUNIQUE</span>
-                        {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
+                        <Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={150} height={40} />
+                                      {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
                     </div>
 
                     {/* User Info & Notification */}
@@ -149,7 +149,7 @@ export default function DmittTest_2_Page() {
                         </button>
                         <div className="flex items-center space-x-2">
                             <Image
-                                src="/placeholder-avatar.jpg" // Replace with actual avatar path
+                                src="/images/person.jpg" // Replace with actual avatar path
                                 alt="Shlok Agheda"
                                 width={32}
                                 height={32}
@@ -174,7 +174,7 @@ export default function DmittTest_2_Page() {
 
                     {/* Category Tabs */}
                     <div className="mb-8 overflow-x-auto pb-2">
-                        <div className="flex justify-between space-x-2 border-b border-gray-200 bg-[#F9FAFB] rounded-full border overflow-hidden p-2">
+                        <div className="flex justify-between space-x-2 border-b border-gray-200 bg-[#f9fafb] rounded-full border overflow-hidden p-2">
                             {tabCategories.map(category => (
                                 <button
                                     key={category}
@@ -232,8 +232,7 @@ export default function DmittTest_2_Page() {
                     <div className="mt-10 flex justify-center rounded-full">
                         <button
                             onClick={handleNextQuestion}
-                            disabled={!selectedOptionId && currentQuestionIndex < TOTAL_QUESTIONS - 1} // Disable if no option selected (except for last question which might be a submit)
-                            className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
+                           className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
                             {currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
                                 ? 'Submit'
                                 : 'Next'}

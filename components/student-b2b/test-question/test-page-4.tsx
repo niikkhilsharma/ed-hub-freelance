@@ -82,8 +82,8 @@ const TIME_LIMIT_MINUTES = 20
 const tabCategories = ['Academic Skills', 'Brain Development', 'Personality Development', 'Emotional Intelligence']
 
 export default function DmittTest_4_Page() {
-    const [activeCategory, setActiveCategory] = useState(tabCategories[0])
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(1)
+    const [activeCategory, setActiveCategory] = useState(tabCategories[1])
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
     const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null)
     const [answers, setAnswers] = useState<(string | null)[]>(Array(TOTAL_QUESTIONS).fill(null))
     const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES * 60) // Time in seconds
@@ -133,36 +133,36 @@ export default function DmittTest_4_Page() {
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
             {/* Header */}
-            <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-                    {/* Logo */}
-                    <div className="flex items-center">
-                        {/* Replace with your actual logo */}
-                        <span className="text-2xl font-bold italic">EDUNIQUE</span>
-                        {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
-                    </div>
-
-                    {/* User Info & Notification */}
-                    <div className="flex items-center space-x-4">
-                        <button className="p-1.5 rounded-full hover:bg-blue-700 focus:outline-none">
-                            <FiBell className="w-5 h-5" />
-                        </button>
-                        <div className="flex items-center space-x-2">
-                            <Image
-                                src="/placeholder-avatar.jpg" // Replace with actual avatar path
-                                alt="Shlok Agheda"
-                                width={32}
-                                height={32}
-                                className="rounded-full"
-                            />
-                            <div>
-                                <p className="text-sm font-medium">Shlok Agheda</p>
-                                <p className="text-xs opacity-80">Student</p>
+              <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+                                {/* Logo */}
+                                <div className="flex items-center">
+                                    {/* Replace with your actual logo */}
+                                    <Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={150} height={40} />
+                                                  {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
+                                </div>
+            
+                                {/* User Info & Notification */}
+                                <div className="flex items-center space-x-4">
+                                    <button className="p-1.5 rounded-full hover:bg-blue-700 focus:outline-none">
+                                        <FiBell className="w-5 h-5" />
+                                    </button>
+                                    <div className="flex items-center space-x-2">
+                                        <Image
+                                            src="/images/person.jpg" // Replace with actual avatar path
+                                            alt="Shlok Agheda"
+                                            width={32}
+                                            height={32}
+                                            className="rounded-full"
+                                        />
+                                        <div>
+                                            <p className="text-sm font-medium">Shlok Agheda</p>
+                                            <p className="text-xs opacity-80">Student</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
+                        </header>
 
             {/* Main Content */}
             <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
@@ -174,14 +174,13 @@ export default function DmittTest_4_Page() {
 
                     {/* Category Tabs */}
                     <div className="mb-8 overflow-x-auto pb-2">
-                        <div className="flex justify-between space-x-2 border-b border-gray-200 rounded-full border overflow-hidden p-2">
+                        <div className="flex justify-between space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
                             {tabCategories.map(category => (
                                 <button
                                     key={category}
                                     onClick={() => setActiveCategory(category)}
-                                    className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${
-                                        activeCategory === category ? 'bg-red-500/90 text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
-                                    }`}>
+                                    className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-red-500/90 text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                                        }`}>
                                     {category}
                                 </button>
                             ))}
@@ -198,11 +197,13 @@ export default function DmittTest_4_Page() {
                             </div>
                         </div>
                         <div className="text-right">
-                            <div className="flex items-center gap-1.5 text-[#FF3366]">
+                            <div className="flex items-center justify-end gap-1.5 text-[#FF3366]">
                                 <FiClock className="w-5 h-5" />
                                 <span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
                             </div>
                             <p className="text-md font-medium text-[#FF99B7]">Min Left</p>
+                            <p className="text-sm mt-2 p-2 rounded-xl border-2 border-red-500
+ flex"> <Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} /><span>Draw in the box to complete the task</span></p>
                         </div>
                     </div>
 
@@ -210,30 +211,20 @@ export default function DmittTest_4_Page() {
                     {currentQuestion && (
                         <div className="bg-gray-50 p-6 rounded-2xl">
                             <p className="text-sm mb-2 text-gray-500">Question {currentQuestionIndex + 1}</p>
-                            <h2 className="text-lg font-semibold text-gray-800 mb-6">{currentQuestion.text}</h2>
-                           
+                            <h2 className="text-lg  text-gray-800 mb-0 font-bold">{currentQuestion.text}</h2>
+
                         </div>
                     )}
 
                     <div className="mt-3 flex items-center justify-center flex-col">
-                        <div className='flex items-center justify-center'>
-                            <Image src="/images/1.png" alt="Ask me bot" className="w-[100px]" width={400} height={400} /> <span>+</span> <Image src="/images/2.png" alt="Ask me bot" className="w-[105px]" width={400} height={400} /> = <Image src="/images/3.png" alt="Ask me bot" className="w-[100px]" width={400} height={400} />
-                        </div>
-                        <div className="flex items-center justify-center">
-                            <div className="bg-gray-50 rounded-4xl flex items-center p-3 mt-4">
-                                <Image src="/images/Vector@2x.png" alt="Ask me bot" className="mx-1 w-[20px]" width={10} height={10} />
-                                <Image src="/images/undo.png" alt="Ask me bot" className="w-[20px] mx-1" width={10} height={10} />
-                                <Image src="/images/redo.png" alt="Ask me bot" className="w-[20px] mx-1" width={10} height={10} />
-                                <Image src="/images/Group.png" alt="Ask me bot" className="w-[20px] mx-1" width={10} height={10} />
-                            </div>
-                        </div>
+                        <Image src="/images/Question Content.png" alt="Ask me bot" className="w-[100%]" width={400} height={400} />
                     </div>
 
                     {/* Navigation */}
                     <div className="mt-10 flex justify-center rounded-full">
                         <button
                             onClick={handleNextQuestion}
-                            disabled={!selectedOptionId && currentQuestionIndex < TOTAL_QUESTIONS - 1} // Disable if no option selected (except for last question which might be a submit)
+                            // Disable if no option selected (except for last question which might be a submit)
                             className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
                             {currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
                                 ? 'Submit'

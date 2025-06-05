@@ -133,36 +133,36 @@ export default function DmittTest_3_Page() {
     return (
         <div className="min-h-screen bg-gray-100 flex flex-col">
             {/* Header */}
-            <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
-                    {/* Logo */}
-                    <div className="flex items-center">
-                        {/* Replace with your actual logo */}
-                        <span className="text-2xl font-bold italic">EDUNIQUE</span>
-                        {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
-                    </div>
-
-                    {/* User Info & Notification */}
-                    <div className="flex items-center space-x-4">
-                        <button className="p-1.5 rounded-full hover:bg-blue-700 focus:outline-none">
-                            <FiBell className="w-5 h-5" />
-                        </button>
-                        <div className="flex items-center space-x-2">
-                            <Image
-                                src="/placeholder-avatar.jpg" // Replace with actual avatar path
-                                alt="Shlok Agheda"
-                                width={32}
-                                height={32}
-                                className="rounded-full"
-                            />
-                            <div>
-                                <p className="text-sm font-medium">Shlok Agheda</p>
-                                <p className="text-xs opacity-80">Student</p>
+              <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+                            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+                                {/* Logo */}
+                                <div className="flex items-center">
+                                    {/* Replace with your actual logo */}
+                                    <Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={150} height={40} />
+                                                  {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
+                                </div>
+            
+                                {/* User Info & Notification */}
+                                <div className="flex items-center space-x-4">
+                                    <button className="p-1.5 rounded-full hover:bg-blue-700 focus:outline-none">
+                                        <FiBell className="w-5 h-5" />
+                                    </button>
+                                    <div className="flex items-center space-x-2">
+                                        <Image
+                                            src="/images/person.jpg" // Replace with actual avatar path
+                                            alt="Shlok Agheda"
+                                            width={32}
+                                            height={32}
+                                            className="rounded-full"
+                                        />
+                                        <div>
+                                            <p className="text-sm font-medium">Shlok Agheda</p>
+                                            <p className="text-xs opacity-80">Student</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
+                        </header>
 
             {/* Main Content */}
             <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
@@ -177,7 +177,7 @@ export default function DmittTest_3_Page() {
 
                         {/* Category Tabs */}
                         <div className="mb-8 overflow-x-auto pb-2">
-                            <div className="flex justify-between space-x-2 border-b border-gray-200 bg-[#F9FAFB] rounded-full border overflow-hidden p-2">
+                            <div className="flex justify-between space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
                                 {tabCategories.map(category => (
                                     <button
                                         key={category}
@@ -200,11 +200,14 @@ export default function DmittTest_3_Page() {
                                 </div>
                             </div>
                             <div className="text-right">
-                                <div className="flex items-center gap-1.5 text-[#FF3366]">
+                                <div className="flex justify-end items-center gap-1.5 text-[#FF3366]">
                                     <FiClock className="w-5 h-5" />
                                     <span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
                                 </div>
                                 <p className="text-md font-medium text-[#FF99B7]">Min Left</p>
+                             <p className="text-sm mt-2 p-2 rounded-xl border-2 border-red-500
+                                                        flex"> <Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} /><span>Draw the lines to match the following</span></p>
+                                                
                             </div>
                         </div>
 
@@ -212,7 +215,7 @@ export default function DmittTest_3_Page() {
                         {currentQuestion && (
                             <div className="bg-gray-50 p-6 rounded-2xl">
                                 <p className="text-sm mb-2 text-gray-500">Question {currentQuestionIndex + 1}</p>
-                                <h2 className="text-lg font-semibold text-gray-800 mb-6">{currentQuestion.text}</h2>
+                                <h2 className="text-lg font-semibold text-gray-800 mb-0">{currentQuestion.text}</h2>
                                  
                             </div>
                         )}
@@ -221,7 +224,6 @@ export default function DmittTest_3_Page() {
                         <div className="mt-10 flex justify-center rounded-full">
                             <button
                                 onClick={handleNextQuestion}
-                                disabled={!selectedOptionId && currentQuestionIndex < TOTAL_QUESTIONS - 1} // Disable if no option selected (except for last question which might be a submit)
                                 className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
                                 {currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
                                     ? 'Submit'
@@ -239,7 +241,7 @@ export default function DmittTest_3_Page() {
 
                             </div>
                             <div className="content-box">
-                                <ul className='flex  flex-col gap-10'>
+                                <ul className='flex  flex-col gap-6'>
                                     <li className="pb-3 font-semibold text-xl">फूल</li>
                                     <li className="pb-3 font-semibold text-xl">भालू</li>
                                     <li className="pb-3 font-semibold text-xl">आलू</li>

@@ -9,18 +9,29 @@ import { FiBell, FiClock } from 'react-icons/fi';
 const TestHeader = ({ userName, userRole, userAvatar }: { userName: string, userRole: string, userAvatar: string }) => (
     <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
+            {/* Logo */}
             <div className="flex items-center">
-                <span className="text-2xl font-bold italic">EDUNIQUE</span>
+                {/* Replace with your actual logo */}
+                <Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={150} height={40} />
+                {/* <Image src="/logo-white.png" alt="Edunique Logo" width={150} height={40} /> */}
             </div>
+
+            {/* User Info & Notification */}
             <div className="flex items-center space-x-4">
                 <button className="p-1.5 rounded-full hover:bg-blue-700 focus:outline-none">
                     <FiBell className="w-5 h-5" />
                 </button>
                 <div className="flex items-center space-x-2">
-                    <Image src={userAvatar} alt={userName} width={32} height={32} className="rounded-full" />
+                    <Image
+                        src="/images/person.jpg" // Replace with actual avatar path
+                        alt="Shlok Agheda"
+                        width={32}
+                        height={32}
+                        className="rounded-full"
+                    />
                     <div>
-                        <p className="text-sm font-medium">{userName}</p>
-                        <p className="text-xs opacity-80">{userRole}</p>
+                        <p className="text-sm font-medium">Shlok Agheda</p>
+                        <p className="text-xs opacity-80">Student</p>
                     </div>
                 </div>
             </div>
@@ -32,11 +43,10 @@ const TestHeader = ({ userName, userRole, userAvatar }: { userName: string, user
 const CategoryTab = ({ label, isActive, onClick }: { label: string, isActive: boolean, onClick: () => void }) => (
     <button
         onClick={onClick}
-        className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-full whitespace-nowrap focus:outline-none transition-colors duration-150 ${
-            isActive
-                ? 'bg-pink-500 text-white shadow'
+        className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-full whitespace-nowrap focus:outline-none transition-colors duration-150 ${isActive
+                ? 'bg-red-500 text-white shadow'
                 : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-        }`}
+            }`}
     >
         {label}
     </button>
@@ -118,14 +128,15 @@ export default function DmittTest_7_Page() {
 
                     {/* Category Tabs */}
                     <div className="mb-8 overflow-x-auto pb-2">
-                        <div className="flex justify-center space-x-2 sm:space-x-3">
+                        <div className="flex justify-between space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
                             {tabCategoriesData.map(category => (
-                                <CategoryTab
+                                <button
                                     key={category}
-                                    label={category}
-                                    isActive={activeCategory === category}
                                     onClick={() => setActiveCategory(category)}
-                                />
+                                    className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-red-500/90 text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                                        }`}>
+                                    {category}
+                                </button>
                             ))}
                         </div>
                     </div>
@@ -135,39 +146,36 @@ export default function DmittTest_7_Page() {
                         <div className="text-left">
                             <p className="text-md font-semibold text-gray-700">Questions : {TOTAL_QUESTIONS_IN_SET}</p>
                             <p className="text-xs text-gray-500">Time Limit: {TIME_LIMIT_MINUTES_DMIT} Minutes</p>
-                            <div className="mt-2 inline-flex items-center justify-center px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
+                            <div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
                                 {currentQuestionNumber} / {TOTAL_QUESTIONS_IN_SET}
                             </div>
                         </div>
                         <div className="text-right">
-                            <div className="flex items-center gap-1.5 text-pink-500">
+                            <div className="flex items-center gap-1.5 text-red-500">
                                 <FiClock className="w-5 h-5" />
                                 <span className="text-2xl font-bold">{formatTime(timeLeft)}</span>
                             </div>
-                            <p className="text-xs text-pink-500">Min Left</p>
+                            <p className="text-md font-medium text-[#FF99B7]">Min Left</p>
                         </div>
                     </div>
 
                     {/* Current Essay Question */}
-                    <div className="bg-gray-50 p-6 rounded-xl shadow-inner">
+                    <div className="bg-gray-50 p-6 rounded-2xl">
                         <p className="text-xs text-gray-500 mb-1">Question {currentQuestionNumber}</p>
-                        <h2 className="text-md font-semibold text-gray-800 mb-6">{essayQuestion.text}</h2>
-                        <textarea
-                            value={answerText}
-                            onChange={(e) => setAnswerText(e.target.value)}
-                            placeholder="Type your answer here..."
-                            rows={8} // Adjust rows as needed
-                            className="w-full p-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm text-gray-700 placeholder-gray-400 resize-none bg-white"
-                        />
+                        <h2 className="text-md font-bold text-gray-800 mb-0 text-2xl">{essayQuestion.text}</h2>
+                       
+                    </div>
+                     <div className="bg-gray-50 p-6 rounded-2xl mt-3 border h-[80px]">
+
                     </div>
 
                     {/* Navigation */}
                     <div className="mt-10 flex justify-center"> {/* Centered Next button */}
                         <button
                             onClick={handleNext}
-                            className="px-12 py-3 bg-blue-600 text-white font-semibold text-sm rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md"
+                            className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer"
                         >
-                           {currentQuestionNumber === TOTAL_QUESTIONS_IN_SET ? 'Submit' : 'Next'}
+                            {currentQuestionNumber === TOTAL_QUESTIONS_IN_SET ? 'Submit' : 'Next'}
                         </button>
                     </div>
                 </div>
