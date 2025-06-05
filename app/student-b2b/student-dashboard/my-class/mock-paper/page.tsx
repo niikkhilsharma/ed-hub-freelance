@@ -1,7 +1,9 @@
-import MockTestPage from "@/components/student-b2b/student-dashboard/my-class-mock-paper";
+import MockTestPage from '@/components/student-b2b/student-dashboard/my-class-mock-paper'
 
-export default function MockTest(){
-    return <div>
-        <MockTestPage /> 
-    </div>
+export default function MockTest() {
+	return (
+		<div>
+			<MockTestPage />
+		</div>
+	)
 }

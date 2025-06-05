@@ -66,11 +66,15 @@ const ChatMessage = ({ message }: { message: ChatMessageData }) => {
 				}`}>
 				{message.text && (
 					<div className={`flex gap-2 ${isUser ? 'flex-row-reverse' : ''}`}>
+<<<<<<< HEAD
 						<p className="text-sm  leading-relaxed">
+=======
+						<p className="text-sm font-normal leading-relaxed">
+>>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 							Lorem ipsum dolor sit amet, consectetur adipiscing <br /> elit. 
 						</p>
 						<p
-							className={`text-[10px] flex items-center text-nowrap mt-1.5 ${
+							className={`text-[10px] font-normal flex items-center text-nowrap text-xs mt-auto ${
 								isUser ? 'text-white/85 text-right' : 'text-[#6B7280] text-left'
 							}`}>
 							{message.timestamp}
