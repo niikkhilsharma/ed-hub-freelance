@@ -61,12 +61,12 @@ const ChatMessage = ({ message }: { message: ChatMessageData }) => {
 	return (
 		<div className={`flex mb-4 ${isUser ? 'justify-end' : 'justify-start'}`}>
 			<div
-				className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl shadow font-semibold ${
+				className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl shadow  ${
 					isUser ? 'bg-[#3366FF] text-white' : 'bg-[#F9FAFB] text-black'
 				}`}>
 				{message.text && (
 					<div className={`flex gap-2 ${isUser ? 'flex-row-reverse' : ''}`}>
-						<p className="text-sm font-medium leading-relaxed">
+						<p className="text-sm  leading-relaxed">
 							Lorem ipsum dolor sit amet, consectetur adipiscing <br /> elit. 
 						</p>
 						<p
@@ -195,61 +195,58 @@ export default function ChatPage() {
 				</div>
 
 				{/* Right Column: Chat Interface */}
-				<div className="w-full md:w-2/3 lg:w-3/4 bg-white rounded-3xl shadow-xl flex flex-col justify-between self-stretch">
-					{' '}
-					{/* self-stretch */}
-					{selectedTeacher ? (
-						<>
-							<div>
-								{/* Chat Header */}
-								<div className="p-4 flex items-center gap-3">
-									<Image
-										src={selectedTeacher.avatarSrc}
-										alt={selectedTeacher.name}
-										width={40}
-										height={40}
-										className="rounded-full object-cover"
-									/>
-									<h3 className="text-lg font-semibold text-black">{selectedTeacher.name}</h3>
-								</div>
+				<div className="w-full md:w-2/3 lg:w-3/4 bg-white rounded-3xl shadow-xl flex flex-col h-[calc(100vh-4rem)]"> 
+  {selectedTeacher ? (
+    <>
+      {/* Chat Header */}
+      <div className="p-4 flex items-center gap-3 shrink-0">
+        <Image
+          src={selectedTeacher.avatarSrc}
+          alt={selectedTeacher.name}
+          width={40}
+          height={40}
+          className="rounded-full object-cover"
+        />
+        <h3 className="text-lg font-semibold text-black">{selectedTeacher.name}</h3>
+      </div>
 
-								{/* Chat Messages Area */}
-								<div className="flex-grow p-4 space-y-4 overflow-y-auto custom-scrollbar min-h-[calc(100vh-20rem)] max-h-[calc(100vh-20rem)]">
-									{messages.map(msg => (
-										<ChatMessage key={msg.id} message={msg} />
-									))}
-									<div ref={chatEndRef} /> {/* For scrolling to bottom */}
-								</div>
-							</div>
+      {/* Chat Messages Area */}
+      <div className="flex-grow p-4 space-y-4 overflow-y-auto custom-scrollbar">
+        {messages.map(msg => (
+          <ChatMessage key={msg.id} message={msg} />
+        ))}
+        <div ref={chatEndRef} />
+      </div>
 
-							{/* Message Input Area */}
-							<div className="p-4">
-								<form
-									onSubmit={handleSendMessage}
-									className="flex items-center justify-center bg-[#F9FAFB] border-[#D5D5D5] border rounded-full">
-									<input
-										type="text"
-										value={newMessage}
-										onChange={e => setNewMessage(e.target.value)}
-										placeholder="Message"
-										className="flex-grow bg-transparent px-3 py-2 text-sm text-[#6B7280] focus:outline-none placeholder-gray-400"
-									/>
-									<button type="button" className="p-2 text-[#6B7280] cursor-pointer hover:text-blue-600 focus:outline-none">
-										<FiPaperclip className="w-5 h-5" />
-									</button>
-									<button
-										type="submit"
-										className="p-2.5 mr-2 text-[#FF3366] rounded-full cursor-pointer focus:outline-none"
-										disabled={!newMessage.trim()}>
-										<FiSend className="w-5 h-5 transform rotate-45" />
-									</button>
-								</form>
-							</div>
-						</>
-					) : (
-						<div className="flex-grow flex items-center justify-center text-gray-400">Select a teacher to start chatting.</div>
-					)}
-				</div>
+      {/* Message Input Area */}
+      <div className="p-4 shrink-0">
+        <form
+          onSubmit={handleSendMessage}
+          className="flex items-center justify-center bg-[#F9FAFB] border-[#D5D5D5] border rounded-full">
+          <input
+            type="text"
+            value={newMessage}
+            onChange={e => setNewMessage(e.target.value)}
+            placeholder="Message"
+            className="flex-grow bg-transparent px-3 py-2 text-sm text-[#6B7280] focus:outline-none placeholder-gray-400"
+          />
+          <button type="button" className="p-2 text-[#6B7280] cursor-pointer hover:text-blue-600 focus:outline-none">
+            <FiPaperclip className="w-5 h-5" />
+          </button>
+          <button
+            type="submit"
+            className="p-2.5 mr-2 text-[#FF3366] rounded-full cursor-pointer focus:outline-none"
+            disabled={!newMessage.trim()}>
+            <FiSend className="w-5 h-5 transform rotate-45" />
+          </button>
+        </form>
+      </div>
+    </>
+  ) : (
+    <div className="flex-grow flex items-center justify-center text-gray-400">Select a teacher to start chatting.</div>
+  )}
+</div>
+
 			</main>
 
 			<Footer />

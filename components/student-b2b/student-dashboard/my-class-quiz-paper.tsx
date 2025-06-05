@@ -180,15 +180,6 @@ export default function QuizTestPage() {
 
         {/* Main Content Card for Mock Test */}
         <div className="bg-white rounded-2xl shadow-xl px-3 py-6 relative">
-          {/* Timer - Positioned top right */}
-          <div className="absolute top-6 right-6 md:top-8 md:right-8 text-right">
-            <div className="flex items-center gap-1.5 text-[#FF3366]">
-              <FiClock className="w-4 h-4" strokeWidth={3} />
-              <span className="text-xl font-bold">{formatTime(timeLeft)}</span>
-            </div>
-            <p className="text-xs font-bold text-[#FF99B7]">Min Left</p>
-          </div>
-
           {/* Test Title and Subtitle */}
           <div className="mb-8 flex items-start gap-3">
             <button className="p-1.5 text-black cursor-pointer focus:outline-none">

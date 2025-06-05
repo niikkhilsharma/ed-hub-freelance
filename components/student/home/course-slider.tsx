@@ -267,7 +267,7 @@ const CourseSlider = () => {
             <TabsTrigger
               key={category}
               value={category}
-              className="data-[state=active]:bg-[#8DD9B3] data-[state=active]:text-black cursor-pointer text-gray-600 rounded-full px-4 py-2 text-md font-medium break-words max-w-full"
+              className="data-[state=active]:bg-[#8DD9B3] data-[state=active]:text-black cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full"
             >
               {category}
             </TabsTrigger>

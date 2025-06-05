@@ -187,9 +187,9 @@ interface WorkSheetItemData {
   title: string;
 }
 const WorkSheetItem = ({ item }: { item: WorkSheetItemData }) => (
-  <button className="w-full flex justify-between items-center p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-xl border border-[#E5E7EB] shadow-sm transition-colors">
-    <h3 className="text-md font-semibold text-gray-700">{item.title}</h3>
-    <FiChevronRight className="w-5 h-5 text-gray-400" />
+  <button className="w-full flex justify-between items-center p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
+    <h3 className="text-md font-semibold text-black">{item.title}</h3>
+    <FiChevronRight className="w-5 h-5 text-black" />
   </button>
 );
 

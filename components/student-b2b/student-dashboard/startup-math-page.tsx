@@ -62,14 +62,28 @@ interface AssessmentItemData {
   title: string;
   resourcesCount: number;
 }
-const assessmentData: AssessmentItemData[] = Array.from(
-  { length: 3 },
-  (_, i) => ({
-    id: `assess${i + 1}`,
+const assessmentData = [
+  {
+    id: `assessment-1`,
     title: `Number 1 to 100`,
     resourcesCount: 2,
-  })
-);
+  },
+  {
+    id: `assessment-2`,
+    title: `Number 200 to 100`,
+    resourcesCount: 3,
+  },
+  {
+    id: `assessment-3`,
+    title: `Addition`,
+    resourcesCount: 3,
+  },
+  {
+    id: `assessment-4`,
+    title: `Substraction`,
+    resourcesCount: 3,
+  }
+]
 
 const AssessmentItem = ({ assessment }: { assessment: AssessmentItemData }) => (
   <button className="w-full flex justify-between items-center p-4 text-left bg-[#F9FAFB] hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
@@ -142,7 +156,7 @@ export default function WorksheetViewPage() {
               {/* Worksheet Header */}
               <div className="absolute top-6 right-6 md:top-8 md:right-8 text-right">
                 <div className="flex gap-3">
-                  <div className="flex items-center gap-3 text-sm font-medium border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                  <div className="flex items-center gap-3 text-sm font-normal border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
                     <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
                     <span>Page {currentPage}</span>
                     <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
@@ -175,7 +189,7 @@ export default function WorksheetViewPage() {
                     height={3510}
                     width={2482}
                     priority
-                    className="w-full h-auto"
+                    className="w-full h-auto relative -top-10"
                   />
                 </div>
               </div>

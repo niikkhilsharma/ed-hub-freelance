@@ -112,11 +112,36 @@ interface QuizResultItemData {
   isLocked?: boolean;
 }
 const QuizResultItem = ({ item }: { item: QuizResultItemData }) => (
-  <div className="bg-[#F9FAFB] p-4 rounded-2xl border border-[#E5E7EB] flex items-center justify-between">
+  <div className="bg-[#F9FAFB] p-4 rounded-3xl border border-[#E5E7EB] flex items-center justify-between">
     <div className="flex flex-col justify-between min-h-[60px]">
       {" "}
       {/* <-- Fix here */}
       <h4 className="text-md font-medium text-black">{item.name}</h4>
+      <p className="text-xs text-[#6B7280]">{item.subtitleOrDate}</p>
+    </div>
+
+    <div className="text-right flex-shrink-0 flex flex-col ml-2 self-start gap-1 items-end">
+      {item.isLocked && (
+        <div className="bg-[#FF33661A] rounded-full p-3 h-fit w-fit">
+          <FiLock className="w-4 h-4 text-[#FF3366]" strokeWidth={3} />
+        </div>
+      )}
+      {typeof item.scorePercentage === "number" && !item.isLocked && (
+        <div className="bg-[#99DEFF] text-black text-md font-semibold px-6 py-7 rounded-2xl flex-shrink-0 ml-2">
+          {item.scorePercentage}%
+        </div>
+      )}
+    </div>
+  </div>
+);
+
+const UpcomingResultItem = ({ item }: { item: QuizResultItemData }) => (
+  <div className="bg-[#F9FAFB] p-4 rounded-3xl border border-[#E5E7EB] flex items-center justify-between">
+    <div className="flex flex-col justify-between min-h-[60px]">
+      {" "}
+      {/* <-- Fix here */}
+      <h4 className="text-md font-medium text-black">{item.name}</h4>
+      <p className="text-xs text-[#6B7280]">Subtitle</p>
       <p className="text-xs text-[#6B7280]">{item.subtitleOrDate}</p>
     </div>
 
@@ -211,9 +236,9 @@ const playlistData: PlaylistItemData[] = [
   },
 ];
 const upcomingQuizData: QuizResultItemData[] = [
-  { id: "q1", name: "Quiz Name", subtitleOrDate: "Subtitle", isLocked: false },
-  { id: "q2", name: "Quiz Name", subtitleOrDate: "Subtitle", isLocked: true },
-  { id: "q3", name: "Quiz Name", subtitleOrDate: "Subtitle", isLocked: true },
+  { id: "q1", name: "Quiz Name", subtitleOrDate: "23 / 5 /25", isLocked: false },
+  { id: "q2", name: "Quiz Name", subtitleOrDate: "23 / 5 /25", isLocked: true },
+  { id: "q3", name: "Quiz Name", subtitleOrDate: "23 / 5 /25", isLocked: true },
 ];
 const resultData: QuizResultItemData[] = [
   { id: "r1", name: "Quiz Name", subtitleOrDate: "Date", scorePercentage: 60 },
@@ -397,7 +422,7 @@ export default function CourseVideoPage() {
                 </h3>
                 <div className="space-y-3">
                   {upcomingQuizData.map((quiz) => (
-                    <QuizResultItem key={quiz.id} item={quiz} />
+                    <UpcomingResultItem key={quiz.id} item={quiz} />
                   ))}
                 </div>
               </div>

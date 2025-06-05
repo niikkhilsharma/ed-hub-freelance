@@ -4,6 +4,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' // App Router hook for current path
 import { FiGrid, FiBookOpen, FiMessageSquare, FiVideo, FiBell } from 'react-icons/fi'
+import { FaRegSmile } from "react-icons/fa";
+
 
 const NavItem = ({
 	icon: Icon,
@@ -18,9 +20,7 @@ const NavItem = ({
 }) => (
 	<Link
 		href={href}
-		className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
-			active ? 'text-yellow-400' : 'text-white hover:bg-[#3366FF]/70'
-		}`}>
+		className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full transition-colors ${ active ? 'text-[#FFCC00]' : 'text-white hover:bg-[#3366FF]/70'} `}>
 		<Icon className="w-5 h-5" />
 		{label}
 	</Link>
@@ -35,24 +35,12 @@ interface UserProfile {
 interface HeaderProps {
 	user: UserProfile
 }
-const Smilie = () => {
-	return (
-		<Image
-			src="/images/smile.svg"
-			alt="Smilie"
-			width={24}
-			height={24}
-			className="w-6 h-6"
-			priority
-		/>
-	)
-}
 
 export default function Header({ user }: HeaderProps) {
 	const pathname = usePathname()
 
 	const navItems = [
-		{ icon: Smilie, label: 'Dashboard', href: '/student-b2b/student-dashboard/dashboard' },
+		{ icon: FaRegSmile, label: 'Dashboard', href: '/student-b2b/student-dashboard/dashboard' },
 		{ icon: FiBookOpen, label: 'My course', href: '/student-b2b/student-dashboard/my-course' },
 		{ icon: FiMessageSquare, label: 'Chat', href: '/student-b2b/student-dashboard/chat' },
 		{ icon: FiVideo, label: 'Recordings', href: '/student-b2b/student-dashboard/recording' },
