@@ -24,7 +24,7 @@ const initialNotifications: NotificationItemData[] = Array.from({ length: 6 }, (
 	iconSrc: '/svg/notification.svg', // <-- UPDATE PATH to your yellow bell icon
 }))
 
-export default function NotificationsPage() {
+export default function NotificationsPage({imageSrc}:{imageSrc?:string}) {
 	const [notifications] = useState<NotificationItemData[]>(initialNotifications)
 	// Add state for pagination, filtering, marking as read, etc. if needed
 
@@ -32,7 +32,8 @@ export default function NotificationsPage() {
 	const headerUser = {
 		name: 'Shlok Agheda',
 		role: 'Student',
-		avatarSrc: '/placeholder-avatar-student.jpg', // UPDATE PATH
+		avatarSrc: imageSrc || '/placeholder-avatar-student.jpg', // UPDATE PATH
+		
 	}
 
 	return (

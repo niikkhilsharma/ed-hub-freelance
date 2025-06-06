@@ -29,70 +29,56 @@ export function TestList({ tests, type }: TestListProps) {
   return (
     <div className="space-y-4">
       {tests.map((test) => (
-        <div key={test.id} className="border rounded-lg p-4 bg-white">
+        <div key={test.id} className="border rounded-3xl p-4  bg-[#F9FAFB]">
           <div className="flex justify-between items-start">
             {/* Left Section */}
-            <div className="w-full">
+            <div className="w-full space-y-2">
               <h4 className="font-medium text-lg">{test.title}</h4>
-              <p className="text-sm text-gray-600 pb-3">
-                {test.batch} •{" "}
-                {type === "completed" ? "Completed on" : "Scheduled for"}{" "}
-                {test.date}
+              <p className="text-sm text-[#6B7280] pb-3 flex gap-3">
+                <span>{test.batch}</span>
+                <span>{test.date}</span>
               </p>
 
               {type === "completed" && (
                 <div>
-                  <div className="w-full border-b-2 border-gray-200 "></div>
-                  <div className="grid grid-cols-3 gap-4 pt-4 max-w-xl">
-                    <div className="text-center bg-[#F8F8F8] p-2 rounded-lg">
-                      <p className="text-sm text-gray-500">Enrolled</p>
-                      <p className="text-lg font-semibold text-blue-600">
+                  <div className="grid grid-cols-3 gap-4 max-w-xl">
+                    <div className="text-center bg-[#F3F4F6] p-2 rounded-2xl">
+                      <p className="text-sm text-[#6B7280]">Students Enrolled</p>
+                      <p className="text-lg font-semibold text-[#3366FF]">
                         {test.studentsEnrolled ?? "-"}
                       </p>
                     </div>
-                    <div className="text-center bg-[#F8F8F8] p-2 rounded-lg">
-                      <p className="text-sm text-gray-500">Attended</p>
-                      <p className="text-lg font-semibold text-blue-600">
+                    <div className="text-center bg-[#F3F4F6] p-2 rounded-2xl">
+                      <p className="text-sm text-[#6B7280]">Students Attended</p>
+                      <p className="text-lg font-semibold text-[#3366FF]">
                         {test.studentsAttended ?? "-"}
                       </p>
                     </div>
-                    <div className="text-center bg-[#F8F8F8] p-2 rounded-lg">
-                      <p className="text-sm text-gray-500">Avg. Score</p>
-                      <p className="text-lg font-semibold text-blue-600">
+                    <div className="text-center bg-[#F3F4F6] p-2 rounded-2xl">
+                      <p className="text-sm text-[#6B7280]">Average Score</p>
+                      <p className="text-lg font-semibold text-[#3366FF]">
                         {test.averageScores ?? "-"}
                       </p>
                     </div>
                   </div>
                 </div>
               )}
-
-              {/* {type === "scheduled" && (
-                <p className="mt-4 text-sm text-yellow-700 bg-yellow-100 px-2 py-1 rounded inline-block">
-                  Upcoming Test
-                </p>
-              )} */}
-
-              {/* {type === "saved" && (
-                <p className="mt-4 text-sm text-gray-600 italic">
-                  Draft – Not yet scheduled
-                </p>
-              )} */}
             </div>
 
             {/* Right Section: Status + Popup Menu */}
-            <div className="flex items-start relative">
-              {test.status && (
-                <span className="px-3 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full mr-2">
-                  {test.status}
-                </span>
-              )}
+            <div className="flex flex-col items-end gap-2 self-center relative">
 
               <button
                 onClick={() => togglePopup(test.id)}
                 className="p-1 hover:bg-gray-100 rounded"
-              >
-                <Info className="h-5 w-5" />
+                >
+                <Info className="h-5 w-5 text-[#6B7280]" />
               </button>
+                {test.status && (
+                  <span className="px-3 py-1 text-sm bg-[#8DD9B31A] text-[#8DD9B3] rounded-2xl mr-2">
+                    {test.status}
+                  </span>
+                )}
 
               {activePopup === test.id && (
                 <div className="absolute right-0 mt-8 z-10 bg-white border shadow-md flex flex-col gap-1 rounded-xl w-50 text-sm p-2">

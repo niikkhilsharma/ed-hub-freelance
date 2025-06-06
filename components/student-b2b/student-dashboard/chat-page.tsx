@@ -34,7 +34,7 @@ const TeacherListItem = ({
 			alt={teacher.name}
 			width={40}
 			height={40}
-			className="rounded-full object-cover mr-3 flex-shrink-0"
+			className="h-10 w-10 rounded-full object-cover mr-3 flex-shrink-0"
 		/>
 		<div className="flex-1 text-left">
 			<h4 className="text-sm font-semibold text-black">{teacher.name}</h4>
@@ -66,11 +66,7 @@ const ChatMessage = ({ message }: { message: ChatMessageData }) => {
 				}`}>
 				{message.text && (
 					<div className={`flex gap-2 ${isUser ? 'flex-row-reverse' : ''}`}>
-<<<<<<< HEAD
-						<p className="text-sm  leading-relaxed">
-=======
 						<p className="text-sm font-normal leading-relaxed">
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 							Lorem ipsum dolor sit amet, consectetur adipiscing <br /> elit. 
 						</p>
 						<p
@@ -209,7 +205,7 @@ export default function ChatPage() {
           alt={selectedTeacher.name}
           width={40}
           height={40}
-          className="rounded-full object-cover"
+          className="h-10 w-10 rounded-full object-cover"
         />
         <h3 className="text-lg font-semibold text-black">{selectedTeacher.name}</h3>
       </div>

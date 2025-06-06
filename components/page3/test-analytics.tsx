@@ -1,5 +1,9 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  FiArrowLeftCircle,
+  FiArrowRightCircle,
+} from "react-icons/fi";
 
 interface TestAnalyticsProps {
   month: string;
@@ -19,39 +23,37 @@ export function TestAnalytics({
   averageScore,
 }: TestAnalyticsProps) {
   return (
-    <div className="space-y-4 w-full max-w-md">
+    <div className="space-y-4 w-full p-4 max-w-md border border-[#E5E7EB] rounded-2xl bg-white">
       {/* Top bar + stats */}
-      <div className="bg-[#f6f6f6] rounded-2xl p-4">
+      <div>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold">Tests</h3>
-          <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <span className="text-sm font-semibold">{month} {year}</span>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <ChevronRight className="h-4 w-4" />
-            </Button>
+          <h3 className="text-md font-medium">Assesment</h3>
+          <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+            <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+            <span>June 2025</span>
+            <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
           </div>
         </div>
 
-        <div className="flex justify-between">
-          <div>
-            <p className="text-sm text-gray-600">Complete</p>
-            <p className="text-xl font-semibold">{complete}/{totalTests}</p>
+        <div className="flex justify-between mx-2">
+          <div className="flex flex-col justify-center items-center">
+            <p className="text-sm text-[#6B7280]">Complete</p>
+            <p className="text-md font-semibold">
+              {complete}/{totalTests}
+            </p>
           </div>
-          <div>
-            <p className="text-sm text-gray-600">Incomplete</p>
-            <p className="text-xl font-semibold text-pink-500">{incomplete}</p>
+          <div className="flex flex-col justify-center items-center">
+            <p className="text-sm text-[#6B7280]">Incomplete</p>
+            <p className="text-md font-semibold text-[#FF3366]">{incomplete}</p>
           </div>
         </div>
       </div>
 
       {/* Average Scores */}
-      <div className="bg-[#f6f6f6] rounded-2xl p-4">
+      <div className="bg-[#F3F4F6] rounded-2xl p-4 py-3">
         <div className="flex justify-between items-center">
-          <p className="text-md font-bold text-black">Average Scores</p>
-          <p className="text-lg font-bold text-blue-500">{averageScore}</p>
+          <p className="text-sm text-[#6B7280]">Average Scores</p>
+          <p className="text-sm font-medium text-[#3366FF]">{averageScore}</p>
         </div>
       </div>
     </div>

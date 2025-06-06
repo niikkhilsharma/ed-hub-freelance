@@ -28,14 +28,14 @@ const sampleCategories: Category[] = [
 ];
 
 const sampleFolders: Folder[] = [
-  { id: 'f1', name: 'Mathematics Mid-Term', fileCount: 100, categoryId: 'cat1' },
-  { id: 'f2', name: 'Science Unit Tests', fileCount: 75, categoryId: 'cat1' },
-  { id: 'f3', name: 'History Quizzes', fileCount: 120, categoryId: 'cat2' },
-  { id: 'f4', name: 'English Essays', fileCount: 50, categoryId: 'cat2' },
-  { id: 'f5', name: 'Physics Labs', fileCount: 90, categoryId: 'cat3' },
-  { id: 'f6', name: 'Chemistry Finals', fileCount: 60, categoryId: 'cat1' },
-  { id: 'f7', name: 'Art Projects', fileCount: 30, categoryId: 'cat4' },
-  { id: 'f8', name: 'Music Theory', fileCount: 45, categoryId: 'cat5' },
+  { id: 'f1', name: 'Folder Name', fileCount: 100, categoryId: 'cat1' },
+  { id: 'f2', name: 'Folder Name', fileCount: 100, categoryId: 'cat1' },
+  { id: 'f3', name: 'Folder Name', fileCount: 100, categoryId: 'cat1' },
+  { id: 'f4', name: 'Folder Name', fileCount: 100, categoryId: 'cat3' },
+  { id: 'f5', name: 'Folder Name', fileCount: 100, categoryId: 'cat3' },
+  { id: 'f6', name: 'Folder Name', fileCount: 100, categoryId: 'cat4' },
+  { id: 'f7', name: 'Folder Name', fileCount: 100, categoryId: 'cat2' },
+  { id: 'f8', name: 'Folder Name', fileCount: 100, categoryId: 'cat2' },
 ];
 
 // --- Sub-components ---
@@ -50,10 +50,10 @@ const CategoryTab: React.FC<CategoryTabProps> = ({ category, isActive, onClick }
   return (
     <button
       onClick={onClick}
-      className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 whitespace-nowrap
+      className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap
         ${isActive
           ? 'bg-[#FF3366] text-white shadow-md'
-          : 'bg-transparent text-gray-600 hover:bg-gray-100'
+          : 'bg-transparent text-[#6B7280] hover:bg-gray-100'
         }`}
     >
       {category.name}
@@ -67,24 +67,24 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
   return (
-    <div className="bg-slate-50 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4">
+    <div className="bg-slate-50 rounded-xl p-4 shadow-md hover:shadow-lg transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4 max-w-lg">
       {/* Info Icon */}
       <button className="absolute top-3 right-3 text-gray-400 hover:text-gray-600" aria-label="Folder information">
         <FiInfo className="w-5 h-5" />
       </button>
 
       {/* Folder Icon Area */}
-      <div className="bg-sky-300 w-24 h-24 sm:w-20 sm:h-20 rounded-lg flex items-center justify-center flex-shrink-0">
-        <FiFolder className="w-10 h-10 sm:w-8 sm:h-8 text-black opacity-80" strokeWidth={1.5} />
+      <div className="bg-[#99DEFF] w-24 h-24 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0">
+        <FiFolder className="w-10 h-10 sm:w-12 sm:h-12 text-black opacity-80" strokeWidth={1.5} />
       </div>
 
       {/* Folder Details */}
-      <div className="flex flex-col flex-grow">
-        <h3 className="text-base font-semibold text-gray-900 mb-0.5">{folder.name}</h3>
-        <p className="text-xs text-gray-500 mb-3">{folder.fileCount} Files</p>
+      <div className="flex flex-col flex-grow w-full">
+        <h3 className="text-md font-semibold text-black mb-0.5">{folder.name}</h3>
+        <p className="text-xs text-[#6B7280] mb-4">{folder.fileCount} Files</p>
         <button
           onClick={() => alert(`Manage Access for ${folder.name}`)}
-          className="w-full sm:w-auto sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium rounded-full transition-colors"
+          className="w-full sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium rounded-full transition-colors"
         >
           <FiSettings className="w-4 h-4" />
           Manage Access
@@ -107,10 +107,10 @@ const UploadExistingTestContent: React.FC = () => {
   }, [allFolders, activeCategoryId]);
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
+    <div className="bg-white rounded-2xl shadow-xl min-h-screen p-4 sm:p-6 lg:p-8">
       {/* Category Tabs */}
-      <div className="mb-6 sm:mb-8 pb-3 border-b border-gray-200">
-        <nav className="flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin">
+      <div className="p-1 rounded-2xl flex items-center justify-center mb-6 border border-gray-200">
+        <nav className="flex space-x-1 sm:space-x-4 overflow-x-auto custom-scrollbar-thin">
           {categories.map(cat => (
             <CategoryTab
               key={cat.id}
@@ -124,7 +124,7 @@ const UploadExistingTestContent: React.FC = () => {
 
       {/* Folders Grid */}
       {filteredFolders.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl gap-4 sm:gap-6">
           {filteredFolders.map(folder => (
             <FolderCard key={folder.id} folder={folder} />
           ))}
