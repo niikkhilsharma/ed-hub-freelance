@@ -102,7 +102,7 @@ export default function RecordingsPage() {
 	const headerUser = {
 		name: 'Shlok Agheda',
 		role: 'Student',
-		avatarSrc: '/placeholder-avatar-student.jpg', // UPDATE PATH
+		avatarSrc: '/teacher-b2b/profile.jpg', // UPDATE PATH
 	}
 
 	const handleDeleteRecording = (id: string) => {

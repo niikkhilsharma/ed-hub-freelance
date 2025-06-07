@@ -1,6 +1,6 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import AssesmentPage from "@/components/new-teacher-b2b/assesment-page";
+import AssesmentPage from "@/components/teacher-b2b/assesment-page";
 
 export default function Assesment() {
 	const headerUser = {

@@ -211,7 +211,7 @@ const ClassRecordingContent: React.FC = () => {
   }, [recordings]);
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6">
+    <div className="bg-white rounded-2xl p-4 sm:p-6">
       {/* Header: Tab, Search, Filters */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6">
         {/* Left section: Title + Search */}
@@ -237,7 +237,7 @@ const ClassRecordingContent: React.FC = () => {
 
         {/* Right section: Filters (don’t shrink, don’t scroll horizontally) */}
         <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-end flex-shrink-0 mt-2 sm:mt-0">
-          <div className="flex items-center gap-1 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+          <div className="flex items-center gap-2 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
             <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
             <span>June 2025</span>
             <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />

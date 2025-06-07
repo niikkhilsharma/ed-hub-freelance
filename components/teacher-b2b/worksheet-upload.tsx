@@ -386,7 +386,7 @@ const StudentSelectItemCard: React.FC<{
 // --- Main Content Component ---
 const CreateAIAssessmentContent: React.FC = () => {
   const stepperSteps: StepperStep[] = [
-    { id: 1, name: "Assessment Details" },
+    { id: 1, name: "Worksheet Details" },
     { id: 2, name: "Review" },
   ];
   const [currentStep, setCurrentStep] = useState(1);
@@ -473,7 +473,7 @@ const CreateAIAssessmentContent: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8">
+    <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8">
       <Stepper
         steps={stepperSteps}
         currentStep={currentStep}
@@ -482,10 +482,10 @@ const CreateAIAssessmentContent: React.FC = () => {
 
       {currentStep === 1 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start max-w-6xl mx-auto">
-          {/* Left Column: Assessment Details Form */}
+          {/* Left Column: Worksheet Details Form */}
           <div className="space-y-5">
             <FormField
-              label="Assessment Name"
+              label="Worksheet Name"
               name="assessmentName"
               value={formData.assessmentName}
               onChange={handleFormChange}
@@ -573,38 +573,12 @@ const CreateAIAssessmentContent: React.FC = () => {
           </div>
 
           {/* Right Column: Unitary & Student Selection */}
-          <div className="space-y-6">
-            {/* Unitary Selection */}
-            <div
-              className={`p-4 rounded-2xl border border-[${INPUT_BORDER}] bg-[#F9FAFB]`}
-            >
-              <div className="relative mb-3">
-                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
-                <input
-                  type="text"
-                  placeholder="Unitary"
-                  value={unitarySearch}
-                  onChange={(e) => setUnitarySearch(e.target.value)}
-                  className={`w-full pl-9 pr-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm`}
-                />
-              </div>
-              <div
-                className={`space-y-2 max-h-48 overflow-y-auto pr-1 scrollbar-thin ${SCROLLBAR_THUMB_ORANGE} ${SCROLLBAR_TRACK_LIGHT}`}
-              >
-                {filteredUnitaryItems.map((item) => (
-                  <UnitaryItemCard
-                    key={item.id}
-                    item={item}
-                    isSelected={selectedUnitaryId === item.id}
-                    onSelect={() => setSelectedUnitaryId(item.id)}
-                  />
-                ))}
-              </div>
-            </div>
+          <div className="space-y-6 h-full">
+            
 
             {/* Student Selection */}
             <div
-              className={`p-4 rounded-2xl border ${INPUT_BORDER} bg-[#F9FAFB]`}
+              className={`p-4 rounded-2xl border h-full ${INPUT_BORDER} bg-[#F9FAFB]`}
             >
               <div className="flex items-center space-x-4 mb-3">
                 <label className="flex items-center space-x-1.5 cursor-pointer">
@@ -721,7 +695,7 @@ export default function CreateAIAssessmentPage() {
   const headerUser = {
     name: "Educator Name", // Example, should be dynamic
     role: "Teacher", // Example role
-    avatarSrc: "/teacher-b2b/list-profile.png", // UPDATE THIS PATH
+    avatarSrc: "/teacher-b2b/profile.png", // UPDATE THIS PATH
   };
 
   const handleBackClick = () => {
