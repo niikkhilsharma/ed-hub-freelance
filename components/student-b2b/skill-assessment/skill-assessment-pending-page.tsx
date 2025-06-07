@@ -64,11 +64,11 @@ export default function TestPendingPage() {
 				{/* Left Section - Test Information */}
 				<div className="w-full md:w-3/5 bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
 					<div className="mb-6">
-						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight">
+						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight text-center">
 							5-Stage Dermatoglyphic Multiple Intelligence Test (DMIT) and skill assessment
 						</h1>
 					</div>
-					<p className="text-sm text-gray-600 leading-relaxed mb-8">{loremIpsum}</p>
+					<p className="text-sm text-gray-600 leading-relaxed mb-8 text-center">{loremIpsum}</p>
 					{/* Info Badges */}
 					<div className="flex flex-wrap justify-start gap-3 mb-8">
 						<InfoBadge icon={FiHelpCircle} text="100 Questions" bgColor="bg-orange-100" textColor="text-orange-700" />

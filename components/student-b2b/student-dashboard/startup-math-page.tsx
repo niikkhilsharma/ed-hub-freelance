@@ -4,15 +4,7 @@ import { useState } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 // import Image from 'next/image'; // For the metric conversion image
-import {
-	FiArrowLeft,
-	FiArrowLeftCircle,
-	FiArrowRightCircle,
-	FiChevronDown,
-	FiChevronRight,
-	FiChevronLeft as FiPageLeft,
-	FiChevronRight as FiPageRight,
-} from 'react-icons/fi'
+import { FiArrowLeft, FiArrowLeftCircle, FiArrowRightCircle, FiChevronDown } from 'react-icons/fi'
 import Image from 'next/image'
 
 // --- Main Category Tab Component (Reused) ---
@@ -55,36 +47,11 @@ interface AssessmentItemData {
 	title: string
 	resourcesCount: number
 }
-<<<<<<< HEAD
-const assessmentData = [
-  {
-    id: `assessment-1`,
-    title: `Number 1 to 100`,
-    resourcesCount: 2,
-  },
-  {
-    id: `assessment-2`,
-    title: `Number 200 to 100`,
-    resourcesCount: 3,
-  },
-  {
-    id: `assessment-3`,
-    title: `Addition`,
-    resourcesCount: 3,
-  },
-  {
-    id: `assessment-4`,
-    title: `Substraction`,
-    resourcesCount: 3,
-  }
-]
-=======
 const assessmentData: AssessmentItemData[] = Array.from({ length: 3 }, (_, i) => ({
 	id: `assess${i + 1}`,
 	title: `Number 1 to 100`,
 	resourcesCount: 2,
 }))
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 
 const AssessmentItem = ({ assessment }: { assessment: AssessmentItemData }) => (
 	<button className="w-full flex justify-between items-center p-4 text-left bg-[#F9FAFB] hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB]">
@@ -144,24 +111,6 @@ export default function WorksheetViewPage() {
 					</div>
 				</div>
 
-<<<<<<< HEAD
-        {/* Main Worksheet Content Card */}
-        <div className="bg-white max-w-7xl rounded-2xl shadow-xl relative mx-auto p-2">
-          {/* Main Container with Responsive Flex */}
-          <div className="flex flex-col lg:flex-row">
-            {/* Left Part - Flexible, takes remaining space */}
-            <div className="bg-white flex-1 rounded-2xl px-3 py-6 relative min-w-0">
-              {/* Worksheet Header */}
-              <div className="absolute top-6 right-6 md:top-8 md:right-8 text-right">
-                <div className="flex gap-3">
-                  <div className="flex items-center gap-3 text-sm font-normal border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                    <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                    <span>Page {currentPage}</span>
-                    <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                  </div>
-                </div>
-              </div>
-=======
 				{/* Main Worksheet Content Card */}
 				<div className="bg-white max-w-7xl rounded-2xl shadow-xl relative mx-auto p-2">
 					{/* Main Container with Responsive Flex */}
@@ -178,7 +127,6 @@ export default function WorksheetViewPage() {
 									</div>
 								</div>
 							</div>
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 
 							{/* Test Title and Subtitle */}
 							<div className="flex items-start gap-1 mb-8">
@@ -193,24 +141,6 @@ export default function WorksheetViewPage() {
 								</div>
 							</div>
 
-<<<<<<< HEAD
-              {/* Worksheet Content (Rendered from HTML string) */}
-              <div className="w-full mx-auto prose prose-sm sm:prose-base lg:prose-lg prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF] max-w-none">
-                <div className="px-12 pb-6">
-                  <h2 className="text-sm font-semibold mb-3">Lets Revise</h2>
-                  <Image
-                    src={"/images/startup-math.png"}
-                    alt="worksheet"
-                    height={3510}
-                    width={2482}
-                    priority
-                    className="w-full h-auto relative -top-10"
-                  />
-                </div>
-              </div>
-              {/* Add more interactive elements or structured components if content is not HTML */}
-            </div>
-=======
 							{/* Worksheet Content (Rendered from HTML string) */}
 							<div className="w-full mx-auto prose prose-sm sm:prose-base lg:prose-lg prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF] max-w-none">
 								<div className="px-12 pb-6">
@@ -227,7 +157,6 @@ export default function WorksheetViewPage() {
 							</div>
 							{/* Add more interactive elements or structured components if content is not HTML */}
 						</div>
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 
 						{/* Right Part - Fixed width */}
 						<div className="bg-white w-full lg:w-72 xl:w-96 rounded-2xl px-3 py-6 relative flex-shrink-0">
