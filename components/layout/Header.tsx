@@ -120,10 +120,10 @@ export default function Header({ user }: HeaderProps) {
               height={40}
               className="w-10 h-10 rounded-full border-2 border-white object-cover"
             />
-            <div className="hidden sm:block">
+            {/* <div className="hidden sm:block">
               <p className="text-sm font-semibold">{user.name}</p>
               <p className="text-xs opacity-80">{user.role}</p>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
