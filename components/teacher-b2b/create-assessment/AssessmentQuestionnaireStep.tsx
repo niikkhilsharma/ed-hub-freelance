@@ -10,7 +10,7 @@ import {
   INPUT_BG,
   INPUT_BORDER,
   PRIMARY_BLUE, // Import styles
-} from "./CreateBWTestPage"; // Assuming co-location for simplicity of imports
+} from "./CreateAssessmentPage"; // Assuming co-location for simplicity of imports
 
 interface TestQuestionnaireStepProps {
   questions: TestQuestion[];

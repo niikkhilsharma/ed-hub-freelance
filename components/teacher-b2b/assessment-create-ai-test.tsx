@@ -739,7 +739,7 @@ export default function CreateAIAssessmentPage() {
           className="text-lg sm:text-xl font-semibold"
           style={{ color: ACCENT_PINK_STYLE }}
         >
-          Create AI Generated Test
+          Create AI Generated Assessment
         </h1>
       </div>
 

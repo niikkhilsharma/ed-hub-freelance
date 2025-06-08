@@ -8,9 +8,9 @@ import {
   Stepper // Import Stepper from the main page file
 } from "@/components/teacher-b2b/create-test/CreateBWTestPage"; // Assuming co-location for simplicity of imports
 
-import TestDetailsStep from "@/components/teacher-b2b/create-test/TestDetailsStep";
-import TestQuestionnaireStep from "@/components/teacher-b2b/create-test/TestQuestionnaireStep";
-import TestReviewStep from "@/components/teacher-b2b/create-test/TestReviewStep";
+import TestDetailsStep from "@/components/teacher-b2b/create-quiz/QuizDetailsStep";
+import TestQuestionnaireStep from "@/components/teacher-b2b/create-quiz/QuizQuestionnaireStep";
+import TestReviewStep from "@/components/teacher-b2b/create-quiz/QuizReviewStep";
 
 // Re-export or re-define constants if needed and not directly imported
 import { PRIMARY_BLUE, YELLOW_BUTTON_BG, YELLOW_BUTTON_TEXT } from "@/components/teacher-b2b/create-test/CreateBWTestPage";
@@ -18,8 +18,8 @@ import { PRIMARY_BLUE, YELLOW_BUTTON_BG, YELLOW_BUTTON_TEXT } from "@/components
 
 const CreateBWTestContent: React.FC = () => {
   const stepperSteps: StepperStep[] = [
-    { id: 1, name: 'Test Details' },
-    { id: 2, name: 'Test Questionnaire' },
+    { id: 1, name: 'Quiz Details' },
+    { id: 2, name: 'Quiz Questionnaire' },
     { id: 3, name: 'Review' },
   ];
   const [currentStep, setCurrentStep] = useState(1);

@@ -19,7 +19,7 @@ import {
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import { v4 as uuidv4 } from "uuid";
-import CreateBWTestContent from "@/components/teacher-b2b/create-test/CreateBWTestContent"; // We will create this next
+import CreateBWTestContent from "@/components/teacher-b2b/create-assessment/CreateAssessmentContent"; // We will create this next
 
 // --- Style Constants (Global for this file) ---
 export const ACCENT_PINK = "#FF3366";
@@ -525,26 +525,11 @@ export default function CreateBWTestPage() {
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0">
           <div className="flex items-center gap-3 self-start sm:self-center">
             <button
-              onClick={handleBackClick}
-              className="p-1.5 text-gray-700 hover:text-gray-900 focus:outline-none rounded-md"
-              aria-label="Go back"
-            >
-              <FiArrowLeft className="w-5 h-5" />
-            </button>
-            <h1
-              className="text-lg sm:text-xl font-semibold"
-              style={{ color: ACCENT_PINK }}
-            >
-              Create BW Test
-            </h1>
-          </div>
-          <div className="flex items-center space-x-2 self-end sm:self-center">
-            <button
               onClick={() => alert("Choose From Existing Test clicked")}
               className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full  transition-opacity`}
             >
               {/* <FiGrid className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> */}
-              Choose From Existing Test
+              Choose From Existing Assessment
               <svg
                 width={24}
                 height={24}
@@ -574,7 +559,7 @@ export default function CreateBWTestPage() {
               className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full  transition-opacity`}
             >
               {/* <FiZap className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> */}
-              AI Generated Test
+              AI Generated Assessment
               <svg
                 width={30}
                 height={30}

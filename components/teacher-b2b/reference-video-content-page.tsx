@@ -43,7 +43,7 @@ interface VideoCardData {
 // --- Sample Data ---
 const TABS: TabItem[] = [
   { id: "reference", label: "Reference Video" },
-  { id: "pedagogy", label: "Pedagogy Video" },
+  { id: "pedagogy", label: "Video Title" },
 ];
 
 const sampleDateFilters: FilterOption[] = [
@@ -114,9 +114,9 @@ const sampleVideos: VideoCardData[] = [
     classLevel: "Class 5",
     topic: "Unitary Method",
     chapterStatus: "Complete Chapter",
-    videoTitle: "Pedagogy Vid One",
+    videoTitle: "Video Title",
     subject: "Maths",
-    topicName: "Topic Name Example",
+    topicName: "Topic Name",
     uploadDate: "28 / 5 / 25",
     isShared: true,
     type: "pedagogy",
@@ -127,9 +127,9 @@ const sampleVideos: VideoCardData[] = [
     classLevel: "Class 5",
     topic: "Fractions",
     chapterStatus: "Complete Chapter",
-    videoTitle: "Pedagogy Vid Two",
+    videoTitle: "Video Title",
     subject: "Maths",
-    topicName: "Understanding Fractions",
+    topicName: "Topic Name",
     uploadDate: "27 / 5 / 25",
     isShared: false,
     type: "pedagogy",
@@ -140,9 +140,9 @@ const sampleVideos: VideoCardData[] = [
     classLevel: "Class 5",
     topic: "Photosynthesis",
     chapterStatus: "In Progress",
-    videoTitle: "Pedagogy Vid Three",
+    videoTitle: "Video Title",
     subject: "Science",
-    topicName: "Plant Biology",
+    topicName: "Topic Name",
     uploadDate: "26 / 5 / 25",
     isShared: true,
     type: "pedagogy",
@@ -242,19 +242,29 @@ const VideoCard: React.FC<{ video: VideoCardData }> = ({ video }) => {
                 {video.topicName}
               </span>
             </p>
+            {video.type == "pedagogy" &&
+              <p>
+              Date:{" "}
+              <span className="font-medium text-gray-700">
+                {video.uploadDate}
+              </span>
+            </p>
+            }
           </div>
         )}
 
         <div className="mt-auto pt-2 flex justify-start gap-2 items-center text-xs text-gray-500">
+          {video.type == "reference" && 
           <span className="bg-[#B0B0B01A] py-2 px-2 rounded-full">
             Uploaded on {video.uploadDate}
           </span>
+          }
           <div className="flex items-center space-x-2">
-            {video.isShared && (
-              <span className="px-2 py-2 text-xs font-medium rounded-full bg-blue-100 text-blue-700 flex items-center gap-1">
+            
+              <span className="px-2 py-2 text-xs rounded-full bg-blue-100 text-blue-700 flex items-center gap-1">
                 <FiShare2 className="w-2.5 h-2.5" /> Shared
               </span>
-            )}
+            
             <button
               title="Delete video"
               className="p-2 bg-[#FF33661A] text-[#FF3366] rounded-full hover:text-red-600"

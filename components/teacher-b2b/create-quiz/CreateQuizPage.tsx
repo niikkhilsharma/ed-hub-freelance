@@ -19,7 +19,7 @@ import {
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import { v4 as uuidv4 } from "uuid";
-import CreateBWTestContent from "@/components/teacher-b2b/create-test/CreateBWTestContent"; // We will create this next
+import CreateBWTestContent from "@/components/teacher-b2b/create-quiz/CreateQuizContent"; // We will create this next
 
 // --- Style Constants (Global for this file) ---
 export const ACCENT_PINK = "#FF3366";
@@ -535,7 +535,7 @@ export default function CreateBWTestPage() {
               className="text-lg sm:text-xl font-semibold"
               style={{ color: ACCENT_PINK }}
             >
-              Create BW Test
+              Create Quiz
             </h1>
           </div>
           <div className="flex items-center space-x-2 self-end sm:self-center">
@@ -544,7 +544,7 @@ export default function CreateBWTestPage() {
               className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full  transition-opacity`}
             >
               {/* <FiGrid className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> */}
-              Choose From Existing Test
+              Choose From Existing Quiz
               <svg
                 width={24}
                 height={24}
@@ -574,7 +574,7 @@ export default function CreateBWTestPage() {
               className={`flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-3 text-xs sm:text-sm font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full  transition-opacity`}
             >
               {/* <FiZap className="w-3.5 h-3.5 sm:w-4 sm:h-4" /> */}
-              AI Generated Test
+              AI Generated Quiz
               <svg
                 width={30}
                 height={30}

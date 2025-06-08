@@ -158,7 +158,7 @@ const SubjectFolderViewContent: React.FC = () => {
         </nav>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 lg:p-8 space-y-6">
+      <div className="bg-white rounded-2xl  p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div className="relative flex-grow">

@@ -20,7 +20,7 @@ export default function StudentListPage() {
         <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
           <FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
         </button>
-        <h1 className="text-xl font-bold text-[#FF3366]">Test Name</h1>{" "}
+        <h1 className="text-xl font-bold text-[#FF3366]">Assessment Name</h1>{" "}
         {/* Or dynamic course name */}
       </div>
 

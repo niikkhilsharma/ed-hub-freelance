@@ -20,7 +20,7 @@ export default function StudentListPage() {
         <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
           <FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
         </button>
-        <h1 className="text-xl font-bold text-[#FF3366]">Test Name</h1>{" "}
+        <h1 className="text-xl font-bold text-[#FF3366]">DMIT Test</h1>{" "}
         {/* Or dynamic course name */}
       </div>
 
@@ -225,7 +225,7 @@ const StudentPerformancePage: React.FC = () => {
   }, [students, searchTerm /*, activeFilters */]);
 
   return (
-    <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-6 bg-white rounded-2xl">
+    <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-6 bg-white rounded-2xl ">
       {/* Header: Search and Filters */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         {/* Search Input */}
@@ -261,7 +261,7 @@ const StudentPerformancePage: React.FC = () => {
 
       {/* Student List */}
       {filteredStudents.length > 0 ? (
-        <div className="space-y-3">
+        <div className="space-y-3 ">
           {filteredStudents.map((student) => (
             <StudentCard key={student.id} student={student} />
           ))}
@@ -272,6 +272,7 @@ const StudentPerformancePage: React.FC = () => {
           <p>Try adjusting your search or filter criteria.</p>
         </div>
       )}
+      <div className="h-32"></div>
     </main>
   );
 };

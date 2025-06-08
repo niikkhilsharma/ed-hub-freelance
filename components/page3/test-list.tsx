@@ -29,7 +29,7 @@ export function TestList({ tests, type }: TestListProps) {
   return (
     <div className="space-y-4">
       {tests.map((test) => (
-        <div key={test.id} className="border rounded-3xl p-4  bg-[#F9FAFB]">
+        <div key={test.id} className="border rounded-2xl p-4  bg-[#F9FAFB]">
           <div className="flex justify-between items-start">
             {/* Left Section */}
             <div className="w-full space-y-2">

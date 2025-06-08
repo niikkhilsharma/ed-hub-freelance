@@ -1,4 +1,4 @@
-import StudentReport from '@/components/teacher-b2b/student-progress-report';
+import StudentReport from '@/components/teacher-b2b/student-profile';
 import React from 'react'
 
 const StudentProgressPage = () => {

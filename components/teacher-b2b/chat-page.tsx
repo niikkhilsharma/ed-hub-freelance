@@ -63,7 +63,7 @@ interface ChatMessageData {
 // --- Sample Data ---
 const teachersList: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({
   id: `teacher${i + 1}`,
-  name: "Teacher Name",
+  name: "Student Name",
   subject: "Subject",
   avatarSrc: `/teacher-b2b/chat-profile.jpg`, // Cycle through 3 avatar examples
   lastMessageTime: "7:00 pm",
@@ -93,13 +93,13 @@ const ChatMessage = ({ message }: { message: ChatMessageData }) => {
   return (
     <div className={`flex mb-4 ${isUser ? "justify-end" : "justify-start"}`}>
       <div
-        className={`max-w-xs lg:max-w-md px-4 py-3 rounded-2xl shadow  ${
-          isUser ? "bg-[#3366FF] text-white" : "bg-[#F9FAFB] text-black"
+        className={`max-w-xs lg:max-w-md w-full px-4 py-3 rounded-2xl   ${
+          isUser ? "bg-[#3366FF] text-white " : "bg-[#F9FAFB] text-black"
         }`}
       >
         {message.text && (
-          <div className={`flex gap-2 ${isUser ? "flex-row-reverse" : ""}`}>
-            <p className="text-sm font-normal leading-relaxed">
+          <div className={`flex gap-2 justify-between ${isUser ? "flex-row-reverse" : ""}`}>
+            <p className={`text-sm font-normal leading-relaxed ${isUser ? "text-right": ""}`}>
               Lorem ipsum dolor sit amet, consectetur adipiscing <br /> elit. 
             </p>
             <p
@@ -118,7 +118,7 @@ const ChatMessage = ({ message }: { message: ChatMessageData }) => {
               alt={message.imageName || "Chat image"}
               width={300} // Adjust as needed
               height={200} // Adjust as needed
-              className="w-full max-h-[200px] rounded-xl object-cover"
+              className="w-full max-h-[240px] rounded-xl object-cover"
             />
             <div className="flex items-center justify-end">
               <button className="mt-2 flex items-center text-black gap-1.5 text-xs bg-[#B0B0B033] hover:text-blue-600 p-2 rounded-full shadow border border-gray-200 justify-center">
@@ -142,7 +142,7 @@ export default function ChatPage() {
   const chatEndRef = useRef<HTMLDivElement>(null); // For scrolling to bottom
 
   const headerUser = {
-    name: "Student Name",
+    name: "Teacher Name",
     role: "Student",
     avatarSrc: "/teacher-b2b/profile.png",
   };
@@ -185,9 +185,9 @@ export default function ChatPage() {
           {" "}
           {/* self-stretch */}
           <h2 className="text-lg font-bold text-[#FF3366] mb-4 px-2">
-            Teachers
+            Students
           </h2>
-          <div className="space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-1">
+          <div className="space-y-1 max-h-[calc(100vh-10rem)] overflow-y-auto custom-scrollbar pr-1">
             {" "}
             {/* Scrollable list */}
             {teachersList.map((teacher) => (
@@ -215,7 +215,7 @@ export default function ChatPage() {
                   className="h-10 w-10 rounded-full object-cover"
                 />
                 <h3 className="text-lg font-semibold text-black">
-                  {selectedTeacher.name}
+                  Student Name
                 </h3>
               </div>
 

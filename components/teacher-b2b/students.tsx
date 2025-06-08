@@ -123,7 +123,20 @@ const StudentItemRow: React.FC<{
         className={`p-1.5 sm:p-2 rounded-full ${ICON_BUTTON_BG_LIGHT_GRAY} hover:bg-gray-200`}
         aria-label="Transfer student"
       >
-        <ArrowRightLeft className={`w-4 h-4 sm:w-4.5 sm:h-4.5 text-black`} />
+        {/* <ArrowRightLeft className={`w-4 h-4 sm:w-4.5 sm:h-4.5 text-black`} /> */}
+        <svg
+          width={16}
+          height={16}
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-black"
+        >
+          <path
+            d="M15.9241 6.38297C15.9998 6.20019 16.0196 5.99907 15.981 5.80505C15.9424 5.61102 15.847 5.43281 15.7071 5.29297L10.7071 0.292969L9.29312 1.70697L12.5861 4.99997H0.000115853V6.99997H15.0001C15.1979 7.00002 15.3912 6.94143 15.5557 6.8316C15.7202 6.72178 15.8484 6.56565 15.9241 6.38297ZM0.0761161 9.61697C0.000411265 9.79974 -0.0193799 10.0009 0.019247 10.1949C0.057874 10.3889 0.153183 10.5671 0.293116 10.707L5.29312 15.707L6.70712 14.293L3.41412 11H16.0001V8.99997H1.00012C0.80232 8.99979 0.608922 9.05832 0.444428 9.16817C0.279935 9.27801 0.15175 9.4342 0.0761161 9.61697Z"
+            fill="black"
+          />
+        </svg>
       </button>
     </div>
   </div>
@@ -207,7 +220,7 @@ const StudentListViewContent: React.FC = () => {
             className={`w-full pl-10 pr-4 py-2.5 sm:py-3 text-sm ${INPUT_BG_SEARCH} border border-gray-300 rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none shadow-sm`}
           />
         </div>
-        
+
         <div className="flex items-center gap-2 overflow-x-auto">
           <button
             onClick={() => alert("Main filter icon clicked.")}
@@ -228,7 +241,7 @@ const StudentListViewContent: React.FC = () => {
 
       {/* Bottom Section: Student List */}
       {searchedAndFilteredStudents.length > 0 ? (
-        <div className="space-y-2 sm:space-y-2.5 pr-1 custom-scrollbar">
+        <div className="space-y-2 sm:space-y-2.5 pr-1 custom-scrollbar pb-6">
           {" "}
           {/* Adjust max-h */}
           {searchedAndFilteredStudents.map((student) => (

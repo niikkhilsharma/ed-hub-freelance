@@ -1,4 +1,4 @@
-import EditStudentProfilePage from '@/components/student-b2b/student-dashboard/profile'
+import EditStudentProfilePage from '@/components/teacher-b2b/profile'
 
 export default function EditStudentProfile() {
 	return (
