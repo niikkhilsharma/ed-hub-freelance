@@ -44,7 +44,7 @@ const CategoryTab = ({ label, isActive, onClick }: { label: string; isActive: bo
 	<button
 		onClick={onClick}
 		className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-full whitespace-nowrap focus:outline-none transition-colors duration-150 ${
-			isActive ? 'bg-red-500 text-white shadow' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+			isActive ? 'bg-[#FF3366] text-white shadow' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
 		}`}>
 		{label}
 	</button>
@@ -114,7 +114,7 @@ export default function DmittTest_7_Page() {
 
 	return (
 		<div className="min-h-screen bg-gray-100 flex flex-col">
-			<TestHeader userName={headerUser.userName} userRole={headerUser.userRole} userAvatar={headerUser.userAvatar} />
+			<TestHeader />
 
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
 				<div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-8">
@@ -131,7 +131,7 @@ export default function DmittTest_7_Page() {
 									key={category}
 									onClick={() => setActiveCategory(category)}
 									className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${
-										activeCategory === category ? 'bg-red-500/90 text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+										activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
 									}`}>
 									{category}
 								</button>
@@ -149,7 +149,7 @@ export default function DmittTest_7_Page() {
 							</div>
 						</div>
 						<div className="text-right">
-							<div className="flex items-center gap-1.5 text-red-500">
+							<div className="flex items-center gap-1.5 text-[#FF3366]">
 								<FiClock className="w-5 h-5" />
 								<span className="text-2xl font-bold">{formatTime(timeLeft)}</span>
 							</div>

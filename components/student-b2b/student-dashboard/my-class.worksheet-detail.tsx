@@ -163,9 +163,9 @@ const HtmlArticle = () => {
 				</div>
 				<div className="flex-shrink-0">
 					<img
-						src="/images/metric-conversion-steps.png"
+						src="/images/quest.png"
 						alt="Metric Conversion Steps"
-						className="max-w-xs w-full md:w-auto h-auto rounded"
+						className="max-w-[18rem] w-full md:w-auto h-auto rounded"
 					/>
 				</div>
 			</div>

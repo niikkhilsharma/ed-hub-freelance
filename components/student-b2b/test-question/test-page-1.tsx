@@ -24,10 +24,9 @@ const sampleQuestions: Question[] = [
 		id: 1,
 		text: 'Which part of the plant makes food?',
 		options: [
-			{ id: 'a', text: 'Roots' },
-			{ id: 'b', text: 'Leaves' },
-			{ id: 'c', text: 'Stem' },
-			{ id: 'd', text: 'Flower' },
+			{ id: 'a', text: 'Option' },
+			{ id: 'b', text: 'Option' },
+			{ id: 'c', text: 'Option' },
 		],
 		correctOptionId: 'b',
 	},
@@ -35,10 +34,9 @@ const sampleQuestions: Question[] = [
 		id: 2,
 		text: 'Which part of the plant makes food?',
 		options: [
-			{ id: 'a', text: 'Roots' },
-			{ id: 'b', text: 'Leaves' },
-			{ id: 'c', text: 'Stem' },
-			{ id: 'd', text: 'Flower' },
+			{ id: 'a', text: 'Option' },
+			{ id: 'b', text: 'Option' },
+			{ id: 'c', text: 'Option' },
 		],
 		correctOptionId: 'b',
 	},
@@ -46,10 +44,9 @@ const sampleQuestions: Question[] = [
 		id: 3,
 		text: 'Which part of the plant makes food?',
 		options: [
-			{ id: 'a', text: 'Roots' },
-			{ id: 'b', text: 'Leaves' },
-			{ id: 'c', text: 'Stem' },
-			{ id: 'd', text: 'Flower' },
+			{ id: 'a', text: 'Option' },
+			{ id: 'b', text: 'Option' },
+			{ id: 'c', text: 'Option' },
 		],
 		correctOptionId: 'b',
 	},
@@ -57,10 +54,10 @@ const sampleQuestions: Question[] = [
 		id: 4,
 		text: 'Which part of the plant makes food?',
 		options: [
-			{ id: 'a', text: 'Roots' },
-			{ id: 'b', text: 'Leaves' },
-			{ id: 'c', text: 'Stem' },
-			{ id: 'd', text: 'Flower' },
+			{ id: 'a', text: 'Option' },
+			{ id: 'b', text: 'Option' },
+			{ id: 'c', text: 'Option' },
+			{ id: 'd', text: 'Option' },
 		],
 		correctOptionId: 'b',
 	},
@@ -68,10 +65,10 @@ const sampleQuestions: Question[] = [
 		id: 5,
 		text: 'What is the capital of France?',
 		options: [
-			{ id: 'a', text: 'Berlin' },
-			{ id: 'b', text: 'Madrid' },
-			{ id: 'c', text: 'Paris' },
-			{ id: 'd', text: 'Rome' },
+			{ id: 'a', text: 'Option' },
+			{ id: 'b', text: 'Option' },
+			{ id: 'c', text: 'Option' },
+			{ id: 'd', text: 'Option' },
 		],
 		correctOptionId: 'c',
 	},
@@ -133,9 +130,9 @@ export default function DmittTestPage() {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex flex-col">
+		<div className="min-h-screen bg-white flex flex-col">
 			{/* Header */}
-			  <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+			  <header className="bg-blue-600 text-white sticky top-0 z-50">
 							<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
 								{/* Logo */}
 								<div className="flex items-center">
@@ -167,8 +164,8 @@ export default function DmittTestPage() {
 						</header>
 
 			{/* Main Content */}
-			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-				<div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-8">
+			<main className="bg-white flex-1 py-8 px-4 sm:px-6 lg:px-8">
+				<div className="max-w-3xl mx-auto bg-white rounded-xl  p-6 md:p-8">
 					{/* Test Title */}
 					<h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
 						DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
@@ -182,7 +179,7 @@ export default function DmittTestPage() {
 									key={category}
 									onClick={() => setActiveCategory(category)}
 									className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${
-										activeCategory === category ? 'bg-red-500/90 text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+										activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
 									}`}>
 									{category}
 								</button>
@@ -218,7 +215,7 @@ export default function DmittTestPage() {
 									<button
 										key={option.id}
 										onClick={() => handleOptionSelect(option.id)}
-										className={`hover:cursor-pointer w-full text-left flex items-center p-3.5 rounded-full transition-all duration-150 font-semibold focus:outline-none bg-white hover:bg-blue-100 ${
+										className={`hover:cursor-pointer w-full text-left flex items-center p-4 rounded-full transition-all duration-150 font-semibold focus:outline-none bg-white hover:bg-blue-100 ${
 											selectedOptionId === option.id && 'border-2 border-blue-500'
 										}`}>
 										{/* Optional: Add a visual radio button if needed */}

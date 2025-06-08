@@ -102,7 +102,7 @@ export default function RecordingsPage() {
 	const headerUser = {
 		name: 'Shlok Agheda',
 		role: 'Student',
-		avatarSrc: '/teacher-b2b/profile.jpg', // UPDATE PATH
+		avatarSrc: '/teacher-b2b/profile.png', // UPDATE PATH
 	}
 
 	const handleDeleteRecording = (id: string) => {
@@ -122,10 +122,11 @@ export default function RecordingsPage() {
 	}
 
 	return (
-		<div className="bg-gray-100 min-h-screen flex flex-col">
+		<>
 			<Header user={headerUser} />
+		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 
-			<main className="container mx-auto p-4 sm:p-6 lg:p-8 bg-white my-10 rounded-2xl">
+			<main className="container p-4 max-w-[90vw] sm:p-6 lg:p-8 bg-white m-6 mx-auto rounded-2xl">
 				{' '}
 				{/* Increased padding */}
 				{recordingsByDate.length === 0 ? (
@@ -134,8 +135,8 @@ export default function RecordingsPage() {
 					</div>
 				) : (
 					recordingsByDate.map((dateGroup, index) => (
-						<section key={index} className="mb-12">
-							<h2 className="text-xl font-semibold text-gray-800 mb-6">{dateGroup.date}</h2>
+						<section key={index} className=" mb-12">
+							<h2 className="text-xl  font-semibold text-black mb-6">{dateGroup.date}</h2>
 							<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 								{dateGroup.recordings.map(recording => (
 									<RecordingCard key={recording.id} recording={recording} onDelete={handleDeleteRecording} />
@@ -148,5 +149,6 @@ export default function RecordingsPage() {
 
 			<Footer />
 		</div>
+		</>
 	)
 }

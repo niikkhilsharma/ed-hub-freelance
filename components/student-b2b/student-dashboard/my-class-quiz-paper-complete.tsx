@@ -273,7 +273,7 @@ export default function QuizTestResultPage() {
 
         {/* Main Content: Two Columns - Questions & Score */}
         <div className="bg-white px-3 py-6 rounded-2xl shadow-lg">
-          <div className="mb-8 flex items-start gap-3">
+          <div className="mb-8 flex items-center gap-3">
             <button className="p-1.5 text-black cursor-pointer focus:outline-none">
               <FiArrowLeft className="w-5 h-5" strokeWidth={3} />
             </button>
@@ -315,14 +315,7 @@ export default function QuizTestResultPage() {
                 </div>
               </div>
               <div className="border border-[#E5E7EB] rounded-2xl p-6 md:p-8 w-full">
-                <Image
-                  src="/images/result-table.png"
-                  alt="table"
-                  width={600}
-                  height={632}
-                  quality={100}
-                  className="h-full w-full object-cover"
-                />
+                <EvaluationResults />
               </div>
             </div>
           </div>
@@ -330,6 +323,83 @@ export default function QuizTestResultPage() {
       </main>
 
       <Footer />
+    </div>
+  );
+}
+
+function EvaluationResults() {
+  return (
+    <div className="bg-white">
+      {/* Title */}
+      <h1 className="text-3xl font-bold text-black mb-6">
+        Evaluation Results
+      </h1>
+
+      {/* Table */}
+      <div className="border-2 border-black">
+        {/* Header Row */}
+        <div className="bg-black text-white flex">
+          <div className="flex-1 p-4 font-semibold border-r border-white">
+            Section
+          </div>
+          <div className="flex-1 p-4 font-semibold">
+            Scores (in stars out of 5)
+          </div>
+        </div>
+
+        {/* Data Rows */}
+        <div className="bg-white">
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Concept
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Sentence Formation
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Definitions
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Retention
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Choice of Words
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Text */}
+      <h2 className="text-2xl font-bold text-black mt-6">
+        Skills a child will develop:
+      </h2>
     </div>
   );
 }

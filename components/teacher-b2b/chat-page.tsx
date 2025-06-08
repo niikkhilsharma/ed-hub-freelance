@@ -58,6 +58,35 @@ interface ChatMessageData {
   imageName?: string; // For download purposes
   timestamp: string; // e.g., "6:50 pm"
 }
+
+
+// --- Sample Data ---
+const teachersList: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({
+  id: `teacher${i + 1}`,
+  name: "Teacher Name",
+  subject: "Subject",
+  avatarSrc: `/teacher-b2b/chat-profile.jpg`, // Cycle through 3 avatar examples
+  lastMessageTime: "7:00 pm",
+  isActive: i === 0, // First teacher active by default
+}));
+
+const initialChatMessages: ChatMessageData[] = [
+  {
+    id: "m1",
+    sender: "teacher",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    timestamp: "6:50 pm",
+    imageUrl: "/teacher-b2b/chat.png",
+    imageName: "Moon_Surface.jpg",
+  }, // UPDATE PATH
+  {
+    id: "m2",
+    sender: "user",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    timestamp: "6:50 pm",
+  },
+];
+
 const ChatMessage = ({ message }: { message: ChatMessageData }) => {
   const isUser = message.sender === "user"; // Assuming 'user' is the one sending messages from the input
 
@@ -103,33 +132,6 @@ const ChatMessage = ({ message }: { message: ChatMessageData }) => {
   );
 };
 
-// --- Sample Data ---
-const teachersList: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({
-  id: `teacher${i + 1}`,
-  name: "Teacher Name",
-  subject: "Subject",
-  avatarSrc: `/teacher-b2b/chat-profile.jpg`, // Cycle through 3 avatar examples
-  lastMessageTime: "7:00 pm",
-  isActive: i === 0, // First teacher active by default
-}));
-
-const initialChatMessages: ChatMessageData[] = [
-  {
-    id: "m1",
-    sender: "teacher",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    timestamp: "6:50 pm",
-    imageUrl: "/teacher-b2b/chat.png",
-    imageName: "Moon_Surface.jpg",
-  }, // UPDATE PATH
-  {
-    id: "m2",
-    sender: "user",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    timestamp: "6:50 pm",
-  },
-];
-
 export default function ChatPage() {
   const [activeTeacherId, setActiveTeacherId] = useState<string | null>(
     teachersList[0]?.id || null
@@ -146,10 +148,6 @@ export default function ChatPage() {
   };
   const selectedTeacher = teachersList.find((t) => t.id === activeTeacherId);
 
-  useEffect(() => {
-    // Scroll to the bottom of the chat messages when new messages are added
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
 
   const handleTeacherSelect = (teacherId: string) => {
     setActiveTeacherId(teacherId);

@@ -18,19 +18,19 @@ const ResultsCard: React.FC = () => {
   const overallScore = 40;
 
   const individualScores: ScoreItem[] = [
-    { name: 'Academic Skills', score: 40, color: 'bg-blue-500' },
-    { name: 'Brain Development', score: 60, color: 'bg-yellow-400' },
-    { name: 'Personality Development', score: 50, color: 'bg-pink-400' },
-    { name: 'Emotional Intelligence', score: 20, color: 'bg-teal-400' }, // Using teal for a nice green
-    { name: 'Pedagogy learning', score: 40, color: 'bg-orange-400' },
+    { name: 'Academic Skills', score: 40, color: 'bg-[#3366FF]' },
+    { name: 'Brain Development', score: 60, color: 'bg-[#FFCC00]' },
+    { name: 'Personality Development', score: 50, color: 'bg-[#FF99B7]' },
+    { name: 'Emotional Intelligence', score: 20, color: 'bg-[#8DD9B3]' }, // Using teal for a nice green
+    { name: 'Pedagogy learning', score: 40, color: 'bg-[#FFC79A]' },
   ];
 
   const summaryStats: SummaryStat[] = [
     { label: 'Total Marks', value: 50 },
     { label: 'Total Questions', value: 50 },
     { label: 'Attempted', value: 40 },
-    { label: 'Correct', value: 30, colorClass: 'text-blue-600' },
-    { label: 'Incorrect', value: 10, colorClass: 'text-red-500' },
+    { label: 'Correct', value: 30, colorClass: 'text-[#3366ff]' },
+    { label: 'Incorrect', value: 10, colorClass: 'text-[#ff3366]' },
   ];
 
   const circumference = 2 * Math.PI * 15.9155; // Radius of the circle in SVG's viewBox
@@ -48,12 +48,12 @@ const ResultsCard: React.FC = () => {
           className="mr-2 not-odd:w-[25px] object-cover group-hover:scale-105 transition-transform duration-300"
         />
 
-        <h1 className="text-2xl font-bold text-gray-800">Results</h1>
+        <h1 className="text-2xl font-bold text-black">Results</h1>
       </div>
 
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 mb-8">
         {/* Left Pane: Overall Score */}
-        <div className=" bg-slate-50 bg-grey rounded-4xl p-6 flex flex-col items-center justify-center md:w-1/3 space-y-3">
+        <div className=" bg-[#F9FAFB] border border-[#E5E7EB] bg-grey rounded-4xl p-6 flex flex-col items-center justify-center md:w-1/3 space-y-3">
           <div className="relative w-36 h-36">
             <svg className="w-full h-full" viewBox="0 0 36 36">
               {/* Background Circle */}
@@ -94,14 +94,14 @@ const ResultsCard: React.FC = () => {
               />
             </div>
           </div>
-          <div className="text-3xl font-bold text-green-500 mt-0 mb-10">{overallScore}%</div>
+          <div className="text-3xl font-bold text-[#8DD9B3] mt-0 mb-10">{overallScore}%</div>
           <p className="text-sm text-black font-bold text-center max-w-xs">
             Great effort! A little more focus will take you to the top.
           </p>
         </div>
 
         {/* Right Pane: Individual Scores */}
-        <div className="bg-slate-50 rounded-x2 rounded-4xl p-6 md:w-2/3 flex justify-center flex-col">
+        <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-x2 rounded-4xl p-6 md:w-2/3 flex justify-center flex-col">
           <h2 className="font-bold text-gray-800 mb-5 text-2xl">Individual Scores</h2>
           <div className="space-y-4">
             {individualScores.map((item) => (
@@ -123,11 +123,11 @@ const ResultsCard: React.FC = () => {
       </div>
 
       {/* Bottom Bar: Summary Stats */}
-      <div className="bg-slate-50 rounded-4xl p-4 md:p-5 flex flex-wrap justify-around items-center text-center mb-8">
+      <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-full p-4 md:p-5 flex flex-wrap justify-around items-center text-center mb-8">
         {summaryStats.map((stat) => (
-          <div key={stat.label} className="p-2 min-w-[80px]">
-            <p className="text-xs font-bold  text-gray-800 uppercase tracking-wider">{stat.label}</p>
-            <p className={`text-2xl font-bold ${stat.colorClass || 'text-gray-800'}`}>
+          <div key={stat.label} className="px-2 min-w-[80px]">
+            <p className="text-xs font-bold  text-[#6B7280] uppercase tracking-wider">{stat.label}</p>
+            <p className={`text-2xl font-bold ${stat.colorClass || 'text-black'}`}>
               {stat.value}
             </p>
           </div>

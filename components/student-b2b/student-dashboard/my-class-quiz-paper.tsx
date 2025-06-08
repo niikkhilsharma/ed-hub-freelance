@@ -181,7 +181,7 @@ export default function QuizTestPage() {
         {/* Main Content Card for Mock Test */}
         <div className="bg-white rounded-2xl shadow-xl px-3 py-6 relative">
           {/* Test Title and Subtitle */}
-          <div className="mb-8 flex items-start gap-3">
+          <div className="mb-8 flex items-center gap-3">
             <button className="p-1.5 text-black cursor-pointer focus:outline-none">
               <FiArrowLeft className="w-5 h-5" strokeWidth={3} />
             </button>

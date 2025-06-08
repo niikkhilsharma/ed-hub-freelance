@@ -248,7 +248,7 @@ export default function MyCoursePage() {
 					}}>
 					<div className="flex gap-8 items-center relative z-10 ">
 						{/* Text Content */}
-						<div className="text-center md:text-left">
+						<div className="text-center md:text-left relative z-10">
 							<div className="flex items-center justify-center md:justify-start gap-2 mb-4">
 								<h2 className="text-3xl tracking-wider md:text-4xl font-bold">AI suggests</h2>
 								{/* Sparkle icon - using a simple SVG or you can find a react-icon */}
@@ -263,8 +263,8 @@ export default function MyCoursePage() {
 							</button>
 						</div>
 						{/* Image Carousel/Grid */}
-						<div className="py-4 overflow-hidden rounded-2xl">
-							<Image src="/AI.png" alt="star" width={1804} height={1148} className="max-w-[70%] rounded-2xl scale-150 ml-auto" />
+						<div className="py-4 overflow-hidden relative rounded-2xl z-20">
+							<Image src="/AI.png" alt="star" width={1804} height={1148} className="max-w-[70%] rounded-2xl scale-110 ml-auto" priority/>
 						</div>
 					</div>
 				</section>

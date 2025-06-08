@@ -16,16 +16,16 @@ export default function FAQPage() {
 
 	return (
 		<div>
-			<div className="min-h-screen flex flex-col bg-gray-100">
 				<Header user={headerUser} />
+			<div className="min-h-screen flex flex-col bg-[#eeeeee]">
 
-				<main className="container mx-auto p-6 rounded-2xl my-20 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
+				<main className="container mx-auto p-6 max-w-7xl rounded-2xl my-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
 					<Image
 						src={'/pattern.png'}
 						width={4096}
 						height={2304}
 						alt="pattern"
-						className="w-full h-full absolute top-0 left-0 opacity-30"
+						className="w-full h-full brightness-125 absolute top-0 left-0 opacity-60"
 					/>
 					<div className="sm:w-[45%] z-10 bg-white rounded-2xl p-4">
 						<h1 className="text-5xl text-[#FF3366] font-bold">Get in touch</h1>
@@ -71,7 +71,7 @@ export default function FAQPage() {
 								width={867}
 								height={1300}
 								alt="student"
-								className="rounded-2xl aspect-square absolute -top-15 left-0 h-[45rem] w-[48rem]"
+								className="rounded-2xl object-fill aspect-square absolute -top-15 left-0 h-[45rem] w-[48rem]"
 							/>
 						</div>
 						<div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-4 w-full">
@@ -122,6 +122,39 @@ export default function FAQPage() {
 						</div>
 					</div>
 				</main>
+
+				<div className="flex self-stretch justify-center w-full mb-4">
+          <div
+            className="mt-4 max-w-7xl w-[80vw] rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden bg-pink-600 bg-repeat"
+            style={{
+              backgroundImage: "url(/pattern-2.png)", // UPDATE PATH
+              backgroundSize: "1500px",
+            }}
+          >
+            <div className="relative z-10">
+              <h2 className="text-2xl md:text-3xl font-bold mb-3">
+                Subscribe to our newsletter
+              </h2>
+              <p className="text-sm opacity-90 mb-8 max-w-lg mx-auto">
+                Lorem Ipsum is simply dummy text of the printing.
+              </p>
+              <form className="max-w-md mx-auto flex items-center bg-white rounded-full p-1.5 shadow-lg">
+                <input
+                  type="email"
+                  placeholder="Email Address"
+                  className="flex-grow px-5 py-2.5 text-gray-700 text-md bg-transparent border-none focus:outline-none placeholder-gray-400"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="px-10 py-2.5 bg-[#FFCC00] text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors"
+                >
+                  Send
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
 
 				<Footer />
 			</div>

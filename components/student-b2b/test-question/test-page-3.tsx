@@ -127,7 +127,7 @@ export default function DmittTest_3_Page() {
 	}
 
 	return (
-		<div className="min-h-screen bg-gray-100 flex flex-col ">
+		<div className="min-h-screen  flex flex-col ">
 			{/* Header */}
 			<header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
@@ -161,9 +161,9 @@ export default function DmittTest_3_Page() {
 			</header>
 
 			{/* Main Content */}
-			<div className="flex w-full justify-center items-center h-[calc(100dvh-64px)]">
+			<div className="bg-white flex w-full justify-center items-center h-[calc(100dvh-64px)]">
 				<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-					<div className="max-w-7xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-8 flex">
+					<div className="max-w-7xl mx-auto bg-white rounded-xl p-6 md:p-8 flex">
 						<div className="left-content">
 							{/* Test Title */}
 							<h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
@@ -202,7 +202,7 @@ export default function DmittTest_3_Page() {
 									</div>
 									<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
 									<p
-										className="text-sm mt-2 p-2 rounded-xl border-2 border-red-500
+										className="text-sm mt-2 space-x-1 p-2 rounded-xl border border-[#FF3366]
                                                         flex">
 										{' '}
 										<Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} />

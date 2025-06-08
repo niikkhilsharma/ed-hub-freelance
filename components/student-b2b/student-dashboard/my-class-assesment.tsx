@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import {
@@ -133,19 +133,11 @@ interface WorkSheetItemData {
 	title: string
 }
 const WorkSheetItem = ({ item }: { item: WorkSheetItemData }) => (
-<<<<<<< HEAD
   <button className="w-full flex justify-between items-center p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
     <h3 className="text-md font-semibold text-black">{item.title}</h3>
     <FiChevronRight className="w-5 h-5 text-black" />
   </button>
 );
-=======
-	<button className="w-full flex justify-between items-center p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-xl border border-[#E5E7EB] shadow-sm transition-colors">
-		<h3 className="text-md font-semibold text-gray-700">{item.title}</h3>
-		<FiChevronRight className="w-5 h-5 text-gray-400" />
-	</button>
-)
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 
 // --- Sample Data ---
 const mainCategories = [
@@ -194,13 +186,17 @@ const workSheetData: WorkSheetItemData[] = [
 	{ id: 'ws6', title: 'Learning Ladder – Level 1' },
 ]
 
-export default function MyClassAssesmentPage() {
+export default function MyClassAssesmentPage({tabId}:{tabId?:number}) {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategories[0])
 	const [activeSubCategory, setActiveSubCategory] = useState(academicSubCategories[0])
 	const [activeContentTab, setActiveContentTab] = useState(contentTabsData[1]) // Default to Learning
 	const [openAccordionId, setOpenAccordionId] = useState<string | null>(learningWeeksData[0].id) // Open first learning week by default
 	const [currentMonth] = useState('June 2025')
 	const [currentWeekFilter, setCurrentWeekFilter] = useState('Weekly')
+
+	useEffect(()=>{
+		setActiveContentTab(contentTabsData[tabId ? tabId:0])
+	},[])
 
 	const headerUser = {
 		name: 'Shlok Agheda',

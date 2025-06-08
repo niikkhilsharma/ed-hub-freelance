@@ -15,7 +15,7 @@ interface NotificationItemData {
 }
 
 const loremIpsumShort =
-	"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
+	"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book"
 
 const initialNotifications: NotificationItemData[] = Array.from({ length: 6 }, (_, i) => ({
 	id: i + 1,
@@ -42,7 +42,7 @@ export default function NotificationsPage({imageSrc}:{imageSrc?:string}) {
 
 			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-10">
 				{' '}
-				<div className="max-w-3xl mx-auto">
+				<div className="max-w-5xl mx-auto">
 					<div className="space-y-4">
 						{notifications.map(notification => (
 							<div
@@ -51,7 +51,7 @@ export default function NotificationsPage({imageSrc}:{imageSrc?:string}) {
 								<Image src={'/svg/notification.svg'} alt="Notification Bell" width={85} height={85} className="w-16 h-16" />
 								<div className="flex-1">
 									<h3 className="text-md font-semibold text-[#000000] mb-1">{notification.title}</h3>
-									<p className="text-xs text-[#777777] line-clamp-2">{notification.message}</p>
+									<p className="text-[0.80rem] text-[#777777] line-clamp-2">{notification.message}</p>
 								</div>
 							</div>
 						))}

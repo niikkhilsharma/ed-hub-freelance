@@ -131,7 +131,7 @@ export default function DmittTest_5_Page() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col">
+        <div className="min-h-screen flex flex-col">
             {/* Header */}
             <header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
@@ -166,7 +166,7 @@ export default function DmittTest_5_Page() {
 
             {/* Main Content */}
             <main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-xl p-6 md:p-8">
+                <div className="max-w-3xl mx-auto bg-white rounded-xl p-6 md:p-8">
                     {/* Test Title */}
                     <h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
                         DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
@@ -179,7 +179,7 @@ export default function DmittTest_5_Page() {
                                 <button
                                     key={category}
                                     onClick={() => setActiveCategory(category)}
-                                    className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-red-500/90 text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                                    className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
                                         }`}>
                                     {category}
                                 </button>
@@ -202,7 +202,7 @@ export default function DmittTest_5_Page() {
                                 <span className="text-lg font-extrabold">{formatTime(timeLeft)}</span>
                             </div>
                             <p className="text-md font-medium text-[#FF99B7]">Min Left</p>
-                            <p className="text-sm mt-2 p-2 rounded-xl border-2 border-red-500
+                            <p className="text-sm mt-2 p-2 rounded-xl border space-x-1 border-[#FF3366]
                             flex"> <Image src="/images/Tip.svg" alt="Ask me bot" className="w-[40px]" width={10} height={10} /><span>Draw in the box to complete the task</span></p>
                         </div>
                     </div>

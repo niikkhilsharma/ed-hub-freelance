@@ -90,7 +90,7 @@ export default function EditStudentProfilePage() {
             <button className="hover:text-blue-600 focus:outline-none">
               <FiArrowLeft className="w-6 h-6" />
             </button>
-            <h1 className="text-xl ">Edit Profile</h1>
+            <h1 className="text-lg font-semibold ">Edit Profile</h1>
           </div>
           <div className="flex items-center  mt-4 mb-8"
 		  style={{
@@ -114,7 +114,7 @@ export default function EditStudentProfilePage() {
               </button>
             </div>
             <div className="mt-3 py-2">
-              <h1 className="text-2xl font-semibold text-gray-800">
+              <h1 className="text-2xl font-medium text-black">
                 {formData.name}
               </h1>
               <p className="text-yellow-500 font-medium">Student</p>

@@ -3,7 +3,7 @@ import MyClassAssesmentPage from '@/components/student-b2b/student-dashboard/my-
 export default function MyClassAssesment() {
 	return (
 		<div>
-			<MyClassAssesmentPage />
+			<MyClassAssesmentPage tabId={3} />
 		</div>
 	)
 }

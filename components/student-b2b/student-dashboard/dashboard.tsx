@@ -9,7 +9,7 @@ import Footer from '@/components/layout/Footer'
 // --- Key Focus Area Pill ---
 // Updated to match image: white background, gray border
 const FocusPill = ({ label }: { label: string }) => (
-	<button className="px-6 py-2.5 bg-[#F3F4F6] border-[#B0B0B0] text-gray-700 text-sm font-medium rounded-full border hover:bg-gray-50 transition-colors">
+	<button className="px-6 py-2.5 bg-[#F3F4F6] border-[#B0B0B2xl text-black text-sm font-medium rounded-full border hover:bg-gray-50 transition-colors">
 		{label}
 	</button>
 )
@@ -30,14 +30,14 @@ const ActivityItem = ({ activity }: { activity: Activity }) => {
 	const categoryTextColor = 'text-[#FF3366]'
 
 	return (
-		<div className="flex items-center justify-between p-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full shadow-sm hover:shadow-md transition-shadow">
+		<div className="flex items-center justify-between p-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full  hover:shadow-md transition-shadow">
 			<div className="flex items-center gap-4">
 				<div className={`w-14 h-14 rounded-full ${iconBgColor} text-white flex items-center justify-center flex-shrink-0`}>
 					<Icon className="w-7 h-7" />
 				</div>
 				<div>
 					<p className={`text-xs font-medium ${categoryTextColor}`}>{activity.category}</p>
-					<h4 className="text-base font-semibold text-gray-800 mt-0.5">{activity.topic}</h4>
+					<h4 className="text-base font-semibold text-black mt-0.5">{activity.topic}</h4>
 					<p className="text-[9px] text-[#6B7280] mt-0.5">{activity.dateRange}</p>
 				</div>
 			</div>
@@ -59,11 +59,11 @@ const ActivityItem = ({ activity }: { activity: Activity }) => {
 // --- Teacher Item ---
 const TeacherItem = ({ avatarSrc, name, subject }: { avatarSrc: string; name: string; subject: string }) => (
 	// Updated background to be lighter gray, more padding and rounded
-	<div className="flex items-center justify-between p-2 bg-gray-100 rounded-full hover:shadow-sm transition-shadow">
+	<div className="flex items-center justify-between p-2 bg-gray-100 rounded-full hover: transition-shadow">
 		<div className="flex items-center gap-3">
 			<Image src={avatarSrc} alt={name} width={40} height={40} className="rounded-full object-cover" />
 			<div>
-				<p className="text-sm font-medium text-gray-800">{name}</p>
+				<p className="text-sm font-medium text-black">{name}</p>
 				{/* Subject text color updated to pink to match image */}
 				<p className="text-xs text-[#FF3366]">{subject}</p>
 			</div>
@@ -78,7 +78,7 @@ const TeacherItem = ({ avatarSrc, name, subject }: { avatarSrc: string; name: st
 const NotificationItem = ({ title, message, date }: { title: string; message: string; date: string }) => (
 	// Adjusted background and border to match image (yellowish)
 	<div className="border-[#FFCC00] border bg-[#FEF9C3] rounded-lg p-2">
-		<h5 className="text-sm font-semibold text-gray-800 mb-1">{title}</h5>
+		<h5 className="text-sm font-semibold text-black mb-1">{title}</h5>
 		<p className="text-xs text-[#6B7280] leading-relaxed mb-1.5 line-clamp-2">{message}</p>
 		<p className="text-[10px] text-gray-500 text-right">{date}</p>
 	</div>
@@ -187,7 +187,7 @@ export default function StudentDashboardPage() {
 	}
 
 	return (
-		<div className="bg-slate-100 min-h-screen flex flex-col">
+		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			{' '}
 			{/* Overall page background */}
 			<Header user={headerUser} />
@@ -196,7 +196,7 @@ export default function StudentDashboardPage() {
 					{/* === Left Column === */}
 					<div className="lg:col-span-2 space-y-6">
 						{/* --- Profile Info Card --- */}
-						<div className="bg-white rounded-2xl shadow-lg p-6">
+						<div className="bg-white rounded-2xl  p-6">
 							{/* Top section: Avatar, Name/Tags, Personal Details */}
 							<div className="flex flex-row items-start gap-x-6">
 								{/* Avatar */}
@@ -230,25 +230,25 @@ export default function StudentDashboardPage() {
 									{/* Column 2: Personal Details */}
 									<div className="text-xs space-y-1 mt-3 md:mt-0 md:justify-self-end">
 										<p>
-											<span className="font-medium text-gray-700">Gender:</span>{' '}
+											<span className="font-medium text-black">Gender:</span>{' '}
 											<span className="text-gray-600">{studentData.gender}</span>
 										</p>
 										<p>
-											<span className="font-medium text-gray-700">DOB:</span> <span className="text-gray-600">{studentData.dob}</span>
+											<span className="font-medium text-black">DOB:</span> <span className="text-gray-600">{studentData.dob}</span>
 										</p>
 										<p>
-											<span className="font-medium text-gray-700">Email:</span>{' '}
+											<span className="font-medium text-black">Email:</span>{' '}
 											<span className="text-gray-600">{studentData.email}</span>
 										</p>
 										<p>
-											<span className="font-medium text-gray-700">Contact:</span>{' '}
+											<span className="font-medium text-black">Contact:</span>{' '}
 											<span className="text-gray-600">{studentData.contact}</span>
 										</p>
 										<p>
-											<span className="font-medium text-gray-700">City:</span> <span className="text-gray-600">{studentData.city}</span>
+											<span className="font-medium text-black">City:</span> <span className="text-gray-600">{studentData.city}</span>
 										</p>
 										<p>
-											<span className="font-medium text-gray-700">State:</span>{' '}
+											<span className="font-medium text-black">State:</span>{' '}
 											<span className="text-gray-600">{studentData.state}</span>
 										</p>
 									</div>
@@ -257,25 +257,25 @@ export default function StudentDashboardPage() {
 
 							{/* DMT & Skill Test and Assessment Report Boxes */}
 							<div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 mt-8">
-								<div className="bg-gray-100 p-4 rounded-xl text-center">
-									<p className="text-sm font-semibold text-gray-800">DMT & Skill Test</p>
+								<div className="bg-[#F3F4F6] p-4 rounded-xl text-center">
+									<p className="text-sm font-semibold text-black">DMT & Skill Test</p>
 									<p className="text-sm text-gray-600 mt-1">Score: {studentData.dmitScore}</p>
 								</div>
-								<div className="bg-gray-100 p-4 rounded-xl text-center">
-									<p className="text-sm font-semibold text-gray-800">Assessment Report</p>
+								<div className="bg-[#F3F4F6] p-4 rounded-xl text-center">
+									<p className="text-sm font-semibold text-black">Assessment Report</p>
 									<p className="text-sm text-gray-600 mt-1">{studentData.assessmentReportDate}</p>
 								</div>
 							</div>
 
 							{/* Objective of the Year (assuming this is correct from previous code) */}
-							<div className="mt-6 bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded-r-md">
+							<div className="mt-6 bg-[#FEF9C3] border-l-4 border-yellow-400 p-4 rounded-l-xl">
 								<h3 className="text-sm font-semibold text-yellow-800 mb-1">Objective of the Year</h3>
 								<p className="text-xs text-yellow-700 leading-relaxed">{studentData.objective}</p>
 							</div>
 
 							{/* Key Focus Area (assuming this is correct from previous code and FocusPill component) */}
 							<div className="mt-6">
-								<h3 className="text-md font-semibold text-gray-800 mb-3">Key Focus Area</h3>
+								<h3 className="text-md font-semibold text-black mb-3">Key Focus Area</h3>
 								<div className="flex flex-wrap gap-3">
 									{studentData.focusAreas.map(area => (
 										<FocusPill key={area} label={area} />
@@ -285,15 +285,15 @@ export default function StudentDashboardPage() {
 						</div>
 
 						{/* --- Learning Activities Card --- */}
-						<div className="bg-white rounded-2xl shadow-lg p-6">
+						<div className="bg-white rounded-2xl  p-6">
 							<div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
-								<h2 className="text-xl font-semibold text-gray-800">Learning Activities</h2>
-								<div className="flex items-center gap-1 bg-gray-100 p-1 rounded-full">
+								<h2 className="text-xl font-semibold text-black">Learning Activities</h2>
+								<div className="flex items-center gap-1 bg-[#F9FAFB] p-2 rounded-full">
 									{['Active', 'Completed'].map(filter => (
 										<button
 											key={filter}
 											onClick={() => setLearningActivityFilter(filter as 'Active' | 'Completed')}
-											className={`px-5 py-1.5 text-sm font-medium rounded-full transition-colors ${
+											className={`px-5 py-2 text-sm font-medium rounded-full transition-colors ${
 												learningActivityFilter === filter ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-200'
 											}`}>
 											{filter}
@@ -302,7 +302,7 @@ export default function StudentDashboardPage() {
 								</div>
 							</div>
 							<div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4 flex-wrap">
-								<div className="flex items-center gap-2 text-sm text-gray-700 bg-white border border-gray-300 px-3 py-1.5 rounded-full hover:bg-gray-50">
+								<div className="flex items-center gap-2 text-sm text-black bg-[#F9FAFB] border border-gray-300 px-3 py-1.5 rounded-xl hover:bg-gray-50">
 									<Image src={'/bg-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
 									<span className="font-medium">June 2025</span>
 									<Image src={'/fwd-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
@@ -315,7 +315,7 @@ export default function StudentDashboardPage() {
 									{/* Group Tag: Fully rounded right side */}
 									<span className="px-2 py-1.5 bg-[#F9FAFB] text-base rounded-full rounded-l-none">Monthly ( 50 )</span>
 								</div>
-								<button className="hover:cursor-pointer px-2 py-1.5 text-sm text-gray-700 font-medium border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50 transition-colors">
+								<button className="hover:cursor-pointer px-2 py-1.5 text-sm text-black font-medium border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50 transition-colors">
 									Yearly Plan Overview
 								</button>
 							</div>
@@ -336,19 +336,19 @@ export default function StudentDashboardPage() {
 					{/* === Right Column === */}
 					<div className="lg:col-span-1 space-y-6 overflow-hidden rounded-b-2xl">
 						{/* --- Classes Card --- */}
-						<div className="bg-white rounded-2xl shadow-lg p-6">
+						<div className="bg-white rounded-2xl  p-6">
 							<div className="flex justify-between items-center mb-4">
-								<h2 className="text-lg font-semibold text-gray-800">Classes</h2>
-								<div className="flex items-center gap-1 text-xs text-gray-600 bg-white border border-gray-300 px-2 py-1 rounded-full hover:bg-gray-50">
+								<h2 className="text-lg font-semibold text-black">Classes</h2>
+								<div className="flex items-center gap-2 text-sm text-black bg-[#F9FAFB] border border-gray-300 px-3 py-1.5 rounded-xl hover:bg-gray-50">
 									<Image src={'/bg-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
-									<span className="font-medium">{classStats.month}</span>
+									<span className="font-medium">June 2025</span>
 									<Image src={'/fwd-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
 								</div>
 							</div>
 							<div className="flex justify-between items-baseline mb-4">
 								<div>
 									<p className="text-xs text-gray-500">Complete</p>
-									<p className="text-2xl font-bold text-gray-800">
+									<p className="text-2xl font-bold text-black">
 										{classStats.complete}
 										<span className="text-sm font-normal text-gray-500"> / {classStats.total}</span>
 									</p>
@@ -356,7 +356,7 @@ export default function StudentDashboardPage() {
 								<div className="text-right">
 									<p className="text-xs text-[#6B7280]">Incomplete</p>
 									{/* Incomplete count styled red/pink */}
-									<p className="text-sm text-center font-bold mt-2 text-pink-600">{classStats.incomplete}</p>
+									<p className="text-sm text-center font-bold mt-2 text-[#FF3366]">{classStats.incomplete}</p>
 								</div>
 							</div>
 							<div className="space-y-1 text-sm">
@@ -379,8 +379,8 @@ export default function StudentDashboardPage() {
 						</div>
 
 						{/* --- Your Teachers Card --- */}
-						<div className="bg-white rounded-2xl shadow-lg p-6">
-							<h2 className="text-lg font-semibold text-gray-800 mb-4">Your teachers</h2>
+						<div className="bg-white rounded-2xl  p-6">
+							<h2 className="text-lg font-semibold text-black mb-4">Your teachers</h2>
 							<div className="space-y-3">
 								{teachersData.map(teacher => (
 									<TeacherItem key={teacher.id} {...teacher} />
@@ -389,8 +389,8 @@ export default function StudentDashboardPage() {
 						</div>
 
 						{/* --- Notification Card --- */}
-						<div className="bg-white rounded-2xl shadow-lg p-6 h-full">
-							<h2 className="text-lg font-semibold text-gray-800 mb-4">Notification</h2>
+						<div className="bg-white rounded-2xl  p-6 h-full">
+							<h2 className="text-lg font-semibold text-black mb-4">Notification</h2>
 							{/* Scrollable notifications area */}
 							<div className="space-y-3 max-h-full overflow-y-auto">
 								{notificationsData.map(notif => (
