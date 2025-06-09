@@ -30,9 +30,11 @@ const PALETTE = {
   WHITE_CARD: "#FFFFFF",
 };
 
-const sessionData = Array.from({ length: 12 }, (_, i) => ({
+const sessionData = Array.from({ length: 14 }, (_, i) => ({
   title: `Session Name / Number ${i + 1}`,
   content: `This is detailed content for session ${i + 1}. It includes explanation of the topic, practical examples, and extended learning objectives. The content is structured to help students understand core principles and apply them in real scenarios. 
+
+  This is detailed content for session ${i + 1}. It includes explanation of the topic, practical examples, and extended learning objectives. The content is structured to help students understand core principles and apply them in real scenarios. 
 
   This is detailed content for session ${i + 1}. It includes explanation of the topic, practical examples, and extended learning objectives. The content is structured to help students understand core principles and apply them in real scenarios. 
 
@@ -43,7 +45,7 @@ const sessionData = Array.from({ length: 12 }, (_, i) => ({
 const Curriculum = () => {
   const [selected, setSelected] = useState<string>('Category 1');
 
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const headerUser = {
     name: "Educator Name",
     role: "Teacher",
@@ -54,8 +56,8 @@ const Curriculum = () => {
       <Header user={headerUser} />
       <MaxWidthWrapper>
         <section className="bg-gray-100">
-          <div className="w-full flex justify-center bg-white rounded-2xl py-2 my-2">
-            <div className="flex flex-wrap justify-center  gap-4">
+          <div className="px-4 pt-4"><div className="w-full flex justify-center bg-white  rounded-2xl py-2">
+            <div className="flex flex-wrap justify-center px-2 gap-4">
               {categories.map((category) => (
                 <button
                   key={category}
@@ -87,10 +89,11 @@ const Curriculum = () => {
                 </button>
               ))}
             </div>
-          </div>
+          </div></div>
+
           <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 p-4">
             {/* Left column */}
-            <div className="bg-blue-100 p-6 rounded-xl">
+            <div className="bg-white p-6 rounded-xl">
               <h2 className="text-xl font-semibold mb-4">Unit Name</h2>
 
               <div className="space-y-2">
@@ -98,24 +101,31 @@ const Curriculum = () => {
                   const isOpen = activeIndex === index;
 
                   return (
-                    <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div
+                      key={index}
+                      className="bg-gray-100 p-2 rounded-2xl shadow-md overflow-hidden transition-all"
+                    >
                       <button
                         onClick={() => setActiveIndex(isOpen ? null : index)}
-                        className="w-full flex justify-between items-center px-4 py-3 font-medium"
+                        className="w-full bg-white rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none"
                       >
                         <span>{item.title}</span>
-                        {isOpen ? <IoIosArrowUp className="text-xl" /> : <IoIosArrowDown className="text-xl" />}
+                        {isOpen ? (
+                          <IoIosArrowUp className="text-xl text-gray-600" />
+                        ) : (
+                          <IoIosArrowDown className="text-xl text-gray-600" />
+                        )}
                       </button>
 
                       <AnimatePresence initial={false}>
                         {isOpen && (
                           <motion.div
                             initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
+                            animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <div className="px-4 pb-4 text-sm text-gray-700 whitespace-pre-line">
+                            <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-sm text-gray-700 whitespace-pre-line">
                               {item.content}
                             </div>
                           </motion.div>
@@ -176,11 +186,11 @@ const Curriculum = () => {
                 <div className="overflow-auto">
                   <table className="w-full table-auto border-collapse text-sm">
                     <thead>
-                      <tr className="bg-blue-200">
-                        <th className="border px-2 py-2 w-12">S. No</th>
-                        <th className="border px-2 py-2">Typology of Questions</th>
-                        <th className="border px-2 py-2">Total Marks</th>
-                        <th className="border px-2 py-2">% Weightage <br /> (approx.)</th>
+                      <tr className="bg-blue-400">
+                        <th className="border border-black px-2 py-2 w-12">S. No</th>
+                        <th className="border border-black px-2 py-2">Typology of Questions</th>
+                        <th className="border border-black px-2 py-2">Total Marks</th>
+                        <th className="border border-black px-2 py-2">% Weightage <br /> (approx.)</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -190,16 +200,16 @@ const Curriculum = () => {
                         [3, "Analysing: Examine and break information into parts by identifying motives or causes. Make inferences and find evidence to support generalizations. Evaluating: Present and defend opinions by making judgments about information, validity of ideas, or quality of work based on a set of criteria. Creating: Compile information together in a different way by combining elements in a new pattern or proposing alternative solutions.", 18, 22],
                       ].map(([sn, question, marks, weight], i) => (
                         <tr key={i} className="bg-white even:bg-blue-50">
-                          <td className="border px-2 py-2 text-center align-top">{sn}</td>
-                          <td className="border px-2 py-2">{question}</td>
-                          <td className="border px-2 py-2 text-center">{marks}</td>
-                          <td className="border px-2 py-2 text-center">{weight}</td>
+                          <td className="border border-black px-2 py-2 text-center align-top">{sn}</td>
+                          <td className="border border-black px-2 py-2">{question}</td>
+                          <td className="border border-black px-2 py-2 text-center">{marks}</td>
+                          <td className="border border-black px-2 py-2 text-center">{weight}</td>
                         </tr>
                       ))}
-                      <tr className="font-bold bg-blue-100">
-                        <td className="border px-2 py-2 text-center" colSpan={2}>Total</td>
-                        <td className="border px-2 py-2 text-center">80</td>
-                        <td className="border px-2 py-2 text-center">100</td>
+                      <tr className="font-bold bg-blue-400">
+                        <td className="border border-black px-2 py-2 text-center" colSpan={2}>Total</td>
+                        <td className="border border-black px-2 py-2 text-center">80</td>
+                        <td className="border border-black px-2 py-2 text-center">100</td>
                       </tr>
                     </tbody>
                   </table>
@@ -212,8 +222,8 @@ const Curriculum = () => {
                     <table className="w-full table-auto border-collapse text-sm">
                       <thead>
                         <tr className="bg-blue-200">
-                          <th className="border px-3 py-2 text-left" colSpan={2}>INTERNAL ASSESSMENT</th>
-                          <th className="border px-3 py-2 w-24 text-right">20 Marks</th>
+                          <th className="border border-black px-3 py-2 text-left" colSpan={2}>INTERNAL ASSESSMENT</th>
+                          <th className="border border-black px-3 py-2 w-24 text-right">20 Marks</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -223,8 +233,8 @@ const Curriculum = () => {
                           { component: "Lab Practical (Lab activities to be done from the prescribed books)", marks: "05 Marks" },
                         ].map((item, idx) => (
                           <tr key={idx} className={idx % 2 === 0 ? "bg-white" : "bg-blue-50"}>
-                            <td className="border px-3 py-2" colSpan={2}>{item.component}</td>
-                            <td className="border px-3 py-2 text-right" >{item.marks}</td>
+                            <td className="border border-black px-3 py-2" colSpan={2}>{item.component}</td>
+                            <td className="border border-black px-3 py-2 text-right" >{item.marks}</td>
                           </tr>
                         ))}
 
