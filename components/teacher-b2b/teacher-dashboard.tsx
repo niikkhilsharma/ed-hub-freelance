@@ -502,9 +502,9 @@ const TeacherDashboard = () => {
                                         <AccordionItem
                                             key={index}
                                             value={`item-${index}`}
-                                            className="rounded-xl border bg-white shadow"
+                                            className="rounded-2xl p-2 border bg-gray-100 shadow"
                                         >
-                                            <AccordionTrigger className="text-left px-4 py-3">
+                                            <AccordionTrigger className="text-left rounded-2xl bg-white px-4 py-3">
                                                 <div>
                                                     <h2 className="text-base font-medium">{item.title}</h2>
                                                     <p className="text-sm text-gray-500">
@@ -512,7 +512,7 @@ const TeacherDashboard = () => {
                                                     </p>
                                                 </div>
                                             </AccordionTrigger>
-                                            <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700">
+                                            <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
                                                 <p className="font-semibold">Before the class</p>
                                                 <ul className="list-disc pl-4 space-y-1">
                                                     {item.points.map((point, i) => (
@@ -574,7 +574,7 @@ const TeacherDashboard = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-gray-100 rounded-2xl p-4">
+                        <div className="bg-white rounded-2xl p-4">
                             <div className="space-y-4">
 
                                 {/* Top Bar */}
@@ -589,9 +589,9 @@ const TeacherDashboard = () => {
                                         <AccordionItem
                                             key={index}
                                             value={`item-${index}`}
-                                            className="rounded-xl border bg-white shadow"
+                                            className="rounded-xl p-2 bg-gray-100 shadow "
                                         >
-                                            <AccordionTrigger className="text-left px-4 py-3">
+                                            <AccordionTrigger className="text-left px-4 py-3 rounded-2xl bg-white">
                                                 <div>
                                                     <h2 className="text-base font-medium">{item.title}</h2>
                                                     <p className="text-sm text-gray-500">
@@ -599,7 +599,7 @@ const TeacherDashboard = () => {
                                                     </p>
                                                 </div>
                                             </AccordionTrigger>
-                                            <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700">
+                                            <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
                                                 <p className="font-semibold">Before the class</p>
                                                 <ul className="list-disc pl-4 space-y-1">
                                                     {item.points.map((point, i) => (
