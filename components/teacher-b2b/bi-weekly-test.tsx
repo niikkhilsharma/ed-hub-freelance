@@ -186,7 +186,7 @@ export default function TestsPage() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-[#eeeeee] py-6">
+    <div className="min-h-screen bg-[#eeeeee] py-6 px-4">
       <div className="container bg-white max-w-7xl rounded-2xl mx-auto px-4">
         <div className="bg-white rounded-lg p-6">
           <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
@@ -199,7 +199,7 @@ export default function TestsPage() {
                 />
                 <div>
                   <Select defaultValue="all">
-                    <SelectTrigger className="w-fit rounded-xl bg-[#F9FAFB] text-black border border-[#E5E7EB]">
+                    <SelectTrigger className="w-fit font-medium rounded-2xl bg-[#F9FAFB] text-black border border-[#E5E7EB]">
                       <SelectValue placeholder="All Batches" />
                     </SelectTrigger>
                     <SelectContent>
@@ -225,7 +225,7 @@ export default function TestsPage() {
             <div className="md:col-span-2 ">
               <div className="flex justify-end items-center mb-6">
                 <Button
-                  className="bg-[#3366FF] hover:bg-blue-600 text-white font-medium rounded-full text-md py-6 px-6"
+                  className="bg-[#3366FF] hover:bg-blue-600 text-white font-semibold rounded-full text-md py-6 px-6"
                 >
                   Create BW Test
                 </Button>
@@ -271,7 +271,7 @@ function TestAnalytics({
       {/* Top bar + stats */}
       <div>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-md font-medium">Test</h3>
+          <h3 className="text-md font-semibold">Test</h3>
           <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
             <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
             <span>June 2025</span>

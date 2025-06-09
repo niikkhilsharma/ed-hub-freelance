@@ -2,9 +2,10 @@
 
 import React, { useState } from 'react';
 import { IoCheckmarkCircle, IoCloseCircle, IoTimeOutline, IoStar, IoStarOutline } from 'react-icons/io5';
-import { FiArrowLeft} from 'react-icons/fi';
+import { FiArrowLeft } from 'react-icons/fi';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import MaxWidthWrapper from '../max-width-wrapper';
 
 // --- Data Interfaces ---
 interface Option {
@@ -219,9 +220,13 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
         <p className="text-lg text-black mb-1">Assessment Score</p>
         <p className={`text-4xl font-bold ${COLOR_SCORE_BLUE}`}>{summary.assessmentScore}</p>
       </div>
+      <div className={`${BACKGROUND_LIGHT_GRAY_BOX} p-4 rounded-xl text-center`}>
+        <p className="text-lg text-black mb-1">Individual Score</p>
+        <p className={`text-4xl font-bold ${COLOR_SCORE_BLUE}`}>3</p>
+      </div>
 
       {/* Individual Scores - NEW */}
-      <IndividualScoresPanel scores={summary.individualScores} />
+      {/* <IndividualScoresPanel scores={summary.individualScores} /> */}
 
       {/* View Detailed Report Button */}
       <button className={`w-full flex items-center justify-center gap-2 py-1.5 ${BACKGROUND_LIGHT_GRAY_BOX} rounded-xl hover:bg-gray-200 transition-colors`}>
@@ -294,26 +299,28 @@ export default function StudentPaperPage() {
   const headerUser = {
     name: "Shlok Agheda",
     role: "Student",
-    avatarSrc: "/teacher-b2b/profile.jpg",
+    avatarSrc: "/teacher-b2b/profile.png",
   }; // UPDATE PATH
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
+      <MaxWidthWrapper>
+        <div className="bg-gray-100">
+          {/* Back Button and Page Title */}
+          <div className="flex items-center gap-2 bg-white px-6 py-4">
+            <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
+              <FiArrowLeft className="w-5 h-5 font-extrabold" />
+            </button>
+            <h1 className="text-xl font-bold text-[#FF3366]">Test Name</h1>{" "}
+            {/* Or dynamic course name */}
+          </div>
 
-      {/* Back Button and Page Title */}
-      <div className="flex items-center gap-2 bg-white px-6 py-4">
-        <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
-          <FiArrowLeft className="w-5 h-5 font-extrabold" />
-        </button>
-        <h1 className="text-xl font-bold text-[#FF3366]">Test Name</h1>{" "}
-        {/* Or dynamic course name */}
-      </div>
-
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
-        <AssessmentReviewPage />
-      </main>
-
+          <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+            <AssessmentReviewPage />
+          </main>
+        </div>
+      </MaxWidthWrapper>
       <Footer />
     </div>
   );

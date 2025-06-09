@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { FiArrowLeft, FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
+import MaxWidthWrapper from "../max-width-wrapper";
 
 export default function StudentListPage() {
   const headerUser = {
@@ -14,19 +15,23 @@ export default function StudentListPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
+      <MaxWidthWrapper>{/* Back Button and Page Title */}
+        <div className="bg-gray-100">
 
-      {/* Back Button and Page Title */}
-      <div className="flex items-center gap-2 bg-white px-6 py-4">
-        <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
-          <FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
-        </button>
-        <h1 className="text-xl font-bold text-[#FF3366]">DMIT Test</h1>{" "}
-        {/* Or dynamic course name */}
-      </div>
 
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
-        <StudentPerformancePage />
-      </main>
+          <div className="flex items-center bg-white gap-2 px-6 py-4">
+            <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
+              <FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
+            </button>
+            <h1 className="text-xl font-bold text-[#FF3366]">Test Name</h1>{" "}
+            {/* Or dynamic course name */}
+          </div>
+
+          <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+            <StudentPerformancePage />
+          </main>
+        </div>
+      </MaxWidthWrapper>
 
       <Footer />
     </div>
@@ -139,7 +144,7 @@ const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
       <img
         src={student.avatarUrl}
         alt={`${student.name}'s avatar`}
-        className="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl object-cover flex-shrink-0"
+        className="w-16 h-16 sm:w-24 sm:h-24 rounded-xl object-cover flex-shrink-0"
       />
 
       {/* Student Info */}
@@ -171,9 +176,8 @@ const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
         <div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center min-w-[75px] sm:min-w-[140px]">
           <p className="text-sm text-[#6B7280] mb-0.5">Status</p>
           <p
-            className={`text-md  font-semibold ${
-              student.status === "Passed" ? "text-[#4BC4B6]" : "text-[#FF3366CC]"
-            }`}
+            className={`text-md  font-semibold ${student.status === "Passed" ? "text-[#4BC4B6]" : "text-[#FF3366CC]"
+              }`}
           >
             {student.status}
           </p>

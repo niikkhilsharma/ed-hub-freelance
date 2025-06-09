@@ -1,5 +1,6 @@
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
 import BiWeekly from "@/components/teacher-b2b/bi-weekly-test";
 
 export default function Assesment() {
@@ -11,9 +12,9 @@ export default function Assesment() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header user={headerUser} />
-
+    <MaxWidthWrapper>
       <BiWeekly />
-
+    </MaxWidthWrapper>
       <Footer />
     </div>
   );

@@ -294,329 +294,331 @@ const TeacherDashboard = () => {
         avatarSrc: "/teacher-b2b/profile.png",
     };
     return (
-        <MaxWidthWrapper>
+        <>
             <Header user={headerUser} />
-            <section className="bg-gray-100 ">
-                <main className="p-2">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.75fr_1.75fr_1.5fr] gap-4">
-                        {/* Profile Card */}
-                        <div className="bg-white rounded-2xl p-4 shadow-sm space-y-4">
-                            <div className="flex items-center justify-between gap-4">
-                                <div className="flex gap-6 items-center">
-                                    <Image
-                                        src="/teacher-b2b/profile2.png"
-                                        alt="Profile"
-                                        width={90}
-                                        height={90}
-                                        className="rounded-full"
-                                    />
-                                    <div>
-                                        <h2 className="text-lg font-semibold whitespace-nowrap mb-1">Ronak Mathur</h2>
-                                        <div className="text-sm text-gray-500 mb-1">⭐️⭐️⭐️⭐️</div>
-                                        <span className="bg-pink-200 text-pink-700 px-2 py-1 text-xs rounded-full inline-block mt-1">Group A</span>
+            <MaxWidthWrapper>
+                <section className="bg-gray-100 ">
+                    <main className="p-2">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.75fr_1.75fr_1.5fr] gap-4">
+                            {/* Profile Card */}
+                            <div className="bg-white rounded-2xl p-4 shadow-sm space-y-4">
+                                <div className="flex items-center justify-between gap-4">
+                                    <div className="flex gap-6 items-center">
+                                        <Image
+                                            src="/teacher-b2b/profile2.png"
+                                            alt="Profile"
+                                            width={90}
+                                            height={90}
+                                            className="rounded-full"
+                                        />
+                                        <div>
+                                            <h2 className="text-lg font-semibold whitespace-nowrap mb-1">Ronak Mathur</h2>
+                                            <div className="text-sm text-gray-500 mb-1">⭐️⭐️⭐️⭐️</div>
+                                            <span className="bg-pink-200 text-pink-700 px-2 py-1 text-xs rounded-full inline-block mt-1">Group A</span>
+                                        </div>
+                                    </div>
+                                    <div className="text-xs font-medium text-gray-600 space-y-1">
+                                        <p>Gender: Male</p>
+                                        <p>DOB: 5 Jun 2015</p>
+                                        <p className='whitespace-nowrap'>Email: example@gmail.com</p>
+                                        <p>Contact: +91 1234567890</p>
+                                        <p>City: Mumbai</p>
+                                        <p>State: Maharashtra</p>
                                     </div>
                                 </div>
-                                <div className="text-xs font-medium text-gray-600 space-y-1">
-                                    <p>Gender: Male</p>
-                                    <p>DOB: 5 Jun 2015</p>
-                                    <p className='whitespace-nowrap'>Email: example@gmail.com</p>
-                                    <p>Contact: +91 1234567890</p>
-                                    <p>City: Mumbai</p>
-                                    <p>State: Maharashtra</p>
+
+                                <div className="h-[200px] w-full overflow-hidden rounded-lg">
+                                    <Image src="/forest.avif" alt="Demo" width={400} height={200} className="w-full object-cover" />
+                                </div>
+
+                                <div className="flex justify-between items-center">
+                                    <span className="text-m font-medium">Demo Video</span>
+                                    <button className="text-sm font-medium py-1 px-4 rounded-full" style={{ backgroundColor: PALETTE.GREEN_LIGHT, color: PALETTE.GREEN_DARK }}
+                                    >Edit</button>
+                                </div>
+
+
+
+                                <div>
+                                    <h4 className="font-semibold text-sm mb-2">Classes Allocated</h4>
+                                    <div className="flex flex-wrap gap-3">
+                                        {classesAllocated.map((cls) => (
+                                            <span key={cls} className="text-sm bg-gray-200 px-2 py-2 rounded-full">{cls}</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
 
-                            <div className="h-[200px] w-full overflow-hidden rounded-lg">
-                                <Image src="/forest.avif" alt="Demo" width={400} height={200} className="w-full object-cover" />
-                            </div>
+                            {/* Classes List */}
+                            <div className="bg-white rounded-2xl p-4 shadow-sm">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className="font-semibold text-lg">Classes</h2>
+                                    <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                                        <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+                                        <span>June 2025</span>
+                                        <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+                                    </div>
+                                </div>
+                                <div className="space-y-3">
+                                    {classSchedule.map((cls, index) => (
+                                        <div key={index} className="flex justify-between items-center bg-gray-100 p-2 rounded-2xl">
+                                            <div>
+                                                <p className="text-sm rounded-2xl font-semibold bg-gray-200 p-4 leading-tight text-center">
+                                                    {cls.time.split(" ").map((part, i) => (
+                                                        <span key={i} className="block">
+                                                            {part}
+                                                        </span>
+                                                    ))}
+                                                </p>
 
-                            <div className="flex justify-between items-center">
-                                <span className="text-m font-medium">Demo Video</span>
-                                <button className="text-sm font-medium py-1 px-4 rounded-full" style={{ backgroundColor: PALETTE.GREEN_LIGHT, color: PALETTE.GREEN_DARK }}
-                                >Edit</button>
-                            </div>
-
-
-
-                            <div>
-                                <h4 className="font-semibold text-sm mb-2">Classes Allocated</h4>
-                                <div className="flex flex-wrap gap-3">
-                                    {classesAllocated.map((cls) => (
-                                        <span key={cls} className="text-sm bg-gray-200 px-2 py-2 rounded-full">{cls}</span>
+                                            </div>
+                                            <div>
+                                                <p className="text-m font-semibold">{cls.title}</p>
+                                                <p className="text-sm text-gray-500">{cls.className}</p>
+                                            </div>
+                                            <button className="text-white text-m px-4 py-1 rounded-full" style={{ backgroundColor: PALETTE.ACCENT_PINK }}>Start</button>
+                                        </div>
                                     ))}
                                 </div>
-                            </div>
-                        </div>
-
-                        {/* Classes List */}
-                        <div className="bg-white rounded-2xl p-4 shadow-sm">
-                            <div className="flex justify-between items-center mb-4">
-                                <h2 className="font-semibold text-lg">Classes</h2>
-                                <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                                    <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                                    <span>June 2025</span>
-                                    <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+                                <div className="flex justify-end">
+                                    <button className="mt-4 px-4 text-right bg-blue-600 text-white py-2 rounded-full">Schedule Class</button>
                                 </div>
                             </div>
-                            <div className="space-y-3">
-                                {classSchedule.map((cls, index) => (
-                                    <div key={index} className="flex justify-between items-center bg-gray-100 p-2 rounded-2xl">
-                                        <div>
-                                            <p className="text-sm rounded-2xl font-semibold bg-gray-200 p-4 leading-tight text-center">
-                                                {cls.time.split(" ").map((part, i) => (
-                                                    <span key={i} className="block">
-                                                        {part}
-                                                    </span>
-                                                ))}
-                                            </p>
 
-                                        </div>
-                                        <div>
-                                            <p className="text-m font-semibold">{cls.title}</p>
-                                            <p className="text-sm text-gray-500">{cls.className}</p>
-                                        </div>
-                                        <button className="text-white text-m px-4 py-1 rounded-full" style={{ backgroundColor: PALETTE.ACCENT_PINK }}>Start</button>
+                            {/* Teacher Toolkit */}
+                            <div className="bg-white rounded-2xl p-4 shadow-sm space-y-3">
+                                <h2 className="font-semibold text-lg">Teacher Toolkit</h2>
+                                {tools.map((tool, idx) => (
+                                    <div key={idx} className="flex items-center gap-2 text-m bg-gray-200 p-4 rounded-xl font-medium cursor-pointer">
+                                        📄  {tool}
                                     </div>
                                 ))}
                             </div>
-                            <div className="flex justify-end">
-                                <button className="mt-4 px-4 text-right bg-blue-600 text-white py-2 rounded-full">Schedule Class</button>
-                            </div>
                         </div>
+                        <div
+                            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_2fr] gap-2 md:gap-4 py-2"
+                        >
+                            {/* First item - Full width on sm to md, 40% on lg */}
+                            <div className="rounded-2xl bg-white py-4 px-8 shadow space-y-6">
+                                {/* Tabs */}
+                                <Tabs defaultValue="class-a">
+                                    <TabsList className=" w-fit mb-2">
+                                        <TabsTrigger value="class-a">Class A</TabsTrigger>
+                                        <TabsTrigger value="class-b">Class B</TabsTrigger>
+                                        <TabsTrigger value="class-c">Class C</TabsTrigger>
+                                    </TabsList>
 
-                        {/* Teacher Toolkit */}
-                        <div className="bg-white rounded-2xl p-4 shadow-sm space-y-3">
-                            <h2 className="font-semibold text-lg">Teacher Toolkit</h2>
-                            {tools.map((tool, idx) => (
-                                <div key={idx} className="flex items-center gap-2 text-m bg-gray-200 p-4 rounded-xl font-medium cursor-pointer">
-                                    📄  {tool}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_2fr] gap-2 md:gap-4 py-2"
-                    >
-                        {/* First item - Full width on sm to md, 40% on lg */}
-                        <div className="rounded-2xl bg-white py-4 px-8 shadow space-y-6">
-                            {/* Tabs */}
-                            <Tabs defaultValue="class-a">
-                                <TabsList className=" w-fit mb-2">
-                                    <TabsTrigger value="class-a">Class A</TabsTrigger>
-                                    <TabsTrigger value="class-b">Class B</TabsTrigger>
-                                    <TabsTrigger value="class-c">Class C</TabsTrigger>
-                                </TabsList>
-
-                                <TabsContent value="class-a">
-                                    {/* Progress Info Box */}
-                                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 rounded-xl bg-gray-100 p-4">
-                                        <div className="w-full md:w-1/2 border-r border-r-zinc-700 pr-6">
-                                            <p className="text-sm font-medium text-muted-foreground">Class Completion Progress</p>
-                                            <p className="text-lg font-semibold">{progress} %</p>
-                                            <Progress value={progress} className={`h-2 mt-2 rounded-full`} />
-                                        </div>
-                                        <div className="flex gap-10 text-sm md:text-base">
-                                            <div>
-                                                <p className="font-semibold text-center">{enrolledCount}</p>
-                                                <p className="text-muted-foreground" style={{color: PALETTE.GREEN_DARK}}>Students Enrolled</p>
+                                    <TabsContent value="class-a">
+                                        {/* Progress Info Box */}
+                                        <div className="flex flex-col md:flex-row justify-between items-center gap-4 rounded-xl bg-gray-100 p-4">
+                                            <div className="w-full md:w-1/2 border-r border-r-zinc-700 pr-6">
+                                                <p className="text-sm font-medium text-muted-foreground">Class Completion Progress</p>
+                                                <p className="text-lg font-semibold">{progress} %</p>
+                                                <Progress value={progress} className={`h-2 mt-2 rounded-full`} />
                                             </div>
-                                            <div>
-                                                <p className="font-semibold text-center">{averageScore} %</p>
-                                                <p className="text-muted-foreground" style={{color: PALETTE.GREEN_DARK}}>Average Score</p>
+                                            <div className="flex gap-10 text-sm md:text-base">
+                                                <div>
+                                                    <p className="font-semibold text-center">{enrolledCount}</p>
+                                                    <p className="text-muted-foreground" style={{ color: PALETTE.GREEN_DARK }}>Students Enrolled</p>
+                                                </div>
+                                                <div>
+                                                    <p className="font-semibold text-center">{averageScore} %</p>
+                                                    <p className="text-muted-foreground" style={{ color: PALETTE.GREEN_DARK }}>Average Score</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    {/* Students Table */}
-                                    <div className="mt-6">
-                                        <h2 className="text-lg font-semibold mb-3">Students Enrolled</h2>
-                                        <div className="overflow-x-auto rounded-xl">
-                                            <table className="min-w-full bg-blue-50 rounded-2xl overflow-hidden">
-                                                <thead>
-                                                    <tr className="text-left bg-blue-100 text-sm font-medium text-gray-700">
-                                                        <th className="p-3">Student name</th>
-                                                        <th className="p-3">Date</th>
-                                                        <th className="p-3">Exam 1</th>
-                                                        <th className="p-3">Exam 2</th>
-                                                        <th className="p-3">Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody className="text-sm text-gray-800">
-                                                    {studentData.map((student, index) => (
-                                                        <tr key={index} className="odd:bg-blue-50 even:bg-white">
-                                                            <td className="flex items-center gap-2 px-2 py-1">
-                                                                <Image
-                                                                    src={student.image}
-                                                                    alt={student.name}
-                                                                    width={32}
-                                                                    height={32}
-                                                                    className="rounded-full"
-                                                                />
-                                                                {student.name}
-                                                            </td>
-                                                            <td className="p-3">{student.date}</td>
-                                                            <td className="p-3">{student.exam1}</td>
-                                                            <td className="p-3">{student.exam2}</td>
-                                                            <td className="p-3">{student.total}</td>
+                                        {/* Students Table */}
+                                        <div className="mt-6">
+                                            <h2 className="text-lg font-semibold mb-3">Students Enrolled</h2>
+                                            <div className="overflow-x-auto rounded-xl">
+                                                <table className="min-w-full bg-blue-50 rounded-2xl overflow-hidden">
+                                                    <thead>
+                                                        <tr className="text-left bg-blue-100 text-sm font-medium text-gray-700">
+                                                            <th className="p-3">Student name</th>
+                                                            <th className="p-3">Date</th>
+                                                            <th className="p-3">Exam 1</th>
+                                                            <th className="p-3">Exam 2</th>
+                                                            <th className="p-3">Total</th>
                                                         </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody className="text-sm text-gray-800">
+                                                        {studentData.map((student, index) => (
+                                                            <tr key={index} className="odd:bg-blue-50 even:bg-white">
+                                                                <td className="flex items-center gap-2 px-2 py-1">
+                                                                    <Image
+                                                                        src={student.image}
+                                                                        alt={student.name}
+                                                                        width={32}
+                                                                        height={32}
+                                                                        className="rounded-full"
+                                                                    />
+                                                                    {student.name}
+                                                                </td>
+                                                                <td className="p-3">{student.date}</td>
+                                                                <td className="p-3">{student.exam1}</td>
+                                                                <td className="p-3">{student.exam2}</td>
+                                                                <td className="p-3">{student.total}</td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                </TabsContent>
+                                    </TabsContent>
 
-                                {/* Placeholder content for other tabs */}
-                                <TabsContent value="class-b">Class B content here...</TabsContent>
-                                <TabsContent value="class-c">Class C content here...</TabsContent>
-                            </Tabs>
-                        </div>
-
-                        {/* Second item - 50% width on md, 40% on lg */}
-                        <div className="bg-white rounded-2xl p-4">
-                            <div className="space-y-4">
-                                {/* Header */}
-                                <div>
-                                    <h1 className="text-xl font-bold">Pedagogy & Class Flows</h1>
-                                </div>
-
-                                {/* Top Bar */}
-                                <div className="flex items-center justify-between gap-2">
-                                    <div className="relative w-full max-w-md">
-                                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 z-1 ">
-                                            <FaSearch />
-                                        </span>
-                                        <Input
-                                            type="text"
-                                            placeholder="Search"
-                                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                        />
-                                    </div>
-                                    <Button className='rounded-full bg-blue-100 font-medium text-blue-500' variant="outline">View All</Button>
-                                </div>
-
-                                {/* Accordions */}
-                                <Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
-
-                                    {contentItems.map((item, index) => (
-                                        <AccordionItem
-                                            key={index}
-                                            value={`item-${index}`}
-                                            className="rounded-2xl p-2 border bg-gray-100 shadow"
-                                        >
-                                            <AccordionTrigger className="text-left rounded-2xl bg-white px-4 py-3">
-                                                <div>
-                                                    <h2 className="text-base font-medium">{item.title}</h2>
-                                                    <p className="text-sm text-gray-500">
-                                                        Duration: {item.duration} | Topic: {item.topic}
-                                                    </p>
-                                                </div>
-                                            </AccordionTrigger>
-                                            <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
-                                                <p className="font-semibold">Before the class</p>
-                                                <ul className="list-disc pl-4 space-y-1">
-                                                    {item.points.map((point, i) => (
-                                                        <li key={i}>{point}</li>
-                                                    ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
+                                    {/* Placeholder content for other tabs */}
+                                    <TabsContent value="class-b">Class B content here...</TabsContent>
+                                    <TabsContent value="class-c">Class C content here...</TabsContent>
+                                </Tabs>
                             </div>
-                        </div>
 
-                        {/* Third item - 50% width on md, 20% on lg */}
-                        <div className="bg-white rounded-2xl p-4">
-                            <div className="overflow-x-auto">
-                                <div className="">
-                                    <h2 className="text-lg font-semibold mb-4">Timetable</h2>
-
-                                    {/* Days Header */}
-                                    <div className="grid grid-cols-[80px_repeat(5,minmax(120px,1fr))] border-b text-sm text-gray-500 font-medium">
-                                        <div></div>
-                                        <div className="text-center py-2">14<br />Mon</div>
-                                        <div className="text-center py-2">15<br />Tue</div>
-                                        <div className="text-center py-2">16<br />Wed</div>
-                                        <div className="text-center py-2">17<br />Thu</div>
-                                        <div className="text-center py-2">18<br />Fri</div>
+                            {/* Second item - 50% width on md, 40% on lg */}
+                            <div className="bg-white rounded-2xl p-4">
+                                <div className="space-y-4">
+                                    {/* Header */}
+                                    <div>
+                                        <h1 className="text-xl font-bold">Pedagogy & Class Flows</h1>
                                     </div>
 
-                                    {/* Time Slots */}
-                                    {[
-                                        "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"
-                                    ].map((time, rowIdx) => (
-                                        <div key={time} className="grid grid-cols-[80px_repeat(5,minmax(120px,1fr))] border-b text-sm">
-                                            {/* Time Label */}
-                                            <div className="text-gray-500 py-4 px-2">{time}</div>
+                                    {/* Top Bar */}
+                                    <div className="flex items-center justify-between gap-2">
+                                        <div className="relative w-full max-w-md">
+                                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 z-1 ">
+                                                <FaSearch />
+                                            </span>
+                                            <Input
+                                                type="text"
+                                                placeholder="Search"
+                                                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                            />
+                                        </div>
+                                        <Button className='rounded-full bg-blue-100 font-medium text-blue-500' variant="outline">View All</Button>
+                                    </div>
 
-                                            {/* Time cells */}
-                                            {[0, 1, 2, 3, 4].map((colIdx) => {
-                                                const slot = timetableData[rowIdx]?.[colIdx];
-                                                return (
-                                                    <div key={colIdx} className="p-2">
-                                                        {slot ? (
-                                                            <div className={`rounded-xl p-2 text-xs ${slot.bg}`}>
-                                                                <div className="font-medium">{slot.title}</div>
-                                                                <div className="flex justify-between items-center">
-                                                                    <div className="text-gray-600">{slot.subtitle}</div>
-                                                                    <div className="text-right text-[10px] text-gray-500 ">{slot.time}</div>
-                                                                </div>
-                                                            </div>
-                                                        ) : (
-                                                            <div className="h-auto"></div>
-                                                        )}
+                                    {/* Accordions */}
+                                    <Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
+
+                                        {contentItems.map((item, index) => (
+                                            <AccordionItem
+                                                key={index}
+                                                value={`item-${index}`}
+                                                className="rounded-2xl p-2 border bg-gray-100 shadow"
+                                            >
+                                                <AccordionTrigger className="text-left rounded-2xl bg-white px-4 py-3">
+                                                    <div>
+                                                        <h2 className="text-base font-medium">{item.title}</h2>
+                                                        <p className="text-sm text-gray-500">
+                                                            Duration: {item.duration} | Topic: {item.topic}
+                                                        </p>
                                                     </div>
-                                                );
-                                            })}
+                                                </AccordionTrigger>
+                                                <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
+                                                    <p className="font-semibold">Before the class</p>
+                                                    <ul className="list-disc pl-4 space-y-1">
+                                                        {item.points.map((point, i) => (
+                                                            <li key={i}>{point}</li>
+                                                        ))}
+                                                    </ul>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        ))}
+                                    </Accordion>
+                                </div>
+                            </div>
+
+                            {/* Third item - 50% width on md, 20% on lg */}
+                            <div className="bg-white rounded-2xl p-4">
+                                <div className="overflow-x-auto">
+                                    <div className="">
+                                        <h2 className="text-lg font-semibold mb-4">Timetable</h2>
+
+                                        {/* Days Header */}
+                                        <div className="grid grid-cols-[80px_repeat(5,minmax(120px,1fr))] border-b text-sm text-gray-500 font-medium">
+                                            <div></div>
+                                            <div className="text-center py-2">14<br />Mon</div>
+                                            <div className="text-center py-2">15<br />Tue</div>
+                                            <div className="text-center py-2">16<br />Wed</div>
+                                            <div className="text-center py-2">17<br />Thu</div>
+                                            <div className="text-center py-2">18<br />Fri</div>
                                         </div>
-                                    ))}
+
+                                        {/* Time Slots */}
+                                        {[
+                                            "9:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"
+                                        ].map((time, rowIdx) => (
+                                            <div key={time} className="grid grid-cols-[80px_repeat(5,minmax(120px,1fr))] border-b text-sm">
+                                                {/* Time Label */}
+                                                <div className="text-gray-500 py-4 px-2">{time}</div>
+
+                                                {/* Time cells */}
+                                                {[0, 1, 2, 3, 4].map((colIdx) => {
+                                                    const slot = timetableData[rowIdx]?.[colIdx];
+                                                    return (
+                                                        <div key={colIdx} className="p-2">
+                                                            {slot ? (
+                                                                <div className={`rounded-xl p-2 text-xs ${slot.bg}`}>
+                                                                    <div className="font-medium">{slot.title}</div>
+                                                                    <div className="flex justify-between items-center">
+                                                                        <div className="text-gray-600">{slot.subtitle}</div>
+                                                                        <div className="text-right text-[10px] text-gray-500 ">{slot.time}</div>
+                                                                    </div>
+                                                                </div>
+                                                            ) : (
+                                                                <div className="h-auto"></div>
+                                                            )}
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-white rounded-2xl p-4">
+                                <div className="space-y-4">
+
+                                    {/* Top Bar */}
+                                    <div className="flex items-center justify-between gap-2">
+                                        <h1 className="text-xl font-bold">Curriculum</h1>
+                                        <Button className='rounded-full bg-blue-100 font-medium text-blue-500' variant="outline">View All</Button>
+                                    </div>
+
+                                    {/* Accordions */}
+                                    <Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
+                                        {content2Items.map((item, index) => (
+                                            <AccordionItem
+                                                key={index}
+                                                value={`item-${index}`}
+                                                className="rounded-xl p-2 bg-gray-100 shadow "
+                                            >
+                                                <AccordionTrigger className="text-left px-4 py-3 rounded-2xl bg-white">
+                                                    <div>
+                                                        <h2 className="text-base font-medium">{item.title}</h2>
+                                                        <p className="text-sm text-gray-500">
+                                                            Duration: {item.duration} | Topic: {item.topic}
+                                                        </p>
+                                                    </div>
+                                                </AccordionTrigger>
+                                                <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
+                                                    <p className="font-semibold">Before the class</p>
+                                                    <ul className="list-disc pl-4 space-y-1">
+                                                        {item.points.map((point, i) => (
+                                                            <li key={i}>{point}</li>
+                                                        ))}
+                                                    </ul>
+                                                </AccordionContent>
+                                            </AccordionItem>
+                                        ))}
+                                    </Accordion>
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-white rounded-2xl p-4">
-                            <div className="space-y-4">
-
-                                {/* Top Bar */}
-                                <div className="flex items-center justify-between gap-2">
-                                    <h1 className="text-xl font-bold">Curriculum</h1>
-                                    <Button className='rounded-full bg-blue-100 font-medium text-blue-500' variant="outline">View All</Button>
-                                </div>
-
-                                {/* Accordions */}
-                                <Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
-                                    {content2Items.map((item, index) => (
-                                        <AccordionItem
-                                            key={index}
-                                            value={`item-${index}`}
-                                            className="rounded-xl p-2 bg-gray-100 shadow "
-                                        >
-                                            <AccordionTrigger className="text-left px-4 py-3 rounded-2xl bg-white">
-                                                <div>
-                                                    <h2 className="text-base font-medium">{item.title}</h2>
-                                                    <p className="text-sm text-gray-500">
-                                                        Duration: {item.duration} | Topic: {item.topic}
-                                                    </p>
-                                                </div>
-                                            </AccordionTrigger>
-                                            <AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
-                                                <p className="font-semibold">Before the class</p>
-                                                <ul className="list-disc pl-4 space-y-1">
-                                                    {item.points.map((point, i) => (
-                                                        <li key={i}>{point}</li>
-                                                    ))}
-                                                </ul>
-                                            </AccordionContent>
-                                        </AccordionItem>
-                                    ))}
-                                </Accordion>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </section>
+                    </main>
+                </section>
+            </MaxWidthWrapper>
             <Footer />
-        </MaxWidthWrapper>
+        </>
     );
 };
 

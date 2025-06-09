@@ -400,255 +400,256 @@ const StudentReport: React.FC = () => {
 
   return (
     <>
-      <div className="bg-gray-100">
-        {/* Header would go here - Assuming it's outside this component's direct render */}
-        <Header user={headerUser} />
+      <Header user={headerUser} />
 
-        {/* Page Title Bar */}
-        {/* Page Title Bar */}
-        <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
-          <button
-            onClick={handleBackClick}
-            className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
-            aria-label="Go back"
-          >
-            <FiArrowLeft className="w-5 h-5" />
-          </button>
-          <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
-            Student List
-          </h1>
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
-          {/* Student Info Card */}
-          <div
-            className="lg:col-span-3 bg-white p-5 rounded-2xl"
-            style={{
-              borderColor: PALETTE.BORDER_GREY,
-            }}
-          >
-            <div className="flex  items-start sm:items-center gap-4">
-              <Image
-                src="/teacher-b2b/profile2.png"
-                alt="Shlok Agheda"
-                width={72}
-                height={72}
-                className="rounded-full h-24 w-24 flex-shrink-0"
-              />
-              <div className="flex-grow">
-                <h2
-                  className="text-xl font-semibold"
+      <MaxWidthWrapper>
+        <div className="bg-gray-100">
+          {/* Header would go here - Assuming it's outside this component's direct render */}
+
+          {/* Page Title Bar */}
+          {/* Page Title Bar */}
+          <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+            <button
+              onClick={handleBackClick}
+              className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
+              aria-label="Go back"
+            >
+              <FiArrowLeft className="w-5 h-5" />
+            </button>
+            <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+              Student List
+            </h1>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
+            {/* Student Info Card */}
+            <div
+              className="lg:col-span-3 bg-white p-5 rounded-2xl"
+              style={{
+                borderColor: PALETTE.BORDER_GREY,
+              }}
+            >
+              <div className="flex  items-start sm:items-center gap-4">
+                <Image
+                  src="/teacher-b2b/profile2.png"
+                  alt="Shlok Agheda"
+                  width={72}
+                  height={72}
+                  className="rounded-full h-24 w-24 flex-shrink-0"
+                />
+                <div className="flex-grow">
+                  <h2
+                    className="text-xl font-semibold"
+                    style={{ color: PALETTE.TEXT_DARK }}
+                  >
+                    Shlok Agheda
+                  </h2>
+                  <div className="flex flex-wrap items-center gap-1 mt-2">
+                    <span
+                      className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+                      style={{
+                        backgroundColor: PALETTE.ACCENT_PINK,
+                        color: PALETTE.WHITE_CARD,
+                      }}
+                    >
+                      Class 8A
+                    </span>
+                    <span
+                      className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
+                      style={{
+                        backgroundColor: PALETTE.ACCENT_PINK,
+                        color: PALETTE.WHITE_CARD,
+                      }}
+                    >
+                      Group A
+                    </span>
+                  </div>
+                </div>
+                <div className="text-[11px] font-medium text-right sm:text-left space-y-0.5 text-black">
+                  <p>Gender: Male</p>
+                  <p>DOB: 15 Jun 2015</p>
+                  <p>Email: example@gm.com</p>
+                  <p>Contact: +91 1234567890</p>
+                  <p>City: Mumbai</p>
+                  <p>State: Maharashtra</p>
+                </div>
+              </div>
+              <div className="pt-4 ">
+                <p
+                  className="text-sm font-bold mb-3"
                   style={{ color: PALETTE.TEXT_DARK }}
                 >
-                  Shlok Agheda
-                </h2>
-                <div className="flex flex-wrap items-center gap-1 mt-2">
-                  <span
-                    className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
-                    style={{
-                      backgroundColor: PALETTE.ACCENT_PINK,
-                      color: PALETTE.WHITE_CARD,
-                    }}
-                  >
-                    Class 8A
-                  </span>
-                  <span
-                    className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
-                    style={{
-                      backgroundColor: PALETTE.ACCENT_PINK,
-                      color: PALETTE.WHITE_CARD,
-                    }}
-                  >
-                    Group A
-                  </span>
+                  Key Focus Area
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  {keyFocusAreas.map((area) => (
+                    <button
+                      key={area}
+                      className="text-xs px-2 py-2 text-black rounded-full border"
+                      style={{
+                        backgroundColor: "#F3F4F6",
+                        borderColor: PALETTE.BORDER_GREY,
+                      }}
+                    >
+                      {area}
+                    </button>
+                  ))}
                 </div>
-              </div>
-              <div className="text-[11px] font-medium text-right sm:text-left space-y-0.5 text-black">
-                <p>Gender: Male</p>
-                <p>DOB: 15 Jun 2015</p>
-                <p>Email: example@gm.com</p>
-                <p>Contact: +91 1234567890</p>
-                <p>City: Mumbai</p>
-                <p>State: Maharashtra</p>
-              </div>
-            </div>
-            <div className="pt-4 ">
-              <p
-                className="text-sm font-bold mb-3"
-                style={{ color: PALETTE.TEXT_DARK }}
-              >
-                Key Focus Area
-              </p>
-              <div className="flex flex-wrap gap-4">
-                {keyFocusAreas.map((area) => (
-                  <button
-                    key={area}
-                    className="text-xs px-2 py-2 text-black rounded-full border"
-                    style={{
-                      backgroundColor: "#F3F4F6",
-                      borderColor: PALETTE.BORDER_GREY,
-                    }}
-                  >
-                    {area}
-                  </button>
-                ))}
               </div>
             </div>
           </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
-          {/* ====== Overall Charts start ====== */}
+          <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
+            {/* ====== Overall Charts start ====== */}
 
-          <div
-            className="p-5 rounded-2xl"
-            style={{
-              backgroundColor: PALETTE.WHITE_CARD,
-            }}
-          >
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-              <h3
-                className="text-base font-semibold"
-                style={{ color: PALETTE.ACCENT_PINK }}
-              >
-                Overall Progress
-              </h3>
-            </div>
-            <div className="flex items-start justify-between px-2">
-              <div className="flex flex-col flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
-                <div className="flex items-center">
-                  <div
-                    className="w-16 h-5 rounded-full mr-2"
-                    style={{ backgroundColor: PALETTE.ACCENT_BLUE }}
-                  ></div>
-                  <span style={{ color: PALETTE.TEXT_MEDIUM }}>
-                    Basic Academic Skills
-                  </span>
+            <div
+              className="p-5 rounded-2xl"
+              style={{
+                backgroundColor: PALETTE.WHITE_CARD,
+              }}
+            >
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                <h3
+                  className="text-base font-semibold"
+                  style={{ color: PALETTE.ACCENT_PINK }}
+                >
+                  Overall Progress
+                </h3>
+              </div>
+              <div className="flex items-start justify-between px-2">
+                <div className="flex flex-col flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
+                  <div className="flex items-center">
+                    <div
+                      className="w-16 h-5 rounded-full mr-2"
+                      style={{ backgroundColor: PALETTE.ACCENT_BLUE }}
+                    ></div>
+                    <span style={{ color: PALETTE.TEXT_MEDIUM }}>
+                      Basic Academic Skills
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <div
+                      className="w-16 h-5 rounded-full mr-2"
+                      style={{ backgroundColor: PALETTE.ACCENT_PURPLE }}
+                    ></div>
+                    <span style={{ color: PALETTE.TEXT_MEDIUM }}>
+                      Critical Academic Skills
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <div
+                      className="w-16 h-5 rounded-full mr-2"
+                      style={{ backgroundColor: PALETTE.ACCENT_RED }}
+                    ></div>
+                    <span style={{ color: PALETTE.TEXT_MEDIUM }}>
+                      Personality Development
+                    </span>
+                  </div>
                 </div>
-                <div className="flex items-center">
-                  <div
-                    className="w-16 h-5 rounded-full mr-2"
-                    style={{ backgroundColor: PALETTE.ACCENT_PURPLE }}
-                  ></div>
-                  <span style={{ color: PALETTE.TEXT_MEDIUM }}>
-                    Critical Academic Skills
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <div
-                    className="w-16 h-5 rounded-full mr-2"
-                    style={{ backgroundColor: PALETTE.ACCENT_RED }}
-                  ></div>
-                  <span style={{ color: PALETTE.TEXT_MEDIUM }}>
-                    Personality Development
-                  </span>
+                <div className="flex items-center gap-2 mt-2 sm:mt-0">
+                  <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                    <span>{currentMonth}</span>
+                    <FiChevronDown className="w-4 h-4 ml-1" />
+                  </div>
+                  <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                    <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+                    <span>2025</span>
+                    <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center gap-2 mt-2 sm:mt-0">
-                <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                  <span>{currentMonth}</span>
-                  <FiChevronDown className="w-4 h-4 ml-1" />
-                </div>
-                <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                  <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                  <span>2025</span>
-                  <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                </div>
-              </div>
-            </div>
-            {/* Simplified SVG Line Chart */}
-            <div className="w-full overflow-x-auto">
-              <svg
-                viewBox={`0 0 ${chartWidth + 40} ${chartHeight + 30}`}
-                className="min-w-[500px]"
-              >
-                {/* Y-axis lines (simplified) */}
-                {[0, 25, 50, 75, 100].map((yVal) => (
-                  <line
-                    key={yVal}
-                    x1="30"
-                    y1={chartHeight - (yVal / 100) * chartHeight}
-                    x2={chartWidth + 30}
-                    y2={chartHeight - (yVal / 100) * chartHeight}
-                    stroke={PALETTE.BORDER_GREY}
-                    strokeWidth="0.5"
-                    strokeDasharray="2,2"
-                  />
-                ))}
-                {/* X-axis labels */}
-                {lineChartData.labels.map((label, i) => (
-                  <text
-                    key={label}
-                    x={
-                      35 +
-                      i * (chartWidth / (lineChartData.labels.length - 0.6))
-                    }
-                    y={chartHeight + 20}
-                    fontSize="12"
-                    fill={PALETTE.TEXT_MEDIUM}
-                    textAnchor="middle"
-                  >
-                    {label}
-                  </text>
-                ))}
-                {/* Data lines */}
-                {lineChartData.datasets.map((dataset) => (
-                  <polyline
-                    key={dataset.color}
-                    fill="none"
-                    stroke={dataset.color}
-                    strokeWidth="2"
-                    points={dataset.points
-                      .map(
-                        (p, i) =>
-                          `${
-                            35 +
+              {/* Simplified SVG Line Chart */}
+              <div className="w-full overflow-x-auto">
+                <svg
+                  viewBox={`0 0 ${chartWidth + 40} ${chartHeight + 30}`}
+                  className="min-w-[500px]"
+                >
+                  {/* Y-axis lines (simplified) */}
+                  {[0, 25, 50, 75, 100].map((yVal) => (
+                    <line
+                      key={yVal}
+                      x1="30"
+                      y1={chartHeight - (yVal / 100) * chartHeight}
+                      x2={chartWidth + 30}
+                      y2={chartHeight - (yVal / 100) * chartHeight}
+                      stroke={PALETTE.BORDER_GREY}
+                      strokeWidth="0.5"
+                      strokeDasharray="2,2"
+                    />
+                  ))}
+                  {/* X-axis labels */}
+                  {lineChartData.labels.map((label, i) => (
+                    <text
+                      key={label}
+                      x={
+                        35 +
+                        i * (chartWidth / (lineChartData.labels.length - 0.6))
+                      }
+                      y={chartHeight + 20}
+                      fontSize="12"
+                      fill={PALETTE.TEXT_MEDIUM}
+                      textAnchor="middle"
+                    >
+                      {label}
+                    </text>
+                  ))}
+                  {/* Data lines */}
+                  {lineChartData.datasets.map((dataset) => (
+                    <polyline
+                      key={dataset.color}
+                      fill="none"
+                      stroke={dataset.color}
+                      strokeWidth="2"
+                      points={dataset.points
+                        .map(
+                          (p, i) =>
+                            `${35 +
                             i * (chartWidth / (lineChartData.labels.length - 1))
-                          },${chartHeight - (p / 100) * chartHeight}`
-                      )
-                      .join(" ")}
+                            },${chartHeight - (p / 100) * chartHeight}`
+                        )
+                        .join(" ")}
+                    />
+                  ))}
+                </svg>
+              </div>
+            </div>
+            {/* ====== Overall Charts ends ====== */}
+
+            {/* Personal Development Card */}
+            <div
+              className="p-5 h-full rounded-2xl relative"
+              style={{
+                backgroundColor: PALETTE.WHITE_CARD,
+              }}
+            >
+              <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
+                {personalDevData.title}
+              </h3>
+              <div className="space-y-3  custom-scrollbar overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-full">
+                {" "}
+                {/* Custom scrollbar */}
+                {personalDevData.skills.map((skill, i) => (
+                  <ProgressCircleItem
+                    key={i}
+                    percentageText={skill.progress}
+                    color={skill.color}
+                    skillName={skill.name}
+                    details={skill.details}
                   />
                 ))}
-              </svg>
+              </div>
+              {/* The thin scrollbar visual element from the image - hard to replicate exactly without custom overlay */}
+              <div className="absolute right-1 top-16 bottom-5 w-1 bg-gray-300 rounded-full opacity-50 hidden sm:block"></div>
             </div>
           </div>
-          {/* ====== Overall Charts ends ====== */}
-
-          {/* Personal Development Card */}
-          <div
-            className="p-5 h-full rounded-2xl relative"
-            style={{
-              backgroundColor: PALETTE.WHITE_CARD,
-            }}
-          >
-            <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
-              {personalDevData.title}
-            </h3>
-            <div className="space-y-3  custom-scrollbar overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 scrollbar-thumb-rounded-full">
-              {" "}
-              {/* Custom scrollbar */}
-              {personalDevData.skills.map((skill, i) => (
-                <ProgressCircleItem
-                  key={i}
-                  percentageText={skill.progress}
-                  color={skill.color}
-                  skillName={skill.name}
-                  details={skill.details}
-                />
-              ))}
-            </div>
-            {/* The thin scrollbar visual element from the image - hard to replicate exactly without custom overlay */}
-            <div className="absolute right-1 top-16 bottom-5 w-1 bg-gray-300 rounded-full opacity-50 hidden sm:block"></div>
-          </div>
-        </div>
-        <main
-          className="grid h-full 
+          <main
+            className="grid h-full 
     grid-cols-1 
     md:grid-cols-2 
     lg:grid-cols-[2fr_1fr] 
     gap-4 
     p-4 
     bg-gray-100"
-        >
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white rounded-2xl p-3 ">
+          >
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white rounded-2xl p-3 ">
                     <div className="bg-gray-200 rounded-2xl p-4">
                         <div className="p-5 bg-blue-500 rounded-xl">Basic acadmics</div>
                         <div className="mt-2">
@@ -664,232 +665,233 @@ const StudentReport: React.FC = () => {
                     </div>
                     <div className="bg-red-200 rounded-2xl px-2 py-4"></div>
                 </div> */}
-          <div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-6 items-start">
-            {skillCardData.map((card, cardIndex) => (
-              <div
-                key={cardIndex}
-                className="p-4 rounded-2xl overflow-y-auto bg-gray-100"
-              >
+            <div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-6 items-start">
+              {skillCardData.map((card, cardIndex) => (
                 <div
-                  style={{
-                    backgroundColor: card.bgColor,
-                  }}
-                  className={` p-3 mb-2 rounded-xl`}
+                  key={cardIndex}
+                  className="p-4 rounded-2xl overflow-y-auto bg-gray-100"
                 >
-                  <div className="flex justify-between items-center mb-2">
-                    <h3
-                      className="text-base font-bold"
-                      style={{ color: PALETTE.TEXT_DARK }}
-                    >
-                      {card.title}
-                    </h3>
-                    <div
-                      className="flex space-x-1.5 text-xs"
-                      style={{ color: PALETTE.TEXT_MEDIUM }}
-                    >
-                      {card.iconSet}
-                    </div>
-                  </div>
-                  <p
-                    className="text-xs mb-1"
-                    style={{ color: card.progressColor }}
+                  <div
+                    style={{
+                      backgroundColor: card.bgColor,
+                    }}
+                    className={` p-3 mb-2 rounded-xl`}
                   >
-                    Overall Progress
-                  </p>
-                  <div className="items-center mb-3">
-                    <span
-                      className="text-lg font-semibold mr-2"
-                      style={{ color: PALETTE.TEXT_DARK }}
-                    >
-                      {card.overallProgress}
-                    </span>
-                    <div className="flex gap-2 items-center">
-                      <div
-                        className="flex-grow h-1.5 rounded-full"
-                        style={{ backgroundColor: PALETTE.WHITE_CARD }}
-                      >
-                        <div
-                          className="h-full rounded-full"
-                          style={{
-                            width: `${card.progressPercent}%`,
-                            backgroundColor: card.progressColor,
-                          }}
-                        ></div>
-                      </div>
-                      <span
-                        className="text-xs font-semibold ml-2"
+                    <div className="flex justify-between items-center mb-2">
+                      <h3
+                        className="text-base font-bold"
                         style={{ color: PALETTE.TEXT_DARK }}
                       >
-                        5
-                      </span>
+                        {card.title}
+                      </h3>
+                      <div
+                        className="flex space-x-1.5 text-xs"
+                        style={{ color: PALETTE.TEXT_MEDIUM }}
+                      >
+                        {card.iconSet}
+                      </div>
                     </div>
-                    {/* Assuming max is 5 */}
+                    <p
+                      className="text-xs mb-1"
+                      style={{ color: card.progressColor }}
+                    >
+                      Overall Progress
+                    </p>
+                    <div className="items-center mb-3">
+                      <span
+                        className="text-lg font-semibold mr-2"
+                        style={{ color: PALETTE.TEXT_DARK }}
+                      >
+                        {card.overallProgress}
+                      </span>
+                      <div className="flex gap-2 items-center">
+                        <div
+                          className="flex-grow h-1.5 rounded-full"
+                          style={{ backgroundColor: PALETTE.WHITE_CARD }}
+                        >
+                          <div
+                            className="h-full rounded-full"
+                            style={{
+                              width: `${card.progressPercent}%`,
+                              backgroundColor: card.progressColor,
+                            }}
+                          ></div>
+                        </div>
+                        <span
+                          className="text-xs font-semibold ml-2"
+                          style={{ color: PALETTE.TEXT_DARK }}
+                        >
+                          5
+                        </span>
+                      </div>
+                      {/* Assuming max is 5 */}
+                    </div>
+                  </div>
+                  <div className="space-y-3 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+                    {card.skills.map((skill, i) => (
+                      <ProgressCircleItem
+                        key={i}
+                        percentageText={skill.progress}
+                        color={card.progressColor}
+                        skillName={skill.name}
+                        details={skill.details}
+                      />
+                    ))}
                   </div>
                 </div>
-                <div className="space-y-3 overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
-                  {card.skills.map((skill, i) => (
-                    <ProgressCircleItem
-                      key={i}
-                      percentageText={skill.progress}
-                      color={card.progressColor}
-                      skillName={skill.name}
-                      details={skill.details}
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-            {/* Life Skill Enhancements Card - similar structure to Personal Development */}
-          </div>
-          <div className="p-5 h-full custom-scrollbar overflow-y-auto shadow-sm rounded-2xl bg-white row-span-2">
-            <div
-              style={{
-                backgroundColor: lifeSkillsData.bgColor,
-              }}
-              className={` p-3 mb-2 rounded-xl`}
-            >
-              <div className="flex justify-between items-center mb-2">
-                <h3
-                  className="text-base font-bold"
-                  style={{ color: PALETTE.TEXT_DARK }}
-                >
-                  {lifeSkillsData.title}
-                </h3>
-                <div
-                  className="flex space-x-1.5 text-xs"
-                  style={{ color: PALETTE.TEXT_MEDIUM }}
-                >
-                  {lifeSkillsData.iconSet}
-                </div>
-              </div>
-              <p
-                className="text-xs mb-1"
-                style={{ color: lifeSkillsData.progressColor }}
+              ))}
+              {/* Life Skill Enhancements Card - similar structure to Personal Development */}
+            </div>
+            <div className="p-5 h-full custom-scrollbar overflow-y-auto shadow-sm rounded-2xl bg-white row-span-2">
+              <div
+                style={{
+                  backgroundColor: lifeSkillsData.bgColor,
+                }}
+                className={` p-3 mb-2 rounded-xl`}
               >
-                Overall Progress
-              </p>
-              <div className=" mb-3">
-                <span
-                  className="text-lg font-medium mr-2"
-                  style={{ color: PALETTE.TEXT_DARK }}
-                >
-                  {lifeSkillsData.overallProgress}
-                </span>
-                <div className="flex gap-1 items-center">
-                  <div
-                    className="flex-grow h-1.5 rounded-full"
-                    style={{ backgroundColor: PALETTE.WHITE_CARD }}
-                  >
-                    <div
-                      className="h-full rounded-full"
-                      style={{
-                        width: `${lifeSkillsData.progressPercent}%`,
-                        backgroundColor: lifeSkillsData.progressColor,
-                      }}
-                    ></div>
-                  </div>
-                  <span
-                    className="text-xs font-semibold ml-2"
+                <div className="flex justify-between items-center mb-2">
+                  <h3
+                    className="text-base font-bold"
                     style={{ color: PALETTE.TEXT_DARK }}
                   >
-                    5
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-3  overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
-              {lifeSkillsData.skills.map((skill, i) => (
-                <ProgressCircleItem
-                  key={i}
-                  percentageText={skill.progress}
-                  color={PALETTE.PINK_DARK}
-                  skillName={skill.name}
-                  details={skill.details}
-                />
-              ))}
-            </div>
-          </div>
-          {/* ===== Table started ===== */}
-
-          <div
-            className="rounded-2xl h-full custom-scrollbar overflow-y-auto shadow-sm "
-            style={{
-              backgroundColor: PALETTE.WHITE_CARD,
-              borderColor: PALETTE.BORDER_GREY,
-            }}
-          >
-            <table className="w-full text-xs ">
-              <thead className="bg-gray-200">
-                <tr>
-                  {[
-                    "Test",
-                    "Date",
-                    "Date",
-                    "Total Marks",
-                    "How",
-                    "Marks",
-                    "Results",
-                  ].map((header, index) => (
-                    <th key={index} className="p-2.5 text-left font-semibold">
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {testResultsData.map((row, i) => (
-                  <tr
-                    key={i}
-                    className="odd:bg-white even:bg-gray-100"
-                    style={{ borderColor: PALETTE.BORDER_GREY }}
+                    {lifeSkillsData.title}
+                  </h3>
+                  <div
+                    className="flex space-x-1.5 text-xs"
+                    style={{ color: PALETTE.TEXT_MEDIUM }}
                   >
-                    <td className="p-2.5" style={{ color: PALETTE.TEXT_DARK }}>
-                      {row.test}
-                    </td>
-                    <td
-                      className="p-2.5"
-                      style={{ color: PALETTE.TEXT_MEDIUM }}
+                    {lifeSkillsData.iconSet}
+                  </div>
+                </div>
+                <p
+                  className="text-xs mb-1"
+                  style={{ color: lifeSkillsData.progressColor }}
+                >
+                  Overall Progress
+                </p>
+                <div className=" mb-3">
+                  <span
+                    className="text-lg font-medium mr-2"
+                    style={{ color: PALETTE.TEXT_DARK }}
+                  >
+                    {lifeSkillsData.overallProgress}
+                  </span>
+                  <div className="flex gap-1 items-center">
+                    <div
+                      className="flex-grow h-1.5 rounded-full"
+                      style={{ backgroundColor: PALETTE.WHITE_CARD }}
                     >
-                      {row.date1}
-                    </td>
-                    <td
-                      className="p-2.5"
-                      style={{ color: PALETTE.TEXT_MEDIUM }}
-                    >
-                      {row.date2}
-                    </td>
-                    <td
-                      className="p-2.5"
-                      style={{ color: PALETTE.TEXT_MEDIUM }}
-                    >
-                      {row.totalMarks}
-                    </td>
-                    <td
-                      className="p-2.5"
-                      style={{ color: PALETTE.TEXT_MEDIUM }}
-                    >
-                      {row.how}
-                    </td>
-                    <td
-                      className="p-2.5 font-semibold"
+                      <div
+                        className="h-full rounded-full"
+                        style={{
+                          width: `${lifeSkillsData.progressPercent}%`,
+                          backgroundColor: lifeSkillsData.progressColor,
+                        }}
+                      ></div>
+                    </div>
+                    <span
+                      className="text-xs font-semibold ml-2"
                       style={{ color: PALETTE.TEXT_DARK }}
                     >
-                      {row.marks}
-                    </td>
-                    <td
-                      className="p-2.5 font-semibold"
-                      style={{ color: row.resultColor }}
-                    >
-                      {row.result}
-                    </td>
-                  </tr>
+                      5
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div className="space-y-3  overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent scrollbar-thumb-rounded-full">
+                {lifeSkillsData.skills.map((skill, i) => (
+                  <ProgressCircleItem
+                    key={i}
+                    percentageText={skill.progress}
+                    color={PALETTE.PINK_DARK}
+                    skillName={skill.name}
+                    details={skill.details}
+                  />
                 ))}
-              </tbody>
-            </table>
-          </div>
-        </main>
-        <Footer />
-      </div>
+              </div>
+            </div>
+            {/* ===== Table started ===== */}
+
+            <div
+              className="rounded-2xl h-full custom-scrollbar overflow-y-auto shadow-sm "
+              style={{
+                backgroundColor: PALETTE.WHITE_CARD,
+                borderColor: PALETTE.BORDER_GREY,
+              }}
+            >
+              <table className="w-full text-xs ">
+                <thead className="bg-gray-200">
+                  <tr>
+                    {[
+                      "Test",
+                      "Date",
+                      "Date",
+                      "Total Marks",
+                      "How",
+                      "Marks",
+                      "Results",
+                    ].map((header, index) => (
+                      <th key={index} className="p-2.5 text-left font-semibold">
+                        {header}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {testResultsData.map((row, i) => (
+                    <tr
+                      key={i}
+                      className="odd:bg-white even:bg-gray-100"
+                      style={{ borderColor: PALETTE.BORDER_GREY }}
+                    >
+                      <td className="p-2.5" style={{ color: PALETTE.TEXT_DARK }}>
+                        {row.test}
+                      </td>
+                      <td
+                        className="p-2.5"
+                        style={{ color: PALETTE.TEXT_MEDIUM }}
+                      >
+                        {row.date1}
+                      </td>
+                      <td
+                        className="p-2.5"
+                        style={{ color: PALETTE.TEXT_MEDIUM }}
+                      >
+                        {row.date2}
+                      </td>
+                      <td
+                        className="p-2.5"
+                        style={{ color: PALETTE.TEXT_MEDIUM }}
+                      >
+                        {row.totalMarks}
+                      </td>
+                      <td
+                        className="p-2.5"
+                        style={{ color: PALETTE.TEXT_MEDIUM }}
+                      >
+                        {row.how}
+                      </td>
+                      <td
+                        className="p-2.5 font-semibold"
+                        style={{ color: PALETTE.TEXT_DARK }}
+                      >
+                        {row.marks}
+                      </td>
+                      <td
+                        className="p-2.5 font-semibold"
+                        style={{ color: row.resultColor }}
+                      >
+                        {row.result}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </main>
+        </div>
+      </MaxWidthWrapper>
+      <Footer />
     </>
   );
 };

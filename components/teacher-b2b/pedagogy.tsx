@@ -9,6 +9,7 @@ import {
 } from "react-icons/fi";
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
+import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366"; // For active Category tabs
@@ -206,7 +207,7 @@ const InfoPanel: React.FC<{ info: PedagogyInfo }> = ({ info }) => (
       <h3 className={`text-lg font-semibold text-[${PRIMARY_BLUE}] mb-2.5`}>
         Material required:
       </h3>
-      <ul className="list-disc list-outside pl-4 space-y-1.5 text-[13px] text-black">
+      <ul className="list-disc list-outside pl-4 space-y-1.5 text-[16px] text-black">
         {info.materialsRequired.map((mat) => (
           <li key={mat.id}>{mat.text}</li>
         ))}
@@ -353,7 +354,7 @@ export default function PedagogyPage() {
   const headerUser = {
     name: "Educator Name",
     role: "Teacher",
-    avatarSrc: "/placeholder-avatar-teacher.jpg",
+    avatarSrc: "/teacher-avatar-1.jpg",
   };
   const handleBackClick = () => {
     if (typeof window !== "undefined") window.history.back();
@@ -362,6 +363,7 @@ export default function PedagogyPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
+      <MaxWidthWrapper>
       <div className="bg-white px-4 sm:px-6 py-3 shadow-sm sticky top-0 z-40">
         <div className="container mx-auto flex items-center gap-3">
           <button
@@ -379,9 +381,10 @@ export default function PedagogyPage() {
           </h1>
         </div>
       </div>
-      <main className="flex-grow container mx-auto p-4 sm:p-6">
+      <main className="flex-grow bg-gray-100 container mx-auto p-4 sm:p-6">
         <PedagogyContent />
       </main>
+      </MaxWidthWrapper>
       <Footer />
     </div>
   );
