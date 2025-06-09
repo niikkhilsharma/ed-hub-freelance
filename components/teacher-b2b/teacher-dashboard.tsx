@@ -19,6 +19,7 @@ import {
     FiArrowLeftCircle,
     FiArrowRightCircle,
 } from "react-icons/fi";
+import { FaSearch } from 'react-icons/fa';
 const PALETTE = {
     GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
     GREEN_DARK: "#4BC4B6", // Not explicitly used but similar to progress bar
@@ -331,7 +332,7 @@ const TeacherDashboard = () => {
 
                             <div className="flex justify-between items-center">
                                 <span className="text-m font-medium">Demo Video</span>
-                                <button className="text-sm font-medium py-1 px-4 rounded-full" style={{backgroundColor: PALETTE.GREEN_LIGHT, color: PALETTE.GREEN_DARK}}
+                                <button className="text-sm font-medium py-1 px-4 rounded-full" style={{ backgroundColor: PALETTE.GREEN_LIGHT, color: PALETTE.GREEN_DARK }}
                                 >Edit</button>
                             </div>
 
@@ -397,10 +398,10 @@ const TeacherDashboard = () => {
                         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_2fr] gap-2 md:gap-4 py-2"
                     >
                         {/* First item - Full width on sm to md, 40% on lg */}
-                        <div className="rounded-2xl bg-white p-4 shadow space-y-6">
+                        <div className="rounded-2xl bg-white py-4 px-8 shadow space-y-6">
                             {/* Tabs */}
                             <Tabs defaultValue="class-a">
-                                <TabsList className="bg-muted w-fit mb-2">
+                                <TabsList className=" w-fit mb-2">
                                     <TabsTrigger value="class-a">Class A</TabsTrigger>
                                     <TabsTrigger value="class-b">Class B</TabsTrigger>
                                     <TabsTrigger value="class-c">Class C</TabsTrigger>
@@ -408,20 +409,20 @@ const TeacherDashboard = () => {
 
                                 <TabsContent value="class-a">
                                     {/* Progress Info Box */}
-                                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 rounded-xl border p-4">
-                                        <div className="w-full md:w-1/2">
+                                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 rounded-xl bg-gray-100 p-4">
+                                        <div className="w-full md:w-1/2 border-r border-r-zinc-700 pr-6">
                                             <p className="text-sm font-medium text-muted-foreground">Class Completion Progress</p>
                                             <p className="text-lg font-semibold">{progress} %</p>
-                                            <Progress value={progress} className="h-2 mt-2" />
+                                            <Progress value={progress} className={`h-2 mt-2 rounded-full`} />
                                         </div>
                                         <div className="flex gap-10 text-sm md:text-base">
                                             <div>
-                                                <p className="text-muted-foreground">Students Enrolled</p>
-                                                <p className="font-semibold">{enrolledCount}</p>
+                                                <p className="font-semibold text-center">{enrolledCount}</p>
+                                                <p className="text-muted-foreground" style={{color: PALETTE.GREEN_DARK}}>Students Enrolled</p>
                                             </div>
                                             <div>
-                                                <p className="text-muted-foreground">Average Score</p>
-                                                <p className="font-semibold">{averageScore} %</p>
+                                                <p className="font-semibold text-center">{averageScore} %</p>
+                                                <p className="text-muted-foreground" style={{color: PALETTE.GREEN_DARK}}>Average Score</p>
                                             </div>
                                         </div>
                                     </div>
@@ -430,7 +431,7 @@ const TeacherDashboard = () => {
                                     <div className="mt-6">
                                         <h2 className="text-lg font-semibold mb-3">Students Enrolled</h2>
                                         <div className="overflow-x-auto rounded-xl">
-                                            <table className="min-w-full bg-blue-50 rounded-xl overflow-hidden">
+                                            <table className="min-w-full bg-blue-50 rounded-2xl overflow-hidden">
                                                 <thead>
                                                     <tr className="text-left bg-blue-100 text-sm font-medium text-gray-700">
                                                         <th className="p-3">Student name</th>
@@ -442,8 +443,8 @@ const TeacherDashboard = () => {
                                                 </thead>
                                                 <tbody className="text-sm text-gray-800">
                                                     {studentData.map((student, index) => (
-                                                        <tr key={index} className="odd:bg-white even:bg-blue-50">
-                                                            <td className="flex items-center gap-2 p-3">
+                                                        <tr key={index} className="odd:bg-blue-50 even:bg-white">
+                                                            <td className="flex items-center gap-2 px-2 py-1">
                                                                 <Image
                                                                     src={student.image}
                                                                     alt={student.name}
@@ -472,7 +473,7 @@ const TeacherDashboard = () => {
                         </div>
 
                         {/* Second item - 50% width on md, 40% on lg */}
-                        <div className="bg-gray-100 rounded-2xl p-4">
+                        <div className="bg-white rounded-2xl p-4">
                             <div className="space-y-4">
                                 {/* Header */}
                                 <div>
@@ -481,8 +482,17 @@ const TeacherDashboard = () => {
 
                                 {/* Top Bar */}
                                 <div className="flex items-center justify-between gap-2">
-                                    <Input placeholder="Search" className="w-full max-w-md" />
-                                    <Button variant="outline">View All</Button>
+                                    <div className="relative w-full max-w-md">
+                                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 z-1 ">
+                                            <FaSearch />
+                                        </span>
+                                        <Input
+                                            type="text"
+                                            placeholder="Search"
+                                            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        />
+                                    </div>
+                                    <Button className='rounded-full bg-blue-100 font-medium text-blue-500' variant="outline">View All</Button>
                                 </div>
 
                                 {/* Accordions */}
@@ -566,15 +576,11 @@ const TeacherDashboard = () => {
                         </div>
                         <div className="bg-gray-100 rounded-2xl p-4">
                             <div className="space-y-4">
-                                {/* Header */}
-                                <div>
-                                    <h1 className="text-xl font-bold">Pedagogy & Class Flows</h1>
-                                </div>
 
                                 {/* Top Bar */}
                                 <div className="flex items-center justify-between gap-2">
-                                    <Input placeholder="Search" className="w-full max-w-md" />
-                                    <Button variant="outline">View All</Button>
+                                    <h1 className="text-xl font-bold">Curriculum</h1>
+                                    <Button className='rounded-full bg-blue-100 font-medium text-blue-500' variant="outline">View All</Button>
                                 </div>
 
                                 {/* Accordions */}
