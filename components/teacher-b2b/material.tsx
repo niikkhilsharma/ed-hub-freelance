@@ -10,6 +10,7 @@ import {
 } from "react-icons/fi";
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
+import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
@@ -232,9 +233,13 @@ export default function MaterialPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
+      <MaxWidthWrapper>
+        <div className="bg-gray-100">
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <SubjectFolderViewContent />
       </main>
+        </div>
+      </MaxWidthWrapper>
       <Footer />
     </div>
   );

@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { FiArrowLeft, FiFolder, FiSettings, FiInfo } from 'react-icons/fi';
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
+import MaxWidthWrapper from '../max-width-wrapper';
 
 // --- Data Interfaces ---
 interface Category {
@@ -157,8 +158,9 @@ export default function SelectExistingTestPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
+    <MaxWidthWrapper>
+      <div className="bg-gray-100">
 
-      {/* Page Title Bar */}
       <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 shadow-sm sticky top-0 z-40"> {/* Made title bar sticky */}
         <button
           onClick={handleBackClick}
@@ -173,6 +175,9 @@ export default function SelectExistingTestPage() {
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <UploadExistingTestContent />
       </main>
+      </div>
+    </MaxWidthWrapper>
+      {/* Page Title Bar */}
 
       <Footer />
     </div>

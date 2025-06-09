@@ -12,6 +12,7 @@ import {
   FiUpload,
 } from "react-icons/fi";
 import { FiArrowLeft } from "react-icons/fi";
+import MaxWidthWrapper from "../max-width-wrapper";
 
 // Define the File interface
 interface ManagedFile {
@@ -186,8 +187,9 @@ export default function StudentSubmittedPapersPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
+    <MaxWidthWrapper>
+      <div className="bg-gray-100">
 
-      {/* Back Button and Page Title */}
       <div className="flex items-center gap-2 bg-white px-4 sm:px-6 py-4 shadow-sm">
         <button
           onClick={handleBackClick}
@@ -210,6 +212,9 @@ export default function StudentSubmittedPapersPage() {
         */}
         <FileManagementContent />
       </main>
+      </div>
+    </MaxWidthWrapper>
+      {/* Back Button and Page Title */}
 
       <Footer />
     </div>

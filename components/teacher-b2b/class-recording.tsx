@@ -16,6 +16,7 @@ import {
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import { CiPlay1 } from "react-icons/ci";
+import MaxWidthWrapper from "../max-width-wrapper";
 
 
 // --- Style Constants ---
@@ -306,9 +307,14 @@ export default function ClassRecordingPage() {
       <Header user={headerUser} />
       {/* This page design does not show a separate title bar below the main header,
           the "Class Recording" tab acts as the primary context. */}
+          <MaxWidthWrapper>
+            <div className="bg-gray-100">
+
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <ClassRecordingContent />
       </main>
+            </div>
+          </MaxWidthWrapper>
       <Footer />
     </div>
   );

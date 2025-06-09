@@ -20,6 +20,7 @@ import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import { v4 as uuidv4 } from "uuid";
 import CreateBWTestContent from "@/components/teacher-b2b/create-quiz/CreateQuizContent"; // We will create this next
+import MaxWidthWrapper from "@/components/max-width-wrapper";
 
 // --- Style Constants (Global for this file) ---
 export const ACCENT_PINK = "#FF3366";
@@ -521,7 +522,8 @@ export default function CreateBWTestPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-      <div className="bg-white px-4 sm:px-6 py-3  sticky top-0 z-40">
+      <MaxWidthWrapper><div className="bg-gray-100">
+         <div className="bg-white px-4 sm:px-6 py-3  sticky top-0 z-40">
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0">
           <div className="flex items-center gap-3 self-start sm:self-center">
             <button
@@ -599,6 +601,8 @@ export default function CreateBWTestPage() {
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <CreateBWTestContent />
       </main>
+        </div></MaxWidthWrapper>
+     
       <Footer />
     </div>
   );
