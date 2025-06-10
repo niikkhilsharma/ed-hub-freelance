@@ -16,20 +16,19 @@ export default function FAQPage() {
 
 	return (
 		<div>
-				<Header user={headerUser} />
+			<Header user={headerUser} />
 			<div className="min-h-screen flex flex-col bg-[#eeeeee]">
-
 				<main className="container mx-auto p-6 max-w-7xl rounded-2xl my-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
 					<Image
 						src={'/pattern.png'}
 						width={4096}
 						height={2304}
 						alt="pattern"
-						className="w-full h-full brightness-125 absolute top-0 left-0 opacity-60"
+						className="w-full h-full brightness-150 absolute top-0 left-0 opacity-30"
 					/>
 					<div className="sm:w-[45%] z-10 bg-white rounded-2xl p-4">
 						<h1 className="text-5xl text-[#FF3366] font-bold">Get in touch</h1>
-						<p className="text-[#6B7280] mt-4">We are here for you! How can we help</p>
+						<p className="text-[#6B7280] mt-4 tracking-wider">We are here for you! How can we help</p>
 
 						<div className="mt-10 px-4 space-y-4">
 							<div>
@@ -124,37 +123,31 @@ export default function FAQPage() {
 				</main>
 
 				<div className="flex self-stretch justify-center w-full mb-4">
-          <div
-            className="mt-4 max-w-7xl w-[80vw] rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden bg-pink-600 bg-repeat"
-            style={{
-              backgroundImage: "url(/pattern-2.png)", // UPDATE PATH
-              backgroundSize: "1500px",
-            }}
-          >
-            <div className="relative z-10">
-              <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                Subscribe to our newsletter
-              </h2>
-              <p className="text-sm opacity-90 mb-8 max-w-lg mx-auto">
-                Lorem Ipsum is simply dummy text of the printing.
-              </p>
-              <form className="max-w-md mx-auto flex items-center bg-white rounded-full p-1.5 shadow-lg">
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="flex-grow px-5 py-2.5 text-gray-700 text-md bg-transparent border-none focus:outline-none placeholder-gray-400"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="px-10 py-2.5 bg-[#FFCC00] text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors"
-                >
-                  Send
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
+					<div
+						className="mt-4 max-w-7xl w-[80vw] rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden bg-pink-600 bg-repeat"
+						style={{
+							backgroundImage: 'url(/pattern-2.png)', // UPDATE PATH
+							backgroundSize: '1500px',
+						}}>
+						<div className="relative z-10">
+							<h2 className="text-2xl md:text-3xl font-bold mb-3">Subscribe to our newsletter</h2>
+							<p className="text-sm opacity-90 mb-8 max-w-lg mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
+							<form className="max-w-md mx-auto flex items-center bg-white rounded-full p-1.5 shadow-lg">
+								<input
+									type="email"
+									placeholder="Email Address"
+									className="flex-grow px-5 py-2.5 text-gray-700 text-md bg-transparent border-none focus:outline-none placeholder-gray-400"
+									required
+								/>
+								<button
+									type="submit"
+									className="px-10 py-2.5 bg-[#FFCC00] text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors">
+									Send
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
 
 				<Footer />
 			</div>

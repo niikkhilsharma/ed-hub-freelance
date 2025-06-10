@@ -122,7 +122,7 @@ interface MockPaperItemData {
 }
 const MockPaperItem = ({ item }: { item: MockPaperItemData }) => (
 	<button className="w-full flex justify-between items-center p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
-		<h3 className="text-md font-semibold text-black">{item.title}</h3>
+		<h3 className="tracking-wide text-black">{item.title}</h3>
 		<FiChevronRight className="w-5 h-5 text-black" />
 	</button>
 )
@@ -133,11 +133,11 @@ interface WorkSheetItemData {
 	title: string
 }
 const WorkSheetItem = ({ item }: { item: WorkSheetItemData }) => (
-  <button className="w-full flex justify-between items-center p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
-    <h3 className="text-md font-semibold text-black">{item.title}</h3>
-    <FiChevronRight className="w-5 h-5 text-black" />
-  </button>
-);
+	<button className="w-full flex justify-between items-center p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
+		<h3 className="text-black">{item.title}</h3>
+		<FiChevronRight className="w-5 h-5 text-black" />
+	</button>
+)
 
 // --- Sample Data ---
 const mainCategories = [
@@ -186,7 +186,7 @@ const workSheetData: WorkSheetItemData[] = [
 	{ id: 'ws6', title: 'Learning Ladder – Level 1' },
 ]
 
-export default function MyClassAssesmentPage({tabId}:{tabId?:number}) {
+export default function MyClassAssesmentPage({ tabId }: { tabId?: number }) {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategories[0])
 	const [activeSubCategory, setActiveSubCategory] = useState(academicSubCategories[0])
 	const [activeContentTab, setActiveContentTab] = useState(contentTabsData[1]) // Default to Learning
@@ -194,9 +194,9 @@ export default function MyClassAssesmentPage({tabId}:{tabId?:number}) {
 	const [currentMonth] = useState('June 2025')
 	const [currentWeekFilter, setCurrentWeekFilter] = useState('Weekly')
 
-	useEffect(()=>{
-		setActiveContentTab(contentTabsData[tabId ? tabId:0])
-	},[])
+	useEffect(() => {
+		setActiveContentTab(contentTabsData[tabId ? tabId : 0])
+	}, [])
 
 	const headerUser = {
 		name: 'Shlok Agheda',

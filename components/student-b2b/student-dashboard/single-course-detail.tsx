@@ -82,9 +82,9 @@ const UpcomingClassItem = ({ uClass }: { uClass: UpcomingClass }) => (
 		{/* Left Content */}
 		<div>
 			<h4 className="text-md font-bold text-black">{uClass.title}</h4>
-			<p className="text-sm text-[#FFCC00] font-semibold mt-0.5">{uClass.teacher}</p>
-			<p className="text-xs text-gray-500 mt-1">{uClass.description}</p>
-			<p className="text-xs text-gray-500 mt-0.5">{uClass.time}</p>
+			<p className="text-xs text-[#FFCC00] font-light tracking-wide mt-0.5">{uClass.teacher}</p>
+			<p className="text-xs text-[#6B7280] font-light tracking-tight mt-1">{uClass.description}</p>
+			<p className="text-xs text-[#6B7280] font-light tracking-tight mt-0.5">{uClass.time}</p>
 		</div>
 
 		{/* Right Content */}
@@ -254,7 +254,7 @@ export default function CourseDetailPage() {
 										<select
 											value={currentWeekFilter}
 											onChange={e => setCurrentWeekFilter(e.target.value)}
-											className="appearance-none border border-[#E5E7EB] text-sm font-medium text-black bg-[#F9FAFB] px-4 py-2 rounded-xl pr-8 focus:outline-none focus:ring-1 focus:ring-[#3366FF]">
+											className="appearance-none border border-[#E5E7EB] text-sm text-black bg-[#F9FAFB] px-4 py-2 rounded-xl pr-8 focus:outline-none focus:ring-1 focus:ring-[#3366FF]">
 											<option value="Week 1">Week 1</option>
 											<option value="Week 2">Week 2</option>
 										</select>
@@ -365,9 +365,9 @@ export default function CourseDetailPage() {
 						</div>
 
 						{/* Download Certificate Card */}
-						<div className="bg-white rounded-2xl shadow-lg p-6 text-start font-semibold">
-							<h3 className="text-lg font-semibold text-black mb-4">Download Certificate</h3>
-							<button className="w-full mx-auto flex items-center justify-center gap-2 px-4 py-2 bg-[#F3F4F6] text-[#B0B0B0] text-lg font-medium rounded-full hover:bg-[#E5E7EB] transition-colors">
+						<div className="bg-white rounded-2xl shadow-lg p-4 text-start">
+							<h3 className="font-medium text-black mb-4">Download Certificate</h3>
+							<button className="w-full mx-auto flex items-center justify-center gap-2 px-4 py-2 bg-[#F3F4F6] text-[#B0B0B0] font-medium rounded-full hover:bg-[#E5E7EB] transition-colors">
 								<FiDownload className="w-4 h-4" />
 								Download
 							</button>

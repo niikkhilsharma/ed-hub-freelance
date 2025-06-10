@@ -33,8 +33,8 @@ const CourseCard = ({ course }: { course: Course }) => {
 				<div className="w-full  rounded-xl flex items-center justify-center mb-4">
 					<Image src={course.imageSrc} alt={course.name} width={932} height={460} />
 				</div>
-				<h3 className="text-2xl font-bold text-black mb-1">{course.name}</h3>
-				<p className="text-sm text-[#6B7280] w-[30ch] tracking-widest">{course.description}</p>
+				<h3 className="text-xl font-bold text-black mb-1">{course.name}</h3>
+				<p className="text-sm text-[#6B7280] w-[30ch] tracking-wide">{course.description}</p>
 			</div>
 		)
 	}
@@ -201,13 +201,13 @@ export default function MyCoursePage() {
 	// };
 
 	return (
-		<div className="bg-gray-50 min-h-screen flex flex-col">
+		<div className="bg-gray-100 min-h-screen flex flex-col">
 			<Header user={headerUser} />
 
-			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 bg-white rounded-2xl my-6">
 				{/* Ongoing Courses */}
 				<section className="mb-12">
-					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Ongoing</h2>
+					<h2 className="text-xl font-semibold text-gray-800 mb-6">Ongoing</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						{ongoingCourses.map(course => (
 							<CourseCard key={course.id} course={course} />
@@ -217,7 +217,7 @@ export default function MyCoursePage() {
 
 				{/* Upcoming Courses */}
 				<section className="mb-12">
-					<h2 className="text-2xl font-semibold text-gray-800 mb-6">Upcoming</h2>
+					<h2 className="text-xl font-semibold text-gray-800 mb-6">Upcoming</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						{upcomingCourses.map(course => (
 							<CourseCard key={course.id} course={course} />
@@ -228,7 +228,7 @@ export default function MyCoursePage() {
 				{/* Completed Courses */}
 				<section className="mb-12">
 					<div className="flex items-center gap-2 mb-6">
-						<h2 className="text-2xl font-semibold text-[#00B060]">Completed</h2>
+						<h2 className="text-xl font-semibold text-[#00B060]">Completed</h2>
 					</div>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						{completedCourses.map(course => (
@@ -239,7 +239,7 @@ export default function MyCoursePage() {
 
 				{/* AI Suggests Section */}
 				<section
-					className="rounded-3xl p-8 md:p-12 text-black relative overflow-hidden bg-black/10" // Main pink background
+					className="rounded-3xl px-8 py-4 md:px-12 py-6 text-black relative overflow-hidden bg-black/10" // Main pink background
 					style={{
 						backgroundImage: 'url(/images/ai-suggests-bg-pattern.png)', // UPDATE PATH for pattern
 						backgroundRepeat: 'repeat',
@@ -264,7 +264,14 @@ export default function MyCoursePage() {
 						</div>
 						{/* Image Carousel/Grid */}
 						<div className="py-4 overflow-hidden relative rounded-2xl z-20">
-							<Image src="/AI.png" alt="star" width={1804} height={1148} className="max-w-[70%] rounded-2xl scale-110 ml-auto" priority/>
+							<Image
+								src="/AI.png"
+								alt="star"
+								width={1804}
+								height={1148}
+								className="max-w-[70%] rounded-2xl scale-110 ml-auto"
+								priority
+							/>
 						</div>
 					</div>
 				</section>

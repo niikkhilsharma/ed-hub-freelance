@@ -9,7 +9,7 @@ import Footer from '@/components/layout/Footer'
 // --- Key Focus Area Pill ---
 // Updated to match image: white background, gray border
 const FocusPill = ({ label }: { label: string }) => (
-	<button className="px-6 py-2.5 bg-[#F3F4F6] border-[#B0B0B2xl text-black text-sm font-medium rounded-full border hover:bg-gray-50 transition-colors">
+	<button className="px-6 py-2.5 bg-[#F3F4F6] border-[#B0B0B2xl text-black text-sm tracking-wide rounded-full border hover:bg-gray-50 transition-colors">
 		{label}
 	</button>
 )
@@ -189,7 +189,6 @@ export default function StudentDashboardPage() {
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			{' '}
-			{/* Overall page background */}
 			<Header user={headerUser} />
 			<main className="container mx-auto p-4 sm:p-6 lg:p-8 flex-grow">
 				<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -237,8 +236,7 @@ export default function StudentDashboardPage() {
 											<span className="font-medium text-black">DOB:</span> <span className="text-gray-600">{studentData.dob}</span>
 										</p>
 										<p>
-											<span className="font-medium text-black">Email:</span>{' '}
-											<span className="text-gray-600">{studentData.email}</span>
+											<span className="font-medium text-black">Email:</span> <span className="text-gray-600">{studentData.email}</span>
 										</p>
 										<p>
 											<span className="font-medium text-black">Contact:</span>{' '}
@@ -248,8 +246,7 @@ export default function StudentDashboardPage() {
 											<span className="font-medium text-black">City:</span> <span className="text-gray-600">{studentData.city}</span>
 										</p>
 										<p>
-											<span className="font-medium text-black">State:</span>{' '}
-											<span className="text-gray-600">{studentData.state}</span>
+											<span className="font-medium text-black">State:</span> <span className="text-gray-600">{studentData.state}</span>
 										</p>
 									</div>
 								</div>
@@ -294,7 +291,9 @@ export default function StudentDashboardPage() {
 											key={filter}
 											onClick={() => setLearningActivityFilter(filter as 'Active' | 'Completed')}
 											className={`px-5 py-2 text-sm font-medium rounded-full transition-colors ${
-												learningActivityFilter === filter ? 'bg-blue-600 text-white shadow-md' : 'text-gray-600 hover:bg-gray-200'
+												learningActivityFilter === filter
+													? 'bg-[#3366FF] text-white shadow-md tracking-wide'
+													: 'text-[#6B7280] hover:bg-gray-200 font-medium tracking-wide'
 											}`}>
 											{filter}
 										</button>
@@ -304,7 +303,7 @@ export default function StudentDashboardPage() {
 							<div className="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4 flex-wrap">
 								<div className="flex items-center gap-2 text-sm text-black bg-[#F9FAFB] border border-gray-300 px-3 py-1.5 rounded-xl hover:bg-gray-50">
 									<Image src={'/bg-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
-									<span className="font-medium">June 2025</span>
+									<span className="tracking-wide">June 2025</span>
 									<Image src={'/fwd-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
 								</div>
 								<div className="flex items-center gap-2">
@@ -315,7 +314,7 @@ export default function StudentDashboardPage() {
 									{/* Group Tag: Fully rounded right side */}
 									<span className="px-2 py-1.5 bg-[#F9FAFB] text-base rounded-full rounded-l-none">Monthly ( 50 )</span>
 								</div>
-								<button className="hover:cursor-pointer px-2 py-1.5 text-sm text-black font-medium border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50 transition-colors">
+								<button className="hover:cursor-pointer px-2 py-1.5 text-sm text-black border border-[#E5E7EB] rounded-xl bg-[#F9FAFB] hover:bg-gray-50 transition-colors">
 									Yearly Plan Overview
 								</button>
 							</div>
@@ -341,7 +340,7 @@ export default function StudentDashboardPage() {
 								<h2 className="text-lg font-semibold text-black">Classes</h2>
 								<div className="flex items-center gap-2 text-sm text-black bg-[#F9FAFB] border border-gray-300 px-3 py-1.5 rounded-xl hover:bg-gray-50">
 									<Image src={'/bg-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
-									<span className="font-medium">June 2025</span>
+									<span>June 2025</span>
 									<Image src={'/fwd-arrow.png'} width={20} height={20} className="w-4 h-4" alt="" />
 								</div>
 							</div>

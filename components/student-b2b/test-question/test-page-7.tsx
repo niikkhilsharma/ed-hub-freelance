@@ -142,7 +142,7 @@ export default function DmittTest_7_Page() {
 					{/* Test Info: Questions, Time Limit, Progress, Timer */}
 					<div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
 						<div className="text-left">
-							<p className="text-md font-semibold text-gray-700">Questions : {TOTAL_QUESTIONS_IN_SET}</p>
+							<p className="text-md font-semibold text-[#6B7280]">Questions : {TOTAL_QUESTIONS_IN_SET}</p>
 							<p className="text-xs text-gray-500">Time Limit: {TIME_LIMIT_MINUTES_DMIT} Minutes</p>
 							<div className="mt-2 inline-flex items-center justify-center px-3 bg-[#8DD9B3] text-[#1E2A32] py-2 rounded-full">
 								{currentQuestionNumber} / {TOTAL_QUESTIONS_IN_SET}
@@ -151,7 +151,7 @@ export default function DmittTest_7_Page() {
 						<div className="text-right">
 							<div className="flex items-center gap-1.5 text-[#FF3366]">
 								<FiClock className="w-5 h-5" />
-								<span className="text-2xl font-bold">{formatTime(timeLeft)}</span>
+								<span className="text-lg font-bold">{formatTime(timeLeft)}</span>
 							</div>
 							<p className="text-md font-medium text-[#FF99B7]">Min Left</p>
 						</div>
@@ -160,7 +160,7 @@ export default function DmittTest_7_Page() {
 					{/* Current Essay Question */}
 					<div className="bg-gray-50 p-6 rounded-2xl">
 						<p className="text-xs text-gray-500 mb-1">Question {currentQuestionNumber}</p>
-						<h2 className="text-md font-bold text-gray-800 mb-0 text-xl">{essayQuestion.text}</h2>
+						<h2 className="text-md font-semibold tracking-wide text-gray-800 mb-0 text-lg pr-8">{essayQuestion.text}</h2>
 					</div>
 					<div className="bg-gray-50 p-6 rounded-2xl mt-3 border h-[80px]"></div>
 
