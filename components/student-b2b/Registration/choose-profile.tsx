@@ -63,7 +63,7 @@ export default function ChooseProfilePage() {
 					{/* Text Content */}
 					<div className="z-10 mb-auto pt-4 md:pt-0">
 						<h1 className="text-2xl font-bold mb-2">Become a Future School</h1>
-						<p className="text-xs  max-w-[50ch] leading-relaxed">
+						<p className="text-sm max-w-[45ch] leading-5">
 							Lorem Ipsum is simply dummy text of the printing and typesetting industry.
 						</p>
 					</div>
