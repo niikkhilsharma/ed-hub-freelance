@@ -2,12 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FaSearch } from 'react-icons/fa';
-import { IoIosArrowDown } from 'react-icons/io';
 import ClassTab from './class-tab';
-import { FiMinusCircle } from "react-icons/fi";
-import { AiOutlineSwap } from "react-icons/ai";
-import { Button } from '../ui/button';
 type CardData = {
   id: number;
   name: string;
@@ -52,7 +47,19 @@ const SchoolLogin = () => {
     <div className="p-4 ">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
-
+        <div className="grid grid-cols-1 gap-4 md:gap-12 justify-between p-4 md:grid-cols-[2fr_1fr]">
+          <div className="h-62 relative">
+            <Image src="/principal/school-login-banner.png" alt='school-login-principal-image' fill objectFit='cover' className='rounded-2xl' />
+          </div>
+          <div className="flex flex-col">
+            <p className="text-sm"><strong>Email:</strong> example@gm.com
+            </p>
+            <p className="text-sm"><strong>Contact:</strong> +91 1234567890</p>
+            <p className="text-sm"><strong>City:</strong> Mumbai</p>
+            <p className="text-sm"><strong>State:</strong> Maharashtra</p>
+            <p className="text-sm"><strong>Address:</strong> Vivamus sit amet sem ac nibh bibendum condimentum vel in sem. Curabitur tincidunt pretium faucibus. Vestibulum eget pellentesque justo. Vivamus ut pulvinar nibh</p>
+          </div>
+        </div>
         <h2 className="text-m font-medium my-4">Branch Name</h2>
         <div className="flex mb-4 space-x-4 text-sm font-medium">
           <button
@@ -83,11 +90,11 @@ const SchoolLogin = () => {
                 {item.role === 'teacher' && (
                   <>
                     <div className="text-sm font-semibold text-[#FF3366]">{item.course}</div>
-                    
+
                   </>
                 )}
                 <div className="text-xs text-gray-500">{item.level}</div>
-                    <div className="text-xs text-gray-500">{item.group}</div>
+                <div className="text-xs text-gray-500">{item.group}</div>
               </div>
             </div>
           ))}
