@@ -32,7 +32,7 @@ export default function RootLayout({
      const headerUser = {
     name: "Educator Name",
     role: "Teacher",
-    avatarSrc: "/teacher-b2b/profile.png",
+    avatarSrc: "/principal/profile-image.jpg",
   };
     return (
         <html lang="en" className={(poppinsFont.variable, adlam.variable)}>
