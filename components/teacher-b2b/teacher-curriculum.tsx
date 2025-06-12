@@ -53,48 +53,53 @@ const sessionData = Array.from({ length: 14 }, (_, i) => ({
 const Curriculum = () => {
 	const [selected, setSelected] = useState<string>('Category 1')
 
-	const [activeIndex, setActiveIndex] = useState<number | null>(0)
-	const headerUser = {
-		name: 'Educator Name',
-		role: 'Teacher',
-		avatarSrc: '/teacher-b2b/profile.png',
-	}
-	return (
-		<>
-			<Header user={headerUser} />
-			<section className="bg-gray-100">
-				<div className="px-4 pt-4">
-					<div className="w-full flex justify-center bg-white  rounded-2xl py-2">
-						<div className="flex flex-wrap justify-center px-2 gap-4">
-							{categories.map(category => (
-								<button
-									key={category}
-									onClick={() => setSelected(category)}
-									className={`
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const headerUser = {
+    name: "Educator Name",
+    role: "Teacher",
+    avatarSrc: "/teacher-b2b/profile.png",
+  };
+  return (
+    <>
+      <Header user={headerUser} />
+      <MaxWidthWrapper>
+        <section className="bg-gray-100">
+          <div className="px-4 pt-4">
+            <div className="w-full flex justify-center bg-white  rounded-2xl py-2">
+              <div className="flex flex-wrap justify-center px-2 gap-4">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelected(category)}
+                    className={`
               relative px-5 py-2 rounded-2xl cursor-pointer font-medium transition-colors duration-200
-              ${selected === category ? `text-white bg-[${PALETTE.ACCENT_PINK}]` : 'text-gray-700 hover:bg-gray-200'}
-            `}>
-									{/* Animated background highlight */}
-									<AnimatePresence>
-										{selected === category && (
-											<motion.div
-												layoutId="highlight"
-												className={`absolute inset-0 bg-[${PALETTE.ACCENT_PINK}] rounded-2xl z-0`}
-												initial={{ opacity: 0 }}
-												animate={{ opacity: 1 }}
-												exit={{ opacity: 0 }}
-												transition={{ duration: 0.3 }}
-											/>
-										)}
-									</AnimatePresence>
+              ${selected === category
+                        ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
+                        : 'text-gray-700 hover:bg-gray-200'
+                      }
+            `}
+                  >
+                    {/* Animated background highlight */}
+                    <AnimatePresence>
+                      {selected === category && (
+                        <motion.div
+                          layoutId="highlight"
+                          className={`absolute inset-0 bg-[${PALETTE.ACCENT_PINK}] rounded-2xl z-0`}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        />
+                      )}
+                    </AnimatePresence>
 
-									{/* Button text above animation layer */}
-									<span className="relative z-10">{category}</span>
-								</button>
-							))}
-						</div>
-					</div>
-				</div>
+                    {/* Button text above animation layer */}
+                    <span className="relative z-10">{category}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
 
 				<div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 p-4">
 					{/* Left column */}
