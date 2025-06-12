@@ -4,7 +4,7 @@ import '../globals.css'
 import { ADLaM_Display } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import MaxWidthWrapper from '@/components/max-width-wrapper'
+// import MaxWidthWrapper from '@/components/max-width-wrapper'
 
 const adlam = ADLaM_Display({
     subsets: ['latin'],
@@ -38,11 +38,11 @@ export default function RootLayout({
         <html lang="en" className={(poppinsFont.variable, adlam.variable)}>
             <body className="font-main overflow-x-hidden">
                 <Header user={headerUser} />
-                <MaxWidthWrapper>
+                {/* <MaxWidthWrapper> */}
                     <div className="bg-gray-100">
                 {children}
                     </div>
-                </MaxWidthWrapper>
+                {/* </MaxWidthWrapper> */}
                 <Footer />
                 </body>
         </html>
