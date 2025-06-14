@@ -46,8 +46,8 @@ const SchoolLogin = () => {
   return (
     <div className="p-4 ">
       {/* Tabs */}
-      <div className="bg-white rounded-2xl p-4">
-        <div className="grid grid-cols-1 gap-4 md:gap-12 justify-between p-4 md:grid-cols-[2fr_1fr]">
+      <div className="bg-white rounded-2xl p-3">
+        <div className="grid grid-cols-1 gap-4 md:gap-12 justify-between pb-4 md:grid-cols-[2fr_1fr]">
           <div className="h-62 relative">
             <Image src="/principal/school-login-banner.png" alt='school-login-principal-image' fill objectFit='cover' className='rounded-2xl' />
           </div>

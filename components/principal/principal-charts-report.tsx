@@ -471,7 +471,7 @@ const PrincipalChatrsReport: React.FC = () => {
                         i * (chartWidth / (lineChartData.labels.length - 0.6))
                       }
                       y={chartHeight + 20}
-                      fontSize="12"
+                      fontSize="8"
                       fill={PALETTE.TEXT_MEDIUM}
                       textAnchor="middle"
                     >
@@ -608,7 +608,7 @@ const PrincipalChatrsReport: React.FC = () => {
               ))}
               {/* Life Skill Enhancements Card - similar structure to Personal Development */}
             </div>
-            <div className="p-5 h-full custom-scrollbar overflow-y-auto shadow-sm rounded-2xl bg-white row-span-2">
+            <div className="p-5 h-full custom-scrollbar overflow-y-auto rounded-2xl bg-white row-span-2">
               <div
                 style={{
                   backgroundColor: lifeSkillsData.bgColor,
@@ -679,7 +679,7 @@ const PrincipalChatrsReport: React.FC = () => {
             {/* ===== Table started ===== */}
 
             <div
-              className="rounded-2xl h-full custom-scrollbar overflow-y-auto shadow-sm "
+              className="rounded-2xl h-full custom-scrollbar overflow-y-auto "
               style={{
                 backgroundColor: PALETTE.WHITE_CARD,
                 borderColor: PALETTE.BORDER_GREY,

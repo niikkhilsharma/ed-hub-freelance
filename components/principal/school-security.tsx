@@ -105,7 +105,7 @@ const SchoolSecurity = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
+            <div key={item.id} className="flex border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
               <div className={`w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

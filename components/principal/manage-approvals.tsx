@@ -22,7 +22,7 @@ const students = Array.from({ length: 16 }, (_, i) => ({
     course: 'Course Name',
     level: 'Level / Grade',
     group: 'Group',
-    image: '/teacher-avatar-3.jpg', // Use same image or add logic to vary if needed
+    image: '/principal/manage.jpg', // Use same image or add logic to vary if needed
 }));
 
 const teachers = Array.from({ length: 16 }, (_, i) => ({
@@ -32,7 +32,7 @@ const teachers = Array.from({ length: 16 }, (_, i) => ({
     course: 'Subject',
     level: 'Experience Level',
     group: 'Department',
-    image: '/teacher-avatar-2.jpg', // Use same image or add logic to vary if needed
+    image: '/principal/manage.jpg', // Use same image or add logic to vary if needed
 }));
 
 export const sampleData: CardData[] = [...students, ...teachers];
@@ -106,8 +106,8 @@ const ManageApprovalsPage = () => {
                     {/* Cards */}
                     {filteredData.map((item) => (
                         <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
-                            <div className="w-16 h-16 rounded-2xl overflow-hidden">
-                                <Image src={item.image} alt={item.name} width={64} height={64} className="object-cover" />
+                            <div className="w-20 h-20 rounded-2xl overflow-hidden relative">
+                                <Image src={item.image} alt={item.name} fill className="object-cover" />
                             </div>
                             <div className="flex-1">
                                 <div className="font-semibold">{item.name}</div>

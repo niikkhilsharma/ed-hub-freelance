@@ -2,10 +2,6 @@
 
 import React, { useState } from "react";
 import {
-  FiArrowLeft,
-  FiClock,
-  FiChevronLeft,
-  FiChevronRight,
   FiSearch,
   FiPercent,
   FiAward,
@@ -142,7 +138,7 @@ const PrincipalStudentReport: React.FC = () => {
   // Skill Card Data
   const skillCardData = [
     {
-      title: "Basic Academic Skills",
+      title: "Parameter 2",
       bgColor: PALETTE.GREEN_LIGHT,
       progressColor: PALETTE.GREEN_DARK, // Assuming this is for progress bar
       overallProgress: "4/5",
@@ -159,7 +155,7 @@ const PrincipalStudentReport: React.FC = () => {
       }),
     },
     {
-      title: "Critical Academic Skills",
+      title: "Parameter 3",
       bgColor: PALETTE.PURPLE_LIGHT,
       progressColor: PALETTE.PURPLE_DARK,
       overallProgress: "4/5",
@@ -186,7 +182,7 @@ const PrincipalStudentReport: React.FC = () => {
   ];
 
   const lifeSkillsData = {
-    title: "Life skill Enhancements",
+    title: "Parameter 4",
     bgColor: PALETTE.PINK_LIGHT,
     progressColor: PALETTE.PINK_DARK, // Using the darker pink for progress
     overallProgress: "4/5",
@@ -272,7 +268,7 @@ const PrincipalStudentReport: React.FC = () => {
   };
   const personalDevData = {
     // Copied structure from Life Skills for Personal Development
-    title: "Personal Development",
+    title: "Parameter 1",
     bgColor: PALETTE.PINK_LIGHT, // Re-using for consistency with right column
     skills: [
       {
@@ -471,7 +467,7 @@ const PrincipalStudentReport: React.FC = () => {
                         i * (chartWidth / (lineChartData.labels.length - 0.6))
                       }
                       y={chartHeight + 20}
-                      fontSize="12"
+                      fontSize="8"
                       fill={PALETTE.TEXT_MEDIUM}
                       textAnchor="middle"
                     >

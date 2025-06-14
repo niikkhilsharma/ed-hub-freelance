@@ -29,24 +29,24 @@ const LoginTable: React.FC = () => {
     <div className="overflow-x-auto px-4 rounded-2xl">
       <table className="min-w-full bg-white px-3 py-2 rounded-2xl border-separate border-spacing-y-2 text-sm">
         <thead>
-          <tr className="bg-blue-600 text-white text-left">
-            <th className="px-4 py-3 rounded-2xl">Login Date</th>
+          <tr className="bg-blue-600  text-white text-left">
+            <th className="px-4 py-3 rounded-tl-2xl rounded-bl-2xl">Login Date</th>
             <th className="px-4 py-3">Login Time</th>
             <th className="px-4 py-3">IP Address</th>
             <th className="px-4 py-3">Device</th>
             <th className="px-4 py-3">State / City</th>
-            <th className="px-4 py-3 rounded-tr-xl">Status</th>
+            <th className="px-4 py-3 rounded-tr-2xl rounded-br-2xl">Status</th>
           </tr>
         </thead>
         <tbody>
           {loginData.map((record, index) => (
-            <tr key={index} className="bg-gray-100 rounded-2xl">
-              <td className="px-4 py-3">{record.date}</td>
+            <tr key={index} className="bg-gray-100">
+              <td className="px-4 py-3 rounded-tl-2xl rounded-bl-2xl">{record.date}</td>
               <td className="px-4 py-3">{record.time}</td>
               <td className="px-4 py-3">{record.ip}</td>
               <td className="px-4 py-3">{record.device}</td>
               <td className="px-4 py-3">{record.location}</td>
-              <td className="px-4 py-3">
+              <td className="px-4 py-3 rounded-tr-2xl rounded-br-2xl">
                 <span className={`font-medium ${record.status === 'Success' ? 'text-green-500' : 'text-red-500'}`}>
                   {record.status}
                 </span>

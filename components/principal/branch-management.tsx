@@ -36,7 +36,7 @@ export const sampleData: CardData[] = [...branch];
 const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
 
 const BranchManagement = () => {
-const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
+  const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
 
   const handleFilterChange = (index: number, value: string) => {
     const updated = [...selectedFilters];
@@ -86,24 +86,24 @@ const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() 
 
           {/* Cards */}
           {branch.map((item) => (
-            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
+            <div key={item.id} className="relative flex border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
               <div className={`w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">
                 <div className="font-semibold text-m">{item.name}</div>
-                
-                
-                    <div className="text-sm text-gray-500">{item.address}</div>
-                    <div className="text-xs text-gray-500">{item.detail1}</div>
-                    <div className="text-xs text-gray-500">{item.detail2}</div>
-                    <div className="text-xs text-gray-500">{item.detail3}</div>
-                    <div className="text-xs text-gray-500">{item.detail4}</div>
-                  
-               
+
+
+                <div className="text-sm text-gray-500">{item.address}</div>
+                <div className="text-xs text-gray-500">{item.detail1}</div>
+                <div className="text-xs text-gray-500">{item.detail2}</div>
+                <div className="text-xs text-gray-500">{item.detail3}</div>
+                <div className="text-xs text-gray-500">{item.detail4}</div>
+
+
               </div>
-                <div className="flex gap-2">
-                <button className="bg-gray-100  text-pink-600 p-2 text-sm rounded-full ">
+              <div className="flex gap-2 absolute items-center right-5 bottom-5">
+                <button className="bg-gray-100  text-pink-600 p-3 text-sm rounded-full ">
                   <IoSettingsOutline />
                 </button>
                 <button className=" bg-blue-500 text-zinc-900 py-2 px-4 text-sm rounded-full">

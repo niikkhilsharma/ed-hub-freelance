@@ -23,7 +23,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
   teacherImage,
 }) => {
   return (
-    <div className="w-full rounded-2xl shadow-md bg-white border border-gray-200">
+    <div className="w-full rounded-2xl bg-white border border-gray-200">
       <div className="relative w-full h-56 p-2 rounded-2xl">
         <div className="relative w-full h-full rounded-2xl overflow-hidden">
           <Image
@@ -32,7 +32,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
             fill
             className="object-cover rounded-2xl"
           />
-          <div className="absolute top-2 right-2 bg-white text-yellow-500 text-sm font-semibold px-2 py-1 rounded-full flex items-center gap-1 shadow">
+          <div className="absolute top-2 right-2 bg-white text-yellow-500 text-sm font-semibold px-2 py-1 rounded-full flex items-center gap-1">
             {rating} <FaStar className="text-yellow-400" />
           </div>
         </div>
@@ -102,7 +102,7 @@ const StudentProgressReport = () => {
   const Teachers: Person[] = Array.from({ length: 4 }, (_, i) => ({
     name: "Name",
     subject: "Subject",
-    image: "/teacher-avatar-chat-3.jpg",
+    image: "/principal/manage.jpg",
   }));
 
   const courses = Array.from({ length: 6 }, (_, i) => ({
@@ -209,7 +209,7 @@ const StudentProgressReport = () => {
               <div className="flex flex-wrap gap-6 items-stretch">
                 {Teachers.map((card, index) => (
                   <div className="p-2 bg-gray-100 flex items-center gap-6 rounded-2xl border-gray-200" key={index}>
-                    <Image src={card.image} width={50} height={50} alt={card.name} />
+                    <Image className='rounded-xl' src={card.image} width={75} height={50} alt={card.name} />
                     <div className="">
                       <h2 className='font-medium'>{card.name}</h2>
                       <p className={`text-[${PALETTE.ACCENT_PINK}]`}>{card.subject}</p>
@@ -221,7 +221,7 @@ const StudentProgressReport = () => {
           </div>
         </div>
       </div>
-      <div className="my-2 mx-4 rounded-2xl overflow-x-auto custom-scrollbar bg-gray-50 border px-3 py-2">
+      <div className="my-2 mx-4 rounded-2xl overflow-x-auto custom-scrollbar bg-[#f1f1f2] border px-3 py-2">
         <h2 className={`text-[${PALETTE.ACCENT_PINK}] font-bold text-m`}>Active Courses</h2>
         <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 whitespace-nowrap">
           {courses.map((course, index) => (

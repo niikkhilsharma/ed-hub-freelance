@@ -44,7 +44,7 @@ const PrincipalProfileBanner = () => {
                 <FiArrowLeft className="w-5 h-5" />
             </button>
             <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
-                Teaacher Report
+                Teacher Report
             </h1>
         </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
