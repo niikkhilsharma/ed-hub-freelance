@@ -172,10 +172,10 @@ const SubjectFolderViewContent: React.FC = () => {
                   "Main filter icon clicked. Implement general filter logic."
                 )
               }
-              className={`p-3 rounded-xl hover:bg-gray-100 text-[${ACCENT_PINK}] flex-shrink-0 transition-colors`}
+              className={`p-3 rounded-full text-white font-medium cursor-pointer bg-[${ACCENT_PINK}] flex-shrink-0`}
               aria-label="Open main filters"
             >
-              <FiFilter className="w-5 h-5" strokeWidth={2} />
+              Create Folder
             </button>
             {sampleGeneralFilters.map((filter) => (
               <GeneralFilterButton

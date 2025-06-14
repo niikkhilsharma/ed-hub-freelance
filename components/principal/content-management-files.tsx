@@ -1,11 +1,9 @@
 "use client";
-
 import React, { useState, useMemo } from "react";
 import {
   FiSearch,
-  FiFilter,
   FiChevronDown,
-  FiFolder,
+  FiFileText
 } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
 import MaxWidthWrapper from "../max-width-wrapper";
@@ -28,7 +26,7 @@ interface SubjectTab {
 interface FolderItem {
   id: string;
   name: string;
-  fileCount: number;
+  fileCount: string;
   subjectId: string; // To link folder to a subject tab
   // Add other properties like lastModified, etc. if needed
 }
@@ -50,8 +48,8 @@ const sampleSubjectTabs: SubjectTab[] = [
 
 const sampleFolders: FolderItem[] = Array.from({ length: 105 }, (_, i) => ({
   id: `f${i + 1}`,
-  name: "Folder Name",
-  fileCount: 100,
+  name: "File Name",
+  fileCount: "27ᵗʰ June 2025",
   subjectId: sampleSubjectTabs[i % sampleSubjectTabs.length].id, // Distribute folders among subjects
 }));
 
@@ -85,9 +83,9 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
     className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4`}
   >
     <div
-      className={`bg-[#99DEFF] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      className={`bg-[#8dd9b3] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
     >
-      <FiFolder
+      <FiFileText
         className="w-8 h-8 sm:w-12 sm:h-12 text-black opacity-80"
         strokeWidth={1.5}
       />
@@ -166,17 +164,7 @@ const SubjectFolderViewContent: React.FC = () => {
             />
           </div>
           <div className="flex items-center gap-2 overflow-x-auto">
-            <button
-              onClick={() =>
-                alert(
-                  "Main filter icon clicked. Implement general filter logic."
-                )
-              }
-              className={`p-3 rounded-xl hover:bg-gray-100 text-[${ACCENT_PINK}] flex-shrink-0 transition-colors`}
-              aria-label="Open main filters"
-            >
-              <FiFilter className="w-5 h-5" strokeWidth={2} />
-            </button>
+            
             {sampleGeneralFilters.map((filter) => (
               <GeneralFilterButton
                 key={filter.id}
@@ -191,16 +179,6 @@ const SubjectFolderViewContent: React.FC = () => {
           </div>
         </div>
         <div className="bg-white flex items-center justify-center py-1 rounded-2xl mb-4">
-          <nav className="flex space-x-1 sm:space-x-4 overflow-x-auto custom-scrollbar-thin">
-            {sampleSubjectTabs.map((tab) => (
-              <SubjectTabButton
-                key={tab.id}
-                tab={tab}
-                isActive={activeSubjectId === tab.id}
-                onClick={() => setActiveSubjectId(tab.id)}
-              />
-            ))}
-          </nav>
         </div>
         {/* Bottom Section: Folders Grid */}
         {searchedAndFilteredFolders.length > 0 ? (
@@ -211,7 +189,7 @@ const SubjectFolderViewContent: React.FC = () => {
           </div>
         ) : (
           <div className="text-center py-12 text-[#6B7280]">
-            <FiFolder className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <FiFileText className="w-16 h-16 mx-auto mb-4 text-gray-400" />
             <h3 className="text-xl font-semibold mb-2">No Folders Found</h3>
             <p className="text-sm">
               Try adjusting your search or filter criteria, or select a
@@ -233,7 +211,7 @@ export default function MaterialPage() {
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <MaxWidthWrapper>
         <div className="bg-gray-100">
-          <GoBack GoBackHeading="Branch Name"/>
+          <GoBack GoBackHeading="Folder Name"/>
           <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
             <SubjectFolderViewContent />
           </main>
