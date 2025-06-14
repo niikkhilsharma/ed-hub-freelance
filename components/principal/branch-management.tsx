@@ -1,49 +1,48 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { FaSearch } from 'react-icons/fa';
-import { IoIosArrowDown } from 'react-icons/io';
-import { FiMinusCircle } from "react-icons/fi";
-import { IoSettingsOutline } from "react-icons/io5";
-import { Button } from '../ui/button';
-import ActiveTab from './active-inactive';
+import React, { useState } from 'react'
+import Image from 'next/image'
+import { FaSearch } from 'react-icons/fa'
+import { IoIosArrowDown } from 'react-icons/io'
+import { FiMinusCircle } from 'react-icons/fi'
+import { IoSettingsOutline } from 'react-icons/io5'
+import { Button } from '../ui/button'
+import ActiveTab from './active-inactive'
 type CardData = {
-  id: number;
-  name: string;
-  address: string;
-  detail1: string;
-  detail2: string;
-  detail3: string;
-  detail4: string;
-  image: string;
-};
+	id: number
+	name: string
+	address: string
+	detail1: string
+	detail2: string
+	detail3: string
+	detail4: string
+	image: string
+}
 
 const branch = Array.from({ length: 3 }, (_, i) => ({
-  id: i + 1,
-  name: 'School Name',
-  address: "Address",
-  detail1: "Detail 1",
-  detail2: "Detail 2",
-  detail3: "Detail 3",
-  detail4: "Detail 4",
-  image: '/principal/school-login-banner.png',
-}));
+	id: i + 1,
+	name: 'School Name',
+	address: 'Address',
+	detail1: 'Detail 1',
+	detail2: 'Detail 2',
+	detail3: 'Detail 3',
+	detail4: 'Detail 4',
+	image: '/principal/school-login-banner.png',
+}))
 
+export const sampleData: CardData[] = [...branch]
 
-export const sampleData: CardData[] = [...branch];
-
-const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
+const filters = ['Filter 1', 'Filter 2', 'Filter 3']
 
 const BranchManagement = () => {
-  const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
+	  const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''))
 
-  const handleFilterChange = (index: number, value: string) => {
-    const updated = [...selectedFilters];
-    updated[index] = value;
-    setSelectedFilters(updated);
-  };
-  const [searchTerm, setSearchTerm] = useState('');
+	const handleFilterChange = (index: number, value: string) => {
+		const updated = [...selectedFilters]
+		updated[index] = value
+		setSelectedFilters(updated)
+	}
+	const [searchTerm, setSearchTerm] = useState('')
 
   return (
     <div className="p-4 ">
@@ -118,4 +117,4 @@ const BranchManagement = () => {
   );
 };
 
-export default BranchManagement;
+export default BranchManagement

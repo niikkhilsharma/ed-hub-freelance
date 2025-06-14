@@ -66,8 +66,8 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
 	]
 
 	return (
-		<header className="bg-[#3366FF] text-white sticky top-0 z-50 shadow-md print:hidden">
-			<div className="container mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+		<header className="bg-[#3366FF] text-white sticky top-0 z-50 shadow-md print:hidden ">
+			<div className="mx-auto px-4 h-20 flex justify-between items-center max-w-screen-2xl">
 				{/* Logo */}
 				<div className="flex-shrink-0">
 					<Image src="/page3/student_b2b/Clip path group.svg" alt="Edunique Logo" width={231} height={46} className="w-40" />

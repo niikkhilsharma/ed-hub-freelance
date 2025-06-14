@@ -16,9 +16,9 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<div className={poppinsFont.className}>
+		<div className={(poppinsFont.className, 'bg-gray-200')}>
 			<Header user={{ name: 'Nikhil', role: 'Student', avatarSrc: '/page3/entry/pri.png' }} isAskme={false} />
-			<MaxWidthWrapper className="px-4 sm:px-20">{children}</MaxWidthWrapper>
+			{children}
 			<Footer />
 		</div>
 	)
