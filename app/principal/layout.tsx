@@ -4,6 +4,7 @@ import '../globals.css'
 import { ADLaM_Display } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import PrincipalLayoutWrapper from '@/components/PrincipalLayoutWrapper'
 // import MaxWidthWrapper from '@/components/max-width-wrapper'
 
 const adlam = ADLaM_Display({
@@ -35,16 +36,12 @@ export default function RootLayout({
     avatarSrc: "/principal/profile-image.jpg",
   };
     return (
-        <html lang="en" className={(poppinsFont.variable, adlam.variable)}>
-            <body className="font-main overflow-x-hidden">
-                <Header user={headerUser} />
-                {/* <MaxWidthWrapper> */}
-                    <div className="bg-gray-100">
-                {children}
-                    </div>
-                {/* </MaxWidthWrapper> */}
-                <Footer />
-                </body>
-        </html>
-    )
+    <html lang="en" className={`${poppinsFont.variable} ${adlam.variable}`}>
+      <body className="font-main overflow-x-hidden">
+        <PrincipalLayoutWrapper>
+          {children}
+        </PrincipalLayoutWrapper>
+      </body>
+    </html>
+  );
 }
