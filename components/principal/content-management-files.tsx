@@ -6,6 +6,8 @@ import {
   FiFileText
 } from "react-icons/fi";
 import { IoSettingsOutline } from "react-icons/io5";
+import { MdOutlineFileDownload } from "react-icons/md";
+import { LuInfo } from "react-icons/lu";
 import MaxWidthWrapper from "../max-width-wrapper";
 import GoBack from "./goback";
 
@@ -80,8 +82,11 @@ const SubjectTabButton: React.FC<{
 
 const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
   <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4`}
+    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
   >
+    <div className="absolute right-5 top-5 text-gray-400">
+      <LuInfo />
+    </div>
     <div
       className={`bg-[#8dd9b3] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
     >
@@ -97,8 +102,9 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
       </h3>
       <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
       </div>
-      <div className="w-ful bg-gray-200 rounded-full p-1">
-        <button className="w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
+      <div className="w-ful flex gap-2 ">
+        <button className="bg-gray-200 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
+        <button className="bg-gray-200 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <MdOutlineFileDownload /> Download</button>
       </div>
     </div>
   </div>
