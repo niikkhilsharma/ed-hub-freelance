@@ -2,9 +2,7 @@ import TeacherDashboard from '@/components/teacher-b2b/teacher-dashboard'
 import React from 'react'
 
 const Dashboard = () => {
-  return (
-    <TeacherDashboard />
-  )
+	return <TeacherDashboard />
 }
 
-export default Dashboard;
+export default Dashboard
