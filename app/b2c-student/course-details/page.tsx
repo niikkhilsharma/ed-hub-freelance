@@ -1,13 +1,13 @@
 import React from "react";
 import GoBack from "@/components/principal/goback";
+import Course from "@/components/b2c-student/course";
 
 
 const coursedetail = () =>{
     return(
         <>
         <GoBack GoBackHeading="Course Name" />
-        <img src="/b2c-student" alt="" width={200} height={200}/>
-
+        <Course /> 
         </>
     )
 }
