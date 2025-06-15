@@ -113,18 +113,18 @@ const Course = () => {
         { label: 'Levels', icon: <IoBookOutline /> },
     ];
     return (
-        <div className="py-2 px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr] bg-gray-100 p-4 gap-4 rounded-2xl">
-                <div className="bg-white rounded-2xl p-4 grid grid-cols-[2.5fr_1.5fr]">
-                    <div className="relative h-full ">
+        <div className="py-2 px-4 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr] bg-gray-100 md:p-4 gap-4 rounded-2xl">
+                <div className="bg-white rounded-2xl p-4 grid grid-cols-1 lg:grid-cols-[2.5fr_1.5fr]">
+                    <div className="relative lg:h-full lg:w-full h-76 ">
                         <Image className='rounded-2xl' src="/b2c-student/b2c-student.png" alt='b2c-student banner' fill />
                     </div>
                     <CourseOptionsCard /> 
                     </div>
-                <div className="bg-white p-4 rounded-2xl"><ReviewCard /></div>
+                <ReviewCard />
             </div>
 
-            <div className="grid grid-cols-[1fr_6fr] bg-white rounded-2xl p-4 gap-4 my-4">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_6fr] bg-white rounded-2xl p-4 gap-4 my-4">
                 <div className="px-2 py-4 rounded-2xl flex flex-col gap-3 ">
                     {buttons.map((btn, index) => {
                         const isActive = selected === index;
@@ -166,7 +166,7 @@ const Course = () => {
                 </div>
             </div>
             <div className="relative py-8 rounded-2xl">
-                <div className="relative flex gap-4 items-center justify-center w-full z-9">
+                <div className="relative flex gap-4 items-center flex-col md:flex-row justify-center w-full z-9">
                     <h1 className="text-3xl sm:text-[48px] font-bold text-white">Book a Free Demo</h1>
                     <button className='bg-white cursor-pointer rounded-full px-8 py-2 text-m font-medium'>Click Here</button>
                 </div>

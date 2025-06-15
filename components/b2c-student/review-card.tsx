@@ -29,7 +29,7 @@ const reviews: Review[] = [
 
 export default function ReviewCard() {
   return (
-    <div className="">
+    <div className="bg-white p-4 rounded-2xl">
       <h2 className="text-xl font-semibold mb-4">Reviews</h2>
       <div className="space-y-5">
         {reviews.map((review, index) => (

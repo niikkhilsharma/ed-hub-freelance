@@ -4,13 +4,161 @@
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaCheck, FaStar } from 'react-icons/fa';
 import { IoVideocamOutline } from "react-icons/io5";
 import { LuInfo, LuBrain } from "react-icons/lu";
 import { CiStar } from "react-icons/ci";
 import { MdBarChart } from "react-icons/md";
 import { IoBookOutline } from "react-icons/io5";
 import ReviewCard from './review-card';
+import { FaEnvelope, FaLinkedin, FaCheck, FaStar, FaCircle } from 'react-icons/fa';
+import { BsClock } from 'react-icons/bs';
+import { RiSofaLine } from "react-icons/ri";
+import { FaRegEnvelope } from "react-icons/fa6";
+
+const images = [
+    '/b2c-student/card-banner-1.png',
+    '/b2c-student/card-banner-2.png',
+    '/b2c-student/card-banner-3.png',
+    '/b2c-student/card-banner-4.png',
+    '/b2c-student/card-banner-1.png',
+    '/b2c-student/card-banner-2.png',
+];
+
+interface OngoingCoursesCardProps {
+    image: string;
+    rating: number;
+    courseName: string;
+    teacherName: string;
+    teacherRole: string;
+    teacherImage: string;
+}
+const OngoingClass = Array.from({ length: 3 }, (_, i) => ({
+    id: i,
+    image: images[i],
+    courseName: 'Course Name',
+}));
+const OngoingClassesCard: React.FC<OngoingCoursesCardProps> = ({
+    image,
+    courseName,
+}) => {
+    return (
+        <div className="w-full rounded-2xl bg-white border border-gray-200">
+            <div className="relative w-full h-56 p-2 rounded-2xl">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                    <Image
+                        src={image}
+                        alt="Course Image"
+                        fill
+                        className="object-cover rounded-2xl"
+                    />
+                </div>
+            </div>
+
+            <div className="px-4 pb-2 space-y-2">
+                <div className="flex justify-between items-baseline">
+                    <h2 className="text-base font-semibold text-black">{courseName}</h2>
+                </div>
+
+            </div>
+        </div>
+    );
+};
+
+// ongoing batches
+
+interface OngoingBatchesProps {
+    image: string;
+    domain: string;
+    courseName: string;
+    available: number;
+}
+
+const availableCounts = [8, 8, 0]
+
+const OngoingBatches = Array.from({ length: 3 }, (_, i) => ({
+    id: i,
+    image: images[i], // update path
+    domain: "Self Dev.",
+    courseName: 'Course Name',
+    available: availableCounts[i],
+}));
+
+const OngoingBatchesCard: React.FC<OngoingBatchesProps> = ({
+    image,
+    available,
+    domain,
+    courseName,
+}) => {
+    const details = ['Detail 1', 'Detail 2', 'Detail 3', 'Detail 4'];
+    return (
+        <div className="w-full rounded-2xl bg-white border border-gray-200">
+            <div className={`${available === 0 ? "bg-red-400 justify-center" : "bg-green-400 justify-between"} rounded-xl mx-2 mt-2 flex px-4 items-center gap-4`}>
+                <button className="font-semibold text-white  py-2 flex items-center gap-2">
+                    {available === 0 ? (
+                        "Batch Full"
+                    ) : (
+                        <>
+                            <RiSofaLine />
+                            Seats Available
+                        </>
+                    )}
+                </button>
+                {available === 0 ?
+                    ""
+                    : (
+
+                        <p className="text-xs font-semibold text-white">{`${available} seats left`}</p>
+                    )}
+            </div>
+            <div className="relative w-full h-56 p-2 rounded-2xl">
+
+                <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                    <Image
+                        src={image}
+                        alt="Course Image"
+                        fill
+                        className="object-cover rounded-2xl"
+                    />
+
+                </div>
+            </div>
+
+            <div className="px-4 pb-4 space-y-2">
+                <div className="flex justify-between items-baseline">
+                    <h2 className="text-base font-semibold text-black">{courseName}</h2>
+
+                </div>
+                <div className="space-y-3">
+                    {details.map((item, idx) => (
+                        <div key={idx} className="flex items-center gap-3">
+                            <div className="w-6 h-6 flex items-center justify-center rounded-full bg-blue-300 text-white text-xs">
+                                <FaCheck />
+                            </div>
+                            <span className="text-gray-500 text-sm">{item}</span>
+                        </div>
+                    ))}
+                </div>
+                <div className={`${available === 0 ? "bg-[#b0b0b0] text-[#747a86]" : "bg-blue-600 text-white"} rounded-full mt-2 flex px-4  items-center gap-4 justify-center`}>
+                    <button className="font-semibold py-2 flex items-center gap-2">
+                        {available === 0 ? (
+                            "Batch Full"
+                        ) : (
+
+                            "Enroll Now"
+
+                        )}
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    );
+};
+
+
+
+// Upcoimg batch card
+
 interface CourseCardProps {
     image: string;
     rating: number;
@@ -87,14 +235,7 @@ const CourseCard: React.FC<CourseCardProps> = ({
         </div>
     );
 };
-const images = [
-    '/b2c-student/card-banner-1.png',
-    '/b2c-student/card-banner-2.png',
-    '/b2c-student/card-banner-3.png',
-    '/b2c-student/card-banner-4.png',
-    '/b2c-student/card-banner-1.png',
-    '/b2c-student/card-banner-2.png',
-];
+
 const courses = Array.from({ length: 6 }, (_, i) => ({
     id: i,
     image: images[i], // update path
@@ -106,102 +247,252 @@ const courses = Array.from({ length: 6 }, (_, i) => ({
 }));
 
 type batches = {
-Day:string,
-Time:string,
-Batch:string
+    Day: string,
+    Time: string,
+    Batch: string
 };
 
-const batch : batches[]=[
-  {
-   Day:"Monday",
-   Time:"12:00 to 13:00",
-   Batch:"A"
-  },
-  {
-   Day:"Monday",
-   Time:"12:00 to 13:00",
-   Batch:"A"
-  },
-  {
-   Day:"Monday",
-   Time:"12:00 to 13:00",
-   Batch:"A"
-  },
-  {
-   Day:"Monday",
-   Time:"12:00 to 13:00",
-   Batch:"A"
-  },
-  {
-   Day:"Monday",
-   Time:"12:00 to 13:00",
-   Batch:"A"
-  },
+const batch: batches[] = [
+    {
+        Day: "Monday",
+        Time: "12:00 to 13:00",
+        Batch: "A"
+    },
+    {
+        Day: "Monday",
+        Time: "12:00 to 13:00",
+        Batch: "A"
+    },
+    {
+        Day: "Monday",
+        Time: "12:00 to 13:00",
+        Batch: "A"
+    },
+    {
+        Day: "Monday",
+        Time: "12:00 to 13:00",
+        Batch: "A"
+    },
+    {
+        Day: "Monday",
+        Time: "12:00 to 13:00",
+        Batch: "A"
+    },
 ]
+
+
+type Qualification = {
+    logo: string;
+    course: string;
+    school: string;
+    from: string;
+    to: string;
+};
+
+const qualifications: Qualification[] = [
+    {
+        logo: "/b2c-student/school-logo-1.jpg", // Replace with actual path
+        course: "Course / std",
+        school: "School / College Name",
+        from: "2000",
+        to: "2000",
+    },
+    {
+        logo: "/b2c-student/school-logo-2.png", // Replace with actual path
+        course: "Course / std",
+        school: "School / College Name",
+        from: "2000",
+        to: "2000",
+    },
+];
+
 const Profile = () => {
     return (
         <>
-        <div className="py-2 px-4">
-
-            <div className="bg-white rounded-2xl px-4 py-2">
-                <h3 className='text-blue-500'>My core teaching philosophy</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto saepe reprehenderit exercitationem labore aliquam nobis itaque deserunt quo necessitatibus possimus dolor a aut, quas accusamus, magni obcaecati repellat voluptas!
-                Quaerat consequatur, veniam unde hic maxime odit, illo nulla sapiente, ratione doloremque voluptas dicta magnam nesciunt autem sunt! Optio iure beatae quo dolorem quaerat debitis illo quia quam necessitatibus molestiae!
-            olores fugiat eaque velit cumque sint porro quibusdam hic dolor laboriosam, facilis expedita cum? Deserunt, sunt voluptate neque rerum officiis porro saepe nobis vitae est.
-                Minus itaque numquam rem accusamus praesentium beatae ipsum doloribus impedit molestiae mollitia. Laborum dolore ducimus officiis? Velit exercitationem assumenda impedit suscipit maiores, quasi similique dignissimos nemo reprehenderit ea magnam consequatur.
-                soluta nulla tenetur consectetur adipisci cumque incidunt, sapiente molestias alias temporibus maxime neque dolores magni perspiciatis. Nemo, quis obcaecati.</p>
-
-            </div>
-             <div className="bg-white rounded-2xl px-4 py-2 mt-4">
-                <h3 className='text-black-500'>Pedology</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto saepe reprehenderit exercitationem labore aliquam nobis itaque deserunt quo necessitatibus possimus dolor a aut, quas accusamus, magni obcaecati repellat voluptas!
-                Quaerat consequatur, veniam unde hic maxime odit, illo nulla sapiente, ratione doloremque voluptas dicta magnam nesciunt autem sunt! Optio iure beatae quo dolorem quaerat debitis illo quia quam necessitatibus molestiae!
-            olores fugiat eaque velit cumque sint porro quibusdam hic dolor laboriosam, facilis expedita cum? Deserunt, sunt voluptate neque rerum officiis porro saepe nobis vitae est.
-                Minus itaque numquam rem accusamus praesentium beatae ipsum doloribus impedit molestiae mollitia. Laborum dolore ducimus officiis? Velit exercitationem assumenda impedit suscipit maiores, quasi similique dignissimos nemo reprehenderit ea magnam consequatur.
-                soluta nulla tenetur consectetur adipisci cumque incidunt, sapiente molestias alias temporibus maxime neque dolores magni perspiciatis. Nemo, quis obcaecati.</p>
-
-            </div>
-            <div className="bg-white rounded-2xl px-4 py-4 mt-4">
-                <h3>Browse and Enroll in available sessions</h3>
-                {batch.map((batches,index)=>(
-               <div  className="bg-gray-100 py-5 px-5 rounded-xl mt-4 inline-block mx-4" key={index}>
-                <h3 className='text-black-600 mb-2'>Btach: {batches.Batch}</h3>
-                <h4 className="px-4">Day: {batches.Day}</h4>
-                <h4 className='px-4'>Time: {batches.Time}</h4>
-              
-              </div>
-              ))}  
-              </div>
-
-
-              <div className="my-4 rounded-2xl overflow-x-auto custom-scrollbar bg-[#f1f1f2] border px-3 py-2">
-                <h2 className={`text-[#FF3366] font-bold text-m`}>Ongoing Courses</h2>
-                <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 whitespace-nowrap">
-                    {courses.map((course, index) => (
-                        <div key={index} className="min-w-[325px]">
-                            <CourseCard {...course} />
+            <div className="py-2 px-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.75fr_1fr_1fr] my-4 gap-4">
+                    <div className="bg-white rounded-2xl p-6 sm:col-span-2 lg:col-span-1">
+                        {/* Top section */}
+                        <div className="flex items-start justify-between">
+                            <div className="flex gap-4">
+                                <div className="w-24 h-24 relative">
+                                    <Image
+                                        src="/b2c-student/profile.jpg"
+                                        alt="Instructor"
+                                        fill
+                                        className="rounded-full object-cover"
+                                    />
+                                </div>
+                                <div className="flex gap-1 justify-center flex-col">
+                                    <h2 className="text-lg font-semibold">Ronak Mathur</h2>
+                                    <p className="text-sm text-[#FF3366]">Role</p>
+                                    <div className="flex mt-1 text-yellow-400">
+                                        {Array.from({ length: 5 }).map((_, i) => (
+                                            <FaStar key={i} className={i < 4 ? '' : 'text-gray-300'} />
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            <FaLinkedin size={28} className="text-blue-600 rounded-xl text-xl" />
                         </div>
-                    ))}
-                </div> 
-            </div>
 
-            <div className="my-4 rounded-2xl overflow-x-auto custom-scrollbar bg-[#f1f1f2] border px-3 py-2">
-                <h2 className={`text-[#FF3366] font-bold text-m`}>Upcoming Batches</h2>
-                <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 whitespace-nowrap">
-                    {courses.map((course, index) => (
-                        <div key={index} className="min-w-[325px]">
-                            <CourseCard {...course} />
+                        {/* Badges */}
+                        <div className="flex gap-2 mt-4 w-full justify-center flex-wrap">
+                            <div className="bg-[#dbeafe] w-full sm:w-[40%] text-[#5c89ff] text-m px-3 py-2 rounded-full flex items-center gap-2">
+                                <MdBarChart className="text-m" />
+                                6 years
+                            </div>
+                            <div className="bg-[#d1f0e1] w-full sm:w-[40%] text-zinc-900 text-m px-3 py-2 rounded-full flex items-center gap-2">
+                                <FaRegEnvelope className="text-m" />
+                                example@gm.com
+                            </div>
                         </div>
-                    ))}
-                </div> 
+
+                        {/* Demo Button */}
+                        <button className="w-full mt-4 bg-[#FF3366] text-white font-semibold py-2 rounded-2xl flex items-center justify-center gap-2 text-sm">
+                            <IoVideocamOutline />
+                            Watch Demo Video
+                        </button>
+
+                        {/* Availability */}
+                        <div className="mt-6">
+                            <h3 className="font-semibold mb-2">Availability</h3>
+                            <div className="bg-gray-100 rounded-xl p-4 text-sm space-y-2">
+                                <div className="flex justify-between">
+                                    <span className="text-gray-600">Monday, Wednesday, Friday</span>
+                                    <span className="text-gray-500">10 AM – 1 PM</span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="text-gray-600">Saturday</span>
+                                    <span className="text-gray-500">2 PM – 6 PM</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* About */}
+                        <div className="mt-6">
+                            <h3 className="font-semibold mb-2">About</h3>
+                            <ul className="list-disc list-inside text-sm text-gray-700 space-y-1">
+                                <li>Mauris feugiat diam non convallis dictum.</li>
+                                <li>Integer tempus dolor imperdiet porttitor finibus.</li>
+                                <li>Praesent consequat arcu nec diam ultricies, non sodales turpis ornare.</li>
+                                <li>Suspendisse vitae tellus varius, dictum tellus pretium, efficitur metus</li>
+                                <li>Mauris feugiat diam non convallis dictum.</li>
+                                <li>Integer tempus dolor imperdiet porttitor finibus.</li>
+                                <li>Praesent consequat arcu nec diam ultricies, non sodales turpis ornare.</li>
+                                <li>Suspendisse vitae tellus varius, dictum tellus pretium, efficitur metus</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="bg-white rounded-2xl p-5">
+                        <h2 className="text-sm font-semibold mb-4">Qualification</h2>
+                        <div className="space-y-4">
+                            {qualifications.map((q, i) => (
+                                <div
+                                    key={i}
+                                    className="flex items-center bg-gray-100 p-3 rounded-xl gap-4"
+                                >
+                                    <div className="relative w-16 h-16">
+                                        <Image
+                                        fill
+                                            src={q.logo}
+                                            alt="logo"
+                                            className="object-cover rounded-2xl"
+                                        />
+                                    </div>
+
+                                    <div className="flex-1">
+                                        <h3 className="font-semibold text-m">{q.course}</h3>
+                                        <p className="text-sm ">{q.school}</p>
+                                        <div className="flex items-center text-sm text-gray-500 gap-2 mt-1">
+                                            <span>{q.from}</span>
+                                            <FaCircle className="text-[5px]" />
+                                            <span>{q.to}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <ReviewCard />
+                </div>
+                <div className="bg-white rounded-2xl p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                        <div className="w-1 h-5 bg-blue-500 rounded-full"></div>
+                        <h3 className="text-blue-500 font-semibold">My core teaching philosophy</h3>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto saepe reprehenderit exercitationem labore aliquam nobis itaque deserunt quo necessitatibus possimus dolor a aut, quas accusamus, magni obcaecati repellat voluptas!
+                        Quaerat consequatur, veniam unde hic maxime odit, illo nulla sapiente, ratione doloremque voluptas dicta magnam nesciunt autem sunt! Optio iure beatae quo dolorem quaerat debitis illo quia quam necessitatibus molestiae!
+                        olores fugiat eaque velit cumque sint porro quibusdam hic dolor laboriosam, facilis expedita cum? Deserunt, sunt voluptate neque rerum officiis porro saepe nobis vitae est.
+                        Minus itaque numquam rem accusamus praesentium beatae ipsum doloribus impedit molestiae mollitia. Laborum dolore ducimus officiis? Velit exercitationem assumenda impedit suscipit maiores, quasi similique dignissimos nemo reprehenderit ea magnam consequatur.
+                        soluta nulla tenetur consectetur adipisci cumque incidunt, sapiente molestias alias temporibus maxime neque dolores magni perspiciatis. Nemo, quis obcaecati.</p>
+
+                </div>
+                <div className="bg-white rounded-2xl p-6 mt-4">
+                    <h3 className='text-black-500 mb-2'>Pedology</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi architecto saepe reprehenderit exercitationem labore aliquam nobis itaque deserunt quo necessitatibus possimus dolor a aut, quas accusamus, magni obcaecati repellat voluptas!
+                        Quaerat consequatur, veniam unde hic maxime odit, illo nulla sapiente, ratione doloremque voluptas dicta magnam nesciunt autem sunt! Optio iure beatae quo dolorem quaerat debitis illo quia quam necessitatibus molestiae!
+                        olores fugiat eaque velit cumque sint porro quibusdam hic dolor laboriosam, facilis expedita cum? Deserunt, sunt voluptate neque rerum officiis porro saepe nobis vitae est.
+                        Minus itaque numquam rem accusamus praesentium beatae ipsum doloribus impedit molestiae mollitia. Laborum dolore ducimus officiis? Velit exercitationem assumenda impedit suscipit maiores, quasi similique dignissimos nemo reprehenderit ea magnam consequatur.
+                        soluta nulla tenetur consectetur adipisci cumque incidunt, sapiente molestias alias temporibus maxime neque dolores magni perspiciatis. Nemo, quis obcaecati.</p>
+
+                </div>
+                <div className="bg-white rounded-2xl p-6 mt-4">
+                    <h2 className="font-semibold text-lg">Browse and Enroll in available sessions</h2>
+                    <div className="grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+                        {batch.map((batches, index) => (
+                            <div className="bg-gray-100 py-5 px-5 rounded-xl mt-4" key={index}>
+                                <h3 className='text-black-600'>Btach: {batches.Batch}</h3>
+                                <h4 className="">Day: {batches.Day}</h4>
+                                <h4 className=''>Time: {batches.Time}</h4>
+
+                            </div>
+                        ))}
+                    </div>
+                    <div className="flex justify-center w-full">
+                        <button className="px-8 py-3 text-white font-semibold my-4 rounded-full bg-[#FF3366]">Continue</button>
+                    </div>
+                </div>
+
+                <div className="my-4 rounded-2xl overflow-x-auto bg-[#f1f1f2] border px-3 py-2">
+                    <h2 className={`text-[#FF3366] font-bold text-m`}>Ongoing Courses</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 pb-4 pt-2">
+                        {OngoingClass.map((course, index) => (
+                            <div key={index} className="">
+                                <OngoingClassesCard {...course} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="my-4 rounded-2xl overflow-x-auto bg-[#f1f1f2] border px-3 py-2">
+                    <h2 className={`text-[#FF3366] font-bold text-m`}>Ongoing Batches</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 px-2 pb-4 pt-2">
+                        {OngoingBatches.map((course, index) => (
+                            <div key={index} className="">
+                                <OngoingBatchesCard {...course} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="my-4 rounded-2xl overflow-x-auto custom-scrollbar bg-[#f1f1f2] border px-3 py-2">
+                    <h2 className={`text-[#FF3366] font-bold text-m`}>Upcoming Batches</h2>
+                    <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 whitespace-nowrap">
+                        {courses.map((course, index) => (
+                            <div key={index} className="min-w-[325px]">
+                                <CourseCard {...course} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
+
+
+
             </div>
-               
-
-
-
-        </div>
         </>
-       
+
     )
 }
 
