@@ -6,7 +6,7 @@ const coursedetail = () =>{
     return(
         <>
         <GoBack GoBackHeading="Course Name" />
-        <img src="/b2c-student" alt="" width={200} height={200}/>
+
 
         </>
     )
