@@ -66,8 +66,8 @@ export default function FooterNew() {
       viewport={{ once: true, amount: 0.3 }}
       className="w-screen relative flex flex-col bg-[#3466ff] items-center justify-between bg-cover bg-center bg-no-repeat"
     >
-      <div className="z-40 min-h-65 w-full pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
-        <div className="min-h-24 max-w-[80vw] bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between overflow-hidden shadow-xl relative">
+      <div className="z-40 min-h-65 w-full px-16 pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
+        <div className="min-h-24 bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between overflow-hidden shadow-xl relative">
           {/* Background Layer */}
           <div
             className="absolute inset-0 bg-center bg-repeat z-0"
@@ -78,7 +78,7 @@ export default function FooterNew() {
               opacity: 0.3,
             }}
           />
-          <div className="absolute inset-0 bg-black/15 z-1"/>
+          <div className="absolute inset-0 bg-black/15 z-1" />
 
           {/* Central content */}
           <div className="absolute inset-0 z-10 flex flex-col mx-auto py-4 items-center justify-center w-full">
@@ -148,8 +148,8 @@ export default function FooterNew() {
                 className="text-sm mb-6 text-white/90 pr-24"
               >
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry&apos;s standard dummy a
-                type specimen book.
+                industry. Lorem Ipsum has been the industry&apos;s standard
+                dummy a type specimen book.
               </motion.p>
             </motion.div>
 
@@ -246,7 +246,10 @@ export default function FooterNew() {
       </footer>
 
       <div className="w-full px-[10vw] space-y-2 flex flex-col">
-        <motion.div variants={staggerChildren} className="flex mt-2 space-x-3 self-end">
+        <motion.div
+          variants={staggerChildren}
+          className="flex mt-2 space-x-3 self-end"
+        >
           {/* Social Media Icons */}
           {[
             {
@@ -268,7 +271,7 @@ export default function FooterNew() {
               bg: "bg-black",
               icon: "tiktok",
               color: "text-white",
-            }
+            },
           ].map((social, index) => (
             <motion.a
               key={index}
@@ -277,7 +280,9 @@ export default function FooterNew() {
               whileHover="hover"
               variants={socialIconHover}
               className={`bg-white rounded-lg p-2 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow`}
-            >              <SocialIcon
+            >
+              {" "}
+              <SocialIcon
                 type={social.icon}
                 className={`w-6 h-6 text-blue-500`}
               />

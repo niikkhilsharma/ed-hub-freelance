@@ -15,6 +15,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import CourseSlider from "./course-slider";
+import { FaCircleCheck } from "react-icons/fa6";
 // Course type
 interface Course {
   id: string;
@@ -241,7 +242,7 @@ export default function CoursesComponent({
           />
         </div>
         <Select defaultValue="popular">
-          <SelectTrigger className="w-32 bg-yellow-500 border-0 rounded-full h-10 text-white font-medium">
+          <SelectTrigger className="w-32 bg-[#FFD119] border-0 rounded-full h-10 text-white font-medium">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -357,23 +358,24 @@ export default function CoursesComponent({
       </div>
 
       {/* Heat Up Section */}
-      <div className="space-y-4 bg-[#F9FAFB] rounded-2xl pt-8 p-10 ">
-        <div className="space-y-4 mx-auto">
-          <h2 className="text-4xl font-bold text-black">
-            Heat Up Your Skills This <br /> Summer!
+      <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-7">
+        <div className="space-y-4 max-w-7xl mx-auto pb-3">
+          <h2 className="text-4xl leading-[1.5] font-bold text-black">
+            Heat Up Your Skills This
+            <br /> Summer!
           </h2>
-          <p className="text-xl text-[#6B7280]">
-            Discover skills, spark curiosity, and grow with every step.
+          <p className="text-xl font-semibold text-[#6B7280]">
+            Meet our bestseller
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
           {startingCourses.map((course) => (
             <Card
               key={course.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg"
+              className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
             >
-              <div className="relative p-4">
+              <div className="relative p-3">
                 <Image
                   src={course.image || "/placeholder.svg"}
                   alt={course.title}
@@ -382,45 +384,43 @@ export default function CoursesComponent({
                   className="w-full h-48 object-cover rounded-xl"
                 />
               </div>
-              <CardContent className="p-6 pt-0">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Course Name
-                </h3>
+              <CardContent className="p-6 pt-0 space-y-3">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Course Name
+                  </h3>
+                  <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                    Know More
+                  </button>
+                </div>
 
                 <div className="space-y-1">
                   {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                     (detail, index) => (
                       <div key={index} className="flex items-center gap-2">
-                        <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                          <Image
-                            src="/student/home/tick2.png"
-                            alt="tick2"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <span className="text-gray-600">{detail}</span>
+                        <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                        <span className="text-[#6B7280] text-sm">{detail}</span>
                       </div>
                     )
                   )}
                 </div>
 
-                <div className="flex items-center gap-2 my-2">
-                  <div className="flex items-center gap-1 bg-[#F3F4F6] rounded-2xl px-3 py-1">
-                    <span className="font-bold text-lg">4.2</span>
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1 bg-[#F3F4F6] rounded-xl px-3 py-1">
+                    <span className="font-bold">4.2</span>
                     <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   </div>
-                  <span className="text-gray-600 bg-[#F3F4F6] rounded-2xl px-3 py-1">
-                    <span className="font-bold text-black mr-2">4.4K</span>
+                  <span className="text-gray-600 bg-[#F3F4F6] rounded-xl px-3 py-1">
+                    <span className="font-bold text-black mr-1">4.4K</span>
                     Ratings
                   </span>
-                  <span className="text-gray-600 bg-[#F3F4F6] rounded-2xl px-3 py-1">
-                    <span className="font-bold text-black mr-2">6</span>
+                  <span className="text-gray-600 bg-[#F3F4F6] rounded-xl px-3 py-1">
+                    <span className="font-bold text-black mr-1">6</span>
                     Months
                   </span>
                 </div>
 
-                <Button className="w-full bg-[#FF3366] hover:bg-pink-600 text-white rounded-full h-10 text-lg my-2">
+                <Button className="w-full bg-[#FF3366] hover:bg-pink-600 text-white rounded-full h-10 text-lg mt-2">
                   Explore More
                 </Button>
               </CardContent>

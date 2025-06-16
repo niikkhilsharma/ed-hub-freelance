@@ -19,8 +19,6 @@ import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaCircleCheck } from "react-icons/fa6";
 
-
-
 interface Course {
   id: string;
   title: string;
@@ -177,53 +175,56 @@ export default function StudentHome() {
   const [searchQuery, setSearchQuery] = useState("");
   const startingCourses = courses.slice(0, 3);
   return (
-    <StudentWrapper>  
+    <StudentWrapper>
       <main className="min-h-[calc(100vh-80px)]">
         {/* Hero Section */}
         <section className="relative h-full overflow-hidden">
           {/* Background Pattern */}
           <div
-          className="absolute inset-0 bg-center bg-repeat z-0"
-          style={{
-            backgroundImage: "url('/Background2.png')",
-            backgroundSize: "400px",
-            filter: "grayscale(10%) brightness(1.1) blur(0.5px) opacity(0.5)",
-            opacity: 0.3,
-          }}
-        ></div>
+            className="absolute inset-0 bg-center bg-repeat z-0"
+            style={{
+              backgroundImage: "url('/Background2.png')",
+              backgroundSize: "400px",
+              filter: "grayscale(10%) brightness(1.1) blur(0.5px) opacity(0.5)",
+              opacity: 0.3,
+            }}
+          ></div>
 
           {/* Main content */}
           <div className="container mx-auto p-16 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-center h-full gap-16">
             {/* Left Content */}
             <div className="w-full md:w-[55%] z-10 gap-y-6 flex flex-col justify-center h-full">
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
                 Limitless learning at <br />
                 your fingertips
               </h1>
 
               <p className="text-sm md:text-base lg:text-lg">
-                Online learning and teaching marketplace with 5K+ courses & 10M students. <br />
+                Online learning and teaching marketplace with 5K+ courses & 10M
+                students. <br />
                 Taught by experts to help you acquire new skills.
               </p>
 
-                <div className="flex justify-center items-center gap-2 w-fit">
-                    <RiVerifiedBadgeFill className="w-5 h-5"/>
-                  <span className="text-xs md:text-sm lg:text-base">Learn with experts</span>
-                </div>
+              <div className="flex justify-center items-center gap-2 w-fit">
+                <RiVerifiedBadgeFill className="w-5 h-5" />
+                <span className="text-xs md:text-sm lg:text-base">
+                  Learn with experts
+                </span>
+              </div>
 
               <div className="relative w-fit overflow-visible pt-4">
                 <button className="rounded-full md:pl-1 flex items-center gap-4 transition-all cursor-pointer">
-                    <BsFillPlayCircleFill className="w-10 h-10 fill-[#F8BD00]"/>
+                  <BsFillPlayCircleFill className="w-10 h-10 fill-[#F8BD00]" />
                   <div className="font-bold text-xl">How to Work</div>
                 </button>
                 <div className="absolute scale-50 md:scale-75 w-[400px] h-[400px] bottom-0 right-0 z-10 translate-x-full translate-y-3/6">
-                    <Image
-                      src="/student/home/arrow.svg"
-                      alt="arrow"
-                      fill
-                      className="w-[400px] h-[400px]"
-                    />
-                  </div>
+                  <Image
+                    src="/student/home/arrow.svg"
+                    alt="arrow"
+                    fill
+                    className="w-[400px] h-[400px]"
+                  />
+                </div>
               </div>
             </div>
 
@@ -311,18 +312,22 @@ export default function StudentHome() {
                   </div>
                   <CardContent className="p-6 pt-0 space-y-3">
                     <div className="flex justify-between items-center">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      Course Name
-                    </h3>
-                    <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">Know More</button>
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Course Name
+                      </h3>
+                      <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                        Know More
+                      </button>
                     </div>
 
                     <div className="space-y-1">
                       {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                         (detail, index) => (
                           <div key={index} className="flex items-center gap-2">
-                            <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]"/>
-                            <span className="text-[#6B7280] text-sm">{detail}</span>
+                            <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                            <span className="text-[#6B7280] text-sm">
+                              {detail}
+                            </span>
                           </div>
                         )
                       )}
@@ -363,8 +368,7 @@ export default function StudentHome() {
               style={{
                 backgroundImage: 'url("/background5.png")',
                 backgroundSize: "cover",
-                filter:
-                  "opacity(0.4) grayscale(5%) blur(0.1px)",
+                filter: "opacity(0.4) grayscale(5%) blur(0.1px)",
                 opacity: 0.3,
               }}
             />
