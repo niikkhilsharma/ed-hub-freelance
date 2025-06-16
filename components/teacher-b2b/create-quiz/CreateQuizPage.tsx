@@ -1,20 +1,10 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React from "react";
 import {
   FiArrowLeft,
-  FiGrid,
-  FiZap,
-  FiSearch,
   FiChevronDown,
   FiCalendar,
-  FiClock,
-  FiX,
-  FiPlus,
-  FiTrash2,
-  FiUpload,
-  FiEdit3,
-  FiCheckCircle,
 } from "react-icons/fi";
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed

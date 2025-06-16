@@ -179,7 +179,8 @@ export default function CourseDetailPage() {
 			rightColumnRef.current.style.height = 'auto'
 
 			// Force a reflow to ensure we get the correct height
-			leftColumnRef.current.offsetHeight
+			void leftColumnRef.current.offsetHeight;
+
 
 			// Get the height of the left column
 			const leftHeight = leftColumnRef.current.offsetHeight

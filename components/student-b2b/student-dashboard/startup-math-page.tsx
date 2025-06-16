@@ -89,7 +89,7 @@ export default function WorksheetViewPage() {
 		setCurrentPage(prev => Math.min(totalPages, prev + 1))
 	}
 
-	const [currentWeekFilter, setCurrentWeekFilter] = useState('Weekly')
+	// const [currentWeekFilter, setCurrentWeekFilter] = useState('Weekly')
 
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -144,7 +144,7 @@ export default function WorksheetViewPage() {
 							{/* Worksheet Image */}
 							<div className="w-full relative mx-auto prose prose-sm sm:prose-base lg:prose-lg prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF] max-w-none">
 								<div className="px-12 pb-6">
-									<h2 className="text-sm font-medium mb-4 h-16 flex items-end pb-6 bg-white w-full absolute">Let's Revise</h2>
+									<h2 className="text-sm font-medium mb-4 h-16 flex items-end pb-6 bg-white w-full absolute">Let&apos;s Revise</h2>
 									<Image
 										src={'/images/startup-math.png'}
 										alt="worksheet"

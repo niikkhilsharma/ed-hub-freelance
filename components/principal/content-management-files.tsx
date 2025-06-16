@@ -12,11 +12,11 @@ import MaxWidthWrapper from "../max-width-wrapper";
 import GoBack from "./goback";
 
 // --- Style Constants ---
-const ACCENT_PINK = "#FF3366";
+// const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF"; // Placeholder if needed for other active states
 const INPUT_BG_SEARCH = "bg-white"; // Search bar background
 const INPUT_BG_FILTERS = "bg-[#F9FAFB]"; // Background for filter dropdowns
-const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
+// const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
 const FOLDER_CARD_BG = "bg-[#F9FAFB]"; // Very light gray for folder card
 
 // --- Data Interfaces ---
@@ -63,22 +63,22 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
 
 // --- Helper Components ---
 
-const SubjectTabButton: React.FC<{
-  tab: SubjectTab;
-  isActive: boolean;
-  onClick: () => void;
-}> = ({ tab, isActive, onClick }) => (
-  <button
-    onClick={onClick}
-    className={`px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-200 whitespace-nowrap
-      ${isActive
-        ? `bg-[${ACCENT_PINK}] text-white shadow-md`
-        : "bg-transparent text-gray-600 hover:bg-gray-100"
-      }`}
-  >
-    {tab.name}
-  </button>
-);
+// const SubjectTabButton: React.FC<{
+//   tab: SubjectTab;
+//   isActive: boolean;
+//   onClick: () => void;
+//   }> = ({ tab, isActive, onClick }) => (
+//   <button
+//     onClick={onClick}
+//     className={`px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-200 whitespace-nowrap
+//       ${isActive
+//         ? `bg-[${ACCENT_PINK}] text-white shadow-md`
+//         : "bg-transparent text-gray-600 hover:bg-gray-100"
+//       }`}
+//   >
+//     {tab.name}
+//   </button>
+// );
 
 const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
   <div
@@ -97,10 +97,10 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
     </div>
     <div className="flex flex-col w-full gap-4">
       <div className="">
-      <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
-        {folder.name}
-      </h3>
-      <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+        <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
+          {folder.name}
+        </h3>
+        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
       </div>
       <div className="w-ful flex gap-2 ">
         <button className="bg-gray-200 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
@@ -125,7 +125,7 @@ const GeneralFilterButton: React.FC<{
 
 // --- SubjectFolderViewContent Component ---
 const SubjectFolderViewContent: React.FC = () => {
-  const [activeSubjectId, setActiveSubjectId] = useState<string>(
+  const [activeSubjectId] = useState<string>(
     sampleSubjectTabs[0]?.id || ""
   );
   const [searchTerm, setSearchTerm] = useState("");
@@ -155,7 +155,7 @@ const SubjectFolderViewContent: React.FC = () => {
       {/* Top Section: Subject Tabs */}
 
 
-        
+
       <div className="bg-white rounded-2xl  p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -170,7 +170,7 @@ const SubjectFolderViewContent: React.FC = () => {
             />
           </div>
           <div className="flex items-center gap-2 overflow-x-auto">
-            
+
             {sampleGeneralFilters.map((filter) => (
               <GeneralFilterButton
                 key={filter.id}
@@ -217,7 +217,7 @@ export default function MaterialPage() {
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <MaxWidthWrapper>
         <div className="bg-gray-100">
-          <GoBack GoBackHeading="Folder Name"/>
+          <GoBack GoBackHeading="Folder Name" />
           <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
             <SubjectFolderViewContent />
           </main>

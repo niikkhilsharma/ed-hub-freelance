@@ -225,7 +225,7 @@ interface TestAnalyticsProps {
 	totalTests: number
 	averageScore: string
 }
-function TestAnalytics({ month, year, complete, incomplete, totalTests, averageScore }: TestAnalyticsProps) {
+function TestAnalytics({  complete, incomplete, totalTests, averageScore }: TestAnalyticsProps) {
 	return (
 		<div className="space-y-4 w-full p-4 max-w-md border border-[#E5E7EB] rounded-2xl bg-white">
 			{/* Top bar + stats */}

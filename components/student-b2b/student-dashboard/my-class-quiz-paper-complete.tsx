@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import { FiArrowLeft, FiChevronDown, FiCheckCircle, FiXCircle, FiSmile } from 'react-icons/fi'
+import { FiArrowLeft, FiChevronDown,  FiSmile } from 'react-icons/fi'
 import Image from 'next/image'
 
 // --- Main Category Tab Component (Reused) ---
@@ -49,7 +49,7 @@ const QuestionReviewBlock = ({ question, questionNumber }: { question: QuestionR
 		</h3>
 		<div className="space-y-3">
 			{question.options.map(option => {
-				let optionStyle = 'bg-white hover:bg-gray-100'
+				const optionStyle = 'bg-white hover:bg-gray-100'
 				let icon = null
 				let textColor = 'text-[#6B7280]'
 
@@ -87,7 +87,7 @@ const QuestionReviewBlock = ({ question, questionNumber }: { question: QuestionR
 )
 
 // --- Radial Progress/Score Chart Component ---
-const ScoreChart = ({ percentage, correct, total }: { percentage: number; correct: number; total: number }) => {
+const ScoreChart = () => {
 	const radius = 40
 	const stroke = 8
 	const normalizedRadius = radius - stroke / 2
@@ -178,7 +178,7 @@ const reviewQuestions: QuestionReviewData[] = [
 ]
 const totalQuestionsInTest = 3
 const correctAnswersCount = reviewQuestions.filter(q => q.options.find(opt => opt.isUserSelected && opt.isCorrect)).length
-const scorePercentage = Math.round((correctAnswersCount / totalQuestionsInTest) * 100)
+// const scorePercentage = Math.round((correctAnswersCount / totalQuestionsInTest) * 100)
 
 export default function QuizTestResultPage() {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategories[0])
@@ -240,7 +240,7 @@ export default function QuizTestResultPage() {
 							{' '}
 							{/* Sticky for score */}
 							<div className="bg-[#F9FAFB] border border-[#E5E7EB] min-h-[450px] flex flex-col justify-between rounded-2xl p-6 md:p-8 w-full">
-								<ScoreChart percentage={scorePercentage} correct={correctAnswersCount} total={totalQuestionsInTest} />
+								<ScoreChart  />
 								<div className="text-center">
 									<p className="text-6xl font-bold text-[#8DD9B3]">90%</p>
 									<p className="text-lg text-[#6B7280] mt-2">

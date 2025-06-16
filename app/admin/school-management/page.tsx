@@ -1,6 +1,6 @@
 'use client'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card} from '@/components/ui/card'
 
 import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
 import { Button } from '@/components/ui/button'

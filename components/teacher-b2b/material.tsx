@@ -6,7 +6,7 @@ import {
   FiFilter,
   FiChevronDown,
   FiFolder,
-  FiArrowLeft, // Assuming a back arrow might be part of the header or global nav
+  // FiArrowLeft, // Assuming a back arrow might be part of the header or global nav
 } from "react-icons/fi";
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
@@ -17,7 +17,7 @@ const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF"; // Placeholder if needed for other active states
 const INPUT_BG_SEARCH = "bg-white"; // Search bar background
 const INPUT_BG_FILTERS = "bg-[#F9FAFB]"; // Background for filter dropdowns
-const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
+// const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
 const FOLDER_CARD_BG = "bg-[#F9FAFB]"; // Very light gray for folder card
 
 // --- Data Interfaces ---

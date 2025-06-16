@@ -35,7 +35,7 @@ const teachers = Array.from({ length: 16 }, (_, i) => ({
 
 export const sampleData: CardData[] = [...students, ...teachers];
 
-const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
+// const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
 
 const SchoolLogin = () => {
   const [activeTab, setActiveTab] = useState<'student' | 'teacher'>('teacher');

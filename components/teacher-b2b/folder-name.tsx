@@ -69,7 +69,7 @@ const FileManagementContent: React.FC = () => {
 	// const [activeFilters, setActiveFilters] = useState({});
 
 	const filteredFiles = useMemo(() => {
-		let f = files.filter(file => file.name.toLowerCase().includes(searchTerm.toLowerCase()))
+		const f = files.filter(file => file.name.toLowerCase().includes(searchTerm.toLowerCase()))
 		// Add further filtering logic here based on activeFilters
 		return f
 	}, [files, searchTerm /*, activeFilters */])

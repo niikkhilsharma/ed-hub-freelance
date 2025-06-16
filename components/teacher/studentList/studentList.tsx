@@ -4,7 +4,7 @@ import { useState, useRef, useEffect, Fragment } from 'react'; // Added useRef, 
 import Sidebar from '@/components/teacher/layout'; // Adjust import path
 import Image from 'next/image';
 import {
-    FiSearch, FiBell, FiChevronDown, FiFilter, FiUpload, FiMoreVertical, FiEye, FiFileText // Added FiEye, FiFileText
+    FiSearch,  FiChevronDown, FiFilter, FiUpload, FiMoreVertical, FiEye, FiFileText // Added FiEye, FiFileText
 } from 'react-icons/fi';
 import Header from '../header';
 
@@ -81,7 +81,7 @@ const initialTestData: DmitSkillTestData[] = [
 
 
 export default function DmitSkillTestPage() {
-    const [testData, setTestData] = useState<DmitSkillTestData[]>(initialTestData);
+    const [testData] = useState<DmitSkillTestData[]>(initialTestData);
     const [activePopupId, setActivePopupId] = useState<number | null>(null);
     const [popupPosition, setPopupPosition] = useState<{ top: number, left: number } | null>(null);
     const actionButtonRefs = useRef<(HTMLButtonElement | null)[]>([]); // For positioning the popup

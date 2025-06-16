@@ -3,15 +3,10 @@
 
 import Image from 'next/image';
 import React from 'react';
-import { motion } from 'framer-motion';
 import { IoVideocamOutline } from "react-icons/io5";
-import { LuInfo, LuBrain } from "react-icons/lu";
-import { CiStar } from "react-icons/ci";
 import { MdBarChart } from "react-icons/md";
-import { IoBookOutline } from "react-icons/io5";
 import ReviewCard from './review-card';
-import { FaEnvelope, FaLinkedin, FaCheck, FaStar, FaCircle } from 'react-icons/fa';
-import { BsClock } from 'react-icons/bs';
+import { FaLinkedin, FaCheck, FaStar, FaCircle } from 'react-icons/fa';
 import { RiSofaLine } from "react-icons/ri";
 import { FaRegEnvelope } from "react-icons/fa6";
 
@@ -26,11 +21,7 @@ const images = [
 
 interface OngoingCoursesCardProps {
     image: string;
-    rating: number;
     courseName: string;
-    teacherName: string;
-    teacherRole: string;
-    teacherImage: string;
 }
 const OngoingClass = Array.from({ length: 3 }, (_, i) => ({
     id: i,
@@ -86,7 +77,7 @@ const OngoingBatches = Array.from({ length: 3 }, (_, i) => ({
 const OngoingBatchesCard: React.FC<OngoingBatchesProps> = ({
     image,
     available,
-    domain,
+    // domain,
     courseName,
 }) => {
     const details = ['Detail 1', 'Detail 2', 'Detail 3', 'Detail 4'];

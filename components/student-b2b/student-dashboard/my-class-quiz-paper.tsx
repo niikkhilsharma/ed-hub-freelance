@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import { FiArrowLeft, FiChevronDown, FiClock } from "react-icons/fi";
+import { FiArrowLeft, FiChevronDown } from "react-icons/fi";
 
 // --- Main Category Tab (Top horizontal bar) ---
 const MainCategoryTab = ({
@@ -133,13 +133,13 @@ export default function QuizTestPage() {
     return () => clearInterval(timer);
   }, [timeLeft]);
 
-  const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
-      .toString()
-      .padStart(2, "0")}`;
-  };
+  // const formatTime = (seconds: number) => {
+  //   const minutes = Math.floor(seconds / 60);
+  //   const remainingSeconds = seconds % 60;
+  //   return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
+  //     .toString()
+  //     .padStart(2, "0")}`;
+  // };
 
   const handleOptionSelect = (questionId: number, optionId: string) => {
     setAnswers((prevAnswers) => ({

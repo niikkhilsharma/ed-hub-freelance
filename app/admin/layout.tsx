@@ -1,4 +1,4 @@
-import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
+// import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import { Poppins } from 'next/font/google'

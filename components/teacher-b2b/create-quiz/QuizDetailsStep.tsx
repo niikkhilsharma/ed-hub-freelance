@@ -4,16 +4,16 @@ import React, { useMemo } from "react";
 import {
   FiSearch,
   FiChevronDown,
-  FiClock,
-  FiX,
+  // FiClock,
+  // FiX,
   FiArrowLeftCircle,
   FiArrowRightCircle,
 } from "react-icons/fi";
 import {
   TestDetailsData,
-  UnitaryItemData,
-  StudentData,
-  DropdownOption,
+  // UnitaryItemData,
+  // StudentData,
+  // DropdownOption,
   FormField,
   FormSelect,
   FormDateInput,
@@ -34,7 +34,7 @@ import {
 
 interface TestDetailsStepProps {
   testDetails: TestDetailsData;
-  onDetailsChange: (name: keyof TestDetailsData, value: any) => void;
+  onDetailsChange: <K extends keyof TestDetailsData>(name: K, value: TestDetailsData[K]) => void;
   unitarySearch: string;
   onUnitarySearchChange: (value: string) => void;
   studentSearch: string;
@@ -52,8 +52,8 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
   onUnitarySearchChange,
   studentSearch,
   onStudentSearchChange,
-  studentDateFilter,
-  onStudentDateFilterChange,
+  // studentDateFilter,
+  // onStudentDateFilterChange,
   studentStandardFilter,
   onStudentStandardFilterChange,
 }) => {
@@ -192,7 +192,7 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
               value={unitarySearch}
               onChange={(e) => onUnitarySearchChange(e.target.value)}
               className={`w-full pl-9 pr-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm`}
-                />
+            />
           </div>
           <div
             className={`space-y-2 max-h-52 overflow-y-auto pr-1 scrollbar-thin ${SCROLLBAR_THUMB_ORANGE} ${SCROLLBAR_TRACK_LIGHT}`}
@@ -268,7 +268,7 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
                       onStudentStandardFilterChange(e.target.value)
                     }
                     className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-lg appearance-none text-sm pr-8 focus:outline-none focus:ring-1 focus:ring-[${PRIMARY_BLUE}]`}
-                      >
+                  >
                     <option value="">1st STD</option>{" "}
                     {/* Added a default option */}
                     {sampleStandardsData.map((opt) => (

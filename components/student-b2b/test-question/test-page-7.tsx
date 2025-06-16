@@ -39,16 +39,7 @@ const TestHeader = () => (
 	</header>
 )
 
-// --- Category Tab Component ---
-const CategoryTab = ({ label, isActive, onClick }: { label: string; isActive: boolean; onClick: () => void }) => (
-	<button
-		onClick={onClick}
-		className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-full whitespace-nowrap focus:outline-none transition-colors duration-150 ${
-			isActive ? 'bg-[#FF3366] text-white shadow' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-		}`}>
-		{label}
-	</button>
-)
+
 
 // --- Sample Data ---
 interface EssayQuestionData {
@@ -68,15 +59,11 @@ const tabCategoriesData = ['Academic Skills', 'Brain Development', 'Personality 
 export default function DmittTest_7_Page() {
 	const [activeCategory, setActiveCategory] = useState(tabCategoriesData[2]) // Default to "Personality Development"
 	const [currentQuestionNumber] = useState(7) // For "1 / 10" display
-	const [answerText, setAnswerText] = useState('')
+	const [answerText] = useState('')
 	const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES_DMIT * 60) // Time in seconds
 
 	// User data for header
-	const headerUser = {
-		userName: 'Shlok Agheda',
-		userRole: 'Student',
-		userAvatar: '/placeholder-avatar-student.jpg', // UPDATE PATH
-	}
+	
 
 	// Timer useEffect
 	useEffect(() => {

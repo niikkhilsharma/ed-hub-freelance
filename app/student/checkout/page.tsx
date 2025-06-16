@@ -1,7 +1,6 @@
 "use client";
 
 import StudentWrapper from "@/components/student-wrapper";
-import Image from "next/image";
 import FooterNew from "@/components/footer3";
 import React, {useState} from "react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -53,18 +52,18 @@ export default function CourseDetail() {
     cvv: string;
   }
 
-  interface OrderSummary {
-    originalPrice: number;
-    discount: number;
-    discountPercent: number;
-    courses: number;
-    total: number;
-  }
+  // interface OrderSummary {
+  //   originalPrice: number;
+  //   discount: number;
+  //   discountPercent: number;
+  //   courses: number;
+  //   total: number;
+  // }
 
-  interface CourseDetailItem {
-    name: string;
-    price: number;
-  }
+  // interface CourseDetailItem {
+  //   name: string;
+  //   price: number;
+  // }
 
   const handleInputChange = (field: keyof CardDetails, value: string) => {
     setCardDetails((prev: CardDetails) => ({
@@ -372,7 +371,7 @@ export default function CourseDetail() {
                           Unlock Your Potential Today
                         </h4>
                         <p className="text-sm text-gray-600 leading-relaxed">
-                          Join 50 learners from your country who've enrolled in
+                          Join 50 learners from your country who&apos;ve enrolled in
                           this course in the past 24 hours!
                         </p>
                       </div>

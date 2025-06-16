@@ -2,12 +2,12 @@
 
 import React, { useState, useMemo } from "react";
 import {
-  FiClock,
+  // FiClock,
   FiChevronDown,
   FiTrash2,
   FiShare2,
-  FiPlus,
-  FiArrowLeft,
+  // FiPlus,
+  // FiArrowLeft,
   FiArrowLeftCircle,
   FiArrowRightCircle,
 } from "react-icons/fi"; // Added FiArrowLeft for the back button in the header
@@ -46,11 +46,7 @@ const TABS: TabItem[] = [
   { id: "pedagogy", label: "Video Title" },
 ];
 
-const sampleDateFilters: FilterOption[] = [
-  { value: "june2025", label: "June 2025" },
-  { value: "july2025", label: "July 2025" },
-  // Add more
-];
+
 
 const sampleBatchFilters: FilterOption[] = [
   { value: "all", label: "All Batches" },
@@ -152,9 +148,9 @@ const sampleVideos: VideoCardData[] = [
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF"; // Not explicitly in this image, but from your theme
-const YELLOW_BUTTON_BG = "bg-[#FFCC00]";
-const YELLOW_BUTTON_TEXT = "text-black";
-const CARD_BG = "bg-white";
+// const YELLOW_BUTTON_BG = "bg-[#FFCC00]";
+// const YELLOW_BUTTON_TEXT = "text-black";
+// const CARD_BG = "bg-white";
 const CARD_BORDER = "border-[#E5E7EB]";
 const FILTER_BG = "bg-[#F9FAFB]"; // Background for filter dropdowns
 
@@ -281,9 +277,9 @@ const VideoCard: React.FC<{ video: VideoCardData }> = ({ video }) => {
 // --- Main Content Component ---
 const VideoContentPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabItem["id"]>(TABS[0].id);
-  const [dateFilter, setDateFilter] = useState<string>(
-    sampleDateFilters[0].value
-  );
+  // const [dateFilter, setDateFilter] = useState<string>(
+  //   sampleDateFilters[0].value
+  // );
   const [batchFilter, setBatchFilter] = useState<string>(
     sampleBatchFilters[0].value
   );
@@ -305,7 +301,7 @@ const VideoContentPage: React.FC = () => {
 
       return true;
     });
-  }, [allVideos, activeTab, dateFilter, batchFilter, subjectFilter]); // Include all filters in dependency array
+  }, [allVideos, activeTab, batchFilter, subjectFilter]); // Include all filters in dependency array
 
   return (
     <div className=" bg-white rounded-2xl h-fit flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-6 relative">

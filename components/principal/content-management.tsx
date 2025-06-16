@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from "react";
 import {
   FiSearch,
-  FiFilter,
   FiChevronDown,
   FiFolder,
 } from "react-icons/fi";
@@ -16,7 +15,7 @@ const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF"; // Placeholder if needed for other active states
 const INPUT_BG_SEARCH = "bg-white"; // Search bar background
 const INPUT_BG_FILTERS = "bg-[#F9FAFB]"; // Background for filter dropdowns
-const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
+// const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
 const FOLDER_CARD_BG = "bg-[#F9FAFB]"; // Very light gray for folder card
 
 // --- Data Interfaces ---

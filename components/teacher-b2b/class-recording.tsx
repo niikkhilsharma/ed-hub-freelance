@@ -3,10 +3,7 @@
 import React, { useState, useMemo } from "react";
 import {
   FiSearch,
-  FiCalendar, // Using FiCalendar for the date filter icon
   FiChevronDown,
-  FiX, // For clearing date filter
-  FiPlayCircle, // For the play button
   FiShare2, // For the share button
   FiTrash2, // For the delete button
   FiFilm,
@@ -28,7 +25,6 @@ const LIGHT_GREEN_BUTTON_BG = "bg-[#8DD9B333]";
 const LIGHT_GREEN_BUTTON_TEXT = "text-[#8DD9B3]";
 const LIGHT_RED_BUTTON_BG = "bg-[#FF33661A]";
 const LIGHT_RED_BUTTON_TEXT = "text-[#FF3366]";
-const INPUT_BG = "bg-white"; // Search bar is white in this image
 const FILTER_BG = "bg-[#F9FAFB]"; // Filters have a light gray background
 
 // --- Data Interfaces ---
@@ -183,7 +179,7 @@ const RecordingCard: React.FC<{
 // --- ClassRecordingContent Component ---
 const ClassRecordingContent: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [dateFilter, setDateFilter] = useState("June 2025");
+  const [dateFilter] = useState("June 2025");
   const [batchFilter, setBatchFilter] = useState(sampleBatchOptions[0].value);
   const [subjectFilter, setSubjectFilter] = useState(
     sampleSubjectOptions[0].value

@@ -198,7 +198,7 @@ const PedagogyContent: React.FC = () => {
 	const [activeCategoryId, setActiveCategoryId] = useState<string>(sampleTopCategories[0]?.id || '')
 	const [activeChapterId, setActiveChapterId] = useState<string>('') // Will be set based on category
 	const [openAccordionId, setOpenAccordionId] = useState<string | null>(null)
-	const [pedagogyData, setPedagogyData] = useState<PedagogyInfo>(samplePedagogyInfo) // This should be dynamic
+	const [pedagogyData] = useState<PedagogyInfo>(samplePedagogyInfo) // This should be dynamic
 
 	const chapterTabsForActiveCategory = useMemo(() => {
 		return sampleChapterSubTabs.filter(ch => ch.categoryId === activeCategoryId)

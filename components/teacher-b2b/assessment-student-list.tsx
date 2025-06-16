@@ -214,7 +214,7 @@ const StudentPerformancePage: React.FC = () => {
   // const [activeFilters, setActiveFilters] = useState({});
 
   const filteredStudents = useMemo(() => {
-    let S = students.filter(
+    const S = students.filter(
       (student) =>
         student.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         student.courseName.toLowerCase().includes(searchTerm.toLowerCase()) ||

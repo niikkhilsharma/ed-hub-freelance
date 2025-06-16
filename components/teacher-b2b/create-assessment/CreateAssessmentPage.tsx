@@ -1,20 +1,9 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, useCallback } from "react";
+import React from "react";
 import {
-  FiArrowLeft,
-  FiGrid,
-  FiZap,
-  FiSearch,
   FiChevronDown,
   FiCalendar,
-  FiClock,
-  FiX,
-  FiPlus,
-  FiTrash2,
-  FiUpload,
-  FiEdit3,
-  FiCheckCircle,
 } from "react-icons/fi";
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
@@ -509,9 +498,7 @@ export default function CreateBWTestPage() {
     role: "Teacher",
     avatarSrc: "/teacher-b2b/profile.png",
   }; // Update path
-  const handleBackClick = () => {
-    if (typeof window !== "undefined") window.history.back();
-  };
+  
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">

@@ -109,9 +109,9 @@ export default function DmittTest_5_Page() {
 
 	const currentQuestion = sampleQuestions[currentQuestionIndex]
 
-	const handleOptionSelect = (optionId: string) => {
-		setSelectedOptionId(optionId)
-	}
+	// const handleOptionSelect = (optionId: string) => {
+	// 	setSelectedOptionId(optionId)
+	// }
 
 	const handleNextQuestion = () => {
 		// Save current answer
