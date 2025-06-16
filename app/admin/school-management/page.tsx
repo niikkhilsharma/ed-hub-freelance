@@ -26,7 +26,7 @@ export default function SchoolManagement() {
 	)
 }
 
-export function SearchFilterBar() {
+const  SearchFilterBar = () => {
 	return (
 		<div className="flex flex-wrap md:flex-nowrap gap-4 items-center">
 			<div className="relative w-full">

@@ -52,9 +52,17 @@ const CreateBWTestContent: React.FC = () => {
     ]);
   };
 
-  const updateQuestionField = (questionId: string, field: keyof TestQuestion, value: any) => {
-    setQuestions(prev => prev.map(q => q.id === questionId ? { ...q, [field]: value } : q));
-  };
+  const updateQuestionField = <K extends keyof TestQuestion>(
+  questionId: string,
+  field: K,
+  value: TestQuestion[K]
+) => {
+  setQuestions(prev =>
+    prev.map(q =>
+      q.id === questionId ? { ...q, [field]: value } : q
+    )
+  );
+};
 
   const updateQuestionOptionText = (questionId: string, optionIndex: number, text: string) => {
     setQuestions(prev => prev.map(q => {

@@ -174,8 +174,7 @@ const reviewQuestions: QuestionReviewData[] = [
 		],
 	},
 ]
-const totalQuestionsInTest = 3
-const correctAnswersCount = reviewQuestions.filter(q => q.options.find(opt => opt.isUserSelected && opt.isCorrect)).length
+
 // const scorePercentage = Math.round((correctAnswersCount / totalQuestionsInTest) * 100)
 
 export default function MockTestReviewPage() {
