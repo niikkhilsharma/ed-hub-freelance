@@ -5,6 +5,8 @@ import Footer from '@/components/layout/Footer' // Adjust path as needed
 import React, { useState, useMemo } from 'react'
 import { FiSearch, FiFilter, FiChevronDown, FiFileText, FiImage } from 'react-icons/fi'
 import { FiArrowLeft } from 'react-icons/fi'
+import { MdOutlineFileDownload } from "react-icons/md";
+import { FiShare2 } from "react-icons/fi";
 import MaxWidthWrapper from '../admin/max-width-wrapper'
 
 // Define the File interface
@@ -47,14 +49,18 @@ const FileIcon: React.FC<{ type: ManagedFile['type'] }> = ({ type }) => {
 // FileItem Component
 const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
 	return (
-		<div className="flex items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md">
-			<div className="flex items-center space-x-3 min-w-0">
+		<div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
+			<div className="flex items-center space-x-3 min-w-0 justify-self-start">
 				<FileIcon type={file.type} />
 				<span className="text-sm text-black font-medium truncate" title={file.name}>
 					{file.name}
 				</span>
 			</div>
-			<span className="text-sm text-[#B0B0B0] flex-shrink-0 ml-4">{file.size}</span>
+			<span className="text-sm text-gray-500 flex-shrink-0 ml-4 sm:justify-self-center">{file.size}</span>
+			<div className="flex gap-4 text-gray-500 justify-self-end">
+				<MdOutlineFileDownload size={20}/>
+				<FiShare2 size={20}/>
+			</div>
 		</div>
 	)
 }
@@ -162,8 +168,9 @@ export default function StudentSubmittedPapersPage() {
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			<Header user={headerUser} />
-			<div className="flex items-center gap-2 bg-white px-4 sm:px-6 py-4 shadow-sm">
-				<button
+			<div className=" px-4 sm:px-6 py-4 flex justify-between">
+				<div className="flex items-center gap-2 bg-white">
+					<button
 					onClick={handleBackClick}
 					className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
 					aria-label="Go back">
@@ -171,10 +178,14 @@ export default function StudentSubmittedPapersPage() {
 				</button>
 				{/* You can make this title dynamic based on context */}
 				<h1 className="text-lg sm:text-xl font-bold text-[#FF3366]">Folder Name</h1>
+				</div>
+				<div className="bg-white pr-2 flex items-center">
+					<button className='whitespace-nowrap px-4 py-2 rounded-xl bg-gray-200 border border-gray-300 text-xs sm:text-m font-medium'>Manage Group Share</button>
+				</div>
 			</div>
 			<MaxWidthWrapper className="bg-[#eeeeee]">
 				<div className="bg-[#eeeeee]">
-					<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+					<main className="flex-grow container mx-auto px-2 py-4 sm:p-6">
 						{/* 
           The space-y-8 from your example is removed here if FileManagementContent 
           is the only direct child and already has its own internal spacing/padding.
