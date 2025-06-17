@@ -56,7 +56,7 @@ type ProgressCircleProps = {
 	details?: string
 }
 
-export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageText, color, skillName, details }) => {
+const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageText, color, skillName, details }) => {
 	const [numerator, denominator] = percentageText.split('/').map(Number)
 	const percentage = (numerator / denominator) * 100
 
