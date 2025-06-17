@@ -196,11 +196,21 @@ export default function StudentHome() {
             <div className="w-full md:w-[55%] z-10 gap-y-6 flex flex-col justify-center h-full">
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 Limitless learning at <br />
-                your fingertips
+                your{" "}
+                <span
+                  style={{
+                    backgroundImage: "url('/student/home/brush_stroke.svg')",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "contain",
+                    backgroundPositionY: "10px",
+                  }}
+                >
+                  fingertips
+                </span>
               </h1>
 
               <p className="text-sm md:text-md lg:text-[15px] xl:text-lg">
-                Online learning and teaching marketplace with 5K+ courses & 10M
+                Online learning and teaching mar ketplace with 5K+ courses & 10M
                 students. <br />
                 Taught by experts to help you acquire new skills.
               </p>
@@ -420,7 +430,7 @@ export default function StudentHome() {
                         }}
                       >
                         <img
-                          src="/student/home/card.png"
+                          src="/student/home/card2.png"
                           alt="card"
                           className="w-full h-full object-cover rounded-2xl"
                         />
@@ -434,7 +444,7 @@ export default function StudentHome() {
                         }}
                       >
                         <img
-                          src="/student/home/card.png"
+                          src="/student/home/card1.png"
                           alt="card"
                           className="w-full h-full object-cover rounded-2xl"
                         />
