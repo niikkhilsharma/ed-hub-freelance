@@ -1,29 +1,56 @@
-'use client'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
-import { Card } from '@/components/ui/card'
 
-import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
+import { ChevronDown, Search } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { ChevronDown, Search } from 'lucide-react'
-import Image from 'next/image'
 
-export default function SchoolManagement() {
+import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
+import NamingBar from '@/components/admin/ui/naming-bar'
+import { cn } from '@/lib/utils'
+
+export default function SchoolManagementReport() {
+	const tabs = [
+		{ name: 'Analysis', active: false },
+		{ name: 'Teachers', active: true },
+		{ name: 'Students', active: false },
+		{ name: 'Content', active: false },
+	]
+
+	const studentClass = [
+		{ className: 'Class 1', active: true },
+		{ className: 'Class 2', active: false },
+		{ className: 'Class 3', active: false },
+		{ className: 'Class 4', active: false },
+	]
+
 	return (
-		<div className="bg-gray-100/60 p-4">
-			<MaxWidthWrapper className="bg-white p-4 rounded-2xl">
+		<div className="bg-gray-100/60">
+			<NamingBar name="School Name" />
+			<MaxWidthWrapper className="bg-white rounded-2xl my-10 py-4">
 				<SearchFilterBar />
-				<div className="rounded-2xl bg-white px-2 sm:px-4 mt-4 sm:mt-6 grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
-					<SchoolCard />
+				<div>
+					<div className={cn('my-8 flex items-center justify-start gap-4 sm:gap-8 font-medium')}>
+						{tabs.map((tab, indx) => (
+							<div key={indx} className={cn(tab.active ? 'text-[#3366FF] underline underline-offset-8' : 'text-[#6B7280]')}>
+								{tab.name}
+							</div>
+						))}
+					</div>
+					<div className="flex justify-center items-center gap-8 border rounded-2xl py-2">
+						{studentClass.map((cls, indx) => (
+							<div key={indx} className={cn('text-white p-2 rounded-2xl', cls.active ? 'bg-[#FF3366]' : 'text-[#6B7280]')}>
+								{cls.className}
+							</div>
+						))}
+					</div>
 				</div>
 			</MaxWidthWrapper>
 		</div>
 	)
+}
+
+function TeacherRectangle() {
+	return <div className="bg-[#F3F4F6]"></div>
 }
 
 function SearchFilterBar() {
@@ -33,7 +60,6 @@ function SearchFilterBar() {
 				<Input className="border-black rounded-full pl-9" placeholder="Search" />
 				<Search className="absolute top-0 translate-y-1/4 left-2" />
 			</div>
-			<Button className="text-xs bg-[#FF3366] text-white rounded-full">Manage Approval</Button>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
 					<Button className="bg-[#F9FAFB] border border-[#E5E7EB] hover:bg-[#F9FAFB]/90 rounded-xl font-light text-black">
@@ -74,31 +100,5 @@ function SearchFilterBar() {
 				</DropdownMenuContent>
 			</DropdownMenu>
 		</div>
-	)
-}
-
-const SchoolCard = () => {
-	return (
-		<Card className="shadow-none bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
-			<div className="w-full sm:w-52 h-44">
-				<Image
-					src={'/images/school-image.jpg'}
-					alt="School"
-					width={1880}
-					height={1250}
-					className="w-full h-full sm:w-52 object-cover rounded-xl"
-				/>
-			</div>
-			<div className="flex flex-col justify-between gap-2 sm:gap-2 flex-1">
-				<div>
-					<h2 className="font-semibold text-sm sm:text-base truncate">School Name</h2>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Address</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 1</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 2</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 3</p>
-					<p className="text-[#6B7280] text-xs sm:text-xs font-light truncate">Detail 4</p>
-				</div>
-			</div>
-		</Card>
 	)
 }
