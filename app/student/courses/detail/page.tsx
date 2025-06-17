@@ -579,7 +579,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           <div
             className="absolute inset-0 rounded-2xl bg-center bg-repeat z-0"
             style={{
-              backgroundImage: "url('/book_a_free_demo_background.png')",
+              backgroundImage: "url('/Background6.png')",
               backgroundSize: "400px",
               filter: "grayscale(10%) brightness(1.1) blur(0.5px)",
               opacity: 0.3,
