@@ -4,7 +4,7 @@ import React from "react";
 import { FiPlus, FiTrash2 } from "react-icons/fi";
 import {
   TestQuestion,
-  TestOption,
+  // TestOption,
   NumOptionsInput,
   QuestionPointsInput, // Import helpers
   INPUT_BG,
@@ -18,7 +18,7 @@ interface TestQuestionnaireStepProps {
   onUpdateQuestionField: (
     questionId: string,
     field: keyof TestQuestion,
-    value: any
+    value: string
   ) => void;
   onUpdateQuestionOptionText: (
     questionId: string,
@@ -165,7 +165,7 @@ const NumberSpinnerInput: React.FC<{
   value: string | number;
   label?: string;
   isPoints?: boolean;
-}> = ({ value, label, isPoints }) => {
+}> = ({ value, label }) => {
   // Dummy handlers, as this is hardcoded presentational
   const handleIncrement = () => console.log("Increment");
   const handleDecrement = () => console.log("Decrement");

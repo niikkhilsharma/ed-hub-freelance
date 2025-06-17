@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import {
   FiArrowLeft,
-  FiClock,
-  FiChevronLeft,
-  FiChevronRight,
+  // FiClock,
+  // FiChevronLeft,
+  // FiChevronRight,
   FiSearch,
   FiPercent,
   FiAward,
@@ -105,8 +105,8 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 
 const StudentReport: React.FC = () => {
   // Dummy state for month/year filter for Overall Progress chart
-  const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
-  const [currentYear, setCurrentYear] = useState("2025");
+  // const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
+  // const [currentYear, setCurrentYear] = useState("2025");
 
   const handleBackClick = () => {
     if (typeof window !== "undefined") {
@@ -546,7 +546,7 @@ const StudentReport: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2 mt-2 sm:mt-0">
                   <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                    <span>{currentMonth}</span>
+                    <span>March</span>
                     <FiChevronDown className="w-4 h-4 ml-1" />
                   </div>
                   <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">

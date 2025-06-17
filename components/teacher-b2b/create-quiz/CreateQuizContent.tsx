@@ -1,6 +1,6 @@
 "use client"; // Keep this if CreateBWTestPage is, for consistency or if it uses client hooks directly
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import {
   StepperStep, TestDetailsData, TestQuestion,
@@ -13,7 +13,7 @@ import TestQuestionnaireStep from "@/components/teacher-b2b/create-quiz/QuizQues
 import TestReviewStep from "@/components/teacher-b2b/create-quiz/QuizReviewStep";
 
 // Re-export or re-define constants if needed and not directly imported
-import { PRIMARY_BLUE, YELLOW_BUTTON_BG, YELLOW_BUTTON_TEXT } from "@/components/teacher-b2b/create-test/CreateBWTestPage";
+import { PRIMARY_BLUE, YELLOW_BUTTON_BG } from "@/components/teacher-b2b/create-test/CreateBWTestPage";
 
 
 const CreateBWTestContent: React.FC = () => {
@@ -38,9 +38,13 @@ const CreateBWTestContent: React.FC = () => {
   const [studentDateFilter, setStudentDateFilter] = useState('June 2025'); // Default or could be empty
   const [studentStandardFilter, setStudentStandardFilter] = useState(''); // Default or could be empty
 
-  const handleTestDetailsChange = (name: keyof TestDetailsData, value: any) => {
-    setTestDetails((prev: TestDetailsData) => ({ ...prev, [name]: value }));
-  };
+  const handleTestDetailsChange = <K extends keyof TestDetailsData>(
+  name: K,
+  value: TestDetailsData[K]
+) => {
+  setTestDetails((prev: TestDetailsData) => ({ ...prev, [name]: value }));
+};
+
 
   const addNewQuestion = () => {
     setQuestions(prev => [
@@ -48,9 +52,17 @@ const CreateBWTestContent: React.FC = () => {
     ]);
   };
 
-  const updateQuestionField = (questionId: string, field: keyof TestQuestion, value: any) => {
-    setQuestions(prev => prev.map(q => q.id === questionId ? { ...q, [field]: value } : q));
-  };
+  const updateQuestionField = <K extends keyof TestQuestion>(
+  questionId: string,
+  field: K,
+  value: TestQuestion[K]
+) => {
+  setQuestions(prev =>
+    prev.map(q =>
+      q.id === questionId ? { ...q, [field]: value } : q
+    )
+  );
+};
 
   const updateQuestionOptionText = (questionId: string, optionIndex: number, text: string) => {
     setQuestions(prev => prev.map(q => {

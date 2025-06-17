@@ -3,9 +3,6 @@
 import React, { useState } from "react";
 import {
   FiArrowLeft,
-  FiClock,
-  FiChevronLeft,
-  FiChevronRight,
   FiSearch,
   FiPercent,
   FiAward,
@@ -18,7 +15,6 @@ import {
 import Image from "next/image"; // For profile picture
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
-import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {
@@ -105,8 +101,7 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 
 const StudentReport: React.FC = () => {
   // Dummy state for month/year filter for Overall Progress chart
-  const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
-  const [currentYear, setCurrentYear] = useState("2025");
+  const [currentMonth] = useState("Month"); 
 
   const handleBackClick = () => {
     if (typeof window !== "undefined") {

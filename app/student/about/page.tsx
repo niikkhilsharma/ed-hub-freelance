@@ -1,11 +1,11 @@
 "use client";
 
 import { User, Clock, Monitor, DollarSign } from "lucide-react";
-import { FiCheckCircle } from "react-icons/fi";
+// import { FiCheckCircle } from "react-icons/fi";
 import { Card, CardContent } from "@/components/ui/card";
 import StudentWrapper from "@/components/student-wrapper";
 import Image from "next/image";
-import Footer from "@/components/footer";
+// import Footer from "@/components/footer";
 import FooterNew from "@/components/footer3";
 
 const features = [
@@ -118,7 +118,7 @@ export default function CourseDetail() {
               </h1>
               <p className="text-black text-md max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
+                industry. Lorem Ipsum has been the industry&apos;s standard dummy
                 text ever since the 1500s, when an unknown printer took a galley
                 of type and scrambled it to make a type specimen book. It has
                 survived not only five centuries, but also the leap into

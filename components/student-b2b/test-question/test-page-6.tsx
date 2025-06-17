@@ -6,7 +6,7 @@ import { FiBell, FiClock } from 'react-icons/fi'
 
 // --- Simplified Header for In-Test View ---
 // You might use your full Header component or a simplified one for focus.
-const TestHeader = ({ userName, userRole, userAvatar }: { userName: string; userRole: string; userAvatar: string }) => (
+const TestHeader = () => (
 	<header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
 		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
 			{/* Logo */}
@@ -40,15 +40,7 @@ const TestHeader = ({ userName, userRole, userAvatar }: { userName: string; user
 )
 
 // --- Category Tab Component ---
-const CategoryTab = ({ label, isActive, onClick }: { label: string; isActive: boolean; onClick: () => void }) => (
-	<button
-		onClick={onClick}
-		className={`px-4 py-2 text-xs sm:text-sm font-medium rounded-full whitespace-nowrap focus:outline-none transition-colors duration-150 ${
-			isActive ? 'bg-[#FF3366] text-white shadow' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-		}`}>
-		{label}
-	</button>
-)
+
 
 // --- Sample Data ---
 interface EssayQuestionData {
@@ -68,15 +60,10 @@ const tabCategoriesData = ['Academic Skills', 'Brain Development', 'Personality 
 export default function DmittEssayTestPage() {
 	const [activeCategory, setActiveCategory] = useState(tabCategoriesData[2]) // Default to "Personality Development"
 	const [currentQuestionNumber] = useState(1) // For "1 / 10" display
-	const [answerText, setAnswerText] = useState('')
+	const [answerText] = useState('')
 	const [timeLeft, setTimeLeft] = useState(TIME_LIMIT_MINUTES_DMIT * 60) // Time in seconds
 
-	// User data for header
-	const headerUser = {
-		userName: 'Shlok Agheda',
-		userRole: 'Student',
-		userAvatar: '/placeholder-avatar-student.jpg', // UPDATE PATH
-	}
+	
 
 	// Timer useEffect
 	useEffect(() => {
@@ -114,7 +101,7 @@ export default function DmittEssayTestPage() {
 
 	return (
 		<div className="min-h-screen flex flex-col">
-			<TestHeader userName={headerUser.userName} userRole={headerUser.userRole} userAvatar={headerUser.userAvatar} />
+			<TestHeader  />
 
 			<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
 				<div className="max-w-3xl mx-auto bg-white rounded-xl p-6 md:p-8">

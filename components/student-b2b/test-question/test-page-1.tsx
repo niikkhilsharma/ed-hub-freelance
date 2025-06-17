@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FiBell, FiClock } from 'react-icons/fi'
 
-import Header from '@/components/layout/TestHeader'
 
 // Sample Question Data Structure
 interface QuestionOption {

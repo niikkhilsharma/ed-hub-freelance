@@ -2,8 +2,6 @@ import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import '../globals.css'
 import { ADLaM_Display } from 'next/font/google'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 import PrincipalLayoutWrapper from '@/components/PrincipalLayoutWrapper'
 // import MaxWidthWrapper from '@/components/max-width-wrapper'
 
@@ -30,11 +28,7 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-     const headerUser = {
-    name: "Educator Name",
-    role: "Teacher",
-    avatarSrc: "/principal/profile-image.jpg",
-  };
+    
     return (
     <html lang="en" className={`${poppinsFont.variable} ${adlam.variable}`}>
       <body className="font-main overflow-x-hidden">

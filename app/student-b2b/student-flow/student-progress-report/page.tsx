@@ -14,7 +14,7 @@ import {
 } from 'react-icons/fi' // Add icons as needed
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import MaxWidthWrapper from '@/components/max-width-wrapper'
+// import MaxWidthWrapper from '@/components/max-width-wrapper'
 import { cn } from '@/lib/utils'
 
 export default function Report() {
@@ -56,7 +56,7 @@ type ProgressCircleProps = {
 	details?: string
 }
 
-export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageText, color, skillName, details }) => {
+const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageText, color, skillName, details }) => {
 	const [numerator, denominator] = percentageText.split('/').map(Number)
 	const percentage = (numerator / denominator) * 100
 

@@ -47,9 +47,9 @@ export default function RegisterPage() {
     setStep((prev) => (prev < totalSteps ? prev + 1 : prev));
   };
   
-  const prevStep = () => {
-    setStep((prev) => (prev > 1 ? prev - 1 : prev));
-  };
+  // const prevStep = () => {
+  //   setStep((prev) => (prev > 1 ? prev - 1 : prev));
+  // };
 
   const renderStep = () => {
     switch (step) {
@@ -58,7 +58,7 @@ export default function RegisterPage() {
       case 2: return <Step2 onContinue={nextStep} />;
       case 3: return <Step3 onContinue={nextStep} />;
       case 4: return <Step4 onContinue={nextStep} />;
-      case 5: return <Step5 onContinue={nextStep} />;
+      case 5: return <Step5 />;
       default: return <Step1 onContinue={nextStep} />;
     }
   };
@@ -208,7 +208,7 @@ const Step4 = ({ onContinue }: { onContinue: () => void }) => (
       </>
 );
   
-const Step5 = ({ onContinue }: { onContinue: () => void }) => (
+const Step5 = () => (
       <>
         <h1 className="text-2xl font-bold text-black mb-6">School Information</h1>
         <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Registration Complete!"); }}>

@@ -4,16 +4,11 @@ import React, { useMemo } from "react";
 import {
   FiSearch,
   FiChevronDown,
-  FiClock,
-  FiX,
   FiArrowLeftCircle,
   FiArrowRightCircle,
 } from "react-icons/fi";
 import {
   TestDetailsData,
-  UnitaryItemData,
-  StudentData,
-  DropdownOption,
   FormField,
   FormSelect,
   FormDateInput,
@@ -34,7 +29,7 @@ import {
 
 interface TestDetailsStepProps {
   testDetails: TestDetailsData;
-  onDetailsChange: (name: keyof TestDetailsData, value: any) => void;
+onDetailsChange: <K extends keyof TestDetailsData>(name: K, value: TestDetailsData[K]) => void;
   unitarySearch: string;
   onUnitarySearchChange: (value: string) => void;
   studentSearch: string;
@@ -52,8 +47,6 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
   onUnitarySearchChange,
   studentSearch,
   onStudentSearchChange,
-  studentDateFilter,
-  onStudentDateFilterChange,
   studentStandardFilter,
   onStudentStandardFilterChange,
 }) => {

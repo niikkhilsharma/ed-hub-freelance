@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaStar, FaSmile } from 'react-icons/fa';
+// import { FaStar, FaSmile } from 'react-icons/fa';
 import Image from 'next/image';
 
 interface ScoreItem {

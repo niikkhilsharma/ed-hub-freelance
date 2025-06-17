@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import Image from 'next/image'
-import { FiTrash2 } from 'react-icons/fi'
 
 // --- Recording Card Component ---
 interface Recording {

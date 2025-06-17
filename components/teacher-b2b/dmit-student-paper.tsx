@@ -29,11 +29,11 @@ interface RatingCategory {
   maxScore: number;
 }
 
-interface AssessmentSummaryData {
-  assessmentScore: number;
-  incorrectAnswers: number;
-  ratings: RatingCategory[];
-}
+// interface AssessmentSummaryData {
+//   assessmentScore: number;
+//   incorrectAnswers: number;
+//   ratings: RatingCategory[];
+// }
 
 // --- Sample Data ---
 const sampleQuestionsData: Question[] = [
@@ -92,7 +92,7 @@ const sampleSummaryData: ExtendedAssessmentSummaryData = {
 
 // --- Style Constants (derived from your theme and image) ---
 const COLOR_CORRECT_TEXT = 'text-[#8DD9B3]'; // Standard Tailwind green
-const COLOR_CORRECT_ICON = 'text-[#8DD9B3]'; // A slightly different shade for icon if desired, or same
+// const COLOR_CORRECT_ICON = 'text-[#8DD9B3]'; // A slightly different shade for icon if desired, or same
 const COLOR_INCORRECT_TEXT = 'text-[#E57373]'; // Standard Tailwind red
 const COLOR_INCORRECT_ICON = 'text-[#E57373]';
 const COLOR_NEUTRAL_TEXT = 'text-[#6B7280]'; // Lighter gray for neutral options
@@ -179,27 +179,27 @@ interface ExtendedAssessmentSummaryData {
 }
 
 // --- New Sub-component for Individual Scores ---
-const IndividualScoresPanel: React.FC<{ scores: IndividualSkillScore[] }> = ({ scores }) => {
-  return (
-    <div className="rounded-2xl bg-[#F3F4F6] p-4"> {/* Adjust padding as needed */}
-      <h3 className="text-lg font-bold text-black mb-3">Individual Scores</h3>
-      <div className="space-y-3">
-        {scores.map(score => (
-          <div key={score.id} className="flex items-center">
-            <p className="text-xs text-black font-medium w-2/5 truncate pr-2">{score.skillName}</p>
-            <div className="flex-grow bg-white p-[2px] rounded-full h-2.5 sm:h-3 mr-2">
-              <div
-                className={`${score.colorClass} h-full  rounded-full`}
-                style={{ width: `${score.percentage}%` }}
-              ></div>
-            </div>
-            <p className="text-xs sm:text-sm text-black font-medium w-[3em] text-right">{score.percentage}%</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+// const IndividualScoresPanel: React.FC<{ scores: IndividualSkillScore[] }> = ({ scores }) => {
+//   return (
+//     <div className="rounded-2xl bg-[#F3F4F6] p-4"> {/* Adjust padding as needed */}
+//       <h3 className="text-lg font-bold text-black mb-3">Individual Scores</h3>
+//       <div className="space-y-3">
+//         {scores.map(score => (
+//           <div key={score.id} className="flex items-center">
+//             <p className="text-xs text-black font-medium w-2/5 truncate pr-2">{score.skillName}</p>
+//             <div className="flex-grow bg-white p-[2px] rounded-full h-2.5 sm:h-3 mr-2">
+//               <div
+//                 className={`${score.colorClass} h-full  rounded-full`}
+//                 style={{ width: `${score.percentage}%` }}
+//               ></div>
+//             </div>
+//             <p className="text-xs sm:text-sm text-black font-medium w-[3em] text-right">{score.percentage}%</p>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   );
+// };
 
 
 const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ summary }) => {

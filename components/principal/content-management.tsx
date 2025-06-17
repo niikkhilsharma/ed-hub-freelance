@@ -3,7 +3,6 @@
 import React, { useState, useMemo } from "react";
 import {
   FiSearch,
-  FiFilter,
   FiChevronDown,
   FiFolder,
 } from "react-icons/fi";
@@ -16,7 +15,7 @@ const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF"; // Placeholder if needed for other active states
 const INPUT_BG_SEARCH = "bg-white"; // Search bar background
 const INPUT_BG_FILTERS = "bg-[#F9FAFB]"; // Background for filter dropdowns
-const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
+// const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
 const FOLDER_CARD_BG = "bg-[#F9FAFB]"; // Very light gray for folder card
 
 // --- Data Interfaces ---
@@ -172,10 +171,10 @@ const SubjectFolderViewContent: React.FC = () => {
                   "Main filter icon clicked. Implement general filter logic."
                 )
               }
-              className={`p-3 rounded-xl hover:bg-gray-100 text-[${ACCENT_PINK}] flex-shrink-0 transition-colors`}
+              className={`p-3 rounded-full text-white font-medium cursor-pointer bg-[${ACCENT_PINK}] flex-shrink-0`}
               aria-label="Open main filters"
             >
-              <FiFilter className="w-5 h-5" strokeWidth={2} />
+              Create Folder
             </button>
             {sampleGeneralFilters.map((filter) => (
               <GeneralFilterButton

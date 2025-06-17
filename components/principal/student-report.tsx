@@ -97,8 +97,7 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 
 const PrincipalStudentReport: React.FC = () => {
   // Dummy state for month/year filter for Overall Progress chart
-  const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
-  const [currentYear, setCurrentYear] = useState("2025");
+  const [currentMonth] = useState("Month"); 
 
 
   // Simplified data for the line chart (hardcoded points)

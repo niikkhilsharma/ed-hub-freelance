@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Fragment } from 'react' // Added Fragment
 import Image from 'next/image'
-import { FiBell, FiClock, FiX } from 'react-icons/fi' // Added FiX for close button
+import {  FiX } from 'react-icons/fi' // Added FiX for close button
 import DmittTestPage from './test-page-1'
 
 // --- System Error Modal Component ---

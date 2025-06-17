@@ -1,8 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { FiDownload, FiPaperclip, FiSend } from "react-icons/fi";
 import { FaSearch } from "react-icons/fa";
@@ -225,11 +223,7 @@ export default function ChatPage() {
   const [newMessage, setNewMessage] = useState("");
   const chatEndRef = useRef<HTMLDivElement>(null); // For scrolling to bottom
 
-  const headerUser = {
-    name: "Teacher Name",
-    role: "Student",
-    avatarSrc: "/teacher-b2b/profile.png",
-  };
+
   const selectedTeacher = teachersList.find((t) => t.id === activeTeacherId);
 
   const handleTeacherSelect = (teacherId: string) => {

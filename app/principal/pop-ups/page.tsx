@@ -23,22 +23,22 @@ const CloseIcon = () => (
   </svg>
 );
 
-const SearchIcon = () => (
-  <svg
-    className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth="2"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-    />
-  </svg>
-);
+// const SearchIcon = () => (
+//   <svg
+//     className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"
+//     xmlns="http://www.w3.org/2000/svg"
+//     fill="none"
+//     viewBox="0 0 24 24"
+//     strokeWidth="2"
+//     stroke="currentColor"
+//   >
+//     <path
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
+//       d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+//     />
+//   </svg>
+// );
 
 const ChevronDownIcon = () => (
   <svg
@@ -105,7 +105,7 @@ const DeactivateSchoolModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 };
 
 // --- 2. Manage Class / Add New Class - Details + Teacher Modal ---
-const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const ManageClassModal: React.FC<ModalProps> = ({ isOpen }) => {
   if (!isOpen) return null;
   // Dummy state for this modal's internal selections if any
   // const [selectedTeacher, setSelectedTeacher] = useState(null);
@@ -245,7 +245,7 @@ const ManageClassModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 };
 
 // --- 3. Add Students Modal ---
-const AddStudentsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const AddStudentsModal: React.FC<ModalProps> = ({ isOpen }) => {
   if (!isOpen) return null;
   const students = Array(10)
     .fill(null)
@@ -331,7 +331,7 @@ const AddStudentsModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 };
 
 // --- 4. Select Class to Edit Modal ---
-const SelectClassToEditModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const SelectClassToEditModal: React.FC<ModalProps> = ({ isOpen }) => {
   if (!isOpen) return null;
   const classes = ["Class 1", "Class 2", "Class 3", "Class 4", "Class 5"];
   return (
@@ -386,7 +386,7 @@ const SelectClassToEditModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 };
 
 // --- 5. Add New Branch Modal ---
-const AddNewBranchModal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
+const AddNewBranchModal: React.FC<ModalProps> = ({ isOpen }) => {
   if (!isOpen) return null;
   const formFields = ["Country", "State / Province", "City"];
   return (

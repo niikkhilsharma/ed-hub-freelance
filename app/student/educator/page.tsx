@@ -176,7 +176,7 @@ function EducatorPanel() {
           Meet Our Educators
         </h2>
         <p className="text-base md:text-lg text-gray-700 max-w-3xl mx-auto px-2">
-          Explore profiles of our dedicated teachers guiding every learner's journey.
+          Explore profiles of our dedicated teachers guiding every learner&apos;s journey.
         </p>
       </div>
 
@@ -210,7 +210,7 @@ function EducatorPanel() {
         </div>
       ) : (
         <p className="text-center text-gray-600 text-lg py-10">
-          No educators currently listed for "{selectedCategory}". Please check back later or select another category.
+          No educators currently listed for &quot;{selectedCategory}&quot;. Please check back later or select another category.
         </p>
       )}
     </div>

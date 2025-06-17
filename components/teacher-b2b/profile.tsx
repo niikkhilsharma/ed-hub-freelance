@@ -6,7 +6,7 @@ import Header from '@/components/layout/Header' // Assuming Header is in this pa
 import Footer from '@/components/layout/Footer' // Assuming Footer is in this path
 import { FiArrowLeft, FiEdit2 } from 'react-icons/fi' // Edit icon
 import { Button } from '../ui/button'
-import MaxWidthWrapper from '../max-width-wrapper'
+// import MaxWidthWrapper from '../max-width-wrapper'
 
 // Helper Input Component
 const FormInput = ({

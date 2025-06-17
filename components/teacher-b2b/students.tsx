@@ -6,12 +6,12 @@ import {
 	FiFilter,
 	FiChevronDown,
 	FiMinusCircle, // For the remove icon
-	FiRepeat, // For the sort/transfer icon (can be FiShuffle or FiArrowRightLeft)
-	FiArrowLeft, // Assuming a back arrow might be part of the header or global nav
+	// FiRepeat, // For the sort/transfer icon (can be FiShuffle or FiArrowRightLeft)
+	// FiArrowLeft, // Assuming a back arrow might be part of the header or global nav
 } from 'react-icons/fi'
 import Header from '@/components/layout/Header' // Adjust path as needed
 import Footer from '@/components/layout/Footer' // Adjust path as needed
-import { ArrowRightLeft } from 'lucide-react'
+// import { ArrowRightLeft } from 'lucide-react'
 import Image from 'next/image'
 
 // --- Style Constants ---
@@ -23,7 +23,7 @@ const STUDENT_ITEM_BG = 'bg-[#F9FAFB]'
 const ICON_BUTTON_BG_LIGHT_PINK = 'bg-[#F3F4F6]'
 const ICON_BUTTON_TEXT_PINK = `text-[${ACCENT_PINK}]`
 const ICON_BUTTON_BG_LIGHT_GRAY = 'bg-gray-100'
-const ICON_BUTTON_TEXT_GRAY = 'text-gray-600'
+// const ICON_BUTTON_TEXT_GRAY = 'text-gray-600'
 
 // --- Data Interfaces ---
 interface ClassBatchGroupTab {
@@ -44,7 +44,7 @@ interface GeneralFilterOption {
 }
 
 // --- Sample Data ---
-const AVATAR_PLACEHOLDER = 'https://picsum.photos/seed/studentlist/40/40?grayscale'
+// const AVATAR_PLACEHOLDER = 'https://picsum.photos/seed/studentlist/40/40?grayscale'
 
 const sampleClassBatchGroupTabs: ClassBatchGroupTab[] = [
 	{ id: 'cbg1', name: 'Class / Batch / Group' },

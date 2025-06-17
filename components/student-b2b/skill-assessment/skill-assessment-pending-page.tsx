@@ -5,8 +5,6 @@ import {
   FiHelpCircle,
   FiTarget,
   FiClock,
-  FiCalendar,
-  FiAlertTriangle,
   FiSmile,
 } from "react-icons/fi"; // Added FiSmile for pending icon
 
@@ -33,7 +31,7 @@ const InfoBadge = ({
 // Helper component for the Assessment Pending section
 const AssessmentStatus = ({
   statusText,
-  icon: Icon,
+  // icon: Icon,
   progressPercentage,
   timeLeft,
 }: {
