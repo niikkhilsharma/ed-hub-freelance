@@ -191,15 +191,15 @@ export default function StudentHome() {
           ></div>
 
           {/* Main content */}
-          <div className="container mx-auto p-16 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-center h-full gap-16">
+          <div className="w-full mx-auto p-16 md:p-12 flex flex-col md:flex-row items-center justify-between h-full gap-16">
             {/* Left Content */}
             <div className="w-full md:w-[55%] z-10 gap-y-6 flex flex-col justify-center h-full">
-              <h1 className="text-3xl md:text-4xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 Limitless learning at <br />
                 your fingertips
               </h1>
 
-              <p className="text-sm md:text-base lg:text-lg">
+              <p className="text-sm md:text-md lg:text-[15px] xl:text-lg">
                 Online learning and teaching marketplace with 5K+ courses & 10M
                 students. <br />
                 Taught by experts to help you acquire new skills.
