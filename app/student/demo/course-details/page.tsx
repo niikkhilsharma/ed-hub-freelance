@@ -26,7 +26,7 @@ interface Review {
   profileImage: string;
 }
 
-const reviews: Review[] = [
+export const reviews: Review[] = [
   {
     id: 1,
     customerName: "Customer Name",
@@ -80,7 +80,7 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
   );
 };
 
-const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
+export const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
   return (
     <div className="bg-gray-100 rounded-3xl p-4 mb-3">
       <div className="flex items-start gap-3 mb-2">
