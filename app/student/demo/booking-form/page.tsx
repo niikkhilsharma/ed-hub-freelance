@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-export default function CourseDetail() {
+export default function DemoBookingForm() {
   return (
     <StudentWrapper blue>
       <div className="relative z-10 bg-[#E3E3E3]">

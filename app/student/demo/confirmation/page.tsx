@@ -5,7 +5,7 @@ import FooterNew from "@/components/footer3";
 import { FaCircleCheck } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
 
-export default function CourseDetail() {
+export default function DemoBookingConfirmation() {
   return (
     <StudentWrapper blue>
       <div className="relative z-10 p-10 bg-[#EEEEEE]">
