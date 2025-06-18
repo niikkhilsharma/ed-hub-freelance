@@ -5,6 +5,7 @@ import Image from 'next/image';
 const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
 import { FaSearch } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
+import { MdOutlineDateRange } from "react-icons/md";
 
 type leavecards = {
     id:number,
@@ -81,7 +82,7 @@ const Leave = () => {
         
 
 {teachers.map((item) => (
-            <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 inline-block mr-4 mb-4 shadow-sm">
+            <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 inline-block mr-4 mb-4 shadow-sm relative">
                 <div className="flex">
               <div className="rounded-xl relative overflow-hidden">
                 <Image src={item.image} alt={item.name} width={100} height={100} className="object-cover" />
@@ -92,6 +93,8 @@ const Leave = () => {
                     <div className="text-xs text-gray-500">{item.level}</div>
                     <div className="text-xs text-gray-500"> {item.group} </div>
                     <div className="text-xs text-gray-500"> {item.email} </div>
+                    <div className="text-xs absolute text-gray-500 top-5 right-5 flex items-center"><MdOutlineDateRange />From 6/8/25 to 6/6/25</div>
+
               </div>
               </div>
 
