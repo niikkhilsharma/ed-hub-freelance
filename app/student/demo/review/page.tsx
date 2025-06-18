@@ -25,11 +25,9 @@ export default function CourseDetail() {
 
         <section className="px-16 py-8">
           <div className="rounded-xl bg-white space-y-4 p-4">
-            <h1 className="text-3xl font-semibold text-[#FF3366]">
-              Registration
-            </h1>
+            <h1 className="text-3xl font-semibold text-[#FF3366]">Review</h1>
             <div className="md:grid md:grid-cols-[1fr_1fr] p-4 gap-16">
-              <div className="space-y-8 pl-1">
+              <div className="space-y-5 pl-1">
                 {[
                   "Student Name",
                   "Student Age",
@@ -38,20 +36,31 @@ export default function CourseDetail() {
                   "Parent Email ID",
                   "Parent Phone Number",
                 ].map((label, index) => (
-                  <div key={index} className="flex flex-col items-start gap-2">
-                    <Label htmlFor={label} className="font-medium">
-                      {label}
-                    </Label>
+                  <div key={index} className="space-y-8">
                     <Input
-                      id={label}
+                      id="hours"
                       type="text"
-                      className="w-full rounded-full bg-[#F9FAFB] placeholder:text-[#6B7280] border border-[#D5D5D5]"
-                      placeholder="Text"
+                      className="w-full rounded-xl bg-[#F9FAFB] placeholder:text-[#6B7280] border border-[#D5D5D5]"
+                      placeholder={label}
                     />
                   </div>
                 ))}
+                <div className="w-full rounded-2xl bg-[#F9FAFB] placeholder:text-[#6B7280] border border-[#D5D5D5] flex items-center p-2 gap-4">
+                  <img
+                    alt="profile image"
+                    src="/student/educator/educator_female.png"
+                    className="w-20 h-20 rounded-2xl"
+                  />
+                  <span className="font-semibold">Name</span>
+                </div>
+                <div className="w-full rounded-2xl bg-[#3366FF1A] placeholder:text-[#6B7280] border border-[#3366FF] flex items-center p-3 gap-4">
+                  <strong>Slot:</strong>12th June 2025, 6:30 PM
+                </div>
+                <Button className="bg-[#F9FAFB] border border-[#E5E7EB] px-6 py-4 rounded-full text-black hover:bg-[#F9FAFB] cursor-pointer">
+                  Edit
+                </Button>
                 <div className="flex items-center justify-center">
-                  <Button className="bg-[#3366ff] text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full ml-6">
+                  <Button className="bg-[#3366ff] text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full">
                     Continue
                   </Button>
                 </div>
