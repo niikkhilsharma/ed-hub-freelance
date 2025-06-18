@@ -1,9 +1,8 @@
 "use client";
 
 import StudentWrapper from "@/components/student-wrapper";
-import Image from "next/image";
 import FooterNew from "@/components/footer3";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +16,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { CreditCard, Building2, Star, ArrowLeft } from "lucide-react";
+import { CreditCard, ArrowLeft, Lock } from "lucide-react";
+import { FaBuildingColumns } from "react-icons/fa6";
 
 export default function CourseDetail() {
   const [selectedPayment, setSelectedPayment] = useState("cards");
@@ -53,19 +53,6 @@ export default function CourseDetail() {
     cvv: string;
   }
 
-  interface OrderSummary {
-    originalPrice: number;
-    discount: number;
-    discountPercent: number;
-    courses: number;
-    total: number;
-  }
-
-  interface CourseDetailItem {
-    name: string;
-    price: number;
-  }
-
   const handleInputChange = (field: keyof CardDetails, value: string) => {
     setCardDetails((prev: CardDetails) => ({
       ...prev,
@@ -79,7 +66,7 @@ export default function CourseDetail() {
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center py-4">
             <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
-            <h1 className="text-2xl font-bold text-[#FF3366]">Checkout</h1>
+            <h1 className="text-2xl font-medium text-[#FF3366]">Checkout</h1>
           </div>
         </div>
       </div>
@@ -91,8 +78,8 @@ export default function CourseDetail() {
             <div className="lg:col-span-2 space-y-6">
               {/* Billing Address */}
               <Card className="rounded-2xl shadow-sm">
-                <CardContent className="p-6 md:p-8">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                <CardContent className="p-5">
+                  <h2 className="text-2xl font-medium text-gray-900 mb-6">
                     Billing Address
                   </h2>
 
@@ -100,7 +87,7 @@ export default function CourseDetail() {
                     <div className="space-y-2">
                       <Label
                         htmlFor="country"
-                        className="text-base font-medium text-gray-700"
+                        className="text-base font-medium"
                       >
                         Country
                       </Label>
@@ -117,10 +104,7 @@ export default function CourseDetail() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label
-                        htmlFor="state"
-                        className="text-base font-medium text-gray-700"
-                      >
+                      <Label htmlFor="state" className="text-base font-medium">
                         State / Union
                       </Label>
                       <Select value={state} onValueChange={setState}>
@@ -148,14 +132,10 @@ export default function CourseDetail() {
 
               {/* Payment Method */}
               <Card className="rounded-2xl shadow-sm">
-                <CardContent className="p-6 md:p-8">
+                <CardContent className="p-5">
                   <div className="flex items-center gap-2 mb-6">
-                    <div className="w-5 h-5 bg-gray-800 rounded-sm flex items-center justify-center">
-                      <div className="w-3 h-2 bg-white rounded-sm"></div>
-                    </div>
-                    <h2 className="text-2xl font-bold text-gray-900">
-                      Payment Method
-                    </h2>
+                    <Lock className="w-5 h-5" />
+                    <h2 className="text-2xl font-medium">Payment Method</h2>
                   </div>
 
                   <RadioGroup
@@ -164,7 +144,7 @@ export default function CourseDetail() {
                     className="space-y-4"
                   >
                     {/* Cards Option */}
-                    <div className="space-y-4 bg-[#F9FAFB] border rounded-2xl overflow-hidden">
+                    <div className="space-y-4 border-[#E5E7EB] bg-[#F9FAFB] border rounded-2xl lg:max-w-[600px] overflow-hidden">
                       <div className="flex items-center justify-between p-4 bg-[#F9FAFB]">
                         <div className="flex items-center space-x-3">
                           <RadioGroupItem
@@ -179,8 +159,8 @@ export default function CourseDetail() {
                             Cards
                           </Label>
                         </div>
-                        <div className="p-2 bg-gray-100 rounded-lg">
-                          <CreditCard className="w-5 h-5 text-gray-600" />
+                        <div className="py-1 px-4 bg-[#0000001A] rounded-lg">
+                          <CreditCard className="w-6 h-6" />
                         </div>
                       </div>
 
@@ -189,7 +169,7 @@ export default function CourseDetail() {
                           <div className="space-y-2">
                             <Label
                               htmlFor="cardName"
-                              className="text-base font-medium text-gray-700"
+                              className="text-lg font-medium"
                             >
                               Name on Card
                             </Label>
@@ -207,7 +187,7 @@ export default function CourseDetail() {
                           <div className="space-y-2">
                             <Label
                               htmlFor="cardNumber"
-                              className="text-base font-medium text-gray-700"
+                              className="text-lg font-medium"
                             >
                               Card Number
                             </Label>
@@ -220,24 +200,17 @@ export default function CourseDetail() {
                               }
                               className="h-12 rounded-full focus:bg-white bg-[#F9FAFB] border-gray-300"
                             />
-                            <div className="flex gap-2 mt-2">
-                              <div className="w-8 h-5 bg-blue-600 rounded text-white text-xs flex items-center justify-center font-bold">
-                                PayPal
-                              </div>
-                              <div className="w-8 h-5 bg-red-500 rounded"></div>
-                              <div className="w-8 h-5 bg-blue-700 rounded text-white text-xs flex items-center justify-center font-bold">
-                                VISA
-                              </div>
-                              <div className="w-8 h-5 bg-blue-400 rounded"></div>
-                              <div className="w-8 h-5 bg-orange-500 rounded"></div>
-                            </div>
+                            <img
+                              alt="payment modes"
+                              src="/student/checkout/payment_modes.png"
+                            />
                           </div>
 
-                          <div className="grid grid-cols-2 gap-4">
+                          <div className="grid grid-cols-2 gap-16">
                             <div className="space-y-2">
                               <Label
                                 htmlFor="expiry"
-                                className="text-base font-medium text-gray-700"
+                                className="text-lg font-medium"
                               >
                                 Expire Date
                               </Label>
@@ -254,7 +227,7 @@ export default function CourseDetail() {
                             <div className="space-y-2">
                               <Label
                                 htmlFor="cvv"
-                                className="text-base font-medium text-gray-700"
+                                className="text-lg font-medium"
                               >
                                 CVC / CVV
                               </Label>
@@ -270,16 +243,18 @@ export default function CourseDetail() {
                             </div>
                           </div>
 
-                          <div className="flex items-center space-x-2">
+                          <div className="flex items-center gap-2">
                             <Checkbox
                               id="saveCard"
                               checked={saveCard}
-                              onCheckedChange={checked => setSaveCard(checked === true)}
-                              className="rounded-full w-5 h-5 border-2 border-yellow-400 data-[state=checked]:bg-yellow-400"
+                              onCheckedChange={(checked) =>
+                                setSaveCard(checked === true)
+                              }
+                              className="rounded-full w-6 h-6 border-2 border-yellow-400 data-[state=checked]:bg-yellow-400 -translate-y-1"
                             />
                             <Label
                               htmlFor="saveCard"
-                              className="text-base text-gray-600"
+                              className="text-base text-[#6B7280]"
                             >
                               Save for future purchases
                             </Label>
@@ -289,7 +264,7 @@ export default function CourseDetail() {
                     </div>
 
                     {/* UPI Option */}
-                    <div className="flex items-center justify-between p-4 border rounded-2xl hover:bg-gray-50 bg-[#F9FAFB]">
+                    <div className="flex items-center justify-between p-4 border rounded-2xl border-[#E5E7EB] bg-[#F9FAFB] lg:max-w-[600px]">
                       <div className="flex items-center space-x-3">
                         <RadioGroupItem value="upi" id="upi" />
                         <Label
@@ -299,11 +274,17 @@ export default function CourseDetail() {
                           UPI
                         </Label>
                       </div>
-                      <div className="text-gray-400 font-bold text-sm">UPI</div>
+                      <div className="text-gray-400 font-bold text-sm">
+                        <img
+                          alt="upi"
+                          src="/student/checkout/upi.png"
+                          className="w-[60px]"
+                        />
+                      </div>
                     </div>
 
                     {/* Net Banking Option */}
-                    <div className="flex items-center justify-between p-4 border rounded-2xl hover:bg-gray-50 bg-[#F9FAFB]">
+                    <div className="flex items-center justify-between p-4 border rounded-2xl border-[#E5E7EB] bg-[#F9FAFB] lg:max-w-[600px]">
                       <div className="flex items-center space-x-3">
                         <RadioGroupItem value="netbanking" id="netbanking" />
                         <Label
@@ -313,8 +294,8 @@ export default function CourseDetail() {
                           Net Banking
                         </Label>
                       </div>
-                      <div className="p-2 bg-gray-100 rounded-lg">
-                        <Building2 className="w-5 h-5 text-gray-600" />
+                      <div className="py-1 px-4 bg-[#0000001A] rounded-lg">
+                        <FaBuildingColumns className="w-5 h-5" />
                       </div>
                     </div>
                   </RadioGroup>
@@ -326,77 +307,77 @@ export default function CourseDetail() {
             <div className="space-y-6">
               {/* Order Summary */}
               <Card className="rounded-2xl shadow-sm">
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    Order Summary
-                  </h3>
+                <CardContent className="p-5">
+                  <h2 className="text-2xl font-medium mb-6">Order Summary</h2>
 
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">Original Price</span>
+                      <span className="font-main text-gray-700">
+                        Original Price
+                      </span>
                       <span className="font-medium">
                         {formatPrice(orderSummary.originalPrice)}
                       </span>
                     </div>
 
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-700">
+                      <span className="font-main">
                         Discount ( {orderSummary.discountPercent} % off )
                       </span>
-                      <span className="font-medium text-green-600">
+                      <span className="font-medium">
                         - {formatPrice(orderSummary.discount)}
                       </span>
                     </div>
 
-                    <hr className="border-gray-200" />
+                    <hr className="border border-[#6B7280]" />
 
                     <div className="flex justify-between items-center">
-                      <span className="text-lg font-bold text-gray-900">
+                      <span className="font-semibold text-gray-900">
                         Total ( {orderSummary.courses} courses )
                       </span>
-                      <span className="text-lg font-bold">
+                      <span className="font-semibold">
                         {formatPrice(orderSummary.total)}
                       </span>
                     </div>
                   </div>
 
-                  <Button className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-2xl text-lg font-bold">
+                  <Button className="w-full h-12 bg-[#3366FF] cursor-pointer hover:bg-blue-700 text-white rounded-2xl text-lg font-bold">
                     Proceed
                   </Button>
 
-                  <div className="mt-6 p-4 bg-yellow-50 rounded-2xl">
+                  <div className="mt-6 p-4 border border-[#F3F4F6] bg-[#F9FAFB] rounded-2xl">
                     <div className="flex items-start gap-3">
-                      <Star className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0" />
+                      <img
+                        alt="spoke image"
+                        src="/student/checkout/spoke_circle.svg"
+                        className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0"
+                      />
                       <div>
                         <h4 className="font-bold text-gray-900 mb-1">
                           Unlock Your Potential Today
                         </h4>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          Join 50 learners from your country who've enrolled in
-                          this course in the past 24 hours!
-                        </p>
                       </div>
                     </div>
+                    <p className="text-sm font-main leading-relaxed">
+                      Join 50 learners from your country who&#39;ve enrolled in
+                      this course in the past 24 hours!
+                    </p>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Order Details */}
               <Card className="rounded-2xl shadow-sm">
-                <CardContent className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                    Order Details
-                  </h3>
+                <CardContent className="p-5 space-y-6">
+                  <h2 className="text-2xl font-medium">Order Details</h2>
 
                   <div className="space-y-4">
                     {courseDetails.map((course, index) => (
                       <div
                         key={index}
-                        className="flex justify-between bg-[#F9FAFB] px-4 rounded-full items-start py-3 last:border-b-0"
+                        className="flex justify-between border border-[#E5E7EB] bg-[#F9FAFB] px-4 rounded-full items-start py-3"
                       >
-                        <span className="text-black flex-1 pr-4">
-                          Course Name
-                        </span>
+                        <span className="text-black flex-1">Course Name</span>
                         <span className="font-medium whitespace-nowrap">
                           {formatPrice(course.price)}
                         </span>
