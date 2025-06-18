@@ -169,7 +169,7 @@ const CustomTestTabs = ({
         <button
           key={tab}
           onClick={() => onChange(tab)}
-          className={`px-6 py-3 font-medium cursor-pointer ${
+          className={`px-6 py-3 font-medium text-sm sm:text-m cursor-pointer ${
             activeTab === tab
               ? "text-[#FF3366] border-b-2 border-pink-500"
               : "text-[#6B7280] hover:text-gray-900"
@@ -188,11 +188,11 @@ export default function TestsPage() {
 
   return (
     <div className="min-h-screen bg-[#eeeeee] py-6">
-      <div className="container bg-white max-w-7xl rounded-2xl mx-auto px-4">
-        <div className="bg-white rounded-lg p-6">
-          <div className="grid grid-cols-1 md:grid-cols-7 gap-6">
+      <div className="container bg-white max-w-7xl rounded-2xl mx-auto p-3">
+        <div className="bg-white rounded-lg">
+          <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
             <div className="md:col-span-5">
-              <div className="flex h-fit justify-between items-center mb-4">
+              <div className="flex h-fit overflow-x-auto custom-scrollbar justify-between items-center mb-4">
                 <CustomTestTabs
                   tabs={["Scheduled Assessment", "Completed Assessment", "Saved"]}
                   activeTab={activeTab}

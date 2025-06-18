@@ -94,16 +94,13 @@ const Leave = () => {
                     <div className="text-xs text-gray-500"> {item.group} </div>
                     <div className="text-xs text-gray-500"> {item.email} </div>
                     <div className="text-xs absolute text-gray-500 top-5 right-5 flex items-center"><MdOutlineDateRange />From 6/8/25 to 6/6/25</div>
-
+                
               </div>
               </div>
-
-              <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl shadow-md max-w-xl m-3  ">
-    <p className="text-center text-black font-bold text-lg">
-      Reason</p>
-    <p className="text-center text-black-600 text-base">
-      {item.reason}
-    </p>
+           <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl shadow-md max-w-xl m-3  ">
+             <p className="text-center text-black font-bold text-lg">Reason</p>
+             <p className="text-center text-black-600 text-base">
+             {item.reason}</p>
   </div>
 <div className="flex justify-center gap-4 mt-4">
     <button className="px-6 py-2 bg-red-100 text-red-800 rounded-3xl">
