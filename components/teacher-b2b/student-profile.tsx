@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useState } from "react";
+import { FaRegArrowAltCircleLeft, FaRegArrowAltCircleRight } from "react-icons/fa";
 import {
   FiArrowLeft,
-  FiClock,
-  FiChevronLeft,
-  FiChevronRight,
+  // FiClock,
+  // FiChevronLeft,
+  // FiChevronRight,
   FiSearch,
   FiPercent,
   FiAward,
@@ -18,7 +19,7 @@ import {
 import Image from "next/image"; // For profile picture
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
-import MaxWidthWrapper from "../max-width-wrapper";
+// import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {
@@ -43,6 +44,51 @@ const PALETTE = {
 };
 
 // --- Helper Components (Simplified for hardcoding) ---
+
+
+const ClassesCard = () => {
+  const [month] = useState('June 2025');
+
+  return (
+    <div className="rounded-2xl  bg-white p-6 w-full max-w-sm">
+      <div className="flex items-center justify-between mb-3">
+        <h2 className="text-lg font-semibold">Classes</h2>
+        <div className="flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-2 text-m text-zinc-900">
+          <button>
+            <FaRegArrowAltCircleLeft size={16} />
+          </button>
+          <span>{month}</span>
+          <button>
+            <FaRegArrowAltCircleRight size={16} />
+          </button>
+        </div>
+      </div>
+
+      <div className="flex justify-between text-sm text-gray-600 mb-1 px-2">
+        <div className="flex flex-col items-center">
+          <span className="text-sm text-gray-500 ">Complete</span>
+          <span className="font-medium text-black">2 / 20 </span>
+        </div>
+        <div className="text-red-500 text-sm text-center"><span className="text-sm text-gray-500">Incomplete</span><br />1</div>
+      </div>
+
+      <div className="mt-6 space-y-3 text-sm">
+        <div className="flex justify-between border-b border-gray-400">
+          <span className="text-gray-500">Attendance</span>
+          <span className="text-blue-500">15%</span>
+        </div>
+        <div className="flex justify-between border-b border-gray-400">
+          <span className="text-gray-500">Grade</span>
+          <span className="text-blue-500">3.5</span>
+        </div>
+        <div className="flex justify-between border-b border-gray-400">
+          <span className="text-gray-500">Leader Board</span>
+          <span className="text-blue-500">Rank 5</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 type ProgressCircleProps = {
   percentageText: string; // e.g. "3/4"
@@ -105,8 +151,8 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 
 const StudentReport: React.FC = () => {
   // Dummy state for month/year filter for Overall Progress chart
-  const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
-  const [currentYear, setCurrentYear] = useState("2025");
+  // const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
+  // const [currentYear, setCurrentYear] = useState("2025");
 
   const handleBackClick = () => {
     if (typeof window !== "undefined") {
@@ -418,16 +464,17 @@ const StudentReport: React.FC = () => {
             Student List
           </h1>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-2 md:px-5 gap-4">
           {/* Student Info Card */}
           <div
-            className="lg:col-span-3 bg-white p-5 rounded-2xl"
+            className="lg:col-span-2 bg-white p-5 rounded-2xl"
             style={{
               borderColor: PALETTE.BORDER_GREY,
             }}
           >
-            <div className="flex  items-start sm:items-center gap-4">
-              <Image
+            <div className="flex items-start justify-between sm:items-center gap-4">
+              <div className="flex flex-col sm:items-center sm:flex-row gap-4">
+                <Image
                 src="/teacher-b2b/profile2.png"
                 alt="Shlok Agheda"
                 width={72}
@@ -441,7 +488,7 @@ const StudentReport: React.FC = () => {
                 >
                   Shlok Agheda
                 </h2>
-                <div className="flex flex-wrap items-center gap-1 mt-2">
+                <div className="flex items-center gap-1 mt-2">
                   <span
                     className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
                     style={{
@@ -462,7 +509,8 @@ const StudentReport: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="text-[11px] font-medium text-right sm:text-left space-y-0.5 text-black">
+              </div>
+              <div className="text-[12px] font-medium text-right sm:text-left space-y-0.5 text-black">
                 <p>Gender: Male</p>
                 <p>DOB: 15 Jun 2015</p>
                 <p>Email: example@gm.com</p>
@@ -493,9 +541,38 @@ const StudentReport: React.FC = () => {
                 ))}
               </div>
             </div>
+            <div className="pt-4 ">
+              <p
+                className="text-sm font-bold mb-3"
+                style={{ color: PALETTE.TEXT_DARK }}
+              >
+                Parent Control
+              </p>
+              <div className="flex flex-wrap gap-4">
+                  <button
+                    className="text-xs px-2 py-2 text-black rounded-full border"
+                    style={{
+                      backgroundColor: "#F3F4F6",
+                      borderColor: PALETTE.BORDER_GREY,
+                    }}
+                  >
+                    +91 0000000000
+                  </button>
+                  <button
+                    className="text-xs px-2 py-2 text-black rounded-full border"
+                    style={{
+                      backgroundColor: "#F3F4F6",
+                      borderColor: PALETTE.BORDER_GREY,
+                    }}
+                  >
+                    example@gm.com
+                  </button>
+              </div>
+            </div>
           </div>
+          <ClassesCard />
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-1 p-2 md:px-5 md:grid-cols-[2fr_1fr] gap-4">
           {/* ====== Overall Charts start ====== */}
 
           <div
@@ -512,7 +589,7 @@ const StudentReport: React.FC = () => {
                 Overall Progress
               </h3>
             </div>
-            <div className="flex items-start justify-between px-2">
+            <div className="flex items-start flex-col-reverse gap-4 sm:flex-row justify-between px-2">
               <div className="flex flex-col flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
                 <div className="flex items-center">
                   <div
@@ -544,7 +621,7 @@ const StudentReport: React.FC = () => {
               </div>
               <div className="flex items-center gap-2 mt-2 sm:mt-0">
                 <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                  <span>{currentMonth}</span>
+                  <span>Month</span>
                   <FiChevronDown className="w-4 h-4 ml-1" />
                 </div>
                 <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
@@ -599,9 +676,8 @@ const StudentReport: React.FC = () => {
                     points={dataset.points
                       .map(
                         (p, i) =>
-                          `${
-                            35 +
-                            i * (chartWidth / (lineChartData.labels.length - 1))
+                          `${35 +
+                          i * (chartWidth / (lineChartData.labels.length - 1))
                           },${chartHeight - (p / 100) * chartHeight}`
                       )
                       .join(" ")}
@@ -741,7 +817,7 @@ const StudentReport: React.FC = () => {
             ))}
             {/* Life Skill Enhancements Card - similar structure to Personal Development */}
           </div>
-          <div className="p-5 h-full custom-scrollbar overflow-y-auto shadow-sm rounded-2xl bg-white row-span-2">
+          <div className="p-5 h-full custom-scrollbar overflow-y-auto rounded-2xl bg-white row-span-2">
             <div
               style={{
                 backgroundColor: lifeSkillsData.bgColor,
@@ -812,7 +888,7 @@ const StudentReport: React.FC = () => {
           {/* ===== Table started ===== */}
 
           <div
-            className="rounded-2xl h-full custom-scrollbar overflow-y-auto shadow-sm "
+            className="rounded-2xl h-full custom-scrollbar overflow-y-auto "
             style={{
               backgroundColor: PALETTE.WHITE_CARD,
               borderColor: PALETTE.BORDER_GREY,

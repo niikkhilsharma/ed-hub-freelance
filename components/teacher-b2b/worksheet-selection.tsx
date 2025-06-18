@@ -9,7 +9,7 @@ import {
   FiChevronDown,
   FiFileText,
   FiImage,
-  FiUpload,
+  // FiUpload,
 } from "react-icons/fi";
 import { FiArrowLeft } from "react-icons/fi";
 import MaxWidthWrapper from "../max-width-wrapper";
@@ -82,7 +82,7 @@ const FileManagementContent: React.FC = () => {
   // const [activeFilters, setActiveFilters] = useState({});
 
   const filteredFiles = useMemo(() => {
-    let f = files.filter((file) =>
+    const f = files.filter((file) =>
       file.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     // Add further filtering logic here based on activeFilters

@@ -3,18 +3,7 @@
 import { useState } from "react";
 import StudentWrapper from "@/components/student-wrapper";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/seperator";
-import { Minus, Plus, X, Tag, ArrowLeft } from "lucide-react";
-import Footer from "@/components/footer";
-import Image from "next/image";
+import { Minus, Plus, ArrowLeft } from "lucide-react";
 import FooterNew from "@/components/footer3";
 interface CartItem {
   id: number;
@@ -255,7 +244,7 @@ export default function CourseDetail() {
                   {appliedCoupon && (
                     <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg flex justify-between items-center">
                       <span className="text-green-700 font-medium">
-                        Coupon &#34;{appliedCoupon}&#34; applied! {discount}%
+                        Coupon &quot;{appliedCoupon}&quot; applied! {discount}%
                         off
                       </span>
                       <button

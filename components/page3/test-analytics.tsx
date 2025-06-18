@@ -1,5 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+
 import {
   FiArrowLeftCircle,
   FiArrowRightCircle,
@@ -15,8 +14,7 @@ interface TestAnalyticsProps {
 }
 
 export function TestAnalytics({
-  month,
-  year,
+
   complete,
   incomplete,
   totalTests,

@@ -6,18 +6,17 @@ import {
   FiFilter,
   FiChevronDown,
   FiFolder,
-  FiArrowLeft, // Assuming a back arrow might be part of the header or global nav
+  // FiArrowLeft, // Assuming a back arrow might be part of the header or global nav
 } from "react-icons/fi";
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
-import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF"; // Placeholder if needed for other active states
 const INPUT_BG_SEARCH = "bg-white"; // Search bar background
 const INPUT_BG_FILTERS = "bg-[#F9FAFB]"; // Background for filter dropdowns
-const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
+// const FOLDER_ICON_BG = "bg-sky-300"; // Light blue for folder icon background
 const FOLDER_CARD_BG = "bg-[#F9FAFB]"; // Very light gray for folder card
 
 // --- Data Interfaces ---
@@ -84,7 +83,7 @@ const SubjectTabButton: React.FC<{
 
 const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
   <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-4 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4`}
+    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4`}
   >
     <div
       className={`bg-[#99DEFF] w-16 h-16 sm:w-28 sm:h-28 rounded-2xl flex items-center justify-center flex-shrink-0`}
@@ -233,13 +232,11 @@ export default function MaterialPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-      <MaxWidthWrapper>
         <div className="bg-gray-100">
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <SubjectFolderViewContent />
       </main>
         </div>
-      </MaxWidthWrapper>
       <Footer />
     </div>
   );

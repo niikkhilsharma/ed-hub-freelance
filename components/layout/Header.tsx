@@ -4,7 +4,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation' // App Router hook for current path
-import { FiGrid, FiBookOpen, FiMessageSquare, FiVideo, FiBell } from 'react-icons/fi'
+import { FiBookOpen, FiMessageSquare, FiVideo, FiBell } from 'react-icons/fi'
 import { FaRegSmile } from 'react-icons/fa'
 
 const NavItem = ({
@@ -74,7 +74,7 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
 				</div>
 
 				{/* Main Navigation */}
-				<nav className="hidden md:flex items-center bg-[#E3F2FD26] rounded-full px-4 py-2 space-x-2">
+				<nav className="hidden lg:flex items-center bg-[#E3F2FD26] rounded-full px-4 py-2 space-x-2">
 					{navItems.map(({ icon, label, href }) => (
 						<NavItem key={label} icon={icon} label={label} href={href} active={pathname === href} />
 					))}

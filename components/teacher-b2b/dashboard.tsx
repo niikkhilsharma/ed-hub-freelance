@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import {
   FiArrowLeft,
-  FiClock,
+  // FiClock,
   FiChevronLeft,
   FiChevronRight,
   FiSearch,
@@ -72,8 +72,8 @@ const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 
 const StudentDashboardPage: React.FC = () => {
   // Dummy state for month/year filter for Overall Progress chart
-  const [currentMonth, setCurrentMonth] = useState("Month"); // Default text
-  const [currentYear, setCurrentYear] = useState("2025");
+  const [currentMonth] = useState("Month"); // Default text
+  const [currentYear] = useState("2025");
 
   const handleBackClick = () => {
     if (typeof window !== "undefined") {

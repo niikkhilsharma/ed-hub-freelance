@@ -4,9 +4,6 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { FaSearch } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
-import ClassTab from './class-tab';
-import { FiMinusCircle } from "react-icons/fi";
-import { AiOutlineSwap } from "react-icons/ai";
 type CardData = {
   id: number;
   name: string;

@@ -53,6 +53,19 @@ export default function CourseDetail() {
     cvv: string;
   }
 
+  // interface OrderSummary {
+  //   originalPrice: number;
+  //   discount: number;
+  //   discountPercent: number;
+  //   courses: number;
+  //   total: number;
+  // }
+
+  // interface CourseDetailItem {
+  //   name: string;
+  //   price: number;
+  // }
+
   const handleInputChange = (field: keyof CardDetails, value: string) => {
     setCardDetails((prev: CardDetails) => ({
       ...prev,

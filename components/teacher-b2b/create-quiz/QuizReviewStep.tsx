@@ -214,13 +214,13 @@ const TestReviewStep: React.FC<TestReviewStepProps> = ({
 };
 export default TestReviewStep;
 
-import { IoCheckmarkCircle, IoCloseCircle } from "react-icons/io5"; // Make sure this is installed
+import { IoCheckmarkCircle } from "react-icons/io5"; // Make sure this is installed
 
 // --- Style Constants (as per your OptionDisplay component) ---
-// Define these or ensure they are imported/available in the scope
-const COLOR_CORRECT_TEXT = "text-green-600"; // Example: text-green-700
-const COLOR_INCORRECT_ICON = "text-red-500"; // Example: text-red-600
-const COLOR_INCORRECT_TEXT = "text-red-600"; // Example: text-red-700
+// // Define these or ensure they are imported/available in the scope
+// const COLOR_CORRECT_TEXT = "text-green-600"; // Example: text-green-700
+// const COLOR_INCORRECT_ICON = "text-red-500"; // Example: text-red-600
+// const COLOR_INCORRECT_TEXT = "text-red-600"; // Example: text-red-700
 const COLOR_NEUTRAL_TEXT = "text-gray-600"; // Example: text-black
 
 // --- Data Interfaces (as per your components) ---

@@ -172,7 +172,7 @@ export default function ExaminationTest() {
   });
 
   // Results data
-  const [resultsData, setResultsData] = useState<ResultData>({
+  const [resultsData] = useState<ResultData>({
     date: "10 March 2025",
     totalMark: 50,
     totalQuestions: 50,

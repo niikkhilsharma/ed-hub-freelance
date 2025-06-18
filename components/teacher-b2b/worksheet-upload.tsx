@@ -7,11 +7,10 @@ import {
   FiSearch,
   FiChevronDown,
   FiCalendar,
-  FiClock,
-  FiX, // Using FiX for the clear icon next to date
-  FiChevronUp,
+  // FiClock,
+  // FiX, // Using FiX for the clear icon next to date
+  // FiChevronUp,
   FiArrowLeft,
-  FiChevronDown as FiArrowDownSmall,
   FiArrowLeftCircle,
   FiArrowRightCircle, // For number inputs
 } from "react-icons/fi";
@@ -28,11 +27,11 @@ interface DropdownOption {
   label: string;
 }
 
-interface UnitaryItemData {
-  id: string;
-  title: string;
-  subtitle: string;
-}
+// interface UnitaryItemData {
+//   id: string;
+//   title: string;
+//   subtitle: string;
+// }
 
 interface StudentData {
   id: string;
@@ -62,12 +61,12 @@ const sampleGroups: DropdownOption[] = [
   { value: "groupBeta", label: "Beta Group" },
 ];
 
-const sampleUnitaryItems: UnitaryItemData[] = [
-  { id: "u1", title: "Option Title", subtitle: "Option Subtitle" },
-  { id: "u2", title: "Option Title", subtitle: "Option Subtitle" },
-  { id: "u3", title: "Option Title", subtitle: "Option Subtitle" },
-  { id: "u4", title: "Option Title", subtitle: "Option Subtitle" },
-];
+// const sampleUnitaryItems: UnitaryItemData[] = [
+//   { id: "u1", title: "Option Title", subtitle: "Option Subtitle" },
+//   { id: "u2", title: "Option Title", subtitle: "Option Subtitle" },
+//   { id: "u3", title: "Option Title", subtitle: "Option Subtitle" },
+//   { id: "u4", title: "Option Title", subtitle: "Option Subtitle" },
+// ];
 
 const sampleStudents: StudentData[] = [
   {
@@ -326,24 +325,24 @@ const Stepper: React.FC<{
   </div>
 );
 
-const UnitaryItemCard: React.FC<{
-  item: UnitaryItemData;
-  isSelected: boolean;
-  onSelect: () => void;
-}> = ({ item, isSelected, onSelect }) => (
-  <button
-    onClick={onSelect}
-    className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150
-      ${
-        isSelected
-          ? `bg-orange-100 border-orange-400 shadow-md`
-          : `bg-white hover:bg-gray-200 `
-      }`}
-  >
-    <h4 className="text-sm font-semibold text-black">{item.title}</h4>
-    <p className="text-xs text-[#6B7280]">{item.subtitle}</p>
-  </button>
-);
+// const UnitaryItemCard: React.FC<{
+//   item: UnitaryItemData;
+//   isSelected: boolean;
+//   onSelect: () => void;
+// }> = ({ item, isSelected, onSelect }) => (
+//   <button
+//     onClick={onSelect}
+//     className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150
+//       ${
+//         isSelected
+//           ? `bg-orange-100 border-orange-400 shadow-md`
+//           : `bg-white hover:bg-gray-200 `
+//       }`}
+//   >
+//     <h4 className="text-sm font-semibold text-black">{item.title}</h4>
+//     <p className="text-xs text-[#6B7280]">{item.subtitle}</p>
+//   </button>
+// );
 
 const StudentSelectItemCard: React.FC<{
   student: StudentData;
@@ -408,16 +407,16 @@ const CreateAIAssessmentContent: React.FC = () => {
   });
 
   // Right Column State
-  const [unitarySearch, setUnitarySearch] = useState("");
-  const [selectedUnitaryId, setSelectedUnitaryId] = useState<string | null>(
-    null
-  );
+  // const [unitarySearch, setUnitarySearch] = useState("");
+  // const [selectedUnitaryId, setSelectedUnitaryId] = useState<string | null>(
+  //   null
+  // );
 
   const [studentAssignType, setStudentAssignType] = useState<
     "all" | "selective"
   >("selective");
   const [studentSearch, setStudentSearch] = useState("");
-  const [studentDateFilter, setStudentDateFilter] = useState("June 2025"); // Example
+  // const [studentDateFilter, setStudentDateFilter] = useState("June 2025"); // Example
   const [studentStandardFilter, setStudentStandardFilter] = useState(
     sampleStandards[0]?.value || ""
   );
@@ -434,13 +433,13 @@ const CreateAIAssessmentContent: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const filteredUnitaryItems = useMemo(
-    () =>
-      sampleUnitaryItems.filter((item) =>
-        item.title.toLowerCase().includes(unitarySearch.toLowerCase())
-      ),
-    [unitarySearch]
-  );
+  // const filteredUnitaryItems = useMemo(
+  //   () =>
+  //     sampleUnitaryItems.filter((item) =>
+  //       item.title.toLowerCase().includes(unitarySearch.toLowerCase())
+  //     ),
+  //   [unitarySearch]
+  // );
 
   const filteredStudents = useMemo(
     () =>
@@ -460,7 +459,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 
   const handleCreate = () => {
     console.log("Form Data:", formData);
-    console.log("Selected Unitary:", selectedUnitaryId);
+    // console.log("Selected Unitary:", selectedUnitaryId);
     console.log(
       "Student Assignment:",
       studentAssignType,

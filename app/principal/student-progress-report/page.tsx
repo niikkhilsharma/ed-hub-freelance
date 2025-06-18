@@ -99,7 +99,7 @@ const StudentProgressReport = () => {
     subject: string;
     image: string;
   };
-  const Teachers: Person[] = Array.from({ length: 4 }, (_, i) => ({
+  const Teachers: Person[] = Array.from({ length: 4 }, () => ({
     name: "Name",
     subject: "Subject",
     image: "/principal/manage.jpg",

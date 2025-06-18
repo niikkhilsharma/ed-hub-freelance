@@ -1,4 +1,3 @@
-import MaxWidthWrapper from '@/components/admin/max-width-wrapper'
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
 import { Poppins } from 'next/font/google'
@@ -16,7 +15,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<div className={(poppinsFont.className, 'bg-gray-200')}>
+		<div className={(poppinsFont.className, poppinsFont.variable, 'bg-gray-200')}>
 			<Header user={{ name: 'Nikhil', role: 'Student', avatarSrc: '/page3/entry/pri.png' }} isAskme={false} />
 			{children}
 			<Footer />

@@ -85,7 +85,7 @@ const sampleSummaryData: AssessmentSummaryData = {
 
 // --- Style Constants (derived from your theme and image) ---
 const COLOR_CORRECT_TEXT = 'text-[#8DD9B3]' // Standard Tailwind green
-const COLOR_CORRECT_ICON = 'text-[#8DD9B3]' // A slightly different shade for icon if desired, or same
+// const COLOR_CORRECT_ICON = 'text-[#8DD9B3]' // A slightly different shade for icon if desired, or same
 const COLOR_INCORRECT_TEXT = 'text-[#E57373]' // Standard Tailwind red
 const COLOR_INCORRECT_ICON = 'text-[#E57373]'
 const COLOR_NEUTRAL_TEXT = 'text-[#6B7280]' // Lighter gray for neutral options

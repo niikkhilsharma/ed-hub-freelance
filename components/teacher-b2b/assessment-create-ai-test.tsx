@@ -7,11 +7,7 @@ import {
 	FiSearch,
 	FiChevronDown,
 	FiCalendar,
-	FiClock,
-	FiX, // Using FiX for the clear icon next to date
-	FiChevronUp,
 	FiArrowLeft,
-	FiChevronDown as FiArrowDownSmall,
 	FiArrowLeftCircle,
 	FiArrowRightCircle, // For number inputs
 } from 'react-icons/fi'
@@ -364,7 +360,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 
 	const [studentAssignType, setStudentAssignType] = useState<'all' | 'selective'>('selective')
 	const [studentSearch, setStudentSearch] = useState('')
-	const [studentDateFilter, setStudentDateFilter] = useState('June 2025') // Example
+	// const [studentDateFilter, setStudentDateFilter] = useState('June 2025') // Example
 	const [studentStandardFilter, setStudentStandardFilter] = useState(sampleStandards[0]?.value || '')
 	const [selectedStudentIds, setSelectedStudentIds] = useState<string[]>([])
 

@@ -6,7 +6,8 @@ import Header from '@/components/layout/Header' // Assuming Header is in this pa
 import Footer from '@/components/layout/Footer' // Assuming Footer is in this path
 import { FiArrowLeft, FiEdit2 } from 'react-icons/fi' // Edit icon
 import { Button } from '../ui/button'
-import MaxWidthWrapper from '../max-width-wrapper'
+import Newsletter from '../common-components/Newsletter'
+// import MaxWidthWrapper from '../max-width-wrapper'
 
 // Helper Input Component
 const FormInput = ({
@@ -52,7 +53,6 @@ export default function EditStudentProfilePage() {
 		state: '',
 		pinCode: '',
 	})
-	const [newsletterEmail, setNewsletterEmail] = useState('')
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -64,12 +64,6 @@ export default function EditStudentProfilePage() {
 		// API call to save profile data
 	}
 
-	const handleNewsletterSubmit = (e: React.FormEvent) => {
-		e.preventDefault()
-		console.log('Newsletter Subscription:', newsletterEmail)
-		// API call to subscribe
-		setNewsletterEmail('')
-	}
 
 	// Sample user data for the Header
 	const headerUser = {
@@ -93,11 +87,8 @@ export default function EditStudentProfilePage() {
 							<h1 className="text-md font-semibold ">Edit Profile</h1>
 						</div>
 						<div
-							className="flex items-center  mt-4 mb-8"
-							style={{
-								backgroundImage: "url('/teacher-b2b/profile-back.png')", // UPDATE PATH
-								backgroundSize: 'auto 600px', // Adjust size for pattern density
-							}}>
+							className="flex items-center mt-4 mb-8 bg-none sm:bg-[url('/teacher-b2b/profile-back.png')] sm:bg-[auto_600px]"
+							>
 							<div className="flex items-start bg-white rounded-r-3xl px-4 py-1">
 								{/* Avatar and Name */}
 								<div className="relative mt-3   mr-6">
@@ -118,14 +109,7 @@ export default function EditStudentProfilePage() {
 								</div>
 							</div>
 
-							{/* Decorative Pattern - Right Side */}
-							{/* <div
-              className="hidden md:block ml-auto w-2/5 h-20 bg-repeat opacity-70 rounded-lg"
-              style={{
-                backgroundImage: "url('/teacher-b2b/profile-back.png')", // UPDATE PATH
-                backgroundSize: "auto 60px", // Adjust size for pattern density
-              }}
-            ></div> */}
+							
 						</div>
 
 						{/* Profile Form */}
@@ -159,39 +143,12 @@ export default function EditStudentProfilePage() {
 							</div>
 						</form>
 						<div className="w-full flex pt-6 justify-center">
-							<Button className="w-sm xs:w-xs rounded-full text-xl h-11 mx-auto">Save</Button>
+							<Button className="px-[20%] rounded-full text-xl h-11 mx-auto">Save</Button>
 						</div>
 					</div>
 
 					{/* Newsletter Subscription Section */}
-					<div
-						className="mt-8 rounded-2xl p-8 md:p-12 text-center text-white relative overflow-hidden bg-pink-600 bg-repeat"
-						style={{
-							backgroundImage: 'url(/pattern-2.png)', // UPDATE PATH
-							backgroundSize: '1500px',
-						}}>
-						<div className="relative z-10">
-							<h2 className="text-2xl md:text-3xl font-bold mb-3">Subscribe to our newsletter</h2>
-							<p className="text-sm opacity-90 mb-8 max-w-lg mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
-							<form
-								onSubmit={handleNewsletterSubmit}
-								className="max-w-md mx-auto flex items-center bg-white rounded-full p-1.5 shadow-lg">
-								<input
-									type="email"
-									value={newsletterEmail}
-									onChange={e => setNewsletterEmail(e.target.value)}
-									placeholder="Email Address"
-									className="flex-grow px-5 py-2.5 text-gray-700 text-md bg-transparent border-none focus:outline-none placeholder-gray-400"
-									required
-								/>
-								<button
-									type="submit"
-									className="px-10 py-2.5 bg-[#FFCC00] text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors">
-									Send
-								</button>
-							</form>
-						</div>
-					</div>
+					<Newsletter />
 				</main>
 			</div>
 			<Footer />
