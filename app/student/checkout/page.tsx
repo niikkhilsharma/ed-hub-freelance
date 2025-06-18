@@ -19,7 +19,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { CreditCard, ArrowLeft, Lock } from "lucide-react";
 import { FaBuildingColumns } from "react-icons/fa6";
 
-export default function CourseDetail() {
+export default function Checkout() {
   const [selectedPayment, setSelectedPayment] = useState("cards");
   const [saveCard, setSaveCard] = useState(true);
   const [country, setCountry] = useState("");
@@ -85,7 +85,7 @@ export default function CourseDetail() {
       </div>
 
       <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-16 pb-70">
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Left Section - Billing & Payment */}
             <div className="lg:col-span-2 space-y-6">
