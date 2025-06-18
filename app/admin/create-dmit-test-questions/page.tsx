@@ -43,7 +43,7 @@ export default function EditDmitTestQuestions() {
 							{/* First Radio Group*/}
 							<div className="flex flex-col sm:flex-row items-start gap-4 sm:items-center">
 								<Label className="font-medium m-0 tracking-wide text-nowrap">Question Category</Label>
-								<div className="flex flex-wrap gap-4 items-center">
+								<div className="flex flex-wrap sm:flex-nowrap gap-4 items-center">
 									<div className="flex items-center justify-center gap-2">
 										<Input
 											type="radio"

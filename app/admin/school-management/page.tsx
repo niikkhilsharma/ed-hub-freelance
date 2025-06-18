@@ -13,7 +13,7 @@ export default function SchoolManagement() {
 		<div className="bg-gray-100/60 p-4">
 			<MaxWidthWrapper className="bg-white p-4 rounded-2xl">
 				<SearchFilterBar />
-				<div className="rounded-2xl bg-white px-2 sm:px-4 mt-4 sm:mt-6 grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
+				<div className="rounded-2xl bg-white px-2 mt-4 sm:mt-6 grid gap-3 sm:gap-4 grid-cols-1 lg:grid-cols-2">
 					<SchoolCard />
 					<SchoolCard />
 					<SchoolCard />
