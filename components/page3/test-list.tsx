@@ -41,7 +41,7 @@ export function TestList({ tests, type }: TestListProps) {
 
               {type === "completed" && (
                 <div>
-                  <div className="grid grid-cols-3 gap-4 max-w-xl">
+                  <div className="grid grid-cols-3 gap-2 max-w-lg">
                     <div className="text-center bg-[#F3F4F6] p-2 rounded-2xl">
                       <p className="text-sm text-[#6B7280]">Students Enrolled</p>
                       <p className="text-lg font-semibold text-[#3366FF]">

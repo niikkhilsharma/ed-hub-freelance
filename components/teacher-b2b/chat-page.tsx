@@ -171,9 +171,9 @@ export default function ChatPage() {
 			<Header user={headerUser} />
 			<MaxWidthWrapper>
 				<div className="bg-gray-100">
-					<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 flex gap-5 items-start">
+					<main className=" py-2 sm:p-4 sm:p-6 lg:p-8 flex gap-5 items-start">
 						{/* Left Column: Teacher List */}
-						<div className="w-full md:w-1/3 lg:w-1/4 bg-white rounded-3xl shadow-xl p-4 self-stretch">
+						<div className="w-full hidden md:block md:w-1/3 lg:w-1/4 bg-white rounded-3xl shadow-xl p-4 self-stretch">
 							{' '}
 							{/* self-stretch */}
 							<h2 className="text-lg font-bold text-[#FF3366] mb-4 px-2">Students</h2>

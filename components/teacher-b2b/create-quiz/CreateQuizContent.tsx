@@ -193,7 +193,7 @@ const CreateBWTestContent: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8">
+    <div className="bg-white rounded-2xl px-4 sm:px-20 py-4 ">
       <Stepper steps={stepperSteps} currentStep={currentStep} setCurrentStep={setCurrentStep} isClickable={true} />
       {renderStepContent()}
       <div className="mt-8 flex justify-center flex-wrap gap-3"> {/* Added flex-wrap and gap */}

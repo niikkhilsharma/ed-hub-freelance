@@ -620,7 +620,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 
               {studentAssignType === "selective" && (
                 <>
-                  <div className="flex grid-cols-1 sm:grid-cols-3 gap-3 mb-3 items-stretch justify-between ">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3 items-stretch justify-between ">
                     <div className="relative flex-grow sm:col-span-1">
                       <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
                       <input
