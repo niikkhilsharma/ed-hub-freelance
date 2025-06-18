@@ -3,7 +3,6 @@
 import StudentWrapper from "@/components/student-wrapper";
 import { ArrowLeft } from "lucide-react";
 import FooterNew from "@/components/footer3";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
