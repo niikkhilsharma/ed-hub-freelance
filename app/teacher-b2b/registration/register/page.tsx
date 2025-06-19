@@ -85,7 +85,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Right Column: Image Panel */}
-        <div className="hidden md:block md:col-span-6 lg:col-span-7 h-full w-full relative rounded-4xl overflow-hidden flex">
+        <div className="hidden md:flex md:col-span-6 lg:col-span-7 h-full w-full relative rounded-4xl overflow-hidden">
           <div
             className="absolute inset-0"
             style={{

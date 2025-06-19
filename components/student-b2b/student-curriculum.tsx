@@ -6,8 +6,14 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Header from "../layout/Header";
 import Footer from "@/components/layout/Footer";
 import MaxWidthWrapper from "../admin/max-width-wrapper";
-import { FiArrowLeft } from "react-icons/fi";
+import {
+  FiArrowLeft,
+  FiArrowLeftCircle,
+  FiArrowRightCircle,
+  FiChevronDown,
+} from "react-icons/fi";
 import { ACCENT_PINK } from "../teacher-b2b/create-test/CreateBWTestPage";
+import { url } from "inspector";
 
 const categories = [
   "Subject 1",
@@ -38,26 +44,24 @@ const PALETTE = {
 };
 
 const sessionData = Array.from({ length: 14 }, (_, i) => ({
-  title: `Session Name / Number ${i + 1}`,
-  content: `This is detailed content for session ${
-    i + 1
-  }. It includes explanation of the topic, practical examples, and extended learning objectives. The content is structured to help students understand core principles and apply them in real scenarios. 
+  title: `Unit Name`,
+  content: `1. REAL NUMBERS
 
-  This is detailed content for session ${
-    i + 1
-  }. It includes explanation of the topic, practical examples, and extended learning objectives. The content is structured to help students understand core principles and apply them in real scenarios. 
+1. Review of representation of natural numbers, integers, and
+rational numbers on the number line. Rational numbers as
+recurring/terminating decimals. Operations on real numbers.
 
-  This is detailed content for session ${
-    i + 1
-  }. It includes explanation of the topic, practical examples, and extended learning objectives. The content is structured to help students understand core principles and apply them in real scenarios. 
+2. Examples of non-recurring/non-terminating decimals.
+Existence of non-rational numbers (irrational numbers) such as,
+and their representation on the number line. Explaining that
+every real number is represented by a unique point on the
+number line and conversely, viz. every point on the number line
+represents a unique real number.
 
-  This is detailed content for session ${
-    i + 1
-  }. It includes explanation of the topic, practical examples, and extended learning objectives. The content is structured to help students understand core principles and apply them in real scenarios. 
-
-  Additional notes or references can be included here to support in-depth learning for session ${
-    i + 1
-  }.`,
+3. Definition of nth root of a real number.
+4. Rationalization (with precise meaning) of real numbers of the
+type
+`,
 }));
 const Curriculum = () => {
   const [selected, setSelected] = useState<string>("Subject 1");
@@ -89,7 +93,7 @@ const Curriculum = () => {
         </div>
       </div>
 
-      <MaxWidthWrapper className="bg-gray-100">
+      <div className=" px-4 mx-auto bg-gray-100">
         <div className="px-4 pt-4">
           <div className="w-full flex justify-center bg-white  rounded-2xl py-2">
             <div className="flex flex-wrap md:text-base text-xs md:justify-center justify-start px-2 md:gap-4 gap-2">
@@ -131,7 +135,22 @@ const Curriculum = () => {
         <div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
           {/* Left column */}
           <div className="bg-white p-6 rounded-2xl">
-            <h2 className="text-xl font-semibold mb-4">Unit Name</h2>
+            <div className="flex items-center justify-between gap-2 xs:flex-col mb-3">
+              <h2 className="text-md font-semibold h-fit text-[#3366FF] border-b border-[#3366FF] w-fit">
+                Modules
+              </h2>
+              <div className="flex items-center h-fit gap-2 sm:gap-3 sm:self-center">
+                <FilterDropdown
+                  value={"Week 1"}
+                  options={[
+                    { value: "Weekly", label: "Weekly" },
+                    { value: "Week 1", label: "Week 1" },
+                    { value: "Week 2", label: "Week 2" },
+                  ]} // Added Weekly as per original
+                />
+                <DateNavigatorWithArrows currentDate={"June 2025"} />
+              </div>
+            </div>
 
             <div className="space-y-2">
               {sessionData.map((item, index) => {
@@ -140,14 +159,25 @@ const Curriculum = () => {
                 return (
                   <div
                     key={index}
-                    className={`${isOpen ? "bg-gray-200 p-6" :"border border-[#E5E7EB]"}  rounded-2xl overflow-hidden transition-all bg-cover bg-center`}
-                    // style={{ backgroundImage: "url('/yearlycardbg.png')" }}
+                    className={`${
+                      isOpen ? "p-6" : "border border-[#E5E7EB]"
+                    } relative z-20 rounded-2xl overflow-hidden transition-all`}
                   >
+                    {/* Filtered background image */}
+                    <div
+                      className="absolute inset-0 bg-cover rounded-3xl bg-repeat -z-10"
+                      style={{
+                        backgroundImage: 'url("/pattern.png")',
+                        filter: "brightness(0.7) grayscale(30%)",
+                      }}
+                    />
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
-                      className={`${isOpen ? "bg-white px-6 py-2": "" } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
+                      className={`${
+                        isOpen ? "bg-white px-6 py-2" : ""
+                      } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
-                      <span>{item.title}</span>
+                      <span className="text-lg">{item.title}</span>
                       {isOpen ? (
                         <IoIosArrowUp className="text-xl text-gray-600" />
                       ) : (
@@ -163,7 +193,7 @@ const Curriculum = () => {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-sm text-gray-700 whitespace-pre-line">
+                          <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-sm text-[#6B7280] whitespace-pre-line">
                             {item.content}
                           </div>
                         </motion.div>
@@ -335,10 +365,7 @@ const Curriculum = () => {
                           marks: "05 Marks",
                         },
                       ].map((item, idx) => (
-                        <tr
-                          key={idx}
-                          className= "bg-white"
-                        >
+                        <tr key={idx} className="bg-white">
                           <td
                             className="border font-medium border-black px-3 py-2"
                             colSpan={2}
@@ -357,10 +384,68 @@ const Curriculum = () => {
             </div>
           </div>
         </div>
-      </MaxWidthWrapper>
+      </div>
       <Footer />
     </div>
   );
 };
 
 export default Curriculum;
+
+interface DateNavigatorProps {
+  currentDate: string;
+  onPrevious?: () => void;
+  onNext?: () => void;
+}
+export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({
+  currentDate,
+  onPrevious,
+  onNext,
+}) => (
+  <div className="flex items-center gap-2 text-xs border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg sm:text-sm sm:gap-2.5 sm:px-3 sm:py-2 sm:rounded-xl">
+    <button
+      onClick={onPrevious}
+      className="disabled:opacity-50"
+      disabled={!onPrevious}
+      aria-label="Previous month"
+    >
+      <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
+    </button>
+    <span className="font-medium text-nowrap">{currentDate}</span>
+    <button
+      onClick={onNext}
+      className="disabled:opacity-50"
+      disabled={!onNext}
+      aria-label="Next month"
+    >
+      <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
+    </button>
+  </div>
+);
+
+// --- Component 6: FilterDropdown (from previous) ---
+interface FilterDropdownProps {
+  value: string;
+  options: { value: string; label: string }[];
+  className?: string;
+}
+export const FilterDropdown: React.FC<FilterDropdownProps> = ({
+  value,
+  options,
+  className = "",
+}) => (
+  <div className={`relative ${className}`}>
+    <select
+
+      className="appearance-none border border-[#E5E7EB] text-xs text-black bg-[#F9FAFB] px-3 py-1.5 rounded-lg pr-7 focus:outline-none focus:ring-1 focus:ring-[#3366FF]
+                       sm:text-sm sm:px-4 sm:py-2 sm:rounded-xl sm:pr-8"
+    >
+      {options.map((opt) => (
+        <option key={opt.value} value={opt.value}>
+          {opt.label}
+        </option>
+      ))}
+    </select>
+    <FiChevronDown className="absolute right-2 sm:right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-black pointer-events-none" />
+  </div>
+);

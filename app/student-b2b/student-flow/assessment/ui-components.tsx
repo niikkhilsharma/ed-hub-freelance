@@ -98,11 +98,11 @@ interface DateNavigatorProps {
 export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({ currentDate, onPrevious, onNext }) => (
     <div className="flex items-center gap-2 text-xs border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg sm:text-sm sm:gap-2.5 sm:px-3 sm:py-2 sm:rounded-xl">
         <button onClick={onPrevious} className="disabled:opacity-50" disabled={!onPrevious} aria-label="Previous month">
-            <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600 hover:text-black cursor-pointer" />
+            <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black hover:text-black cursor-pointer" />
         </button>
         <span className="font-medium">{currentDate}</span>
         <button onClick={onNext} className="disabled:opacity-50" disabled={!onNext} aria-label="Next month">
-            <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600 hover:text-black cursor-pointer" />
+            <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black hover:text-black cursor-pointer" />
         </button>
     </div>
 );
