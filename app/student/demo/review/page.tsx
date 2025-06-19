@@ -5,8 +5,10 @@ import { ArrowLeft } from "lucide-react";
 import FooterNew from "@/components/footer3";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function CourseDetail() {
+  const router = useRouter();
   return (
     <StudentWrapper blue>
       <div className="relative z-10 bg-[#E3E3E3]">
@@ -14,7 +16,10 @@ export default function CourseDetail() {
         <div className="bg-white border-b">
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center py-4">
-              <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
+              <ArrowLeft
+                className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
+                onClick={() => router.push("/student/demo/teacher-selection")}
+              />
               <h1 className="text-2xl font-medium text-[#FF3366]">
                 Course Name
               </h1>
@@ -58,24 +63,29 @@ export default function CourseDetail() {
                 <Button className="bg-[#F9FAFB] border border-[#E5E7EB] px-6 py-4 rounded-full text-black hover:bg-[#F9FAFB] cursor-pointer">
                   Edit
                 </Button>
-                <div className="flex items-center justify-center">
-                  <Button className="bg-[#3366ff] text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full">
-                    Continue
-                  </Button>
-                </div>
               </div>
               <div className="space-y-2 mt-4 sm:mt-0">
-                <img
-                  alt="course pack image"
-                  src="/student/courses/detail/hero.png"
-                  className="block mx-auto rounded-3xl"
-                />
+                <div className="flex justify-center items-center overflow-hidden rounded-3xl max-h-[480px]">
+                  <img
+                    alt="course pack image"
+                    src="/student/courses/detail/hero.png"
+                    className="block mx-auto rounded-3xl"
+                  />
+                </div>
                 <div className="border border-zinc-200 rounded-3xl text-center gap-2 p-6">
                   Pellentesque ac sapien quis ipsum
                   <br /> faucibus ullamcorper sed eu enim.
                   <br /> Mauris id ornare metus.
                 </div>
               </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <Button
+                className="bg-[#3366ff] text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full cursor-pointer"
+                onClick={() => router.push("/student/demo/confirmation")}
+              >
+                Book
+              </Button>
             </div>
           </div>
         </section>

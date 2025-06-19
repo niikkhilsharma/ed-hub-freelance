@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search, Filter, Info, Check } from "lucide-react";
+import { Search, Filter, Info, Check, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,6 +15,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
+import { useRouter } from "next/navigation";
 
 interface Teacher {
   id: string;
@@ -114,6 +115,7 @@ const generateTimeSlots = (): TimeSlot[] => {
 };
 
 export default function TeacherSelection() {
+  const router = useRouter();
   const [selectedTeacher, setSelectedTeacher] = useState<string>("1");
   const [selectedTimeSlot, setSelectedTimeSlot] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -186,16 +188,24 @@ export default function TeacherSelection() {
 
   const handleContinue = () => {
     if (selectedTeacher && selectedTimeSlot) {
-      const [time, date] = selectedTimeSlot.split("-");
-      const teacher = mockTeachers.find((t) => t.id === selectedTeacher);
-      alert(
-        `Booking confirmed!\nTeacher: ${teacher?.name}\nTime: ${time} on ${date}`
-      );
+      router.push("/student/demo/review");
     }
   };
 
   return (
     <StudentWrapper blue>
+      {/* headers */}
+      <div className="bg-white border-b">
+        <div className="w-full px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center py-4">
+            <ArrowLeft
+              className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
+              onClick={() => router.push("/student/demo/booking-form")}
+            />
+            <h1 className="text-2xl font-medium text-[#FF3366]">Course Name</h1>
+          </div>
+        </div>
+      </div>
       <div className="w-full bg-[#EEEEEE] py-10">
         <div className="max-w-7xl mx-auto p-10 space-y-6 bg-white rounded-3xl">
           <h1 className="text-2xl font-semibold text-[#FF3366] mb-6">

@@ -4,8 +4,10 @@ import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
 import { FaCircleCheck } from "react-icons/fa6";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function DemoBookingConfirmation() {
+  const router = useRouter();
   return (
     <StudentWrapper blue>
       <div className="relative z-10 p-10 bg-[#EEEEEE]">
@@ -21,8 +23,11 @@ export default function DemoBookingConfirmation() {
             commodo non eget turpis. Nunc venenatis elementum lacus, sed
             bibendum orci blandit vitae
           </p>
-          <Button className="bg-[#FF3366] text-white px-8 py-6 hover:bg-[#ff1a53] cursor-pointer rounded-full">
-            Continue
+          <Button
+            className="bg-[#FF3366] text-white px-8 py-6 hover:bg-[#ff1a53] cursor-pointer rounded-full"
+            onClick={() => router.push("/student/courses")}
+          >
+            Explore More Courses
           </Button>
         </div>
       </div>
