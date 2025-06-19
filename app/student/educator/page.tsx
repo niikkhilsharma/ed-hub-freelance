@@ -24,7 +24,7 @@ interface Educator {
 // Replace imageUrls with paths to your actual images in the /public directory.
 // Example: /educators/sarah.jpg, /educators/john.jpg
 // Ensure Background2.png is also in /public for the main title.
-const educatorsData: Educator[] = [
+export const educatorsData: Educator[] = [
   {
     id: 1,
     name: "Olivia Davis",
