@@ -1,5 +1,8 @@
-// import YearlyPlanOverviewPage from '@/components/student-b2b/student-dashboard/yearly-plan'
+import Curriculum from '@/components/student-b2b/student-curriculum'
+import React from 'react'
 
-export default function YearlyPlanOverview() {
-	return <div>{/* <YearlyPlanOverviewPage /> */}</div>
+const TeacherCurriculam = () => {
+	return <Curriculum />
 }
+
+export default TeacherCurriculam

@@ -51,7 +51,7 @@ export default function Footer() {
 					</div>
 
 					{/* Column 4 & 5: Map and Contact Info */}
-					<div className="lg:col-span-2 flex flex-col gap-4">
+					<div className="col-span-2 flex flex-col gap-4">
 						<div className="w-full h-30 rounded-4xl overflow-hidden">
 							<Image src="/map-static.png" alt="Map" width={500} height={150} className="w-full h-full object-cover" />
 						</div>

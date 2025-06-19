@@ -100,7 +100,7 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
           <FormInput label="Pin code" id="pinCode" placeholder="000000" value={formData.pinCode} onChange={onFormChange}/>
           
           {/* Save Button - Ensure it takes the full width of its grid cell */}
-          <div className="md:col-start-1 lg:col-start-auto mt-auto"> {/* Control button position if needed, or let it flow */}
+          <div className="md:col-start-auto mt-auto"> {/* Control button position if needed, or let it flow */}
              {/* Forcing it to the next row on md if needed, or just ensure it takes the full width of a column */}
             <button
               type="submit"
@@ -137,7 +137,7 @@ export const NewsletterSection: React.FC<NewsletterSectionProps> = ({
       }}
     >
       <div className="relative z-10">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3">
+        <h2 className="text-2xl md:text-3xl lg:text-3xl font-bold mb-2 sm:mb-3">
           Subscribe to our newsletter
         </h2>
         <p className="text-xs sm:text-sm opacity-90 mb-6 sm:mb-8 max-w-md lg:max-w-lg mx-auto">
