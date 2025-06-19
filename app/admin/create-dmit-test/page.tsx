@@ -23,19 +23,19 @@ export default function DmitTestQuestions() {
 
 				<div className="flex flex-col justify-center items-center gap-8 mt-4 w-96 mx-auto">
 					<div className="w-full">
-						<Label htmlFor="testName" className="font-light">
+						<Label htmlFor="testName" className="font-medium">
 							Test Name
 						</Label>
 						<Input className="rounded-full bg-[#F9FAFB] mt-2" placeholder="text" />
 					</div>
 
 					<div className="w-full">
-						<Label htmlFor="description">Your message</Label>
-						<Textarea placeholder="Type your message here." id="description" className="rounded-2xl bg-[#F9FAFB] mt-2" rows={6} />
+						<Label htmlFor="description" className="font-medium">Description</Label>
+						<Textarea placeholder="text" id="description" className="rounded-2xl bg-[#F9FAFB] mt-2" rows={6} />
 					</div>
 
 					<div className="w-full">
-						<Label className="font-light mb-4">Duration & Point</Label>
+						<Label className="font-medium mb-4">Duration & Point</Label>
 						<div className="flex gap-4">
 							<div className="text-xs text-[#6B7280]">
 								<Label htmlFor="hours" className="font-light">
