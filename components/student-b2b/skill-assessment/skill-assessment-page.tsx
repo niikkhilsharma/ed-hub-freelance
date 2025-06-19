@@ -33,7 +33,7 @@ export default function TestStartPage() {
 		//   // style={{ backgroundImage: 'url(/images/blue-pattern-bg.png)', backgroundRepeat: 'repeat', backgroundSize: 'auto' }}
 		// >
 		<div
-			className="min-h-screen flex items-center justify-center p-4"
+			className="min-h-screen flex items-center justify-center p-6"
 			style={{
 				backgroundImage: "url('/Skill_Assessment_Page.png')",
 				// backgroundRepeat: 'repeat',
@@ -42,7 +42,7 @@ export default function TestStartPage() {
 			}}>
 			<div className="overflow-hidden flex flex-col gap-4 md:flex-row w-full max-w-4xl lg:max-w-5xl">
 				{/* Left Section - Test Information */}
-				<div className="w-full md:w-4/5 rounded-3xl bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
+				<div className="w-full md:w-[60%] rounded-3xl bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
 					<div className="mb-3 mt-6">
 						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight">
 							<div className="text-center">
@@ -123,7 +123,7 @@ export default function TestStartPage() {
 				</div>
 
 				{/* Right Section - Image */}
-				<div className="w-full md:w-2/5 relative min-h-[350px] md:min-h-full">
+				<div className="w-full md:w-[40%] rounded-3xl overflow-hidden relative min-h-[260px] h-full">
 					{/* Pattern Background for Image Area */}
 					<div
 						className="absolute inset-0 z-0 opacity-80" // Slightly transparent pattern

@@ -11,7 +11,7 @@ const SystemErrorModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
 
 	return (
 		// Backdrop
-		<div className="fixed inset-0 bg-[#00000045] bg-opacity-60 flex items-center justify-center z-[100] p-4 transition-opacity duration-300 ease-in-out">
+		<div className="fixed inset-0 bg-[#00000045] flex items-center justify-center z-[100] p-4 transition-opacity duration-300 ease-in-out">
 			{/* Modal Content */}
 			<div className="bg-white rounded-4xl shadow-2xl w-full max-w-84 overflow-hidden transform transition-all duration-300 ease-in-out scale-100 text-center p-6 md:p-8 relative">
 				{/* Optional Close Button */}
@@ -67,7 +67,7 @@ export default function DmittTestPageWithErrorModal() {
 		<Fragment>
 			{' '}
 			{/* Needed for the modal to be a sibling */}
-			<div className={`min-h-screen bg-gray-100 flex flex-col ${isErrorModalOpen ? 'filter blur-sm pointer-events-none' : ''}`}>
+			<div className={`min-h-screen bg-gray-100 flex flex-col ${isErrorModalOpen ? 'filter backdrop-blur-3xl pointer-events-none' : ''}`}>
 				<DmittTestPage />
 			</div>
 			{/* Error Modal Invocation */}

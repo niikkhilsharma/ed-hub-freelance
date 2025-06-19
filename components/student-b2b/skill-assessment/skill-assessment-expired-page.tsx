@@ -56,7 +56,7 @@ export default function TestExpiredPage() {
 
 	return (
 		<div
-			className="min-h-screen flex items-center justify-center p-4"
+			className="min-h-screen flex items-center justify-center p-6"
 			style={{
 				backgroundImage: "url('/Skill_Assessment_Page.png')",
 				// backgroundRepeat: 'repeat',
@@ -65,7 +65,7 @@ export default function TestExpiredPage() {
 			}}>
 			<div className=" overflow-hidden gap-6 flex flex-col md:flex-row w-full max-w-4xl lg:max-w-5xl">
 				{/* Left Section - Test Information */}
-				<div className="w-full rounded-3xl md:w-[70%] bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
+				<div className="w-full rounded-3xl md:w-[60%] bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
 					<div className="mb-6 mt-12">
 						<h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight text-center">
 							5-Stage Dermatoglyphic Multiple Intelligence Test (DMIT) and skill assessment
@@ -115,7 +115,7 @@ export default function TestExpiredPage() {
 				</div>
 
 				{/* Right Section - Image (Identical to previous) */}
-				<div className="w-full md:w-[30%] rounded-3xl overflow-hidden relative min-h-[350px] md:min-h-full">
+				<div className="w-full md:w-[40%] rounded-3xl overflow-hidden relative min-h-[260px] h-full">
 					<div
 						className="absolute inset-0 z-0 opacity-80"
 						style={{
@@ -129,7 +129,7 @@ export default function TestExpiredPage() {
 							alt="Student with laptop"
 							width={400}
 							height={500}
-							className="w-auto h-full object-cover"
+							className="w-auto h-full object-contain"
 						/>
 					</div>
 				</div>

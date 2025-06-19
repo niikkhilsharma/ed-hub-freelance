@@ -146,3 +146,6 @@
 h3 {
 	@apply font-[#131313] font-semibold tracking-tight;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari and Opera */
+}

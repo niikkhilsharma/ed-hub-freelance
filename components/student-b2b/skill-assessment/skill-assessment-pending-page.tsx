@@ -106,7 +106,7 @@ export default function TestPendingPage() {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4"
+      className="min-h-screen flex items-center justify-center p-6"
       style={{
         backgroundImage: "url('/Skill_Assessment_Page.png')",
         // backgroundRepeat: 'repeat',
@@ -114,9 +114,9 @@ export default function TestPendingPage() {
         backgroundColor: "#2563EB", // fallback blue if image fails to load (Tailwind's blue-600)
       }}
     >
-      <div className=" overflow-hidden gap-6 flex flex-col md:flex-row w-full max-w-4xl lg:max-w-5xl">
+      <div className=" overflow-hidden  gap-6 flex flex-col md:flex-row w-full max-w-4xl lg:max-w-5xl">
         {/* Left Section - Test Information */}
-        <div className="w-full rounded-3xl md:w-3/5 bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
+        <div className="w-full rounded-3xl md:w-[60%] bg-white p-6 sm:p-8 lg:p-10 flex flex-col">
           <div className="mb-6 mt-6">
             <h1 className="text-xl md:text-2xl font-bold text-gray-800 leading-tight text-center">
               5-Stage Dermatoglyphic Multiple Intelligence Test (DMIT) and skill
@@ -202,7 +202,7 @@ export default function TestPendingPage() {
         </div>
 
         {/* Right Section - Image (Identical to previous) */}
-        <div className="w-full md:w-2/5 relative min-h-[350px] md:min-h-full">
+        <div className="w-full md:w-[40%] rounded-3xl overflow-hidden relative min-h-[260px] h-full">
           <div
             className="absolute inset-0 z-0 opacity-80"
             style={{

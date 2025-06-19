@@ -128,7 +128,7 @@ const Curriculum = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 p-4">
+        <div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
           {/* Left column */}
           <div className="bg-white p-6 rounded-2xl">
             <h2 className="text-xl font-semibold mb-4">Unit Name</h2>
@@ -140,7 +140,8 @@ const Curriculum = () => {
                 return (
                   <div
                     key={index}
-                    className="bg-gray-100 p-2 rounded-2xl  overflow-hidden transition-all"
+                    className="bg-gray-100 py-4 px-6 md:p-10 rounded-2xl overflow-hidden transition-all bg-cover bg-center"
+                    // style={{ backgroundImage: "url('/yearlycardbg.png')" }}
                   >
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
@@ -175,13 +176,13 @@ const Curriculum = () => {
           </div>
 
           {/* Right column with two rows */}
-          <div className="grid  gap-4">
-            <div className="bg-white p-6 rounded-2xl overflow-auto">
+          <div className="font-medium">
+            <div className="bg-white  md:p-8 h-fit p-6 rounded-2xl overflow-auto">
               <h3 className="text-m text-blue-600 text-center font-semibold mb-4">
                 COURSE STRUCTURE CLASS - IX
               </h3>
 
-              <table className="w-full table-auto border-collapse">
+              <table className="w-full  md:p-6 table-auto border-collapse">
                 <thead>
                   <tr className="bg-blue-200 text-left">
                     <th className="border border-black px-4 py-2">Units</th>
@@ -218,7 +219,7 @@ const Curriculum = () => {
               </table>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl space-y-6">
+            <div className="bg-white p-6  md:p-8 mt-6 rounded-2xl space-y-6">
               {/* Title */}
               <div className="text-center space-y-1">
                 <h2 className="text-lg font-semibold uppercase">Mathematics</h2>
@@ -232,19 +233,19 @@ const Curriculum = () => {
 
               {/* Main Table */}
               <div className="overflow-auto">
-                <table className="w-full table-auto border-collapse text-sm">
+                <table className="w-full table-auto py-4 md:px-6 border-collapse  text-xs md:text-sm">
                   <thead>
                     <tr className="bg-blue-200">
-                      <th className="border border-black px-2 py-2 w-12">
+                      <th className="border border-black px-2 py-2 md:w-12">
                         S. No
                       </th>
-                      <th className="border border-black px-2 py-2 w-full">
+                      <th className="border w-full border-black px-2 py-2 ">
                         Typology of Questions
                       </th>
                       <th className="border border-black px-2 py-2">
                         Total Marks
                       </th>
-                      <th className="border border-black px-2 py-2">
+                      <th className="border border-black px-2 py-2 md:w-24">
                         % Weightage <br /> (approx.)
                       </th>
                     </tr>
@@ -271,16 +272,16 @@ const Curriculum = () => {
                       ],
                     ].map(([sn, question, marks, weight], i) => (
                       <tr key={i} className="bg-white">
-                        <td className="border border-black px-2 py-2 text-center align-top">
+                        <td className="border font-medium border-black px-2 py-2 text-center align-top">
                           {sn}
                         </td>
-                        <td className="border border-black px-2 py-2 text-xs">
+                        <td className="border font-medium border-black px-2 py-2 text-xs">
                           {question}
                         </td>
-                        <td className="border border-black px-2 py-2 text-center">
+                        <td className="border font-medium border-black px-2 py-2 text-center">
                           {marks}
                         </td>
-                        <td className="border border-black px-2 py-2 text-center">
+                        <td className="border font-medium border-black px-2 py-2 text-center">
                           {weight}
                         </td>
                       </tr>
@@ -304,9 +305,9 @@ const Curriculum = () => {
               </div>
 
               {/* Internal Assessment Section */}
-              <div className=" text-sm">
-                <div className="overflow-auto">
-                  <table className="w-full table-auto border-collapse text-sm">
+              <div className=" text-xs md:text-sm">
+                <div className="overflow-auto ">
+                  <table className="w-full md:p-4 table-auto border-collapse text-sm">
                     <thead>
                       <tr className="bg-blue-200">
                         <th
@@ -339,12 +340,12 @@ const Curriculum = () => {
                           className={idx % 2 === 0 ? "bg-white" : "bg-blue-50"}
                         >
                           <td
-                            className="border border-black px-3 py-2"
+                            className="border font-medium border-black px-3 py-2"
                             colSpan={2}
                           >
                             {item.component}
                           </td>
-                          <td className="border border-black px-3 py-2 text-right">
+                          <td className="border font-medium border-black px-3 py-2 text-right">
                             {item.marks}
                           </td>
                         </tr>
