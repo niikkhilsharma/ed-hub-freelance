@@ -66,7 +66,7 @@ const Curriculum = () => {
   const headerUser = {
     name: "Educator Name",
     role: "Teacher",
-    avatarSrc: "/teacher-b2b/profile.png",
+    avatarSrc: "/images/person.jpg",
   };
   return (
     <div className="bg-gray-100">
@@ -98,13 +98,13 @@ const Curriculum = () => {
                   key={category}
                   onClick={() => setSelected(category)}
                   className={`
-              relative md:px-5 px-2 py-2 rounded-2xl cursor-pointer font-medium transition-colors duration-200
-              ${
-                selected === category
-                  ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
-                  : "text-gray-700 hover:bg-gray-200"
-              }
-            `}
+                    relative md:px-5 px-2 py-2 rounded-2xl cursor-pointer font-medium transition-colors duration-200
+                    ${
+                      selected === category
+                        ? `text-white bg-[${PALETTE.ACCENT_PINK}]`
+                        : "text-gray-700 hover:bg-gray-200"
+                    }
+                  `}
                 >
                   {/* Animated background highlight */}
                   <AnimatePresence>
@@ -140,12 +140,12 @@ const Curriculum = () => {
                 return (
                   <div
                     key={index}
-                    className="bg-gray-100 py-4 px-6 md:p-10 rounded-2xl overflow-hidden transition-all bg-cover bg-center"
+                    className={`${isOpen ? "bg-gray-200 p-6" :"border border-[#E5E7EB]"}  rounded-2xl overflow-hidden transition-all bg-cover bg-center`}
                     // style={{ backgroundImage: "url('/yearlycardbg.png')" }}
                   >
                     <button
                       onClick={() => setActiveIndex(isOpen ? null : index)}
-                      className="w-full bg-white rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none"
+                      className={`${isOpen ? "bg-white px-6 py-2": "" } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
                       <span>{item.title}</span>
                       {isOpen ? (
@@ -184,7 +184,7 @@ const Curriculum = () => {
 
               <table className="w-full  md:p-6 table-auto border-collapse">
                 <thead>
-                  <tr className="bg-blue-200 text-left">
+                  <tr className="bg-[#bedbff] text-left">
                     <th className="border border-black px-4 py-2">Units</th>
                     <th className="border border-black px-4 py-2">Unit Name</th>
                     <th className="border border-black px-4 py-2 text-right">
@@ -205,7 +205,7 @@ const Curriculum = () => {
                     <tr
                       key={idx}
                       className={
-                        name === "Total" ? "font-bold bg-blue-200" : "bg-white"
+                        name === "Total" ? "font-bold bg-[#bedbff]" : "bg-white"
                       }
                     >
                       <td className="border border-black  px-4 py-2">{unit}</td>
@@ -235,7 +235,7 @@ const Curriculum = () => {
               <div className="overflow-auto">
                 <table className="w-full table-auto py-4 md:px-6 border-collapse  text-xs md:text-sm">
                   <thead>
-                    <tr className="bg-blue-200">
+                    <tr className="bg-[#bedbff]">
                       <th className="border border-black px-2 py-2 md:w-12">
                         S. No
                       </th>
@@ -286,7 +286,7 @@ const Curriculum = () => {
                         </td>
                       </tr>
                     ))}
-                    <tr className="font-bold bg-blue-200">
+                    <tr className="font-bold bg-[#bedbff]">
                       <td
                         className="border border-black px-2 py-2 text-center"
                         colSpan={2}
@@ -309,7 +309,7 @@ const Curriculum = () => {
                 <div className="overflow-auto ">
                   <table className="w-full md:p-4 table-auto border-collapse text-sm">
                     <thead>
-                      <tr className="bg-blue-200">
+                      <tr className="bg-[#bedbff]">
                         <th
                           className="border border-black px-3 py-2 text-left"
                           colSpan={2}
@@ -337,7 +337,7 @@ const Curriculum = () => {
                       ].map((item, idx) => (
                         <tr
                           key={idx}
-                          className={idx % 2 === 0 ? "bg-white" : "bg-blue-50"}
+                          className= "bg-white"
                         >
                           <td
                             className="border font-medium border-black px-3 py-2"

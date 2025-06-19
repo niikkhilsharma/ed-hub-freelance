@@ -36,7 +36,7 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
 }) => {
   return (
     
-    <div className="bg-white rounded-2xl shadow-xl p-4 md:p-6 lg:p-8">
+    <div className="bg-white rounded-2xl p-4 md:p-6 lg:p-8">
       
     <div className="flex items-center gap-2 mb-4 sm:mb-6">
                 <button 
@@ -69,7 +69,7 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
                 height={80}
                 className="w-16 h-16 sm:w-20 sm:h-20 rounded-full object-cover border-2 border-white"
               />
-              <button className="absolute bottom-0 right-0 p-1 sm:p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full shadow-md focus:outline-none">
+              <button className="absolute bottom-0 right-0 p-1 sm:p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full focus:outline-none">
                 <FiEdit2 className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
               </button>
             </div>
@@ -104,7 +104,7 @@ export const ProfileFormSection: React.FC<ProfileFormSectionProps> = ({
              {/* Forcing it to the next row on md if needed, or just ensure it takes the full width of a column */}
             <button
               type="submit"
-              className="w-full h-11 sm:h-12 md:h-auto rounded-full sm:rounded-3xl px-8 sm:px-10 py-2.5 sm:py-3 bg-blue-600 text-white font-semibold text-xs sm:text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md"
+              className="w-full h-11 sm:h-12 md:h-auto rounded-full sm:rounded-3xl px-8 sm:px-10 py-2.5 sm:py-3 bg-blue-600 text-white font-semibold text-xs sm:text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors "
             >
               Save
             </button>
@@ -145,7 +145,7 @@ export const NewsletterSection: React.FC<NewsletterSectionProps> = ({
         </p>
         <form
           onSubmit={onNewsletterSubmit}
-          className="max-w-sm md:max-w-md mx-auto flex flex-row items-center bg-white rounded-full p-1 sm:p-1.5 shadow-lg"
+          className="max-w-sm md:max-w-md mx-auto flex flex-row items-center bg-white rounded-full p-1 sm:p-1.5 "
         >
           <input
             type="email"
