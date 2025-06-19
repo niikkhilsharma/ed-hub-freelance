@@ -98,7 +98,7 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
       </h3>
       <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
       </div>
-      <div className="w-ful bg-gray-200 rounded-full p-1">
+      <div className="w-ful bg-gray-100 rounded-full p-1">
         <button className="w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
       </div>
     </div>

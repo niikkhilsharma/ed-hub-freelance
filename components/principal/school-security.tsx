@@ -107,7 +107,7 @@ const SchoolSecurity = () => {
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-m">{item.name}</div>
+                <div className="font-bold text-m">{item.name}</div>
                 
                 
                     <div className="text-sm text-gray-500">{item.address}</div>

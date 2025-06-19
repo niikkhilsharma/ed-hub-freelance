@@ -323,7 +323,7 @@ const TeacherDashboard = () => {
 									<h4 className="font-semibold text-sm mb-2">Classes Allocated</h4>
 									<div className="flex flex-wrap gap-3">
 										{classesAllocated.map(cls => (
-											<span key={cls} className="text-sm bg-gray-200 px-2 py-2 rounded-full">
+											<span key={cls} className="text-sm border border-gray-300 bg-gray-200 px-2 py-2 rounded-full">
 												{cls}
 											</span>
 										))}

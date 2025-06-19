@@ -75,7 +75,7 @@ const Management = () => {
           <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
           {/* Filters with dropdown icons */}
           {filters.map((filter, index) => (
-            <div key={filter} className="relative">
+            <div key={filter} className="relative overflow-x-auto custom-scrollbar">
               <select
                 className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 value={selectedFilters[index]}

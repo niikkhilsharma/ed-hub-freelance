@@ -246,13 +246,13 @@ const DurationPointInput: React.FC<{
 					<button
 						type="button"
 						onClick={handleIncrement}
-						className="text-black hover:text-black h-1/2 flex items-center text-[8px]">
+						className="text-black hover:text-black  text-[10px]">
 						▲
 					</button>
 					<button
 						type="button"
 						onClick={handleDecrement}
-						className="text-black hover:text-black h-1/2 flex items-center text-[8px]">
+						className="text-black hover:text-black   text-[10px]">
 						▼
 					</button>
 				</div>
@@ -396,7 +396,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 	}
 
 	return (
-		<div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8">
+		<div className="bg-white rounded-2xl p-4 px-4 md:px-16 ">
 			<Stepper steps={stepperSteps} currentStep={currentStep} setCurrentStep={setCurrentStep} />
 
 			{currentStep === 1 && (
@@ -469,7 +469,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 					{/* Right Column: Unitary & Student Selection */}
 					<div className="space-y-6 flex flex-col h-full">
 						{/* Unitary Selection */}
-						<div className={`p-4 rounded-2xl border border-[${INPUT_BORDER}] bg-[#F9FAFB]`}>
+						<div className={`p-4 rounded-2xl border  border-[${INPUT_BORDER}] bg-[#F9FAFB]`}>
 							<div className="relative mb-3">
 								<FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
 								<input
@@ -522,8 +522,8 @@ const CreateAIAssessmentContent: React.FC = () => {
 
 							{studentAssignType === 'selective' && (
 								<>
-									<div className="flex grid-cols-1 sm:grid-cols-3 gap-3 mb-3 items-stretch justify-between ">
-										<div className="relative flex-grow sm:col-span-1">
+									<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3 items-stretch justify-between ">
+										<div className="relative flex-grow ">
 											<FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
 											<input
 												type="text"
@@ -533,14 +533,14 @@ const CreateAIAssessmentContent: React.FC = () => {
 												className={`w-full pl-9 pr-3 py-2 ${INPUT_BG} border-[#6B7280] border rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-[${PRIMARY_BLUE}]`}
 											/>
 										</div>
-										<div className="relative sm:col-span-1">
+										<div className="relative ">
 											<div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
 												<FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
 												<span>June 2025</span>
 												<FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
 											</div>
 										</div>
-										<div className="relative sm:col-span-1">
+										<div className="relative ">
 											<select
 												value={studentStandardFilter}
 												onChange={e => setStudentStandardFilter(e.target.value)}

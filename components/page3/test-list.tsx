@@ -27,21 +27,21 @@ export function TestList({ tests, type }: TestListProps) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-2">
       {tests.map((test) => (
         <div key={test.id} className="border rounded-2xl p-4  bg-[#F9FAFB]">
           <div className="flex justify-between items-start">
             {/* Left Section */}
-            <div className="w-full space-y-2">
-              <h4 className="font-medium text-lg">{test.title}</h4>
-              <p className="text-sm text-[#6B7280] pb-3 flex gap-3">
+            <div className="w-full ">
+              <h4 className="font-medium text-m sm:text-lg">{test.title}</h4>
+              <p className="text-sm text-[#6B7280] pb-3 flex sm:flex-row flex-col gap-2">
                 <span>{test.batch}</span>
                 <span>{test.date}</span>
               </p>
 
               {type === "completed" && (
                 <div>
-                  <div className="grid grid-cols-3 gap-4 max-w-xl">
+                  <div className="grid grid-cols-3 gap-2 max-w-lg">
                     <div className="text-center bg-[#F3F4F6] p-2 rounded-2xl">
                       <p className="text-sm text-[#6B7280]">Students Enrolled</p>
                       <p className="text-lg font-semibold text-[#3366FF]">
