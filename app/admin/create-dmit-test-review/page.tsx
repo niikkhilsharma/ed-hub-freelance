@@ -9,13 +9,13 @@ export default function DmitTestReview() {
 		{
 			question: 'Which part of the plant makes food ?',
 			points: 4,
-			category: 'Question Category: Academic Skills',
+			category: ' Academic Skills',
 			options: ['Option', 'Option', 'Option'],
 		},
 		{
 			question: 'Which part of the plant makes food ?',
 			points: 4,
-			category: 'Question Category: Academic Skills',
+			category: ' Academic Skills',
 			options: ['Option', 'Option', 'Option'],
 		},
 	]
@@ -61,7 +61,7 @@ export default function DmitTestReview() {
 								<h2 className="font-semibold text-lg">{question.question}</h2>
 								<p className="text-[#6B7280]">{question.points} Points</p>
 							</div>
-							<p>Question Category: {question.category}</p>
+							<p className='font-medium'>Question Category: {question.category}</p>
 
 							<div className="mt-4">
 								{/* Options */}

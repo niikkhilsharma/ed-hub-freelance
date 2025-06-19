@@ -147,7 +147,7 @@ const StudentProgressReport = () => {
                 className="rounded-full h-24 w-24 flex-shrink-0"
               />
               <div className="flex-grow relative">
-                <div className="rounded-full top-0 bg-gray-100 absolute left-6"><IoMdSettings /></div>
+                <div className="rounded-full top-0 border border-gray-200 p-1 bg-gray-100 absolute left-[12rem]"><IoMdSettings size={20}/></div>
                 <h2
                   className="text-xl font-semibold"
                   style={{ color: PALETTE.TEXT_DARK }}

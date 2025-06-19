@@ -7,7 +7,7 @@ export default function PointSection({ points }: { points: { value: number; name
 				<div
 					key={indx}
 					className={cn('flex items-center justify-center tracking-tight gap-2', point.isActive && 'text-[#FF3366]')}>
-					<p className="py-1.5 px-3 rounded-full font-semibold border">{point.value.toString()}</p>
+					<p className="w-8 h-8 flex justify-center items-center rounded-full font-semibold border">{point.value.toString()}</p>
 					<h3>{point.name}</h3>
 				</div>
 			))}

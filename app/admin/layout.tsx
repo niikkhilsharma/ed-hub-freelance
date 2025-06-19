@@ -1,5 +1,6 @@
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
+import Navbar from '@/components/admin/ui/navbar'
 import { Poppins } from 'next/font/google'
 
 const poppinsFont = Poppins({
@@ -16,7 +17,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<div className={(poppinsFont.className, poppinsFont.variable, 'bg-gray-200')}>
-			<Header user={{ name: 'Nikhil', role: 'Student', avatarSrc: '/page3/entry/pri.png' }} isAskme={false} />
+			<Navbar user={{ name: 'Nikhil', role: 'Student', avatarSrc: '/page3/entry/pri.png' }} isAskme={false} />
 			{children}
 			<Footer />
 		</div>
