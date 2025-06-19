@@ -163,7 +163,7 @@ export default function DmittTest_3_Page() {
 			{/* Main Content */}
 			<div className="bg-white flex w-full justify-center items-center h-[calc(100dvh-64px)]">
 				<main className="flex-1 py-8 px-4 sm:px-6 lg:px-8">
-					<div className="max-w-7xl mx-auto bg-white rounded-xl p-6 md:p-8 flex">
+					<div className="max-w-7xl mx-auto bg-white rounded-xl p-6 md:p-8 flex flex-col lg:flex-row">
 						<div className="left-content">
 							{/* Test Title */}
 							<h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
@@ -234,7 +234,7 @@ export default function DmittTest_3_Page() {
 						<div className="m-8 right-side-div flex item-center flex-col w-[100%] ">
 							<div className="p-5 bg-gray-50 rounded-2xl flex item-center justify-between">
 								<div className="image-box">
-									<Image src="/images/test_3_.png" alt="Ask me bot" className="w-[64px]" width={400} height={400} />
+									{/* <Image src="/images/test_3_.png" alt="Ask me bot" className="w-[64px]" width={400} height={400} /> */}
 								</div>
 								<div className="content-box">
 									<ul className="flex  flex-col gap-6">
