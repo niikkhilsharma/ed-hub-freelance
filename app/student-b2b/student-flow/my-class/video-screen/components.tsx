@@ -125,7 +125,7 @@ interface PlaylistSidebarProps {
 export const PlaylistSidebar: React.FC<PlaylistSidebarProps> = ({ playlistItems, onItemClick }) => (
     // On lg screens, it has a fixed width. On smaller, it's w-full.
     <div className="w-full lg:w-80 xl:w-96 bg-white rounded-b-2xl lg:rounded-r-2xl lg:rounded-bl-none p-4 sm:p-6 lg:p-3 lg:pl-3 flex-shrink-0 
-                    h-64 lg:h-auto overflow-hidden custom-scrollbar">
+                    h-64 lg:h-auto overflow-hidden custom-scrollbar ">
         {/* Added lg:p-3 and flex-shrink-0 to prevent it from shrinking if content is too wide */}
         <div className="relative z-10 h-full">
             <div className="space-y-1.5 sm:space-y-2 lg:max-h-127 h-full overflow-y-auto custom-scrollbar pr-1 sm:pr-2">
