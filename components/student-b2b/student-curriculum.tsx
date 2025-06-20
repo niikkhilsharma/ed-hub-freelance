@@ -111,19 +111,16 @@ const Curriculum = () => {
                   `}
                 >
                   {/* Animated background highlight */}
-                  <AnimatePresence>
-                    {selected === category && (
-                      <motion.div
-                        layoutId="highlight"
-                        className={`absolute inset-0 bg-[${PALETTE.ACCENT_PINK}] rounded-2xl z-0`}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      />
-                    )}
-                  </AnimatePresence>
-
+                  {selected === category && (
+                    <motion.div
+                      layoutId="highlight"
+                      className={`absolute inset-0 bg-[${PALETTE.ACCENT_PINK}] rounded-2xl z-0`}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.1 }}
+                    />
+                  )}
                   {/* Button text above animation layer */}
                   <span className="relative z-10">{category}</span>
                 </button>
@@ -178,11 +175,39 @@ const Curriculum = () => {
                       } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
                       <span className="text-lg">{item.title}</span>
-                      {isOpen ? (
-                        <IoIosArrowUp className="text-xl text-gray-600" />
-                      ) : (
-                        <IoIosArrowDown className="text-xl text-gray-600" />
-                      )}
+                      <div>
+                        {isOpen ? (
+                          <div className="flex gap-2 text-[#6B7280] text-xs items-center">
+                            <p>Periods: 18</p>
+                            <p>Marks: 20</p>
+                            <svg
+                              width={20}
+                              height={20}
+                              viewBox="0 0 24 25"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <rect
+                                width={24}
+                                height={24}
+                                rx={12}
+                                transform="matrix(1 0 0 -1 0 24.5)"
+                                fill="black"
+                                fillOpacity="0.3"
+                              />
+                              <path
+                                d="M6 15.5L12 9.5L18 15.5"
+                                stroke="white"
+                                strokeWidth={2}
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </div>
+                        ) : (
+                          <IoIosArrowDown className="text-xl text-gray-600" />
+                        )}
+                      </div>
                     </button>
 
                     <AnimatePresence initial={false}>
@@ -411,7 +436,7 @@ export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({
     >
       <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
     </button>
-    <span className="font-medium text-nowrap">{currentDate}</span>
+    <span className="">{currentDate}</span>
     <button
       onClick={onNext}
       className="disabled:opacity-50"
@@ -436,7 +461,6 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({
 }) => (
   <div className={`relative ${className}`}>
     <select
-
       className="appearance-none border border-[#E5E7EB] text-xs text-black bg-[#F9FAFB] px-3 py-1.5 rounded-lg pr-7 focus:outline-none focus:ring-1 focus:ring-[#3366FF]
                        sm:text-sm sm:px-4 sm:py-2 sm:rounded-xl sm:pr-8"
     >

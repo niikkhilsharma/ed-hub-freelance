@@ -74,7 +74,7 @@ interface MainCategoryTabsBarProps {
     onCategoryClick: (category: string) => void;
 }
 export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ categories, activeCategory, onCategoryClick }) => (
-    <div className="mb-4 md:mb-6 bg-white px-2 py-1.5 sm:px-3 sm:py-2 rounded-2xl sm:rounded-3xl shadow-sm overflow-x-auto custom-scrollbar-thin">
+    <div className="mb-4 md:mb-6 bg-white px-2 py-1.5 sm:px-3 sm:py-2 rounded-2xl sm:rounded-3xl overflow-x-auto custom-scrollbar-thin">
         <div className="flex space-x-2 sm:space-x-4 justify-start sm:justify-center items-center relative min-w-max sm:min-w-full"> {/* min-w-max for mobile scroll */}
             <button className="p-1 sm:p-1.5 text-black cursor-pointer focus:outline-none md:absolute md:left-0"> {/* md:absolute for desktop */}
                 <FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.5} /> {/* strokeWidth was 3 */}
@@ -100,7 +100,7 @@ interface SubCategorySidebarProps {
     onSubCategoryClick: (subCategory: string) => void;
 }
 export const SubCategorySidebar: React.FC<SubCategorySidebarProps> = ({ subCategories, activeSubCategory, onSubCategoryClick }) => (
-    <div className="bg-white rounded-2xl shadow-lg p-3 sm:p-4 space-y-1.5 sm:space-y-2 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
+    <div className="bg-white rounded-2xl p-3 sm:p-4 space-y-1.5 sm:space-y-2 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
         {subCategories.map(subCat => (
             <SubCategoryItem
                 key={subCat}
@@ -128,13 +128,13 @@ interface ContentDisplayAreaProps {
 }
 export const ContentDisplayArea: React.FC<ContentDisplayAreaProps> = (props) => (
     <div className="bg-white rounded-2xl  p-4 md:p-6">
-        <div className="mb-4 md:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
+        <div className="mb-4 md:mb-6 flex flex-col md:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
             <nav className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
                 {props.contentTabs.map(tab => (
                     <ContentUITab key={tab} label={tab} isActive={props.activeContentTab === tab} onClick={() => props.onContentTabClick(tab)} />
                 ))}
             </nav>
-            <div className="flex items-center gap-2 sm:gap-3 self-end sm:self-center">
+            <div className="flex items-center gap-2 sm:gap-3 self-end md:self-center">
                 <FilterDropdown
                     value={props.currentWeekFilter}
                     onChange={props.onWeekFilterChange}

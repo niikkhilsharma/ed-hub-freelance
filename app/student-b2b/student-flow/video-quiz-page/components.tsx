@@ -17,7 +17,7 @@ interface MainCategoryTabsBarProps {
 }
 export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ categories, activeCategory, onCategoryClick }) => (
     // Original desktop wrapper: mb-6 bg-white px-3 py-2 rounded-3xl shadow-sm overflow-x-auto
-    <div className="mb-4 bg-white px-2 py-1.5 rounded-2xl shadow-sm overflow-x-auto custom-scrollbar-thin
+    <div className="mb-4 bg-white px-2 py-1.5 rounded-2xl overflow-x-auto custom-scrollbar-thin
                    sm:mb-6 sm:px-3 sm:py-2 sm:rounded-3xl">
         {/* Original inner div: flex space-x-4 justify-center items-center relative */}
         <div className="flex space-x-2 justify-start items-center relative min-w-max 
