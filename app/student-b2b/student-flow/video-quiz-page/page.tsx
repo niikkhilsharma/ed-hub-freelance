@@ -6,11 +6,11 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 // Removed unused icons
 import {
-    MainCategoryTabsBar,
     QuizHeader,
     QuizContent, // New wrapper for questions and submit button
     QuestionData // Type
 } from './components';
+import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
 
 // --- Sample Data (from your original) ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];
@@ -58,11 +58,13 @@ export default function QuizTestPage() {
       <Header user={headerUser} />
 
       <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
-        <MainCategoryTabsBar
+        <div className="mb-4">
+          <OptimizedCategoryTabsBar
             categories={mainCategoriesData}
             activeCategory={activeMainCategory}
-            onCategoryClick={setActiveMainCategory}
-        />
+            onCategoryClick={(category) => setActiveMainCategory(category)}
+          />
+        </div>
 
         {/* Main Content Card for Mock Test */}
         {/* Original: bg-white rounded-2xl shadow-xl px-3 py-6 relative */}

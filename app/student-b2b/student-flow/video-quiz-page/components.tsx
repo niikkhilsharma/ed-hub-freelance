@@ -9,38 +9,6 @@ import { ActionButton, MainCategoryTab, OptionButton, SimpleIconButton } from '.
 export interface Option { id: string; text: string; }
 export interface QuestionData { id: number; text: string; options: Option[]; }
 
-// --- Component 1: MainCategoryTabsBar ---
-interface MainCategoryTabsBarProps {
-    categories: string[];
-    activeCategory: string;
-    onCategoryClick: (category: string) => void;
-}
-export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ categories, activeCategory, onCategoryClick }) => (
-    // Original desktop wrapper: mb-6 bg-white px-3 py-2 rounded-3xl shadow-sm overflow-x-auto
-    <div className="mb-4 bg-white px-2 py-1.5 rounded-2xl overflow-x-auto custom-scrollbar-thin
-                   sm:mb-6 sm:px-3 sm:py-2 sm:rounded-3xl">
-        {/* Original inner div: flex space-x-4 justify-center items-center relative */}
-        <div className="flex space-x-2 justify-start items-center relative min-w-max 
-                       sm:space-x-4 sm:justify-center sm:min-w-full">
-            {/* Original button: absolute left-0 p-1.5 text-black cursor-pointer focus:outline-none */}
-            <SimpleIconButton 
-                icon={<FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />} // Preserved your strokeWidth
-                ariaLabel="Scroll categories left" 
-                className="bg-white/80 hover:bg-gray-200" // This positioning might need adjustment for mobile if tabs are too many
-            />
-            {categories.map(category => (
-                <MainCategoryTab
-                    key={category}
-                    label={category}
-                    isActive={activeCategory === category}
-                    onClick={() => onCategoryClick(category)}
-                    hasDropdown={category === "Sports"} // Your example
-                />
-            ))}
-            {/* No right arrow in your original for this component */}
-        </div>
-    </div>
-);
 
 // --- Component 2: QuizHeader ---
 interface QuizHeaderProps {

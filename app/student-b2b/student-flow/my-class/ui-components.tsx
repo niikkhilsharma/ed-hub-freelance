@@ -8,28 +8,6 @@ import {
     FiArrowLeftCircle, FiArrowRightCircle
 } from 'react-icons/fi';
 
-// --- Component 1: MainCategoryTab ---
-interface MainCategoryTabProps {
-    label: string;
-    isActive: boolean;
-    onClick: () => void;
-    hasDropdown?: boolean;
-}
-export const MainCategoryTab: React.FC<MainCategoryTabProps> = ({ label, isActive, onClick, hasDropdown }) => (
-	<button
-		onClick={onClick}
-		className={`flex items-center gap-1 sm:gap-1.5 px-3 py-2 text-xs rounded-xl sm:px-5 sm:py-2.5 sm:text-sm sm:rounded-2xl font-medium transition-colors whitespace-nowrap
-        ${ isActive
-            ? 'bg-[#FF3366] text-white shadow-md'
-            : 'text-[#6B7280] hover:bg-[#ff33660f]' // hover:bg-pink-50 if #ff33660f is too subtle
-        }`}
-    >
-		{label}
-		{hasDropdown && (
-			<FiChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${isActive ? 'transform rotate-180' : ''} `} />
-		)}
-	</button>
-);
 
 // --- Component 2: SubCategoryItem ---
 interface SubCategoryItemProps {

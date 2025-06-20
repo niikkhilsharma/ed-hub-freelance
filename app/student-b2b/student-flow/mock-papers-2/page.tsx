@@ -4,8 +4,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { MainCategoryTabsBar, TestHeader, TestContent, QuestionData } from './components';
+import {  TestHeader, TestContent, QuestionData } from './components';
 import { TimerDisplay } from './ui-components'; // Timer is a UI element displayed on the page
+import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
 
 // --- Sample Data ---
 const mainCategoriesData = ["Academics", "Skill Development", "Brain Function", "Sports", "STEMnology", "Competition", "Extra curriculars"];
@@ -53,11 +54,13 @@ export default function MockTestPage() {
       <Header user={headerUser} />
 
       <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
-        <MainCategoryTabsBar
-            categories={mainCategoriesData}
-            activeCategory={activeMainCategory}
-            onCategoryClick={setActiveMainCategory}
-        />
+        <div className="mb-4">
+                  <OptimizedCategoryTabsBar
+                    categories={mainCategoriesData}
+                    activeCategory={activeMainCategory}
+                    onCategoryClick={(category) => setActiveMainCategory(category)}
+                  />
+                </div>
 
         {/* Main Content Card for Mock Test */}
         {/* Original wrapper: bg-white rounded-2xl shadow-xl px-3 py-6 relative */}

@@ -3,25 +3,9 @@
 
 import React from 'react';
 import Image from 'next/image'; // For icons in OptionReviewDisplay
-import { FiChevronDown, FiArrowLeft, FiSmile } from 'react-icons/fi';
+import { FiSmile } from 'react-icons/fi';
 
-// --- Component 1: MainCategoryTab ---
-interface MainCategoryTabProps {
-    label: string; isActive: boolean; onClick: () => void; hasDropdown?: boolean;
-}
-export const MainCategoryTab: React.FC<MainCategoryTabProps> = ({ label, isActive, onClick, hasDropdown }) => (
-	<button
-		onClick={onClick}
-        // Original: flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold rounded-2xl ...
-		className={`flex items-center gap-1 px-3 py-2 text-xs rounded-xl 
-                   sm:gap-1.5 sm:px-5 sm:py-2.5 sm:text-sm sm:font-semibold sm:rounded-2xl 
-                   transition-colors whitespace-nowrap 
-        ${ isActive ? "bg-[#FF3366] text-white shadow-md" : "text-[#6B7280] hover:bg-[#ff33660f]" }`}
-    >
-		{label}
-		{hasDropdown && <FiChevronDown className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${isActive ? 'transform rotate-180' : ''} `} />}
-	</button>
-);
+
 
 // --- Component 2: OptionReviewDisplay (for QuestionReviewBlock) ---
 interface OptionReviewUIData { // Renamed from OptionReview to avoid conflict if that's also a data type

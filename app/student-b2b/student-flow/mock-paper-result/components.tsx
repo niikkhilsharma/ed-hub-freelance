@@ -3,25 +3,13 @@
 
 import React from 'react';
 import Image from 'next/image'; // For QuestionReviewBlock icons
-import { FiArrowLeft, FiSmile } from 'react-icons/fi'; // Smile for ScoreChart
-import { MainCategoryTab, OptionReviewDisplay, SimpleIconButton, ScoreChartDisplay } from './ui-components';
+import { FiArrowLeft } from 'react-icons/fi'; // Smile for ScoreChart
+import { OptionReviewDisplay, SimpleIconButton, ScoreChartDisplay } from './ui-components';
 
 // --- Data Interfaces (from your original) ---
 export interface OptionReview { id: string; text: string; isUserSelected: boolean; isCorrect: boolean; }
 export interface QuestionReviewData { id: number; text: string; options: OptionReview[]; }
 
-// --- Component 1: MainCategoryTabsBar ---
-interface MainCategoryTabsBarProps { categories: string[]; activeCategory: string; onCategoryClick: (category: string) => void; }
-export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ categories, activeCategory, onCategoryClick }) => (
-    <div className="mb-4 bg-white px-2 py-1.5 rounded-2xl shadow-sm overflow-x-auto custom-scrollbar-thin sm:mb-6 sm:px-3 sm:py-2 sm:rounded-3xl">
-        <div className="flex space-x-2 justify-start items-center relative min-w-max sm:space-x-4 sm:justify-center sm:min-w-full">
-            <SimpleIconButton icon={<FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={3} />} ariaLabel="Scroll categories left" className="bg-white/80 hover:bg-gray-200"/>
-            {categories.map(category => (
-                <MainCategoryTab key={category} label={category} isActive={activeCategory === category} onClick={() => onCategoryClick(category)} hasDropdown={category === 'Sports'}/>
-            ))}
-        </div>
-    </div>
-);
 
 // --- Component 2: QuizResultHeader ---
 interface QuizResultHeaderProps { onBackClick?: () => void; quizTitle: string; topicName: string; }

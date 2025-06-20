@@ -5,13 +5,13 @@ import React, { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import {
-    MainCategoryTabsBar,
     QuizResultHeader,
     QuestionReviewBlock,
     ResultsDisplayCard,
     EvaluationResultsTable,
     QuestionReviewData // Type
 } from './components';
+import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
 // SimpleIconButton is in ui-components, used by components
 
 // --- Sample Data (from your original) ---
@@ -38,12 +38,13 @@ export default function QuizTestResultPage() {
 			<Header user={headerUser} />
 
 			<main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8">
-				<MainCategoryTabsBar
-                    categories={mainCategoriesData}
-                    activeCategory={activeMainCategory}
-                    onCategoryClick={setActiveMainCategory}
-                />
-
+				<div className="mb-4">
+						  <OptimizedCategoryTabsBar
+							categories={mainCategoriesData}
+							activeCategory={activeMainCategory}
+							onCategoryClick={(category) => setActiveMainCategory(category)}
+						  />
+						</div>
 				{/* Main Content Card for Test Result */}
                 {/* Original: bg-white px-3 py-6 rounded-2xl shadow-lg */}
 				<div className="bg-white px-2 py-4 sm:px-3 sm:py-6 rounded-2xl shadow-lg mt-4 md:mt-6 border border-gray-200"> {/* No shadow, add border */}

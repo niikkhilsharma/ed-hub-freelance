@@ -6,7 +6,7 @@ import {
     FiChevronDown, FiChevronUp, FiChevronRight, FiArrowLeft
 } from 'react-icons/fi';
 import {
-    MainCategoryTab, SubCategoryItem, ContentUITab, VideoItem,
+    SubCategoryItem, ContentUITab, VideoItem,
     DateNavigatorWithArrows, FilterDropdown
 } from './ui-components'; // Import UI components
 
@@ -67,30 +67,6 @@ export const WorkSheetItem: React.FC<WorkSheetItemProps> = ({ item, onClick }) =
 
 // --- Major Section Components ---
 
-// 1. MainCategoryTabsBar
-interface MainCategoryTabsBarProps {
-    categories: string[];
-    activeCategory: string;
-    onCategoryClick: (category: string) => void;
-}
-export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ categories, activeCategory, onCategoryClick }) => (
-    <div className="mb-4 md:mb-6 bg-white px-2 py-1.5 sm:px-3 sm:py-2 rounded-2xl sm:rounded-3xl overflow-x-auto custom-scrollbar-thin">
-        <div className="flex space-x-2 sm:space-x-4 justify-start sm:justify-center items-center relative min-w-max sm:min-w-full"> {/* min-w-max for mobile scroll */}
-            <button className="p-1 sm:p-1.5 text-black cursor-pointer focus:outline-none md:absolute md:left-0"> {/* md:absolute for desktop */}
-                <FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.5} /> {/* strokeWidth was 3 */}
-            </button>
-            {categories.map(category => (
-                <MainCategoryTab
-                    key={category}
-                    label={category}
-                    isActive={activeCategory === category}
-                    onClick={() => onCategoryClick(category)}
-                    hasDropdown={category === 'Sports'} // Example
-                />
-            ))}
-        </div>
-    </div>
-);
 
 // 2. SubCategorySidebar
 interface SubCategorySidebarProps {
