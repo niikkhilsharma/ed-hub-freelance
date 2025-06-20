@@ -45,9 +45,9 @@ export const CourseCard: React.FC<CourseCardProps> = ({ course }) => {
 	}
 
 	return (
-		<div className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-3 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
+		<div className="bg-[#F9FAFB] border-[#E5E7EB] border rounded-2xl p-2 flex flex-col h-full hover:shadow-xl cursor-pointer transition-shadow duration-200">
 			<div className="relative w-full aspect-[16/9] sm:aspect-video rounded-xl overflow-hidden mb-2"> {/* Added aspect ratio and overflow hidden for Image */}
-                <Image src={course.imageSrc} alt={course.name} layout="fill" objectFit="cover" />
+                <Image src={course.imageSrc} alt={course.name} layout="fill" objectFit="contain" />
             </div>
 			<div className="flex flex-col flex-grow mt-1 sm:mt-2"> {/* Adjusted margin */}
                 {course.category && (
