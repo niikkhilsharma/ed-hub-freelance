@@ -14,7 +14,7 @@ interface MainCategoryTabsBarProps { categories: string[]; activeCategory: strin
 export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ categories, activeCategory, onCategoryClick }) => (
     <div className="mb-4 bg-white px-2 py-1.5 rounded-2xl shadow-sm overflow-x-auto custom-scrollbar-thin sm:mb-6 sm:px-3 sm:py-2 sm:rounded-3xl">
         <div className="flex space-x-2 justify-start items-center relative min-w-max sm:space-x-4 sm:justify-center sm:min-w-full">
-            <SimpleIconButton icon={<FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />} ariaLabel="Scroll categories left" className="absolute left-0 z-10 bg-white/80 hover:bg-gray-200"/>
+            <SimpleIconButton icon={<FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />} ariaLabel="Scroll categories left" className=" bg-white/80 hover:bg-gray-200"/>
             {categories.map(category => (
                 <MainCategoryTab key={category} label={category} isActive={activeCategory === category} onClick={() => onCategoryClick(category)} hasDropdown={category === "Sports"}/>
             ))}
@@ -44,6 +44,7 @@ export const QuestionBlock: React.FC<QuestionBlockProps> = ({ question, question
   // Parent will handle max-w-2xl if needed for the group of questions.
   <div className="mb-4 p-4 bg-[#F9FAFB] rounded-2xl w-full sm:p-6 sm:rounded-3xl">
     {/* Original h3: text-md font-medium text-gray-800 mb-4 */}
+    <h2 className='text-sm md:text-md font-semibold text-black'>Question</h2>
     <h3 className="text-sm font-medium text-gray-800 mb-3 sm:text-md sm:mb-4">
       {questionNumber}) <span className="ml-1">{question.text || "Question"}</span> {/* Display question.text */}
     </h3>

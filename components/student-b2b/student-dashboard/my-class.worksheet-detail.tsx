@@ -249,9 +249,9 @@ export default function WorksheetViewPage() {
 
 			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
 				{/* Main Category Tabs (Horizontal Scroll) */}
-				<div className="mb-6 bg-white px-3 py-2 rounded-3xl shadow-sm overflow-x-auto">
-					<div className="flex space-x-4 justify-center items-center relative">
-						<button className="absolute left-0 p-1.5 text-black cursor-pointer focus:outline-none">
+				<div className="mb-6 bg-white px-3 py-2 w-full rounded-3xl shadow-sm overflow-x-auto">
+					<div className="flex space-x-4 items-center relative">
+						<button className=" p-1.5 text-black cursor-pointer focus:outline-none">
 							<FiArrowLeft className="w-5 h-5" strokeWidth={3} />
 						</button>
 						{mainCategories.map(category => (
