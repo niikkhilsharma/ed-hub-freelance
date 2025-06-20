@@ -21,22 +21,24 @@ import {
 
 // --- Sample Data (kept in page.tsx) ---
 const mainCategoriesData = ['Academics', 'Skill Development', 'Brain Function', 'Sports', 'STEMnology', 'Competition', 'Extra curriculars'];
-const academicSubCategoriesData = ['Math', 'Science', 'English', 'Social Studies', 'Computer Science']; // Added more for scrolling
+const academicSubCategoriesData = ['Understanding Unitary Method – Level 1', 'Numbers in Action – Sheet 1', 'Everyday Maths – Skill Builder 1', 'Stepwise Solutions – Worksheet A', 'Think & Solve – Level 1','Learning Ladder – Level 1']; // Added more for scrolling
+const academicSubCategoriesData2 = ['Addition Mock Test', 'Subtraction Mock Test', 'Multiplication Mock Test', 'Subtraction Mock Test  2', 'Division Mock Test ','Multiplication Mock Test 2']; // Added more for scrolling
+const academicSubCategoriesData3 = ['Math', 'Science', 'English'];
 const contentTabsData = ['Learning', 'Assessments', 'Mock Papers', 'Work Sheet'];
 
 const learningWeeksDataPage: LearningWeek[] = Array.from({ length: 5 }, (_, i) => ({
-	id: `week${i + 1}`, title: `Learning Videos ( Week ${i + 1} )`, videoCount: i === 0 ? 4 : 3,
+	id: `week${i + 1}`, title: `Learning Videos ( Week 1 )`, videoCount: i === 0 ? 4 : 3,
 	videos: Array.from({ length: i === 0 ? 4 : 3 }, (_, j) => ({ id: `v${i}-${j}`, topic: `Topic ${j + 1}` })),
 }));
-const assessmentDataPage: AssessmentItemData[] = Array.from({ length: 5 }, (_, i) => ({ id: `assess${i + 1}`, title: `Assessment Title ${i + 1}`, resourcesCount: 3 }));
-const mockPapersDataPage: MockPaperItemData[] = Array(6).fill(null).map((_,i) => ({ id: `mp${i+1}`, title: `${academicSubCategoriesData[0]} Mock Test ${i+1}`})); // Example dynamic title
-const workSheetDataPage: WorkSheetItemData[] = Array(6).fill(null).map((_,i) => ({ id: `ws${i+1}`, title: `Understanding ${academicSubCategoriesData[0]} – Level ${i+1}`}));
+const assessmentDataPage: AssessmentItemData[] = Array.from({ length: 5 }, (_, i) => ({ id: `assess${i + 1}`, title: `Title`, resourcesCount: 3 }));
+const mockPapersDataPage: MockPaperItemData[] = Array(6).fill(null).map((_,i) => ({ id: `mp${i+1}`, title: `${academicSubCategoriesData2[i]}`})); // Example dynamic title
+const workSheetDataPage: WorkSheetItemData[] = Array(6).fill(null).map((_,i) => ({ id: `ws${i+1}`, title: `${academicSubCategoriesData[i]}`}));
 // --- End Sample Data ---
 
 export default function MyClassAssesmentPage() {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategoriesData[0]);
-	const [activeSubCategory, setActiveSubCategory] = useState(academicSubCategoriesData[0]);
-	const [activeContentTab, setActiveContentTab] = useState(contentTabsData[1]); // Default to Learning
+	const [activeSubCategory, setActiveSubCategory] = useState(academicSubCategoriesData3[0]);
+	const [activeContentTab, setActiveContentTab] = useState(contentTabsData[0]); // Default to Learning
 	const [openAccordionId, setOpenAccordionId] = useState<string | null>(learningWeeksDataPage[0]?.id || null);
 	const [currentMonth, setCurrentMonth] = useState('June 2025');
 	const [currentWeekFilter, setCurrentWeekFilter] = useState('Weekly'); // Matched original select default
@@ -92,7 +94,7 @@ export default function MyClassAssesmentPage() {
 				<div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
 					<div className="md:col-span-1 lg:col-span-1"> {/* Sidebar takes 1 col on md and lg */}
                         <SubCategorySidebar
-                            subCategories={academicSubCategoriesData} // This would be dynamic based on activeMainCategory
+                            subCategories={academicSubCategoriesData3} // This would be dynamic based on activeMainCategory
                             activeSubCategory={activeSubCategory}
                             onSubCategoryClick={setActiveSubCategory}
                         />
