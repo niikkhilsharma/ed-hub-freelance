@@ -39,7 +39,7 @@ interface AssessmentItemProps { assessment: AssessmentItemData; onClick?: () => 
 export const AssessmentItem: React.FC<AssessmentItemProps> = ({ assessment, onClick }) => (
 	<button onClick={onClick} className="w-full flex justify-between items-center p-3 sm:p-4 text-left bg-[#F9FAFB] hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] transition-colors">
 		<div>
-			<h3 className="text-sm sm:text-md font-semibold text-black mb-1 sm:mb-2">{assessment.title}</h3>
+			<h3 className="text-base font-semibold text-black mb-1 sm:mb-2">{assessment.title}</h3>
 			<p className="text-[10px] sm:text-xs text-[#6B7280]">{assessment.resourcesCount} Resources</p>
 		</div>
 		<FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-black flex-shrink-0" />
@@ -49,7 +49,7 @@ export const AssessmentItem: React.FC<AssessmentItemProps> = ({ assessment, onCl
 // --- Mock Paper Item ---
 interface MockPaperItemProps { item: MockPaperItemData; onClick?: () => void; }
 export const MockPaperItem: React.FC<MockPaperItemProps> = ({ item, onClick }) => (
-	<button onClick={onClick} className="w-full flex justify-between items-center p-3 sm:p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
+	<button onClick={onClick} className="w-full flex justify-between items-center p-3 sm:p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB]  transition-colors">
 		<h3 className="tracking-wide text-black text-sm sm:text-base">{item.title}</h3>
 		<FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-black flex-shrink-0" />
 	</button>
@@ -58,7 +58,7 @@ export const MockPaperItem: React.FC<MockPaperItemProps> = ({ item, onClick }) =
 // --- Work Sheet Item ---
 interface WorkSheetItemProps { item: WorkSheetItemData; onClick?: () => void; }
 export const WorkSheetItem: React.FC<WorkSheetItemProps> = ({ item, onClick }) => (
-	<button onClick={onClick} className="w-full flex justify-between items-center p-3 sm:p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB] shadow-sm transition-colors">
+	<button onClick={onClick} className="w-full flex justify-between items-center p-3 sm:p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB]  transition-colors">
 		<h3 className="text-black text-sm sm:text-base">{item.title}</h3>
 		<FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-black flex-shrink-0" />
 	</button>
@@ -74,7 +74,7 @@ interface MainCategoryTabsBarProps {
     onCategoryClick: (category: string) => void;
 }
 export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ categories, activeCategory, onCategoryClick }) => (
-    <div className="mb-4 md:mb-6 bg-white px-2 py-1.5 sm:px-3 sm:py-2 rounded-2xl sm:rounded-3xl shadow-sm overflow-x-auto custom-scrollbar-thin">
+    <div className="mb-4 md:mb-6 bg-white px-2 py-1.5 sm:px-3 sm:py-2 rounded-2xl sm:rounded-3xl  overflow-x-auto custom-scrollbar-thin">
         <div className="flex space-x-2 sm:space-x-4 justify-start sm:justify-center items-center relative min-w-max sm:min-w-full"> {/* min-w-max for mobile scroll */}
             <button className="p-1 sm:p-1.5 text-black cursor-pointer focus:outline-none md:absolute md:left-0"> {/* md:absolute for desktop */}
                 <FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2.5} /> {/* strokeWidth was 3 */}
@@ -100,7 +100,7 @@ interface SubCategorySidebarProps {
     onSubCategoryClick: (subCategory: string) => void;
 }
 export const SubCategorySidebar: React.FC<SubCategorySidebarProps> = ({ subCategories, activeSubCategory, onSubCategoryClick }) => (
-    <div className="bg-white rounded-2xl shadow-lg p-3 sm:p-4 space-y-1.5 sm:space-y-2 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
+    <div className="bg-white rounded-2xl  p-3 sm:p-4 space-y-1.5 sm:space-y-2 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
         {subCategories.map(subCat => (
             <SubCategoryItem
                 key={subCat}
@@ -127,7 +127,7 @@ interface ContentDisplayAreaProps {
     children: React.ReactNode; // For rendering dynamic content based on activeContentTab
 }
 export const ContentDisplayArea: React.FC<ContentDisplayAreaProps> = (props) => (
-    <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6">
+    <div className="bg-white rounded-2xl  p-4 md:p-6">
         <div className="mb-4 md:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
             <nav className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
                 {props.contentTabs.map(tab => (

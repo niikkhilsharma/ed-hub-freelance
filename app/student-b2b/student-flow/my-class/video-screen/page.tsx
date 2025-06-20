@@ -17,15 +17,13 @@ import {
 // --- Sample Data (kept in page.tsx) ---
 const mainCategoriesData = ['Academics', 'Skill Development', 'Brain Function', 'Sports', 'STEMnology', 'Competition', 'Extra curriculars'];
 const playlistDataPage: PlaylistItemData[] = [
-	{ id: 'v1', title: 'Title 1', subtitle: 'Subtitle for video 1', date: '23 / 5 / 25', duration: '45 Mins', isActive: true },
+	{ id: 'v1', title: 'Title', subtitle: 'Subtitle for video 1', date: '23 / 5 / 25', duration: '45 Mins', isActive: true },
 	{ id: 'v2', title: 'Quiz Name 1', subtitle: 'Subtitle for quiz 1', date: '23 / 5 / 25', duration: '15 Mins' },
-	{ id: 'v3', title: 'Title 2 Locked', subtitle: 'Subtitle for video 2', date: '24 / 5 / 25', duration: '30 Mins', isLocked: true },
-    // Added 5 more items to match original data count
-	{ id: 'v4', title: 'Title 3', subtitle: 'Subtitle for video 3', date: '25 / 5 / 25', duration: '50 Mins'},
-    { id: 'v5', title: 'Title 4', subtitle: 'Subtitle for video 4', date: '26 / 5 / 25', duration: '25 Mins'},
-    { id: 'v6', title: 'Quiz Name 2 Locked', subtitle: 'Subtitle for quiz 2', date: '27 / 5 / 25', duration: '20 Mins', isLocked: true},
-    { id: 'v7', title: 'Title 5', subtitle: 'Subtitle for video 5', date: '28 / 5 / 25', duration: '60 Mins'},
-    { id: 'v8', title: 'Title 6', subtitle: 'Subtitle for video 6', date: '29 / 5 / 25', duration: '35 Mins', isLocked: true},
+	{ id: 'v3', title: 'Title', subtitle: 'Subtitle for video 2', date: '24 / 5 / 25', duration: '30 Mins', isLocked: true },
+	{ id: 'v4', title: 'Title', subtitle: 'Subtitle for video 3', date: '25 / 5 / 25', duration: '50 Mins'},
+    { id: 'v5', title: 'Title', subtitle: 'Subtitle for video 4', date: '26 / 5 / 25', duration: '25 Mins'},
+    { id: 'v6', title: 'Title', subtitle: 'Subtitle for quiz 2', date: '27 / 5 / 25', duration: '20 Mins', isLocked: true},
+    
 ];
 const upcomingQuizDataPage: QuizResultItemData[] = [
 	{ id: 'q1', name: 'Quiz Alpha', subtitleOrDate: 'Introduction to Topic', date: '23/2/24' },
