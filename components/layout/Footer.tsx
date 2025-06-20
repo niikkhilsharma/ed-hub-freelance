@@ -52,8 +52,8 @@ export default function Footer() {
 
 					{/* Column 4 & 5: Map and Contact Info */}
 					<div className="col-span-2 flex flex-col gap-4">
-						<div className="w-full h-30 rounded-4xl overflow-hidden">
-							<Image src="/map-static.png" alt="Map" width={500} height={150} className="w-full h-full object-cover" />
+						<div className="w-full rounded-3xl overflow-hidden">
+							<Image src="/map-static.png" alt="Map" width={500} height={150} className="object-contain" />
 						</div>
 						<div className="text-white text-sm leading-relaxed space-y-1">
 							<p>Eldeco Centre, Malviya Nagar</p>
