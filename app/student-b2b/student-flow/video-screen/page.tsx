@@ -13,6 +13,7 @@ import {
     PlaylistItemData, // Import types for sample data
     QuizResultItemData
 } from './components';
+import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar';
 
 // --- Sample Data (kept in page.tsx) ---
 const mainCategoriesData = ['Academics', 'Skill Development', 'Brain Function', 'Sports', 'STEMnology', 'Competition', 'Extra curriculars'];
@@ -68,11 +69,13 @@ export default function CourseVideoPage() {
 			<Header user={headerUser} />
 
 			<main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
-				<MainCategoryTabsBar
-                    categories={mainCategoriesData}
-                    activeCategory={activeMainCategory}
-                    onCategoryClick={setActiveMainCategory}
-                />
+				<div className="mb-4">
+          <OptimizedCategoryTabsBar
+            categories={mainCategoriesData}
+            activeCategory={activeMainCategory}
+            onCategoryClick={(category) => setActiveMainCategory(category)}
+          />
+        </div>
 
                 {/* THIS IS THE CRITICAL SECTION FOR LAYOUT */}
 				<div className="flex flex-col lg:flex-row bg-white rounded-2xl shadow-xl overflow-hidden">
