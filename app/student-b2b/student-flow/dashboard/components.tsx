@@ -53,11 +53,11 @@ export const StudentProfileCard: React.FC<StudentProfileCardProps> = ({ studentD
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-x-4 mt-6 md:mt-8">
             <div className="bg-[#F3F4F6] p-3 md:p-4 rounded-xl text-center">
                 <p className="text-sm font-semibold text-black">DMT & Skill Test</p>
-                <p className="text-sm text-gray-600 mt-1">Score: {studentData.dmitScore}</p>
+                <p className="text-sm font-medium text-black mt-1">Score: {studentData.dmitScore}</p>
             </div>
             <div className="bg-[#F3F4F6] p-3 md:p-4 rounded-xl text-center">
                 <p className="text-sm font-semibold text-black">Assessment Report</p>
-                <p className="text-sm text-gray-600 mt-1">{studentData.assessmentReportDate}</p>
+                <p className="text-sm font-medium text-black mt-1">{studentData.assessmentReportDate}</p>
             </div>
         </div>
         <div className="mt-6 bg-[#FEF9C3] border-l-4 border-yellow-400 p-3 md:p-4 rounded-l-xl"> {/* Adjusted: rounded-l-xl not rounded-r-xl */}
