@@ -81,26 +81,32 @@ interface UpcomingClassItemProps {
 export const UpcomingClassItem: React.FC<UpcomingClassItemProps> = ({
   uClass,
 }) => (
-  <div className="bg-[#F9FAFB]/70 p-3 sm:p-4 rounded-2xl border border-[#E5E7EB]/100 flex flex-col xs:flex-row justify-between items-start xs:items-stretch">
+  <div className="bg-[#F9FAFB]/70 p-3 sm:p-4 rounded-2xl border border-[#E5E7EB]/100 flex flex-col xs:flex-row xs:items-stretch">
     <div className="mb-2 xs:mb-0">
-      <h4 className="text-sm sm:text-md font-bold text-black">
+    
+       <div className="flex justify-between items-start">
+         <h4 className="text-sm sm:text-md font-bold text-black">
         {uClass.title}
       </h4>
-      <p className="text-[10px] sm:text-xs text-[#6B7280] font-light tracking-tight mt-0.5">
-        {uClass.time}
+       <p className="text-[10px]  sm:text-xs text-gray-400 mb-1 xs:mb-0">
+        {uClass.date}
       </p>
+       </div>
+     
+      
       <p className="text-[10px] sm:text-xs text-[#FFCC00] font-light tracking-wide mt-0.5">
         {uClass.teacher}
       </p>
       <p className="text-[10px] sm:text-xs text-[#6B7280] font-light tracking-tight mt-1">
         {uClass.description}
       </p>
+     
     </div>
-    <div className="flex flex-col justify-between items-end text-right ml-0 xs:ml-4 self-stretch xs:self-auto">
-      <p className="text-[10px] sm:text-xs text-gray-400 mb-1 xs:mb-0">
-        {uClass.date}
+    <div className="flex justify-between items-center">
+       <p className="text-[10px] sm:text-xs text-[#6B7280] font-light tracking-tight mt-0.5">
+        {uClass.time}
       </p>
-      <ActionButton variant="primary" size="sm" className="w-full xs:w-auto">
+      <ActionButton variant="primary" size="sm" className=" xs:w-auto">
         Join
       </ActionButton>
     </div>
@@ -132,14 +138,16 @@ export const CourseMaterialItem: React.FC<CourseMaterialItemProps> = ({
       <p className="text-[10px] sm:text-xs text-[#6B7280] mb-2 sm:mb-3">
         {date}
       </p>
-      <ActionButton
+     
+       <ActionButton
         variant="secondary"
         size="sm"
-        className="w-full max-w-xs mx-auto sm:mx-0"
+        className="w-full flex justify-center items-center max-w-xs mx-auto sm:mx-0"
       >
         <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 self-center text-black mr-1.5 sm:mr-2" />{" "}
         Download
       </ActionButton>
+     
     </div>
   </div>
 );
@@ -357,10 +365,12 @@ export const CertificateCard: React.FC = () => (
       Download Certificate
     </h3>{" "}
     {/* text-sm for mobile */}
-    <ActionButton variant="secondary" size="sm" className="w-full">
+   
+      <ActionButton variant="secondary" size="sm" className="w-full flex justify-center items-center">
       <FiDownload className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />{" "}
       Download{" "}
       {/* Removed text-black from icon as ActionButton handles text color */}
     </ActionButton>
+    
   </div>
 );

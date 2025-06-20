@@ -25,16 +25,16 @@ const learningWeeksData: LearningWeek[] = Array.from({ length: 4 }, (_, i) => ({
 	videoCount: i === 0 ? 4 : 3, // Example: first week has 4 videos, others 3
 	videos: Array.from({ length: i === 0 ? 4 : 3 }, (_, j) => ({
 		id: `v${i + 1}-${j + 1}`, // More unique ID
-		topic: `Topic ${j + 1} of Week ${i + 1}`,
+		topic: `Topic ${j + 1} `,
 	})),
 }));
 
 const upcomingClassesData: UpcomingClass[] = Array.from({ length: 3 }, (_, i) => ({ // Reduced for better initial view
 	id: i + 1,
-	title: 'Title of Upcoming Class Example',
-	teacher: "Teacher's Name Here",
-	description: 'A short description about what this upcoming class will cover.',
-	time: '16:30 - 17:30',
+	title: 'Title',
+	teacher: "Teacher's Name ",
+	description: 'Description ',
+	time: '16:30 ',
 	date: `1${i + 6}/5/25`, // Example varying date
 }));
 
