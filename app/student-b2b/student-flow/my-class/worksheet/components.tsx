@@ -129,7 +129,7 @@ interface ContentDisplayAreaProps {
 export const ContentDisplayArea: React.FC<ContentDisplayAreaProps> = (props) => (
     <div className="bg-white rounded-2xl shadow-lg p-4 md:p-6">
         <div className="mb-4 md:mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-            <nav className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
+            <nav className="-mb-px flex space-x-1 sm:space-x-2 w-full overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
                 {props.contentTabs.map(tab => (
                     <ContentUITab key={tab} label={tab} isActive={props.activeContentTab === tab} onClick={() => props.onContentTabClick(tab)} />
                 ))}

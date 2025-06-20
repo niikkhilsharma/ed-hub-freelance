@@ -26,7 +26,7 @@ export const MainCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ catego
             <SimpleIconButton 
                 icon={<FiArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={2} />} // Preserved your strokeWidth
                 ariaLabel="Scroll categories left" 
-                className="absolute left-0 z-10 bg-white/80 hover:bg-gray-200" // This positioning might need adjustment for mobile if tabs are too many
+                className="bg-white/80 hover:bg-gray-200" // This positioning might need adjustment for mobile if tabs are too many
             />
             {categories.map(category => (
                 <MainCategoryTab
@@ -86,6 +86,7 @@ export const QuestionBlock: React.FC<QuestionBlockProps> = ({
   <div className="mb-4 p-4 bg-[#F9FAFB] w-full rounded-2xl
                  sm:p-6 sm:rounded-3xl md:max-w-2xl"> {/* md:max-w-2xl to apply only on medium screens up */}
     {/* Original h3: text-md font-semibold text-gray-800 mb-4 */}
+    <h2 className='text-sm md:text-md font-semibold text-black'>Question</h2>
     <h3 className="text-sm font-semibold text-gray-800 mb-3 sm:text-md sm:mb-4">
       {questionNumber}) {question.text || "Question"}
     </h3>
