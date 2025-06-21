@@ -18,17 +18,27 @@ const NavItem = ({
   label: string;
   href: string;
   active?: boolean;
-}) => (
-  <Link
-    href={href}
-    className={`flex items-center gap-2 sm:px-2 sm:py-2  text-xs sm:text-sm font-semibold rounded-full transition-colors ${
-      active ? "text-[#FFCC00]" : "text-white hover:bg-[#3366FF]/70"
-    } `}
-  >
-    <Icon className="w-5 h-3 sm:w-5 sm:h-5" />
-    {label}
-  </Link>
-);
+}) => {
+  const isMyCourse = label === "My course"; // 👈 Check if it's "My course"
+
+  const textColor = isMyCourse
+    ? "text-[#FFCC00]" // always yellow
+    : active
+    ? "text-[#FFCC00]" // active non-"My course" also yellow
+    : "text-white";
+
+  const hoverClass = isMyCourse ? "" : "hover:bg-[#3366FF]/70";
+
+  return (
+    <Link
+      href={href}
+      className={`flex items-center gap-2 sm:px-2 sm:py-2 text-xs sm:text-sm font-semibold rounded-full transition-colors ${textColor} ${hoverClass}`}
+    >
+      <Icon className={`w-5 h-3 sm:w-5 sm:h-5 ${isMyCourse ? "text-[#FFCC00]" : ""}`} />
+      {label}
+    </Link>
+  );
+};
 
 interface UserProfile {
   name: string;
@@ -43,6 +53,7 @@ interface HeaderProps {
 
 export default function Header({ user, isAskme = true }: HeaderProps) {
   const pathname = usePathname();
+  const currpage = "Mycourse"
 
   const navItems = [
     {
@@ -94,13 +105,13 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
         </div>
         {/* Main Navigation */}
         <nav className="hidden lg:flex sm:gap-2 items-center bg-[#E3F2FD26] rounded-full sm:px-4 sm:py-3 ">
-          {navItems.map(({ icon, label, href }) => (
+          {navItems.map(({ icon, label, href ,active}) => (
             <NavItem
               key={label}
               icon={icon}
               label={label}
               href={href}
-              active={pathname === href}
+              active={currpage === label}
             />
           ))}
         </nav>
