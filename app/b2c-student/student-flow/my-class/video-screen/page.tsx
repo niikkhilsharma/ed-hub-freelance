@@ -67,7 +67,7 @@ export default function CourseVideoPage() {
 
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col">
-            {/* <Header/> */}
+            <Header user={headerUser}/>
 
             <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
                 <MainCategoryTabsBar
@@ -77,7 +77,7 @@ export default function CourseVideoPage() {
                 />
 
                 {/* THIS IS THE CRITICAL SECTION FOR LAYOUT */}
-                <div className="flex flex-col lg:flex-row bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div className="flex flex-col lg:flex-row bg-white rounded-2xl overflow-hidden">
                     {/* 
                         On large screens (lg:), VideoPlayerSection needs to know it shouldn't
                         try to be wider than the space left by the fixed-width playlist.
