@@ -4,7 +4,7 @@ import { FaRegCirclePlay} from "react-icons/fa6"
 import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 import { LuSendHorizontal} from "react-icons/lu"
-
+import Header from "@/components/b2c-student/Header";
 const messages = [
   {
     id: 1,
@@ -31,11 +31,15 @@ const messages = [
     text: "Wow, that's cool! Thanks! I’ll watch the video now.",
   },
 ];
-
+const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeholder-avatar-student.jpg" };
 
  export default function ChatPop  ()  {
   return (
+    <div>
+      <Header user={headerUser}/>
+    
     <div className="flex items-center justify-center py-8 bg-white px-4">
+      
       <div className="w-full max-w-screen-md rounded-2xl  flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4  sm:space-y-6  py-6 px-8 shadow-xl relative "
       style={{backgroundImage:"url('/chatpopupbg.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
 
@@ -81,6 +85,7 @@ const messages = [
          < RxCross1 />
         </button>
       </div>
+    </div>
     </div>
   );
 };
