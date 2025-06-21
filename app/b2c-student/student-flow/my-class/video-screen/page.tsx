@@ -14,6 +14,7 @@ import {
     QuizResultItemData
 } from './components';
 import Header from '@/components/b2c-student/Header';
+import { User } from 'lucide-react';
 
 // --- Sample Data (kept in page.tsx) ---
 const mainCategoriesData = ['Academics', 'Skill Development', 'Brain Function', 'Sports', 'STEMnology', 'Competition', 'Extra curriculars'];
@@ -67,7 +68,7 @@ export default function CourseVideoPage() {
 
     return (
         <div className="bg-gray-100 min-h-screen flex flex-col">
-            {/* <Header/> */}
+            <Header user={headerUser}/>
 
             <main className="flex-grow container mx-auto p-3 sm:p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
                 <MainCategoryTabsBar

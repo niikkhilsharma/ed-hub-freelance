@@ -21,11 +21,11 @@ const NavItem = ({
 }) => (
   <Link
     href={href}
-    className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold rounded-full transition-colors ${
+    className={`flex items-center gap-2 sm:px-2 sm:py-2  text-xs sm:text-sm font-semibold rounded-full transition-colors ${
       active ? "text-[#FFCC00]" : "text-white hover:bg-[#3366FF]/70"
     } `}
   >
-    <Icon className="w-5 h-5" />
+    <Icon className="w-5 h-3 sm:w-5 sm:h-5" />
     {label}
   </Link>
 );
@@ -75,9 +75,9 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
 
   return (
     <header className="bg-[#3366FF] px-6 text-white sticky top-0 z-50 shadow-md print:hidden ">
-      <div className="mx-auto px-4 h-20 flex justify-between items-center max-w-screen-2xl">
+      <div className="mx-auto gap-1  h-20 flex justify-between items-center max-w-screen-2xl">
         {/* Logo */}
-        <div className=" flex">
+        <div className=" flex-shrink-0">
           <Image
             src="/page3/student_b2b/Clip path group.svg"
             alt="Edunique Logo"
@@ -93,7 +93,7 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
         </button>
         </div>
         {/* Main Navigation */}
-        <nav className="hidden lg:flex items-center justify-center bg-[#E3F2FD26] rounded-full w-[60%] px-4 py-2 space-x-6">
+        <nav className="hidden lg:flex sm:gap-2 items-center bg-[#E3F2FD26] rounded-full sm:px-4 sm:py-3 ">
           {navItems.map(({ icon, label, href }) => (
             <NavItem
               key={label}
