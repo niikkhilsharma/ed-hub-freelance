@@ -22,7 +22,7 @@ export default function CourseDetail() {
   ];
 
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <div className="relative z-10 pb-70 bg-[#E3E3E3]">
         {/* headers */}
         <div className="bg-white border-b">

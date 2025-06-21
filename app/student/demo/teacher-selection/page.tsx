@@ -193,7 +193,7 @@ export default function TeacherSelection() {
   };
 
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       {/* headers */}
       <div className="bg-white border-b">
         <div className="w-full px-4 sm:px-6 lg:px-8">

@@ -100,7 +100,7 @@ export default function DemoBookingForm() {
   };
 
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
         {/* headers */}
         <div className="bg-white border-b">

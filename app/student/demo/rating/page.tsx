@@ -25,7 +25,7 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
 
 export default function DemoRating() {
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
         <section className="px-16 py-8">
           <div className="rounded-xl bg-white space-y-4 p-4">

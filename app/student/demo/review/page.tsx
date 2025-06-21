@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 export default function CourseDetail() {
   const router = useRouter();
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
         {/* headers */}
         <div className="bg-white border-b">

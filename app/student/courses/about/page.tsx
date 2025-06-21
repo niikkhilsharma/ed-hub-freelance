@@ -639,7 +639,7 @@ export default function CurriculumComponent() {
   );
 
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <section className="w-full bg-[#EEEEEE]">
         {/* headers */}
         <div className="bg-white border-b">

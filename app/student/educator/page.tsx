@@ -244,7 +244,7 @@ export default function CourseDetail() {
   // const [activeTab, setActiveTab] = useState("about"); // This was from your original snippet, might be used for other page tabs.
 
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <div className="bg-[#EEEEEE] mx-auto w-full py-8 sm:py-12 space-y-6 px-4 sm:px-6 md:px-10 lg:px-16">
         <EducatorPanel />
       </div>

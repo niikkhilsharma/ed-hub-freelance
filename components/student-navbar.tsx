@@ -4,10 +4,12 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Bell, ShoppingCart } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-export default function Navbar({blue}:{blue?:boolean}) {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,62 +24,70 @@ export default function Navbar({blue}:{blue?:boolean}) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    "/student/home",
+    "/student/courses/about",
+    "/student/teachers/select",
+    "/student/courses",
+    "/student/contact",
+    "/student/courses/about",
+  ];
+
+  const navLabels = [
+    "Home",
+    "About",
+    "Instructor List",
+    "Courses List",
+    "Contact",
+    "My learnings",
+  ];
+
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isScrolled ? "shadow-md" : ""
       }`}
     >
-      <nav className={`${blue? "bg-[#3366FF]" : "bg-[#f9326f]"} text-white`}>
+      <nav className="bg-[#3366FF] text-white pt-4">
         <div className="container mx-auto px-12">
           <div className="flex items-center justify-between h-17">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0">
               <div className="relative h-10 w-32">
-                {/* Replace src below with your logo path */}
                 <Image
-                  src={blue? "/mianLogo2.png" : "/mianLogo.png"}
+                  src="/mianLogo2.png"
                   alt="EduHub Logo"
                   fill
-                  className={`object-contain ${blue? "" :"invert brightness-0"}`}
+                  className="object-contain"
                 />
               </div>
             </Link>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex space-x-8">
-              {["/", "/about", "/instructors", "/courses", "/contact"].map(
-                (href, idx) => (
-                  <Link
-                    key={href}
-                    href={href}
-                    className={`text-base font-medium ${blue? "hover:text-[#f9326f]" :"hover:text-blue-600"}`}
-                  >
-                    {
-                      [
-                        "Home",
-                        "About Us",
-                        "Courses",
-                        "Become a Future School",
-                        "Subscription Plan",
-                        "Contact Us",
-                      ][idx]
-                    }
-                  </Link>
-                )
-              )}
+              {navLinks.map((href, idx) => (
+                <Link
+                  key={`${href}-${idx}`}
+                  href={href}
+                  className={`text-base font-medium hover:text-gray-200 transition-colors duration-200 px-3 py-2 rounded-full ${
+                    pathname === href ? "bg-white/20 bg-opacity-20" : ""
+                  }`}
+                >
+                  {navLabels[idx]}
+                </Link>
+              ))}
             </div>
 
             {/* Right Side - User Actions */}
             <div className="flex items-center space-x-4">
-              <button className="relative p-1.5 rounded-full hover:bg-pink-600 transition-colors">
-                <Bell className="h-5 w-5" />
+              <button className="group relative p-1.5 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
+                <Bell className="h-5 w-5 group-hover:stroke-black" />
                 <span className="absolute top-0 right-0 h-2 w-2 bg-yellow-400 rounded-full"></span>
               </button>
 
-              <button className="relative p-1.5 rounded-full hover:bg-pink-600 transition-colors">
-                <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-1 -right-1 h-5 w-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs">
+              <button className="group relative p-1.5 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors">
+                <ShoppingCart className="h-5 w-5 group-hover:stroke-black" />
+                <span className="absolute -top-1 -right-1 h-5 w-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs text-black font-medium">
                   2
                 </span>
               </button>
@@ -95,7 +105,7 @@ export default function Navbar({blue}:{blue?:boolean}) {
 
               {/* Mobile menu button */}
               <button
-                className="md:hidden p-2 rounded-md hover:bg-pink-600 transition-colors"
+                className="md:hidden p-2 rounded-md hover:bg-white/10 hover:bg-opacity-20 transition-colors"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 <svg
@@ -126,36 +136,42 @@ export default function Navbar({blue}:{blue?:boolean}) {
             isMobileMenuOpen ? "max-h-96" : "max-h-0"
           }`}
         >
-          <div className="px-4 py-2 space-y-1 bg-[#f9326f]">
+          <div className="px-4 py-2 space-y-1 bg-[#3366FF]">
             <Link
-              href="/"
-              className="block py-2 hover:bg-[#ff749e] px-3 rounded-md"
+              href="/student/home"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Home
             </Link>
             <Link
-              href="/about"
-              className="block py-2 hover:bg-[#ff749e] px-3 rounded-md"
+              href="/student/courses/about"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               About
             </Link>
             <Link
-              href="/instructors"
-              className="block py-2 hover:bg-[#ff749e] px-3 rounded-md"
+              href="/student/teachers/select"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
-              Instructor list
+              Instructor List
             </Link>
             <Link
-              href="/courses"
-              className="block py-2 hover:bg-[#ff749e] px-3 rounded-md"
+              href="/student/courses"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Courses List
             </Link>
             <Link
-              href="/contact"
-              className="block py-2 hover:bg-[#ff749e] px-3 rounded-md"
+              href="/student/contact"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               Contact
+            </Link>
+            <Link
+              href="/student/courses/about"
+              className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
+            >
+              My learnings
             </Link>
           </div>
         </div>

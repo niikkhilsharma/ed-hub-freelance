@@ -86,7 +86,7 @@ export default function CourseDetail() {
     })}`;
   };
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       {/* Background */}
       <div
         className="fixed inset-0 bg-center bg-repeat z-0"

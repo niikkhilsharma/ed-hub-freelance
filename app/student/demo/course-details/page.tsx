@@ -184,7 +184,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
   };
 
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-16">
         <div className="mx-auto">
           <div className="grid lg:grid-cols-11 gap-4">
