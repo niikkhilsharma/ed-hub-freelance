@@ -2,7 +2,6 @@
 
 import FooterNew from "@/components/footer3";
 import StudentWrapper from "@/components/student-wrapper";
-import LectureReschedulePopup from "@/components/student/popups/LectureReschedulingPopup";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check } from "lucide-react";
@@ -135,12 +134,6 @@ export default function CoursePolicy() {
           </div>
         </div>
       </div>
-
-      <LectureReschedulePopup
-        isOpen={true}
-        onClose={() => {}}
-        onContinue={() => {}}
-      />
 
       <div className="z-10 absolute">
         <FooterNew showSuscriptionBlock={false} />
