@@ -204,7 +204,7 @@ interface ReschedulePopupProps {
   onContinue: (selectedLecture: LectureSlot | null) => void;
 }
 
-export default function ReschedulePopup({
+export default function LectureCancelPopup({
   isOpen,
   onClose,
   onContinue,
