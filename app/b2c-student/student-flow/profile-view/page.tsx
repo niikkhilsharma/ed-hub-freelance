@@ -78,8 +78,6 @@ export default function EditStudentProfilePage() {
           onNewsletterSubmit={handleNewsletterSubmit}
         />
       </main>
-
-      <Footer />
     </div>
   );
 }
