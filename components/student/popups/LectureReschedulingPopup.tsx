@@ -355,20 +355,20 @@ export default function ReschedulePopup({
         <div className="flex items-center justify-center gap-4 p-6 pt-4">
           <Button
             onClick={handleCancel}
-            className="px-6 pt-4 pb-4 text-base font-medium rounded-full bg-[#FF33661A] text-[#FF3366] hover:bg-pink-200 border-0 transition-colors"
+            className="px-8 text-base font-medium rounded-full bg-[#FF33661A] text-[#FF3366] hover:bg-pink-200 border-0 transition-colors h-fit"
           >
-            Cancel
+            <span className="text-center py-1">Cancel</span>
           </Button>
           <Button
             onClick={handleContinue}
             disabled={!selectedLecture}
-            className={`px-6 py-4 text-base font-medium rounded-full transition-all duration-200 ${
+            className={`px-8 text-base font-medium rounded-full transition-all duration-200 h-fit ${
               selectedLecture
                 ? "bg-blue-500 hover:bg-blue-600 text-white"
                 : "bg-gray-300 text-gray-500 cursor-not-allowed"
             }`}
           >
-            Continue
+            <span className="text-center py-1">Continue</span>
           </Button>
         </div>
       </div>

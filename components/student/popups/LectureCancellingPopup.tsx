@@ -353,20 +353,20 @@ export default function LectureCancelPopup({
         <div className="flex items-center justify-center gap-4 p-6 pt-4">
           <Button
             onClick={handleCancel}
-            className="px-6 pt-4 pb-4 text-base font-medium rounded-full bg-[#E5E7EB] border-0 transition-colors"
+            className="px-8 text-base font-medium rounded-full bg-[#E5E7EB] text-black border-0 transition-colors h-fit"
           >
-            Discard
+            <span className="text-center py-1">Discard</span>
           </Button>
           <Button
             onClick={handleContinue}
             disabled={!selectedLecture}
-            className={`px-6 py-4 text-base font-medium rounded-full transition-all duration-200 ${
+            className={`px-8 text-base font-medium rounded-full transition-all duration-200 h-fit ${
               selectedLecture
                 ? "bg-[#FF3366] text-white"
                 : "bg-[#FF33661A] text-[#FF3366] cursor-not-allowed"
             }`}
           >
-            Cancel
+            <span className="text-center py-1">Cancel</span>
           </Button>
         </div>
       </div>
