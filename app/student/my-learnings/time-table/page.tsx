@@ -101,7 +101,7 @@ export default function LearningSchedule() {
       <div className="bg-black fixed inset-0 bg-center bg-repeat z-1 opacity-40" />
 
       <div className="relative z-10 p-10">
-        <div className="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 rounded-3xl">
+        <div className="min-h-fit w-full bg-white py-8 px-4 sm:px-6 lg:px-8 rounded-3xl">
           <div className="max-w-7xl mx-auto">
             {/* Header */}
             <div className="text-center mb-12">

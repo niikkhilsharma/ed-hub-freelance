@@ -30,7 +30,7 @@ export default function Navbar() {
     "/student/teachers/select",
     "/student/courses",
     "/student/contact",
-    "/student/courses/about",
+    "/student/my-learnings/time-table",
   ];
 
   const navLabels = [
@@ -168,7 +168,7 @@ export default function Navbar() {
               Contact
             </Link>
             <Link
-              href="/student/courses/about"
+              href="/student/my-learnings/time-table"
               className="block py-2 hover:bg-white hover:bg-opacity-20 px-3 rounded-md transition-colors duration-200"
             >
               My learnings
