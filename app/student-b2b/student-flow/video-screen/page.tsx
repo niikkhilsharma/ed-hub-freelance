@@ -78,7 +78,7 @@ export default function CourseVideoPage() {
         </div>
 
                 {/* THIS IS THE CRITICAL SECTION FOR LAYOUT */}
-				<div className="flex flex-col lg:flex-row bg-white rounded-2xl shadow-xl overflow-hidden">
+				<div className="flex flex-col lg:flex-row bg-white rounded-2xl overflow-hidden">
                     {/* 
                         On large screens (lg:), VideoPlayerSection needs to know it shouldn't
                         try to be wider than the space left by the fixed-width playlist.
