@@ -18,7 +18,6 @@ import {
   WorkSheetItemData,
 } from "./components";
 import { OptimizedCategoryTabsBar } from "@/components/common-components/topbar";
-import { Component } from './../../../../../.next/static/chunks/app/b2c-student/student-flow/my-class/quiz-page/page';
 
 // --- Sample Data (kept in page.tsx) ---
 const mainCategoriesData = [
