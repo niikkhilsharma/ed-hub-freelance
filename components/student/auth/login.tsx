@@ -4,6 +4,7 @@ import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Poppins } from "next/font/google";
+import { Raleway } from "next/font/google";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import Image from "next/image";
@@ -38,7 +39,7 @@ export default function StudentLoginForm() {
           {/* Left Column - Login Form */}
           <div className="w-full md:w-[45%]  space-y-4 font-bold flex flex-col  mt-16">
             <div className="w-full max-w-sm  mx-auto">
-              <h2 className="font-poppins text-3xl"> Login</h2>
+              <h2 className="font-Poppins text-3xl"> Login</h2>
               <p className="mt-2 max-w-[50ch] font-medium text-black">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
@@ -49,8 +50,8 @@ export default function StudentLoginForm() {
                   <Label className="font-semibold" htmlFor="email">Email Id</Label>
                   <Input
                     type="email"
-                    placeholder=" Enter Email Id"
-                    className="rounded-full bg-[#F9FAFB]"
+                    placeholder=" Enter Email ID"
+                    className="rounded-full font-light bg-[#F9FAFB]"
                   />
                 </div>
 
@@ -60,7 +61,7 @@ export default function StudentLoginForm() {
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="Password"
-                      className="rounded-full bg-transparent border-none focus:ring-0 flex-1"
+                      className="rounded-full  font-light bg-transparent border-none focus:ring-0 flex-1"
                       id="password"
                     />
                     <button
@@ -78,7 +79,7 @@ export default function StudentLoginForm() {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between mt-6">
+              <div className="flex items-center font-Raleway font-medium justify-between mt-6">
                 <div className="ml-2 text-sm flex gap-1 text-gray-500/80">
                   <p>Don't Have An Account?</p>
                   <Link
