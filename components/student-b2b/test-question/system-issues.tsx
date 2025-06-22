@@ -75,7 +75,7 @@ export default function DmittTestPageWithSystemErrorModal() {
 		<Fragment>
 			{' '}
 			{/* Needed for the modal to be a sibling */}
-			<div className={`min-h-screen bg-gray-100 flex flex-col ${isErrorModalOpen ? 'filter blur-sm pointer-events-none' : ''}`}>
+			<div className={`min-h-screen bg-gray-100 flex flex-col ${isErrorModalOpen ? 'filter backdrop-blur-3xl pointer-events-none' : ''}`}>
 				<DmittTestPage />
 			</div>
 			{/* Error Modal Invocation */}

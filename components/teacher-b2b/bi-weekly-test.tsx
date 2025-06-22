@@ -175,12 +175,12 @@ export default function TestsPage() {
 	const [activeTab, setActiveTab] = useState('Scheduled Test')
 
 	return (
-		<div className="min-h-screen bg-[#eeeeee] py-6 px-4">
-			<div className="container bg-white max-w-7xl rounded-2xl mx-auto px-4">
-				<div className="bg-white rounded-lg p-6">
+		<div className="min-h-screen bg-[#eeeeee] py-4 ">
+			<div className="container bg-white max-w-7xl rounded-2xl mx-auto ">
+				<div className="bg-white rounded-lg p-4">
 					<div className="grid grid-cols-1 md:grid-cols-7 gap-6">
 						<div className="md:col-span-5">
-							<div className="flex h-fit justify-between items-center mb-4">
+							<div className="flex h-fit overflow-x-auto custom-scrollbar justify-between items-center mb-4">
 								<CustomTestTabs tabs={['Scheduled Test', 'Completed Test', 'Saved']} activeTab={activeTab} onChange={setActiveTab} />
 								<div>
 									<Select defaultValue="all">

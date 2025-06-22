@@ -98,8 +98,8 @@ export default function WorksheetViewPage() {
 			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
 				{/* Main Category Tabs */}
 				<div className="mb-6 bg-white px-3 py-2 rounded-3xl shadow-sm overflow-x-auto">
-					<div className="flex space-x-4 justify-center items-center relative">
-						<button className="absolute left-0 p-1.5 text-black cursor-pointer focus:outline-none">
+					<div className="flex space-x-4 justify-start items-center relative">
+						<button className=" p-1.5 text-black cursor-pointer focus:outline-none">
 							<FiArrowLeft className="w-5 h-5" strokeWidth={3} />
 						</button>
 						{mainCategories.map(category => (
@@ -144,7 +144,7 @@ export default function WorksheetViewPage() {
 							{/* Worksheet Image */}
 							<div className="w-full relative mx-auto prose prose-sm sm:prose-base lg:prose-lg prose-h2:text-xl prose-h2:font-bold prose-h2:text-bla prose-p:mb-4 prose-strong:text-[#3366FF] max-w-none">
 								<div className="px-12 pb-6">
-									<h2 className="text-sm font-medium mb-4 h-16 flex items-end pb-6 bg-white w-full absolute">Let&apos;s Revise</h2>
+									<h2 className="text-sm font-medium mb-4 h-16 flex items-end pb-6 bg-white w-full">Let&apos;s Revise</h2>
 									<Image
 										src={'/images/startup-math.png'}
 										alt="worksheet"

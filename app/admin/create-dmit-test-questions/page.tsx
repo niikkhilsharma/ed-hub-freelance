@@ -16,8 +16,8 @@ export default function EditDmitTestQuestions() {
 				<MaxWidthWrapper className="bg-white p-4 sm:p-8 rounded-xl">
 					<PointSection
 						points={[
-							{ value: 1, name: 'DMIT Test Details', isActive: true },
-							{ value: 2, name: 'DMIT Test Questionnaire ', isActive: false },
+							{ value: 1, name: 'DMIT Test Details', isActive: false },
+							{ value: 2, name: 'DMIT Test Questionnaire ', isActive: true },
 							{ value: 3, name: 'Review', isActive: false },
 						]}
 					/>
@@ -316,8 +316,10 @@ export default function EditDmitTestQuestions() {
 						</div>
 					</div>
 
-					<div className="flex justify-center items-center my-10">
+					<div className="flex justify-center gap-2 items-center my-10">
+						<Button className="rounded-full px-6">Save</Button>
 						<Button className="rounded-full px-6">Review</Button>
+
 					</div>
 				</MaxWidthWrapper>
 			</div>

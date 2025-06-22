@@ -133,7 +133,7 @@ export default function DmittTest_5_Page() {
 	return (
 		<div className="min-h-screen flex flex-col">
 			{/* Header */}
-			<header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+			<header className="bg-[#3366FF] text-white sticky top-0 z-50">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
 					{/* Logo */}
 					<div className="flex items-center">
@@ -174,7 +174,7 @@ export default function DmittTest_5_Page() {
 
 					{/* Category Tabs */}
 					<div className="mb-8 overflow-x-auto pb-2">
-						<div className="flex justify-between space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
+						<div className="flex justify-between space-x-2 overflow-x-auto custom-scrollbar border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
 							{tabCategories.map(category => (
 								<button
 									key={category}
@@ -229,7 +229,7 @@ export default function DmittTest_5_Page() {
 					<div className="mt-10 flex justify-center rounded-full">
 						<button
 							onClick={handleNextQuestion}
-							className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
+							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionIndex === TOTAL_QUESTIONS - 1 || currentQuestionIndex === sampleQuestions.length - 1
 								? 'Submit'
 								: 'Next'}

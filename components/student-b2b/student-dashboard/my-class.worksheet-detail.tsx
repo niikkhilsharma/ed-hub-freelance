@@ -13,6 +13,7 @@ import {
 	FiChevronLeft as FiPageLeft,
 	FiChevronRight as FiPageRight,
 } from 'react-icons/fi'
+import { OptimizedCategoryTabsBar } from '@/components/common-components/topbar'
 
 // --- Main Category Tab Component (Reused) ---
 const MainCategoryTab = ({
@@ -242,29 +243,28 @@ export default function WorksheetViewPage() {
 	}
 
 	const [currentWeekFilter, setCurrentWeekFilter] = useState('Weekly')
+	const mainCategoriesData = [
+  "Academics",
+  "Skill Development",
+  "Brain Function",
+  "Sports",
+  "STEMnology",
+  "Competition",
+  "Extra curriculars",
+];
 
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			<Header user={headerUser} />
 
 			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-				{/* Main Category Tabs (Horizontal Scroll) */}
-				<div className="mb-6 bg-white px-3 py-2 rounded-3xl shadow-sm overflow-x-auto">
-					<div className="flex space-x-4 justify-center items-center relative">
-						<button className="absolute left-0 p-1.5 text-black cursor-pointer focus:outline-none">
-							<FiArrowLeft className="w-5 h-5" strokeWidth={3} />
-						</button>
-						{mainCategories.map(category => (
-							<MainCategoryTab
-								key={category}
-								label={category}
-								isActive={activeMainCategory === category}
-								onClick={() => setActiveMainCategory(category)}
-								hasDropdown={category === 'Sports'} // Example of a category with dropdown
-							/>
-						))}
-					</div>
-				</div>
+				<div className="mb-4">
+						  <OptimizedCategoryTabsBar
+							categories={mainCategoriesData}
+							activeCategory={activeMainCategory}
+							onCategoryClick={(category) => setActiveMainCategory(category)}
+						  />
+						</div>
 
 				{/* Main Worksheet Content Card */}
 				<div className="bg-white rounded-2xl shadow-xl px-3 py-6 relative">

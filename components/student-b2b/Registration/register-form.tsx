@@ -3,6 +3,39 @@
 import { useState } from "react";
 import Image from "next/image";
 
+// --- Reusable Form Field Components for Clean Code ---
+
+const FormInput = ({ id, label, ...props }: { id: string, label: string, [key: string]: any }) => (
+  <div className="mb-6">
+    <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
+    <input
+      id={id}
+      {...props}
+      className="w-full rounded-full border border-[#D5D5D5] bg-[#F9FAFB] py-3 px-4 text-sm text-[#555555] placeholder:text-[#6B7280] transition focus:outline-none focus:ring-2 focus:ring-[#3366FF] focus:bg-white"
+    />
+  </div>
+);
+
+const FormSelect = ({ id, label, children, ...props }: { id: string, label: string, children: React.ReactNode, [key: string]: any }) => (
+  <div className="mb-6">
+    <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
+    <div className="relative">
+      <select
+        id={id}
+        {...props}
+        className="w-full appearance-none rounded-full border border-[#D5D5D5] bg-[#F9FAFB] py-3 pl-4 pr-10 text-sm text-[#555555] transition focus:outline-none focus:ring-2 focus:ring-[#3366FF] focus:bg-white"
+      >
+        {children}
+      </select>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+        <svg fill='currentColor' height='16' viewBox='0 0 16 16' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>
+      </div>
+    </div>
+  </div>
+);
+
+// --- Main Page Component ---
+
 export default function StudentInfoPage() {
   const [formData, setFormData] = useState({
     name: "",
@@ -16,14 +49,6 @@ export default function StudentInfoPage() {
     city: "",
   });
 
-  const COLORS = {
-    primaryBlue: "#3366FF", // Page‐background blue
-    lightGray: "#f9fafb", // Right‐panel gray behind pattern
-    textDark: "#333333", // Labels/headings
-    textMedium: "#555555", // Input text
-    inputBorder: "#e5e7eb", // Gray‐200 for inputs
-  };
-
   function handleChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
@@ -31,355 +56,76 @@ export default function StudentInfoPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
-  function handleSubmit() {
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
     console.log("Submitted data:", formData);
-    // …whatever submit logic you need
   }
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-4 sm:p-6 lg:p-8"
+      className="min-h-screen w-full flex items-center justify-center p-4"
       style={{
-        backgroundColor: COLORS.primaryBlue,
-        backgroundImage: "url(/images/background.jpg)", // your blue‐pattern SVG/jpg
+        backgroundColor: '#3366FF',
+        backgroundImage: "url(/images/background.jpg)",
         backgroundRepeat: "repeat",
-        backgroundSize: "auto",
       }}
     >
-      {/* Parent flex container: transparent, with a gap so you see the blue behind it */}
-      <div className="flex flex-col md:flex-row w-full sm:gap-8 md:gap-14">
-        {/* ─── Left Panel: the white “form” box ─── */}
-        <div
-          className="w-full md:w-[40%] p-6 lg:p-8 overflow-y-auto shadow-xl rounded-4xl"
-          style={{
-            backgroundColor: "#ffffff",
-          }}
-        >
-          {/* Name */}
-          <div className="mb-6">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Enter Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="
-                w-full py-3 px-4
-                border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white placeholder:text-[#6B7280]
-                text-sm focus:outline-none focus:ring-2
-                transition
-              "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem", // 24px pill
-                color: COLORS.textMedium,
-              }}
-            />
-          </div>
+      {/* The main container no longer has a fixed height, allowing the content to define it. */}
+      <main className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
+        
+        {/* --- Left Panel: Form (No longer has overflow or fixed height) --- */}
+        <div className="w-full md:w-2/5 lg:w-1/3 bg-white p-6 sm:p-8 lg:p-10 rounded-4xl shadow-2xl">
+            <form onSubmit={handleSubmit}>
+                <FormInput id="name" name="name" label="Name" type="text" placeholder="Enter Name" value={formData.name} onChange={handleChange} />
+                <FormInput id="className" name="className" label="Class" type="text" placeholder="Enter Class" value={formData.className} onChange={handleChange} />
+                <FormInput id="dob" name="dob" label="Date of Birth" type="text" placeholder="DD/MM/YY" value={formData.dob} onChange={handleChange} />
+                <FormInput id="guardianName" name="guardianName" label="Parent / Guardian Name" type="text" placeholder="Enter Parent / Guardian Name" value={formData.guardianName} onChange={handleChange} />
+                <FormInput id="email" name="email" label="Email ID" type="email" placeholder="Enter Email ID" value={formData.email} onChange={handleChange} />
+                <FormInput id="mobile" name="mobile" label="Mobile Number" type="tel" placeholder="+91 1234567890" value={formData.mobile} onChange={handleChange} />
+                
+                <FormSelect id="country" name="country" label="Country" value={formData.country} onChange={handleChange}>
+                    <option value="" disabled>Select Country</option>
+                    <option value="india">India</option>
+                </FormSelect>
 
-          {/* Class */}
-          <div className="mb-6">
-            <label
-              htmlFor="className"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              Class
-            </label>
-            <input
-              id="className"
-              name="className"
-              type="text"
-              placeholder="Enter Class"
-              value={formData.className}
-              onChange={handleChange}
-              className="
-                w-full py-3 px-4
-                border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white placeholder:text-[#6B7280]
-                text-sm focus:outline-none focus:ring-2
-                transition
-              "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-              }}
-            />
-          </div>
+                <FormSelect id="state" name="state" label="State" value={formData.state} onChange={handleChange}>
+                    <option value="" disabled>Select State</option>
+                    <option value="maharashtra">Maharashtra</option>
+                </FormSelect>
 
-          {/* Date of Birth */}
-          <div className="mb-6">
-            <label
-              htmlFor="dob"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              Date of Birth
-            </label>
-            <input
-              id="dob"
-              name="dob"
-              type="text"
-              placeholder="DD/MM/YY"
-              value={formData.dob}
-              onChange={handleChange}
-              className="
-                w-full py-3 px-4
-                border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white placeholder:text-[#6B7280]
-                text-sm focus:outline-none focus:ring-2
-                transition
-              "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-              }}
-            />
-          </div>
+                {/* Final form select has a larger bottom margin to space it from the button */}
+                <div className="mb-8">
+                    <FormSelect id="city" name="city" label="City" value={formData.city} onChange={handleChange}>
+                        <option value="" disabled>Select City</option>
+                        <option value="mumbai">Mumbai</option>
+                    </FormSelect>
+                </div>
 
-          {/* Parent / Guardian Name */}
-          <div className="mb-6">
-            <label
-              htmlFor="guardianName"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              Parent / Guardian Name
-            </label>
-            <input
-              id="guardianName"
-              name="guardianName"
-              type="text"
-              placeholder="Enter Parent / Guardian Name"
-              value={formData.guardianName}
-              onChange={handleChange}
-              className="
-                w-full py-3 px-4
-                border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white placeholder:text-[#6B7280]
-                text-sm focus:outline-none focus:ring-2
-                transition
-              "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-              }}
-            />
-          </div>
+                <button type="submit" className="w-full bg-[#3366FF] text-white font-semibold py-3.5 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Submit
+                </button>
+            </form>
+        </div>
 
-          {/* Email ID */}
-          <div className="mb-6">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              Email ID
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter Email ID"
-              value={formData.email}
-              onChange={handleChange}
-              className="
-                w-full py-3 px-4
-                border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white placeholder:text-[#6B7280]
-                text-sm focus:outline-none focus:ring-2
-                transition
-              "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-              }}
-            />
-          </div>
-
-          {/* Mobile Number */}
-          <div className="mb-6">
-            <label
-              htmlFor="mobile"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              Mobile Number
-            </label>
-            <input
-              id="mobile"
-              name="mobile"
-              type="tel"
-              placeholder="+91 1234567890"
-              value={formData.mobile}
-              onChange={handleChange}
-              className="
-                w-full py-3 px-4
-                border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white placeholder:text-[#6B7280]
-                text-sm focus:outline-none focus:ring-2
-                transition
-              "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-              }}
-            />
-          </div>
-
-          {/* Country */}
-          <div className="mb-6">
-            <label
-              htmlFor="country"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              Country
-            </label>
-            <select
-              id="country"
-              name="country"
-              value={formData.country}
-              onChange={handleChange}
-              className="
-    w-full py-3 pr-10 pl-4
-    border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white text-sm focus:outline-none focus:ring-2
-    appearance-none transition
-  "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg fill='gray' height='14' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "calc(100% - 1rem) center",
-                backgroundSize: "14px",
-              }}
-            >
-              <option value="" disabled>
-                Option 1
-              </option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
-          </div>
-
-          {/* State */}
-          <div className="mb-6">
-            <label
-              htmlFor="state"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              State
-            </label>
-            <select
-              id="state"
-              name="state"
-              value={formData.state}
-              onChange={handleChange}
-              className="
-    w-full py-3 pr-10 pl-4
-    border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white text-sm focus:outline-none focus:ring-2
-    appearance-none transition
-  "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg fill='gray' height='14' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "calc(100% - 1rem) center",
-                backgroundSize: "14px",
-              }}
-            >
-              <option value="" disabled>
-                Option 1
-              </option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
-          </div>
-
-          {/* City */}
-          <div className="mb-8">
-            <label
-              htmlFor="city"
-              className="block text-sm font-medium mb-2"
-              style={{ color: COLORS.textDark }}
-            >
-              City
-            </label>
-            <select
-              id="city"
-              name="city"
-              value={formData.city}
-              onChange={handleChange}
-              className="
-    w-full py-3 pr-10 pl-4
-    border border-[#D5D5D5] bg-[#F9FAFB] focus-within:bg-white text-sm focus:outline-none focus:ring-2
-    appearance-none transition
-  "
-              style={{
-                borderColor: COLORS.inputBorder,
-                borderRadius: "1.5rem",
-                color: COLORS.textMedium,
-                backgroundImage: `url("data:image/svg+xml;utf8,<svg fill='gray' height='14' viewBox='0 0 24 24' width='14' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>")`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "calc(100% - 1rem) center",
-                backgroundSize: "14px",
-              }}
-            >
-              <option value="" disabled>
-                Option 1
-              </option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            onClick={handleSubmit}
-            className="w-full text-white font-medium py-3 px-4 focus:outline-none focus:ring-2 transition rounded-full"
+        {/* --- Right Panel: Image (Stretches to match the left panel's height automatically) --- */}
+        <div className="hidden md:block w-full md:w-3/5 lg:w-2/3 relative rounded-4xl overflow-hidden">
+          <div 
+            className="absolute inset-0 w-full h-full bg-[#f9fafb]"
             style={{
-              backgroundColor: COLORS.primaryBlue,
+                backgroundImage: "url(/images/registar_pattern.svg)",
+                backgroundSize: 'cover',
             }}
-          >
-            Submit
-          </button>
-        </div>
-
-        {/* ─── Right Panel: the gray “image” box ─── */}
-        <div className="w-full md:w-[60%] relative overflow-hidden">
-          <Image
-            width={900}
-            height={1158}
-            src="/images/registar_pattern.svg"
-            alt="background"
           />
-          <div className="absolute bottom-0 right-0 w-full h-full flex justify-center items-end pointer-events-none">
-            <Image
-              src="/images/Girl_writing.png"
-              alt="Child writing"
-              width={500}
-              height={500}
-              className="w-full max-w-lg h-auto object-contain drop-shadow-xl"
-            />
-          </div>
+          <Image
+            src="/images/Girl_writing.png"
+            alt="Child writing"
+            layout="fill"
+            objectFit="contain"
+            objectPosition="bottom center"
+            className="z-10 drop-shadow-xl"
+          />
         </div>
-      </div>
+      </main>
     </div>
   );
 }

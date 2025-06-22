@@ -7,7 +7,7 @@ import { FiBell, FiClock } from 'react-icons/fi'
 // --- Simplified Header for In-Test View ---
 // You might use your full Header component or a simplified one for focus.
 const TestHeader = () => (
-	<header className="bg-blue-600 text-white shadow-md sticky top-0 z-50">
+	<header className="bg-[#3366FF] text-white sticky top-0 z-50">
 		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex justify-between items-center">
 			{/* Logo */}
 			<div className="flex items-center">
@@ -112,7 +112,7 @@ export default function DmittEssayTestPage() {
 
 					{/* Category Tabs */}
 					<div className="mb-8 overflow-x-auto pb-2">
-						<div className="flex justify-between space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
+						<div className="flex justify-between space-x-2 overflow-x-auto custom-scrollbar border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
 							{tabCategoriesData.map(category => (
 								<button
 									key={category}
@@ -157,7 +157,7 @@ export default function DmittEssayTestPage() {
 						{/* Centered Next button */}
 						<button
 							onClick={handleNext}
-							className="px-10 py-3 bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
+							className="px-10 py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-full hover:cursor-pointer">
 							{currentQuestionNumber === TOTAL_QUESTIONS_IN_SET ? 'Submit' : 'Next'}
 						</button>
 					</div>

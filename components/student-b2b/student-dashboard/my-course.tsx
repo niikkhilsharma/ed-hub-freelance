@@ -207,7 +207,7 @@ export default function MyCoursePage() {
 			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 bg-white rounded-2xl my-6">
 				{/* Ongoing Courses */}
 				<section className="mb-12">
-					<h2 className="text-xl font-semibold text-gray-800 mb-6">Ongoing</h2>
+					<h2 className="text-xl font-semibold text-black mb-6">Ongoing</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						{ongoingCourses.map(course => (
 							<CourseCard key={course.id} course={course} />
@@ -217,7 +217,7 @@ export default function MyCoursePage() {
 
 				{/* Upcoming Courses */}
 				<section className="mb-12">
-					<h2 className="text-xl font-semibold text-gray-800 mb-6">Upcoming</h2>
+					<h2 className="text-xl font-semibold text-black mb-6">Upcoming</h2>
 					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 						{upcomingCourses.map(course => (
 							<CourseCard key={course.id} course={course} />
@@ -239,7 +239,7 @@ export default function MyCoursePage() {
 
 				{/* AI Suggests Section */}
 				<section
-					className="rounded-3xl px-8 py-4 md:px-12 py-6 text-black relative overflow-hidden bg-black/10" // Main pink background
+					className="rounded-3xl px-8 py-4 md:px-12 text-black relative overflow-hidden bg-black/10" // Main pink background
 					style={{
 						backgroundImage: 'url(/images/ai-suggests-bg-pattern.png)', // UPDATE PATH for pattern
 						backgroundRepeat: 'repeat',

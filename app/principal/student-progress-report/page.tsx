@@ -1,4 +1,5 @@
 import PrincipalChatrsReport from '@/components/principal/principal-charts-report';
+import { IoMdSettings } from "react-icons/io";
 import React from 'react'
 import Image from 'next/image';
 import { FiArrowLeft } from 'react-icons/fi';
@@ -145,13 +146,15 @@ const StudentProgressReport = () => {
                 height={72}
                 className="rounded-full h-24 w-24 flex-shrink-0"
               />
-              <div className="flex-grow">
+              <div className="flex-grow relative">
+                <div className="rounded-full top-0 border border-gray-200 p-1 bg-gray-100 absolute left-[12rem]"><IoMdSettings size={20}/></div>
                 <h2
                   className="text-xl font-semibold"
                   style={{ color: PALETTE.TEXT_DARK }}
                 >
                   Shlok Agheda
                 </h2>
+                
                 <div className="flex flex-wrap items-center gap-1 mt-2">
                   <span
                     className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
@@ -171,6 +174,7 @@ const StudentProgressReport = () => {
                   >
                     Group A
                   </span>
+                 
                 </div>
               </div>
               <div className="text-[11px] font-medium text-right sm:text-left space-y-0.5 text-black">
