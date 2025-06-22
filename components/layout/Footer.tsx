@@ -1,7 +1,9 @@
 import Image from 'next/image'
+import { Poppins } from 'next/font/google'
 import { FiInstagram } from 'react-icons/fi'
 import { RxCross2 } from 'react-icons/rx'
 import { FaLinkedinIn, FaFacebookF } from 'react-icons/fa6'
+import { FaXTwitter } from "react-icons/fa6";
 
 const FooterLink = ({ label, href = '#' }: { label: string; href?: string }) => (
 	<a href={href} className="block text-white text-sm leading-relaxed hover:underline underline-offset-4 transition">
@@ -11,7 +13,13 @@ const FooterLink = ({ label, href = '#' }: { label: string; href?: string }) => 
 
 export default function Footer() {
 	return (
-		<footer className="bg-[#3366FF] text-white font-sans pt-16 pb-6 print:hidden">
+		<footer className="bg-[#3366FF] text-[1rem] space-y-4 relative text-white font-Poppins font-semibold pt-16 pb-6 print:hidden
+		
+		"
+		>
+			<div  className=" absolute inset-0 opacity-10"style={{backgroundImage:"url('/images/footer.png')",
+				backgroundSize:"cover",
+			}}></div>
 			<div className="max-w-[1440px] mx-auto px-6">
 				{/* Grid Section */}
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
@@ -80,26 +88,26 @@ export default function Footer() {
 					<div className="flex gap-3">
 						{[
 							{
-								icon: <FiInstagram className="w-5 h-5" />,
+								icon: <FiInstagram className="w-6 h-6" />,
 								href: '#',
 							},
 							{
-								icon: <RxCross2 className="w-5 h-5" />,
+								icon: <FaXTwitter className="w-6 h-6" />,
 								href: '#',
 							},
 							{
-								icon: <FaLinkedinIn className="w-5 h-5" />,
+								icon: <FaLinkedinIn className="w-6 h-6" />,
 								href: '#',
 							},
 							{
-								icon: <FaFacebookF className="w-5 h-5" />,
+								icon: <FaFacebookF className="w-6 h-6" />,
 								href: '#',
 							},
 						].map(({ icon, href }, i) => (
 							<a
 								key={i}
 								href={href}
-								className="w-10 h-10 bg-white text-[#3366FF] rounded-md flex items-center justify-center hover:bg-blue-100 transition">
+								className="w-10 h-10 bg-white text-[#3366FF] rounded-xl flex items-center justify-center hover:bg-blue-100 transition">
 								{icon}
 							</a>
 						))}

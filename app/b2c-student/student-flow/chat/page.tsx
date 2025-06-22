@@ -80,7 +80,7 @@ export default function ChatPage() {
                     onSendMessage={handleSendMessage}
                 />
 			</main>
-			<Footer />
+			
 		</div>
 	);
 }
