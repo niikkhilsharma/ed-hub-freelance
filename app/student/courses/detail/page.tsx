@@ -21,6 +21,7 @@ import {
   Info,
   Brain,
   ChartNoAxesColumn,
+  Video,
 } from "lucide-react";
 import FooterNew from "@/components/footer3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -520,8 +521,12 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
+        <div className="relative flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
           {/* Fixed Sidebar */}
+          <button className="bg-[#8DD9B3] flex items-center gap-3 px-4 py-2 text-white text-left rounded-2xl absolute top-5 right-6 cursor-pointer">
+            <Video />
+            Watch Demo Video
+          </button>
           <div className="w-64 flex-shrink-0">
             <div className="p-6">
               <nav className="space-y-2">
