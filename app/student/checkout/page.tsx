@@ -2,12 +2,11 @@
 
 import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -17,7 +16,41 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CreditCard, ArrowLeft, Lock } from "lucide-react";
+import { FaCheck } from "react-icons/fa6";
 import { FaBuildingColumns } from "react-icons/fa6";
+
+// Custom Radio Button Component with Tick Icon
+const CustomRadioButton = ({
+  value,
+  selectedValue,
+  id,
+}: {
+  value: string;
+  selectedValue: string;
+  id: string;
+}) => {
+  const isSelected = value === selectedValue;
+
+  return (
+    <div className="relative -translate-y-1">
+      <div
+        className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all duration-200 ${
+          isSelected
+            ? "border-blue-600 bg-blue-600"
+            : "border-gray-300 bg-white"
+        }`}
+      >
+        {isSelected && <FaCheck className="w-4 h-4 fill-white" />}
+      </div>
+      <input
+        type="radio"
+        value={value}
+        id={id}
+        className="absolute inset-0 opacity-0 cursor-pointer"
+      />
+    </div>
+  );
+};
 
 export default function Checkout() {
   const [selectedPayment, setSelectedPayment] = useState("cards");
@@ -52,19 +85,6 @@ export default function Checkout() {
     expiry: string;
     cvv: string;
   }
-
-  // interface OrderSummary {
-  //   originalPrice: number;
-  //   discount: number;
-  //   discountPercent: number;
-  //   courses: number;
-  //   total: number;
-  // }
-
-  // interface CourseDetailItem {
-  //   name: string;
-  //   price: number;
-  // }
 
   const handleInputChange = (field: keyof CardDetails, value: string) => {
     setCardDetails((prev: CardDetails) => ({
@@ -151,23 +171,25 @@ export default function Checkout() {
                     <h2 className="text-2xl font-medium">Payment Method</h2>
                   </div>
 
-                  <RadioGroup
-                    value={selectedPayment}
-                    onValueChange={setSelectedPayment}
-                    className="space-y-4"
-                  >
+                  <div className="space-y-4">
                     {/* Cards Option */}
                     <div className="space-y-4 border-[#E5E7EB] bg-[#F9FAFB] border rounded-2xl lg:max-w-[600px] overflow-hidden">
                       <div className="flex items-center justify-between p-4 bg-[#F9FAFB]">
                         <div className="flex items-center space-x-3">
-                          <RadioGroupItem
-                            value="cards"
-                            id="cards"
-                            className="text-blue-600"
-                          />
+                          <label
+                            htmlFor="cards"
+                            className="cursor-pointer"
+                            onClick={() => setSelectedPayment("cards")}
+                          >
+                            <CustomRadioButton
+                              value="cards"
+                              selectedValue={selectedPayment}
+                              id="cards"
+                            />
+                          </label>
                           <Label
                             htmlFor="cards"
-                            className="text-lg font-medium text-gray-900"
+                            className="text-lg font-medium text-gray-900 cursor-pointer"
                           >
                             Cards
                           </Label>
@@ -279,10 +301,17 @@ export default function Checkout() {
                     {/* UPI Option */}
                     <div className="flex items-center justify-between p-4 border rounded-2xl border-[#E5E7EB] bg-[#F9FAFB] lg:max-w-[600px]">
                       <div className="flex items-center space-x-3">
-                        <RadioGroupItem value="upi" id="upi" />
+                        <label htmlFor="upi" className="cursor-pointer">
+                          <CustomRadioButton
+                            value="upi"
+                            selectedValue={selectedPayment}
+                            id="upi"
+                          />
+                        </label>
                         <Label
                           htmlFor="upi"
-                          className="text-lg font-medium text-gray-900"
+                          className="text-lg font-medium text-gray-900 cursor-pointer"
+                          onClick={() => setSelectedPayment("upi")}
                         >
                           UPI
                         </Label>
@@ -299,10 +328,17 @@ export default function Checkout() {
                     {/* Net Banking Option */}
                     <div className="flex items-center justify-between p-4 border rounded-2xl border-[#E5E7EB] bg-[#F9FAFB] lg:max-w-[600px]">
                       <div className="flex items-center space-x-3">
-                        <RadioGroupItem value="netbanking" id="netbanking" />
+                        <label htmlFor="netbanking" className="cursor-pointer">
+                          <CustomRadioButton
+                            value="netbanking"
+                            selectedValue={selectedPayment}
+                            id="netbanking"
+                          />
+                        </label>
                         <Label
                           htmlFor="netbanking"
-                          className="text-lg font-medium text-gray-900"
+                          className="text-lg font-medium text-gray-900 cursor-pointer"
+                          onClick={() => setSelectedPayment("netbanking")}
                         >
                           Net Banking
                         </Label>
@@ -311,7 +347,7 @@ export default function Checkout() {
                         <FaBuildingColumns className="w-5 h-5" />
                       </div>
                     </div>
-                  </RadioGroup>
+                  </div>
                 </CardContent>
               </Card>
             </div>
