@@ -1,9 +1,10 @@
 "use client";
 import StudentWrapper from "@/components/student-wrapper";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Footer from "@/components/footer";
+import FooterNew from "@/components/footer3";
+import { useRouter } from "next/navigation";
 export default function CourseDetail() {
+  const router = useRouter();
   return (
     <StudentWrapper>
       {/* Background */}
@@ -17,48 +18,30 @@ export default function CourseDetail() {
         }}
       ></div>
 
-      <div className="relative z-10 pb-40">
-        {/* headers */}
-        <div className="bg-[#f9326f] text-white h-40 gap-4 flex flex-col items-center justify-center">
-          <div className="text-3xl font-bold">404 Page</div>
-          <div className="flex gap-4 text-lg items-center">
-            <div>Home</div>
-            <div className="h-1 w-1 bg-[#d9d9d9] rounded-full" />
-            <div className="text-yellow-400">404 Page</div>
-          </div>
-        </div>
-
-        <div className="container min-h-[60vh] max-w-7xl mx-auto py-6 px-6 lg:px-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-center">
-            {/* Left Content */}
-            <div className="space-y-6 text-center lg:text-left">
-              <h1 className="text-3xl lg:text-4xl font-bold">
-                SORRY, PAGE NOT FOUND!
-              </h1>
-              <p className="text-gray-600 max-w-md mx-auto lg:mx-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
-              <Button className="text-lg px-8 py-6 bg-blue-600 hover:bg-blue-700 text-white">
-                Back to Home
-              </Button>
-            </div>
-
-            {/* Right Image */}
-            <div className="flex justify-center lg:justify-end">
-              <Image
-                src="/student/404/404.png" // Replace with your actual image path
-                alt="404"
-                width={500}
-                height={500}
-                className="w-full max-w-[500px] h-auto"
-              />
-            </div>
-          </div>
+      <div className="relative z-10 py-10">
+        <div className="container min-h-[60vh] max-w-7xl mx-auto py-6 px-6 lg:px-28 flex flex-col items-center gap-5">
+          <img
+            src="/404_error.png"
+            alt="404 error image"
+            className="scale-90"
+          />
+          <h1 className="font-bold text-3xl lg:text-4xl text-center uppercase">
+            Sorry, Page Not Found!
+          </h1>
+          <p className="font-medium text-lg text-[#777777] text-center max-w-5xl">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+          <Button
+            onClick={() => router.push("/student/home")}
+            className="px-16 text-base rounded-full cursor-pointer bg-[#3366FF] hover:bg-blue-600 text-white transition-colors h-fit"
+          >
+            <span className="py-1">Back to Home</span>
+          </Button>
         </div>
       </div>
 
-      <Footer />
+      <FooterNew showSuscriptionBlock={false} />
     </StudentWrapper>
   );
 }
