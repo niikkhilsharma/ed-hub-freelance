@@ -86,7 +86,7 @@ type FormField = {
   label: string;
 };
 
-const courses: Course[] = [
+export const courses: Course[] = [
   {
     id: "academics",
     title: "Academics",
