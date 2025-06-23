@@ -15,6 +15,7 @@ import {
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoStatsChartSharp } from "react-icons/io5";
+import { CiMail } from "react-icons/ci";
 // --- Base Modal Component (for reuse) ---
 interface BaseModalProps {
   isOpen: boolean;
@@ -142,11 +143,12 @@ const RequestTeacherChangeModal: React.FC<RequestTeacherChangeModalProps> = ({
       }`}
     >
       {" "}
-      <button className={`absolute  right-2 w-8 h-8 bg-[#E5E7EB] rounded-full flex items-center justify-center shadow  ${
-        isSelected
-          ? "bg-blue-500 text-white shadow-lg"
-          : "bg-[#E5E7EB]  text-[#6B7280] "
-      }`}
+      <button
+        className={`absolute  right-2 w-8 h-8 bg-[#E5E7EB] rounded-full flex items-center justify-center shadow  ${
+          isSelected
+            ? "bg-blue-500 text-white shadow-lg"
+            : "bg-[#E5E7EB]  text-[#6B7280] "
+        }`}
       >
         <FiInfo className="   w-6 h-6" />
       </button>
@@ -158,30 +160,32 @@ const RequestTeacherChangeModal: React.FC<RequestTeacherChangeModalProps> = ({
           className="rounded-full object-cover"
         />
       </div>
-      <div className={`flex flex-col font-poppins items-start ${
-        isSelected
-          ? "bg-blue-500 text-white"
-          : "  "
-      }`}>
+      <div
+        className={`flex flex-col font-poppins items-start ${
+          isSelected ? "bg-blue-500 text-white" : "  "
+        }`}
+      >
         <h4 className="text-[32px] font-medium mt-3">{name}</h4>
-        <p className={`text-[22px]  mt-1 ${
-        isSelected
-          ? " text-yellow-400 "
-          : " text-pink-500 "
-      }`}>{specialty}</p>
+        <p
+          className={`text-[22px]  mt-1 ${
+            isSelected ? " text-yellow-400 " : " text-pink-500 "
+          }`}
+        >
+          {specialty}
+        </p>
         <p className="text-[22px] text-gray-500">{description}</p>
         <p className="text-[22px] text-gray-500">{education}</p>
-      
-      <div className="flex justify-center mt-2">
-        {[...Array(5)].map((_, i) => (
-          <FiStar
-            key={i}
-            className={`w-4 h-4 ${
-              i < rating ? "text-yellow-400 fill-current" : "text-gray-300"
-            }`}
-          />
-        ))}
-      </div>
+
+        <div className="flex justify-center mt-2">
+          {[...Array(5)].map((_, i) => (
+            <FiStar
+              key={i}
+              className={`w-4 h-4 ${
+                i < rating ? "text-yellow-400 fill-current" : "text-gray-300"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -315,25 +319,51 @@ const TeacherProfileModal: React.FC<TeacherProfileModalProps> = ({
   onClose,
 }) => {
   // Sub-components for clarity
-  const InfoTag: React.FC<{ icon: React.ReactNode; text: string }> = ({
-    icon,
-    text,
-  }) => (
-    <div className="flex items-center gap-2 bg-gray-100 text-gray-700 px-6 py-2 rounded-full text-sm font-medium">
-      {icon}
-      <span>{text}</span>
-    </div>
-  );
+  interface InfoTagProps {
+    icon1: React.ReactNode;
+    text1: string;
+    icon2: React.ReactNode;
+    text2: string;
+  }
+  const InfoTag = ({
+    icon1,
+    text1,
+    icon2,
+    text2,
+  }: {
+    icon1: React.ReactNode;
+    text1: string;
+    icon2: React.ReactNode;
+    text2: string;
+  }) => {
+    return (
+      <div className="flex items-center gap-3">
+        {/* Tag 1: Experience */}
+        <div className="flex items-center gap-1 bg-[#DFF3FF] text-[#3B82F6] px-4 py-1.5 rounded-full text-sm font-medium">
+          {icon1}
+          <span>{text1}</span>
+        </div>
+
+        {/* Tag 2: Email */}
+        <div className="flex items-center gap-1 bg-[#D4F5E7] text-black px-4 py-1.5 rounded-full text-sm font-medium">
+          {icon2}
+          <span>{text2}</span>
+        </div>
+      </div>
+    );
+  };
   const Section: React.FC<{
     title: string;
     children: React.ReactNode;
     className?: string;
   }> = ({ title, children, className }) => (
     <div className={className}>
-      <h3 className="text-base font-bold mb-3 flex items-center gap-2">
-        <FiFileText className="text-blue-500" />
-        {title}
-      </h3>
+      <div className="flex gap-1">
+        <button className="py-2 px-1 text-[#3366FF]"></button>
+        <h3 className="text-base text-[#3366FF] font-bold mb-3 flex items-center gap-2">
+          {title}
+        </h3>
+      </div>
       <div className="text-gray-600 text-sm leading-relaxed space-y-2">
         {children}
       </div>
@@ -347,7 +377,7 @@ const TeacherProfileModal: React.FC<TeacherProfileModalProps> = ({
   }> = ({ course, school, year, logo }) => (
     <div className="flex items-center gap-4">
       <Image
-        src={logo}
+        src={"/images/popups/std1.png"}
         alt="school logo"
         width={40}
         height={40}
@@ -355,7 +385,7 @@ const TeacherProfileModal: React.FC<TeacherProfileModalProps> = ({
       />
       <div>
         <p className="font-semibold text-black">{course}</p>
-        <p className="text-gray-500">{school}</p>
+        <p className="text-black">{school}</p>
         <p className="text-xs text-gray-400">{year}</p>
       </div>
     </div>
@@ -365,19 +395,27 @@ const TeacherProfileModal: React.FC<TeacherProfileModalProps> = ({
     role: string;
     review: string;
   }> = ({ name, role, review }) => (
-    <div className="bg-gray-50 p-3 rounded-lg">
-      <div className="flex justify-between items-center mb-1">
-        <div>
-          <p className="font-semibold text-black">{name}</p>
-          <p className="text-xs text-gray-500">{role}</p>
-        </div>
-        <div className="flex text-yellow-400">
-          {[...Array(5)].map((_, i) => (
-            <FiStar key={i} className="w-3 h-3 fill-current" />
-          ))}
+    <div className="bg-[#F3F4F6] p-4 rounded-2xl shadow-md">
+      <div className="flex items-start gap-4">
+        <img
+          src="/images/popups/usergirl.png"
+          alt="customer"
+          className="w-14 h-14 rounded-full object-cover"
+        />
+        <div className="flex-1">
+          <p className="text-sm font-semibold text-gray-900">{name}</p>
+          <p className="text-xs text-gray-500 mb-1">{role}</p>
+          <div className="flex items-center text-yellow-400 mb-2">
+            {[...Array(5)].map((_, i) => (
+              <FiStar key={i} className="w-4 h-4 fill-current" />
+            ))}
+          </div>
         </div>
       </div>
-      <p className="text-xs text-gray-600 leading-normal">{review}</p>
+      <div>
+        {" "}
+        <p className="text-xs text-gray-600 leading-relaxed">{review}</p>
+      </div>
     </div>
   );
 
@@ -386,122 +424,155 @@ const TeacherProfileModal: React.FC<TeacherProfileModalProps> = ({
       <div className="p-6">
         <button
           onClick={onClose}
-          className="flex items-center gap-2 font-semibold text-gray-700 mb-6 hover:text-black"
+          className="flex items-center font-Poppins gap-2 font-semibold text-[#FF3366] mb-6 hover:text-black"
         >
           <FiArrowLeft /> Back
         </button>
 
         {/* Profile Header */}
-        <div className="flex flex-col space-y-6 ">
-          {/* Left side of header */}
-          <div className="flex flex-col w-1/2 items-center lg:items-start text-center lg:text-left">
-            <div className=" flex gap-6 ">
+        <div className="flex gap-4">
+          <div className="flex flex-col space-y-6 w-1/2  rounded-2xl px-4 py-4  bg-white">
+            {/* Left side of header */}
+            <div className="flex flex-col    items-center lg:items-start text-center lg:text-left">
+              <div className=" flex gap-6 ">
                 <Image
-              src="/images/person.jpg"
-              alt="Ronak Mathur"
-              width={100}
-              height={100}
-              className="rounded-full mb-4"
-            />
-            <div className="flex flex-col">
-                <h2 className="text-2xl  font-Poppins font-bold">Ronak Mathur</h2>
-            <p className="text-pink-500 mb-2">Role</p>
-            <div className="flex text-yellow-400 mb-4">
-              {[...Array(5)].map((_, i) => (
-                <FiStar key={i} className="w-4 h-4 fill-current" />
-              ))}
-            </div>
-            
-          
-            </div>
-            </div>
-              <div className="flex flex-wrap  justify-center items-center gap-2 mb-4">
-              <InfoTag icon={<IoStatsChartSharp />} text="6 years" />
-              <InfoTag icon={<FiLinkedin />} text="example.ggm.com" />
-            </div>
-            <button className="w-full bg-[#FF3366] text-white font-semibold py-3 rounded-full flex items-center justify-center gap-2 hover:bg-pink-600">
-              <FiPlayCircle /> Watch Demo Video
-            </button>
-          </div>
-          {/* Right side of header */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-gray-100 p-4 rounded-xl">
-              <h3 className="font-bold mb-3">Availability</h3>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span>Monday, Wednesday, Friday</span>
-                  <span>10 AM - 1 PM</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Saturday</span>
-                  <span>2 PM - 5 PM</span>
+                  src="/images/person.jpg"
+                  alt="Ronak Mathur"
+                  width={100}
+                  height={100}
+                  className="rounded-full mb-4"
+                />
+                <div className="flex flex-col">
+                  <h2 className="text-2xl  font-Poppins font-bold">
+                    Ronak Mathur
+                  </h2>
+                  <p className="text-pink-500 mb-2">Role</p>
+                  <div className="flex text-yellow-400 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <FiStar key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
                 </div>
               </div>
+              <div className="flex justify-center gap-2 mb-4">
+                <InfoTag
+                  icon1={<IoStatsChartSharp size={16} />}
+                  text1="6 years"
+                  icon2={<CiMail size={16} />}
+                  text2="example@ggm.com"
+                />
+              </div>
+              <button className="w-full bg-[#FF3366] text-white font-semibold py-3 rounded-full flex items-center justify-center gap-2">
+                <FiPlayCircle /> Watch Demo Video
+              </button>
             </div>
-            <div className="bg-gray-100 p-4 rounded-xl">
-              <h3 className="font-bold mb-3">About</h3>
-              <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
-                <li>Mauris feugiat diam non convallis dictum.</li>
-                <li>Integer tempor dolor imperdiet porttitor finibus.</li>
-              </ul>
+            {/* Right side of header */}
+            <div className="space-y-6">
+              <h3 className="font-bold mb-3">Availability</h3>
+              <div className="bg-[#F9FAFB] p-4 text-[#6B7280] rounded-xl">
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span>Monday, Wednesday, Friday</span>
+                    <span>10 AM - 1 PM</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Saturday</span>
+                    <span>2 PM - 5 PM</span>
+                  </div>
+                </div>
+              </div>
+              <div className=" p-4 rounded-xl">
+                <h3 className="font-bold mb-3">About</h3>
+                <ul className="list-disc list-inside text-sm text-black space-y-1">
+                  <li>Mauris feugiat diam non convallis dictum.</li>
+                  <li>Integer tempor dolor imperdiet porttitor finibus.</li>
+                  <li>Mauris feugiat diam non convallis dictum.</li>
+                  <li>Integer tempor dolor imperdiet porttitor finibus.</li>
+                  <li>Mauris feugiat diam non convallis dictum.</li>
+                  <li>Integer tempor dolor imperdiet porttitor finibus.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          {/* flex box -2 */}
+
+          <div className="bg-white rounded-2xl p-4  w-1/4 ">
+            <h3 className="font-bold mb-4">Qualification</h3>
+            <div className="space-y-4">
+              <QualificationItem
+                course="Course / std"
+                school="School / College Name"
+                year="2000 - 2000"
+                logo="/images/school-logo-1.png"
+              />
+              <QualificationItem
+                course="Course / std"
+                school="School / College Name"
+                year="2000 - 2000"
+                logo="/images/school-logo-2.png"
+              />
+            </div>
+          </div>
+          <div className="bg-white p-4 rounded-xl  w-1/4 flex flex-col min-h-0">
+            <h3 className="font-bold mb-4">Reviews</h3>
+            <div className="flex-1 space-y-3 overflow-y-auto custom-scrollbar -mr-2 pr-2">
+              <ReviewItem
+                name="Customer Name"
+                role="Student / Parent"
+                review="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis."
+              />
+              <ReviewItem
+                name="Customer Name"
+                role="Student / Parent"
+                review="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis."
+              />
             </div>
           </div>
         </div>
 
         {/* Main Content Body */}
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-x-8 gap-y-6">
-          <div className="space-y-6">
-            <Section title="My Core Teaching Philosophy">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                tristique rhoncus risus, nec sagittis sapien bibendum non.
-                Aenean suscipit, tortor sed tempor ornare, purus enim aliquet
-                sapien, vitae fringilla ipsum massa in justo.
-              </p>
-            </Section>
-            <Section title="Pedagogy">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                tristique rhoncus risus, nec sagittis sapien bibendum non.
-                Aenean suscipit, tortor sed tempor ornare, purus enim aliquet
-                sapien, vitae fringilla ipsum massa in justo.
-              </p>
-            </Section>
-          </div>
-          <div className="grid grid-cols-1 gap-6">
-            <div className="bg-gray-100 p-4 rounded-xl">
-              <h3 className="font-bold mb-4">Qualification</h3>
-              <div className="space-y-4">
-                <QualificationItem
-                  course="Course / std"
-                  school="School / College Name"
-                  year="2000 - 2000"
-                  logo="/images/school-logo-1.png"
-                />
-                <QualificationItem
-                  course="Course / std"
-                  school="School / College Name"
-                  year="2000 - 2000"
-                  logo="/images/school-logo-2.png"
-                />
-              </div>
-            </div>
-            <div className="bg-gray-100 p-4 rounded-xl flex flex-col min-h-0">
-              <h3 className="font-bold mb-4">Reviews</h3>
-              <div className="flex-1 space-y-3 overflow-y-auto custom-scrollbar -mr-2 pr-2">
-                <ReviewItem
-                  name="Customer Name"
-                  role="Student / Parent"
-                  review="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis."
-                />
-                <ReviewItem
-                  name="Customer Name"
-                  role="Student / Parent"
-                  review="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin fringilla, enim rhoncus tincidunt facilisis."
-                />
-              </div>
-            </div>
-          </div>
+
+        <div className="space-y-6 bg-white rounded-2xl p-4 ">
+          <Section title="My Core Teaching Philosophy">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              tristique rhoncus risus, nec sagittis sapien bibendum non. Aenean
+              suscipit, tortor sed tempor ornare, purus enim aliquet sapien,
+              vitae fringilla ipsum massa in justo. Maecenas venenatis mauris
+              vitae ligula tincidunt volutpat. Fusce id enim velit. Fusce
+              ornare, nulla ut malesuada sagittis, libero sem aliquam tortor,
+              vel aliquet nisi mauris a nisl. Nam vestibulum egestas nibh sit
+              amet malesuada. Proin erat risus, mollis in metus vestibulum,
+              auctor maximus metus. Morbi ac dictum sem. Nullam vitae congue
+              tellus. Class aptent taciti sociosqu ad litora torquent per
+              conubia nostra, per inceptos himenaeos. Etiam aliquam nisi quis
+              nisi tincidunt, nec aliquam lectus gravida. Pellentesque varius
+              purus vel dignissim pulvinar. Proin viverra elit eget leo dictum
+              aliquam. Nam ornare arcu sed pretium ornare. Vestibulum vel
+              dignissim dolor.
+            </p>
+          </Section>{" "}
+        </div>
+        <div className="bg-white rounded-2xl mt-4">
+          <Section title="Pedagogy">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              tristique rhoncus risus, nec sagittis sapien bibendum non. Aenean
+              suscipit, tortor sed tempor ornare, purus enim aliquet sapien,
+              vitae fringilla ipsum massa in justo. Maecenas venenatis mauris
+              vitae ligula tincidunt volutpat. Fusce id enim velit. Fusce
+              ornare, nulla ut malesuada sagittis, libero sem aliquam tortor,
+              vel aliquet nisi mauris a nisl. Nam vestibulum egestas nibh sit
+              amet malesuada. Proin erat risus, mollis in metus vestibulum,
+              auctor maximus metus. Morbi ac dictum sem. Nullam vitae congue
+              tellus. Class aptent taciti sociosqu ad litora torquent per
+              conubia nostra, per inceptos himenaeos. Etiam aliquam nisi quis
+              nisi tincidunt, nec aliquam lectus gravida. Pellentesque varius
+              purus vel dignissim pulvinar. Proin viverra elit eget leo dictum
+              aliquam. Nam ornare arcu sed pretium ornare. Vestibulum vel
+              dignissim dolor.
+            </p>
+          </Section>
         </div>
       </div>
     </BaseModal>
