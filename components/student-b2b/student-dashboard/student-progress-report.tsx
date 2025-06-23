@@ -420,7 +420,7 @@ const StudentReport: React.FC = () => {
 								<p>Gender: Male</p>
 								<p>DOB: 15 Jun 2015</p>
 								<p>Email: example@gm.com</p>
-								<p>Contact: +91 1234567890</p>
+								
 								<p>City: Mumbai</p>
 								<p>State: Maharashtra</p>
 							</div>

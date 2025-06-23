@@ -300,7 +300,7 @@ const TeacherDashboard = () => {
 										<p>Gender: Male</p>
 										<p>DOB: 5 Jun 2015</p>
 										<p className="whitespace-nowrap">Email: example@gmail.com</p>
-										<p>Contact: +91 1234567890</p>
+										
 										<p>City: Mumbai</p>
 										<p>State: Maharashtra</p>
 									</div>
