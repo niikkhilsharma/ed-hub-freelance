@@ -141,6 +141,7 @@ export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, n
                     <div  className=" absolute -z-10 opacity-10 rounded-2xl inset-0"style={{backgroundImage:"url('/images/brandpatternchat.png')",
                             backgroundRepeat: "none",
                              backgroundSize: "cover",
+                             filter:"grayscale(100%)"
                              
                         
                         }}></div>

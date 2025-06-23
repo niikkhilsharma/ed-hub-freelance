@@ -94,9 +94,9 @@ const ResultsCard: React.FC = () => {
               />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#8DD9B3] mt-0 mb-10">{overallScore}%</div>
-          <p className="text-sm text-black font-bold text-center max-w-xs">
-            Great effort! A little more focus will take you to the top.
+          <div className="text-3xl font-bold text-[#8DD9B3] mt-0 mb-5">{overallScore}%</div>
+          <p className="text-base text-black font-semibold text-center max-w-xs">
+            Great effort! A little <br />more focus will take <br />you to the top.
           </p>
         </div>
 
