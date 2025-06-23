@@ -18,6 +18,7 @@ import CourseSlider from "@/components/student/home/course-slider";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import { FaCircleCheck } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 interface Course {
   id: string;
@@ -172,6 +173,7 @@ const courses: Course[] = [
 ];
 
 export default function StudentHome() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const startingCourses = courses.slice(0, 3);
   return (
@@ -325,7 +327,12 @@ export default function StudentHome() {
                       <h3 className="text-xl font-bold text-gray-900">
                         Course Name
                       </h3>
-                      <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                      <button
+                        className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
+                        onClick={() =>
+                          router.push("/student/courses/know-more")
+                        }
+                      >
                         Know More
                       </button>
                     </div>

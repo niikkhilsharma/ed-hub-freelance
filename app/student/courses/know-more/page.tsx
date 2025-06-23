@@ -4,8 +4,10 @@ import StudentWrapper from "@/components/student-wrapper";
 import { FaCircleCheck } from "react-icons/fa6";
 import { ArrowLeft } from "lucide-react";
 import FooterNew from "@/components/footer3";
+import { useRouter } from "next/navigation";
 
 export default function CourseDetail() {
+  const router = useRouter();
   const loremIpsumLines = [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "Sed nec nunc id purus malesuada pretium id ut ante.",
@@ -27,7 +29,10 @@ export default function CourseDetail() {
         {/* headers */}
         <div className="bg-white border-b">
           <div className="w-full px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center py-4">
+            <div
+              className="flex items-center py-4"
+              onClick={() => router.push("/student/courses")}
+            >
               <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
               <h1 className="text-2xl font-semibold text-[#FF3366]">
                 Course Name

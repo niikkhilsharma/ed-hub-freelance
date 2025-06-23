@@ -139,7 +139,7 @@ export default function LearningSchedule() {
                       className="grid grid-cols-6 border-b border-[#B0B0B0] last:border-b-0"
                     >
                       {/* Time Column */}
-                      <div className="p-4 text-center font-medium text-[#6B7280] border-r border-[#B0B0B0]">
+                      <div className="p-4 text-center font-medium text-[#6B7280]">
                         {slot.time}
                       </div>
 

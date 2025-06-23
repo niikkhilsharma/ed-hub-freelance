@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/select";
 import CourseSlider from "./course-slider";
 import { FaCircleCheck } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 // Course type
 interface Course {
   id: string;
@@ -176,6 +177,7 @@ export default function CoursesComponent({
 }: {
   className?: string;
 }) {
+  const router = useRouter();
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -389,7 +391,10 @@ export default function CoursesComponent({
                   <h3 className="text-xl font-bold text-gray-900">
                     Course Name
                   </h3>
-                  <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                  <button
+                    className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
+                    onClick={() => router.push("/student/courses/know-more")}
+                  >
                     Know More
                   </button>
                 </div>
