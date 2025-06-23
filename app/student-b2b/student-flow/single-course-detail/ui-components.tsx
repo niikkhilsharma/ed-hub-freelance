@@ -57,7 +57,7 @@ export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({ currentD
         <button onClick={onPrevious} className="disabled:opacity-50" disabled={!onPrevious} aria-label="Previous month">
             <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600 hover:text-black cursor-pointer" />
         </button>
-        <span className="font-medium">{currentDate}</span>
+        <span className="">{currentDate}</span>
         <button onClick={onNext} className="disabled:opacity-50" disabled={!onNext} aria-label="Next month">
             <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600 hover:text-black cursor-pointer" />
         </button>

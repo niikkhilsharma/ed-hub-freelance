@@ -16,6 +16,7 @@ import {
   AssessmentItemData,
   MockPaperItemData,
   WorkSheetItemData,
+  FillForm,
 } from "./components";
 import { OptimizedCategoryTabsBar } from "@/components/common-components/topbar";
 
@@ -100,7 +101,7 @@ export default function MyClassAssesmentPage() {
   const headerUser = {
     name: "Shlok Agheda",
     role: "Student",
-    avatarSrc: "/placeholder-avatar-student.jpg",
+    avatarSrc: "/images/person.jpg",
   };
 
   const handleAccordionToggle = (weekId: string) => {
@@ -186,7 +187,7 @@ export default function MyClassAssesmentPage() {
           />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
-          <div className="md:col-span-1 lg:col-span-1">
+          <div className="md:col-span-1 lg:col-span-1 space-y-4">
             {" "}
             {/* Sidebar takes 1 col on md and lg */}
             <SubCategorySidebar
@@ -194,6 +195,7 @@ export default function MyClassAssesmentPage() {
               activeSubCategory={activeSubCategory}
               onSubCategoryClick={setActiveSubCategory}
             />
+            <FillForm />
           </div>
           <div className="md:col-span-3 lg:col-span-4">
             {" "}

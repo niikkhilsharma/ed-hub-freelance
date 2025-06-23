@@ -8,6 +8,28 @@ import {
     FiArrowLeftCircle, FiArrowRightCircle
 } from 'react-icons/fi';
 
+export const ActionButton: React.FC<{
+  variant: "primary" | "secondary";
+  size: "sm" | "md";
+  children: React.ReactNode;
+  className?: string;
+}> = ({ variant, size, children, className }) => (
+  <button
+    className={`font-semibold rounded-full transition-colors ${
+      variant === "primary"
+        ? "bg-[#3366FF] text-white hover:bg-blue-700"
+        : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+    } ${
+      size === "sm"
+        ? "px-4 py-2 text-xs sm:text-sm"
+        : "px-6 py-3 text-sm sm:text-base"
+    } ${className}`}
+  >
+    {children}
+  </button>
+);
+
+
 
 // --- Component 2: SubCategoryItem ---
 interface SubCategoryItemProps {

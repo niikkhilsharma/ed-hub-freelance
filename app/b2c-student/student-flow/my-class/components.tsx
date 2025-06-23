@@ -7,7 +7,8 @@ import {
 } from 'react-icons/fi';
 import {
     SubCategoryItem, ContentUITab, VideoItem,
-    DateNavigatorWithArrows, FilterDropdown
+    DateNavigatorWithArrows, FilterDropdown,
+    ActionButton
 } from './ui-component'; // Import UI components
 
 // --- Data Interfaces ---
@@ -32,6 +33,17 @@ export const LearningAccordion: React.FC<LearningAccordionProps> = ({ week, isOp
         </button>
         {isOpen && (<div className="p-3 sm:p-4 bg-[#F9FAFB] space-y-1.5 sm:space-y-2">{week.videos.map(video => (<VideoItem key={video.id} topic={video.topic} />))}</div>)}
     </div>
+);
+
+export const FillForm: React.FC = () => (
+  <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
+    <h3 className="text-base md:text-base font-bold text-[#FF3366]">
+      Request Teacher Change
+    </h3>
+    <ActionButton variant="primary" size="sm" className="xs:w-auto">
+      Fill the Form
+    </ActionButton>
+  </div>
 );
 
 // --- Assessment Item ---
@@ -75,7 +87,7 @@ interface SubCategorySidebarProps {
     onSubCategoryClick: (subCategory: string) => void;
 }
 export const SubCategorySidebar: React.FC<SubCategorySidebarProps> = ({ subCategories, activeSubCategory, onSubCategoryClick }) => (
-    <div className="bg-white rounded-2xl p-3 sm:p-4 space-y-1.5 sm:space-y-2 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
+    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 min-h-81 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
         {subCategories.map(subCat => (
             <SubCategoryItem
                 key={subCat}

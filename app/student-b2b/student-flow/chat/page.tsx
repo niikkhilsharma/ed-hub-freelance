@@ -10,6 +10,7 @@ import {
     TeacherContact, // Import type
     ChatMessageData // Import type
 } from './components';
+import { url } from 'inspector';
 
 // --- Sample Data (Strictly from your original) ---
 const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({ // Kept 10 distinct teacher entries
@@ -24,7 +25,7 @@ const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => 
 const initialChatMessagesData: ChatMessageData[] = [ // Exactly two messages
 	{
 		id: 'm1', sender: 'teacher', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-		timestamp: '6:50 pm', imageUrl: '/moon-chat-image.jpg', imageName: 'Moon_Surface.jpg',
+		timestamp: '6:50 pm', imageUrl: '/images/earth.png', imageName: 'Moon_Surface.jpg',
 	},
 	{
 		id: 'm2', sender: 'user', text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
@@ -58,10 +59,13 @@ export default function ChatPage() {
 	};
 
 	return (
-		<div className="bg-gray-100 min-h-screen flex flex-col">
+		<div className=" min-h-screen  bg-[#EEEEEE] flex flex-col"
+		
+		>
+			
 			<Header user={headerUser} />
             {/* Original main: flex-grow container mx-auto p-4 sm:p-6 lg:p-8 flex gap-5 items-start */}
-			<main className="flex-grow container mx-auto p-2 flex flex-col gap-3 
+			<main className=" z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 
                            sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start"> {/* Responsive padding, gap, and flex direction */}
 				<TeacherListSidebar
                     teachers={teachersListData} // Using the 10-item list for initial render
@@ -76,7 +80,8 @@ export default function ChatPage() {
                     onSendMessage={handleSendMessage}
                 />
 			</main>
-			<Footer />
+				<Footer />
+			
 		</div>
 	);
 }
