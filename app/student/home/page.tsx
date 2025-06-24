@@ -196,7 +196,7 @@ export default function StudentHome() {
           <div className="max-w-7xl w-full mx-auto p-16 md:p-12 flex flex-col md:flex-row items-center justify-between h-full gap-16">
             {/* Left Content */}
             <div className="w-full md:w-[55%] z-10 gap-y-6 flex flex-col justify-center h-full">
-              <h1 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-[54px] font-bold leading-tight">
                 Limitless learning at <br />
                 your{" "}
                 <span
@@ -213,8 +213,7 @@ export default function StudentHome() {
 
               <p className="text-sm md:text-md lg:text-[15px] xl:text-lg">
                 Online learning and teaching mar ketplace with 5K+ courses & 10M
-                students. <br />
-                Taught by experts to help you acquire new skills.
+                students. Taught by experts to help you acquire new skills.
               </p>
 
               <div className="flex justify-center items-center gap-2 w-fit">
