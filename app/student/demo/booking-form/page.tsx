@@ -118,7 +118,7 @@ export default function DemoBookingForm() {
         </div>
 
         <section className="px-4 sm:px-8 lg:px-16 py-8">
-          <div className="rounded-xl bg-white space-y-4 p-4">
+          <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
             <h1 className="text-3xl font-semibold text-[#FF3366]">
               Registration
             </h1>

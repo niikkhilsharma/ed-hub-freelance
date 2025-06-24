@@ -28,7 +28,7 @@ export default function DemoRating() {
     <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
         <section className="px-16 py-8">
-          <div className="rounded-xl bg-white space-y-4 p-4">
+          <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
             <h1 className="text-3xl font-semibold text-[#FF3366]">
               Rate Your Demo Experience
             </h1>

@@ -104,8 +104,8 @@ export default function Checkout() {
         </div>
       </div>
 
-      <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-16 pb-70">
-        <div className="mx-auto">
+      <div className="bg-[#EEEEEE] w-full py-8 space-y-6 px-16 pb-70">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Left Section - Billing & Payment */}
             <div className="lg:col-span-2 space-y-6">

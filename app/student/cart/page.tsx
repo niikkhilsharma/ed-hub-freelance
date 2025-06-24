@@ -110,7 +110,7 @@ export default function CourseDetail() {
           </div>
         </div>
 
-        <div className="container mx-auto px-12 pt-8">
+        <div className="max-w-7xl mx-auto py-10">
           <div className="flex flex-col mx-auto bg-white rounded-3xl gap-4">
             {/* Cart Items Section */}
             <div className="lg:col-span-2">

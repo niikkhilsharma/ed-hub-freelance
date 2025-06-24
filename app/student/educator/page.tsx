@@ -173,7 +173,7 @@ function EducatorPanel() {
 
   return (
     <div className="w-full mb-62">
-      <div className="w-full p-6 bg-white rounded-3xl">
+      <div className="max-w-7xl mx-auto w-full p-6 bg-white rounded-3xl">
         {/* Heading Section */}
         <div className="text-left mb-10 md:mb-12">
           <h1

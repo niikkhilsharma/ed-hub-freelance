@@ -186,7 +186,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
   return (
     <StudentWrapper>
       <div className="bg-[#EEEEEE] mx-auto w-full py-8 space-y-6 px-16">
-        <div className="mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-11 gap-4">
             {/* Left Section */}
             <div className="bg-[#FFFFFF] rounded-2xl p-3 lg:col-span-8">
@@ -310,7 +310,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
+        <div className="max-w-7xl flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
           {/* Fixed Sidebar */}
           <div className="w-64 flex-shrink-0">
             <div className="p-6">

@@ -10,7 +10,7 @@ export default function AfterDemoCourseFeePayment() {
     <StudentWrapper>
       <div className="relative z-10 bg-[#E3E3E3]">
         <section className="px-16 py-8">
-          <div className="rounded-xl bg-white space-y-4 p-4">
+          <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
             <div className="md:grid md:grid-cols-[1fr_1fr] p-4 gap-16">
               <div className="space-y-5">
                 <h1 className=" text-center text-4xl font-bold text-[#8DD9B3]">

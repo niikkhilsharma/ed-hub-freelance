@@ -28,7 +28,7 @@ export default function CourseDetail() {
         </div>
 
         <section className="px-16 py-8">
-          <div className="rounded-xl bg-white space-y-4 p-4">
+          <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
             <h1 className="text-3xl font-semibold text-[#FF3366]">Review</h1>
             <div className="md:grid md:grid-cols-[1fr_1fr] p-4 gap-16">
               <div className="space-y-5 pl-1">
