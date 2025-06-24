@@ -65,7 +65,6 @@ const Curriculum = () => {
 
   return (
     <div className="bg-gray-100">
-
       <div className="bg-white py-3">
         <div className="container mx-2 flex items-center gap-3">
           <button
@@ -444,7 +443,6 @@ interface FilterDropdownProps {
   className?: string;
 }
 export const FilterDropdown: React.FC<FilterDropdownProps> = ({
-  
   options,
   className = "",
 }) => (
