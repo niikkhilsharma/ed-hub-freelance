@@ -94,7 +94,7 @@ export default function StudentNavbarNew() {
             </div>
 
             {/* Center - Navigation Items */}
-            <div className="hidden md:flex items-center space-x-8 bg-[#E3F2FD26] rounded-full p-1">
+            <div className="hidden md:flex items-center space-x-4 bg-[#E3F2FD26] rounded-full p-1">
               {navItems.map((item) => {
                 const IconComponent = item.icon;
                 return (
@@ -117,8 +117,14 @@ export default function StudentNavbarNew() {
             {/* Right Side - Actions */}
             <div className="flex items-center space-x-3">
               {/* Ask me button */}
-              <button className="hidden sm:flex items-center space-x-2 bg-[#E3F2FD26] text-black px-4 py-2 rounded-full font-medium">
-                <Bot className="h-4 w-4" />
+              <button className="hidden sm:flex items-center space-x-2 bg-[#E3F2FD26] text-black px-2 py-2 rounded-full font-medium">
+                <Image
+                  src="/chatbot_icon.png"
+                  alt="chatbot icon"
+                  width={32}
+                  height={32}
+                  className=""
+                />
                 <span className="text-md text-white">Ask me!</span>
               </button>
 
@@ -130,7 +136,7 @@ export default function StudentNavbarNew() {
               {/* Profile Picture */}
               <div className="relative h-10 w-10 rounded-full overflow-hidden border-2 border-white/20">
                 <Image
-                  src="/placeholder.svg?height=40&width=40"
+                  src="/student/home/student-profile.jpg"
                   alt="User profile"
                   fill
                   className="object-cover"
