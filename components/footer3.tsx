@@ -165,223 +165,236 @@ export default function FooterNew({
         </div>
       )}
 
-      <footer className="text-white pt-4 w-full px-6 md:px-0 max-w-7xl">
-        <div className="container mx-auto py-8">
-          <motion.div
-            variants={staggerChildren}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8"
-          >
-            {/* Navigation Links Section */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {/* Column 1 */}
-                <motion.div variants={fadeInUp}>
-                  <motion.ul variants={staggerChildren} className="space-y-3">
-                    {navigationLinks.column1.map((link, index) => (
-                      <motion.li key={index} variants={fadeInUp}>
-                        <motion.a
-                          href={link.href}
-                          initial="initial"
-                          whileHover="hover"
-                          variants={linkHover}
-                          className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
-                        >
-                          {link.name}
-                        </motion.a>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </motion.div>
+      <div
+        style={{
+          background: "url('/background_footer.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          width: "100%",
+        }}
+      >
+        <footer className="text-white mx-auto pt-4 w-full px-6 md:px-0 max-w-7xl">
+          <div className="container mx-auto py-8">
+            <motion.div
+              variants={staggerChildren}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8"
+            >
+              {/* Navigation Links Section */}
+              <div className="lg:col-span-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {/* Column 1 */}
+                  <motion.div variants={fadeInUp}>
+                    <motion.ul variants={staggerChildren} className="space-y-3">
+                      {navigationLinks.column1.map((link, index) => (
+                        <motion.li key={index} variants={fadeInUp}>
+                          <motion.a
+                            href={link.href}
+                            initial="initial"
+                            whileHover="hover"
+                            variants={linkHover}
+                            className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
+                          >
+                            {link.name}
+                          </motion.a>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </motion.div>
 
-                {/* Column 2 */}
-                <motion.div variants={fadeInUp}>
-                  <motion.ul variants={staggerChildren} className="space-y-3">
-                    {navigationLinks.column2.map((link, index) => (
-                      <motion.li key={index} variants={fadeInUp}>
-                        <motion.a
-                          href={link.href}
-                          initial="initial"
-                          whileHover="hover"
-                          variants={linkHover}
-                          className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
-                        >
-                          {link.name}
-                        </motion.a>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </motion.div>
+                  {/* Column 2 */}
+                  <motion.div variants={fadeInUp}>
+                    <motion.ul variants={staggerChildren} className="space-y-3">
+                      {navigationLinks.column2.map((link, index) => (
+                        <motion.li key={index} variants={fadeInUp}>
+                          <motion.a
+                            href={link.href}
+                            initial="initial"
+                            whileHover="hover"
+                            variants={linkHover}
+                            className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
+                          >
+                            {link.name}
+                          </motion.a>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </motion.div>
 
-                {/* Column 3 */}
-                <motion.div variants={fadeInUp}>
-                  <motion.ul variants={staggerChildren} className="space-y-3">
-                    {navigationLinks.column3.map((link, index) => (
-                      <motion.li key={index} variants={fadeInUp}>
-                        <motion.a
-                          href={link.href}
-                          initial="initial"
-                          whileHover="hover"
-                          variants={linkHover}
-                          className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
-                        >
-                          {link.name}
-                        </motion.a>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </motion.div>
+                  {/* Column 3 */}
+                  <motion.div variants={fadeInUp}>
+                    <motion.ul variants={staggerChildren} className="space-y-3">
+                      {navigationLinks.column3.map((link, index) => (
+                        <motion.li key={index} variants={fadeInUp}>
+                          <motion.a
+                            href={link.href}
+                            initial="initial"
+                            whileHover="hover"
+                            variants={linkHover}
+                            className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
+                          >
+                            {link.name}
+                          </motion.a>
+                        </motion.li>
+                      ))}
+                    </motion.ul>
+                  </motion.div>
+                </div>
               </div>
-            </div>
 
-            {/* Contact Information Section */}
-            <motion.div variants={fadeInUp} className="lg:col-span-4">
-              <div className="space-y-6">
-                {/* Map Image Placeholder */}
-                <motion.div
-                  variants={fadeInUp}
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="relative"
-                >
-                  <div className="w-full h-32 rounded-3xl overflow-hidden">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <img
-                        className="rounded-3xl h-full w-auto"
-                        src="/map.png"
-                        alt="map"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-
-                {/* Contact Details */}
-                <motion.div variants={staggerChildren} className="space-y-4">
-                  <motion.h2
+              {/* Contact Information Section */}
+              <motion.div variants={fadeInUp} className="lg:col-span-4">
+                <div className="space-y-6">
+                  {/* Map Image Placeholder */}
+                  <motion.div
                     variants={fadeInUp}
-                    className="text-white font-medium"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="relative"
                   >
-                    Eldeco Centre, Malviya Nagar
-                  </motion.h2>
+                    <div className="w-full h-32 rounded-3xl overflow-hidden">
+                      <div className="w-full h-full flex items-center justify-center">
+                        <img
+                          className="rounded-3xl h-full w-auto"
+                          src="/map.png"
+                          alt="map"
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
 
-                  <motion.div variants={staggerChildren} className="space-y-2">
-                    <motion.p
+                  {/* Contact Details */}
+                  <motion.div variants={staggerChildren} className="space-y-4">
+                    <motion.h2
                       variants={fadeInUp}
-                      className="text-white mb-4  font-medium"
+                      className="text-white font-medium"
                     >
-                      WeWork Eldeco Centre, Malviya Nagar, Eldeco centre,
-                      <br />
-                      Block A, Shivalik Colony, Malviya Nagar, Delhi, DL 110017
-                    </motion.p>
-
-                    <motion.p variants={fadeInUp}>
-                      <motion.span
-                        whileHover={{ color: "#93c5fd" }}
-                        className="text-white hover:underline cursor-pointer  font-medium"
-                      >
-                        Phone: (+91) 922-044-2129
-                      </motion.span>
-                    </motion.p>
+                      Eldeco Centre, Malviya Nagar
+                    </motion.h2>
 
                     <motion.div
                       variants={staggerChildren}
-                      className="space-y-1"
+                      className="space-y-2"
                     >
+                      <motion.p
+                        variants={fadeInUp}
+                        className="text-white mb-4  font-medium"
+                      >
+                        WeWork Eldeco Centre, Malviya Nagar, Eldeco centre,
+                        <br />
+                        Block A, Shivalik Colony, Malviya Nagar, Delhi, DL
+                        110017
+                      </motion.p>
+
                       <motion.p variants={fadeInUp}>
-                        <span className="text-white  font-medium">
-                          Email for Queries or Info:
-                        </span>{" "}
                         <motion.span
                           whileHover={{ color: "#93c5fd" }}
                           className="text-white hover:underline cursor-pointer  font-medium"
                         >
-                          info@edunique.in
+                          Phone: (+91) 922-044-2129
                         </motion.span>
                       </motion.p>
-                      <motion.p variants={fadeInUp}>
-                        <span className="text-white font-medium">
-                          Email for Support or Concerns:
-                        </span>{" "}
-                        <motion.span
-                          whileHover={{ color: "#93c5fd" }}
-                          className="text-white hover:underline cursor-pointer font-medium"
-                        >
-                          supportyou@edunique.in
-                        </motion.span>
-                      </motion.p>
-                      <motion.p variants={fadeInUp}>
-                        <span className="text-white">Email for Careers:</span>{" "}
-                        <motion.span
-                          whileHover={{ color: "#93c5fd" }}
-                          className="text-white hover:underline cursor-pointer  font-medium"
-                        >
-                          rightfit@edunique.in
-                        </motion.span>
-                      </motion.p>
+
+                      <motion.div
+                        variants={staggerChildren}
+                        className="space-y-1"
+                      >
+                        <motion.p variants={fadeInUp}>
+                          <span className="text-white  font-medium">
+                            Email for Queries or Info:
+                          </span>{" "}
+                          <motion.span
+                            whileHover={{ color: "#93c5fd" }}
+                            className="text-white hover:underline cursor-pointer  font-medium"
+                          >
+                            info@edunique.in
+                          </motion.span>
+                        </motion.p>
+                        <motion.p variants={fadeInUp}>
+                          <span className="text-white font-medium">
+                            Email for Support or Concerns:
+                          </span>{" "}
+                          <motion.span
+                            whileHover={{ color: "#93c5fd" }}
+                            className="text-white hover:underline cursor-pointer font-medium"
+                          >
+                            supportyou@edunique.in
+                          </motion.span>
+                        </motion.p>
+                        <motion.p variants={fadeInUp}>
+                          <span className="text-white">Email for Careers:</span>{" "}
+                          <motion.span
+                            whileHover={{ color: "#93c5fd" }}
+                            className="text-white hover:underline cursor-pointer  font-medium"
+                          >
+                            rightfit@edunique.in
+                          </motion.span>
+                        </motion.p>
+                      </motion.div>
                     </motion.div>
                   </motion.div>
-                </motion.div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </footer>
-
-      <div className="max-w-7xl w-full space-y-2 flex flex-col">
-        {/* Copyright Bar */}
-        <motion.div variants={fadeInUp} className="w-full text-white">
-          <div className="container mx-auto px-4 border-blue-400 border-t py-2 text-center flex justify-between items-start">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.2, duration: 0.5 }}
-              className="text-white text-xs  font-medium"
-            >
-              Edunique All Rights Reserved 2025
-            </motion.p>
-            <motion.div
-              variants={staggerChildren}
-              className="flex mt-2 space-x-3 self-end"
-            >
-              {/* Updated Social Media Icons */}
-              {[
-                {
-                  bg: "bg-white",
-                  icon: "instagram",
-                  color: "text-[#3366FF]",
-                },
-                {
-                  bg: "bg-white",
-                  icon: "twitter",
-                  color: "text-[#3366FF]",
-                },
-                {
-                  bg: "bg-white",
-                  icon: "linkedin",
-                  color: "text-[#3366FF]",
-                },
-                {
-                  bg: "bg-white",
-                  icon: "facebook",
-                  color: "text-[#3366FF]",
-                },
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href="#"
-                  initial="initial"
-                  whileHover="hover"
-                  variants={socialIconHover}
-                  className={`${social.bg} rounded-lg p-2 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow`}
-                >
-                  <SocialIcon
-                    type={social.icon}
-                    className={`w-6 h-6 ${social.color}`}
-                  />
-                </motion.a>
-              ))}
+                </div>
+              </motion.div>
             </motion.div>
           </div>
-        </motion.div>
+        </footer>
+
+        <div className="max-w-7xl w-full mx-auto space-y-2 flex flex-col">
+          {/* Copyright Bar */}
+          <motion.div variants={fadeInUp} className="w-full text-white">
+            <div className="container mx-auto px-4 border-blue-400 border-t py-2 text-center flex justify-between items-start">
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+                className="text-white text-xs  font-medium"
+              >
+                Edunique All Rights Reserved 2025
+              </motion.p>
+              <motion.div
+                variants={staggerChildren}
+                className="flex mt-2 space-x-3 self-end"
+              >
+                {/* Updated Social Media Icons */}
+                {[
+                  {
+                    bg: "bg-white",
+                    icon: "instagram",
+                    color: "text-[#3366FF]",
+                  },
+                  {
+                    bg: "bg-white",
+                    icon: "twitter",
+                    color: "text-[#3366FF]",
+                  },
+                  {
+                    bg: "bg-white",
+                    icon: "linkedin",
+                    color: "text-[#3366FF]",
+                  },
+                  {
+                    bg: "bg-white",
+                    icon: "facebook",
+                    color: "text-[#3366FF]",
+                  },
+                ].map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href="#"
+                    initial="initial"
+                    whileHover="hover"
+                    variants={socialIconHover}
+                    className={`${social.bg} rounded-lg p-2 flex items-center justify-center shadow-md hover:shadow-lg transition-shadow`}
+                  >
+                    <SocialIcon
+                      type={social.icon}
+                      className={`w-6 h-6 ${social.color}`}
+                    />
+                  </motion.a>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );
