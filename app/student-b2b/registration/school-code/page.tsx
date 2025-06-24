@@ -1,18 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { FiCheck } from 'react-icons/fi'
 import AuthLayout from '@/components/auth-layout' // Adjust path if needed
 
-const profiles = [
-  { id: 'student', label: 'Student / Parents', iconSrc: '/images/profile-student-smiley.svg' },
-  { id: 'teacher', label: 'Teacher', iconSrc: '/images/profile-teacher-pen.svg' },
-  { id: 'principal', label: 'Principal', iconSrc: '/images/profile-principal-star.svg' },
-]
+
 
 export default function ChooseProfilePage() {
-  const [selectedProfile, setSelectedProfile] = useState<string>(profiles[2].id)
+//   const [selectedProfile, setSelectedProfile] = useState<string>(profiles[2].id)
 
   return (
 	<AuthLayout

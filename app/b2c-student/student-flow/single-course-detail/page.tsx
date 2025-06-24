@@ -3,7 +3,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Header from '@/components/layout/Header'; // Adjust path if needed
-import Footer from '@/components/layout/Footer'; // Adjust path if needed
 import { FiArrowLeft } from 'react-icons/fi';
 import {
     LearningContentCard,

@@ -3,8 +3,6 @@
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Poppins } from "next/font/google";
-import { Raleway } from "next/font/google";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import Image from "next/image";
@@ -81,7 +79,7 @@ export default function StudentLoginForm() {
 
               <div className="flex items-center font-Raleway font-medium justify-between mt-6">
                 <div className="ml-2 text-sm flex gap-1 text-gray-500/80">
-                  <p>Don't Have An Account?</p>
+                  <p>Don&apos;t Have An Account?</p>
                   <Link
                     href={"/student/auth/register"}
                     className="text-[#F9326F] hover:underline"

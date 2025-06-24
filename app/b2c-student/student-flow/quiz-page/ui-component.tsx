@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { FiChevronDown, FiArrowLeft } from 'react-icons/fi';
+import { FiChevronDown } from 'react-icons/fi';
 
 // --- Component 1: MainCategoryTab ---
 interface MainCategoryTabProps {
@@ -63,7 +63,7 @@ export const ActionButton: React.FC<ActionButtonProps> = ({ children, className,
     // Original desktop submit button: px-12 py-3 bg-[#3366FF] text-white font-semibold text-sm rounded-full hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md
     let baseStyle = "font-semibold rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 shadow-md";
     // Mobile default sizes, desktop (sm+) sizes match original
-    let sizeStyle = "px-10 py-2.5 text-xs sm:px-12 sm:py-3 sm:text-sm";
+    const sizeStyle = "px-10 py-2.5 text-xs sm:px-12 sm:py-3 sm:text-sm";
 
     if (variant === 'primary') {
         baseStyle += " bg-[#3366FF] text-white hover:bg-blue-700 focus:ring-blue-500";

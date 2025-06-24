@@ -1,16 +1,14 @@
 // page.tsx (e.g. /app/chat/page.tsx)
 "use client";
 
-import React, { useState, useEffect, } from 'react';
+import React, { useState } from 'react';
 import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
 import {
     TeacherListSidebar,
     ChatArea,
     TeacherContact, // Import type
     ChatMessageData // Import type
 } from './components';
-import { url } from 'inspector';
 
 // --- Sample Data (Strictly from your original) ---
 const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({ // Kept 10 distinct teacher entries

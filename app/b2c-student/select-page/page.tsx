@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import react, { useState } from "react";
+import  { useState } from "react";
 
 const options = [
   {

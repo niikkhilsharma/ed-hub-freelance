@@ -3,7 +3,6 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/b2c-student/Header';
-import Footer from '@/components/layout/Footer';
 import {
     QuizResultHeader,
     QuestionReviewBlock,

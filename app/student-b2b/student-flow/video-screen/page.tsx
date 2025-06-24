@@ -6,7 +6,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 // Removed FiArrowLeft from here, use SimpleIconButton from ui-components if needed for page header
 import {
-    MainCategoryTabsBar,
     VideoPlayerSection,
     PlaylistSidebar,
     VideoInfoSection,
@@ -42,7 +41,7 @@ const loremIpsumData = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 export default function CourseVideoPage() {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategoriesData[0]);
 	const [activeInfoTab, setActiveInfoTab] = useState<'Overview' | 'Quiz' | 'Result'>('Result'); // Matched original default
-	const [currentVideoTime, setCurrentVideoTime] = useState(30); // Example
+	const [currentVideoTime] = useState(30); // Example
     const [activePlaylistItemId, setActivePlaylistItemId] = useState<string | null>(playlistDataPage[0]?.id || null);
 
 

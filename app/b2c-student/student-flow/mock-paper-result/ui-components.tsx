@@ -16,7 +16,7 @@ export const OptionReviewDisplay: React.FC<{ option: OptionReviewUIData }> = ({ 
     const optionStyle = 'bg-white hover:bg-gray-100'; // Base style
     let icon = null;
     let textColor = 'text-[#6B7280]'; // Default text color
-    let selectedSpecificBg = ''; // For selected correct/incorrect options if needed beyond base
+    const selectedSpecificBg = ''; // For selected correct/incorrect options if needed beyond base
 
     if (option.isUserSelected) {
         if (option.isCorrect) {

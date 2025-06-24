@@ -1,5 +1,4 @@
 import React from "react";
-import { Play } from "lucide-react";
 import { FaRegCirclePlay} from "react-icons/fa6"
 import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
@@ -16,8 +15,8 @@ const messages = [
     sender: "Aura",
     text: (
       <>
-        <p>Great question! 🌱 Photosynthesis is how plants use sunlight, water, and air (carbon dioxide) to make their food. It's like a magic recipe using sunlight!</p>
-        <p className="mt-2">Want to see it in action? Here's a fun video that explains it:</p>
+        <p>Great question! 🌱 Photosynthesis is how plants use sunlight, water, and air (carbon dioxide) to make their food. It&apos;s like a magic recipe using sunlight!</p>
+        <p className="mt-2">Want to see it in action? Here&apos;s a fun video that explains it:</p>
         <button className="mt-3 flex items-center space-x-2 w-full bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
           <FaRegCirclePlay />
           <span>Photosynthesis</span>

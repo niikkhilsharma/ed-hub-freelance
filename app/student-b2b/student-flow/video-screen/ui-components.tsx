@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { FiChevronDown, FiArrowLeft } from 'react-icons/fi'; // Only icons directly used by these UI primitives
+import { FiChevronDown } from 'react-icons/fi'; // Only icons directly used by these UI primitives
 
 // --- Component 1: MainCategoryTab ---
 interface MainCategoryTabProps {

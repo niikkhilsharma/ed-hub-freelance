@@ -2,14 +2,12 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import {
   FiChevronDown,
   FiChevronUp,
-  FiFileText as FiFileIcon,
+  
   FiDownload,
 } from "react-icons/fi";
-import { Button } from "@/components/ui/button";
 import { DateNavigatorWithArrows, FilterDropdown } from "./ui-components";
 // NOTE: I am mocking the ui-components as they were not provided.
 // In your project, this import should work correctly.
@@ -300,7 +298,7 @@ export const CertificateCard: React.FC = () => (
 );
 
 export const ExtraClass: React.FC<{ materials: CourseMaterial[] }> = ({
-  materials,
+  
 }) => (
   <div className="bg-white rounded-2xl p-3 md:p-4 gap-1 h-full flex flex-col justify-between">
     <h3 className="font-medium text-black  text-sm md:text-base">

@@ -6,11 +6,10 @@
    FiChevronDown,
    FiFileText
  } from "react-icons/fi";
- import { IoSettingsOutline } from "react-icons/io5";
  import { MdOutlineFileDownload } from "react-icons/md";
  import { LuInfo } from "react-icons/lu";
  import MaxWidthWrapper from "../max-width-wrapper";
- import GoBack from "./goback";
+ import GoBack from "@/components/principal/goback";
  
  // --- Style Constants ---
  // const ACCENT_PINK = "#FF3366";

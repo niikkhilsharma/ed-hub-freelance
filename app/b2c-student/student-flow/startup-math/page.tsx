@@ -2,7 +2,6 @@
 
 import { useState, useMemo } from 'react'
 import Header from '@/components/b2c-student/Header'
-import Footer from '@/components/layout/Footer'
 import { FiArrowLeft, FiArrowLeftCircle, FiArrowRightCircle, FiChevronDown } from 'react-icons/fi'
 import Image from 'next/image'
 

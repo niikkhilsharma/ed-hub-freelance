@@ -2,7 +2,6 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image'; // For QuestionReviewBlock icons
 import { FiArrowLeft } from 'react-icons/fi'; // Smile for ScoreChart
 import { OptionReviewDisplay, SimpleIconButton, ScoreChartDisplay } from './ui-components';
 

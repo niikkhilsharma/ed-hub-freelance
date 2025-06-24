@@ -5,7 +5,17 @@ import Image from "next/image";
 
 // --- Reusable Form Field Components for Clean Code ---
 
-const FormInput = ({ id, label, ...props }: { id: string, label: string, [key: string]: any }) => (
+interface FormSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  id: string;
+  label: string;
+  children: React.ReactNode;
+}
+
+interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  label: string;
+}
+const FormInput: React.FC<FormInputProps> = ({ id, label, ...props }) => (
   <div className="mb-6">
     <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
     <input
@@ -16,7 +26,7 @@ const FormInput = ({ id, label, ...props }: { id: string, label: string, [key: s
   </div>
 );
 
-const FormSelect = ({ id, label, children, ...props }: { id: string, label: string, children: React.ReactNode, [key: string]: any }) => (
+const FormSelect: React.FC<FormSelectProps> = ({ id, label, children, ...props }) => (
   <div className="mb-6">
     <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
     <div className="relative">

@@ -1,7 +1,5 @@
 import Image from 'next/image'
-import { Poppins } from 'next/font/google'
 import { FiInstagram } from 'react-icons/fi'
-import { RxCross2 } from 'react-icons/rx'
 import { FaLinkedinIn, FaFacebookF } from 'react-icons/fa6'
 import { FaXTwitter } from "react-icons/fa6";
 

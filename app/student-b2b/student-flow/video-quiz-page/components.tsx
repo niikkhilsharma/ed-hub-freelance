@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { FiArrowLeft } from 'react-icons/fi'; // Only icons directly used by these major components
-import { ActionButton, MainCategoryTab, OptionButton, SimpleIconButton } from './ui-components';
+import { ActionButton, OptionButton, SimpleIconButton } from './ui-components';
 
 // --- Data Interfaces (from your original) ---
 export interface Option { id: string; text: string; }

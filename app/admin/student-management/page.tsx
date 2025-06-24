@@ -11,13 +11,10 @@ import { cn } from '@/lib/utils'
 import Image from 'next/image'
 
 export default function StudentManagement() {
-	const [activeTab, setActiveTab] = useState<'Analysis' | 'Content' | 'Teachers' | 'Student'>('Teachers')
-	const tabs: Array<'Analysis' | 'Schools' | 'Teachers' | 'Student' | 'Content'> = [
-		'Analysis',
-		'Teachers',
-		'Student',
-		'Content',
-	]
+	const tabs = ['Analysis', 'Teachers', 'Student', 'Content'] as const;
+type Tab = typeof tabs[number];
+
+const [activeTab, setActiveTab] = useState<Tab>('Teachers');
 
 	const classesNames = ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5']
 	const [activeClass, setActiveClass] = useState(classesNames[0])
@@ -31,7 +28,7 @@ export default function StudentManagement() {
 					{tabs.map(tab => (
 						<div
 							key={tab}
-							onClick={() => setActiveTab(tab as any)}
+							onClick={() => setActiveTab(tab)}
 							className={cn(
 								'cursor-pointer',
 								activeTab === tab ? 'text-[#3366FF] underline underline-offset-8' : 'text-[#6B7280]'

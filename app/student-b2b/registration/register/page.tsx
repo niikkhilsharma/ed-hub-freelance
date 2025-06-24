@@ -4,8 +4,12 @@ import { useState } from "react";
 import Image from "next/image";
 
 // --- Reusable Form Field Components for Clean Code ---
+interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  label: string;
+}
 
-const FormInput = ({ id, label, ...props }: { id: string, label: string, [key: string]: any }) => (
+const FormInput: React.FC<FormInputProps> = ({ id, label, ...props }) => (
   <div className="mb-6">
     <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
     <input
@@ -15,8 +19,12 @@ const FormInput = ({ id, label, ...props }: { id: string, label: string, [key: s
     />
   </div>
 );
-
-const FormSelect = ({ id, label, children, ...props }: { id: string, label: string, children: React.ReactNode, [key: string]: any }) => (
+interface FormSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  id: string;
+  label: string;
+  children: React.ReactNode;
+}
+const FormSelect: React.FC<FormSelectProps> = ({ id, label, children, ...props }) => (
   <div className="mb-6">
     <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
     <div className="relative">
@@ -30,21 +38,21 @@ const FormSelect = ({ id, label, children, ...props }: { id: string, label: stri
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
 
         <svg
-      width={12}
-      height={7}
-      viewBox="0 0 14 8"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        d="M1 1l6 6 6-6"
-        stroke="#000"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
+          width={12}
+          height={7}
+          viewBox="0 0 14 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          {...props}
+        >
+          <path
+            d="M1 1l6 6 6-6"
+            stroke="#000"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </div>
     </div>
   </div>
@@ -88,48 +96,48 @@ export default function StudentInfoPage() {
     >
       {/* The main container no longer has a fixed height, allowing the content to define it. */}
       <main className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
-        
+
         {/* --- Left Panel: Form (No longer has overflow or fixed height) --- */}
         <div className="w-full md:w-2/5 lg:w-1/3 bg-white p-6 sm:p-8 lg:p-10 rounded-4xl shadow-2xl">
-            <form onSubmit={handleSubmit}>
-                <FormInput id="name" name="name" label="Name" type="text" placeholder="Enter Name" value={formData.name} onChange={handleChange} />
-                <FormInput id="className" name="className" label="Class" type="text" placeholder="Enter Class" value={formData.className} onChange={handleChange} />
-                <FormInput id="dob" name="dob" label="Date of Birth" type="text" placeholder="DD/MM/YY" value={formData.dob} onChange={handleChange} />
-                <FormInput id="guardianName" name="guardianName" label="Parent / Guardian Name" type="text" placeholder="Enter Parent / Guardian Name" value={formData.guardianName} onChange={handleChange} />
-                <FormInput id="email" name="email" label="Email ID" type="email" placeholder="Enter Email ID" value={formData.email} onChange={handleChange} />
-                <FormInput id="mobile" name="mobile" label="Mobile Number" type="tel" placeholder="+91 1234567890" value={formData.mobile} onChange={handleChange} />
-                
-                <FormSelect id="country" name="country" label="Country" value={formData.country} onChange={handleChange}>
-                    <option value="" disabled>Select Country</option>
-                    <option value="india">India</option>
-                </FormSelect>
+          <form onSubmit={handleSubmit}>
+            <FormInput id="name" name="name" label="Name" type="text" placeholder="Enter Name" value={formData.name} onChange={handleChange} />
+            <FormInput id="className" name="className" label="Class" type="text" placeholder="Enter Class" value={formData.className} onChange={handleChange} />
+            <FormInput id="dob" name="dob" label="Date of Birth" type="text" placeholder="DD/MM/YY" value={formData.dob} onChange={handleChange} />
+            <FormInput id="guardianName" name="guardianName" label="Parent / Guardian Name" type="text" placeholder="Enter Parent / Guardian Name" value={formData.guardianName} onChange={handleChange} />
+            <FormInput id="email" name="email" label="Email ID" type="email" placeholder="Enter Email ID" value={formData.email} onChange={handleChange} />
+            <FormInput id="mobile" name="mobile" label="Mobile Number" type="tel" placeholder="+91 1234567890" value={formData.mobile} onChange={handleChange} />
 
-                <FormSelect id="state" name="state" label="State" value={formData.state} onChange={handleChange}>
-                    <option value="" disabled>Select State</option>
-                    <option value="maharashtra">Maharashtra</option>
-                </FormSelect>
+            <FormSelect id="country" name="country" label="Country" value={formData.country} onChange={handleChange}>
+              <option value="" disabled>Select Country</option>
+              <option value="india">India</option>
+            </FormSelect>
 
-                {/* Final form select has a larger bottom margin to space it from the button */}
-                <div className="mb-8">
-                    <FormSelect id="city" name="city" label="City" value={formData.city} onChange={handleChange}>
-                        <option value="" disabled>Select City</option>
-                        <option value="mumbai">Mumbai</option>
-                    </FormSelect>
-                </div>
+            <FormSelect id="state" name="state" label="State" value={formData.state} onChange={handleChange}>
+              <option value="" disabled>Select State</option>
+              <option value="maharashtra">Maharashtra</option>
+            </FormSelect>
 
-                <button type="submit" className="w-full bg-[#3366FF] text-white font-semibold py-3.5 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    Submit
-                </button>
-            </form>
+            {/* Final form select has a larger bottom margin to space it from the button */}
+            <div className="mb-8">
+              <FormSelect id="city" name="city" label="City" value={formData.city} onChange={handleChange}>
+                <option value="" disabled>Select City</option>
+                <option value="mumbai">Mumbai</option>
+              </FormSelect>
+            </div>
+
+            <button type="submit" className="w-full bg-[#3366FF] text-white font-semibold py-3.5 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              Submit
+            </button>
+          </form>
         </div>
 
         {/* --- Right Panel: Image (Stretches to match the left panel's height automatically) --- */}
         <div className="hidden md:block w-full md:w-3/5 lg:w-2/3 relative rounded-4xl overflow-hidden">
-          <div 
+          <div
             className="absolute inset-0 w-full h-full bg-[#f9fafb]"
             style={{
-                backgroundImage: "url(/images/registar_pattern.svg)",
-                backgroundSize: 'cover',
+              backgroundImage: "url(/images/registar_pattern.svg)",
+              backgroundSize: 'cover',
             }}
           />
           <Image

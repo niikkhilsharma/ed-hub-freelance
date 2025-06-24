@@ -8,9 +8,7 @@ import {
   FiInfo,
   FiArrowLeft,
   FiPlayCircle,
-  FiLinkedin,
   FiStar,
-  FiFileText,
   FiChevronDown,
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
@@ -319,12 +317,7 @@ const TeacherProfileModal: React.FC<TeacherProfileModalProps> = ({
   onClose,
 }) => {
   // Sub-components for clarity
-  interface InfoTagProps {
-    icon1: React.ReactNode;
-    text1: string;
-    icon2: React.ReactNode;
-    text2: string;
-  }
+
   const InfoTag = ({
     icon1,
     text1,
@@ -374,7 +367,7 @@ const TeacherProfileModal: React.FC<TeacherProfileModalProps> = ({
     school: string;
     year: string;
     logo: string;
-  }> = ({ course, school, year, logo }) => (
+  }> = ({ course, school, year }) => (
     <div className="flex items-center gap-4">
       <Image
         src={"/images/popups/std1.png"}

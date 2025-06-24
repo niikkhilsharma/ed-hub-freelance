@@ -3,8 +3,6 @@
 
 import React, { useState } from 'react';
 import Header from '@/components/b2c-student/Header';
-import Footer from "@/components/layout/Footer";     
-import { FiArrowLeft } from "react-icons/fi";
 import { 
     ProfileFormSection, 
     NewsletterSection 
@@ -53,11 +51,7 @@ export default function EditStudentProfilePage() {
     avatarSrc: "/images/person.jpg",
   };
 
-  const handleBackClick = () => {
-    if (typeof window !== "undefined") {
-        window.history.back();
-    }
-  };
+
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
