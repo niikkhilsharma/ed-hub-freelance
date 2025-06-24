@@ -32,7 +32,7 @@ const teachers = Array.from({ length: 4}, (_, i) => ({
 export const sampleData: leavecards[] = [ ...teachers];
 
 const Leave = () => {
-    const [activeTab, setActiveTab] = useState<'teacher'>('teacher');
+    // const [activeTab, setActiveTab] = useState<'teacher'>('teacher');
     
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));

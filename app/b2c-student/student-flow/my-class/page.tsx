@@ -1,7 +1,7 @@
 // page.tsx (e.g., /app/assessments/page.tsx)
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from '@/components/b2c-student/Header'
 
 // Removed FiArrowLeft from here as it's not in page header, but in ui-components if needed

@@ -3,15 +3,12 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
-import Footer from "@/components/layout/Footer";
 import {
   FiArrowLeft,
   FiArrowLeftCircle,
   FiArrowRightCircle,
   FiChevronDown,
 } from "react-icons/fi";
-// import { ACCENT_PINK } from "../teacher-b2b/create-test/CreateBWTestPage";
-import { url } from "inspector";
 
 const categories = [
   "Subject 1",
@@ -41,7 +38,7 @@ const PALETTE = {
   WHITE_CARD: "#FFFFFF",
 };
 
-const sessionData = Array.from({ length: 14 }, (_, i) => ({
+const sessionData = Array.from({ length: 14 }, () => ({
   title: `Unit Name`,
   content: `1. REAL NUMBERS
 
@@ -65,14 +62,9 @@ const Curriculum = () => {
   const [selected, setSelected] = useState<string>("Subject 1");
 
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
-  const headerUser = {
-    name: "Educator Name",
-    role: "Teacher",
-    avatarSrc: "/images/person.jpg",
-  };
+
   return (
     <div className="bg-gray-100">
-
       <div className="bg-white py-3">
         <div className="container mx-2 flex items-center gap-3">
           <button
@@ -451,7 +443,6 @@ interface FilterDropdownProps {
   className?: string;
 }
 export const FilterDropdown: React.FC<FilterDropdownProps> = ({
-  value,
   options,
   className = "",
 }) => (

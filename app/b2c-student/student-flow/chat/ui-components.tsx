@@ -14,7 +14,7 @@ interface ChatInputProps {
     // No onAttach in your original component, so removed for now
 }
 export const ChatInput: React.FC<ChatInputProps> = ({
-    value, onChange, onSend, placeholder = "Message", isSending
+    value, onChange, onSend, placeholder = "Message"
 }) => (
     // Original desktop: flex items-center justify-center bg-[#F9FAFB] border-[#D5D5D5] border rounded-full
     <form onSubmit={onSend} className="flex items-center bg-[#F9FAFB] border-[#D5D5D5] border rounded-full p-0.5 sm:p-0"> {/* Slightly adjust padding for mobile */}

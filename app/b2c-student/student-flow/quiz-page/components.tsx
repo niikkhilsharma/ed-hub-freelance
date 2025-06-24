@@ -3,7 +3,7 @@
 
 import React from 'react';
 import { FiArrowLeft } from 'react-icons/fi'; // Only icons directly used by these major components
-import { ActionButton, MainCategoryTab, OptionButton, SimpleIconButton } from './ui-component';
+import { ActionButton, OptionButton, SimpleIconButton } from './ui-component';
 
 // --- Data Interfaces (from your original) ---
 export interface Option { id: string; text: string; }
@@ -46,7 +46,7 @@ interface QuestionBlockProps {
   onOptionSelect: (questionId: number, optionId: string) => void;
 }
 export const QuestionBlock: React.FC<QuestionBlockProps> = ({
-  question, questionNumber, selectedOptionId, onOptionSelect,
+  question, selectedOptionId, onOptionSelect,
 }) => (
   // Original: mb-4 p-6 bg-[#F9FAFB] max-w-2xl rounded-3xl
   // Retaining max-w-2xl for desktop. On mobile, it will be constrained by parent.

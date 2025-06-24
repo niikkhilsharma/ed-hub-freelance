@@ -2,8 +2,6 @@
 "use client";
 
 import React from 'react';
-import { FiArrowLeft } from 'react-icons/fi'; // Assuming this is the icon you want for back
-
 // --- Component 1: PageTitleBar (for the "FAQs" header with back arrow) ---
 interface PageTitleBarProps {
     title: string;

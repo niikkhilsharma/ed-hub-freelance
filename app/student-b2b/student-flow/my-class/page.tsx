@@ -1,7 +1,7 @@
 // page.tsx (e.g., /app/assessments/page.tsx)
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 // Removed FiArrowLeft from here as it's not in page header, but in ui-components if needed

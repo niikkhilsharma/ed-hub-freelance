@@ -2,7 +2,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import {
   FiChevronDown,
   FiChevronUp,
@@ -120,8 +119,7 @@ export interface CourseMaterial {
   fileName: string;
   date: string;
 }
-interface CourseMaterialItemProps extends Omit<CourseMaterial, "id"> {}
-export const CourseMaterialItem: React.FC<CourseMaterialItemProps> = ({
+export const CourseMaterialItem: React.FC<Omit<CourseMaterial, "id">> = ({
   fileName,
   date,
 }) => (

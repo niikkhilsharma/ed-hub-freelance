@@ -46,15 +46,15 @@ const notificationsData = [
 export default function StudentDashboardPage() {
 	const [learningActivityFilter, setLearningActivityFilter] = useState<'Active' | 'Completed'>('Active');
     const [currentLearningDate, setCurrentLearningDate] = useState('June 2025'); // Example state
-    const [currentClassDate, setCurrentClassDate] = useState('June 2025');     // Example state
+    // const [currentClassDate, setCurrentClassDate] = useState('June 2025');     // Example state
 
 	const headerUser = { name: studentData.name, role: studentData.role, avatarSrc: studentData.avatarSrc };
 
     // Dummy date navigation handlers
     const handleLearningDatePrev = () => { setCurrentLearningDate("May 2025"); console.log("Prev Learning Month"); };
     const handleLearningDateNext = () => { setCurrentLearningDate("July 2025"); console.log("Next Learning Month"); };
-    const handleClassDatePrev = () => { setCurrentClassDate("May 2025"); console.log("Prev Class Month"); };
-    const handleClassDateNext = () => { setCurrentClassDate("July 2025"); console.log("Next Class Month"); };
+    // const handleClassDatePrev = () => { setCurrentClassDate("May 2025"); console.log("Prev Class Month"); };
+    // const handleClassDateNext = () => { setCurrentClassDate("July 2025"); console.log("Next Class Month"); };
 
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -75,8 +75,8 @@ export default function StudentDashboardPage() {
 					<div className="lg:col-span-1 space-y-4 md:space-y-6 flex flex-col">
 						<ClassesSummaryCard
                             classStats={classStatsData}
-                            onDatePrev={handleClassDatePrev}
-                            onDateNext={handleClassDateNext}
+                            // onDatePrev={handleClassDatePrev}
+                            // onDateNext={handleClassDateNext}
                         />
 						<YourTeachersCard teachers={teachersData} />
 						<NotificationsCard notifications={notificationsData} />

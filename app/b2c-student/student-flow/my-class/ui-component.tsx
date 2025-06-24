@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image'; // Only if needed by a generic UI component, not directly here yet
+
 import {
     FiChevronDown, FiPlayCircle, FiChevronRight,
     FiArrowLeftCircle, FiArrowRightCircle

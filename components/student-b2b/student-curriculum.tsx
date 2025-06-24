@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown } from "react-icons/io";
 import Header from "../layout/Header";
 import Footer from "@/components/layout/Footer";
-import MaxWidthWrapper from "../admin/max-width-wrapper";
+// import MaxWidthWrapper from "../admin/max-width-wrapper";
 import {
   FiArrowLeft,
   FiArrowLeftCircle,
@@ -13,7 +13,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import { ACCENT_PINK } from "../teacher-b2b/create-test/CreateBWTestPage";
-import { url } from "inspector";
+// import { url } from "inspector";
 
 const categories = [
   "Subject 1",
@@ -43,7 +43,7 @@ const PALETTE = {
   WHITE_CARD: "#FFFFFF",
 };
 
-const sessionData = Array.from({ length: 14 }, (_, i) => ({
+const sessionData = Array.from({ length: 14 }, () => ({
   title: `Unit Name`,
   content: `1. REAL NUMBERS
 
@@ -455,7 +455,7 @@ interface FilterDropdownProps {
   className?: string;
 }
 export const FilterDropdown: React.FC<FilterDropdownProps> = ({
-  value,
+  
   options,
   className = "",
 }) => (

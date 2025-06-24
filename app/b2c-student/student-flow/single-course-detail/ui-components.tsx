@@ -4,7 +4,7 @@
 import React from 'react';
 import {
     FiChevronDown, FiPlayCircle, FiChevronRight,
-    FiArrowRightCircle, FiArrowLeftCircle, FiDownload
+    FiArrowRightCircle, FiArrowLeftCircle
 } from 'react-icons/fi';
 
 // --- Component 1: ContentTab ---

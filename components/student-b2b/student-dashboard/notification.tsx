@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+// import Footer from "@/components/layout/Footer";
 import Image from "next/image"; // For the bell icon and user avatar
 
 // --- Sample Notification Data ---

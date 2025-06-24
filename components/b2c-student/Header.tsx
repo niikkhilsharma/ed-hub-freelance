@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FiBookOpen, FiMessageSquare, FiVideo, FiBell, FiMenu, FiX, FiGrid, FiDatabase } from "react-icons/fi";
+import {  FiMessageSquare, FiVideo, FiBell, FiMenu, FiX, FiGrid, FiDatabase } from "react-icons/fi";
 import { FaRegSmile, FaArrowLeft } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 

@@ -12,9 +12,10 @@ import { cn } from '@/lib/utils'
 import NamingBar from '@/components/admin/ui/naming-bar'
 
 export default function ManageAllApprovals() {
-	const [activeTab, setActiveTab] = useState<'Schools' | 'Teachers' | 'Students'>('Schools')
+	const tabs = ['Schools', 'Teachers', 'Students'] as const;
+	type Tab = typeof tabs[number]; // "Schools" | "Teachers" | "Students"
 
-	const tabs = ['Schools', 'Teachers', 'Students']
+	const [activeTab, setActiveTab] = useState<Tab>('Schools');
 
 	return (
 		<div className="bg-gray-100/60 min-h-screen">
@@ -26,7 +27,7 @@ export default function ManageAllApprovals() {
 					{tabs.map(tab => (
 						<div
 							key={tab}
-							onClick={() => setActiveTab(tab as any)}
+							onClick={() => setActiveTab(tab)}
 							className={cn(
 								'cursor-pointer',
 								activeTab === tab ? 'text-[#3366FF] underline underline-offset-8' : 'text-[#6B7280]'

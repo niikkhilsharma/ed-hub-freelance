@@ -4,9 +4,8 @@
 import React, { useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { RecordingsDateGroup, RecordingsByDate, Recording } from './components';
+import { RecordingsDateGroup, RecordingsByDate } from './components';
 
-// --- Sample Data (Strictly from your original) ---
 const initialRecordingsData: RecordingsByDate[] = [
 	{
 		date: 'Date', // This was your original placeholder
@@ -48,13 +47,13 @@ const initialRecordingsData: RecordingsByDate[] = [
 // --- End Sample Data ---
 
 
-export default function RecordingsPage({imageSrc}:{imageSrc?:string}) { // Retained your imageSrc prop
+export default function RecordingsPage() { // Retained your imageSrc prop
 	const [recordingsByDate, setRecordingsByDate] = useState<RecordingsByDate[]>(initialRecordingsData);
 
 	const headerUser = {
 		name: 'Shlok Agheda',
 		role: 'Student',
-		avatarSrc: imageSrc || '/teacher-b2b/profile.png', // Your original logic
+		avatarSrc: '/teacher-b2b/profile.png', // Your original logic
 	};
 
 	const handleDeleteRecording = (id: string) => {

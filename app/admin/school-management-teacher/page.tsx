@@ -49,9 +49,7 @@ export default function SchoolManagementReport() {
 	)
 }
 
-function TeacherRectangle() {
-	return <div className="bg-[#F3F4F6]"></div>
-}
+
 
 function SearchFilterBar() {
 	return (

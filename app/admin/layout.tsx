@@ -1,5 +1,4 @@
 import Footer from '@/components/layout/Footer'
-import Header from '@/components/layout/Header'
 import Navbar from '@/components/admin/ui/navbar'
 import { Poppins } from 'next/font/google'
 

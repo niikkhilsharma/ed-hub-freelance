@@ -28,11 +28,7 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode
 }>) {
-    const headerUser = {
-        name: "Educator Name",
-        role: "Teacher",
-        avatarSrc: "/principal/profile-image.jpg",
-    };
+  
     return (
         <div lang="en" className={`${poppinsFont.variable} ${adlam.variable}`}>
             <div className="font-main overflow-x-hidden">

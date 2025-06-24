@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {
-    FiChevronDown, FiChevronUp, FiChevronRight, FiArrowLeft
+    FiChevronDown, FiChevronUp, FiChevronRight
 } from 'react-icons/fi';
 import {
     SubCategoryItem, ContentUITab, VideoItem,

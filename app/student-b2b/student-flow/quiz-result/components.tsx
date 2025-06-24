@@ -2,9 +2,8 @@
 "use client";
 
 import React from 'react';
-import Image from 'next/image'; // For QuestionReviewBlock icons
-import { FiArrowLeft, FiSmile } from 'react-icons/fi'; // Smile for ScoreChart
-import { MainCategoryTab, OptionReviewDisplay, SimpleIconButton, ScoreChartDisplay } from './ui-components';
+import { FiArrowLeft } from 'react-icons/fi'; // Smile for ScoreChart
+import {  OptionReviewDisplay, SimpleIconButton, ScoreChartDisplay } from './ui-components';
 
 // --- Data Interfaces (from your original) ---
 export interface OptionReview { id: string; text: string; isUserSelected: boolean; isCorrect: boolean; }
