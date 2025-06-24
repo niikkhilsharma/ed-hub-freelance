@@ -242,12 +242,10 @@ export default function StudentHome() {
             {/* Right Image */}
             <div className="w-full md:w-[45%] flex justify-center items-center z-10 h-full">
               <div className="relative aspect-square max-w-[600px] w-full">
-                <Image
-                  src="/student/home/hero-image.png"
+                <img
+                  src="/student/home/hero_image.png"
                   alt="Students learning with robot"
                   className="rounded-full object-cover"
-                  fill
-                  priority
                 />
               </div>
             </div>
