@@ -6,12 +6,12 @@ import Link from "next/link";
 import {
   Bell,
   ArrowLeft,
-  Target,
-  Grid3X3,
-  FileText,
   MessageCircle,
   Video,
   Bot,
+  Smile,
+  LayoutGrid,
+  Database,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -37,19 +37,19 @@ export default function StudentNavbarNew() {
     {
       href: "/student/my-learnings",
       label: "My Learnings",
-      icon: Target,
+      icon: Smile,
       isActive: true,
     },
     {
       href: "/student/courses",
       label: "My course",
-      icon: Grid3X3,
+      icon: LayoutGrid,
       isActive: false,
     },
     {
       href: "/student/material",
       label: "Material",
-      icon: FileText,
+      icon: Database,
       isActive: false,
     },
     {
@@ -72,7 +72,7 @@ export default function StudentNavbarNew() {
         isScrolled ? "shadow-md" : ""
       }`}
     >
-      <nav className="bg-gradient-to-r from-blue-600 to-blue-500 text-white pt-5">
+      <nav className="bg-[#3366FF] text-white pt-5">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Left Side - Logo and Back Arrow */}

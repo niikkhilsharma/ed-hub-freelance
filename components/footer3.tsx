@@ -104,7 +104,7 @@ export default function FooterNew({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className="w-screen relative flex flex-col bg-gradient-to-r from-blue-600 to-blue-700 items-center justify-between bg-cover bg-center bg-no-repeat"
+      className="w-screen relative flex flex-col bg-[#3366FFD9] items-center justify-between bg-cover bg-center bg-no-repeat"
     >
       {showSuscriptionBlock && (
         <div className="z-40 min-h-65 w-full px-16 pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
@@ -184,7 +184,7 @@ export default function FooterNew({
                           initial="initial"
                           whileHover="hover"
                           variants={linkHover}
-                          className="hover:underline flex items-center group transition-all duration-300 text-white/90 hover:text-white"
+                          className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
                         >
                           {link.name}
                         </motion.a>
@@ -203,7 +203,7 @@ export default function FooterNew({
                           initial="initial"
                           whileHover="hover"
                           variants={linkHover}
-                          className="hover:underline flex items-center group transition-all duration-300 text-white/90 hover:text-white"
+                          className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
                         >
                           {link.name}
                         </motion.a>
@@ -222,7 +222,7 @@ export default function FooterNew({
                           initial="initial"
                           whileHover="hover"
                           variants={linkHover}
-                          className="hover:underline flex items-center group transition-all duration-300 text-white/90 hover:text-white"
+                          className="hover:underline flex items-center group transition-all duration-300 font-medium text-white/90 hover:text-white"
                         >
                           {link.name}
                         </motion.a>
@@ -256,12 +256,18 @@ export default function FooterNew({
 
                 {/* Contact Details */}
                 <motion.div variants={staggerChildren} className="space-y-4">
-                  <motion.h2 variants={fadeInUp} className="text-white">
+                  <motion.h2
+                    variants={fadeInUp}
+                    className="text-white font-medium"
+                  >
                     Eldeco Centre, Malviya Nagar
                   </motion.h2>
 
                   <motion.div variants={staggerChildren} className="space-y-2">
-                    <motion.p variants={fadeInUp} className="text-white mb-4">
+                    <motion.p
+                      variants={fadeInUp}
+                      className="text-white mb-4  font-medium"
+                    >
                       WeWork Eldeco Centre, Malviya Nagar, Eldeco centre,
                       <br />
                       Block A, Shivalik Colony, Malviya Nagar, Delhi, DL 110017
@@ -270,7 +276,7 @@ export default function FooterNew({
                     <motion.p variants={fadeInUp}>
                       <motion.span
                         whileHover={{ color: "#93c5fd" }}
-                        className="text-white hover:underline cursor-pointer"
+                        className="text-white hover:underline cursor-pointer  font-medium"
                       >
                         Phone: (+91) 922-044-2129
                       </motion.span>
@@ -281,23 +287,23 @@ export default function FooterNew({
                       className="space-y-1"
                     >
                       <motion.p variants={fadeInUp}>
-                        <span className="text-white">
+                        <span className="text-white  font-medium">
                           Email for Queries or Info:
                         </span>{" "}
                         <motion.span
                           whileHover={{ color: "#93c5fd" }}
-                          className="text-white hover:underline cursor-pointer"
+                          className="text-white hover:underline cursor-pointer  font-medium"
                         >
                           info@edunique.in
                         </motion.span>
                       </motion.p>
                       <motion.p variants={fadeInUp}>
-                        <span className="text-white">
+                        <span className="text-white font-medium">
                           Email for Support or Concerns:
                         </span>{" "}
                         <motion.span
                           whileHover={{ color: "#93c5fd" }}
-                          className="text-white hover:underline cursor-pointer"
+                          className="text-white hover:underline cursor-pointer font-medium"
                         >
                           supportyou@edunique.in
                         </motion.span>
@@ -306,7 +312,7 @@ export default function FooterNew({
                         <span className="text-white">Email for Careers:</span>{" "}
                         <motion.span
                           whileHover={{ color: "#93c5fd" }}
-                          className="text-white hover:underline cursor-pointer"
+                          className="text-white hover:underline cursor-pointer  font-medium"
                         >
                           rightfit@edunique.in
                         </motion.span>
@@ -328,7 +334,7 @@ export default function FooterNew({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.2, duration: 0.5 }}
-              className="text-white text-xs"
+              className="text-white text-xs  font-medium"
             >
               Edunique All Rights Reserved 2025
             </motion.p>

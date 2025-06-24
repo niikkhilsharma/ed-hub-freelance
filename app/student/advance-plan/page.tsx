@@ -307,8 +307,8 @@ export default function AdvancePlan() {
       <div className="bg-white border-b">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center py-4">
-            <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
-            <h1 className="text-2xl font-semibold text-[#FF3366]">
+            <ArrowLeft className="w-6 h-6 mr-3 cursor-pointer hover:text-gray-800" />
+            <h1 className="text-xl font-semibold text-[#FF3366]">
               Course Name
             </h1>
           </div>
@@ -325,7 +325,7 @@ export default function AdvancePlan() {
               <Input
                 type="text"
                 placeholder="Search"
-                className="pl-12 pr-4 py-3 w-full rounded-full border-2 border-gray-200 focus:border-gray-300 text-lg"
+                className="pl-12 pr-4 py-3 w-full rounded-full border border-[#6B7280] focus:border-gray-300 text-lg"
               />
             </div>
 
