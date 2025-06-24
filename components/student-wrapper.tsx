@@ -1,16 +1,18 @@
 "use client";
 
 import StudentNavbar from "./student-navbar";
+import StudentNavbarNew from "./student-navbar-new";
 
 export default function StudentWrapper({
   children,
+  student = false,
 }: {
   children: React.ReactNode;
-  blue?: boolean;
+  student?: boolean;
 }) {
   return (
     <div>
-      <StudentNavbar />
+      {student ? <StudentNavbarNew /> : <StudentNavbar />}
       {children}
     </div>
   );
