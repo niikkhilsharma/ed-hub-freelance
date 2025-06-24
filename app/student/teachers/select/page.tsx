@@ -4,8 +4,10 @@ import StudentWrapper from "@/components/student-wrapper";
 import { Star } from "lucide-react";
 import FooterNew from "@/components/footer3";
 import { educatorsData } from "../../educator/page";
+import { useRouter } from "next/navigation";
 
 export default function SelectTeacher() {
+  const router = useRouter();
   return (
     <StudentWrapper>
       {/* Background */}
@@ -33,7 +35,8 @@ export default function SelectTeacher() {
             {educatorsData.map((educator, index) => (
               <div
                 key={index}
-                className="rounded-3xl border border-[#E5E7EB] bg-[#F9FAFB] p-5 space-y-2"
+                className="rounded-3xl border border-[#E5E7EB] bg-[#F9FAFB] p-5 space-y-2 cursor-pointer hover:shadow-md"
+                onClick={() => router.push("/student/teachers/profile")}
               >
                 <div className="w-full flex justify-center items-center">
                   <div className="rounded-full w-36 h-36 overflow-hidden flex justify-center items-center">
