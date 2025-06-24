@@ -11,6 +11,7 @@ import {
   ChartNoAxesColumn,
   ChevronLeft,
   ChevronRight,
+  Armchair,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -355,392 +356,9 @@ export default function TeacherProfile() {
             </p>
           </Card>
 
-          <Card className="p-6 rounded-3xl bg-white border-0">
-            <h2 className="text-lg font-semibold mb-2">
-              Browse and enroll in available sessions.
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-              {new Array(5)
-                .fill({
-                  batch: "Batch A",
-                  day: "Monday",
-                  time: "12:00 to 13:00",
-                })
-                .map((batch, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col justify-start items-start gap-1 border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl p-4"
-                  >
-                    <span className="font-semibold">{batch.batch}</span>
-                    <span className="text-sm">{batch.day}</span>
-                    <span className="text-sm">{batch.time}</span>
-                  </div>
-                ))}
-            </div>
-            <div className="flex justify-center items-center pt-4">
-              <button className="w-fit bg-[#FF3366] hover:bg-[#ff1a53] text-white rounded-full py-2 px-4 h-fit gap-2 cursor-pointer font-medium">
-                <span>Continue</span>
-              </button>
-            </div>
-          </Card>
-
-          {/* Recommended Courses */}
-          <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2">
-            <h1 className="text-2xl text-[#FF3366] font-semibold">
-              Recommended Courses
-            </h1>
-            {/* Course Slider */}
-            <div className="relative">
-              {/* Left Navigation Button */}
-              {showLeftArrow && (
-                <button
-                  type="button"
-                  onClick={() => scroll("left")}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-                >
-                  <ChevronLeft className="w-5 h-5 text-gray-700" />
-                </button>
-              )}
-
-              {/* Right Navigation Button */}
-              {showRightArrow && (
-                <button
-                  type="button"
-                  onClick={() => scroll("right")}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-                >
-                  <ChevronRight className="w-5 h-5 text-gray-700" />
-                </button>
-              )}
-              <div
-                ref={scrollContainerRef}
-                className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                  showLeftArrow ? "pl-16" : "pl-0"
-                } ${showRightArrow ? "pr-16" : "pr-0"}`}
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                {courses.map((course) => (
-                  <div
-                    key={course.id}
-                    className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="relative p-3">
-                      <Image
-                        src={course.image || "/placeholder.svg"}
-                        alt={course.title}
-                        width={400}
-                        height={200}
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
-                      <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                        <span className="text-amber-300 text-lg font-bold">
-                          4.2
-                        </span>
-                        <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
-                      </div>
-                    </div>
-
-                    <div className="p-3 pt-0 space-y-3">
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-xl font-bold text-gray-900">
-                          Course Name
-                        </h3>
-                        <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
-                          Know More
-                        </button>
-                      </div>
-
-                      <div className="space-y-1">
-                        {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
-                          (detail, index) => (
-                            <div
-                              key={index}
-                              className="flex items-center gap-2"
-                            >
-                              <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
-                              <span className="text-[#6B7280] text-sm">
-                                {detail}
-                              </span>
-                            </div>
-                          )
-                        )}
-                      </div>
-
-                      <div className="flex items-center gap-2 mt-3">
-                        <Image
-                          src={course.teacher.image || "/placeholder.svg"}
-                          alt={course.teacher.name}
-                          width={24}
-                          height={24}
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <div>
-                          <p className="text-md font-semibold">
-                            Mr. Ranvir Ahuja
-                          </p>
-                          <p className="text-xs text-[#FF3366]">Teacher</p>
-                        </div>
-                        <div className="ml-auto flex gap-1 text-yellow-400">
-                          {[1, 2, 3, 4].map((star) => (
-                            <Star key={star} className="w-3 h-3 fill-current" />
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
-                        <span className="text-[#50C878] font-bold">
-                          ₹2,000 - ₹5,000
-                        </span>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
-                          Add to cart
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Ongoing Batches */}
-          <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2">
-            <h1 className="text-2xl text-[#FF3366] font-semibold">
-              Ongoing Batches
-            </h1>
-            {/* Course Slider */}
-            <div className="relative">
-              {/* Left Navigation Button */}
-              {showLeftArrow && (
-                <button
-                  type="button"
-                  onClick={() => scroll("left")}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-                >
-                  <ChevronLeft className="w-5 h-5 text-gray-700" />
-                </button>
-              )}
-
-              {/* Right Navigation Button */}
-              {showRightArrow && (
-                <button
-                  type="button"
-                  onClick={() => scroll("right")}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-                >
-                  <ChevronRight className="w-5 h-5 text-gray-700" />
-                </button>
-              )}
-              <div
-                ref={scrollContainerRef}
-                className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                  showLeftArrow ? "pl-16" : "pl-0"
-                } ${showRightArrow ? "pr-16" : "pr-0"}`}
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                {courses.map((course) => (
-                  <div
-                    key={course.id}
-                    className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="relative p-3">
-                      <Image
-                        src={course.image || "/placeholder.svg"}
-                        alt={course.title}
-                        width={400}
-                        height={200}
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
-                      <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                        <span className="text-amber-300 text-lg font-bold">
-                          4.2
-                        </span>
-                        <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
-                      </div>
-                    </div>
-
-                    <div className="p-3 pt-0 space-y-3">
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-xl font-bold text-gray-900">
-                          Course Name
-                        </h3>
-                        <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
-                          Know More
-                        </button>
-                      </div>
-
-                      <div className="space-y-1">
-                        {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
-                          (detail, index) => (
-                            <div
-                              key={index}
-                              className="flex items-center gap-2"
-                            >
-                              <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
-                              <span className="text-[#6B7280] text-sm">
-                                {detail}
-                              </span>
-                            </div>
-                          )
-                        )}
-                      </div>
-
-                      <div className="flex items-center gap-2 mt-3">
-                        <Image
-                          src={course.teacher.image || "/placeholder.svg"}
-                          alt={course.teacher.name}
-                          width={24}
-                          height={24}
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <div>
-                          <p className="text-md font-semibold">
-                            Mr. Ranvir Ahuja
-                          </p>
-                          <p className="text-xs text-[#FF3366]">Teacher</p>
-                        </div>
-                        <div className="ml-auto flex gap-1 text-yellow-400">
-                          {[1, 2, 3, 4].map((star) => (
-                            <Star key={star} className="w-3 h-3 fill-current" />
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
-                        <span className="text-[#50C878] font-bold">
-                          ₹2,000 - ₹5,000
-                        </span>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
-                          Add to cart
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Upcoming Batches */}
-          <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2">
-            <h1 className="text-2xl text-[#FF3366] font-semibold">
-              Upcoming Batches
-            </h1>
-            {/* Course Slider */}
-            <div className="relative">
-              {/* Left Navigation Button */}
-              {showLeftArrow && (
-                <button
-                  type="button"
-                  onClick={() => scroll("left")}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-                >
-                  <ChevronLeft className="w-5 h-5 text-gray-700" />
-                </button>
-              )}
-
-              {/* Right Navigation Button */}
-              {showRightArrow && (
-                <button
-                  type="button"
-                  onClick={() => scroll("right")}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-                >
-                  <ChevronRight className="w-5 h-5 text-gray-700" />
-                </button>
-              )}
-              <div
-                ref={scrollContainerRef}
-                className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-                  showLeftArrow ? "pl-16" : "pl-0"
-                } ${showRightArrow ? "pr-16" : "pr-0"}`}
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
-                {courses.map((course) => (
-                  <div
-                    key={course.id}
-                    className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-                  >
-                    <div className="relative p-3">
-                      <Image
-                        src={course.image || "/placeholder.svg"}
-                        alt={course.title}
-                        width={400}
-                        height={200}
-                        className="w-full h-48 object-cover rounded-xl"
-                      />
-                      <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                        <span className="text-amber-300 text-lg font-bold">
-                          4.2
-                        </span>
-                        <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
-                      </div>
-                    </div>
-
-                    <div className="p-3 pt-0 space-y-3">
-                      <div className="flex justify-between items-center">
-                        <h3 className="text-xl font-bold text-gray-900">
-                          Course Name
-                        </h3>
-                        <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
-                          Know More
-                        </button>
-                      </div>
-
-                      <div className="space-y-1">
-                        {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
-                          (detail, index) => (
-                            <div
-                              key={index}
-                              className="flex items-center gap-2"
-                            >
-                              <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
-                              <span className="text-[#6B7280] text-sm">
-                                {detail}
-                              </span>
-                            </div>
-                          )
-                        )}
-                      </div>
-
-                      <div className="flex items-center gap-2 mt-3">
-                        <Image
-                          src={course.teacher.image || "/placeholder.svg"}
-                          alt={course.teacher.name}
-                          width={24}
-                          height={24}
-                          className="w-8 h-8 rounded-full"
-                        />
-                        <div>
-                          <p className="text-md font-semibold">
-                            Mr. Ranvir Ahuja
-                          </p>
-                          <p className="text-xs text-[#FF3366]">Teacher</p>
-                        </div>
-                        <div className="ml-auto flex gap-1 text-yellow-400">
-                          {[1, 2, 3, 4].map((star) => (
-                            <Star key={star} className="w-3 h-3 fill-current" />
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
-                        <span className="text-[#50C878] font-bold">
-                          ₹2,000 - ₹5,000
-                        </span>
-                        <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
-                          Add to cart
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Demo Video Section */}
-          {redirectionFlow === "demo" && (
+          {redirectionFlow === "demo" ? (
             <div className="space-y-4">
+              {/* Demo Video Section */}
               <h2 className="text-lg font-semibold p-6 bg-[#B0B0B066] rounded-3xl">
                 Demo Video
               </h2>
@@ -821,6 +439,269 @@ export default function TeacherProfile() {
                 </div>
               </Card>
             </div>
+          ) : (
+            <>
+              <Card className="p-6 rounded-3xl bg-white border-0">
+                <h2 className="text-lg font-semibold mb-2">
+                  Browse and enroll in available sessions.
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                  {new Array(5)
+                    .fill({
+                      batch: "Batch A",
+                      day: "Monday",
+                      time: "12:00 to 13:00",
+                    })
+                    .map((batch, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-col justify-start items-start gap-1 border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl p-4"
+                      >
+                        <span className="font-semibold">{batch.batch}</span>
+                        <span className="text-sm">{batch.day}</span>
+                        <span className="text-sm">{batch.time}</span>
+                      </div>
+                    ))}
+                </div>
+                <div className="flex justify-center items-center pt-4">
+                  <button className="w-fit bg-[#FF3366] hover:bg-[#ff1a53] text-white rounded-full py-2 px-4 h-fit gap-2 cursor-pointer font-medium">
+                    <span>Continue</span>
+                  </button>
+                </div>
+              </Card>
+              {/* Ongoing Courses */}
+              <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-7">
+                <h1 className="text-2xl text-[#FF3366] font-semibold">
+                  Ongoing Courses
+                </h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                  {courses.slice(0, 3).map((course) => (
+                    <Card
+                      key={course.id}
+                      className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                    >
+                      <div className="relative p-3">
+                        <Image
+                          src={course.image || "/placeholder.svg"}
+                          alt={course.title}
+                          width={400}
+                          height={200}
+                          className="w-full h-48 object-cover rounded-xl"
+                        />
+                      </div>
+                      <CardContent className="p-6 pt-0 pb-3 space-y-3">
+                        <h3 className="text-xl font-bold">Course Name</h3>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              {/* Ongoing Batches */}
+              <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-7">
+                <h1 className="text-2xl text-[#FF3366] font-semibold">
+                  Ongoing Batches
+                </h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                  {courses.slice(0, 3).map((course, cId) => (
+                    <Card
+                      key={course.id}
+                      className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                    >
+                      <div className="p-3 pb-0 rounded-xl">
+                        {cId === 2 ? (
+                          <div className="bg-[#FF6969] border border-[#FF696978] flex justify-center items-center rounded-xl p-3 font-medium text-white">
+                            Batch Full
+                          </div>
+                        ) : (
+                          <div className="bg-[#00B060] border border-[#02A35A78] flex justify-between items-center rounded-xl p-3 font-medium text-white">
+                            <span className="inline-flex items-center gap-2">
+                              <Armchair className="w-5 h-5" />
+                              Seats Available
+                            </span>
+                            <span className="text-xs">8 seats left</span>
+                          </div>
+                        )}
+                      </div>
+                      <div className="relative p-3">
+                        <Image
+                          src={course.image || "/placeholder.svg"}
+                          alt={course.title}
+                          width={400}
+                          height={200}
+                          className="w-full h-48 object-cover rounded-xl"
+                        />
+                      </div>
+                      <CardContent className="p-6 pt-0 space-y-3">
+                        <div>
+                          <h3 className="text-xl font-bold text-gray-900">
+                            Course Name
+                          </h3>
+                          <p className="font-light">
+                            <strong>Domain:</strong>{" "}
+                            <span className="text-[#6B7280]">Self Dev.</span>
+                          </p>
+                        </div>
+
+                        <div className="space-y-2">
+                          {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
+                            (detail, index) => (
+                              <div
+                                key={index}
+                                className="flex items-center gap-2"
+                              >
+                                <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                                <span className="text-[#6B7280] text-sm">
+                                  {detail}
+                                </span>
+                              </div>
+                            )
+                          )}
+                        </div>
+                        {cId === 2 ? (
+                          <Button
+                            disabled={true}
+                            className="w-full bg-[#B0B0B0] text-[#6B7280] font-semibold rounded-full h-10 text-lg mt-2"
+                          >
+                            Batch Full
+                          </Button>
+                        ) : (
+                          <Button className="w-full bg-[#3366FF] hover:bg-blue-600 text-white rounded-full h-10 text-lg mt-2">
+                            Enroll Now
+                          </Button>
+                        )}
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+
+              {/* Upcoming Batches */}
+              <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2">
+                <h1 className="text-2xl text-[#FF3366] font-semibold">
+                  Upcoming Batches
+                </h1>
+                {/* Course Slider */}
+                <div className="relative">
+                  {/* Left Navigation Button */}
+                  {showLeftArrow && (
+                    <button
+                      type="button"
+                      onClick={() => scroll("left")}
+                      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+                    >
+                      <ChevronLeft className="w-5 h-5 text-gray-700" />
+                    </button>
+                  )}
+
+                  {/* Right Navigation Button */}
+                  {showRightArrow && (
+                    <button
+                      type="button"
+                      onClick={() => scroll("right")}
+                      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+                    >
+                      <ChevronRight className="w-5 h-5 text-gray-700" />
+                    </button>
+                  )}
+                  <div
+                    ref={scrollContainerRef}
+                    className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
+                      showLeftArrow ? "pl-16" : "pl-0"
+                    } ${showRightArrow ? "pr-16" : "pr-0"}`}
+                    style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                  >
+                    {courses.map((course) => (
+                      <div
+                        key={course.id}
+                        className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                      >
+                        <div className="relative p-3">
+                          <Image
+                            src={course.image || "/placeholder.svg"}
+                            alt={course.title}
+                            width={400}
+                            height={200}
+                            className="w-full h-48 object-cover rounded-xl"
+                          />
+                          <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
+                            <span className="text-amber-300 text-lg font-bold">
+                              4.2
+                            </span>
+                            <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                          </div>
+                        </div>
+
+                        <div className="p-3 pt-0 space-y-3">
+                          <div className="flex justify-between items-center">
+                            <h3 className="text-xl font-bold text-gray-900">
+                              Course Name
+                            </h3>
+                            <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                              Know More
+                            </button>
+                          </div>
+
+                          <div className="space-y-1">
+                            {[
+                              "Detail 1",
+                              "Detail 2",
+                              "Detail 3",
+                              "Detail 4",
+                            ].map((detail, index) => (
+                              <div
+                                key={index}
+                                className="flex items-center gap-2"
+                              >
+                                <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                                <span className="text-[#6B7280] text-sm">
+                                  {detail}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="flex items-center gap-2 mt-3">
+                            <Image
+                              src={course.teacher.image || "/placeholder.svg"}
+                              alt={course.teacher.name}
+                              width={24}
+                              height={24}
+                              className="w-8 h-8 rounded-full"
+                            />
+                            <div>
+                              <p className="text-md font-semibold">
+                                Mr. Ranvir Ahuja
+                              </p>
+                              <p className="text-xs text-[#FF3366]">Teacher</p>
+                            </div>
+                            <div className="ml-auto flex gap-1 text-yellow-400">
+                              {[1, 2, 3, 4].map((star) => (
+                                <Star
+                                  key={star}
+                                  className="w-3 h-3 fill-current"
+                                />
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
+                            <span className="text-[#50C878] font-bold">
+                              ₹2,000 - ₹5,000
+                            </span>
+                            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                              Add to cart
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </>
           )}
         </div>
       </div>
