@@ -139,7 +139,7 @@ export default function SelectExistingTestPage() {
 	const headerUser = {
 		name: 'Shlok Agheda', // Example, should be dynamic or from context
 		role: 'Teacher', // Example role
-		avatarSrc: '/placeholder-avatar-teacher.jpg', // UPDATE THIS PATH
+		avatarSrc: '/page3/entry/pri.png', // UPDATE THIS PATH
 	}
 
 	const handleBackClick = () => {

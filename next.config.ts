@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  images: {
-    domains: ["hebbkx1anhila5yf.public.blob.vercel-storage.com"], // Add the hostname here
-  },
+ images: {
+  remotePatterns: [
+    {
+      protocol: 'https',
+      hostname: 'example.com',
+    },
+  ],
+}
 };
 
 module.exports = nextConfig;
