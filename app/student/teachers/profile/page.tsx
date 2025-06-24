@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import {
   Play,
   Pause,
@@ -50,7 +50,15 @@ const mockQualifications: Qualification[] = [
   },
 ];
 
-export default function TeacherProfile() {
+function Loading() {
+  return (
+    <div className="flex justify-center items-center h-screen bg-[#EEEEEE]">
+      <div className="animate-pulse text-lg">Loading teacher profile...</div>
+    </div>
+  );
+}
+
+function TeacherProfileContent() {
   const searchParams = useSearchParams();
   const redirectionFlow = searchParams.get("flow");
   const [isPlaying, setIsPlaying] = useState(false);
@@ -707,5 +715,13 @@ export default function TeacherProfile() {
       </div>
       <FooterNew showSuscriptionBlock={false} />
     </StudentWrapper>
+  );
+}
+
+export default function TeacherProfilePage() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <TeacherProfileContent />
+    </Suspense>
   );
 }
