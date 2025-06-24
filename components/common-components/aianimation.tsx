@@ -1,5 +1,4 @@
 // components/AILoadingPopup.tsx
-import { motion } from "framer-motion";
 
 export default function AILoadingPopup() {
   return (

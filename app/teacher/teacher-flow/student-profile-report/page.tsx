@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 
-import { FaMapMarkedAlt, FaInfoCircle, FaCalendarAlt } from "react-icons/fa";
+import {  FaInfoCircle, FaCalendarAlt } from "react-icons/fa";
 import {
   FiArrowLeft,
   // FiClock,
@@ -47,7 +47,6 @@ const PALETTE = {
 // --- Helper Components (Simplified for hardcoding) ---
 
 const ClassesCard = () => {
-  const [month] = useState("June 2025");
 
   return (
     <div className="flex flex-col gap-4 p-4 rounded-2xl bg-white">
@@ -103,8 +102,8 @@ const ClassesCard = () => {
 };
 
 type ProgressCircleProps = {
-  percentageText: string; // e.g. "3/4"
-  color: string; // hex or tailwind color
+  percentageText: string;
+  color: string;
   skillName?: string;
   details?: string;
 };
