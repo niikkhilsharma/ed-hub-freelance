@@ -5,7 +5,7 @@ export default function ShareVideoPopup() {
   return (
     <div className="bg-[#FFFFFF] font-Poppins rounded-2xl border mx-auto my-20 shadow-xl p-3 w-[400px] max-w-full relative">
       {/* Close Button */}
-      <button className="absolute top-4 right-4 text-black bg-[#6B7280]/20 rounded-full hover:text-black">
+      <button className="absolute top-4 right-4 text-black bg-black/5 rounded-full hover:text-black">
         <X size={20} />
       </button>
 

@@ -19,16 +19,16 @@ interface ManagedFile {
 
 // Sample Data
 const dummyFiles: ManagedFile[] = [
-	{ id: '1', name: 'File Name One.pdf', type: 'pdf', size: '300 KB' },
-	{ id: '2', name: 'Image_001.jpg', type: 'image', size: '1.2 MB' },
-	{ id: '3', name: 'Document_final.pdf', type: 'pdf', size: '650 KB' },
-	{ id: '4', name: 'Presentation_draft.png', type: 'image', size: '800 KB' },
-	{ id: '5', name: 'Another_PDF.pdf', type: 'pdf', size: '450 KB' },
-	{ id: '6', name: 'Screenshot.jpeg', type: 'image', size: '220 KB' },
-	{ id: '7', name: 'Important_Notes.pdf', type: 'pdf', size: '150 KB' },
-	{ id: '8', name: 'Cover_Art.png', type: 'image', size: '2.5 MB' },
-	{ id: '9', name: 'Report_v3.pdf', type: 'pdf', size: '900 KB' },
-]
+  { id: '1', name: 'File Name ', type: 'pdf', size: '300 KB' },
+  { id: '2', name: 'File Name', type: 'pdf', size: '300 KB' },
+  { id: '3', name: 'File Name', type: 'pdf', size: '300 KB' },
+  { id: '4', name: 'File Name', type: 'pdf', size: '300 KB' },
+  { id: '5', name: 'File Name', type: 'pdf', size: '300 KB' },
+  { id: '6', name: 'File Name', type: 'pdf', size: '300 KB' },
+  { id: '7', name: 'File Name', type: 'pdf', size: '300 KB' },
+  { id: '8', name: 'File Name', type: 'pdf', size: '300 KBB' },
+  { id: '9', name: 'File Name', type: 'pdf', size: '300 KB' },
+];
 
 // File Icon Component
 const FileIcon: React.FC<{ type: ManagedFile['type'] }> = ({ type }) => {
@@ -140,12 +140,7 @@ const FileManagementContent: React.FC = () => {
 						<p className="text-sm">Try adjusting your search or filter criteria, or upload a new file.</p>
 					</div>
 				)}
-				<button
-					onClick={handleUploadClick}
-					className="px-5 ml-auto mt-4  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full shadow-lg hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 text-sm"
-					aria-label="Upload new file">
-					Upload
-				</button>
+				
 			</div>
 		</div>
 	)
@@ -166,10 +161,10 @@ export default function StudentSubmittedPapersPage() {
 	}
 
 	return (
-		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
+		<div className="bg-[#eeeeee]  min-h-screen flex flex-col">
 			<Header user={headerUser} />
-			<div className=" px-4 sm:px-6 py-4 flex justify-between">
-				<div className="flex items-center gap-2 bg-white">
+			<div className=" px-22  bg-white py-4 flex justify-between">
+				<div className="flex items-center gap-2 ">
 					<button
 					onClick={handleBackClick}
 					className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
@@ -177,10 +172,10 @@ export default function StudentSubmittedPapersPage() {
 					<FiArrowLeft className="w-5 h-5" />
 				</button>
 				{/* You can make this title dynamic based on context */}
-				<h1 className="text-lg sm:text-xl font-bold text-[#FF3366]">Folder Name</h1>
+				<h1 className="text-lg sm:text-2xl font-bold text-[#FF3366]">Folder Name</h1>
 				</div>
 				<div className="bg-white pr-2 flex items-center">
-					<button className='whitespace-nowrap px-4 py-2 rounded-xl bg-gray-200 border border-gray-300 text-xs sm:text-m font-medium'>Manage Group Share</button>
+					<button className='whitespace-nowrap px-6 py-2 rounded-xl border-[#E5E7E8] border bg-[#F9FAFB] text-xs sm:text-[20px] font-medium'>Manage Group Share</button>
 				</div>
 			</div>
 			<MaxWidthWrapper className="bg-[#eeeeee]">
