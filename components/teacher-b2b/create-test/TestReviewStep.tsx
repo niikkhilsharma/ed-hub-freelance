@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { FiEdit3, FiCheckCircle } from "react-icons/fi";
 import {
   TestDetailsData,
   TestQuestion,
@@ -19,22 +18,10 @@ interface TestReviewStepProps {
 
 const TestReviewStep: React.FC<TestReviewStepProps> = ({
   testDetails,
-  questions,
-  onEditStep,
 }) => {
   const {
-    testName,
-    description,
     selectedClasses,
     selectedGroup,
-    testDate,
-    expiryDate,
-    durationHours,
-    durationMinutes,
-    totalPoints,
-    passPoints,
-    studentAssignType,
-    selectedStudentIds,
   } = testDetails;
 
   const selectedClassName =
@@ -48,169 +35,6 @@ const TestReviewStep: React.FC<TestReviewStepProps> = ({
     </div>
   );
 
-  return (
-    <div className="space-y-6">
-      {/* Test Details Summary */}
-      <div
-        className={`p-4 sm:p-6 rounded-lg border ${INPUT_BORDER} bg-slate-50 shadow-sm relative`}
-      >
-        <button
-          onClick={() => onEditStep(1)}
-          title="Edit Test Details"
-          className="absolute top-3 right-3 text-xs text-gray-500 hover:text-[${PRIMARY_BLUE}] flex items-center gap-1 bg-white px-2 py-1 rounded-md border border-gray-300 hover:border-[${PRIMARY_BLUE}]"
-        >
-          <FiEdit3 className="w-3 h-3" /> Edit
-        </button>
-        <h2 className="text-xl font-semibold text-black mb-2">
-          {testName || (
-            <span className="italic text-red-500">Test Title Not Set</span>
-          )}
-        </h2>
-        <p className="text-sm text-gray-600 mb-4 whitespace-pre-line">
-          {description || (
-            <span className="italic text-gray-500">
-              No description provided.
-            </span>
-          )}
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-2 text-sm mb-3">
-          {" "}
-          {/* Increased gap-x */}
-          <div>
-            <strong className="text-gray-500 font-medium">Classes:</strong>{" "}
-            <span className="text-black">{selectedClassName}</span>
-          </div>
-          <div>
-            <strong className="text-gray-500 font-medium">Group:</strong>{" "}
-            <span className="text-black">{selectedGroupName}</span>
-          </div>
-          <div>
-            <strong className="text-gray-500 font-medium">Test Date:</strong>{" "}
-            <span
-              className={testDate ? `text-black` : "text-red-500 italic"}
-            >
-              {testDate || "Not set"}
-            </span>
-          </div>
-          <div>
-            <strong className="text-gray-500 font-medium">Expiry Date:</strong>{" "}
-            <span
-              className={expiryDate ? `text-black` : "text-red-500 italic"}
-            >
-              {expiryDate || "Not set"}
-            </span>
-          </div>
-          <div>
-            <strong className="text-gray-500 font-medium">Duration:</strong>{" "}
-            <span className="text-black">
-              {durationHours}h {durationMinutes}m
-            </span>
-          </div>
-          <div>
-            <strong className="text-gray-500 font-medium">Total Points:</strong>{" "}
-            <span className="text-black">{totalPoints}</span>
-          </div>
-          <div>
-            <strong className="text-gray-500 font-medium">Pass Points:</strong>{" "}
-            <span className="text-black">{passPoints}</span>
-          </div>
-        </div>
-        <div>
-          <strong className="text-sm text-gray-500 font-medium">
-            Assigned To:
-          </strong>
-          <span className="text-sm text-black ml-1">
-            {studentAssignType === "all"
-              ? "All Students"
-              : `${selectedStudentIds.length} Selective Student(s)`}
-          </span>
-        </div>
-      </div>
-
-      {/* Questions Summary */}
-      <h3 className="text-lg font-semibold text-gray-800 pt-2">
-        Questions Review
-      </h3>
-      {questions.length > 0 ? (
-        questions.map((q, index) => (
-          <div
-            key={q.id}
-            className={`p-4 sm:p-5 rounded-lg border ${INPUT_BORDER} bg-slate-50 shadow-sm relative`}
-          >
-            <button
-              onClick={() => onEditStep(2)}
-              title="Edit Questions"
-              className="absolute top-3 right-3 text-xs text-gray-500 hover:text-[${PRIMARY_BLUE}] flex items-center gap-1 bg-white px-2 py-1 rounded-md border border-gray-300 hover:border-[${PRIMARY_BLUE}]"
-            >
-              <FiEdit3 className="w-3 h-3" /> Edit
-            </button>
-            <div className="flex justify-between items-start mb-2">
-              <h4 className="text-md font-semibold text-gray-800">
-                Question {index + 1}
-              </h4>
-              <span className="text-sm font-medium text-black">
-                {q.points} Points
-              </span>
-            </div>
-            <p className="text-sm text-black mb-3 whitespace-pre-line">
-              {q.questionText || (
-                <span className="italic text-red-500">
-                  Question text missing
-                </span>
-              )}
-            </p>
-            <div className="space-y-1.5">
-              {q.options.slice(0, q.numOptions).map((opt, optIndex) => (
-                <div
-                  key={opt.id}
-                  className={`flex items-center p-2 rounded-md text-xs border
-                        ${
-                          q.correctOptionId === opt.id
-                            ? "bg-green-100 border-green-400 text-green-800 font-medium"
-                            : `bg-white ${INPUT_BORDER} text-gray-600`
-                        }`}
-                >
-                  {q.correctOptionId === opt.id && (
-                    <FiCheckCircle className="w-4 h-4 mr-2 text-green-600 flex-shrink-0" />
-                  )}
-                  <span className="font-medium mr-1">{optIndex + 1}.</span>{" "}
-                  {opt.text || (
-                    <span className="italic text-gray-400">Empty option</span>
-                  )}
-                </div>
-              ))}
-              {q.options.slice(0, q.numOptions).length === 0 && (
-                <p className="text-xs text-gray-500 italic">
-                  No options added for this question.
-                </p>
-              )}
-              {!q.correctOptionId &&
-                q.options.slice(0, q.numOptions).length > 0 && (
-                  <p className="text-xs text-red-500 italic mt-1">
-                    Correct answer not selected for this question.
-                  </p>
-                )}
-            </div>
-          </div>
-        ))
-      ) : (
-        <div
-          className={`p-6 rounded-lg border ${INPUT_BORDER} bg-slate-50 shadow-sm text-center`}
-        >
-          <p className="text-gray-500">
-            No questions have been added to this test yet.
-          </p>
-          <button
-            onClick={() => onEditStep(2)}
-            className={`mt-3 text-sm text-[${PRIMARY_BLUE}] hover:underline font-medium`}
-          >
-            Add Questions
-          </button>
-        </div>
-      )}
-    </div>
-  );
 };
 export default TestReviewStep;
 
@@ -354,7 +178,6 @@ const TestPreviewPageHardcoded: React.FC = () => {
   const { title, description, details, questions } = testPreviewData;
 
   return (
-    <div className=" ">
       <div className=" mx-auto p-6 sm:p-8">
         {/* Test Header Section */}
         <div className="mb-5">
@@ -412,6 +235,5 @@ const TestPreviewPageHardcoded: React.FC = () => {
           ))}
         </div>
       </div>
-    </div>
   );
 };

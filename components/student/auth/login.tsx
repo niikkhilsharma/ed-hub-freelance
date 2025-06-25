@@ -13,32 +13,37 @@ export default function StudentLoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <MaxWidthWrapper>
-      {/* FIXED: This container now centers the card vertically and horizontally. */}
+      {/* This container correctly centers the card vertically and horizontally. */}
       <div className="w-full min-h-screen flex items-center justify-center p-4">
-        {/* The card itself. Its height is now flexible and determined by its content. */}
-        <div className="flex flex-col md:flex-row-reverse w-full max-w-6xl relative bg-white rounded-3xl overflow-hidden shadow-lg">
-          {/* Right Column - Image (Unchanged) */}
-          <div className="absolute  top-2  -translate-x-12 left-1/2">
-            <Image src={"/images/loginimg2.png"} width={70} height={76} alt="img"/>
+        
+        {/* FIXED: Reduced max-width from 6xl to 5xl for a more contained size. */}
+        <div className="relative flex flex-col md:flex-row-reverse w-full max-w-5xl bg-white rounded-3xl overflow-hidden">
+          
+          {/* Decorative Images (Unchanged) */}
+          <div className="absolute top-2 -translate-x-12 left-1/2">
+            <Image src={"/images/loginimg2.png"} width={70} height={76} alt="decoration" />
           </div>
           <div className="absolute bottom-20 right-2">
-            <Image src={"/images/loginimg1.png"} width={140} height={64} alt="img"/>
+            <Image src={"/images/loginimg1.png"} width={140} height={64} alt="decoration" />
           </div>
+
+          {/* Right Column - Image (Unchanged) */}
           <div className="w-full hidden md:block md:w-[55%] p-6">
             <Image
               src={"/student/auth/login/login.png"}
-              width={3375}
-              height={3375}
+              width={1000}
+              height={1000}
               className="w-full h-full object-cover rounded-3xl"
               alt="Login"
             />
           </div>
 
           {/* Left Column - Login Form */}
-          <div className="w-full md:w-[45%]  space-y-4 font-bold flex flex-col  mt-16">
-            <div className="w-full max-w-sm  mx-auto">
-              <h2 className="font-Poppins text-3xl"> Login</h2>
-              <p className="mt-2 max-w-[50ch] font-medium text-black">
+          {/* FIXED: Replaced fixed margin 'mt-16' with responsive padding for better balance. */}
+          <div className="w-full md:w-[45%] p-8 sm:p-12 flex flex-col justify-center">
+            <div className="w-full max-w-sm mx-auto">
+              <h2 className="font-Poppins text-3xl font-bold">Login</h2>
+              <p className="mt-2 max-w-[50ch] font-normal text-black">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
               </p>
@@ -47,19 +52,20 @@ export default function StudentLoginForm() {
                 <div>
                   <Label className="font-semibold" htmlFor="email">Email Id</Label>
                   <Input
+                    id="email"
                     type="email"
                     placeholder=" Enter Email ID"
-                    className="rounded-full font-light bg-[#F9FAFB]"
+                    className="rounded-full font-light bg-[#F9FAFB] mt-1"
                   />
                 </div>
 
                 <div>
-                  <Label  className ="font-semibold"htmlFor="password">Password</Label>
-                  <div className="flex items-center justify-between border bg-[#F9FAFB] rounded-full px-4">
+                  <Label className="font-semibold" htmlFor="password">Password</Label>
+                  <div className="flex items-center justify-between border bg-[#F9FAFB] rounded-full px-4 mt-1">
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="Password"
-                      className="rounded-full  font-light bg-transparent border-none focus:ring-0 flex-1"
+                      className="rounded-full font-light bg-transparent border-none focus:ring-0 flex-1"
                       id="password"
                     />
                     <button
@@ -72,7 +78,7 @@ export default function StudentLoginForm() {
                   </div>
                 </div>
 
-                <Button className="self-center rounded-full w-40 mt-2">
+                <Button className="self-center rounded-full w-40 mt-4 h-12 text-base">
                   Login
                 </Button>
               </div>
