@@ -135,34 +135,32 @@ export const Stepper: React.FC<{
 }> = (
 	{ steps, currentStep, setCurrentStep, isClickable = true } // Added isClickable, default true
 ) => (
-	<div className="flex items-center justify-center space-x-4 sm:space-x-8 mb-6 sm:mb-10">
-		{steps.map(step => (
-			<button
-				key={step.id}
-				onClick={() => isClickable && setCurrentStep(step.id)}
-				disabled={!isClickable}
-				className={`flex items-center space-x-2 group focus:outline-none ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}>
-				<span // Updated logic for checkmark and active state
-					className={`w-6 h-6 rounded-full flex items-center justify-center text-xs border font-semibold
-          ${
-											currentStep === step.id
-												? `text-[${ACCENT_PINK}] border-[${ACCENT_PINK}]` // Active step
-												: `text-black border-black group-hover:text-black group-hover:border-black` // Future step
-										}`}>
-					{step.id}
-				</span>
-				<span // Updated logic for text color
-					className={`text-sm font-bold ${
-						currentStep == step.id // Active or completed
-							? `text-[${ACCENT_PINK}]`
-							: 'text-black'
-					}`}>
-					{step.name}
-				</span>
-			</button>
-		))}
-	</div>
-)
+		<div className="flex items-center justify-center space-x-4 sm:space-x-8 mb-6 sm:mb-10">
+			{steps.map(step => (
+				<button
+					key={step.id}
+					onClick={() => isClickable && setCurrentStep(step.id)}
+					disabled={!isClickable}
+					className={`flex items-center space-x-2 group focus:outline-none ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}>
+					<span // Updated logic for checkmark and active state
+						className={`w-6 h-6 rounded-full flex items-center justify-center text-xs border font-semibold
+          ${currentStep === step.id
+								? `text-[${ACCENT_PINK}] border-[${ACCENT_PINK}]` // Active step
+								: `text-black border-black group-hover:text-black group-hover:border-black` // Future step
+							}`}>
+						{step.id}
+					</span>
+					<span // Updated logic for text color
+						className={`text-sm font-bold ${currentStep == step.id // Active or completed
+								? `text-[${ACCENT_PINK}]`
+								: 'text-black'
+							}`}>
+						{step.name}
+					</span>
+				</button>
+			))}
+		</div>
+	)
 
 export const UnitaryItemCard: React.FC<{
 	item: UnitaryItemData
@@ -171,11 +169,10 @@ export const UnitaryItemCard: React.FC<{
 }> = ({ item, isSelected, onSelect }) => (
 	<button
 		onClick={onSelect}
-		className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150 ${
-			isSelected
+		className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150 ${isSelected
 				? `bg-orange-100 border border-orange-400 shadow-sm`
 				: `bg-white hover:bg-gray-100 border border-transparent hover:border-gray-200`
-		}`}>
+			}`}>
 		<h4 className="text-sm font-semibold text-black">{item.title}</h4>
 		<p className="text-xs text-[#6B7280]">{item.subtitle}</p>
 	</button>
@@ -188,9 +185,8 @@ export const StudentSelectItemCard: React.FC<{
 }> = ({ student, isSelected, onSelect }) => (
 	<button
 		onClick={onSelect}
-		className={`w-full flex items-center p-1.5 rounded-2xl border transition-all duration-150 gap-3 ${
-			isSelected ? `bg-blue-50 border-[${PRIMARY_BLUE}]` : `${INPUT_BORDER} hover:bg-gray-50 hover:border-gray-300`
-		}`}>
+		className={`w-full flex items-center p-1.5 rounded-2xl border transition-all duration-150 gap-3 ${isSelected ? `bg-blue-50 border-[${PRIMARY_BLUE}]` : `${INPUT_BORDER} hover:bg-gray-50 hover:border-gray-300`
+			}`}>
 		<img
 			src={student.avatarUrl}
 			alt={student.name}
@@ -204,9 +200,8 @@ export const StudentSelectItemCard: React.FC<{
 			<p className="text-[10px]  text-[#6B7280] truncate">{student.group}</p> {/* Added "Group:" prefix for clarity */}
 		</div>
 		<div
-			className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
-				isSelected ? `border-[${PRIMARY_BLUE}] bg-[${PRIMARY_BLUE}]` : `border-[#6B7280]`
-			}`}>
+			className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${isSelected ? `border-[${PRIMARY_BLUE}] bg-[${PRIMARY_BLUE}]` : `border-[#6B7280]`
+				}`}>
 			{isSelected && <div className="w-2 h-2 bg-white rounded-full"></div>}
 		</div>
 	</button>
@@ -312,58 +307,26 @@ export const FormDateInput: React.FC<{
 	</div>
 )
 
+import { useState } from 'react'
+import { ChevronUp, ChevronDown } from 'lucide-react'
+
 export const DurationPointInput: React.FC<{
 	label: string
 	value: string
 	onChange: (newValue: string) => void
 	name: string
 	isPoints?: boolean
-}> = ({ label, value, onChange, name, isPoints }) => {
-	// Added isPoints for validation logic
-	const handleIncrement = () => {
-		let numValue = parseInt(value) || 0
-		numValue = numValue + 1
-		if (isPoints && numValue > 99) numValue = 99
-		else if (!isPoints && label === 'Hours' && numValue > 23) numValue = 23
-		else if (!isPoints && label === 'Minutes' && numValue > 59) numValue = 59
-		onChange(String(numValue).padStart(2, '0'))
-	}
-	const handleDecrement = () => {
-		let numValue = parseInt(value) || 0
-		numValue = Math.max(0, numValue - 1)
-		onChange(String(numValue).padStart(2, '0'))
-	}
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const rawValue = e.target.value.replace(/[^0-9]/g, '')
-		if (rawValue === '') {
-			onChange('00')
-			return
-		}
-		let num = parseInt(rawValue)
-		if (isNaN(num)) {
-			onChange('00')
-			return
-		}
-
-		if (isPoints && num > 99) num = 99
-		else if (!isPoints && label === 'Hours' && num > 23) num = 23
-		else if (!isPoints && label === 'Minutes' && num > 59) num = 59
-
-		onChange(
-			String(num)
-				.padStart(rawValue.length === 1 && num < 10 ? 2 : rawValue.length, '0')
-				.slice(-2)
-		) // Pad if single digit or ensure 2 digits
-	}
-	const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const rawValue = e.target.value.replace(/[^0-9]/g, '')
-		if (rawValue === '' || parseInt(rawValue) === 0) onChange('00')
-		else onChange(String(parseInt(rawValue)).padStart(2, '0'))
-	}
+}> = ({ label, value, onChange, name }) => {
+	const handleIncrement = () => onChange(String(Number(value) + 1).padStart(2, '0'))
+	const handleDecrement = () => onChange(String(Number(value) - 1).padStart(2, '0'))
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)
+	const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => onChange(e.target.value)
 
 	return (
-		<div className="text-center flex flex-col ">
-			<label className="block text-[10px] self-start font-medium text-[#6B7280] mb-1">{label}</label>
+		<div className="text-center flex flex-col">
+			<label className="block text-[10px] self-start font-medium text-[#6B7280] mb-1">
+				{label}
+			</label>
 			<div
 				className={`relative inline-flex items-center justify-between px-2 py-1.5 ${INPUT_BG} ${INPUT_BORDER} border rounded-full w-20 h-9`}>
 				<input
@@ -379,13 +342,15 @@ export const DurationPointInput: React.FC<{
 					<button
 						type="button"
 						onClick={handleIncrement}
-						className="text-black hover:text-black h-1/2 flex items-center text-[8px]">
+						className="text-[#6B7280]0 hover:text-gray-700 h-1/3 flex items-center text-[10px]"
+					>
 						▲
 					</button>
 					<button
 						type="button"
 						onClick={handleDecrement}
-						className="text-black hover:text-black h-1/2 flex items-center text-[8px]">
+						className="text-[#6B7280]0 hover:text-gray-700 h-1/3 flex items-center text-[10px]"
+					>
 						▼
 					</button>
 				</div>
@@ -393,6 +358,7 @@ export const DurationPointInput: React.FC<{
 		</div>
 	)
 }
+
 
 // Additional helper components from original needed for questionnaire step
 export const QuestionPointsInput: React.FC<{
@@ -449,7 +415,7 @@ export default function CreateBWTestPage() {
 	}
 
 	return (
-		<div className="bg-gray-100 min-h-screen flex flex-col">
+		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			<Header user={headerUser} />
 			<div className="flex gap-4 justify-between items-center bg-white py-2 pr-4">
 				<NamingBar name="Create BW Test" />
@@ -508,14 +474,9 @@ export default function CreateBWTestPage() {
 			</div>
 
 			<MaxWidthWrapper>
-				<div className="bg-gray-100">
-					{/* <div className="bg-white px-4 sm:px-6 py-3  sticky top-0 z-40">
-						<div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0"></div>
-					</div> */}
-					<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-						<CreateBWTestContent />
-					</main>
-				</div>
+				<main className="flex-grow mx-auto p-4 sm:p-6 lg:p-8">
+					<CreateBWTestContent />
+				</main>
 			</MaxWidthWrapper>
 			<Footer />
 		</div>

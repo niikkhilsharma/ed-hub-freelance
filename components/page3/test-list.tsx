@@ -7,7 +7,7 @@ import { FiEye, FiEdit, FiTrash2 } from "react-icons/fi";
 
 // --- 6. Actions Popup (Not a modal, but a popover) ---
 const ActionsPopupScheduled: React.FC = () => (
-  <div className="bg-white p-2 rounded-2xl shadow-lg space-y-1">
+  <div className="bg-white p-2 rounded-2xl space-y-1">
     {[
       { label: "View", icon: FiEye },
       { label: "Edit", icon: FiEdit },
@@ -25,7 +25,7 @@ const ActionsPopupScheduled: React.FC = () => (
 );
 
 const ActionsPopupSaved: React.FC = () => (
-  <div className="bg-white p-2 rounded-2xl shadow-lg space-y-1">
+  <div className="bg-white p-2 rounded-2xl space-y-1">
     {[
       { label: "Edit", icon: FiEdit },
       { label: "Delete", icon: FiTrash2 },
@@ -122,6 +122,10 @@ export function TestList({ tests, type }: TestListProps) {
               {activePopup === test.id && (
                 <div className="absolute right-0 mt-8 z-10 ">
                   {type === "scheduled" && (
+                    <ActionsPopupScheduled />
+                  )}
+
+                  {type === "completed" && (
                     <ActionsPopupScheduled />
                   )}
 
