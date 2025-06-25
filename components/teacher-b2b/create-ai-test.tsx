@@ -261,14 +261,14 @@ const DurationPointInput: React.FC<{
           <button
             type="button"
             onClick={handleIncrement}
-            className="text-black hover:text-black h-1/2 flex items-center text-[8px]"
+            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
           >
             ▲
           </button>
           <button
             type="button"
             onClick={handleDecrement}
-            className="text-black hover:text-black h-1/2 flex items-center text-[8px]"
+            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
           >
             ▼
           </button>
