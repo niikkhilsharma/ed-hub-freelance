@@ -163,7 +163,7 @@ const Curriculum = () => {
                         isOpen ? "bg-white px-6 py-2" : ""
                       } w-full bg-[#F9FAFB] rounded-2xl flex justify-between items-center px-4 py-3 font-medium focus:outline-none`}
                     >
-                      <span className="text-lg">{item.title}</span>
+                      <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>
                       <div>
                         {isOpen ? (
                           <div className="flex gap-2 text-[#6B7280] text-xs items-center">
@@ -418,8 +418,6 @@ export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({
   <div className="flex items-center gap-2 text-xs border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg sm:text-sm sm:gap-2.5 sm:px-3 sm:py-2 sm:rounded-xl">
     <button
       onClick={onPrevious}
-      className="disabled:opacity-50"
-      disabled={!onPrevious}
       aria-label="Previous month"
     >
       <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
@@ -427,8 +425,6 @@ export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({
     <span className="">{currentDate}</span>
     <button
       onClick={onNext}
-      className="disabled:opacity-50"
-      disabled={!onNext}
       aria-label="Next month"
     >
       <FiArrowRightCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />

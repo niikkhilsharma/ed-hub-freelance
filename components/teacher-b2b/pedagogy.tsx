@@ -236,7 +236,7 @@ const ChapterAccordion: React.FC<{
             transition={{ duration: 0.3 }}
           >
             <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-xs text-[#6B7280] whitespace-pre-line">
-              <h6 className="text-sm text-black font-semibold mb-2">
+              <h6 className="text-sm text-black  mb-2">
                 Before the class
               </h6>
               <div className="space-y-2">
@@ -439,7 +439,7 @@ export default function PedagogyPage() {
   const headerUser = {
     name: "Educator Name",
     role: "Teacher",
-    avatarSrc: "/teacher-avatar-1.jpg",
+    avatarSrc: "/teacher-b2b/profile.png",
   };
   const handleBackClick = () => {
     if (typeof window !== "undefined") window.history.back();
@@ -450,7 +450,7 @@ export default function PedagogyPage() {
       <Header user={headerUser} />
 
       <div className="bg-white px-4 sm:px-6 py-3 shadow-sm sticky top-0 z-40">
-        <div className="container mx-auto flex items-center gap-3">
+        <div className="mx-auto flex items-center gap-3">
           <button
             onClick={handleBackClick}
             className="p-1.5 text-gray-700 hover:text-gray-900 focus:outline-none rounded-md"

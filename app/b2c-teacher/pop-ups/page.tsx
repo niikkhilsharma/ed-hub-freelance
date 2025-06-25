@@ -24,7 +24,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
 	isOpen,
 	onClose,
 	children,
-	maxWidth = "max-w-md",
+	maxWidth = "max-w-md", 
 }) => {
 	useEffect(() => {
 		const handleEsc = (event: KeyboardEvent) => {
