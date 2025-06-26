@@ -1,6 +1,5 @@
 // components/ShareVideoPopup.tsx
-import { ChevronDown, X } from 'lucide-react';
-import { Poppins } from 'next/font/google';
+import { X } from 'lucide-react';
 export default function ShareVideoPopup() {
   return (
     <div className="bg-[#FFFFFF] font-Poppins rounded-2xl border mx-auto my-20 shadow-xl p-3 w-[400px] max-w-full relative">
