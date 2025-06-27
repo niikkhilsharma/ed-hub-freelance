@@ -25,7 +25,7 @@ export default function CourseDetail() {
 
   return (
     <StudentWrapper>
-      <div className="relative z-10 pb-70 bg-[#E3E3E3]">
+      <div className="relative z-10 bg-[#E3E3E3]">
         {/* headers */}
         <div className="bg-white border-b">
           <div className="w-full px-4 sm:px-6 lg:px-8">
@@ -46,7 +46,7 @@ export default function CourseDetail() {
             <div className="md:grid md:grid-cols-[1fr_0.6fr] p-4 gap-16">
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <h2 className="px-3 py-4 rounded-xl bg-[#99DEFF] font-bold">
+                  <h2 className="px-3 py-4 rounded-2xl bg-[#99DEFF] font-bold">
                     Short Description
                   </h2>
                   <p className="text-base leading-[20px] font-[400]">
@@ -63,7 +63,7 @@ export default function CourseDetail() {
                   </p>
                 </div>
                 <div className="space-y-3">
-                  <h2 className="px-3 py-4 rounded-xl bg-[#FF99B7] font-bold">
+                  <h2 className="px-3 py-4 rounded-2xl bg-[#FF99B7] font-bold">
                     Overview
                   </h2>
                   <p className="text-base leading-[20px] font-[400]">
@@ -104,7 +104,7 @@ export default function CourseDetail() {
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <h2 className="px-3 py-4 rounded-xl bg-[#8DD9B3] font-bold">
+                  <h2 className="px-3 py-4 rounded-2xl bg-[#8DD9B3] font-bold">
                     Characteristics{" "}
                   </h2>
                   <p className="text-base leading-[20px] font-[400]">
@@ -126,7 +126,7 @@ export default function CourseDetail() {
                   </ul>
                 </div>
                 <div className="space-y-2">
-                  <h2 className="px-3 py-4 rounded-xl bg-[#FFCC00] font-bold">
+                  <h2 className="px-3 py-4 rounded-2xl bg-[#FFCC00] font-bold">
                     Benefits{" "}
                   </h2>
                   <p className="text-base leading-[20px] font-[400]">
@@ -157,7 +157,7 @@ export default function CourseDetail() {
                   src="/student/courses/image_586.png"
                   className="block mx-auto"
                 />
-                <div className="border border-zinc-200 rounded-xl flex flex-col justify-center items-center gap-2 p-6">
+                <div className="border border-zinc-200 bg-[#F9FAFB] rounded-2xl flex flex-col justify-center items-center gap-2 p-6">
                   <span className="text-2xl font-bold">₹15000</span>
                   <span className="font-semibold">3 Sessions</span>
                   <span className="text-lg">90 Mins</span>
@@ -165,7 +165,7 @@ export default function CourseDetail() {
               </div>
             </div>
             <div className="p-4 space-y-4">
-              <h2 className="text-xl font-bold">Banner Title</h2>
+              <h2 className="text-xl font-bold pl-2">Banner Title</h2>
               <img
                 alt="course poster"
                 src="/student/courses/Frame_1000008877.png"
@@ -190,7 +190,7 @@ export default function CourseDetail() {
       </div>
 
       <div className="z-10 absolute">
-        <FooterNew />
+        <FooterNew showSuscriptionBlock={false} />
       </div>
     </StudentWrapper>
   );
