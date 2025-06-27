@@ -25,10 +25,10 @@ export default function CourseDetail() {
             alt="404 error image"
             className="scale-90"
           />
-          <h1 className="font-bold text-3xl lg:text-4xl text-center uppercase">
+          <h1 className="font-bold text-2xl lg:text-4xl text-center uppercase mb-3">
             Sorry, Page Not Found!
           </h1>
-          <p className="font-medium text-lg text-[#777777] text-center max-w-5xl">
+          <p className="font-medium text-[#777777] text-left max-w-3xl mb-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod
             tempor incididunt ut labore et dolore magna aliqua.
           </p>
