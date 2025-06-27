@@ -45,12 +45,27 @@ export default function CoursePolicy() {
 
             {/* Policy Content Card */}
             <Card className="mb-8 border border-[#E5E7EB] p-2 rounded-xl">
-              <CardContent className="p-6 sm:p-3 bg-[#E5E7EB] rounded-xl scroll-container">
+              <CardContent className="policy-scroll-container p-6 sm:p-3 bg-[#E5E7EB] rounded-xl max-h-[630px] overflow-y-auto">
+                <style jsx>{`
+                  .policy-scroll-container::-webkit-scrollbar {
+                    width: 8px;
+                  }
+                  .policy-scroll-container::-webkit-scrollbar-track {
+                    background: transparent;
+                  }
+                  .policy-scroll-container::-webkit-scrollbar-thumb {
+                    background: #3366ff;
+                    border-radius: 4px;
+                  }
+                  .policy-scroll-container::-webkit-scrollbar-thumb:hover {
+                    background: #3366ff;
+                  }
+                `}</style>
                 {/* Greeting */}
-                <p className="text-lg mb-6">Dear Parents,</p>
+                <p className="text-lg mb-6 max-w-5xl">Dear Parents,</p>
 
                 {/* Welcome Message */}
-                <p className="text-base sm:text-lg leading-relaxed mb-8">
+                <p className="text-base sm:text-lg leading-relaxed mb-8 max-w-5xl">
                   Welcome to EduNique! We are delighted to have you on board as
                   we embark on your child&#39;s holistic learning journey. To
                   get started, please submit the form on our website along with
@@ -60,37 +75,42 @@ export default function CoursePolicy() {
                 </p>
 
                 {/* Course Policies Section */}
-                <div>
+                <div className="max-w-3xl">
                   <h2 className="text-base md:text-lg font-bold mb-6">
                     Course Policies:
                   </h2>
 
                   <ul className="space-y-6 text-base md:text-lg">
                     {/* Punctuality Policy */}
-                    <li>
-                      <strong className="font-bold">
-                        • Punctuality Matters:&nbsp;
-                      </strong>
-                      If a class is joined late, a compensatory session will not
-                      be provided.
+                    <li className="flex items-start gap-2">
+                      <span className="font-extrabold">•</span>
+                      <span>
+                        <strong>Punctuality Matters:&nbsp;</strong>
+                        If a class is joined late, a compensatory session will
+                        not be provided.
+                      </span>
                     </li>
 
                     {/* Holiday Policy */}
-                    <li>
-                      <strong className="font-bold">
-                        • Holiday Policy:&nbsp;
-                      </strong>
-                      National holidays will not be compensated, but the total
-                      number of monthly classes will be covered.
+                    <li className="flex items-start gap-2">
+                      <span className="font-extrabold">•</span>
+                      <span>
+                        <strong>Holiday Policy:&nbsp;</strong>
+                        National holidays will not be compensated, but the total
+                        number of monthly classes will be covered.
+                      </span>
                     </li>
 
                     {/* Fee Payment Policy */}
-                    <li>
-                      <strong className="font-bold">
-                        • Timely Fee Payment:&nbsp;
-                      </strong>
-                      Fees should be paid one week before the current course
-                      period ends to ensure a smooth learning experience.
+                    <li className="flex items-start gap-2">
+                      <span className="font-extrabold">•</span>
+                      <span>
+                        <strong className="font-bold">
+                          Timely Fee Payment:&nbsp;
+                        </strong>
+                        Fees should be paid one week before the current course
+                        period ends to ensure a smooth learning experience.
+                      </span>
                     </li>
                   </ul>
                 </div>
