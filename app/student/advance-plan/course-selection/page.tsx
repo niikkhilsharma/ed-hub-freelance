@@ -26,14 +26,14 @@ export default function CourseSelection() {
                 key={index}
                 className="bg-[#F9FAFB] rounded-3xl border border-[#E5E7EB] overflow-hidden p-2"
               >
-                <div className="relative h-48 bg-gradient-to-r from-orange-200 to-orange-300 rounded-3xl overflow-hidden">
+                <div className="relative h-48 bg-gradient-to-r from-orange-200 to-orange-300 rounded-[12px] overflow-hidden">
                   <img
                     src="/student/home/pers-dev.png"
                     alt="course image"
                     className="object-fit"
                   />
                 </div>
-                <div className="p-2">
+                <div className="p-2 pb-0">
                   <h3 className="text-xl font-bold">Course Name</h3>
                 </div>
               </div>
