@@ -371,7 +371,7 @@ const CourseSlider = () => {
                   <span className="text-[#50C878] font-bold">
                     ₹2,000 - ₹5,000
                   </span>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm h-fit">
                     Add to cart
                   </Button>
                 </div>
