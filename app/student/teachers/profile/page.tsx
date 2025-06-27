@@ -175,36 +175,38 @@ function TeacherProfileContent() {
                     </div>
                   </div>
 
-                  {/* Watch Demo Video Button */}
-                  <button className="w-full bg-[#FF3366] hover:bg-[#ff1a53] text-white flex justify-center items-center rounded-2xl py-3 h-fit gap-2 cursor-pointer font-medium">
-                    <ChartNoAxesColumn className="w-5 h-5" />
-                    <span>Watch Demo Video</span>
-                  </button>
+                  {redirectionFlow !== "demo" && (
+                    <>
+                      <button className="w-full bg-[#FF3366] hover:bg-[#ff1a53] text-white flex justify-center items-center rounded-2xl py-3 h-fit gap-2 cursor-pointer font-medium">
+                        <ChartNoAxesColumn className="w-5 h-5" />
+                        <span>Watch Demo Video</span>
+                      </button>
 
-                  {/* Availability Section */}
-                  <div className="space-y-4">
-                    <h2 className="text-xl font-semibold">Availability</h2>
+                      <div className="space-y-4">
+                        <h2 className="text-xl font-semibold">Availability</h2>
 
-                    <div className="space-y-2 border border-[#E5E7EB] bg-[#F9FAFB] p-4 rounded-3xl gap-2">
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-[#6B7280]">
-                          Monday, Wednesday, Friday
-                        </span>
-                        <span className="text-sm font-medium text-[#6B7280]">
-                          10 AM - 1 PM
-                        </span>
+                        <div className="space-y-2 border border-[#E5E7EB] bg-[#F9FAFB] p-4 rounded-3xl gap-2">
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm font-medium text-[#6B7280]">
+                              Monday, Wednesday, Friday
+                            </span>
+                            <span className="text-sm font-medium text-[#6B7280]">
+                              10 AM - 1 PM
+                            </span>
+                          </div>
+
+                          <div className="flex justify-between items-center">
+                            <span className="text-sm font-medium text-[#6B7280]">
+                              Saturday
+                            </span>
+                            <span className="text-sm font-medium text-[#6B7280]">
+                              2 PM - 6 PM
+                            </span>
+                          </div>
+                        </div>
                       </div>
-
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-medium text-[#6B7280]">
-                          Saturday
-                        </span>
-                        <span className="text-sm font-medium text-[#6B7280]">
-                          2 PM - 6 PM
-                        </span>
-                      </div>
-                    </div>
-                  </div>
+                    </>
+                  )}
 
                   {/* About Section */}
                   <div className="space-y-4">
@@ -367,10 +369,10 @@ function TeacherProfileContent() {
           {redirectionFlow === "demo" ? (
             <div className="space-y-4">
               {/* Demo Video Section */}
-              <h2 className="text-lg font-semibold p-6 bg-[#B0B0B066] rounded-3xl">
+              <h2 className="font-semibold p-4 bg-[#B0B0B066] rounded-2xl">
                 Demo Video
               </h2>
-              <Card className="overflow-hidden">
+              <Card className="overflow-hidden rounded-3xl">
                 <div className="relative aspect-video bg-gray-900">
                   <img
                     src="/placeholder.svg?height=400&width=800"
