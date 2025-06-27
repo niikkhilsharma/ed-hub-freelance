@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Search, Filter, Info, Check, ArrowLeft } from "lucide-react";
+import { Search, Info, Check, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
@@ -214,7 +214,7 @@ export default function TeacherSelection() {
 
           <div className="flex flex-col lg:flex-row gap-6">
             {/* Left Panel - Teacher List */}
-            <div className="lg:w-[40%] space-y-4 border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl p-4">
+            <div className="lg:w-[40%] space-y-2 border border-[#E5E7EB] bg-[#F9FAFB] rounded-3xl p-4">
               {/* Search and Filter */}
               <div className="flex gap-2">
                 <div className="relative flex-1">
@@ -223,16 +223,15 @@ export default function TeacherSelection() {
                     placeholder="Search Teacher"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10 rounded-full"
+                    className="pl-10 rounded-full border border-[#6B7280]"
                   />
                 </div>
                 <Select value={filterBy} onValueChange={setFilterBy}>
                   <SelectTrigger className="w-24 border border-[#E5E7EB] rounded-xl [&_svg]:z-10 [&_svg]:stroke-black">
-                    <Filter className="h-4 w-4" />
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All</SelectItem>
+                    <SelectItem value="all">Filter</SelectItem>
                     <SelectItem value="mathematics">Math</SelectItem>
                     <SelectItem value="science">Science</SelectItem>
                     <SelectItem value="english">English</SelectItem>
@@ -243,7 +242,7 @@ export default function TeacherSelection() {
               </div>
 
               {/* Teacher Cards */}
-              <div className="space-y-3 max-h-96 overflow-y-auto">
+              <div className="space-y-3 max-h-96 overflow-y-auto pr-2">
                 <style jsx>{`
                   div::-webkit-scrollbar {
                     width: 8px;
@@ -342,8 +341,13 @@ export default function TeacherSelection() {
 
                 {/* Time Slot Grid */}
                 <div className="space-y-2 max-h-[400px] overflow-y-auto">
-                  {times.map((time) => (
-                    <div key={time} className="grid grid-cols-6 gap-2">
+                  {times.map((time, index) => (
+                    <div
+                      key={time}
+                      className={`grid grid-cols-6 gap-2 border border-x-0 ${
+                        index === 0 ? "border-t-[#B0B0B0]" : "border-t-0"
+                      } border-b-[#B0B0B0] py-1`}
+                    >
                       <div className="flex items-center justify-center text-sm font-medium text-[#6B7280]">
                         {time}
                       </div>
