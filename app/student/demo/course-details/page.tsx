@@ -314,7 +314,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           {/* Fixed Sidebar */}
           <div className="w-64 flex-shrink-0">
             <div className="p-6">
-              <nav className="space-y-2">
+              <nav className="space-y-4">
                 {menuItems.map((item) => {
                   const IconComponent = item.icon;
                   const isActive = activeTab === item.id;
@@ -344,12 +344,12 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           {/* Main Content Area */}
           <div className="flex-1 overflow-auto">
             <div className="p-8">
-              <h1 className="text-xl font-semibold mb-4">
+              <h1 className="text-2xl font-semibold mb-8">
                 {contentMap[activeTab as keyof typeof contentMap].title}
               </h1>
 
               <div className="max-w-none">
-                <p className="leading-relaxed text-xl whitespace-pre-line">
+                <p className="leading-relaxed text-xl whitespace-pre-line text-black">
                   {contentMap[activeTab as keyof typeof contentMap].content}
                 </p>
               </div>
