@@ -17,7 +17,7 @@ export default function AfterDemoCourseFeePayment() {
                   What Our Learners Are Saying
                 </h1>
                 <div
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-1 h-[600px] overflow-y-auto"
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-1 h-[600px] overflow-y-auto content-start pr-2"
                   style={{
                     scrollbarWidth: "thin",
                     scrollbarColor: "#FFA500 transparent",
@@ -38,9 +38,14 @@ export default function AfterDemoCourseFeePayment() {
                       background: #ff8c00;
                     }
                   `}</style>
-                  {reviews.map((review, index) => (
-                    <ReviewCard key={`${review.id}-${index}`} review={review} />
-                  ))}
+                  {[...reviews, ...reviews, ...reviews, ...reviews].map(
+                    (review, index) => (
+                      <ReviewCard
+                        key={`${review.id}-${index}`}
+                        review={review}
+                      />
+                    )
+                  )}
                 </div>
               </div>
               <div className="space-y-2 mt-4 sm:mt-0">
@@ -49,7 +54,7 @@ export default function AfterDemoCourseFeePayment() {
                   src="/student/courses/detail/hero.png"
                   className="block mx-auto rounded-3xl"
                 />
-                <div className="border border-zinc-200 rounded-3xl space-y-2 p-6 text-center">
+                <div className="border border-zinc-200 bg-[#F9FAFB] rounded-3xl space-y-2 px-3 py-4 text-center">
                   <h2 className="font-semibold text-lg">Enjoyed the Demo?</h2>
                   <p className="text-sm font-semibold text-[#6B7280] text-center">
                     Unlock the full course and continue your learning journey
