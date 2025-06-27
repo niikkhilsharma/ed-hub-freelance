@@ -29,11 +29,11 @@ export default function DemoRating() {
       <div className="relative z-10 bg-[#E3E3E3]">
         <section className="px-16 py-8">
           <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
-            <h1 className="text-3xl font-semibold text-[#FF3366]">
-              Rate Your Demo Experience
-            </h1>
             <div className="md:grid md:grid-cols-[1fr_1fr] p-4 gap-16">
               <div className="space-y-5">
+                <h1 className="text-3xl font-semibold text-[#FF3366]">
+                  Rate Your Demo Experience
+                </h1>
                 {[
                   { parameter: "Clarity", rating: 4 },
                   { parameter: "Friendliness", rating: 4 },
@@ -61,11 +61,13 @@ export default function DemoRating() {
                 </div>
               </div>
               <div className="space-y-2 mt-4 sm:mt-0">
-                <img
-                  alt="course pack image"
-                  src="/student/courses/detail/hero.png"
-                  className="block mx-auto rounded-3xl"
-                />
+                <div className="flex justify-center items-center max-h-[400px] overflow-hidden rounded-3xl">
+                  <img
+                    alt="course pack image"
+                    src="/student/courses/detail/hero.png"
+                    className="block mx-auto rounded-3xl"
+                  />
+                </div>
                 <div className="w-full rounded-2xl bg-[#F9FAFB] placeholder:text-[#6B7280] border border-[#D5D5D5] flex items-center p-2 gap-4">
                   <img
                     alt="profile image"
