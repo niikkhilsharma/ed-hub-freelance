@@ -283,16 +283,26 @@ export default function AdvancePlan() {
         </thead>
         <tbody>
           {data.rows.map((row, index) => (
-            <tr key={index} className="hover:bg-gray-50">
-              <td className="px-6 py-4 font-medium">{row.date}</td>
-              <td className="px-6 py-4">
-                {"subject" in row ? row.subject : row.test}
+            <tr key={index} className="p-1">
+              <td className="p-1">
+                <div className="px-6 py-4 font-medium bg-[#F9FAFB] rounded-xl">
+                  {row.date}
+                </div>
               </td>
-              <td className="px-6 py-4">
-                {"topics" in row ? row.topics : row.quiz}
+              <td className="p-1">
+                <div className="px-6 py-4 bg-[#F9FAFB] rounded-xl">
+                  {"subject" in row ? row.subject : row.test}
+                </div>
               </td>
-              <td className="px-6 py-4">
-                {"subtopics" in row ? row.subtopics : row.assessment}
+              <td className="p-1">
+                <div className="px-6 py-4 bg-[#F9FAFB] rounded-xl">
+                  {"topics" in row ? row.topics : row.quiz}
+                </div>
+              </td>
+              <td className="p-1">
+                <div className="px-6 py-4 bg-[#F9FAFB] rounded-xl">
+                  {"subtopics" in row ? row.subtopics : row.assessment}
+                </div>
               </td>
             </tr>
           ))}
@@ -316,7 +326,7 @@ export default function AdvancePlan() {
       </div>
 
       <div className="bg-[#EEEEEE] p-10">
-        <div className="w-full max-w-7xl mx-auto p-4 space-y-6 bg-white min-h-screen rounded-3xl">
+        <div className="w-full max-w-7xl mx-auto p-4 space-y-1 bg-white min-h-screen rounded-3xl">
           {/* Header Section - Search and Filters */}
           <div className="flex flex-col sm:flex-row gap-4 items-center p-4 rounded-lg">
             {/* Search Bar */}
