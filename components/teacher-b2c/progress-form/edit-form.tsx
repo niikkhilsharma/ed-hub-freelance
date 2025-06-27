@@ -40,7 +40,7 @@ export default function StudentSubmittedPapersPage() {
   const students = new Array(4).fill({
     name: "Student Name",
     grade: "Level / Grade",
-    image: "/images/teacher/b2c/student.png", // place an avatar image in public folder
+    image: "/student-avatar-1.png", // place an avatar image in public folder
   });
   
 
@@ -94,12 +94,12 @@ export default function StudentSubmittedPapersPage() {
               </div>
 
               {/* Save Button */}
-              <div className="flex justify-center gap-4">
-                <button className="bg-[#FF3366]/10 text-[#FF3366] text-lg  px-6 sm:px-8 py-2 rounded-full hover:bg-blue-600 transition-all">
-                  Delete
+              <div className="flex justify-center gap-3">
+                <button className="  bg-[#ff3366]/10 text-[#ff3366] px-6 py-2 rounded-full hover:bg-blue-600 transition-all">
+                  Cancel
                 </button>
-                 <button className="bg-[#3366FF] text-white text-lg sm:px-8 px-6 py-2 rounded-full transition-all">
-                  Update
+                 <button className="bg-[#3366ff] text-white px-6 py-2 rounded-full hover:bg-blue-600 transition-all">
+                Update
                 </button>
               </div>
             </div>
@@ -121,7 +121,7 @@ function StudentCard({ student }: { student: any }) {
           alt="avatar"
           width={50}
           height={50}
-          className="rounded-full"
+          className="rounded-md w-20 h-20"
         />
         <div>
           <p className="font-medium text-xl text-black">{student.name}</p>
@@ -131,7 +131,7 @@ function StudentCard({ student }: { student: any }) {
       <input
         type="text"
         placeholder="Enter Marks"
-        className="border border-[#D5D5D5] px-4 bg-[#F9F5FB] rounded-full  text-md "
+        className="border  w-40 border-[#D5D5D5] px-4 py-2 bg-[#F9F5FB] rounded-full  text-md "
       />
     </div>
   );

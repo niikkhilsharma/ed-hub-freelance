@@ -40,7 +40,7 @@ export default function StudentSubmittedPapersPage() {
   const students = new Array(4).fill({
     name: "Student Name",
     grade: "Level / Grade",
-    image: "/images/teacher/b2c/student.png", // place an avatar image in public folder
+    image: "/student-avatar-1.png", // place an avatar image in public folder
   });
   
 
@@ -118,7 +118,7 @@ function StudentCard({ student }: { student: any }) {
           alt="avatar"
           width={50}
           height={50}
-          className="rounded-full"
+          className="rounded-md w-20 h-20"
         />
         <div>
           <p className="font-medium text-xl text-black">{student.name}</p>
@@ -128,7 +128,7 @@ function StudentCard({ student }: { student: any }) {
       <input
         type="text"
         placeholder="Enter Marks"
-        className="border border-[#D5D5D5] px-4 bg-[#F9F5FB] rounded-full  text-md "
+        className="border  w-40 border-[#D5D5D5] px-4 py-2 bg-[#F9F5FB] rounded-full  text-md "
       />
     </div>
   );

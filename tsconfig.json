@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/teacher-b2b/create-ai-test", "app/teacher-b2b/pedagogy", "app/teacher-b2b/teacher-flow/teacher-dashboard"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/teacher-b2b/create-ai-test", "app/teacher-b2b/pedagogy", "app/teacher-b2b/teacher-flow/teacher-dashboard", "app/b2c-teacher/teacher-flow/student-progress-report-exams"],
   "exclude": ["node_modules"]
 }
