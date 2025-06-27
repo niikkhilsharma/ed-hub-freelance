@@ -86,7 +86,7 @@ export default function StudentAtitude() {
         {attitudeCategories.map((category) => (
           <React.Fragment key={category.id}>
             {/* Attitude Column */}
-            <div className="bg-[#f9fafb] p-4 flex items-center   rounded-xl shadow-sm font-semibold text-black">
+            <div className="bg-[#f9fafb] py-14 px-4 h-40  text-xl text-center rounded-xl shadow-sm font-semibold text-black">
               {category.attitude}
             </div>
 
@@ -117,7 +117,7 @@ export default function StudentAtitude() {
                 >
                   <input
                     type="radio"
-                    className="appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] "
+                    className="appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] checked:bg-[#6b7280] checked:border-[#6b7280]" // Added checked styles
                     name={`attitude-${category.id}`}
                     value={option}
                   />
@@ -135,11 +135,11 @@ export default function StudentAtitude() {
                 >
                   <input
                     type="radio"
-                    className="appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] "
+                    className="appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] checked:bg-[#6b7280] checked:border-[#6b7280]" // Added checked styles
                     name={`attitude-${category.id}`}
                     value={option}
                   />
-                  <span >{option}</span>
+                  <span>{option}</span>
                 </label>
               ))}
             </div>
