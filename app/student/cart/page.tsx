@@ -32,7 +32,7 @@ export default function CourseDetail() {
 
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
-  const [discount, setDiscount] = useState(10);
+  const [discount, setDiscount] = useState(0);
 
   // Calculate totals
   const subtotal = cartItems.reduce(
@@ -119,19 +119,19 @@ export default function CourseDetail() {
                   <table className="w-full">
                     <thead className="bg-[#3366FF1A]">
                       <tr className="border-b border-gray-200">
-                        <th className="text-left py-4 pl-6 font-medium">
+                        <th className="text-left py-4 pl-6 font font-normal">
                           S.N.
                         </th>
-                        <th className="text-left py-4 px-2 font-medium">
+                        <th className="text-left py-4 px-2 font font-normal">
                           Product
                         </th>
-                        <th className="text-left py-4 pr-2 pl-6 font-medium">
+                        <th className="text-left py-4 pr-2 pl-6 font font-normal">
                           Price
                         </th>
-                        <th className="text-left py-4 pr-2 pl-6 font-medium">
+                        <th className="text-left py-4 pr-2 pl-6 font font-normal">
                           Quantity
                         </th>
-                        <th className="text-left py-4 px-2 font-medium">
+                        <th className="text-left py-4 px-2 font font-normal">
                           Subtotal
                         </th>
                       </tr>
@@ -203,7 +203,7 @@ export default function CourseDetail() {
                   </table>
                 </div>
                 <div className="flex justify-start h-fit">
-                  <Button className="bg-[#3366ff] text-lg text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full ml-6">
+                  <Button className="bg-[#3366ff] text text-white px-8 py-3 hover:bg-[#0c45f0] hover:text-white rounded-full ml-6 h-fit">
                     Explore More
                   </Button>
                 </div>
@@ -259,7 +259,7 @@ export default function CourseDetail() {
               </div>
 
               {/* Right Section - Cart Total */}
-              <div className="w-full lg:w-90">
+              <div className="w-full lg:w-[400px]">
                 <div className="bg-white border border-[#E5E7EB] flex flex-col shadow rounded-2xl overflow-hidden">
                   <h3 className="text-xl bg-[#3366FF1A] py-3 px-4 font-bold text-gray-800 mb-4">
                     Cart Total
@@ -300,7 +300,7 @@ export default function CourseDetail() {
                   </div>
 
                   <div className="p-6">
-                    <Button className="w-full self-center bg-[#3366FF] hover:bg-blue-600 text-white py-6 rounded-3xl font-medium text-lg transition-colors cursor-pointer">
+                    <Button className="w-full self-center bg-[#3366FF] hover:bg-blue-600 text-white py-3 px-8 rounded-3xl font-medium text transition-colors cursor-pointer h-fit">
                       Proceed to checkout
                     </Button>
                   </div>

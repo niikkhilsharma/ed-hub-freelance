@@ -108,14 +108,14 @@ export default function FooterNew({
     >
       {showSuscriptionBlock && (
         <div className="max-w-7xl mx-auto z-40 min-h-65 w-full pb-4 absolute top-0 translate-y-[-100%] flex justify-center text-white">
-          <div className="min-h-24 bg-[#f9346d] w-full p-4 rounded-2xl flex px-16 items-center justify-between overflow-hidden shadow-xl relative">
+          <div className="min-h-24 bg-[#FF3366] w-full p-4 rounded-2xl flex px-16 items-center justify-between overflow-hidden shadow-xl relative">
             {/* Background Layer */}
             <div
               className="absolute inset-0 bg-center bg-repeat z-0"
               style={{
                 backgroundImage: 'url("/background6.png")',
                 backgroundSize: "cover",
-                filter: "brightness(1.2) opacity(.5) blur(0.1px)",
+                filter: "brightness(1.2) opacity(.5) blur(0.2px)",
                 opacity: 0.3,
               }}
             />
@@ -127,7 +127,7 @@ export default function FooterNew({
                 initial={{ y: -20, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="text-2xl md:text-4xl font-bold mb-2 text-center"
+                className="text-2xl md:text-4xl font-semibold mb-3 text-center"
               >
                 Subscribe to our newsletter
               </motion.h2>
@@ -145,17 +145,17 @@ export default function FooterNew({
                 initial={{ scale: 0.9, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.6 }}
-                className="flex w-full max-w-md rounded-full p-1 overflow-hidden bg-white shadow-lg"
+                className="flex w-full max-w-md rounded-full p-2 overflow-hidden bg-white shadow-lg"
               >
                 <input
                   type="email"
                   placeholder="Email Address"
-                  className="flex-grow py-3 px-6 text-gray-800 outline-none"
+                  className="flex-grow py-2 px-6 outline-none placeholder:text-[#6B7280] text-black"
                 />
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-[#FFCC00] font-bold text-white rounded-full py-3 px-8 transition-all duration-300 hover:bg-[#262623] cursor-pointer"
+                  className="bg-[#FFCC00] font-medium text-white rounded-full py-2 px-8 transition-all duration-300 hover:bg-[#262623] cursor-pointer"
                 >
                   Send
                 </motion.button>
