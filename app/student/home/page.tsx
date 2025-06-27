@@ -207,7 +207,7 @@ export default function StudentHome() {
                     backgroundPositionY: "10px",
                   }}
                 >
-                  fingertips
+                  Fingertips
                 </span>
               </h1>
 
@@ -245,7 +245,7 @@ export default function StudentHome() {
                 <img
                   src="/student/home/hero_image.png"
                   alt="Students learning with robot"
-                  className="rounded-full object-cover"
+                  className="rounded-full object-contain"
                 />
               </div>
             </div>
@@ -317,7 +317,7 @@ export default function StudentHome() {
                         alt={course.title}
                         width={400}
                         height={200}
-                        className="w-full h-48 object-cover rounded-xl"
+                        className="w-full h-48 object-cover rounded-2xl"
                       />
                     </div>
                     <CardContent className="p-6 pt-0 space-y-3">
@@ -388,7 +388,7 @@ export default function StudentHome() {
                 style={{
                   backgroundImage: 'url("/background5.png")',
                   backgroundSize: "cover",
-                  filter: "opacity(0.4) grayscale(5%) blur(0.1px)",
+                  filter: "opacity(0.4) grayscale(5%) blur(0.4px)",
                   opacity: 0.3,
                 }}
               />
@@ -420,7 +420,7 @@ export default function StudentHome() {
                       <div className="relative w-96 h-96">
                         {/* Third Card (Back) - Coding/Programming */}
                         <div
-                          className="absolute w-72 h-full rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,1.3)] transform translate-x-70  "
+                          className="absolute w-72 h-full rounded-2xl shadow-2xl transform translate-x-70  "
                           style={{
                             zIndex: 1,
                           }}
@@ -428,13 +428,13 @@ export default function StudentHome() {
                           <img
                             src="/student/home/card.png"
                             alt="card"
-                            className="w-full h-full object-cover rounded-2xl"
+                            className="w-full h-full object-cover rounded-[18px]"
                           />
                         </div>
 
                         {/* Second Card (Middle) - App Design */}
                         <div
-                          className="absolute w-72 h-full rounded-2xl shadow-[0_15px_40px_rgba(0,0,0,1.25)] transform translate-x-35 "
+                          className="absolute w-72 h-full rounded-2xl shadow-2xl transform translate-x-35 "
                           style={{
                             zIndex: 2,
                           }}
@@ -442,13 +442,13 @@ export default function StudentHome() {
                           <img
                             src="/student/home/card2.png"
                             alt="card"
-                            className="w-full h-full object-cover rounded-2xl"
+                            className="w-full h-full object-cover rounded-[18px]"
                           />
                         </div>
 
                         {/* First Card (Front) - AR/VR/3D */}
                         <div
-                          className="absolute w-72 h-full rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,1.35)] transform -\"
+                          className="absolute w-72 h-full rounded-2xl shadow-2xl transform -\"
                           style={{
                             zIndex: 3,
                           }}
@@ -456,7 +456,7 @@ export default function StudentHome() {
                           <img
                             src="/student/home/card1.png"
                             alt="card"
-                            className="w-full h-full object-cover rounded-2xl"
+                            className="w-full h-full object-cover rounded-[18px]"
                           />
                         </div>
                       </div>

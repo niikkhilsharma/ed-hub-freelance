@@ -316,8 +316,12 @@ const CourseSlider = () => {
                   alt={course.title}
                   width={400}
                   height={200}
-                  className="w-full h-48 object-cover rounded-xl"
+                  className="w-full h-48 object-cover rounded-2xl"
                 />
+                <div className="absolute right-5 top-5 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
+                  <span className="text-amber-300 text-lg font-bold">4.2</span>
+                  <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                </div>
               </div>
 
               <div className="p-6 pt-0 space-y-2">
