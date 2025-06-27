@@ -24,7 +24,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
 	isOpen,
 	onClose,
 	children,
-	maxWidth = "max-w-md", 
+	maxWidth = "max-w-md",
 }) => {
 	useEffect(() => {
 		const handleEsc = (event: KeyboardEvent) => {
@@ -321,13 +321,197 @@ const EditDemoVideoModal: React.FC<BaseModalProps> = ({ isOpen, onClose }) => (
 		</div>
 	</BaseModal>
 );
+// --- 6. Request pay raise
+const PayRaiseModal: React.FC<BaseModalProps> = ({
+	isOpen,
+	onClose,
+}) => {
+	return (
+		<BaseModal isOpen={isOpen} onClose={onClose}>
+			<div className="p-6">
+				<div className="flex justify-between items-start mb-4">
+					<h2 className="text-xl font-bold">Request a Pay Raise</h2>
+					<button
+						onClick={onClose}
+						className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+					>
+						<FiX />
+					</button>
+				</div>
+				<FormGroup label=" ">
+					<div className="relative">Hola</div>
+				</FormGroup>
+				<div className="flex justify-end gap-3 mt-4">
+					<button
+						onClick={onClose}
+						className="px-6 py-2.5 border border-[#E5E7EB] text-[#6B7280] font-semibold rounded-full hover:bg-gray-200"
+					>
+						Cancel
+					</button>
+					<button className="px-8 py-2.5 bg-[#3366FF] text-white font-semibold rounded-full hover:bg-blue-700">
+						Apply
+					</button>
+				</div>
+			</div>
+		</BaseModal>
+	);
+};
+// --- 7. Schedule Meeting
+const ScheduleMeetingModal: React.FC<BaseModalProps> = ({
+	isOpen,
+	onClose,
+}) => {
+	return (
+		<BaseModal isOpen={isOpen} onClose={onClose}>
+			<div className="p-6">
+				<div className="flex justify-between items-start mb-4">
+					<h2 className="text-xl font-bold">Schedule Meeting</h2>
+					<button
+						onClick={onClose}
+						className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+					>
+						<FiX />
+					</button>
+				</div>
+				<FormGroup label=" ">
+					<div className="relative">Hola</div>
+				</FormGroup>
+				<div className="flex justify-end gap-3 mt-4">
+					<button
+						onClick={onClose}
+						className="px-6 py-2.5 border border-[#E5E7EB] text-[#6B7280] font-semibold rounded-full hover:bg-gray-200"
+					>
+						Cancel
+					</button>
+					<button className="px-8 py-2.5 bg-[#3366FF] text-white font-semibold rounded-full hover:bg-blue-700">
+						Apply
+					</button>
+				</div>
+			</div>
+		</BaseModal>
+	);
+};
 
+// --- 8. Reschedule meeting student
 
+const ReScheduleMeetingStudentModal: React.FC<BaseModalProps> = ({
+	isOpen,
+	onClose,
+}) => {
+	return (
+		<BaseModal isOpen={isOpen} onClose={onClose}>
+			<div className="p-6">
+				<div className="flex justify-between items-start mb-4">
+					<h2 className="text-xl font-bold">Edit Meeting</h2>
+					<button
+						onClick={onClose}
+						className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+					>
+						<FiX />
+					</button>
+				</div>
+				<FormGroup label=" ">
+					<div className="relative">Hola</div>
+				</FormGroup>
+				<div className="flex justify-end gap-3 mt-4">
+					<button
+						onClick={onClose}
+						className="px-6 py-2.5 border border-[#E5E7EB] text-[#6B7280] font-semibold rounded-full hover:bg-gray-200"
+					>
+						Cancel
+					</button>
+					<button className="px-8 py-2.5 bg-[#3366FF] text-white font-semibold rounded-full hover:bg-blue-700">
+						Apply
+					</button>
+				</div>
+			</div>
+		</BaseModal>
+	);
+};
+
+// --- 9. Reschedule meeting teacher
+
+const ReScheduleMeetingTeacherModal: React.FC<BaseModalProps> = ({
+	isOpen,
+	onClose,
+}) => {
+	return (
+		<BaseModal isOpen={isOpen} onClose={onClose}>
+			<div className="p-6">
+				<div className="flex justify-between items-start mb-4">
+					<h2 className="text-xl font-bold">Edit Meeting</h2>
+					<button
+						onClick={onClose}
+						className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+					>
+						<FiX />
+					</button>
+				</div>
+				<FormGroup label=" ">
+					<div className="relative">Hola</div>
+				</FormGroup>
+				<div className="flex justify-end gap-3 mt-4">
+					<button
+						onClick={onClose}
+						className="px-6 py-2.5 border border-[#E5E7EB] text-[#6B7280] font-semibold rounded-full hover:bg-gray-200"
+					>
+						Cancel
+					</button>
+					<button className="px-8 py-2.5 bg-[#3366FF] text-white font-semibold rounded-full hover:bg-blue-700">
+						Apply
+					</button>
+				</div>
+			</div>
+		</BaseModal>
+	);
+};
+
+// --- 10. pin
+const PinModal: React.FC<BaseModalProps> = ({
+	isOpen,
+	onClose,
+}) => {
+	return (
+		<BaseModal isOpen={isOpen} onClose={onClose}>
+			<div className="p-6">
+				<div className="flex justify-between items-start">
+					<h2 className="text-xl font-semibold">Pin Chat</h2>
+					<button
+						onClick={onClose}
+						className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+					>
+						<FiX />
+					</button>
+				</div>
+			</div>
+		</BaseModal>
+	);
+};
+const UnpinModal: React.FC<BaseModalProps> = ({
+	isOpen,
+	onClose,
+}) => {
+	return (
+		<BaseModal isOpen={isOpen} onClose={onClose}>
+			<div className="p-6">
+				<div className="flex justify-between items-start">
+					<h2 className="text-xl font-semibold">Unpin Chat</h2>
+					<button
+						onClick={onClose}
+						className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+					>
+						<FiX />
+					</button>
+				</div>
+			</div>
+		</BaseModal>
+	);
+};
 
 // --- Main Page Component to trigger modals ---
 export default function AllPopupsPage() {
 	const [openModal, setOpenModal] = useState<string | null>(null);
-	const [showActionsPopup, setShowActionsPopup] = useState(false);
+	// const [showActionsPopup, setShowActionsPopup] = useState(false);
 
 	const modalButtons = [
 		{ id: "confirmPassword", label: "Confirm Password" },
@@ -336,6 +520,25 @@ export default function AllPopupsPage() {
 		{ id: "manageAccess", label: "Manage Access" },
 		{ id: "deleteRecording", label: "Delete Recording" },
 		{ id: "editDemoVideo", label: "Edit Demo Video" },
+		{ id: "payRaise", label: "Pay Raise" },
+		{ id: "scheduleMeeting", label: "Schedule Meeting" },
+		{ id: "reScheduleMeetingTeacher", label: "Reschedule Meeting Teacher" },
+		{ id: "reScheduleMeetingStudent", label: "Reschedule Meeting Student" },
+		// done till here
+		{ id: "viewMeetingTeacher", label: "View Meeting Teacher" },
+		{ id: "viewMeetingStudent", label: "View Meeting Student" },
+		{ id: "pinChat", label: "Pin Chat" },
+		{ id: "unpinChat", label: "Unpin Chat" },
+		{ id: "shiftStudent", label: "Shift Student" },
+		{ id: "confirmShiftStudent", label: "Confirm Shift Student" },
+		{ id: "confirmRemoveShiftStudent", label: "Confirm Remove Shift Student" },
+		{ id: "buttons", label: "Buttons" },
+		{ id: "addNewBatch", label: "Add New Batch" },
+		{ id: "fileShare", label: "File Share" },
+		{ id: "createNewGroup", label: "Create New Group" },
+		{ id: "manageGroup", label: "Manage Group" },
+		{ id: "uploadVideos", label: "Upload Videos" },
+
 	];
 
 	return (
@@ -360,6 +563,7 @@ export default function AllPopupsPage() {
 				onClose={() => setOpenModal(null)}
 				children={undefined}
 			/>
+			
 			<AddVideoModal
 				isOpen={openModal === "addVideo"}
 				onClose={() => setOpenModal(null)}
@@ -384,6 +588,21 @@ export default function AllPopupsPage() {
 			/>
 			<EditDemoVideoModal
 				isOpen={openModal === "editDemoVideo"}
+				onClose={() => setOpenModal(null)}
+				children={undefined}
+			/>
+			<PayRaiseModal
+				isOpen={openModal === "payRaise"}
+				onClose={() => setOpenModal(null)}
+				children={undefined}
+			/>
+			<PinModal
+				isOpen={openModal === "pinChat"}
+				onClose={() => setOpenModal(null)}
+				children={undefined}
+			/>
+			<UnpinModal
+				isOpen={openModal === "unpinChat"}
 				onClose={() => setOpenModal(null)}
 				children={undefined}
 			/>
