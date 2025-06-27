@@ -265,12 +265,12 @@ function TeacherProfileContent() {
                             {qual.course}
                           </h3>
                           <p className="text-sm font-light">{qual.school}</p>
-                          <div className="flex items-center gap-4 mt-1">
+                          <div className="flex items-center gap-2 mt-1">
                             <span className="text-xs text-gray-500">
                               {qual.year}
                             </span>
                             <span className="text-xs text-gray-500">
-                              ● {qual.year}
+                              ●&nbsp;&nbsp;{qual.year}
                             </span>
                           </div>
                         </div>
@@ -286,7 +286,7 @@ function TeacherProfileContent() {
               <div>
                 <h2 className="text-lg font-semibold mb-4">Reviews</h2>
                 <div
-                  className="h-full overflow-y-auto"
+                  className="h-full overflow-y-auto pr-2"
                   style={{
                     scrollbarWidth: "thin",
                     scrollbarColor: "#FFA500 transparent",
@@ -472,13 +472,13 @@ function TeacherProfileContent() {
                     ))}
                 </div>
                 <div className="flex justify-center items-center pt-4">
-                  <button className="w-fit bg-[#FF3366] hover:bg-[#ff1a53] text-white rounded-full py-2 px-4 h-fit gap-2 cursor-pointer font-medium">
+                  <button className="w-fit bg-[#FF3366] hover:bg-[#ff1a53] text-white rounded-full py-3 px-8 h-fit gap-2 cursor-pointer font">
                     <span>Continue</span>
                   </button>
                 </div>
               </Card>
               {/* Ongoing Courses */}
-              <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-7">
+              <div className="bg-[#F3F4F680] space-y-4 rounded-2xl p-7">
                 <h1 className="text-2xl text-[#FF3366] font-semibold">
                   Ongoing Courses
                 </h1>
@@ -487,15 +487,15 @@ function TeacherProfileContent() {
                   {courses.slice(0, 3).map((course) => (
                     <Card
                       key={course.id}
-                      className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                      className="bg-white rounded-2xl overflow-hidden border border-[#E5E7EB] hover:shadow-md"
                     >
-                      <div className="relative p-3">
+                      <div className="relative p-3 ">
                         <Image
                           src={course.image || "/placeholder.svg"}
                           alt={course.title}
                           width={400}
                           height={200}
-                          className="w-full h-48 object-cover rounded-xl"
+                          className="w-full h-48 rounded-2xl object-fill"
                         />
                       </div>
                       <CardContent className="p-6 pt-0 pb-3 space-y-3">
@@ -507,7 +507,7 @@ function TeacherProfileContent() {
               </div>
 
               {/* Ongoing Batches */}
-              <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-7">
+              <div className="bg-[#F3F4F680] space-y-4 rounded-2xl p-7">
                 <h1 className="text-2xl text-[#FF3366] font-semibold">
                   Ongoing Batches
                 </h1>
@@ -516,7 +516,7 @@ function TeacherProfileContent() {
                   {courses.slice(0, 3).map((course, cId) => (
                     <Card
                       key={course.id}
-                      className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+                      className="bg-white rounded-2xl overflow-hidden border border-[#E5E7EB] hover:shadow-md"
                     >
                       <div className="p-3 pb-0 rounded-xl">
                         {cId === 2 ? (
@@ -539,7 +539,7 @@ function TeacherProfileContent() {
                           alt={course.title}
                           width={400}
                           height={200}
-                          className="w-full h-48 object-cover rounded-xl"
+                          className="w-full h-48 rounded-2xl object-fill"
                         />
                       </div>
                       <CardContent className="p-6 pt-0 space-y-3">
@@ -576,7 +576,7 @@ function TeacherProfileContent() {
                             Batch Full
                           </Button>
                         ) : (
-                          <Button className="w-full bg-[#3366FF] hover:bg-blue-600 text-white rounded-full h-10 text-lg mt-2">
+                          <Button className="w-full bg-[#3366FF] hover:bg-blue-600 text-white rounded-full h-10 text-md mt-2">
                             Enroll Now
                           </Button>
                         )}
@@ -632,13 +632,13 @@ function TeacherProfileContent() {
                             alt={course.title}
                             width={400}
                             height={200}
-                            className="w-full h-48 object-cover rounded-xl"
+                            className="w-full h-48 object-cover rounded-2xl"
                           />
                           <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                            <span className="text-amber-300 text-lg font-bold">
+                            <span className="text-[#FFCC00] text-lg font-bold">
                               4.2
                             </span>
-                            <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                            <Star className="w-5 h-5 fill-[#FFCC00] stroke-[#FFCC00]" />
                           </div>
                         </div>
 
@@ -695,11 +695,11 @@ function TeacherProfileContent() {
                             </div>
                           </div>
 
-                          <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
+                          <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-3 w-full mt-2">
                             <span className="text-[#50C878] font-bold">
                               ₹2,000 - ₹5,000
                             </span>
-                            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                            <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm h-fit">
                               Add to cart
                             </Button>
                           </div>
