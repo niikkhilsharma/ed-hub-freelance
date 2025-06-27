@@ -147,7 +147,7 @@ export default function LearningSchedule() {
                       {days.map((day) => (
                         <div key={day} className="p-2">
                           <div
-                            className={`h-12 rounded-2xl flex items-center justify-center text-sm font-medium transition-all duration-200 ${
+                            className={`h-12 rounded-xl flex items-center justify-center text-sm font-medium transition-all duration-200 ${
                               slot.courses[day]
                                 ? "bg-[#3366FF] text-white shadow-sm hover:bg-blue-600"
                                 : "border bg-[#B0B0B01A] border-[#6B7280] hover:border-gray-300"
@@ -171,7 +171,7 @@ export default function LearningSchedule() {
                 <Card className="sticky top-8 border-0">
                   <CardContent className="p-0">
                     {/* Header */}
-                    <div className="bg-[#3366FF] text-white p-4 rounded-t-3xl">
+                    <div className="bg-[#3366FF] text-white px-4 py-2 rounded-t-3xl">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="font-medium text-left">Code Name</div>
                         <div className="font-medium text-right">Course</div>
@@ -181,7 +181,7 @@ export default function LearningSchedule() {
                     {/* Course List */}
                     <div className="bg-[#3366FF1A]">
                       {courses.map((course, index) => (
-                        <div key={index} className="p-4">
+                        <div key={index} className="px-4 py-2">
                           <div className="grid grid-cols-2 gap-4 text-sm">
                             <div className="font-medium text-gray-900">
                               {course.code}
@@ -195,7 +195,7 @@ export default function LearningSchedule() {
                     </div>
 
                     {/* Continue Button */}
-                    <div className="pt-5">
+                    <div className="pt-3">
                       <Button
                         onClick={handleContinue}
                         className="w-full bg-[#FF3366] hover:bg-[#FF3366] text-white py-3 rounded-full cursor-pointer font-medium transition-colors duration-200"

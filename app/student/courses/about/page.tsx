@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/collapsible";
 import StudentWrapper from "@/components/student-wrapper";
 import FooterNew from "@/components/footer3";
+import { useRouter } from "next/navigation";
 
 interface Unit {
   number: string;
@@ -139,9 +140,10 @@ const classFlowSteps: ClassFlowStep[] = [
 ];
 
 export default function CurriculumComponent() {
+  const router = useRouter();
   const [activeMainTab, setActiveMainTab] = useState<
     "pedagogy" | "curriculum" | "learning-intent"
-  >("curriculum");
+  >("learning-intent");
   const [activeSubTab, setActiveSubTab] = useState<"pedagogy" | "class-flow">(
     "pedagogy"
   );
@@ -193,7 +195,14 @@ export default function CurriculumComponent() {
 
           {/* Unit Card */}
           <Card className="mb-4 bg-[#E5E7EB] rounded-3xl">
-            <CardContent className="p-4">
+            <CardContent
+              className="p-4 rounded-3xl"
+              style={{
+                backgroundImage: 'url("/student/my-course/Ciricular.png")',
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+              }}
+            >
               <div className="flex justify-between items-center mb-3 bg-white rounded-3xl px-4 py-3">
                 <h4 className="font-medium text-lg">Unit Name</h4>
                 <div className="text-xs flex items-center text-gray-500">
@@ -456,7 +465,14 @@ export default function CurriculumComponent() {
           <>
             {/* Chapter Card */}
             <Card className="mb-4 bg-[#E5E7EB] rounded-3xl">
-              <CardContent className="p-4">
+              <CardContent
+                className="p-4 rounded-3xl"
+                style={{
+                  backgroundImage: 'url("/student/my-course/Pedagogy.png")',
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                }}
+              >
                 <div className="flex justify-between items-center mb-3 bg-white rounded-3xl px-4 py-3">
                   <h4 className="font-medium text-lg">Chapter Name</h4>
                   <div className="text-xs flex items-center text-gray-500">
@@ -590,9 +606,9 @@ export default function CurriculumComponent() {
       </div>
 
       {/* Right Side - Learning Objectives */}
-      <div className="lg:col-span-5 space-y-6 bg-white p-5 rounded-3xl">
-        <Card className="border-0">
-          <CardContent>
+      <div className="lg:col-span-5 space-y-6">
+        <Card className="border-0 bg-white p-5 rounded-3xl">
+          <CardContent className="p-0">
             <h4 className="text-blue-600 font-semibold text-lg mb-4">
               Learning Objectives
             </h4>
@@ -603,7 +619,7 @@ export default function CurriculumComponent() {
                 <ul className="space-y-2 text-sm">
                   {section.objectives.map((objective, objIndex) => (
                     <li key={objIndex} className="flex items-start gap-2">
-                      <span className="text-gray-400 mt-1">•</span>
+                      <span className="mt-1 font-extrabold">•</span>
                       <span>{objective}</span>
                     </li>
                   ))}
@@ -613,7 +629,7 @@ export default function CurriculumComponent() {
           </CardContent>
         </Card>
 
-        <Card className="border-0">
+        <Card className="border-0 bg-white p-5 rounded-3xl">
           <CardContent className="p-4">
             <h4 className="text-blue-600 font-semibold text-lg mb-4">
               Material required:
@@ -645,7 +661,10 @@ export default function CurriculumComponent() {
         <div className="bg-white border-b">
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center py-4">
-              <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
+              <ArrowLeft
+                className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800"
+                onClick={() => router.push("/student/courses")}
+              />
               <h1 className="text-xl font-medium text-[#FF3366]">
                 About Course
               </h1>
