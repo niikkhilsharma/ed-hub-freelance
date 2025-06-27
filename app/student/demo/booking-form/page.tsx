@@ -31,8 +31,6 @@ export default function DemoBookingForm() {
     parentPhone: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const formFields = [
     { key: "studentName", label: "Student Name", type: "text" },
     { key: "studentAge", label: "Student Age", type: "number" },
@@ -49,50 +47,9 @@ export default function DemoBookingForm() {
     }));
   };
 
-  const isFormComplete = () => {
-    return Object.values(formData).every((value) => value.trim() !== "");
-  };
-
-  const isEmailValid = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const isPhoneValid = (phone: string) => {
-    const phoneRegex = /^[+]?[1-9][\d]{0,15}$/;
-    return phoneRegex.test(phone.replace(/\s/g, ""));
-  };
-
-  const isFormValid = () => {
-    return (
-      isFormComplete() &&
-      isEmailValid(formData.parentEmail) &&
-      isPhoneValid(formData.parentPhone) &&
-      Number.parseInt(formData.studentAge) > 0 &&
-      Number.parseInt(formData.studentAge) < 100
-    );
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!isFormValid()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      // Navigate to home page
-      router.push("/student/demo/teacher-selection");
-    } catch (error) {
-      console.error("Form submission error:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    router.push("/student/demo/teacher-selection");
   };
 
   const handleBackClick = () => {
@@ -132,7 +89,6 @@ export default function DemoBookingForm() {
                     >
                       <Label htmlFor={field.key} className="font-medium">
                         {field.label}
-                        <span className="text-red-500 ml-1">*</span>
                       </Label>
                       <Input
                         id={field.key}
@@ -144,19 +100,7 @@ export default function DemoBookingForm() {
                             e.target.value
                           )
                         }
-                        className={`w-full rounded-full bg-[#F9FAFB] placeholder:text-[#6B7280] border transition-colors ${
-                          formData[field.key as keyof FormData].trim() === ""
-                            ? "border-[#D5D5D5]"
-                            : field.key === "parentEmail" &&
-                              !isEmailValid(formData.parentEmail) &&
-                              formData.parentEmail.trim() !== ""
-                            ? "border-red-300 focus:border-red-500"
-                            : field.key === "parentPhone" &&
-                              !isPhoneValid(formData.parentPhone) &&
-                              formData.parentPhone.trim() !== ""
-                            ? "border-red-300 focus:border-red-500"
-                            : "border-green-300 focus:border-green-500"
-                        }`}
+                        className="w-full rounded-full bg-[#F9FAFB] placeholder:text-[#6B7280] border transition-colors border-[#D5D5D5]"
                         placeholder={
                           field.type === "email"
                             ? "example@email.com"
@@ -168,89 +112,18 @@ export default function DemoBookingForm() {
                         }
                         required
                       />
-                      {/* Validation messages */}
-                      {field.key === "parentEmail" &&
-                        formData.parentEmail.trim() !== "" &&
-                        !isEmailValid(formData.parentEmail) && (
-                          <span className="text-red-500 text-sm">
-                            Please enter a valid email address
-                          </span>
-                        )}
-                      {field.key === "parentPhone" &&
-                        formData.parentPhone.trim() !== "" &&
-                        !isPhoneValid(formData.parentPhone) && (
-                          <span className="text-red-500 text-sm">
-                            Please enter a valid phone number
-                          </span>
-                        )}
-                      {field.key === "studentAge" &&
-                        formData.studentAge.trim() !== "" &&
-                        (Number.parseInt(formData.studentAge) <= 0 ||
-                          Number.parseInt(formData.studentAge) >= 100) && (
-                          <span className="text-red-500 text-sm">
-                            Please enter a valid age (1-99)
-                          </span>
-                        )}
                     </div>
                   ))}
 
-                  {/* Form completion indicator */}
-                  <div className="bg-gray-50 rounded-lg p-4">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-gray-700">
-                        Form Progress
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {
-                          Object.values(formData).filter(
-                            (value) => value.trim() !== ""
-                          ).length
-                        }{" "}
-                        / {Object.keys(formData).length}
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
-                      <div
-                        className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                        style={{
-                          width: `${
-                            (Object.values(formData).filter(
-                              (value) => value.trim() !== ""
-                            ).length /
-                              Object.keys(formData).length) *
-                            100
-                          }%`,
-                        }}
-                      ></div>
-                    </div>
-                  </div>
-
                   {/* Continue button - only visible when form is complete and valid */}
-                  {
-                    <div className="flex items-center justify-center animate-in fade-in duration-300">
-                      <Button
-                        type="submit"
-                        disabled={!isFormValid()}
-                        className="bg-[#3366ff] text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full ml-6 transition-all duration-200 transform cursor-pointer disabled:opacity-50"
-                      >
-                        {isSubmitting ? (
-                          <div className="flex items-center gap-2">
-                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                            Processing...
-                          </div>
-                        ) : (
-                          "Continue"
-                        )}
-                      </Button>
-                    </div>
-                  }
-
-                  {/* Helper text when form is incomplete */}
-                  {!isFormComplete() && (
-                    <div className="text-center text-gray-500 text-sm">
-                      Please fill in all required fields to continue
-                    </div>
-                  )}
+                  <div className="flex items-center justify-center animate-in fade-in duration-300">
+                    <Button
+                      type="submit"
+                      className="bg-[#3366ff] text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full ml-6 transition-all duration-200 transform cursor-pointer disabled:opacity-50"
+                    >
+                      Continue
+                    </Button>
+                  </div>
                 </div>
 
                 <div className="space-y-2 mt-4 sm:mt-0">
@@ -259,7 +132,7 @@ export default function DemoBookingForm() {
                     src="/student/courses/detail/hero.png"
                     className="block mx-auto rounded-3xl"
                   />
-                  <div className="border border-zinc-200 rounded-3xl text-center gap-2 p-6">
+                  <div className="border border-zinc-200 bg-[#F9FAFB] rounded-3xl text-center gap-2 p-6">
                     Pellentesque ac sapien quis ipsum
                     <br /> faucibus ullamcorper sed eu enim.
                     <br /> Mauris id ornare metus.
