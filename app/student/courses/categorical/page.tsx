@@ -144,7 +144,7 @@ export default function CategoricalCoursePage() {
                 ante pellentesque pulvinar et sit amet ligula.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {features.map((feature, index) => (
                   <Card
                     key={index}
@@ -170,7 +170,7 @@ export default function CategoricalCoursePage() {
           </section>
 
           {/* Benefits Section */}
-          <section className="py-16 bg-gray-50">
+          <section className="py-16 bg-[#F9FAFB]">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight mb-8">
                 Benefits
@@ -200,24 +200,24 @@ export default function CategoricalCoursePage() {
           </section>
 
           {/* CTA Section */}
-          <div className="p-10">
-            <section className="max-w-7xl mx-auto py-16 bg-[#3366FF] rounded-3xl">
+          <div className="p-8">
+            <section className="max-w-7xl mx-auto py-12 bg-[#3366FF] rounded-3xl">
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.5fr] gap-4 items-center content-center">
                   <div>
                     <h2 className="text-2xl lg:text-3xl font-medium text-white mb-6">
                       Start Excelling Today Join Our Homework Heroes!
                     </h2>
-                    <Button className="px-6 py-4 w-fit bg-[#FFCC00] hover:bg-[#E6B800] text-black rounded-full cursor-pointer">
+                    <Button className="px-6 py-4 w-fit bg-[#FFCC00] hover:bg-[#E6B800] text-white rounded-full cursor-pointer">
                       Enroll Now
                     </Button>
                   </div>
-                  <div className="flex justify-center">
+                  <div className="flex justify-end">
                     <div className="relative">
                       <img
                         src="/student/courses/categorical/9013772eb7bda128ee0f545b88c39db0159ac954.png"
                         alt="Learning illustration"
-                        className="w-full max-w-md"
+                        className="w-full max-w-md scale-[0.8]"
                       />
                     </div>
                   </div>
@@ -263,7 +263,7 @@ export default function CategoricalCoursePage() {
           </div>
 
           {/* FAQ Section */}
-          <section className="pt-16 bg-gray-50">
+          <section className="pt-16">
             <div className="max-w-7xl mx-auto lg:px-8 space-y-8">
               <h2 className="text-left text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold leading-tight">
                 FAQ
@@ -301,7 +301,7 @@ export default function CategoricalCoursePage() {
         </div>
 
         {/* footer */}
-        <FooterNew />
+        <FooterNew showSuscriptionBlock={false} />
       </main>
     </StudentWrapper>
   );

@@ -119,7 +119,7 @@ export default function ReviewsComponent() {
   );
 
   return (
-    <div className="w-full bg-white py-12 px-4 sm:px-6 lg:px-8">
+    <div className="w-full bg-[#F9FAFB] py-12 px-4 sm:px-6 lg:px-8 mt-16">
       <div className="max-w-7xl mx-auto">
         {/* Title Section */}
         <div className="text-center mb-12">
