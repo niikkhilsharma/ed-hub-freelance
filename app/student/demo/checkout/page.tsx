@@ -3,5 +3,5 @@
 import Checkout from "../../checkout/page";
 
 export default function CheckoutPage() {
-  return <Checkout />;
+  return <Checkout demo />;
 }

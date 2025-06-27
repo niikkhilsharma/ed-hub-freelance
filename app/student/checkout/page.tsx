@@ -52,7 +52,7 @@ const CustomRadioButton = ({
   );
 };
 
-export default function Checkout() {
+export default function Checkout({ demo = false }: { demo: boolean }) {
   const [selectedPayment, setSelectedPayment] = useState("cards");
   const [saveCard, setSaveCard] = useState(true);
   const [country, setCountry] = useState("");
@@ -72,9 +72,21 @@ export default function Checkout() {
     total: 8500,
   };
 
+  const demoOrderSummary = {
+    originalPrice: 2000,
+    discount: 1000,
+    discountPercent: 10,
+    courses: 1,
+    total: 1000,
+  };
+
   const courseDetails = [
     { name: "STEM Diploma in Technology Programs", price: 4000 },
     { name: "Scratch Programming and Animation", price: 4500 },
+  ];
+
+  const demoCourseDetail = [
+    { name: "STEM Diploma in Technology Programs", price: 2000 },
   ];
 
   const formatPrice = (price: number) => `₹ ${price.toLocaleString()}`;
@@ -365,16 +377,26 @@ export default function Checkout() {
                         Original Price
                       </span>
                       <span className="font-medium">
-                        {formatPrice(orderSummary.originalPrice)}
+                        {formatPrice(
+                          (demo ? demoOrderSummary : orderSummary).originalPrice
+                        )}
                       </span>
                     </div>
 
                     <div className="flex justify-between items-center">
                       <span className="font-main">
-                        Discount ( {orderSummary.discountPercent} % off )
+                        Discount ({" "}
+                        {
+                          (demo ? demoOrderSummary : orderSummary)
+                            .discountPercent
+                        }{" "}
+                        % off )
                       </span>
                       <span className="font-medium">
-                        - {formatPrice(orderSummary.discount)}
+                        -{" "}
+                        {formatPrice(
+                          (demo ? demoOrderSummary : orderSummary).discount
+                        )}
                       </span>
                     </div>
 
@@ -382,10 +404,14 @@ export default function Checkout() {
 
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-gray-900">
-                        Total ( {orderSummary.courses} courses )
+                        Total ({" "}
+                        {(demo ? demoOrderSummary : orderSummary).courses}{" "}
+                        courses )
                       </span>
                       <span className="font-semibold">
-                        {formatPrice(orderSummary.total)}
+                        {formatPrice(
+                          (demo ? demoOrderSummary : orderSummary).total
+                        )}
                       </span>
                     </div>
                   </div>
@@ -421,17 +447,19 @@ export default function Checkout() {
                   <h2 className="text-2xl font-medium">Order Details</h2>
 
                   <div className="space-y-4">
-                    {courseDetails.map((course, index) => (
-                      <div
-                        key={index}
-                        className="flex justify-between border border-[#E5E7EB] bg-[#F9FAFB] px-4 rounded-full items-start py-3"
-                      >
-                        <span className="text-black flex-1">Course Name</span>
-                        <span className="font-medium whitespace-nowrap">
-                          {formatPrice(course.price)}
-                        </span>
-                      </div>
-                    ))}
+                    {(demo ? demoCourseDetail : courseDetails).map(
+                      (course, index) => (
+                        <div
+                          key={index}
+                          className="flex justify-between border border-[#E5E7EB] bg-[#F9FAFB] px-4 rounded-full items-start py-3"
+                        >
+                          <span className="text-black flex-1">Course Name</span>
+                          <span className="font-medium whitespace-nowrap">
+                            {formatPrice(course.price)}
+                          </span>
+                        </div>
+                      )
+                    )}
                   </div>
                 </CardContent>
               </Card>
