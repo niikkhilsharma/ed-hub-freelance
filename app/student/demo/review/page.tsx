@@ -30,8 +30,8 @@ export default function CourseDetail() {
         <section className="px-16 py-8">
           <div className="rounded-3xl max-w-7xl mx-auto bg-white space-y-4 p-4">
             <h1 className="text-3xl font-semibold text-[#FF3366]">Review</h1>
-            <div className="md:grid md:grid-cols-[1fr_1fr] p-4 gap-16">
-              <div className="space-y-5 pl-1">
+            <div className="md:grid md:grid-cols-[1fr_1fr] gap-16">
+              <div className="space-y-5">
                 {[
                   "Student Name",
                   "Student Age",
@@ -72,7 +72,7 @@ export default function CourseDetail() {
                     className="block mx-auto rounded-3xl"
                   />
                 </div>
-                <div className="border border-zinc-200 rounded-3xl text-center gap-2 p-6">
+                <div className="border border-zinc-200 bg-[#F9FAFB] rounded-3xl text-center gap-2 p-6">
                   Pellentesque ac sapien quis ipsum
                   <br /> faucibus ullamcorper sed eu enim.
                   <br /> Mauris id ornare metus.
@@ -81,7 +81,7 @@ export default function CourseDetail() {
             </div>
             <div className="flex items-center justify-center">
               <Button
-                className="bg-[#3366ff] text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full cursor-pointer"
+                className="bg-[#3366ff] text-white px-10 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full cursor-pointer"
                 onClick={() => router.push("/student/demo/confirmation")}
               >
                 Book
