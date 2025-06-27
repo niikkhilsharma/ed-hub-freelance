@@ -425,7 +425,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                     ₹2,000
                   </div>
                   <form className="space-y-4">
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       {formFields.map((field) => (
                         <div key={field.id}>
                           <Label
@@ -467,7 +467,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         </div>
                       ))}
                     </div>
-                    <div className="w-full flex items-center gap-4 justify-between pt-4">
+                    <div className="w-full flex items-center gap-4 justify-between pt-2">
                       <Input
                         type="number"
                         min={0}
@@ -475,7 +475,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         className="w-full bg-[#F9FAFB] border border-[#D5D5D5] rounded-2xl"
                       />
                       <Button
-                        className="bg-[#3366FF] hover:bg-blue-700 text-white text-lg py-6 px-10 rounded-full"
+                        className="bg-[#3366FF] hover:bg-blue-700 text-white text-lg py-3 px-10 rounded-full h-fit"
                         size="lg"
                       >
                         Add to Cart
@@ -523,13 +523,13 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
 
         <div className="relative flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
           {/* Fixed Sidebar */}
-          <button className="bg-[#8DD9B3] flex items-center gap-1 px-3 py-2 text-white text-left rounded-2xl absolute top-5 right-6 cursor-pointer">
+          <button className="bg-[#8DD9B3] flex items-center gap-2 px-4 py-3 text-white text-left rounded-[14px] absolute top-5 right-6 cursor-pointer">
             <Video />
             Watch Demo Video
           </button>
           <div className="w-64 flex-shrink-0">
             <div className="p-6">
-              <nav className="space-y-2">
+              <nav className="space-y-6">
                 {menuItems.map((item) => {
                   const IconComponent = item.icon;
                   const isActive = activeTab === item.id;
@@ -572,12 +572,12 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="relative py-8 rounded-2xl">
+        <div className="relative py-14 rounded-2xl">
           <div className="relative flex gap-6 items-center flex-col md:flex-row justify-center w-full z-9">
             <h1 className="text-3xl sm:text-[48px] font-semibold text-white">
               Book a Free Demo
             </h1>
-            <button className="bg-white cursor-pointer rounded-full px-6 py-3 text-m font-medium">
+            <button className="bg-white cursor-pointer rounded-full px-8 py-4 text-m font-medium">
               Click Here
             </button>
           </div>
@@ -585,7 +585,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             className="absolute inset-0 rounded-2xl bg-center bg-repeat z-0"
             style={{
               backgroundImage: "url('/Background6.png')",
-              backgroundSize: "400px",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
               filter: "grayscale(10%) brightness(1.1) blur(0.5px)",
               opacity: 0.3,
             }}
@@ -594,7 +595,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           <div
             className="absolute inset-0 rounded-2xl bg-[#3366FF] z-0"
             style={{
-              opacity: 0.78, // increase to make it more blue
+              opacity: 0.88, // increase to make it more blue
               mixBlendMode: "multiply", // try "multiply" or "soft-light" too
             }}
           ></div>
@@ -650,10 +651,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       className="w-full h-48 object-cover rounded-xl"
                     />
                     <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                      <span className="text-amber-300 text-lg font-bold">
+                      <span className="text-[#FFCC00] text-lg font-bold">
                         4.2
                       </span>
-                      <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                      <Star className="w-5 h-5 fill-[#FFCC00] stroke-[#FFCC00]" />
                     </div>
                   </div>
 
@@ -694,20 +695,20 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         </p>
                         <p className="text-xs text-[#FF3366]">Teacher</p>
                       </div>
-                      <div className="ml-auto flex gap-1 text-yellow-400">
+                      <div className="ml-auto flex gap-1 text-[#FFCC00]">
                         {[1, 2, 3, 4].map((star) => (
                           <Star key={star} className="w-3 h-3 fill-current" />
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-3 w-full mt-2">
                       <span className="text-[#50C878] font-bold">
                         ₹2,000 - ₹5,000
                       </span>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
                         Add to cart
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -766,10 +767,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       className="w-full h-48 object-cover rounded-xl"
                     />
                     <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                      <span className="text-amber-300 text-lg font-bold">
+                      <span className="text-[#FFCC00] text-lg font-bold">
                         4.2
                       </span>
-                      <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                      <Star className="w-5 h-5 fill-[#FFCC00] stroke-[#FFCC00]" />
                     </div>
                   </div>
 
@@ -810,20 +811,20 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         </p>
                         <p className="text-xs text-[#FF3366]">Teacher</p>
                       </div>
-                      <div className="ml-auto flex gap-1 text-yellow-400">
+                      <div className="ml-auto flex gap-1 text-[#FFCC00]">
                         {[1, 2, 3, 4].map((star) => (
                           <Star key={star} className="w-3 h-3 fill-current" />
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-3 w-full mt-2">
                       <span className="text-[#50C878] font-bold">
                         ₹2,000 - ₹5,000
                       </span>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
                         Add to cart
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -882,10 +883,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       className="w-full h-48 object-cover rounded-xl"
                     />
                     <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
-                      <span className="text-amber-300 text-lg font-bold">
+                      <span className="text-[#FFCC00] text-lg font-bold">
                         4.2
                       </span>
-                      <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                      <Star className="w-5 h-5 fill-[#FFCC00] stroke-[#FFCC00]" />
                     </div>
                   </div>
 
@@ -926,20 +927,20 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         </p>
                         <p className="text-xs text-[#FF3366]">Teacher</p>
                       </div>
-                      <div className="ml-auto flex gap-1 text-yellow-400">
+                      <div className="ml-auto flex gap-1 text-[#FFCC00]">
                         {[1, 2, 3, 4].map((star) => (
                           <Star key={star} className="w-3 h-3 fill-current" />
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-2 w-full mt-2">
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-3 w-full mt-2">
                       <span className="text-[#50C878] font-bold">
                         ₹2,000 - ₹5,000
                       </span>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
                         Add to cart
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>
