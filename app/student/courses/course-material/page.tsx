@@ -119,7 +119,7 @@ export default function Component() {
                 </div>
                 <div className="p-2">
                   <h3 className="text-xl font-bold">Course Name</h3>
-                  <p className="font-medium">
+                  <p className="font">
                     Domain:
                     <span className="text-[#6B7280]">&nbsp;Self Dev.</span>
                   </p>
