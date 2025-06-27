@@ -368,10 +368,10 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
             <div className="space-y-6">
               {/* Order Summary */}
               <Card className="rounded-2xl shadow-sm">
-                <CardContent className="p-5">
+                <CardContent className="p-5 space-y-2">
                   <h2 className="text-2xl font-medium mb-6">Order Summary</h2>
 
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-4 mb-8">
                     <div className="flex justify-between items-center">
                       <span className="font-main text-gray-700">
                         Original Price
@@ -416,7 +416,7 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
                     </div>
                   </div>
 
-                  <Button className="w-full h-12 bg-[#3366FF] cursor-pointer hover:bg-blue-700 text-white rounded-2xl text-lg font-bold">
+                  <Button className="w-full h-12 bg-[#3366FF] cursor-pointer hover:bg-blue-700 text-white rounded-2xl text-lg font-medium">
                     Proceed
                   </Button>
 
@@ -443,10 +443,10 @@ export default function Checkout({ demo = false }: { demo: boolean }) {
 
               {/* Order Details */}
               <Card className="rounded-2xl shadow-sm">
-                <CardContent className="p-5 space-y-6">
+                <CardContent className="p-5 space-y-5">
                   <h2 className="text-2xl font-medium">Order Details</h2>
 
-                  <div className="space-y-4">
+                  <div className="space-y-2">
                     {(demo ? demoCourseDetail : courseDetails).map(
                       (course, index) => (
                         <div
