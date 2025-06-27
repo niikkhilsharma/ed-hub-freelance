@@ -91,94 +91,17 @@ export default function ExamReport() {
     // Main container with responsive padding and background
     <div className="">
       <div className="flex-grow container mx-auto p-4 space-y-6 bg-white rounded-2xl ">
+
         {/* Exams Header */}
         <div className="text-2xl sm:text-3xl font-bold p-4 rounded-2xl bg-[#b0b0b0]/5 text-[#3366ff] mb-6 sm:mb-8 pb-2 ">
           Exams
         </div>
 
-        {/* Exam Results Table */}
-        <div className="overflow-x-auto mb-8">
-          <div className="min-w-full ">
-            {/* Table Header */}
-             <div className="grid grid-cols-1 sm:grid-cols-6 gap-4 mb-8">
-        {/* Column Headers */}
-        <div className="bg-[#FF99B7] text-black font-bold p-3 text-center rounded-2xl shadow-sm">
-          Subjects
-        </div>
-        <div className="bg-[#FF99B7] text-black font-bold p-3 text-center rounded-2xl shadow-sm">
-          Exams
-        </div>
-        <div className="bg-[#FF99B7] text-black font-bold p-3 text-center rounded-2xl shadow-sm">
-          Total Marks
-        </div>
-        <div className="bg-[#FF99B7] text-black font-bold p-3 text-center rounded-2xl shadow-sm">
-          Marks Obtain
-        </div>
-         <div className="bg-[#FF99B7] text-black font-bold p-3 text-center rounded-2xl shadow-sm">
-          Grade
-        </div>
-         <div className="bg-[#FF99B7] text-black font-bold p-3 text-center rounded-2xl shadow-sm">
-          Overall Grade
-        </div>
-        </div>
-            {/* Table Body */}
-            <div className="bg-white divide-y divide-gray-200">
-              {examResults.map((subjectData, subjectIndex) => (
-                <React.Fragment key={subjectIndex}>
-                  {subjectData.exams.map((exam, examIndex) => (
-                    <tr
-                      key={`${subjectIndex}-${examIndex}`}
-                      className="even:bg-gray-50 hover:bg-gray-100"
-                    >
-                      {/* Subject Name - only shows for the first exam of the subject */}
-                      {examIndex === 0 && (
-                        <td
-                          rowSpan={subjectData.exams.length}
-                          className="rounded-xl p-8 text-center  bg-[#f9f5fb] text-md font-medium text-black"
-                        >
-                          {subjectData.subject}
-                        </td>
-                      )}
-                      <td className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm text-gray-700">
-                        {exam.name}
-                      </td>
-                      <td className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm text-gray-700">
-                        <div className="bg-gray-100 px-3 py-1 rounded-md text-center text-gray-600">
-                          {exam.totalMarks}
-                        </div>
-                      </td>
-                      <td className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm text-gray-700">
-                        <div className="bg-gray-100 px-3 py-1 rounded-md text-center text-gray-600">
-                          {exam.marksObtain}
-                        </div>
-                      </td>
-                      <td className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm text-gray-700">
-                        <div className="bg-gray-100 px-3 py-1 rounded-md text-center text-gray-600">
-                          {exam.grade}
-                        </div>
-                      </td>
-                      {/* Overall Grade - only shows for the first exam of the subject */}
-                      {examIndex === 0 && (
-                        <td
-                          rowSpan={subjectData.exams.length}
-                          className="px-4 py-4 sm:px-6 whitespace-nowrap text-sm font-medium text-gray-900 border-l border-gray-200"
-                        >
-                          <div className="bg-gray-100 px-3 py-1 rounded-md text-center text-gray-600">
-                            {subjectData.overallGrade}
-                          </div>
-                        </td>
-                      )}
-                    </tr>
-                  ))}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-        </div>
+        <ExamResultsTable />
 
-       {/* Marks */}
-        <div className="overflow-x-auto mb-8">
-          <div className="min-w-full divide-y divide-gray-200">
+        {/* Marks and Grade*/}
+        <div className="overflow-x-auto my-8">
+          <div className="min-w-full ">
             {/* Table Header */}
             <div>
               <div className=" flex gap-4">
@@ -197,10 +120,10 @@ export default function ExamReport() {
                   key={index}
                   className="flex gap-4  rounded-xl p-3"
                 >
-                  <div className="w-1/2  px-4 py-3 text-center rounded-2xl bg-[#faf9fb] font-semibold text-black">
+                  <div className="w-1/2  px-4 py-3 text-center rounded-2xl bg-[#faf9fb] font-bold text-black">
                     {item.marks}
                   </div>
-                  <div className="w-1/2  px-4 py-3 text-center rounded-2xl bg-[#faf9fb] font-medium text-black">
+                  <div className="w-1/2  px-4 py-3 text-center rounded-2xl bg-[#faf9fb] font-bold text-black">
                     {item.grade}
                   </div>
                 </div>
@@ -215,6 +138,126 @@ export default function ExamReport() {
             Publish Report
           </button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+
+
+// --- Data Interfaces & Sample Data ---
+interface ExamDetail {
+  name: string;
+  totalMarks: string;
+  marksObtain: string;
+  grade: string;
+}
+
+interface SubjectResult {
+  subject: string;
+  exams: ExamDetail[];
+  overallGrade: string;
+}
+
+const examResults: SubjectResult[] = [
+  {
+    subject: 'English',
+    exams: [
+      { name: 'Exam 1', totalMarks: 'Exam 1 marks', marksObtain: 'Exam 1 marks', grade: 'Grade 1' },
+      { name: 'Exam 2', totalMarks: 'Exam 2 marks', marksObtain: 'Exam 2 marks', grade: 'Grade 2' },
+    ],
+    overallGrade: 'Overall Grade',
+  },
+  {
+    subject: 'Hindi',
+    exams: [
+      { name: 'Exam 1', totalMarks: 'Exam 1 marks', marksObtain: 'Exam 1 marks', grade: 'Grade 1' },
+      { name: 'Exam 2', totalMarks: 'Exam 2 marks', marksObtain: 'Exam 2 marks', grade: 'Grade 2' },
+    ],
+    overallGrade: 'Overall Grade',
+  },
+  {
+    subject: 'Maths',
+    exams: [
+      { name: 'Exam 1', totalMarks: 'Exam 1 marks', marksObtain: 'Exam 1 marks', grade: 'Grade 1' },
+      { name: 'Exam 2', totalMarks: 'Exam 2 marks', marksObtain: 'Exam 2 marks', grade: 'Grade 2' },
+    ],
+    overallGrade: 'Overall Grade',
+  },
+  {
+    subject: 'EVS',
+    exams: [
+      { name: 'Exam 1', totalMarks: 'Exam 1 marks', marksObtain: 'Exam 1 marks', grade: 'Grade 1' },
+      { name: 'Exam 2', totalMarks: 'Exam 2 marks', marksObtain: 'Exam 2 marks', grade: 'Grade 2' },
+    ],
+    overallGrade: 'Overall Grade',
+  },
+];
+
+const headers = ['Subject', 'Exams', 'Total Marks', 'Marks Obtain', 'Grade', 'Overall Grade'];
+
+
+// --- Main Component ---
+function ExamResultsTable() {
+  return (
+    <div className="overflow-x-auto custom-scrollbar-thin">
+      <div className="grid grid-cols-6 gap-3 min-w-[900px] text-[#6B7280]">
+
+        {/* Header Row */}
+        {headers.map(header => (
+          <div key={header} className="bg-[#FFC79A] text-black font-bold p-3 text-center rounded-2xl shadow-sm">
+            {header}
+          </div>
+        ))}
+
+        {/* Data Rows */}
+        {examResults.map((subjectData) => (
+          <React.Fragment key={subjectData.subject}>
+            {/* Subject Cell - Spans 2 rows vertically */}
+            <div className=" bg-[#F9FAFB] flex items-center justify-center p-4 rounded-2xl font-bold text-lg text-black">
+              {subjectData.subject}
+            </div>
+
+            {/* Exams Cell */}
+            <div className="bg-[#F9FAFB] flex flex-col items-start justify-center p-4 rounded-2xl space-y-2 text-black">
+              {subjectData.exams.map(exam => <p key={exam.name} className="font-medium">{exam.name}</p>)}
+            </div>
+
+            {/* Total Marks Cell */}
+            <div className="bg-[#F9FAFB] flex flex-col items-center justify-center p-4 rounded-2xl space-y-2">
+              {subjectData.exams.map(exam => (
+                <div key={exam.name} className="border border-[#D5D5D5] w-full text-center py-2 px-4 rounded-full text-sm">
+                  {exam.totalMarks}
+                </div>
+              ))}
+            </div>
+
+            {/* Marks Obtain Cell */}
+            <div className="bg-[#F9FAFB] flex flex-col items-center justify-center p-4 rounded-2xl space-y-2">
+              {subjectData.exams.map(exam => (
+                <div key={exam.name} className="border border-[#D5D5D5] w-full text-center py-2 px-4 rounded-full text-sm">
+                  {exam.marksObtain}
+                </div>
+              ))}
+            </div>
+
+            {/* Grade Cell */}
+            <div className="bg-[#F9FAFB] flex flex-col items-center justify-center p-4 rounded-2xl space-y-2">
+              {subjectData.exams.map(exam => (
+                <div key={exam.name} className="border border-[#D5D5D5] w-full text-center py-2 px-4 rounded-full text-sm">
+                  {exam.grade}
+                </div>
+              ))}
+            </div>
+
+            {/* Overall Grade Cell - Spans 2 rows vertically */}
+            <div className=" bg-[#F9FAFB] flex items-center justify-center p-4 rounded-2xl">
+              <div className="border border-[#D5D5D5] w-full text-center py-2 px-4 rounded-full text-sm">
+                {subjectData.overallGrade}
+              </div>
+            </div>
+          </React.Fragment>
+        ))}
       </div>
     </div>
   );
