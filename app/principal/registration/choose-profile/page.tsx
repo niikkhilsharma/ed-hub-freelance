@@ -23,14 +23,14 @@ export default function ChooseProfilePage() {
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
 
-      <div className="space-y-4">
+      <div className="space-y-2">
         {profiles.map(profile => (
           <div
             key={profile.id}
             onClick={() => setSelectedProfile(profile.id)}
-            className="flex items-center justify-between p-2 pl-4 pr-2 cursor-pointer transition-all duration-200 bg-white hover:shadow-lg rounded-full border border-gray-200">
+            className="flex items-center justify-between p-2 pl-2 pr-2 cursor-pointer transition-all duration-200 bg-white hover:shadow-lg rounded-full border border-gray-200">
             <div className="flex items-center gap-4">
-              <Image src={profile.iconSrc} alt={`${profile.label} icon`} width={32} height={32} />
+              <Image src={profile.iconSrc} alt={`${profile.label} icon`} width={40} height={40} />
               <span className="text-md font-semibold text-gray-700">{profile.label}</span>
             </div>
             <div

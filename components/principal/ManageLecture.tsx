@@ -8,9 +8,9 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Avatar } from "@/components/ui/avatar";
-import { AvatarImage } from "@/app/principal/manage-lecture/AvatarImagePrincipal";
 import { Check } from "lucide-react";
+import Image from "next/image";
+import { FiCalendar, FiClock } from "react-icons/fi";
 
 const teachers = Array.from({ length: 5 }).map((_, i) => ({
   id: i,
@@ -35,26 +35,41 @@ const days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
 
 export default function LectureForm() {
   return (
-    <div className="p-4 bg-white rounded-2xl my-4 shadow max-w-6xl mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+    <div className="max-w-6xl px-2 py-4 mx-auto">
+    <div className="p-4 bg-white rounded-2xl ">
+      <div className="grid grid-cols-1 gap-4 mb-6">
         <div>
-          <label className="text-sm font-medium text-zinc-700 mb-1 block">
-            Lecture Date
-          </label>
-          <Input placeholder="DD / MM / YYYY" className="rounded-full" />
+        <label className="text-sm font-medium text-zinc-700 mb-1 block">
+          Lecture Date
+        </label>
+        <div className="relative">
+          <Input
+            placeholder="DD / MM / YYYY"
+            className="rounded-full bg-gray-50 pr-10" // extra padding for icon
+          />
+          <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 w-5 h-5 pointer-events-none" />
         </div>
-        <div>
-          <label className="text-sm font-medium text-zinc-700 mb-1 block">
-            Lecture Time
-          </label>
-          <Input placeholder="Time" className="rounded-full" />
+      </div>
+
+      {/* Lecture Time */}
+      <div>
+        <label className="text-sm font-medium text-zinc-700 mb-1 block">
+          Lecture Time
+        </label>
+        <div className="relative">
+          <Input
+            placeholder="Time"
+            className="rounded-full bg-gray-50 pr-10"
+          />
+          <FiClock className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 w-5 h-5 pointer-events-none" />
         </div>
+      </div>
         <div>
           <label className="text-sm font-medium text-zinc-700 mb-1 block">
             Select Subject
           </label>
-          <Select>
-            <SelectTrigger className="rounded-full">Option1</SelectTrigger>
+          <Select >
+            <SelectTrigger className="rounded-full bg-gray-50">Option1</SelectTrigger>
             <SelectContent>
               <SelectItem value="option1">Option1</SelectItem>
             </SelectContent>
@@ -65,7 +80,7 @@ export default function LectureForm() {
             Select Group
           </label>
           <Select>
-            <SelectTrigger className="rounded-full">Option1</SelectTrigger>
+            <SelectTrigger className="rounded-full bg-gray-50">Option1</SelectTrigger>
             <SelectContent>
               <SelectItem value="option1">Option1</SelectItem>
             </SelectContent>
@@ -76,7 +91,7 @@ export default function LectureForm() {
             Select Class
           </label>
           <Select>
-            <SelectTrigger className="rounded-full">Option1</SelectTrigger>
+            <SelectTrigger className="rounded-full bg-gray-50">Option1</SelectTrigger>
             <SelectContent>
               <SelectItem value="option1">Option1</SelectItem>
             </SelectContent>
@@ -105,12 +120,12 @@ export default function LectureForm() {
             {teachers.map((teacher, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between mb-3 p-2 rounded-full hover:bg-gray-100"
+                className="flex items-center border justify-between mb-3 p-1 rounded-2xl hover:bg-gray-100"
               >
                 <div className="flex items-center gap-2">
-                  <Avatar>
-                    <AvatarImage src={teacher.avatar} />
-                  </Avatar>
+                  <div className="h-12 w-12 relative">
+                    <Image src={teacher.avatar} alt="teacher-profile" fill/>
+                  </div>
                   <div className="text-xs">
                     <p className="text-[#333] font-bold">{teacher.name}</p>
                     <p className="text-[#FF3366] font-semibold">
@@ -162,6 +177,7 @@ export default function LectureForm() {
         <Button className="bg-[#FFEEF2] rounded-full text-[#FF3366] px-6">Cancel</Button>
         <Button className="bg-[#0049FF] rounded-full text-white px-8">Add</Button>
       </div>
+    </div>
     </div>
   );
 }
