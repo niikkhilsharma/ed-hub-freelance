@@ -12,7 +12,7 @@ export default function LoginPage() {
       leftPanelTitle="Title"
       leftPanelDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry.">
       <h2 className="text-2xl font-bold text-gray-900 mb-2">Login</h2>
-      <p className="text-sm text-black mb-8 leading-relaxed">
+      <p className="text-sm text-black mb-10 leading-relaxed">
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
 
@@ -25,7 +25,7 @@ export default function LoginPage() {
             type="email"
             id="email"
             placeholder="Email"
-            className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+            className="w-full px-4 py-1.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
           />
         </div>
         <div>
@@ -41,7 +41,7 @@ export default function LoginPage() {
               type={showPassword ? 'text' : 'password'}
               id="password"
               placeholder="Password"
-              className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+              className="w-full px-4 py-1.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
             <button
               type="button"
@@ -56,18 +56,18 @@ export default function LoginPage() {
             </a>
           </div>
         </div>
-        
+
         <button
           type="submit"
-          className="self-center w-40 bg-[#3366FF] text-white font-semibold py-3.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
+          className="self-center px-12 bg-[#3366FF] text-white font-medium py-2.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
           Login
         </button>
 
-        <p className="self-center text-center text-xs w-fit text-[#6B7280] border-b-2 border-black px-2">
-            <a href="#" className="font-medium text-[#6B7280] hover:underline">
-                Create a new account
-            </a>
-        </p>
+        <div className="self-center text-center text-xs w-fit text-[#6B7280] border-b-2 border-black">
+          <a href="#" className="font-medium text-[#6B7280]   hover:underline">
+            Create a new account
+          </a>
+        </div>
       </form>
     </AuthLayout>
   )

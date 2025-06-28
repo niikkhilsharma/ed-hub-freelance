@@ -40,11 +40,11 @@ interface GeneralFilterOption {
 
 // --- Sample Data ---
 const sampleSubjectTabs: SubjectTab[] = [
-  { id: "subj1", name: "Subject 1" },
-  { id: "subj2", name: "Subject 2" },
-  { id: "subj3", name: "Subject 3" },
-  { id: "subj4", name: "Subject 4" },
-  { id: "subj5", name: "Subject 5" },
+  { id: "subj1", name: "Class 1" },
+  { id: "subj2", name: "Class 2" },
+  { id: "subj3", name: "Class 3" },
+  { id: "subj4", name: "Class 4" },
+  { id: "subj5", name: "Class 5" },
 ];
 
 const sampleFolders: FolderItem[] = Array.from({ length: 105 }, (_, i) => ({
@@ -81,7 +81,7 @@ const SubjectTabButton: React.FC<{
 
 const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
   <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4`}
+    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 grid grid-cols-[auto_1fr] items-center gap-4`}
   >
     <div
       className={`bg-[#99DEFF] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
@@ -91,16 +91,19 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
         strokeWidth={1.5}
       />
     </div>
-    <div className="flex flex-col w-full gap-4">
+    <div className="flex flex-col sm:w-full gap-4">
       <div className="">
-      <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
-        {folder.name}
-      </h3>
-      <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+        <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
+          {folder.name}
+        </h3>
+        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
       </div>
-      <div className="w-ful bg-gray-100 rounded-full p-1">
-        <button className="w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
+      <div className="w-full bg-gray-100 hidden sm:block rounded-full p-1">
+        <button className="w-full  flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
       </div>
+    </div>
+    <div className="w-full bg-gray-100 sm:hidden col-span-2 rounded-full p-1">
+      <button className="w-full flex  items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
     </div>
   </div>
 );
@@ -150,7 +153,7 @@ const SubjectFolderViewContent: React.FC = () => {
       {/* Top Section: Subject Tabs */}
 
 
-        
+
       <div className="bg-white rounded-2xl  p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -171,7 +174,7 @@ const SubjectFolderViewContent: React.FC = () => {
                   "Main filter icon clicked. Implement general filter logic."
                 )
               }
-              className={`p-3 rounded-full text-white font-medium cursor-pointer bg-[${ACCENT_PINK}] flex-shrink-0`}
+              className={`p-2 sm:p-3 rounded-full text-white font-medium cursor-pointer bg-[${ACCENT_PINK}] flex-shrink-0`}
               aria-label="Open main filters"
             >
               Create Folder
@@ -230,14 +233,12 @@ export default function MaterialPage() {
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
-      <MaxWidthWrapper>
-        <div className="bg-gray-100">
-          <GoBack GoBackHeading="Branch Name"/>
-          <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-            <SubjectFolderViewContent />
-          </main>
-        </div>
-      </MaxWidthWrapper>
+      <div className="bg-gray-100">
+        <GoBack GoBackHeading="Branch Name" />
+        <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+          <SubjectFolderViewContent />
+        </main>
+      </div>
     </div>
   );
 }

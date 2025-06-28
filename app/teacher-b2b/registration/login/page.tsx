@@ -16,20 +16,20 @@ export default function LoginPage() {
         Lorem Ipsum is simply dummy text of the printing and typesetting industry.
       </p>
 
-      <form className="space-y-4 flex flex-col">
+      <form className="space-y-3 flex flex-col">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-black mb-2">
+          <label htmlFor="email" className="block text-sm font-medium text-black mb-1">
             Email ID
           </label>
           <input
             type="email"
             id="email"
             placeholder="Email"
-            className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+            className="w-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
           />
         </div>
         <div>
-          <div className="flex justify-between items-center mb-2">
+          <div className="flex justify-between items-center mb-1">
             <label
               htmlFor="password"
               className="block text-sm font-medium text-black">
@@ -41,7 +41,7 @@ export default function LoginPage() {
               type={showPassword ? 'text' : 'password'}
               id="password"
               placeholder="Password"
-              className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+              className="w-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
             <button
               type="button"
@@ -59,11 +59,11 @@ export default function LoginPage() {
         
         <button
           type="submit"
-          className="self-center w-40 bg-[#3366FF] text-white font-semibold py-3.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
+          className="self-center w-40 bg-[#3366FF] text-white font-semibold py-3 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
           Login
         </button>
 
-        <p className="self-center text-center text-xs w-fit text-[#6B7280] border-b-2 border-black px-2">
+        <p className="self-center text-center text-xs w-fit text-[#6B7280] border-b-2 border-black px-1">
             <a href="#" className="font-medium text-[#6B7280] hover:underline">
                 Create a new account
             </a>

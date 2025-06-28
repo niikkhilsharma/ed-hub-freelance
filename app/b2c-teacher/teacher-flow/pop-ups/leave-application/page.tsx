@@ -5,7 +5,7 @@ export default function LeaveApplicationPopup() {
   return (
     <div className="bg-white mx-auto my-4 rounded-3xl shadow-xl p-4 w-full max-w-lg relative">
       {/* Close Button */}
-     <button className="absolute top-4 right-4 text-black bg-[#6B7280]/20 rounded-full hover:text-black">
+     <button className="absolute top-4 right-4 text-black p-1 bg-black/5 rounded-full hover:text-black">
         <X size={20} />
       </button>
 
@@ -120,7 +120,7 @@ export default function LeaveApplicationPopup() {
 
       {/* Buttons */}
       <div className="flex justify-end gap-3">
-        <button className="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 text-sm">
+        <button className="px-4 py-2 rounded-full  text-[#6B7280] border border-[#E5E7EB]">
           Cancel
         </button>
         <button className="px-6 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 text-sm">

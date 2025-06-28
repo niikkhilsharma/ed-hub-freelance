@@ -51,7 +51,7 @@ const CategoryTab: React.FC<CategoryTabProps> = ({ category, isActive, onClick }
 	return (
 		<button
 			onClick={onClick}
-			className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap
+			className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-lg font-medium transition-all duration-200 whitespace-nowrap
         ${isActive ? 'bg-[#FF3366] text-white shadow-md' : 'bg-transparent text-[#6B7280] hover:bg-gray-100'}`}>
 			{category.name}
 		</button>
@@ -64,25 +64,22 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 	return (
-		<div className="bg-slate-50 border rounded-2xl p-3 transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4 max-w-lg">
+		<div className="bg-slate-50 border rounded-2xl p-4 transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4  max-w-lg">
 			{/* Info Icon */}
-			<button className="absolute top-3 right-3 text-gray-400 hover:text-gray-600" aria-label="Folder information">
-				<FiInfo className="w-5 h-5" />
-			</button>
-
+			
 			{/* Folder Icon Area */}
-			<div className="bg-[#99DEFF] w-24 h-24 sm:w-26 sm:h-26 rounded-2xl flex items-center justify-center flex-shrink-0">
+			<div className="bg-[#99DEFF] w-24 h-24 sm:w-26 sm:h-26 rounded-xl flex items-center justify-center flex-shrink-0">
 				<FiFolder className="w-10 h-10 sm:w-12 sm:h-12 text-black opacity-80" strokeWidth={1.5} />
 			</div>
 
 			{/* Folder Details */}
-			<div className="flex flex-col flex-grow w-full">
-				<h3 className="text-md font-semibold text-black mb-0.5">{folder.name}</h3>
-				<p className="text-xs text-[#6B7280] mb-4">{folder.fileCount} Files</p>
+			<div className="flex  flex-col flex-grow w-full">
+				<h3 className="sm:text-xl text-md font-semibold text-black mb-1">{folder.name}</h3>
+				<p className="text-xs sm:text-sm text-[#6B7280] mb-5">{folder.fileCount} Files</p>
 				<button
 					onClick={() => alert(`Manage Access for ${folder.name}`)}
-					className="w-full sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium rounded-full transition-colors">
-					<FiSettings className="w-4 h-4" />
+					className="w-full sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs sm:text-xl font-medium rounded-full transition-colors">
+					<FiSettings className="w-6 h-6" />
 					Manage Access
 				</button>
 			</div>
@@ -104,7 +101,7 @@ const UploadExistingTestContent: React.FC = () => {
 	return (
 		<div className="bg-white rounded-2xl shadow-xl min-h-screen p-4 ">
 			{/* Category Tabs */}
-			<div className="p-1 rounded-2xl flex items-center justify-center mb-6 border border-gray-200">
+			<div className="p-2 rounded-2xl flex items-center justify-center mb-6 border border-gray-200">
 				<nav className="flex space-x-1 sm:space-x-4 overflow-x-auto custom-scrollbar-thin">
 					{categories.map(cat => (
 						<CategoryTab
@@ -151,16 +148,16 @@ export default function SelectExistingTestPage() {
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			<Header user={headerUser} />
-			<div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 shadow-sm sticky top-0 z-40">
+			<div className="flex items-center gap-3 bg-white px-4 sm:px-16 py-3.5 shadow-sm sticky top-0 z-40">
 				{' '}
 				{/* Made title bar sticky */}
 				<button
 					onClick={handleBackClick}
-					className="p-1.5 text-gray-700 hover:text-[#FF3366] focus:outline-none rounded-md"
+					className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md"
 					aria-label="Go back">
-					<FiArrowLeft className="w-5 h-5" />
+					<FiArrowLeft className="w-6 h-6" />
 				</button>
-				<h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Select Existing Test</h1>
+				<h1 className="text-lg sm:text-2xl font-semibold text-[#FF3366]">Select Existing Test</h1>
 			</div>
 			<MaxWidthWrapper>
 				<div className="bg-[#eeeeee]">

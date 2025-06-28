@@ -194,7 +194,7 @@ const handleTestDetailsChange = <K extends keyof TestDetailsData>(
   };
 
   return (
-    <div className="bg-white rounded-2xl px-4 sm:px-20 py-4">
+    <div className="bg-white rounded-2xl px-12 lg:px-20 py-4">
       <Stepper steps={stepperSteps} currentStep={currentStep} setCurrentStep={setCurrentStep} isClickable={true} />
       {renderStepContent()}
       <div className="mt-8 flex justify-center flex-wrap gap-3"> {/* Added flex-wrap and gap */}

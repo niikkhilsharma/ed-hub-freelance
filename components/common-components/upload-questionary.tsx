@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { IoClose } from 'react-icons/io5';
-import { FaUpload } from 'react-icons/fa';
+import {  X } from 'lucide-react';
+import Image  from 'next/image';
 
 export default function UploadPopup({ onClose }: { onClose: () => void }) {
   const [url, setUrl] = useState('');
@@ -10,23 +10,23 @@ export default function UploadPopup({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-2xl p-6 w-full max-w-lg relative">
+      <div className="bg-white rounded-2xl p-6 space-y-4  w-full max-w-lg relative">
         {/* Close Button */}
-        <button onClick={onClose} className="absolute top-4 right-4 text-xl">
-          <IoClose />
-        </button>
+        <button className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black">
+        <X size={20} />
+      </button>
 
         <h2 className="text-lg font-semibold mb-4">Upload Questionary File</h2>
 
         {/* URL Input */}
         <div className="mb-4">
-          <label className="block font-medium mb-1">Enter URL</label>
+          <label className="block font-medium mb-2">Enter URL</label>
           <input
             type="text"
             placeholder="Text"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            className="w-full rounded-full px-4 py-2 bg-gray-100 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="w-full rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
 
@@ -34,15 +34,19 @@ export default function UploadPopup({ onClose }: { onClose: () => void }) {
 
         {/* File Upload */}
         <div className="mb-6">
-          <label className="block font-medium mb-1">Upload Document</label>
-          <div className="flex items-center gap-2 bg-gray-100 rounded-full px-4 py-2 border border-gray-200">
-            <FaUpload className="text-pink-500" />
+          <label className="block font-medium  font-Poppins mb-2">Upload Document</label>
+          <div className="flex items-center gap-2 bg-[#F9FAFB] border  border-[#D5D5D5] rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <Image src={"/teacher/b2c/upload.png"}
+            alt="upload"
+            height={40}
+            width={40}
+            />
             <input
               type="text"
               placeholder="Document Name"
               value={fileName}
               onChange={(e) => setFileName(e.target.value)}
-              className="bg-transparent outline-none w-full text-sm text-gray-600"
+              className="bg-transparent outline-none w-full text-md font-Poppins  text-[#6B7280] "
             />
           </div>
         </div>
@@ -51,7 +55,7 @@ export default function UploadPopup({ onClose }: { onClose: () => void }) {
         <div className="flex justify-end gap-4">
           <button
             onClick={onClose}
-            className="rounded-full px-6 py-2 bg-gray-100 text-gray-600 font-semibold"
+            className="rounded-full px-6 py-2 border border-[#E5E7EB] text-[#6B7280] font-semibold"
           >
             Cancel
           </button>

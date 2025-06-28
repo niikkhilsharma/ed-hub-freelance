@@ -1,236 +1,153 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-// import StepIndicator from '@/components/step-indicator'; // Adjust path if needed
-import { FiChevronDown, FiEye, FiEyeOff, FiUploadCloud } from 'react-icons/fi';
+import { useState } from "react";
+import Image from "next/image";
 
-// --- Form Step Components (defined in the same file for simplicity) ---
+// --- Reusable Form Field Components for Clean Code ---
+interface FormInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  id: string;
+  label: string;
+}
 
-const Step1 = ({ onContinue }: { onContinue: () => void }) => {
-  const [showPassword, setShowPassword] = useState(false);
-  return (
-    <>
-      <h1 className="text-2xl font-bold text-black mb-6">Create Account</h1>
-      <form className="space-y-5" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Email ID</label>
-          <input type="email" placeholder="Enter Email ID" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Password</label>
-          <input type="password" placeholder="Enter Password" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Password</label>
-          <div className="relative">
-            <input type={showPassword ? 'text' : 'password'} placeholder="Enter Password" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute inset-y-0 right-0 flex items-center pr-5 text-gray-500">
-              {showPassword ? <FiEyeOff /> : <FiEye />}
-            </button>
-          </div>
-        </div>
-        <button type="submit" className="w-full bg-[#3366FF] text-white font-bold py-3.5 mt-4 rounded-full hover:bg-blue-700 transition-all">Continue</button>
-      </form>
-    </>
-  );
-};
+const FormInput: React.FC<FormInputProps> = ({ id, label, ...props }) => (
+  <div className="mb-4">
+    <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
+    <input
+      id={id}
+      {...props}
+      className="w-full rounded-full border border-[#D5D5D5] bg-[#F9FAFB] py-3 px-4 text-sm text-[#555555] placeholder:text-[#6B7280] transition focus:outline-none focus:ring-2 focus:ring-[#3366FF] focus:bg-white"
+    />
+  </div>
+);
+interface FormSelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  id: string;
+  label: string;
+  children: React.ReactNode;
+}
+const FormSelect: React.FC<FormSelectProps> = ({ id, label, children, ...props }) => (
+  <div className="mb-4">
+    <label htmlFor={id} className="block text-sm font-medium text-[#333333] mb-2">{label}</label>
+    <div className="relative">
+      <select
+        id={id}
+        {...props}
+        className="w-full appearance-none rounded-full border border-[#D5D5D5] bg-[#F9FAFB] py-3 pl-4 pr-10 text-sm text-[#555555] transition focus:outline-none focus:ring-2 focus:ring-[#3366FF] focus:bg-white"
+      >
+        {children}
+      </select>
+      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
 
-// ... other step components will be defined similarly ...
+        <svg
+          width={12}
+          height={7}
+          viewBox="0 0 14 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 1l6 6 6-6"
+            stroke="#000"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+);
 
 // --- Main Page Component ---
-export default function RegisterPage() {
-  const [step, setStep] = useState(1);
-  const totalSteps = 5;
 
-  const nextStep = () => {
-    setStep((prev) => (prev < totalSteps ? prev + 1 : prev));
-  };
-  
-  // const prevStep = () => {
-  //   setStep((prev) => (prev > 1 ? prev - 1 : prev));
-  // };
+export default function StudentInfoPage() {
+  const [formData, setFormData] = useState({
+    name: "",
+    className: "",
+    dob: "",
+    guardianName: "",
+    email: "",
+    mobile: "",
+    country: "",
+    state: "",
+    city: "",
+  });
 
-  const renderStep = () => {
-    switch (step) {
-      // NOTE: Replace these with the full components below
-      case 1: return <Step1 onContinue={nextStep} />;
-      case 2: return <Step2 onContinue={nextStep} />;
-      case 3: return <Step3 onContinue={nextStep} />;
-      case 4: return <Step4 onContinue={nextStep} />;
-      case 5: return <Step5 />;
-      default: return <Step1 onContinue={nextStep} />;
-    }
-  };
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    console.log("Submitted data:", formData);
+  }
 
   return (
     <div
-      className="min-h-screen w-full flex items-center justify-center p-4 sm:p-6"
+      className="min-h-screen w-full flex items-center justify-center p-4"
       style={{
         backgroundColor: '#3366FF',
-        backgroundImage: 'url(/images/background.jpg)',
-        backgroundRepeat: 'repeat',
+        backgroundImage: "url(/images/background.jpg)",
+        backgroundRepeat: "repeat",
       }}
     >
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-12 items-center">
-        
-        {/* Left Column: Form Area */}
-        <div className="md:col-span-6 lg:col-span-5 w-full">
-          <div className="flex flex-col items-center w-full max-w-md mx-auto">
-            {/* <StepIndicator currentStep={step} totalSteps={totalSteps} /> */}
-            <div className="bg-white p-8 rounded-4xl shadow-xl w-full">
-              {renderStep()}
+      {/* The main container no longer has a fixed height, allowing the content to define it. */}
+      <main className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
+
+        {/* --- Left Panel: Form (No longer has overflow or fixed height) --- */}
+        <div className="w-full md:w-2/5 lg:w-1/3 bg-white p-6 sm:p-8 lg:p-10 rounded-4xl shadow-2xl">
+          <form onSubmit={handleSubmit}>
+            <FormInput id="name" name="name" label="Name" type="text" placeholder="Enter Name" value={formData.name} onChange={handleChange} />
+            <FormInput id="dob" name="dob" label="Date of Birth" type="text" placeholder="DD/MM/YY" value={formData.dob} onChange={handleChange} />
+            <FormInput id="email" name="email" label="Email ID" type="email" placeholder="Enter Email ID" value={formData.email} onChange={handleChange} />
+            <FormInput id="mobile" name="mobile" label="Mobile Number" type="tel" placeholder="+91 1234567890" value={formData.mobile} onChange={handleChange} />
+
+            <FormSelect id="country" name="country" label="Country" value={formData.country} onChange={handleChange}>
+              <option value="" disabled>Select Country</option>
+              <option value="india">India</option>
+            </FormSelect>
+
+            <FormSelect id="state" name="state" label="State" value={formData.state} onChange={handleChange}>
+              <option value="" disabled>Select State</option>
+              <option value="maharashtra">Maharashtra</option>
+            </FormSelect>
+
+              <FormSelect id="city" name="city" label="City" value={formData.city} onChange={handleChange}>
+                <option value="" disabled>Select City</option>
+                <option value="mumbai">Mumbai</option>
+              </FormSelect>
+
+            <div className="mb-6">
+              <FormInput id="pass" name="pass" label="Password" type="password" placeholder="Password" value={""} onChange={handleChange} />
             </div>
-          </div>
+
+            <button type="submit" className="w-full bg-[#3366FF] text-white font-semibold py-3 rounded-full transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+              Submit
+            </button>
+          </form>
         </div>
 
-        {/* Right Column: Image Panel */}
-        <div className="hidden md:flex md:col-span-6 lg:col-span-7 h-full w-full relative rounded-4xl overflow-hidden">
+        {/* --- Right Panel: Image (Stretches to match the left panel's height automatically) --- */}
+        <div className="hidden md:block w-full md:w-3/5 lg:w-2/3 relative rounded-4xl overflow-hidden">
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 w-full h-full bg-[#f9fafb]"
             style={{
-              backgroundImage: 'url(/images/registar_pattern.svg)',
-              backgroundSize: 'auto',
-              opacity: 0.9,
+              backgroundImage: "url(/images/registar_pattern.svg)",
+              backgroundSize: 'cover',
             }}
-          ></div>
+          />
           <Image
             src="/images/Girl_writing.png"
-            alt="Student writing"
+            alt="Child writing"
             layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            className="z-10 max-h-[500px] self-end"
-            priority
+            objectFit="contain"
+            objectPosition="bottom center"
+            className="z-10 drop-shadow-xl"
           />
         </div>
-      </div>
+      </main>
     </div>
   );
 }
-
-
-// --- FULL DEFINITIONS FOR STEP COMPONENTS ---
-
-const Step2 = ({ onContinue }: { onContinue: () => void }) => (
-    <>
-      <h1 className="text-2xl font-bold text-black mb-6">Personal Information</h1>
-      <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Profile Image</label>
-          <div className="flex items-center justify-start w-full px-5 py-2 rounded-full bg-[#F9FAFB] border-2 border-[#D5D5D5] text-[#6B7280] cursor-pointer hover:bg-gray-200">
-            <FiUploadCloud className="mr-2 rounded-full text-[#FF3366] h-6 w-6 p-1 bg-[#FF33661A]"/> Upload Image
-          </div>
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Full Name</label>
-          <input type="text" placeholder="Full Name" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Phone Number</label>
-          <div className="flex items-center">
-              <input type="tel" placeholder='+91' className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-        </div>
-         <div>
-          <label className="block text-sm font-semibold text-black mb-2">Date of Birth</label>
-          <input type="text" placeholder="DD/MM/YY" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Address</label>
-          <input type="text" placeholder="Address" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        {['Country', 'State / Province', 'City'].map(label => (
-          <div key={label} className='relative flex flex-col'>
-            <label className="block text-sm font-semibold text-black mb-2">{label}</label>
-            <select required className="w-full appearance-none rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>Option 1</option> <option>Option 2</option>
-            </select>
-            <FiChevronDown className="pointer-events-none absolute right-4 top-[50%] transform -translate-y-1/2 text-black w-4 h-4 z-20 " />
-          </div>
-        ))}
-         <div>
-          <label className="block text-sm font-semibold text-black mb-2">Bio</label>
-          <textarea placeholder="Bio" className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows={2}></textarea>
-        </div>
-        <button type="submit" className="w-full bg-[#3366FF] text-white font-bold py-3.5 mt-4 rounded-full hover:bg-blue-700 transition-all">Continue</button>
-      </form>
-    </>
-);
-
-const Step3 = ({ onContinue }: { onContinue: () => void }) => (
-    <>
-      <h1 className="text-2xl font-bold text-black mb-6">Education</h1>
-      <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">School / University Name</label>
-          <input type="text" placeholder="Name" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div>
-          <label className="block text-sm font-semibold text-black mb-2">Degree</label>
-          <input type="text" placeholder="Degree" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        </div>
-        <div className="flex gap-4">
-          <div className="w-1/2">
-              <label className="block text-sm font-semibold text-black mb-2">Start Year</label>
-              <input type="text" placeholder="DD/MM/YY" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div className="w-1/2">
-              <label className="block text-sm font-semibold text-black mb-2">End Year</label>
-              <input type="text" placeholder="DD/MM/YY" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-        </div>
-        <div className="pt-2 space-y-4">
-            <button type="button" className="w-full bg-[#F9FAFB] text-black font-bold py-3.5 rounded-full border border-[#D5D5D5] hover:bg-blue-50 transition-all">Add Qualification</button>
-            <button type="submit" className="w-full bg-[#3366FF] text-white font-bold py-3.5 rounded-full hover:bg-blue-700 transition-all">Continue</button>
-        </div>
-      </form>
-    </>
-);
-  
-const Step4 = ({ onContinue }: { onContinue: () => void }) => (
-      <>
-        <h1 className="text-2xl font-bold text-black mb-6">Achievement / Experience</h1>
-        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onContinue(); }}>
-          <div>
-            <label className="block text-sm font-semibold text-black mb-2">Title</label>
-            <input type="text" placeholder="Title" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-black mb-2">Description</label>
-            <textarea placeholder="Description" required className="w-full rounded-3xl bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows={5}></textarea>
-          </div>
-          <div className="pt-2 space-y-4">
-            <button type="button" className="w-full bg-[#F9FAFB] text-black font-bold py-3.5 rounded-full border border-[#D5D5D5] hover:bg-blue-50 transition-all">Add Achievement / Experience</button>
-            <button type="submit" className="w-full bg-[#3366FF] text-white font-bold py-3.5 rounded-full hover:bg-blue-700 transition-all">Continue</button>
-          </div>
-        </form>
-      </>
-);
-  
-const Step5 = () => (
-      <>
-        <h1 className="text-2xl font-bold text-black mb-6">School Information</h1>
-        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); alert("Registration Complete!"); }}>
-          <div>
-            <label className="block text-sm font-semibold text-black mb-2">School Name</label>
-            <input type="text" placeholder="School Name" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <div>
-            <label className="block text-sm font-semibold text-black mb-2">School Address</label>
-            <input type="text" placeholder="School Address" required className="w-full rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black placeholder:text-[#6B7280] px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          {['Country', 'State / Province', 'City'].map(label => (
-            <div key={label}>
-              <label className="block text-sm font-semibold text-black mb-2">{label}</label>
-              <select required className="w-full appearance-none rounded-full bg-[#F9FAFB] border border-[#D5D5D5] text-black px-5 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option>Option 1</option> <option>Option 2</option>
-              </select>
-            </div>
-          ))}
-          <div className="pt-2">
-            <button type="submit" className="w-full bg-[#3366FF] text-white font-bold py-3.5 rounded-full hover:bg-blue-700 transition-all">Complete Registration</button>
-          </div>
-        </form>
-      </>
-);

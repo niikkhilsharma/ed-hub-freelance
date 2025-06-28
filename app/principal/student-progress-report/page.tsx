@@ -133,12 +133,12 @@ const StudentProgressReport = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
           {/* Student Info Card */}
           <div
-            className="lg:col-span-3 bg-white p-5 rounded-2xl"
+            className="lg:col-span-3  p-5 rounded-2xl bg-[url('/pattern.png')] bg-repeat bg-[length:650px_650px]"
             style={{
               borderColor: PALETTE.BORDER_GREY,
             }}
           >
-            <div className="flex  items-start sm:items-center gap-4">
+            <div className="grid bg-white rounded-2xl grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] items-start sm:items-center gap-4">
               <Image
                 src="/teacher-b2b/profile2.png"
                 alt="Shlok Agheda"
@@ -146,15 +146,13 @@ const StudentProgressReport = () => {
                 height={72}
                 className="rounded-full h-24 w-24 flex-shrink-0"
               />
-              <div className="flex-grow relative">
-                <div className="rounded-full top-0 border border-gray-200 p-1 bg-gray-100 absolute left-[12rem]"><IoMdSettings size={20}/></div>
+              <div className="flex-grow">
                 <h2
                   className="text-xl font-semibold"
                   style={{ color: PALETTE.TEXT_DARK }}
                 >
                   Shlok Agheda
                 </h2>
-                
                 <div className="flex flex-wrap items-center gap-1 mt-2">
                   <span
                     className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
@@ -174,52 +172,15 @@ const StudentProgressReport = () => {
                   >
                     Group A
                   </span>
-                 
                 </div>
               </div>
-              <div className="text-[11px] font-medium text-right sm:text-left space-y-0.5 text-black">
+              <div className="text-[11px] col-span-2 lg:col-span-3 font-medium text-left space-y-0.5 text-black">
                 <p>Gender: Male</p>
                 <p>DOB: 15 Jun 2015</p>
                 <p>Email: example@gm.com</p>
-                
+
                 <p>City: Mumbai</p>
                 <p>State: Maharashtra</p>
-              </div>
-            </div>
-            <div className="pt-4 ">
-              <p
-                className="text-sm font-bold mb-3"
-                style={{ color: PALETTE.TEXT_DARK }}
-              >
-                Key Focus Area
-              </p>
-              <div className="flex flex-wrap gap-4">
-                {keyFocusAreas.map((area) => (
-                  <button
-                    key={area}
-                    className="text-xs px-2 py-2 text-black rounded-full border"
-                    style={{
-                      backgroundColor: "#F3F4F6",
-                      borderColor: PALETTE.BORDER_GREY,
-                    }}
-                  >
-                    {area}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="">
-              <h2 className='my-2 text-sm font-bold'>Assigned Teachers</h2>
-              <div className="flex flex-wrap gap-6 items-stretch">
-                {Teachers.map((card, index) => (
-                  <div className="p-2 bg-gray-100 flex items-center gap-6 rounded-2xl border-gray-200" key={index}>
-                    <Image className='rounded-xl' src={card.image} width={75} height={50} alt={card.name} />
-                    <div className="">
-                      <h2 className='font-medium'>{card.name}</h2>
-                      <p className={`text-[${PALETTE.ACCENT_PINK}]`}>{card.subject}</p>
-                    </div>
-                  </div>
-                ))}
               </div>
             </div>
           </div>

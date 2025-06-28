@@ -50,7 +50,7 @@ const ClassesCard = () => {
   const [month] = useState('June 2025');
 
   return (
-    <div className="rounded-2xl  bg-white p-6 w-full max-w-sm">
+    <div className="rounded-2xl  bg-white p-6 w-full max-w-md">
       <div className="flex items-center justify-between mb-3">
         <h2 className="text-lg font-semibold">Classes</h2>
         <div className="flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-2 text-m text-zinc-900">
@@ -466,12 +466,16 @@ const StudentReport: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-2 md:px-5 gap-4">
           {/* Student Info Card */}
+
           <div
-            className="lg:col-span-2 bg-white p-5 rounded-2xl"
+            className="lg:col-span-2  p-4 rounded-2xl"
             style={{
               borderColor: PALETTE.BORDER_GREY,
+              backgroundImage:"url('/images/brandpatternreport.png')",
+              backgroundSize:"cover"
             }}
           >
+            <div className="bg-white p-4 rounded-2xl">
             <div className="flex items-start justify-between sm:items-center gap-4">
               <div className="flex flex-col sm:items-center sm:flex-row gap-4">
                 <Image
@@ -568,6 +572,7 @@ const StudentReport: React.FC = () => {
                     example@gm.com
                   </button>
               </div>
+            </div>
             </div>
           </div>
           <ClassesCard />
@@ -690,7 +695,7 @@ const StudentReport: React.FC = () => {
 
           {/* Personal Development Card */}
           <div
-            className="p-5 h-full rounded-2xl relative"
+            className="p-5 h-full rounded-2xl relative max-w-md w-full"
             style={{
               backgroundColor: PALETTE.WHITE_CARD,
             }}

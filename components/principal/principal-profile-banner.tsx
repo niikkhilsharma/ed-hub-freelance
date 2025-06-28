@@ -30,32 +30,32 @@ const PrincipalProfileBanner = () => {
         WHITE_CARD: "#FFFFFF",
     };
     const keyFocusAreas = [
-        "Academics",
-        "Personality Development",
-        "Brain Development",
+        "+91 0000000000",
+        "example@gm.com",
     ];
     return (
-        <div className='w-full'><div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
-            <button
-                onClick={handleBackClick}
-                className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
-                aria-label="Go back"
-            >
-                <FiArrowLeft className="w-5 h-5" />
-            </button>
-            <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
-                Teacher Report
-            </h1>
-        </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
+        <div className='w-full'>
+            <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+                <button
+                    onClick={handleBackClick}
+                    className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
+                    aria-label="Go back"
+                >
+                    <FiArrowLeft className="w-5 h-5" />
+                </button>
+                <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+                    Teacher Report
+                </h1>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-4 gap-6">
                 {/* Student Info Card */}
                 <div
-                    className="lg:col-span-3 bg-white p-5 rounded-2xl"
+                    className="lg:col-span-3  bg-white p-5 rounded-2xl bg-[url('/pattern-3.png')] bg-repeat bg-[length:650px_650px]"
                     style={{
                         borderColor: PALETTE.BORDER_GREY,
                     }}
                 >
-                    <div className="flex  items-start sm:items-center gap-4">
+                    <div className="grid bg-white rounded-2xl grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] items-start sm:items-center gap-4">
                         <Image
                             src="/teacher-b2b/profile2.png"
                             alt="Shlok Agheda"
@@ -91,11 +91,11 @@ const PrincipalProfileBanner = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="text-[11px] font-medium text-right sm:text-left space-y-0.5 text-black">
+                        <div className="text-[11px] col-span-2 lg:col-span-3 font-medium text-left space-y-0.5 text-black">
                             <p>Gender: Male</p>
                             <p>DOB: 15 Jun 2015</p>
                             <p>Email: example@gm.com</p>
-                            
+
                             <p>City: Mumbai</p>
                             <p>State: Maharashtra</p>
                         </div>
@@ -105,7 +105,7 @@ const PrincipalProfileBanner = () => {
                             className="text-sm font-bold mb-3"
                             style={{ color: PALETTE.TEXT_DARK }}
                         >
-                            Key Focus Area
+                            Contact details
                         </p>
                         <div className="flex flex-wrap gap-4">
                             {keyFocusAreas.map((area) => (
@@ -123,7 +123,8 @@ const PrincipalProfileBanner = () => {
                         </div>
                     </div>
                 </div>
-            </div></div>
+            </div>
+        </div>
     )
 }
 

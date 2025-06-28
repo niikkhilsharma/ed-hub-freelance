@@ -422,12 +422,14 @@ const StudentReport: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
             {/* Student Info Card */}
-            <div
-              className="lg:col-span-3 bg-white p-5 rounded-2xl"
+
+            <div  className="lg:col-span-3  p-4 rounded-2xl"
               style={{
                 borderColor: PALETTE.BORDER_GREY,
-              }}
-            >
+                backgroundImage:"url('/images/brandpatternreport.png')",
+                backgroundSize:"cover"
+              }}>
+              <div className="bg-white rounded-2xl ">
               <div className="flex  items-start sm:items-center gap-4">
                 <Image
                   src="/teacher-b2b/profile2.png"
@@ -495,6 +497,7 @@ const StudentReport: React.FC = () => {
                   ))}
                 </div>
               </div>
+            </div>
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">

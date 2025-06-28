@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { FiPlus, FiTrash2 } from "react-icons/fi";
 import {
   TestQuestion,
@@ -53,110 +53,6 @@ const TestQuestionnaireStep: React.FC<TestQuestionnaireStepProps> = ({
       <HardcodedQuestionForm />
     </div>
   );
-
-  return (
-    <div className="space-y-6">
-      {questions.map((q, index) => (
-        <div
-          key={q.id}
-          className={`p-4 sm:p-5 rounded-lg border ${INPUT_BORDER} bg-slate-50 shadow-sm relative`}
-        >
-          <div className="flex justify-between items-start mb-3">
-            <label className="text-sm font-semibold text-black">
-              Question {index + 1}.
-            </label>
-            <button
-              onClick={() => onRemoveQuestion(q.id)}
-              className="text-red-500 hover:text-red-700 p-1 -mt-1 -mr-1"
-            >
-              <FiTrash2 className="w-4 h-4" />
-            </button>
-          </div>
-          <textarea
-            placeholder="Enter question text"
-            value={q.questionText}
-            onChange={(e) =>
-              onUpdateQuestionField(q.id, "questionText", e.target.value)
-            }
-            rows={2}
-            className={`w-full px-3 py-2 mb-3 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl shadow-sm focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm resize-none`}
-          />{" "}
-          {/* rounded-xl for consistency */}
-          <div className="flex justify-between items-center mb-3">
-            <label className="text-xs font-medium text-gray-700">Options</label>
-            <NumOptionsInput
-              value={q.numOptions}
-              onChange={(val) => onUpdateNumOptionsForQuestion(q.id, val)}
-            />
-          </div>
-          <div className="space-y-2 mb-4">
-            {q.options.slice(0, q.numOptions).map((opt, optIndex) => (
-              <div key={opt.id} className="flex items-center">
-                <label
-                  htmlFor={`q${q.id}_opt${opt.id}`}
-                  className="text-xs text-gray-600 mr-2 w-16 shrink-0"
-                >
-                  Option {optIndex + 1}:
-                </label>
-                <input
-                  type="text"
-                  id={`q${q.id}_opt${opt.id}`}
-                  placeholder={`Option ${optIndex + 1} text`}
-                  value={opt.text}
-                  onChange={(e) =>
-                    onUpdateQuestionOptionText(q.id, optIndex, e.target.value)
-                  }
-                  className={`flex-grow px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-lg shadow-sm focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm`}
-                />
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              {q.options.slice(0, q.numOptions).map((opt, optIndex) => (
-                <label
-                  key={opt.id}
-                  className="flex items-center space-x-1.5 cursor-pointer"
-                >
-                  <input
-                    type="radio"
-                    name={`correctOpt_${q.id}`}
-                    value={opt.id}
-                    checked={q.correctOptionId === opt.id}
-                    onChange={() =>
-                      onUpdateQuestionField(q.id, "correctOptionId", opt.id)
-                    }
-                    className={`form-radio h-4 w-4 text-[${PRIMARY_BLUE}] focus:ring-offset-0 focus:ring-[${PRIMARY_BLUE}] border-gray-400`}
-                  />
-                  <span className="text-xs text-gray-700">
-                    Option {optIndex + 1}
-                  </span>
-                </label>
-              ))}
-            </div>
-            <QuestionPointsInput
-              value={q.points}
-              onChange={(val) => onUpdateQuestionField(q.id, "points", val)}
-            />
-          </div>
-        </div>
-      ))}
-      <button
-        onClick={onAddNewQuestion}
-        className={`w-full flex items-center justify-center gap-2 py-2.5 border-2 border-dashed border-[${PRIMARY_BLUE}] text-[${PRIMARY_BLUE}] hover:bg-blue-50 rounded-lg transition-colors text-sm font-medium`}
-      >
-        <FiPlus className="w-4 h-4" /> Add Question
-      </button>
-      {/* Hidden file input for the upload button in parent (CreateBWTestContent) to trigger */}
-      <input
-        type="file"
-        id="fileUploadInputHidden_questionnaire"
-        className="hidden"
-        onChange={handleFileUpload}
-        accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
-      />
-    </div>
-  );
 };
 export default TestQuestionnaireStep;
 
@@ -166,9 +62,9 @@ const NumberSpinnerInput: React.FC<{
   label?: string;
   isPoints?: boolean;
 }> = ({ value, label }) => {
-  // Dummy handlers, as this is hardcoded presentational
-  const handleIncrement = () => console.log("Increment");
-  const handleDecrement = () => console.log("Decrement");
+  const [tempValue, setTempValue] = useState<string | number>(value);
+  const handleIncrement = () => setTempValue(Number(tempValue)+1)
+  const handleDecrement = () => setTempValue(Number(tempValue)-1)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     console.log("Change", e.target.value);
 
@@ -258,7 +154,7 @@ const HardcodedQuestionForm: React.FC = () => {
           {/* Options Section */}
           <div>
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-semibold text-black">Options</h3>
+              <h3 className="text-base font-semibold text-black">Options</h3>
               <NumberSpinnerInput value={data.numOptionsValue} />
             </div>
             <div className="space-y-2.5">
@@ -266,7 +162,7 @@ const HardcodedQuestionForm: React.FC = () => {
                 <div key={`q${data.qNumber}_opt${index}`}>
                   <label
                     htmlFor={`q${data.qNumber}_option_${index + 1}`}
-                    className="block text-xs font-medium text-gray-600 mb-1"
+                    className="block text-xs font-medium text-black mb-1"
                   >
                     Option {index + 1}:
                   </label>

@@ -171,58 +171,73 @@ const SummaryPanel: React.FC<{ summary: AssessmentSummaryData }> = ({ summary })
   };
 
   return (
-    <div className="bg-white rounded-2xl space-y-5">
-      {/* Assessment Score */}
-      <div className={`${BACKGROUND_LIGHT_GRAY_BOX} p-4 rounded-xl text-center`}>
-        <p className="text-lg text-gray-500 mb-1">Assessment Score</p>
-        <p className={`text-4xl font-bold ${COLOR_SCORE_BLUE}`}>{summary.assessmentScore}</p>
-      </div>
+   <div
+  className="relative rounded-2xl p-4 space-y-5 overflow-hidden"
+  style={{
+    backgroundImage: "url('/images/brandpatternnoti.png')",
+    backgroundSize: 'cover',
+    backgroundPosition: 'center'
+  }}
+>
+  {/* Dark Overlay */}
+  <div className="absolute inset-0 h-full bg-black/40 z-0 rounded-2xl"></div>
 
-      {/* Incorrect Answers */}
-      <div className={`${BACKGROUND_LIGHT_GRAY_BOX} p-4 rounded-xl text-center`}>
-        <p className="text-lg text-gray-500 mb-1">Incorrect Answers</p>
-        <p className={`text-4xl font-bold ${COLOR_SCORE_BLUE}`}>{summary.incorrectAnswers}</p>
-      </div>
-
-      {/* View Detailed Report Button */}
-      <button className={`w-full flex items-center justify-center gap-2 py-1.5 ${BACKGROUND_LIGHT_GRAY_BOX} rounded-xl hover:bg-gray-200 transition-colors`}>
-        <IoTimeOutline className={`w-5 h-5 ${COLOR_RATING_STARS}`} />
-        <span className={`text-lg  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
-      </button>
-
-      {/* Ratings Section */}
-      <div className="space-y-4 mt-6 pt-1"> {/* Reduced top padding for tighter spacing */}
-        {summary.ratings.map((rating) => (
-          <div key={rating.id} className="flex justify-between items-center">
-            <p className="text-xs text-gray-700 font-medium">{rating.name}</p>
-            <StarRatingDisplay currentRating={rating.score} maxRating={rating.maxScore} />
-          </div>
-        ))}
-      </div>
-
-      {/* Write a Feedback Form */}
-      <form onSubmit={handleFeedbackSubmit} className="space-y-3 pt-1">
-        <div className='mt-2'>
-          <label htmlFor="feedback" className="block text-sm font-semibold text-gray-900 mb-1.5">
-            Write a Feedback
-          </label>
-          <textarea
-            id="feedback"
-            rows={4}
-            value={feedbackText}
-            onChange={(e) => setFeedbackText(e.target.value)}
-            placeholder="Text"
-            className={`w-full text-[#6B7280] p-3 bg-[#F9FAFB] border ${BORDER_GRAY} rounded-xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
-          />
-        </div>
-        <button
-          type="submit"
-          className={`w-32 py-2.5 sm:py-3 ${COLOR_BUTTON_PRIMARY_BG} ${COLOR_BUTTON_PRIMARY_TEXT} rounded-full hover:opacity-90 transition-opacity text-sm`}
-        >
-          Submit
-        </button>
-      </form>
+  {/* Content Layer */}
+  <div className="relative z-10 space-y-5">
+    {/* Assessment Score */}
+    <div className="bg-white p-4 rounded-xl text-center shadow">
+      <p className="text-lg text-gray-500 mb-1">Assessment Score</p>
+      <p className={`text-4xl font-bold ${COLOR_SCORE_BLUE}`}>{summary.assessmentScore}</p>
     </div>
+
+    {/* Incorrect Answers */}
+    <div className="bg-white p-4 rounded-xl text-center shadow">
+      <p className="text-lg text-gray-500 mb-1">Incorrect Answers</p>
+      <p className={`text-4xl font-bold ${COLOR_SCORE_BLUE}`}>{summary.incorrectAnswers}</p>
+    </div>
+
+    {/* View Detailed Report Button */}
+    <button className="w-full flex items-center justify-center gap-2 py-2 bg-white rounded-xl hover:bg-gray-200 transition-colors shadow">
+      <IoTimeOutline className={`w-5 h-5 ${COLOR_RATING_STARS}`} />
+      <span className={`text-xl ${COLOR_RATING_STARS}`}>View Detailed Report</span>
+    </button>
+
+    {/* Ratings Section */}
+    <div className="space-y-4  rounded-2xl px-3 py-6 bg-white">
+      {summary.ratings.map((rating) => (
+        <div key={rating.id} className="flex justify-between items-center">
+          <p className="text-xs text-gray-700 font-medium">{rating.name}</p>
+          <StarRatingDisplay currentRating={rating.score} maxRating={rating.maxScore} />
+        </div>
+      ))}
+    
+
+    {/* Feedback Form */}
+    <form onSubmit={handleFeedbackSubmit} className="space-y-3 pt-1">
+      <div>
+        <label htmlFor="feedback" className="block text-sm font-semibold text-black mb-1.5">
+          Write a Feedback
+        </label>
+        <textarea
+          id="feedback"
+          rows={4}
+          value={feedbackText}
+          onChange={(e) => setFeedbackText(e.target.value)}
+          placeholder="Text"
+          className={`w-full text-[#6B7280] p-3 bg-[#F9FAFB] border ${BORDER_GRAY} rounded-xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
+        />
+      </div>
+      <button
+        type="submit"
+        className={`w-32 py-2.5 sm:py-3 ${COLOR_BUTTON_PRIMARY_BG} ${COLOR_BUTTON_PRIMARY_TEXT} rounded-full hover:opacity-90 transition-opacity text-sm`}
+      >
+        Submit
+      </button>
+    </form>
+    </div>
+  </div>
+</div>
+
   );
 };
 

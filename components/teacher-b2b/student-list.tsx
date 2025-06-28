@@ -217,7 +217,7 @@ const StudentPerformancePage: React.FC = () => {
 			<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 				{/* Search Input */}
 				<div className="relative flex-grow">
-					<FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-full h-4 sm:w-5 sm:h-5 text-gray-400 pointer-events-none" />
+					<FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-full h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
 					<input
 						type="text"
 						placeholder="Search by name, course, group..."

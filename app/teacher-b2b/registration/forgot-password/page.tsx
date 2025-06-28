@@ -29,7 +29,7 @@ export default function ResetPasswordPage() {
               type={showNewPassword ? 'text' : 'password'}
               id="new-password"
               placeholder="New Password"
-              className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+              className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
             <button
               type="button"
@@ -51,7 +51,7 @@ export default function ResetPasswordPage() {
               type={showConfirmPassword ? 'text' : 'password'}
               id="confirm-password"
               placeholder="Confirm Password"
-              className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+              className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
             <button
               type="button"
@@ -64,7 +64,7 @@ export default function ResetPasswordPage() {
 
         <button
           type="submit"
-          className="self-center w-40 bg-[#3366FF] text-white font-semibold py-3.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
+          className="self-center w-40 bg-[#3366FF] text-white font-semibold py-3 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]">
           Set
         </button>
       </form>

@@ -140,7 +140,7 @@ const FormField: React.FC<{
         onChange={onChange}
         placeholder={placeholder || "Text"}
         required={required}
-        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm resize-none`}
+        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none h-[190px] text-sm resize-none`}
       />
     ) : (
       <input
@@ -211,7 +211,7 @@ const FormDateInput: React.FC<{
         required={required}
         className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm pr-10`}
       />
-      <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
+      <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280] pointer-events-none" />
     </div>
   </div>
 );
@@ -261,14 +261,14 @@ const DurationPointInput: React.FC<{
           <button
             type="button"
             onClick={handleIncrement}
-            className="text-black hover:text-black h-1/2 flex items-center text-[8px]"
+            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
           >
             ▲
           </button>
           <button
             type="button"
             onClick={handleDecrement}
-            className="text-black hover:text-black h-1/2 flex items-center text-[8px]"
+            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
           >
             ▼
           </button>
@@ -340,7 +340,7 @@ const StudentSelectItemCard: React.FC<{
 }> = ({ student, isSelected, onSelect }) => (
   <button
     onClick={onSelect}
-    className={`w-full flex items-center p-1.5 rounded-2xl border transition-all duration-150 gap-3
+    className={`w-full flex  flex-row  items-start sm:items-center p-2 sm:p-1.5 rounded-2xl border transition-all duration-150 gap-3
       ${
         isSelected
           ? `bg-blue-50 border-[${PRIMARY_BLUE}]`
@@ -356,9 +356,9 @@ const StudentSelectItemCard: React.FC<{
       <h4 className="text-sm font-semibold text-black truncate">
         {student.name}
       </h4>
-      <p className="text-[10px] text-black truncate">{student.courseName}</p>
-      <p className="text-[10px] text-black truncate">{student.levelGrade}</p>
-      <p className="text-[10px] text-black truncate">Group</p>
+      <p className="text-[10px] text-[#6B7280] truncate">{student.courseName}</p>
+      <p className="text-[10px] text-[#6B7280] truncate">{student.levelGrade}</p>
+      <p className="text-[10px] text-[#6B7280] truncate">Group</p>
     </div>
     <div
       className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
@@ -375,14 +375,14 @@ const StudentSelectItemCard: React.FC<{
 // --- Main Content Component ---
 const CreateAIAssessmentContent: React.FC = () => {
   const stepperSteps: StepperStep[] = [
-    { id: 1, name: "Assessment Details" },
+    { id: 1, name: "Test Details" },
     { id: 2, name: "Review" },
   ];
   const [currentStep, setCurrentStep] = useState(1);
 
   // Form State (Left Column)
   const [formData, setFormData] = useState({
-    assessmentName: "",
+    testName: "",
     description: "",
     subject: "",
     class: "",
@@ -461,7 +461,7 @@ const CreateAIAssessmentContent: React.FC = () => {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8">
+    <div className="bg-white w-full rounded-2xl p-4 sm:p-6 lg:p-8">
       <Stepper
         steps={stepperSteps}
         currentStep={currentStep}
@@ -469,209 +469,195 @@ const CreateAIAssessmentContent: React.FC = () => {
       />
 
       {currentStep === 1 && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start max-w-6xl mx-auto">
-          {/* Left Column: Assessment Details Form */}
-          <div className="space-y-6">
-            <FormField
-              label="Assessment Name"
-              name="assessmentName"
-              value={formData.assessmentName}
-              onChange={handleFormChange}
-            />
-            <FormField
-              label="Description"
-              name="description"
-              value={formData.description}
-              onChange={handleFormChange}
-              type="textarea"
-            />
-            <FormSelect
-              label="Select Subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleFormChange}
-              options={sampleSubjects}
-            />
-            <FormSelect
-              label="Select Classes"
-              name="class"
-              value={formData.class}
-              onChange={handleFormChange}
-              options={sampleClasses}
-            />
-            <FormSelect
-              label="Select Group"
-              name="group"
-              value={formData.group}
-              onChange={handleFormChange}
-              options={sampleGroups}
-            />
-            <FormDateInput
-              label="Test Date"
-              name="testDate"
-              value={formData.testDate}
-              onChange={handleFormChange}
-            />
-            <FormDateInput
-              label="Expiry Date"
-              name="expiryDate"
-              value={formData.expiryDate}
-              onChange={handleFormChange}
-            />
+       <div className=" mx-auto  justify-evenly flex  flex-col sm:flex-row gap-8 px-4">
+  {/* Left Column */}
+  <div className="sm:w-1/3 space-y-6">
+    <FormField
+      label="Assessment Name"
+      name="assessmentName"
+      value={formData.testName}
+      onChange={handleFormChange}
+    />
+    <FormField
+      label="Description"
+      name="description"
+      value={formData.description}
+      onChange={handleFormChange}
+      type="textarea"
+    />
+    <FormSelect
+      label="Select Subject"
+      name="subject"
+      value={formData.subject}
+      onChange={handleFormChange}
+      options={sampleSubjects}
+    />
+    <FormSelect
+      label="Select Classes"
+      name="class"
+      value={formData.class}
+      onChange={handleFormChange}
+      options={sampleClasses}
+    />
+    <FormSelect
+      label="Select Group"
+      name="group"
+      value={formData.group}
+      onChange={handleFormChange}
+      options={sampleGroups}
+    />
+    <FormDateInput
+      label="Test Date"
+      name="testDate"
+      value={formData.testDate}
+      onChange={handleFormChange}
+    />
+    <FormDateInput
+      label="Expiry Date"
+      name="expiryDate"
+      value={formData.expiryDate}
+      onChange={handleFormChange}
+    />
+    <div>
+      <label className="block text-sm font-medium text-black mb-2">
+        Duration & Point
+      </label>
+      <div className="flex  flex-wrap flex-col sm:flex-row gap-2">
+        <DurationPointInput
+          label="Hours"
+          name="durationHours"
+          value={formData.durationHours}
+          onChange={(val) =>
+            handleDurationPointChange("durationHours", val)
+          }
+        />
+        <DurationPointInput
+          label="Minutes"
+          name="durationMinutes"
+          value={formData.durationMinutes}
+          onChange={(val) =>
+            handleDurationPointChange("durationMinutes", val)
+          }
+        />
+        <DurationPointInput
+          label="Total Points"
+          name="totalPoints"
+          value={formData.totalPoints}
+          onChange={(val) =>
+            handleDurationPointChange("totalPoints", val)
+          }
+        />
+        <DurationPointInput
+          label="Pass Points"
+          name="passPoints"
+          value={formData.passPoints}
+          onChange={(val) =>
+            handleDurationPointChange("passPoints", val)
+          }
+        />
+      </div>
+    </div> 
+  </div>
 
-            <div>
-              <label className="block text-sm font-medium text-black mb-2">
-                Duration & Point
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <DurationPointInput
-                  label="Hours"
-                  name="durationHours"
-                  value={formData.durationHours}
-                  onChange={(val) =>
-                    handleDurationPointChange("durationHours", val)
-                  }
-                />
-                <DurationPointInput
-                  label="Minutes"
-                  name="durationMinutes"
-                  value={formData.durationMinutes}
-                  onChange={(val) =>
-                    handleDurationPointChange("durationMinutes", val)
-                  }
-                />
-                <DurationPointInput
-                  label="Total Points"
-                  name="totalPoints"
-                  value={formData.totalPoints}
-                  onChange={(val) =>
-                    handleDurationPointChange("totalPoints", val)
-                  }
-                />
-                <DurationPointInput
-                  label="Pass Points"
-                  name="passPoints"
-                  value={formData.passPoints}
-                  onChange={(val) =>
-                    handleDurationPointChange("passPoints", val)
-                  }
-                />
-              </div>
+  {/* Right Column */}
+  <div className="sm:w-1/2 space-y-6 flex flex-col">
+    {/* Unitary Selection */}
+    <div className="p-4 rounded-2xl border border-gray-300 bg-[#F9FAFB]">
+      <div className="relative mb-3">
+        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
+        <input
+          type="text"
+          placeholder="Unitary"
+          value={unitarySearch}
+          onChange={(e) => setUnitarySearch(e.target.value)}
+          className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-xl text-sm outline-none focus:ring-1 focus:ring-blue-500"
+        />
+      </div>
+      <div className="space-y-2 max-h-48 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
+        {filteredUnitaryItems.map((item) => (
+          <UnitaryItemCard
+            key={item.id}
+            item={item}
+            isSelected={selectedUnitaryId === item.id}
+            onSelect={() => setSelectedUnitaryId(item.id)}
+          />
+        ))}
+      </div>
+    </div>
+
+    {/* Student Selection */}
+    <div className="p-4 rounded-2xl border border-gray-300 bg-[#F9FAFB] flex-grow">
+      <div className="flex items-center space-x-4 mb-3">
+        <label className="flex items-center space-x-1.5 cursor-pointer">
+          <input
+            type="radio"
+            name="studentAssignType"
+            value="all"
+            checked={studentAssignType === "all"}
+            onChange={() => setStudentAssignType("all")}
+            className="form-radio h-4 w-4 text-blue-500"
+          />
+          <span className="text-md text-black">For all</span>
+        </label>
+        <label className="flex items-center space-x-1.5 cursor-pointer">
+          <input
+            type="radio"
+            name="studentAssignType"
+            value="selective"
+            checked={studentAssignType === "selective"}
+            onChange={() => setStudentAssignType("selective")}
+            className="form-radio h-4 w-4 text-blue-500"
+          />
+          <span className="text-md text-black">For selective Students</span>
+        </label>
+      </div>
+
+      {studentAssignType === "selective" && (
+        <>
+          <div className="flex gap-2 justify-between mb-2">
+            <div className="relative col-span-1 w-[500px]">
+              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
+              <input
+                type="text"
+                placeholder="Search Student"
+                value={studentSearch}
+                onChange={(e) => setStudentSearch(e.target.value)}
+                className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
             </div>
-          </div>
-
-          {/* Right Column: Unitary & Student Selection */}
-          <div className="space-y-6 flex flex-col h-full">
-            {/* Unitary Selection */}
-            <div className={`p-4 rounded-2xl border border-[${INPUT_BORDER}] bg-[#F9FAFB]`}>
-              <div className="relative mb-3">
-                <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
-                <input
-                  type="text"
-                  placeholder="Unitary"
-                  value={unitarySearch}
-                  onChange={(e) => setUnitarySearch(e.target.value)}
-                  className={`w-full pl-9 pr-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm`}
-                />
-              </div>
-              <div
-                className={`space-y-2 max-h-48 overflow-y-auto pr-1 scrollbar-thin ${SCROLLBAR_THUMB_ORANGE} ${SCROLLBAR_TRACK_LIGHT}`}
+            
+            <div className="col-span-1 relative">
+              <select
+                value={studentStandardFilter}
+                onChange={(e) => setStudentStandardFilter(e.target.value)}
+                className="w-full px-6 py-2 border border-gray-300 rounded-xl text-sm appearance-none pr-8 focus:outline-none focus:ring-1 focus:ring-blue-500"
               >
-                {filteredUnitaryItems.map((item) => (
-                  <UnitaryItemCard
-                    key={item.id}
-                    item={item}
-                    isSelected={selectedUnitaryId === item.id}
-                    onSelect={() => setSelectedUnitaryId(item.id)}
-                  />
+                {sampleStandards.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
                 ))}
-              </div>
-            </div>
-
-            {/* Student Selection */}
-            <div className={`p-4 rounded-2xl border ${INPUT_BORDER} flex-grow bg-[#F9FAFB]`}
-            >
-              <div className="flex items-center space-x-4 mb-3">
-                <label className="flex items-center space-x-1.5 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="studentAssignType"
-                    value="all"
-                    checked={studentAssignType === "all"}
-                    onChange={() => setStudentAssignType("all")}
-                    className="form-radio h-4 w-4 text-[${PRIMARY_BLUE}] focus:ring-[${PRIMARY_BLUE}]"
-                  />
-                  <span className="text-md text-black">For all</span>
-                </label>
-                <label className="flex items-center space-x-1.5 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="studentAssignType"
-                    value="selective"
-                    checked={studentAssignType === "selective"}
-                    onChange={() => setStudentAssignType("selective")}
-                    className="form-radio h-4 w-4 text-[${PRIMARY_BLUE}] focus:ring-[${PRIMARY_BLUE}]"
-                  />
-                  <span className="text-md text-black">
-                    For selective Students
-                  </span>
-                </label>
-              </div>
-
-              {studentAssignType === "selective" && (
-                <>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3 items-stretch justify-between ">
-                    <div className="relative flex-grow sm:col-span-1">
-                      <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
-                      <input
-                        type="text"
-                        placeholder="Search Student"
-                        value={studentSearch}
-                        onChange={(e) => setStudentSearch(e.target.value)}
-                        className={`w-full pl-9 pr-3 py-2 ${INPUT_BG} border-[#6B7280] border rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-[${PRIMARY_BLUE}]`}
-                      />
-                    </div>
-                    <div className="relative sm:col-span-1">
-                      <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                        <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                        <span>June 2025</span>
-                        <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                      </div>
-                    </div>
-                    <div className="relative sm:col-span-1">
-                      <select
-                        value={studentStandardFilter}
-                        onChange={(e) =>
-                          setStudentStandardFilter(e.target.value)
-                        }
-                        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-lg appearance-none text-sm pr-8 focus:outline-none focus:ring-1 focus:ring-[${PRIMARY_BLUE}]`}
-                      >
-                        {sampleStandards.map((opt) => (
-                          <option key={opt.value} value={opt.value}>
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
-                      <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
-                    </div>
-                  </div>
-                  <div
-                    className={`space-y-2 max-h-96 overflow-y-auto pr-1 scrollbar-thin ${SCROLLBAR_THUMB_ORANGE} ${SCROLLBAR_TRACK_LIGHT}`}
-                  >
-                    {filteredStudents.map((student) => (
-                      <StudentSelectItemCard
-                        key={student.id}
-                        student={student}
-                        isSelected={selectedStudentIds.includes(student.id)}
-                        onSelect={() => toggleStudentSelection(student.id)}
-                      />
-                    ))}
-                  </div>
-                </>
-              )}
+              </select>
+              <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
             </div>
           </div>
-        </div>
+
+          <div className="space-y-2 h-[26rem] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
+            {filteredStudents.map((student) => (
+              <StudentSelectItemCard
+                key={student.id}
+                student={student}
+                isSelected={selectedStudentIds.includes(student.id)}
+                onSelect={() => toggleStudentSelection(student.id)}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </div>
+</div>
+
       )}
 
       {currentStep === 2 && (

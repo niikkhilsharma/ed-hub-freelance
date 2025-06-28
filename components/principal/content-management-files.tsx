@@ -8,7 +8,6 @@ import {
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { LuInfo } from "react-icons/lu";
-import MaxWidthWrapper from "../max-width-wrapper";
 import GoBack from "./goback";
 
 // --- Style Constants ---
@@ -82,7 +81,7 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
 
 const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
   <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
+    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 grid grid-cols-[auto_1fr] items-center gap-4 relative`}
   >
     <div className="absolute right-5 top-5 text-gray-400">
       <LuInfo />
@@ -102,11 +101,15 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
         </h3>
         <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
       </div>
-      <div className="w-ful flex gap-2 ">
-        <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
-        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <MdOutlineFileDownload /> Download</button>
+      <div className="w-full hidden sm:grid grid-cols-1 md:grid-cols-2 gap-2 ">
+        <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
+        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
       </div>
     </div>
+     <div className="w-full sm:hidden col-span-2 grid grid-cols-1 md:grid-cols-2 gap-2 ">
+        <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
+        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
+      </div>
   </div>
 );
 
@@ -215,14 +218,12 @@ export default function MaterialPage() {
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
-      <MaxWidthWrapper>
-        <div className="bg-gray-100">
-          <GoBack GoBackHeading="Folder Name" />
-          <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-            <SubjectFolderViewContent />
-          </main>
-        </div>
-      </MaxWidthWrapper>
+      <div className="bg-gray-100">
+        <GoBack GoBackHeading="Folder Name" />
+        <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+          <SubjectFolderViewContent />
+        </main>
+      </div>
     </div>
   );
 }
