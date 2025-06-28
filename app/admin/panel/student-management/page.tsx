@@ -38,12 +38,12 @@ const [activeTab, setActiveTab] = useState<Tab>('Teachers');
 					))}
 				</div>
 				{/* Classes Names */}
-				<div className="flex justify-between sm:justify-center gap-2 sm:gap-6 items-center w-full flex-wrap sm:flex-nowrap rounded-2xl border border-[#E5E7EB] p-2 overflow-scroll">
+				<div className="flex justify-between sm:justify-center gap-2 sm:gap-6 items-center w-full flex-wrap sm:flex-nowrap rounded-2xl border border-[#E5E7EB] p-2 overflow-x-auto">
 					{classesNames.map((name, indx) => (
 						<div
 							key={indx}
 							onClick={() => setActiveClass(name)}
-							className={cn(activeClass === name ? 'bg-[#FF3366] text-white' : 'text-[#6B7280]', 'p-2 rounded-2xl text-nowrap')}>
+							className={cn(activeClass === name ? 'bg-[#FF3366] text-white' : 'text-[#6B7280]', 'p-2 rounded-2xl text-nowrap cursor-pointer')}>
 							{name}
 						</div>
 					))}

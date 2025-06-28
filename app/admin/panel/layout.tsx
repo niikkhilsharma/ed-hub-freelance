@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<div className={(poppinsFont.className, poppinsFont.variable, 'bg-gray-200')}>
-			<Navbar user={{ name: 'Nikhil', role: 'Student', avatarSrc: '/page3/entry/pri.png' }} isAskme={false} />
+			<Navbar user={{ name: 'Nikhil', role: 'Student', avatarSrc: '/images/person.jpg' }} isAskme={false} />
 			{children}
 			<Footer />
 		</div>

@@ -70,7 +70,7 @@ function SearchFilterBar() {
 		<div className="flex flex-wrap md:flex-nowrap gap-4 items-center">
 			<div className="relative w-full">
 				<Input className="border-black rounded-full pl-9" placeholder="Search" />
-				<Search className="absolute top-0 translate-y-1/4 left-2" />
+				<Search className="absolute -top-1/12 translate-y-1/2 left-2 h-5" />
 			</div>
 			{[1, 2, 3].map(n => (
 				<DropdownMenu key={n}>

@@ -210,7 +210,7 @@ export default function EditDmitTestQuestions() {
                   Image/file name.extension
                 </Button>
               </div>
-              <Separator />
+              <Separator className="bg-black" />
             </div>
 
             {/* Question 2  */}
@@ -399,7 +399,7 @@ export default function EditDmitTestQuestions() {
                   Image/file name.extension
                 </Button>
               </div>
-              <Separator />
+              <Separator className="bg-black"/>
             </div>
           </div>
 

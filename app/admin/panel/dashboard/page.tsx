@@ -382,7 +382,7 @@ const SchoolCard = () => {
 
 function SearchFilterBar() {
   return (
-    <div className="flex pl-4 flex-wrap md:flex-nowrap gap-4 items-center">
+    <div className="flex pl-4 flex-wrap mb-2 md:mb-0 md:flex-nowrap gap-4 items-center">
       <div className="relative w-full">
         <Input
           className="border-black rounded-full pl-9"
