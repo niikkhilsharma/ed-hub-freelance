@@ -102,10 +102,10 @@ const BranchManagement = () => {
 
               </div>
               <div className="flex gap-2 absolute items-center right-5 bottom-5">
-                <button className="bg-gray-100  text-pink-600 p-3 text-sm rounded-full ">
+                <button className="bg-gray-100  text-black-900 p-3 text-lg rounded-full ">
                   <IoSettingsOutline />
                 </button>
-                <button className=" bg-blue-500 text-zinc-900 py-2 px-4 text-sm rounded-full">
+                <button className=" bg-blue-500 py-2 px-4 text-sm rounded-full text-white">
                   Active
                 </button>
               </div>
