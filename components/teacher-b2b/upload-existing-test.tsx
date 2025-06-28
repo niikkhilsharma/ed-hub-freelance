@@ -148,7 +148,8 @@ export default function SelectExistingTestPage() {
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			<Header user={headerUser} />
-			<div className="flex items-center gap-3 bg-white px-4 sm:px-16 py-3.5 shadow-sm sticky top-0 z-40">
+			<div className='bg-white'>
+				<div className="flex items-center gap-3 max-w-[96rem] mx-auto    py-3.5 sticky top-0 z-40">
 				{' '}
 				{/* Made title bar sticky */}
 				<button
@@ -158,6 +159,7 @@ export default function SelectExistingTestPage() {
 					<FiArrowLeft className="w-6 h-6" />
 				</button>
 				<h1 className="text-lg sm:text-2xl font-semibold text-[#FF3366]">Select Existing Test</h1>
+			</div>
 			</div>
 			<MaxWidthWrapper>
 				<div className="bg-[#eeeeee]">

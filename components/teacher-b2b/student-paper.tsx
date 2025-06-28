@@ -121,7 +121,7 @@ const OptionDisplay: React.FC<{ option: Option }> = ({ option }) => {
 	return (
 		<div className={`w-full flex items-center p-3 bg-white rounded-full`}>
 			{iconComponent}
-			<span className={`ml-2.5 text-sm font-medium ${optionTextColor}`}>{option.text}</span>
+			<span className={`ml-2.5 text-sm  sm:text-md font-medium ${optionTextColor}`}>{option.text}</span>
 		</div>
 	)
 }
@@ -132,7 +132,7 @@ const QuestionItem: React.FC<{ question: Question }> = ({ question }) => {
 		<div className="p-5 sm:p-6 bg-[#F9FAFB] rounded-2xl ">
 			{' '}
 			{/* Image shows more prominent shadow here */}
-			<h3 className="text-md font-semibold text-black mb-4">
+			<h3 className="text-md  sm:text-lg font-semibold text-black mb-4">
 				{question.questionNumber}) {question.text || 'Question'} {/* Fallback if text is empty */}
 			</h3>
 			<div className="space-y-3">
@@ -195,8 +195,8 @@ const SummaryPanel: React.FC<{ summary: AssessmentSummaryData }> = ({ summary })
 				{' '}
 				{/* Reduced top padding for tighter spacing */}
 				{summary.ratings.map(rating => (
-					<div key={rating.id} className="flex justify-between items-center">
-						<p className="text-xs text-gray-700 font-medium">{rating.name}</p>
+					<div key={rating.id} className="flex  space-y-4 justify-between items-center">
+						<p className="text-xs text-black font-medium">{rating.name}</p>
 						<StarRatingDisplay currentRating={rating.score} maxRating={rating.maxScore} />
 					</div>
 				))}
