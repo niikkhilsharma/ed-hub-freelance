@@ -20,7 +20,7 @@ type leavecards = {
 
 const teachers = Array.from({ length: 4}, (_, i) => ({
   id: i + 5,
-  name: 'Teacher',
+  name: 'Name',
   course: 'Subject',
   level: 'Class Assigned',
   group: 'Batch Assigned',
@@ -103,7 +103,7 @@ const Leave = () => {
              {item.reason}</p>
   </div>
 <div className="flex justify-center gap-4 mt-4">
-    <button className="px-6 py-2 bg-red-100 text-red-800 rounded-3xl">
+    <button className="px-6 py-2 bg-red-100 text-red-500 rounded-3xl">
      Reject
     </button>
     <button className="px-6 py-2 bg-[#3366FF] text-white rounded-3xl">

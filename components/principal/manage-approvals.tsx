@@ -22,16 +22,16 @@ const students = Array.from({ length: 16 }, (_, i) => ({
     course: 'Course Name',
     level: 'Level / Grade',
     group: 'Group',
-    image: '/principal/manage.jpg', // Use same image or add logic to vary if needed
+    image: '/principal/student-avatar-1.png', // Use same image or add logic to vary if needed
 }));
 
 const teachers = Array.from({ length: 16 }, (_, i) => ({
     id: i + 17,
-    name: 'Teacher Name',
+    name: 'Name',
     role: 'teacher' as const,
     course: 'Subject',
-    level: 'Experience Level',
-    group: 'Department',
+    level: 'Class Assigned',
+    group: 'Batch Assigned',
     image: '/principal/manage.jpg', // Use same image or add logic to vary if needed
 }));
 
@@ -111,7 +111,8 @@ const ManageApprovalsPage = () => {
                             </div>
                             <div className="flex-1">
                                 <div className="font-semibold">{item.name}</div>
-                                <div className="text-sm text-gray-500">{item.course}</div>
+                                <div className={`text-sm text-gray-500 ${item.role === "teacher" ? "text-[#ff3366]" : ""}`}>{item.course}</div>
+                         
                                 <div className="text-sm text-gray-500">{item.level}</div>
                                 <div className="text-sm text-gray-500">{item.group}</div>
                             </div>
