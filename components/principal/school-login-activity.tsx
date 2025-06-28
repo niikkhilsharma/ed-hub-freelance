@@ -47,9 +47,12 @@ const SchoolLogin = () => {
     <div className="p-4 ">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-3">
-        <div className="grid grid-cols-1 gap-4 md:gap-12 justify-between pb-4 md:grid-cols-[2fr_1fr]">
-          <div className="h-62 relative">
-            <Image src="/principal/school-login-banner.png" alt='school-login-principal-image' fill objectFit='cover' className='rounded-2xl' />
+        <div className="grid grid-cols-1 relative gap-4 md:gap-12 justify-between py-4 md:grid-cols-[2fr_1fr] bg-[url('/principal/login-pattern.png')] bg-repeat bg-[length:650px_650px]">
+          <div className="px-2">
+            <h2 className="font-bold mb-2">School Name</h2>
+            <div className="h-62 relative z-10">
+              <Image src="/principal/school-login-banner.png" alt='school-login-principal-image' fill objectFit='cover' className='rounded-2xl' />
+            </div>
           </div>
           <div className="flex flex-col">
             <p className="text-sm"><strong>Email:</strong> example@gm.com
@@ -81,7 +84,7 @@ const SchoolLogin = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
+            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
               <div className={`${item.role === "teacher" ? "w-20 h-20" : "w-10 h-10"} rounded-xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

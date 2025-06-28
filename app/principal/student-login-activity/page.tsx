@@ -1,8 +1,8 @@
 import React from 'react'
-import LoginActivity from '@/components/principal/login-activity'
+import LoginActivityStudent from '@/components/principal/login-student'
 const page = () => {
   return (
-    <LoginActivity />
+    <LoginActivityStudent />
   )
 }
 

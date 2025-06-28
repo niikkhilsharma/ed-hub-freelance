@@ -99,14 +99,14 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
         <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
           {folder.name}
         </h3>
-        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
       </div>
-      <div className="w-full hidden sm:grid grid-cols-1 md:grid-cols-2 gap-2 ">
+      <div className="w-full hidden lg:grid grid-cols-1 xl:grid-cols-2 gap-2 ">
         <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
         <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
       </div>
     </div>
-     <div className="w-full sm:hidden col-span-2 grid grid-cols-1 md:grid-cols-2 gap-2 ">
+     <div className="w-full lg:hidden col-span-2 grid grid-cols-1 md:grid-cols-2 gap-2 ">
         <button className="bg-gray-100 rounded-full p-1 w-full flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <IoSettingsOutline /> Manage Access</button>
         <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-lg"> <MdOutlineFileDownload /> Download</button>
       </div>

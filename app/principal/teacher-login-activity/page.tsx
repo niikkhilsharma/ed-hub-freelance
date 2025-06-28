@@ -1,8 +1,8 @@
 import React from 'react'
-import LoginActivity from '@/components/principal/login-activity'
+import LoginActivityTeacher from '@/components/principal/login-activity'
 const page = () => {
   return (
-    <LoginActivity />
+    <LoginActivityTeacher />
   )
 }
 

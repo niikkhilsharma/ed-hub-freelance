@@ -40,7 +40,7 @@ const teachers = Array.from({ length: 16 }, (_, i) => ({
 
 export const sampleData: CardData[] = [...students, ...teachers];
 
-const filters = ['Filter 1', 'Filter 2', 'Filter 3'];
+const filters = ['Filter 1', 'Filter 3'];
 
 const Management = () => {
   const [activeTab, setActiveTab] = useState<'student' | 'teacher'>('teacher');
@@ -59,7 +59,7 @@ const Management = () => {
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
 
-        <div className="flex items-center mb-4 gap-2">
+        <div className="flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
           <div className="relative w-full ">
             <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
@@ -73,6 +73,7 @@ const Management = () => {
           </div>
           <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
           <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
+          <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Lecture Manager</Button>
           {/* Filters with dropdown icons */}
           {filters.map((filter, index) => (
             <div key={filter} className="relative overflow-x-auto custom-scrollbar">
@@ -109,7 +110,7 @@ const Management = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
+            <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
               <div className={`${item.role === "teacher" ? "w-20 h-20" : "w-10 h-10"} rounded-xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>

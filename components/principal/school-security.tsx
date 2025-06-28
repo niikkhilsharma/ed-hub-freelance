@@ -45,11 +45,11 @@ const SchoolSecurity = () => {
     setSelectedFilters(updated);
   };
   return (
-    <div className="p-4 ">
+    <div className="px-2 py-4 md:px-8 ">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
 
-        <div className="flex items-center mb-4 gap-2">
+        <div className="flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
           <div className="relative w-full ">
             <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
@@ -102,8 +102,8 @@ const SchoolSecurity = () => {
 
           {/* Cards */}
           {filteredData.map((item) => (
-            <div key={item.id} className="flex border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
-              <div className={`w-56 h-42 rounded-2xl relative overflow-hidden`}>
+            <div key={item.id} className="flex flex-col sm:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
+              <div className={`w-full sm:w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">

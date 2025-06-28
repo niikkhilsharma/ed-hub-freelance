@@ -85,8 +85,8 @@ const BranchManagement = () => {
 
           {/* Cards */}
           {branch.map((item) => (
-            <div key={item.id} className="relative flex flex-wrap border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
-              <div className={`w-full sm:w-56 h-42 rounded-2xl relative overflow-hidden`}>
+            <div key={item.id} className="relative flex flex-col lg:flex-row border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-3">
+              <div className={`w-full lg:w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">
