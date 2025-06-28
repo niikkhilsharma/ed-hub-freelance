@@ -3,7 +3,7 @@
 import { useState } from "react";
 import StudentWrapper from "@/components/student-wrapper";
 import { Button } from "@/components/ui/button";
-import { Minus, Plus,  ArrowLeft } from "lucide-react";
+import { Minus, Plus, ArrowLeft } from "lucide-react";
 import FooterNew from "@/components/footer3";
 interface CartItem {
   id: number;
@@ -32,7 +32,7 @@ export default function CourseDetail() {
 
   const [couponCode, setCouponCode] = useState("");
   const [appliedCoupon, setAppliedCoupon] = useState<string | null>(null);
-  const [discount, setDiscount] = useState(10);
+  const [discount, setDiscount] = useState(0);
 
   // Calculate totals
   const subtotal = cartItems.reduce(
@@ -86,7 +86,7 @@ export default function CourseDetail() {
     })}`;
   };
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       {/* Background */}
       <div
         className="fixed inset-0 bg-center bg-repeat z-0"
@@ -105,14 +105,12 @@ export default function CourseDetail() {
           <div className="w-full px-4 sm:px-6 lg:px-8">
             <div className="flex items-center py-4">
               <ArrowLeft className="w-6 h-6 text-gray-600 mr-3 cursor-pointer hover:text-gray-800" />
-              <h1 className="text-2xl font-semibold text-[#FF3366]">
-                Course Name
-              </h1>
+              <h1 className="text-2xl font-medium text-[#FF3366]">Cart</h1>
             </div>
           </div>
         </div>
 
-        <div className="container px-12 pt-8">
+        <div className="max-w-7xl mx-auto py-10">
           <div className="flex flex-col mx-auto bg-white rounded-3xl gap-4">
             {/* Cart Items Section */}
             <div className="lg:col-span-2">
@@ -121,19 +119,19 @@ export default function CourseDetail() {
                   <table className="w-full">
                     <thead className="bg-[#3366FF1A]">
                       <tr className="border-b border-gray-200">
-                        <th className="text-left py-4 pl-4 font-semibold text-gray-800">
+                        <th className="text-left py-4 pl-6 font font-normal">
                           S.N.
                         </th>
-                        <th className="text-left py-4 px-2 font-semibold text-gray-800">
+                        <th className="text-left py-4 px-2 font font-normal">
                           Product
                         </th>
-                        <th className="text-left py-4 px-2 font-semibold text-gray-800">
+                        <th className="text-left py-4 pr-2 pl-6 font font-normal">
                           Price
                         </th>
-                        <th className="text-left py-4 px-2 font-semibold text-gray-800">
+                        <th className="text-left py-4 pr-2 pl-6 font font-normal">
                           Quantity
                         </th>
-                        <th className="text-left py-4 px-2 font-semibold text-gray-800">
+                        <th className="text-left py-4 px-2 font font-normal">
                           Subtotal
                         </th>
                       </tr>
@@ -141,7 +139,7 @@ export default function CourseDetail() {
                     <tbody>
                       {cartItems.map((item, index) => (
                         <tr key={item.id} className="border-t border-gray-100">
-                          <td className="py-4 pl-4 text-gray-700 font-medium">
+                          <td className="py-4 pl-6 text-gray-700 font-medium">
                             {index + 1}
                           </td>
                           <td className="py-4 px-2">
@@ -149,25 +147,29 @@ export default function CourseDetail() {
                               <img
                                 src={item.image}
                                 alt={item.name}
-                                className="w-16 h-16 rounded-lg object-cover border border-gray-200"
+                                className="w-16 h-16 object-cover border border-gray-200"
                               />
                               <div>
-                                <h3 className="font-medium text-blue-600 hover:text-blue-700 cursor-pointer">
+                                <span className="font-main text-[#3366FF] hover:text-blue-700 cursor-pointer">
                                   {item.name}
-                                </h3>
+                                </span>
                               </div>
                             </div>
                           </td>
-                          <td className="py-4 px-2 text-gray-700 font-medium">
+                          <td className="py-4 px-2 font-medium">
                             {formatPrice(item.price)}
                           </td>
                           <td className="py-4 px-2">
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center border border-[#D4D4D4] rounded-full w-fit">
                               <button
                                 onClick={() =>
                                   updateQuantity(item.id, item.quantity - 1)
                                 }
-                                className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+                                className={`w-8 h-8 flex items-center justify-center transition-colors ${
+                                  item.quantity <= 1
+                                    ? "cursor-not-allowed"
+                                    : "cursor-pointer"
+                                }`}
                                 disabled={item.quantity <= 1}
                               >
                                 <Minus
@@ -175,24 +177,24 @@ export default function CourseDetail() {
                                   className={
                                     item.quantity <= 1
                                       ? "text-gray-400"
-                                      : "text-gray-600"
+                                      : "text-black"
                                   }
                                 />
                               </button>
-                              <div className="w-12 h-8 bg-pink-500 text-white rounded-full flex items-center justify-center font-medium">
+                              <div className="w-12 h-8 bg-[#FF3366] text-white rounded-full flex items-center justify-center font-medium">
                                 {item.quantity}
                               </div>
                               <button
                                 onClick={() =>
                                   updateQuantity(item.id, item.quantity + 1)
                                 }
-                                className="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition-colors"
+                                className="w-8 h-8 flex items-center justify-center transition-colors cursor-pointer"
                               >
-                                <Plus size={16} className="text-gray-600" />
+                                <Plus size={16} />
                               </button>
                             </div>
                           </td>
-                          <td className="py-6 px-2 text-gray-700 font-semibold">
+                          <td className="py-6 px-2 font-medium">
                             {formatPrice(item.price * item.quantity)}
                           </td>
                         </tr>
@@ -201,7 +203,7 @@ export default function CourseDetail() {
                   </table>
                 </div>
                 <div className="flex justify-start h-fit">
-                  <Button className="bg-[#3366ff] text-lg text-white px-8 py-6 hover:bg-[#0c45f0] hover:text-white rounded-full ml-6">
+                  <Button className="bg-[#3366ff] text text-white px-8 py-3 hover:bg-[#0c45f0] hover:text-white rounded-full ml-6 h-fit">
                     Explore More
                   </Button>
                 </div>
@@ -212,7 +214,7 @@ export default function CourseDetail() {
             <div className="flex flex-col lg:flex-row gap-8 p-6">
               {/* Left Section - Explore More & Coupon */}
               <div className="flex-1">
-                <div className="rounded-2xl bg-[#E5E7EB] p-4">
+                <div className="rounded-2xl bg-[#F9FAFB] p-4 border border-[#E5E7EB] border-dashed">
                   <h3 className="text-xl font-bold text-gray-800 mb-4">
                     Coupon
                   </h3>
@@ -233,7 +235,7 @@ export default function CourseDetail() {
                     /> */}
                     <button
                       onClick={applyCoupon}
-                      className="bg-yellow-400 hover:bg-yellow-500 text-white px-6 py-3 rounded-full font-medium transition-colors"
+                      className="bg-[#FFCC00] hover:bg-yellow-500 cursor-pointer text-white px-6 py-3 rounded-full font-medium transition-colors"
                     >
                       Apply coupon
                     </button>
@@ -242,7 +244,8 @@ export default function CourseDetail() {
                   {appliedCoupon && (
                     <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg flex justify-between items-center">
                       <span className="text-green-700 font-medium">
-                        Coupon &quot;{appliedCoupon}&quot; applied! {discount}% off
+                        Coupon &quot;{appliedCoupon}&quot; applied! {discount}%
+                        off
                       </span>
                       <button
                         onClick={removeCoupon}
@@ -256,13 +259,13 @@ export default function CourseDetail() {
               </div>
 
               {/* Right Section - Cart Total */}
-              <div className="w-full lg:w-90">
-                <div className="bg-white border flex flex-col shadow rounded-2xl overflow-hidden">
-                  <h3 className="text-xl bg-[#E5E7EB] py-3 px-4 font-bold text-gray-800 mb-6">
+              <div className="w-full lg:w-[400px]">
+                <div className="bg-white border border-[#E5E7EB] flex flex-col shadow rounded-2xl overflow-hidden">
+                  <h3 className="text-xl bg-[#3366FF1A] py-3 px-4 font-bold text-gray-800 mb-4">
                     Cart Total
                   </h3>
 
-                  <div className="space-y-4 p-6">
+                  <div className="px-4 space-y-4 mb-4">
                     <div className="flex justify-between items-center">
                       <span className="text-gray-600">Subtotal</span>
                       <span className="font-medium text-black">
@@ -280,26 +283,24 @@ export default function CourseDetail() {
                     )}
 
                     <div className="flex justify-between items-center">
-                      <span className="text-gray-600">Tax</span>
-                      <span className="font-medium text-gray-600">
+                      <span className="text-[#6B7280]">Tax</span>
+                      <span className="font-semibold text-[#6B7280]">
                         {formatPrice(tax)}
                       </span>
                     </div>
 
-                    <hr className="border-gray-200" />
-
                     <div className="flex justify-between items-center">
-                      <span className="text-lg font-semibold text-pink-500">
+                      <span className="font-semibold text-[#F9326F]">
                         Total
                       </span>
-                      <span className="text-lg font-bold text-pink-500">
+                      <span className="font-semibold text-[#F9326F]">
                         {formatPrice(total)}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6">
-                    <Button className="w-full self-center bg-[#3366FF] hover:bg-blue-600 text-white py-5 rounded-2xl font-semibold text-lg transition-colors">
+                    <Button className="w-full self-center bg-[#3366FF] hover:bg-blue-600 text-white py-3 px-8 rounded-3xl font-medium text transition-colors cursor-pointer h-fit">
                       Proceed to checkout
                     </Button>
                   </div>
