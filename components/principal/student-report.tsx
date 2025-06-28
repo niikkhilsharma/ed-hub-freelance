@@ -396,7 +396,7 @@ const PrincipalStudentReport: React.FC = () => {
                   Overall Progress
                 </h3>
               </div>
-              <div className="flex items-start justify-between px-2">
+              <div className="flex sm:flex-row flex-col items-start justify-between px-2">
                 <div className="flex flex-col flex-wrap gap-x-4 gap-y-1 mb-4 text-xs">
                   <div className="flex items-center">
                     <div
