@@ -13,7 +13,7 @@ import {
 // --- Sample Data (Strictly from your original) ---
 const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({ // Kept 10 distinct teacher entries
 	id: `teacher${i + 1}`,
-	name: 'Teacher Name', // All are "Teacher Name"
+	name: 'Student Name', // All are "Teacher Name"
 	subject: 'Subject',    // All are "Subject"
 	avatarSrc: `/teacher-avatar-chat-${(i % 3) + 1}.jpg`,
 	lastMessageTime: '7:00 pm',

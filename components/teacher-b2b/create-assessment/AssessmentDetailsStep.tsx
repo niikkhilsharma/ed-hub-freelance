@@ -91,9 +91,9 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start">
+    <div className="flex flex-col sm:flex-row max-w-screen-xl  gap-4 mx-auto justify-evenly items-center">
       {/* Left Column: Form */}
-      <div className="space-y-5">
+      <div className=" w-[40%]  space-y-5">
         <FormField
           label="Test Name"
           name="testName"
@@ -134,7 +134,7 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
           onChange={handleFormInputChange}
         />
         <div>
-          <label className="block text-sm font-medium text-black mb-2">
+          <label className="block text-md font-medium text-black mb-2">
             Duration & Point
           </label>{" "}
           {/* text-black as per FormField label */}
@@ -174,7 +174,7 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
       </div>
 
       {/* Right Column: Selections */}
-      <div className="space-y-6">
+      <div className=" w-[50%] space-y-6">
         {/* Unitary Selection */}
         <div className={`p-4 rounded-2xl border ${INPUT_BORDER} bg-[#F9FAFB] `}>
           <div className="relative mb-3">

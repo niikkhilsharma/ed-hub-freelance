@@ -462,7 +462,6 @@ const StudentReport: React.FC = () => {
         <Header user={headerUser} />
 
         {/* Page Title Bar */}
-        {/* Page Title Bar */}
         <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
           <button
             onClick={handleBackClick}

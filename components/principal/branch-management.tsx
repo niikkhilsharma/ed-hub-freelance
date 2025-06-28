@@ -44,26 +44,26 @@ const BranchManagement = () => {
 	const [searchTerm, setSearchTerm] = useState('')
 
   return (
-    <div className="p-4 ">
+    <div className="py-4 px-4 md:px-16">
       {/* Tabs */}
       <div className="bg-white rounded-2xl p-4">
 
-        <div className="flex items-center mb-4 gap-2">
+        <div className="flex items-center mb-4 gap-2 overflow-x-auto custom-scrollbar-thin">
           {/* Search Input */}
-          <div className="relative w-full ">
-            <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+          <div className="relative w-full min-w-[7rem]">
+            <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-zinc-700 text-sm" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Search"
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+              className="w-full pl-10 pr-4 py-2 border border-zinc-700 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
             />
           </div>
           {filters.map((filter, index) => (
             <div key={filter} className="relative">
               <select
-                className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="appearance-none border border-gray-300 text-sm px-4 py-1.5 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 value={selectedFilters[index]}
                 onChange={(e) => handleFilterChange(index, e.target.value)}
               >
@@ -74,8 +74,9 @@ const BranchManagement = () => {
               <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
             </div>
           ))}
-          <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Manage Class</Button>
-          <Button className="bg-gray-100 px-8 py-2 cursow-pointer text-m border rounded-2xl whitespace-nowrap">Add Class</Button>
+          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Staff</Button>
+          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Add Branch</Button>
+          <Button className="bg-gray-50 px-4 sm:px-0 sm:w-56 py-2 cursow-pointer text-zinc-800 text-md font-medium border rounded-2xl whitespace-nowrap">Manage Approval</Button>
           {/* Filters with dropdown icons */}
         </div>
         <ActiveTab />
@@ -84,19 +85,19 @@ const BranchManagement = () => {
 
           {/* Cards */}
           {branch.map((item) => (
-            <div key={item.id} className="relative flex border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 shadow-sm">
-              <div className={`w-56 h-42 rounded-2xl relative overflow-hidden`}>
+            <div key={item.id} className="relative flex flex-wrap border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2">
+              <div className={`w-full sm:w-56 h-42 rounded-2xl relative overflow-hidden`}>
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">
-                <div className="font-semibold text-m">{item.name}</div>
+                <p className="font-semibold text-m">{item.name}</p>
 
 
-                <div className="text-sm text-gray-500">{item.address}</div>
-                <div className="text-xs text-gray-500">{item.detail1}</div>
-                <div className="text-xs text-gray-500">{item.detail2}</div>
-                <div className="text-xs text-gray-500">{item.detail3}</div>
-                <div className="text-xs text-gray-500">{item.detail4}</div>
+                <p className="text-sm text-gray-500">{item.address}</p>
+                <p className="text-xs text-gray-500">{item.detail1}</p>
+                <p className="text-xs text-gray-500">{item.detail2}</p>
+                <p className="text-xs text-gray-500">{item.detail3}</p>
+                <p className="text-xs text-gray-500">{item.detail4}</p>
 
 
               </div>

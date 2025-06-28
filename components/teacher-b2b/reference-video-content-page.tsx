@@ -43,7 +43,7 @@ interface VideoCardData {
 // --- Sample Data ---
 const TABS: TabItem[] = [
   { id: "reference", label: "Reference Video" },
-  { id: "pedagogy", label: "Video Title" },
+  { id: "pedagogy", label: "Pedagogy Video" },
 ];
 
 
@@ -163,7 +163,7 @@ const TabButton: React.FC<{
 }> = ({ label, isActive, onClick }) => (
   <button
     onClick={onClick}
-    className={`px-1 py-3 text-sm font-medium whitespace-nowrap transition-colors duration-150 focus:outline-none
+    className={`px-1 py-3 text-sm sm:text-lg font-medium whitespace-nowrap transition-colors duration-150 focus:outline-none
       ${
         isActive
           ? `text-[${ACCENT_PINK}] border-b-2 border-[${ACCENT_PINK}]`
@@ -198,10 +198,10 @@ const FilterDropdown: React.FC<{
 const VideoCard: React.FC<{ video: VideoCardData }> = ({ video }) => {
   return (
     <div
-      className={`bg-[#F9FAFB] rounded-xl overflow-hidden border ${CARD_BORDER} flex flex-col`}
+      className={`bg-[#F9FAFB] rounded-2xl overflow-hidden border ${CARD_BORDER} flex flex-col`}
     >
       {/* Thumbnail Section */}
-      <div className="relative w-full aspect-[16/7] sm:aspect-[16/6]">
+      <div className="relative w-full aspect-[16/7] pt-6 sm:aspect-[16/6]">
         {" "}
         {/* Adjusted aspect ratio */}
         <Image
@@ -210,7 +210,7 @@ const VideoCard: React.FC<{ video: VideoCardData }> = ({ video }) => {
           layout="fill"
           objectFit="cover"
           priority
-          className="transition-transform duration-300 group-hover:scale-105" // Added group-hover for potential future hover effects
+          className="transition-transform duration-300   group-hover:scale-105" // Added group-hover for potential future hover effects
         />
       </div>
 
@@ -221,7 +221,7 @@ const VideoCard: React.FC<{ video: VideoCardData }> = ({ video }) => {
         </h4>
 
         {video.description && (
-          <p className="text-xs text-[#6B7280] leading-relaxed mb-3 line-clamp-4 flex-grow">
+          <p className="text-sm text-[#6B7280] leading-relaxed mb-3 line-clamp-4 flex-grow">
             {video.description}
           </p>
         )}
@@ -304,7 +304,7 @@ const VideoContentPage: React.FC = () => {
   }, [allVideos, activeTab, batchFilter, subjectFilter]); // Include all filters in dependency array
 
   return (
-    <div className=" bg-white rounded-2xl h-fit flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-6 relative">
+    <div className=" bg-white rounded-2xl h-fit flex-grow container mx-auto p-4 sm:p-6 space-y-6 relative">
       {/* Top Bar: Tabs & Filters */}
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
         <div className="flex space-x-4 sm:space-x-6 overflow-x-auto custom-scrollbar-thin self-start sm:self-center">
@@ -317,8 +317,8 @@ const VideoContentPage: React.FC = () => {
             />
           ))}
         </div>
-        <div className="flex items-center gap-2 sm:gap-3 self-end sm:self-center">
-          <div className="flex items-center gap-2 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+        <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3  sm:self-center">
+          <div className="flex items-center gap-1 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] sm:px-3 px-2 py-2 rounded-xl">
             <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
             <span>June 2025</span>
             <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />

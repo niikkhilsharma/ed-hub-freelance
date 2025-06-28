@@ -61,7 +61,7 @@ const sampleQuestionsData: Question[] = [
   {
     id: 'q3',
     questionNumber: 3,
-    text: 'Select the capital of France.',
+    text: 'Question',
     options: [
       { id: 'q3o1', text: 'Option 1' },
       { id: 'q3o2', text: 'Option 2' },
@@ -104,24 +104,24 @@ const OptionDisplay: React.FC<{ option: Option }> = ({ option }) => {
 
   // Determine icon and text color based on option state
   if (option.isSelected && option.isCorrect) {
-    iconComponent = <IoCheckmarkCircle className={`w-[26px] h-[26px] text-[#8DD9B3] flex-shrink-0`} />;
+    iconComponent = <IoCheckmarkCircle className={`w-[40px] h-[40px] text-[#8DD9B3] flex-shrink-0`} />;
     optionTextColor = COLOR_CORRECT_TEXT;
   } else if (option.isSelected && !option.isCorrect) {
-    iconComponent = <IoCloseCircle className={`w-[26px] h-[26px] ${COLOR_INCORRECT_ICON} flex-shrink-0`} />;
+    iconComponent = <IoCloseCircle className={`w-[40px] h-[40px] ${COLOR_INCORRECT_ICON} flex-shrink-0`} />;
     optionTextColor = COLOR_INCORRECT_TEXT;
   } else if (!option.isSelected && option.isCorrect) {
     // Show the correct answer even if not selected by the user
-    iconComponent = <IoCheckmarkCircle className={`w-[26px] h-[26px] text-[#8DD9B3] flex-shrink-0`} />;
+    iconComponent = <IoCheckmarkCircle className={`w-[40px] h-[40px] text-[#8DD9B3] flex-shrink-0`} />;
     optionTextColor = COLOR_CORRECT_TEXT;
   } else {
     // Neutral, unselected, incorrect option: Provide a placeholder for alignment if icons are present elsewhere
-    iconComponent = <div className="w-[26px] h-[26px] flex-shrink-0"></div>;
+    iconComponent = <div className="w-[40px] h-[40px] flex-shrink-0"></div>;
   }
 
   return (
-    <div className={`w-full flex items-center p-3 bg-white rounded-full`}>
+    <div className={`w-full flex items-center p-6 bg-white rounded-full`}>
       {iconComponent}
-      <span className={`ml-2.5 text-sm font-medium ${optionTextColor}`}>{option.text}</span>
+      <span className={`ml-2.5 text-md font-medium ${optionTextColor}`}>{option.text}</span>
     </div>
   );
 };
@@ -129,7 +129,7 @@ const OptionDisplay: React.FC<{ option: Option }> = ({ option }) => {
 const QuestionItem: React.FC<{ question: Question }> = ({ question }) => {
   return (
     // Styling similar to your old QuestionReviewBlock
-    <div className="p-5 sm:p-6 bg-[#F9FAFB] rounded-2xl "> {/* Image shows more prominent shadow here */}
+    <div className=" text-lg p-5 sm:p-6 bg-[#F9FAFB] h-[524px] w-full rounded-2xl "> {/* Image shows more prominent shadow here */}
       <h3 className="text-md font-semibold text-black mb-4">
         {question.questionNumber}) {question.text || "Question"} {/* Fallback if text is empty */}
       </h3>
@@ -203,10 +203,10 @@ const SummaryPanel: React.FC<{ summary: AssessmentSummaryData }> = ({ summary })
     </button>
 
     {/* Ratings Section */}
-    <div className="space-y-4  rounded-2xl px-3 py-6 bg-white">
+    <div className="space-y-6  rounded-2xl px-3 py-6 bg-white">
       {summary.ratings.map((rating) => (
         <div key={rating.id} className="flex justify-between items-center">
-          <p className="text-xs text-gray-700 font-medium">{rating.name}</p>
+          <p className="text-md text-[#6b7280] font-medium">{rating.name}</p>
           <StarRatingDisplay currentRating={rating.score} maxRating={rating.maxScore} />
         </div>
       ))}
@@ -215,7 +215,7 @@ const SummaryPanel: React.FC<{ summary: AssessmentSummaryData }> = ({ summary })
     {/* Feedback Form */}
     <form onSubmit={handleFeedbackSubmit} className="space-y-3 pt-1">
       <div>
-        <label htmlFor="feedback" className="block text-sm font-semibold text-black mb-1.5">
+        <label htmlFor="feedback" className="block text-md font-semibold text-black mb-1.5">
           Write a Feedback
         </label>
         <textarea
@@ -224,12 +224,12 @@ const SummaryPanel: React.FC<{ summary: AssessmentSummaryData }> = ({ summary })
           value={feedbackText}
           onChange={(e) => setFeedbackText(e.target.value)}
           placeholder="Text"
-          className={`w-full text-[#6B7280] p-3 bg-[#F9FAFB] border ${BORDER_GRAY} rounded-xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
+          className={`w-full h-40 text-[#6B7280] p-3 bg-[#F9FAFB] border ${BORDER_GRAY} rounded-xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
         />
       </div>
       <button
         type="submit"
-        className={`w-32 py-2.5 sm:py-3 ${COLOR_BUTTON_PRIMARY_BG} ${COLOR_BUTTON_PRIMARY_TEXT} rounded-full hover:opacity-90 transition-opacity text-sm`}
+        className={`w-32 py-2.5 sm:py-3 ${COLOR_BUTTON_PRIMARY_BG} ${COLOR_BUTTON_PRIMARY_TEXT} rounded-full hover:opacity-90 transition-opacity text-sm sm:text-md `}
       >
         Submit
       </button>
@@ -250,16 +250,16 @@ const AssessmentReviewPage: React.FC = () => {
   return (
     // This div acts as the content area for the page, to be placed inside your <main> tag
     // It uses a responsive grid layout
-    <div className="grid bg-white p-6 rounded-2xl grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+    <div className="flex-col bg-white p-6 w-full h-[1700px] rounded-2xl flex  sm:flex-row gap-8 items-start">
       {/* Left Column: Questions List */}
-      <div className="lg:col-span-2 space-y-6">
+      <div className=" w-[55%] space-y-6">
         {questionsData.map((question) => (
           <QuestionItem key={question.id} question={question} />
         ))}
       </div>
 
       {/* Right Column: Summary Panel */}
-      <div className="lg:col-span-1">
+      <div className="w-[40%] ">
         <SummaryPanel summary={summaryData} />
       </div>
     </div>
@@ -273,18 +273,29 @@ export default function StudentPaperPage() {
     avatarSrc: "/teacher-b2b/profile.jpg",
   }; // UPDATE PATH
 
+  const handleBackClick = () => {
+		if (typeof window !== 'undefined') {
+			window.history.back()
+		}
+	}
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
 
       {/* Back Button and Page Title */}
-      <div className="flex items-center gap-2 bg-white px-6 py-4">
-        <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
-          <FiArrowLeft className="w-5 h-5 font-extrabold" />
-        </button>
-        <h1 className="text-xl font-bold text-[#FF3366]">Test Name</h1>{" "}
-        {/* Or dynamic course name */}
-      </div>
+      <div className='bg-white'>
+              <div className="flex items-center mx-auto max-w-[96rem] gap-3  px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+              <button
+                onClick={handleBackClick}
+                className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
+                aria-label="Go back">
+                <FiArrowLeft className="w-5 h-5" />
+              </button>
+              <h1 className="text-lg sm:text-xl font-semibold text-[#ff3366]" >
+                Student Name
+              </h1>
+            </div>
+            </div>
 
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
         <AssessmentReviewPage />

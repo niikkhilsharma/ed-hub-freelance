@@ -175,10 +175,10 @@ const NumberSpinnerInput: React.FC<{
   return (
     <div className="flex items-center space-x-1.5">
       {label && (
-        <span className="text-sm text-black font-medium">{label}</span>
+        <span className="text-sm sm:text-lg text-black font-medium">{label}</span>
       )}
       <div
-        className={`relative inline-flex items-center justify-between px-2 py-1.5 mr-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full  h-8 w-15`}>
+        className={`relative flex  inline-flex items-center  justify-between px-2 py-1.5 mr-1 bg-[#F9FAFB] border border-[#E5E7EB] rounded-full  h-8 w-15`}>
         <input
           type="text"
           value={value}
@@ -186,18 +186,18 @@ const NumberSpinnerInput: React.FC<{
           className="w-full text-center bg-transparent outline-none text-sm font-medium text-black appearance-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           maxLength={2}
         />
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center h-full justify-center">
+        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col  items-center h-full justify-center">
           <button
             type="button"
             onClick={handleIncrement}
-            className="text-[#6B7280]0 hover:text-gray-700 h-1/3 flex items-center text-[10px]"
+            className="text-[#6B7280]h-1/3 flex items-center text-[10px]"
           >
             ▲
           </button>
           <button
             type="button"
             onClick={handleDecrement}
-            className="text-[#6B7280]0 hover:text-gray-700 h-1/3 flex items-center text-[10px]"
+            className="text-[#6B7280] h-1/3 flex items-center text-[10px]"
           >
             ▼
           </button>
@@ -228,7 +228,7 @@ const HardcodedQuestionForm: React.FC = () => {
   ];
 
   return (
-    <div className=" max-w-4xl mx-auto space-y-8">
+    <div className=" max-w-3xl mx-auto space-y-8">
       {questionData.map((data, qIndex) => (
         <div
           key={`question-${qIndex}`}
@@ -240,12 +240,12 @@ const HardcodedQuestionForm: React.FC = () => {
           <div>
             <label
               htmlFor={`question_text_${data.qNumber}`}
-              className="block text-md font-semibold text-black mb-1.5"
+              className="block text-md sm:text-lg font-semibold text-black mb-1.5"
             >
               Question
             </label>
             <div className="flex gap-1.5 items-center">
-              <p className="text-md font-semibold text-black">{data.qNumber}.</p>
+              <p className="text-md sm:text-lg font-semibold text-black">{data.qNumber}.</p>
             <input
               type="text"
               id={`question_text_${data.qNumber}`}
@@ -258,7 +258,7 @@ const HardcodedQuestionForm: React.FC = () => {
           {/* Options Section */}
           <div>
             <div className="flex justify-between items-center mb-2">
-              <h3 className="text-sm font-semibold text-black">Options</h3>
+              <h3 className="text-sm sm:text-base font-semibold text-black">Options</h3>
               <NumberSpinnerInput value={data.numOptionsValue} />
             </div>
             <div className="space-y-2.5">
@@ -266,7 +266,7 @@ const HardcodedQuestionForm: React.FC = () => {
                 <div key={`q${data.qNumber}_opt${index}`}>
                   <label
                     htmlFor={`q${data.qNumber}_option_${index + 1}`}
-                    className="block text-xs font-medium text-gray-600 mb-1"
+                    className="block text-xs sm:text-lg font-medium text-gray-600 mb-1"
                   >
                     Option {index + 1}:
                   </label>
@@ -282,8 +282,8 @@ const HardcodedQuestionForm: React.FC = () => {
           </div>
 
           {/* Correct Option Selection & Points */}
-          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 pt-6">
-            <div className="flex flex-grow items-center justify-between mr-24 gap-x-4 gap-y-1">
+          <div className="flex flex-wrap items-center gap-x-2  gap-y-2 pt-6">
+            <div className="flex flex-grow items-center justify-evenly mr-24 gap-y-1">
               {/* Radio buttons for correct option - labels should match options */}
               {data.options.map((_, index) => (
                 <label
@@ -293,19 +293,20 @@ const HardcodedQuestionForm: React.FC = () => {
                   <input
                     type="radio"
                     name={`correct_option_q${data.qNumber}`}
-                    className="form-radio h-4 w-4 rounded-full text-blue-600 border-gray-400 focus:ring-blue-500"
+                    className="form-radio h-4 w-4 rounded-full text-blue-600 border-[#6b7280] border-[2px] focus:ring-blue-500"
                   />
-                  <span className="text-sm font-semibold text-black">
+                  <span className="text-sm  sm:text-lg font-semibold text-[#6b7280]">
                     Option {index + 1}
                   </span>
                 </label>
               ))}
-            </div>
-            <NumberSpinnerInput
+               <NumberSpinnerInput
               label="Points"
               value={data.pointsValue}
               isPoints
             />
+            </div>
+           
           </div>
         </div>
       ))}

@@ -312,16 +312,16 @@ const AssessmentReviewPage: React.FC = () => {
   return (
     // This div acts as the content area for the page, to be placed inside your <main> tag
     // It uses a responsive grid layout
-    <div className="grid bg-white p-6 rounded-2xl grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+    <div className="grid bg-white p-6 rounded-2xl grid-cols-1 lg:grid-cols-7 gap-6 lg:gap-8 items-start">
       {/* Left Column: Questions List */}
-      <div className="lg:col-span-2 space-y-6">
+      <div className="lg:col-span-4 space-y-6">
         {questionsData.map((question) => (
           <QuestionItem key={question.id} question={question} />
         ))}
       </div>
 
       {/* Right Column: Summary Panel */}
-      <div className="lg:col-span-1">
+      <div className="lg:col-span-3">
         <SummaryPanel summary={summaryData} />
       </div>
     </div>
@@ -338,22 +338,22 @@ export default function StudentPaperPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-      <MaxWidthWrapper>
+      
         <div className="bg-gray-100">
           {/* Back Button and Page Title */}
-          <div className="flex items-center gap-2 bg-white px-6 py-4">
-            <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
-              <FiArrowLeft className="w-5 h-5 font-extrabold" />
-            </button>
-            <h1 className="text-xl font-bold text-[#FF3366]">Test Name</h1>{" "}
-            {/* Or dynamic course name */}
-          </div>
-
+          <div className='bg-white '>
+                <div className="flex max-w-[96rem] mx-auto items-center gap-2 px-6 py-4">
+                <button className="px-1.5 text-black hover:text-[#3366FF] focus:outline-none">
+                  <FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
+                </button>
+                <h1 className="text-lg font-bold text-[#FF3366]">DMIT List</h1> {/* Or dynamic course name */}
+              </div>
+              </div>
           <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
             <AssessmentReviewPage />
           </main>
         </div>
-      </MaxWidthWrapper>
+      
       <Footer />
     </div>
   );

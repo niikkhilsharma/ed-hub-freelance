@@ -35,13 +35,13 @@ export default function OtpPage() {
       leftPanelDescription="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
     >
       <h2 className="text-2xl font-bold text-black mb-2">Pls Enter OTP</h2>
-      <p className="text-sm text-black mb-8 leading-relaxed">
+      <p className="text-sm text-black font-medium mb-8 leading-relaxed">
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry.
       </p>
 
       <div className="space-y-8 text-center">
-        <label className="block text-sm font-medium text-black mb-1">
+        <label className="block text-sm font-semibold text-black mb-1">
           Enter OTP
         </label>
         <div className="flex justify-center gap-2 sm:gap-3">
@@ -56,14 +56,14 @@ export default function OtpPage() {
               value={digit}
               onChange={(e) => handleChange(index, e)}
               onKeyDown={(e) => handleKeyDown(index, e)}
-              className="w-12 h-12 sm:w-14 sm:h-14 text-center text-2xl font-bold bg-[#F9FAFB] border-2 border-[#E5E7EB] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
+              className="w-9.5 h-9.5 sm:w-12 sm:h-12 text-center text-2xl font-bold bg-[#F9FAFB] border-2 border-[#E5E7EB] rounded-full focus:outline-none focus:ring-2 focus:ring-[#3366FF]"
             />
           ))}
         </div>
 
         <button
           type="submit"
-          className="w-40 bg-[#3366FF] text-white font-semibold py-3.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]"
+          className="px-10 bg-[#3366FF] text-white font-semibold py-2.5 rounded-full hover:bg-opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3366FF]"
         >
           Continue
         </button>

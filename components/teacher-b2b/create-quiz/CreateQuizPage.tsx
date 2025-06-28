@@ -257,7 +257,7 @@ export const FormField: React.FC<{
   <div>
     <label
       htmlFor={name}
-      className="block text-sm font-medium text-black mb-1.5"
+      className="block text-sm sm:text-md font-medium text-black mb-1.5"
     >
       {label}
     </label>{" "}
@@ -271,7 +271,7 @@ export const FormField: React.FC<{
         onChange={onChange}
         placeholder={placeholder || "Text"}
         required={required}
-        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm resize-none`}
+        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER}  h-40 border rounded-2xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm resize-none`}
       />
     ) : (
       <input
@@ -512,7 +512,7 @@ export default function CreateBWTestPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-      <MaxWidthWrapper><div className="bg-gray-100">
+    <div className="bg-gray-100">
          <div className="bg-white px-4 sm:px-6 py-3  sticky top-0 z-40">
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0">
           <div className="flex items-center gap-3 self-start sm:self-center">
@@ -591,7 +591,7 @@ export default function CreateBWTestPage() {
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <CreateBWTestContent />
       </main>
-        </div></MaxWidthWrapper>
+        </div>
      
       <Footer />
     </div>

@@ -17,12 +17,14 @@ export default function StudentListPage() {
 			<Header user={headerUser} />
 
 			{/* Back Button and Page Title */}
-			<div className="flex items-center gap-2 bg-white px-6 py-4">
+			<div className='bg-white '>
+		<div className="flex max-w-[96rem] mx-auto items-center gap-2 px-6 py-4">
 				<button className="px-1.5 text-black hover:text-[#3366FF] focus:outline-none">
 					<FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
 				</button>
 				<h1 className="text-lg font-bold text-[#FF3366]">Test Name</h1> {/* Or dynamic course name */}
 			</div>
+	  </div>
 
 			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
 				<StudentPerformancePage />

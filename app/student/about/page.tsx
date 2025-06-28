@@ -40,7 +40,7 @@ const features = [
 ];
 export default function CourseDetail() {
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       {/* Background */}
       <div
         className="fixed inset-0 bg-center bg-repeat z-0"
@@ -54,57 +54,56 @@ export default function CourseDetail() {
 
       <div className="bg-[#FF3366]/75 text-white min-h-[calc(100vh-68px)] px-16 py-8 flex flex-col items-center justify-center relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-8 w-full items-center">
-  {/* Left Content */}
-  <div className="space-y-6 text-center lg:text-left">
-    <h1 className="font-bold text-3xl lg:text-4xl leading-tight">
-      Eduport education theme, built specifically for the education
-      centers which is dedicated to teaching and involve learners.
-    </h1>
-    <p className="font-medium text-md opacity-90 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-      Ut eget egestas risus. Mauris sed justo quam. Sed eget porttitor
-      metus. Nam purus arcu, congue sed mi sit amet, bibendum imperdiet
-      mauris. Nunc luctus quis sem volutpat lobortis. Interdum et
-      malesuada fames ac ante ipsum primis in faucibus. Donec non augue
-      lectus.
-    </p>
-  </div>
+          {/* Left Content */}
+          <div className="space-y-6 text-center lg:text-left">
+            <h1 className="font-bold text-3xl lg:text-4xl leading-tight">
+              Eduport education theme, built specifically for the education
+              centers which is dedicated to teaching and involve learners.
+            </h1>
+            <p className="font-medium text-md opacity-90 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Ut eget egestas risus. Mauris sed justo quam. Sed eget porttitor
+              metus. Nam purus arcu, congue sed mi sit amet, bibendum imperdiet
+              mauris. Nunc luctus quis sem volutpat lobortis. Interdum et
+              malesuada fames ac ante ipsum primis in faucibus. Donec non augue
+              lectus.
+            </p>
+          </div>
 
-  {/* Right Images */}
-  <div className="flex flex-col gap-4 max-w-xl mx-auto w-full">
-    {/* Main Image */}
-    <div className="w-full">
-      <Image
-        src="/student/about/image1-top.png"
-        alt="Main Visual"
-        width={500}
-        height={300}
-        className="w-full h-auto object-cover rounded-2xl shadow-md"
-        priority
-      />
-    </div>
+          {/* Right Images */}
+          <div className="flex flex-col gap-4 max-w-xl mx-auto w-full">
+            {/* Main Image */}
+            <div className="w-full">
+              <Image
+                src="/student/about/image1-top.png"
+                alt="Main Visual"
+                width={500}
+                height={300}
+                className="w-full h-auto object-cover rounded-2xl shadow-md"
+                priority
+              />
+            </div>
 
-    {/* Two Side-by-Side Images */}
-    <div className="flex flex-col sm:flex-row gap-4">
-      <Image
-        src="/student/about/image2-top.png"
-        alt="Secondary 1"
-        width={240}
-        height={160}
-        className="w-full sm:w-1/2 h-auto object-cover rounded-2xl shadow-md"
-        priority
-      />
-      <Image
-        src="/student/about/image3-top.png"
-        alt="Secondary 2"
-        width={240}
-        height={160}
-        className="w-full sm:w-1/2 h-auto object-cover rounded-2xl shadow-md"
-        priority
-      />
-    </div>
-  </div>
-</div>
-
+            {/* Two Side-by-Side Images */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Image
+                src="/student/about/image2-top.png"
+                alt="Secondary 1"
+                width={240}
+                height={160}
+                className="w-full sm:w-1/2 h-auto object-cover rounded-2xl shadow-md"
+                priority
+              />
+              <Image
+                src="/student/about/image3-top.png"
+                alt="Secondary 2"
+                width={240}
+                height={160}
+                className="w-full sm:w-1/2 h-auto object-cover rounded-2xl shadow-md"
+                priority
+              />
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="relative z-10 pb-55 bg-white">
@@ -118,10 +117,10 @@ export default function CourseDetail() {
               </h1>
               <p className="text-black text-md max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry&apos;s standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
+                industry. Lorem Ipsum has been the industry&apos;s standard
+                dummy text ever since the 1500s, when an unknown printer took a
+                galley of type and scrambled it to make a type specimen book. It
+                has survived not only five centuries, but also the leap into
                 electronic typesetting, remaining essentially unchanged. It was
                 popularized in the 1960s with the release of Letraset sheets
                 containing Lorem Ipsum passages, and more recently with desktop

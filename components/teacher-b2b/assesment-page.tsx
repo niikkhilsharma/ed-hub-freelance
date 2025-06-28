@@ -169,7 +169,7 @@ const CustomTestTabs = ({
         <button
           key={tab}
           onClick={() => onChange(tab)}
-          className={`px-6 py-3 font-medium text-sm sm:text-m cursor-pointer ${
+          className={`px-6 py-3 font-medium sm:text-lg text-md cursor-pointer ${
             activeTab === tab
               ? "text-[#FF3366] border-b-2 border-pink-500"
               : "text-[#6B7280] hover:text-gray-900"
@@ -188,8 +188,8 @@ export default function TestsPage() {
 
   return (
     <div className="min-h-screen bg-[#eeeeee] py-6">
-      <div className="container bg-white max-w-7xl rounded-2xl mx-auto p-3">
-        <div className="bg-white rounded-lg">
+      <div className="container bg-white max-w-[96rem] rounded-2xl  mx-auto p-3">
+        <div className="bg-white  py-4  mb-20 rounded-2xl">
           <div className="grid grid-cols-1 md:grid-cols-7 gap-4">
             <div className="md:col-span-5">
               <div className="flex h-fit overflow-x-auto custom-scrollbar justify-between items-center mb-4">
@@ -200,7 +200,7 @@ export default function TestsPage() {
                 />
                 <div>
                   <Select defaultValue="all">
-                    <SelectTrigger className="w-fit rounded-xl bg-[#F9FAFB] text-black border border-[#E5E7EB]">
+                    <SelectTrigger className="w-fit rounded-xl bg-[#F9FAFB]  text-black border border-[#E5E7EB]">
                       <SelectValue placeholder="All Batches" />
                     </SelectTrigger>
                     <SelectContent>
@@ -224,7 +224,7 @@ export default function TestsPage() {
             </div>
 
             <div className="md:col-span-2 ">
-              <div className="flex justify-end items-center mb-6">
+              <div className="flex sm:justify-end items-center mb-6">
                 <Button
                   className="bg-[#3366FF] hover:bg-blue-600 text-white font-medium rounded-full text-md py-6 px-6"
                   onClick={() => router.push("/page3/teacher/test/create")}

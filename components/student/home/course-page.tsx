@@ -15,6 +15,8 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import CourseSlider from "./course-slider";
+import { FaCircleCheck } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 // Course type
 interface Course {
   id: string;
@@ -175,6 +177,7 @@ export default function CoursesComponent({
 }: {
   className?: string;
 }) {
+  const router = useRouter();
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
@@ -223,242 +226,255 @@ export default function CoursesComponent({
   };
 
   return (
-    <div
-      className={cn(
-        "relative z-10 mx-auto w-full py-8 space-y-6 px-16 ",
-        className
-      )}
-    >
-      {/* Search Bar */}
-      <div className="w-full bg-[#FFCC00] rounded-2xl p-4 flex items-center gap-4">
-        <div className="flex-1 relative">
-          <Search className="absolute z-10 left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5" />
-          <Input
-            placeholder="Search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 border-0 bg-white rounded-full h-10 text-lg"
-          />
-        </div>
-        <Select defaultValue="popular">
-          <SelectTrigger className="w-32 bg-yellow-500 border-0 rounded-full h-10 text-white font-medium">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="popular">Popular</SelectItem>
-            <SelectItem value="newest">Newest</SelectItem>
-            <SelectItem value="rating">Rating</SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
-      <CourseSlider />
-      <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
-        Based on your Interest
-      </h1>
-      {/* Course Slider */}
-      <div className="relative">
-        {/* Left Navigation Button */}
-        {showLeftArrow && (
-          <button
-            onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-          >
-            <ChevronLeft className="w-5 h-5 text-gray-700" />
-          </button>
+    <div className="px-16">
+      <div
+        className={cn(
+          "relative z-10 w-full py-8 space-y-6 max-w-7xl mx-auto",
+          className
         )}
-
-        {/* Right Navigation Button */}
-        {showRightArrow && (
-          <button
-            onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
-          >
-            <ChevronRight className="w-5 h-5 text-gray-700" />
-          </button>
-        )}
-
-        {/* Scrollable Container */}
-        <div
-          ref={scrollContainerRef}
-          className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
-            showLeftArrow ? "pl-16" : "pl-0"
-          } ${showRightArrow ? "pr-16" : "pr-0"}`}
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-        >
-          {courses.map((course) => (
-            <div
-              key={course.id}
-              className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-            >
-              <div className="relative p-4">
-                <Image
-                  src={course.image || "/placeholder.svg"}
-                  alt={course.title}
-                  width={400}
-                  height={200}
-                  className="w-full h-48 object-cover rounded-xl"
-                />
-              </div>
-
-              <div className="p-4 pt-0">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Course Name
-                </h3>
-
-                <div className="space-y-1">
-                  {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
-                    (detail, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                          <Image
-                            src="/student/home/tick2.png"
-                            alt="tick2"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <span className="text-gray-600">{detail}</span>
-                      </div>
-                    )
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2 mt-3">
-                  <Image
-                    src={course.teacher.image || "/placeholder.svg"}
-                    alt={course.teacher.name}
-                    width={24}
-                    height={24}
-                    className="w-8 h-8 rounded-full"
-                  />
-                  <div>
-                    <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
-                    <p className="text-xs text-[#FF3366]">Teacher</p>
-                  </div>
-                  <div className="ml-auto flex gap-1 text-yellow-400">
-                    {[1, 2, 3, 4].map((star) => (
-                      <Star key={star} className="w-3 h-3 fill-current" />
-                    ))}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
-                  <span className="text-[#50C878] font-bold">
-                    ₹2,000 - ₹5,000
-                  </span>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
-                    Add to cart
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Heat Up Section */}
-      <div className="space-y-4 bg-[#F9FAFB] rounded-2xl pt-8 p-10 ">
-        <div className="space-y-4 mx-auto">
-          <h2 className="text-4xl font-bold text-black">
-            Heat Up Your Skills This <br /> Summer!
-          </h2>
-          <p className="text-xl text-[#6B7280]">
-            Discover skills, spark curiosity, and grow with every step.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-6 mx-auto">
-          {startingCourses.map((course) => (
-            <Card
-              key={course.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-lg"
-            >
-              <div className="relative p-4">
-                <Image
-                  src={course.image || "/placeholder.svg"}
-                  alt={course.title}
-                  width={400}
-                  height={200}
-                  className="w-full h-48 object-cover rounded-xl"
-                />
-              </div>
-              <CardContent className="p-6 pt-0">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Course Name
-                </h3>
-
-                <div className="space-y-1">
-                  {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
-                    (detail, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                          <Image
-                            src="/student/home/tick2.png"
-                            alt="tick2"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <span className="text-gray-600">{detail}</span>
-                      </div>
-                    )
-                  )}
-                </div>
-
-                <div className="flex items-center gap-2 my-2">
-                  <div className="flex items-center gap-1 bg-[#F3F4F6] rounded-2xl px-3 py-1">
-                    <span className="font-bold text-lg">4.2</span>
-                    <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  </div>
-                  <span className="text-gray-600 bg-[#F3F4F6] rounded-2xl px-3 py-1">
-                    <span className="font-bold text-black mr-2">4.4K</span>
-                    Ratings
-                  </span>
-                  <span className="text-gray-600 bg-[#F3F4F6] rounded-2xl px-3 py-1">
-                    <span className="font-bold text-black mr-2">6</span>
-                    Months
-                  </span>
-                </div>
-
-                <Button className="w-full bg-[#FF3366] hover:bg-pink-600 text-white rounded-full h-10 text-lg my-2">
-                  Explore More
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      <section
-        className={cn("w-full mx-auto px-4 py-8 bg-[#FFFFFF] rounded-2xl")}
       >
-        {/* Main Title */}
-        <h1
-          className={cn(
-            "text-3xl md:text-3xl lg:text-4xl font-bold text-gray-900",
-            "mb-8 md:mb-12 tracking-tight"
-          )}
-        >
-          Pick from Popular Learning Path
-        </h1>
-
-        {/* Learning Path Grid */}
-        <div
-          className={cn(
-            "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
-            "gap-4 md:gap-6 lg:gap-8",
-            "auto-rows-fr"
-          )}
-        >
-          {learningPaths.map((path) => (
-            <LearningPathCard
-              key={path.id}
-              path={path}
-              onClick={handlePathClick}
+        {/* Search Bar */}
+        <div className="w-full bg-[#FFCC00] rounded-2xl p-4 flex items-center gap-4">
+          <div className="flex-1 relative">
+            <Search className="absolute z-10 left-3 top-1/2 transform -translate-y-1/2 text-black w-5 h-5" />
+            <Input
+              placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="pl-10 border-0 bg-white rounded-full h-10 text-lg"
             />
-          ))}
+          </div>
+          <Select defaultValue="popular">
+            <SelectTrigger className="w-32 bg-[#FFD119] border-0 rounded-full h-10 text-white font-medium">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="popular">Popular</SelectItem>
+              <SelectItem value="newest">Newest</SelectItem>
+              <SelectItem value="rating">Rating</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
-      </section>
+        <CourseSlider />
+
+        <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
+          Based on your Interest
+        </h1>
+        {/* Course Slider */}
+        <div className="relative">
+          {/* Left Navigation Button */}
+          {showLeftArrow && (
+            <button
+              onClick={() => scroll("left")}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-700" />
+            </button>
+          )}
+
+          {/* Right Navigation Button */}
+          {showRightArrow && (
+            <button
+              onClick={() => scroll("right")}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-700" />
+            </button>
+          )}
+
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
+              showLeftArrow ? "pl-16" : "pl-0"
+            } ${showRightArrow ? "pr-16" : "pr-0"}`}
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {courses.map((course) => (
+              <div
+                key={course.id}
+                className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="relative p-4">
+                  <Image
+                    src={course.image || "/placeholder.svg"}
+                    alt={course.title}
+                    width={400}
+                    height={200}
+                    className="w-full h-48 object-cover rounded-2xl"
+                  />
+                  <div className="absolute right-5 top-5 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
+                    <span className="text-amber-300 text-lg font-bold">
+                      4.2
+                    </span>
+                    <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                  </div>
+                </div>
+
+                <div className="p-4 pt-0">
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    Course Name
+                  </h3>
+
+                  <div className="space-y-1">
+                    {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
+                      (detail, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <div className="relative h-4 w-4 rounded-full overflow-hidden">
+                            <Image
+                              src="/student/home/tick2.png"
+                              alt="tick2"
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <span className="text-gray-600">{detail}</span>
+                        </div>
+                      )
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-2 mt-3">
+                    <Image
+                      src={course.teacher.image || "/placeholder.svg"}
+                      alt={course.teacher.name}
+                      width={24}
+                      height={24}
+                      className="w-8 h-8 rounded-full"
+                    />
+                    <div>
+                      <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+                      <p className="text-xs text-[#FF3366]">Teacher</p>
+                    </div>
+                    <div className="ml-auto flex gap-1 text-yellow-400">
+                      {[1, 2, 3, 4].map((star) => (
+                        <Star key={star} className="w-3 h-3 fill-current" />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                    <span className="text-[#50C878] font-bold">
+                      ₹2,000 - ₹5,000
+                    </span>
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
+                      Add to cart
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Heat Up Section */}
+        <div className="bg-[#F9FAFB] space-y-4 rounded-2xl p-7">
+          <div className="space-y-3 max-w-7xl mx-auto pb-2">
+            <h2 className="text-4xl leading-[1.5] font-semibold text-black">
+              Heat Up Your Skills This
+              <br /> Summer!
+            </h2>
+            <p className="text-xl font-medium text-[#6B7280]">
+              Meet our bestseller
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+            {startingCourses.map((course) => (
+              <Card
+                key={course.id}
+                className="bg-white rounded-2xl overflow-hidden hover:shadow-md border-0 hover:border"
+              >
+                <div className="relative p-3">
+                  <Image
+                    src={course.image || "/placeholder.svg"}
+                    alt={course.title}
+                    width={400}
+                    height={200}
+                    className="w-full h-48 object-cover rounded-2xl"
+                  />
+                </div>
+                <CardContent className="p-6 pt-0 space-y-3">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-xl font-bold text-gray-900">
+                      Course Name
+                    </h3>
+                    <button
+                      className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
+                      onClick={() => router.push("/student/courses/know-more")}
+                    >
+                      Know More
+                    </button>
+                  </div>
+
+                  <div className="space-y-1">
+                    {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
+                      (detail, index) => (
+                        <div key={index} className="flex items-center gap-2">
+                          <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                          <span className="text-[#6B7280] text-sm">
+                            {detail}
+                          </span>
+                        </div>
+                      )
+                    )}
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 bg-[#F3F4F6] rounded-xl px-3 py-1">
+                      <span className="font-bold">4.2</span>
+                      <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                    </div>
+                    <span className="text-gray-600 bg-[#F3F4F6] rounded-xl px-3 py-1">
+                      <span className="font-bold text-black mr-1">4.4K</span>
+                      Ratings
+                    </span>
+                    <span className="text-gray-600 bg-[#F3F4F6] rounded-xl px-3 py-1">
+                      <span className="font-bold text-black mr-1">6</span>
+                      Months
+                    </span>
+                  </div>
+
+                  <Button className="w-full bg-[#FF3366] hover:bg-pink-600 text-white rounded-full h-10 text-lg mt-2">
+                    Explore More
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        <section
+          className={cn("w-full mx-auto px-4 py-8 bg-[#FFFFFF] rounded-2xl")}
+        >
+          {/* Main Title */}
+          <h1
+            className={cn(
+              "text-3xl md:text-3xl lg:text-4xl font-bold text-gray-900",
+              "mb-8 md:mb-12 tracking-tight"
+            )}
+          >
+            Pick from Popular Learning Path
+          </h1>
+
+          {/* Learning Path Grid */}
+          <div
+            className={cn(
+              "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4",
+              "gap-4 md:gap-6 lg:gap-8",
+              "auto-rows-fr"
+            )}
+          >
+            {learningPaths.map((path) => (
+              <LearningPathCard
+                key={path.id}
+                path={path}
+                onClick={handlePathClick}
+              />
+            ))}
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

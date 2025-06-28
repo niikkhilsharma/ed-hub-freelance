@@ -70,9 +70,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
   return (
     <div className="bg-slate-50 rounded-2xl p-3 transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4 max-w-lg">
       {/* Info Icon */}
-      <button className="absolute top-3 right-3 text-gray-400 hover:text-gray-600" aria-label="Folder information">
-        <FiInfo className="w-5 h-5" />
-      </button>
+      
 
       {/* Folder Icon Area */}
       <div className="bg-[#99DEFF] w-24 h-24 sm:w-26 sm:h-26 rounded-2xl flex items-center justify-center flex-shrink-0">
@@ -83,13 +81,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
       <div className="flex flex-col flex-grow w-full">
         <h3 className="text-md font-semibold text-black mb-0.5">{folder.name}</h3>
         <p className="text-xs text-[#6B7280] mb-4">{folder.fileCount} Files</p>
-        <button
-          onClick={() => alert(`Manage Access for ${folder.name}`)}
-          className="w-full sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-medium rounded-full transition-colors"
-        >
-          <FiSettings className="w-4 h-4" />
-          Manage Access
-        </button>
+        
       </div>
     </div>
   );
@@ -146,7 +138,7 @@ export default function SelectExistingTestPage() {
   const headerUser = {
     name: "Shlok Agheda", // Example, should be dynamic or from context
     role: "Teacher",    // Example role
-    avatarSrc: "/placeholder-avatar-teacher.jpg", // UPDATE THIS PATH
+    avatarSrc: "/teacher-b2b/profile.png", // UPDATE THIS PATH
   };
 
   const handleBackClick = () => {
@@ -158,10 +150,11 @@ export default function SelectExistingTestPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-    <MaxWidthWrapper>
+    
       <div className="bg-gray-100">
 
-      <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 shadow-sm sticky top-0 z-40"> {/* Made title bar sticky */}
+      <div className='bg-white'>
+        <div className="flex items-center gap-3 max-w-[96rem] mx-auto py-3.5  sticky top-0 z-40"> {/* Made title bar sticky */}
         <button
           onClick={handleBackClick}
           className="p-1.5 text-gray-700 hover:text-[#FF3366] focus:outline-none rounded-md"
@@ -169,14 +162,15 @@ export default function SelectExistingTestPage() {
         >
           <FiArrowLeft className="w-5 h-5" />
         </button>
-        <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Select Existing Test</h1>
+      
+      </div>
       </div>
 
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <UploadExistingTestContent />
       </main>
       </div>
-    </MaxWidthWrapper>
+    
       {/* Page Title Bar */}
 
       <Footer />

@@ -136,7 +136,7 @@ const TopTabButton: React.FC<{
 }> = ({ tab, isActive, onClick }) => (
   <button
     onClick={onClick}
-    className={`px-4 py-2.5 rounded-2xl text-sm font-medium transition-all duration-200 whitespace-nowrap
+    className={`px-4 py-2.5 rounded-2xl text-sm sm:text-md font-medium transition-all duration-200 whitespace-nowrap
       ${
         isActive
           ? `bg-[${ACCENT_PINK}] text-white shadow-md`
@@ -173,7 +173,7 @@ const ChapterAccordion: React.FC<{
   return (
     <div
       className={`${
-        isOpen ? "p-6" : "border border-[#E5E7EB]"
+        isOpen ? "p-4 m-2" : "border border-[#E5E7EB]"
       } relative z-20 rounded-2xl overflow-hidden transition-all`}
     >
       {/* Background image overlay */}
@@ -236,10 +236,10 @@ const ChapterAccordion: React.FC<{
             transition={{ duration: 0.3 }}
           >
             <div className="px-4 py-4 rounded-2xl mt-2 bg-white text-xs text-[#6B7280] whitespace-pre-line">
-              <h6 className="text-sm text-black  mb-2">
+              <h6 className="text-sm sm:text-lg text-black  mb-2">
                 Before the class
               </h6>
-              <div className="space-y-2">
+              <div className="space-y-6 text-sm sm:text-md">
                 <p>
                   1. Study the Lesson Plan Prepare a list of students according
                   to their groups. Keep the printouts of the next homework
@@ -274,11 +274,11 @@ const InfoPanel: React.FC<{ info: PedagogyInfo }> = ({ info }) => (
       <h3 className={`text-lg font-semibold text-[${PRIMARY_BLUE}] mb-3.5`}>
         Learning Objectives
       </h3>
-      <div className="space-y-3 text-[13px] text-black">
+      <div className="space-y-3 text-[15px] text-black">
         {info.learningObjectives.map((obj) => (
           <div key={obj.id}>
             <p className="font-medium text-black mb-3">{obj.level}</p>
-            <ul className="list-disc list-outside pl-4 space-y-1.5">
+            <ul className="list-disc  list-outside pl-4 space-y-1.5">
               {obj.points.map((point, idx) => (
                 <li key={idx}>{point}</li>
               ))}
@@ -375,11 +375,11 @@ const PedagogyContent: React.FC = () => {
         {" "}
         {/* Full width container for layout */}
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 items-stretch">
           {" "}
           {/* No gap, info panel is distinct */}
           {/* Left Column: Chapters and Accordions */}
-          <div className="bg-white rounded-2xl lg:col-span-2 p-4 h-full space-y-6 border-r-0 lg:border-r border-gray-200 min-h-[calc(100vh-250px)]">
+          <div className="bg-white rounded-2xl lg:col-span-3 p-8  h-full space-y-6 border-r-0 lg:border-r border-gray-200 min-h-[calc(100vh-250px)]">
             {" "}
             {/* Adjust min-h */}
             {/* Chapter Sub-Tabs */}
@@ -423,7 +423,7 @@ const PedagogyContent: React.FC = () => {
             )}
           </div>
           {/* Right Column: Info Panel */}
-          <div className="lg:col-span-1 ">
+          <div className="lg:col-span-2 ">
             {" "}
             {/* Consistent padding */}
             <InfoPanel info={pedagogyData} />
@@ -450,7 +450,7 @@ export default function PedagogyPage() {
       <Header user={headerUser} />
 
       <div className="bg-white px-4 sm:px-6 py-3 shadow-sm sticky top-0 z-40">
-        <div className="mx-auto flex items-center gap-3">
+        <div className="mx-auto max-w-[96rem] flex items-center gap-3">
           <button
             onClick={handleBackClick}
             className="p-1.5 text-gray-700 hover:text-gray-900 focus:outline-none rounded-md"

@@ -8,13 +8,13 @@ import { ChatInput } from './ui-components'; // Import ChatInput
 
 // --- Data Interfaces (from your original) ---
 export interface TeacherContact {
-	id: string; name: string; subject: string; avatarSrc: string;
-	lastMessageTime?: string;
+    id: string; name: string; subject: string; avatarSrc: string;
+    lastMessageTime?: string;
     // isActive prop will be passed by parent, not part of core data typically
 }
 export interface ChatMessageData {
-	id: string; sender: 'user' | 'teacher'; text?: string;
-	imageUrl?: string; imageName?: string; timestamp: string;
+    id: string; sender: 'user' | 'teacher'; text?: string;
+    imageUrl?: string; imageName?: string; timestamp: string;
 }
 
 // --- Component 1: TeacherListItem ---
@@ -23,80 +23,80 @@ interface TeacherListItemProps {
 }
 export const TeacherListItem: React.FC<TeacherListItemProps> = ({ teacher, onClick, isActive }) => (
     // Original: w-full flex items-center p-3 rounded-3xl transition-colors
-	<button
-		onClick={onClick}
-		className={`w-full flex items-center p-2.5 rounded-xl transition-colors 
+    <button
+        onClick={onClick}
+        className={`w-full flex items-center p-2.5 rounded-xl transition-colors 
                    sm:p-3 sm:rounded-2xl 
         ${ isActive ? 'bg-[#FFCC0026]' : 'hover:bg-gray-100' }`}
     >
         {/* Original Image: h-10 w-10 rounded-full object-cover mr-3 flex-shrink-0 */}
-		<Image src={teacher.avatarSrc} alt={teacher.name} width={40} height={40}
-			className="h-8 w-8 rounded-full object-cover mr-2 flex-shrink-0 sm:h-10 sm:w-10 sm:mr-3"
-		/>
-		<div className="flex-1 text-left min-w-0">
+        <Image src={teacher.avatarSrc} alt={teacher.name} width={40} height={40}
+            className="h-8 w-8 rounded-full object-cover mr-2 flex-shrink-0 sm:h-10 sm:w-10 sm:mr-3"
+        />
+        <div className="flex-1 text-left min-w-0">
             {/* Original h4: text-sm font-semibold text-black */}
-			<h4 className="text-xs font-semibold text-black truncate sm:text-sm">{teacher.name}</h4>
+            <h4 className="text-xs font-semibold text-black truncate sm:text-sm">{teacher.name}</h4>
             {/* Original p: text-[14px] text-[#6B7280] */}
-			<p className="text-[12px] text-[#6B7280] truncate sm:text-[14px]">{teacher.subject}</p>
-		</div>
-		{teacher.lastMessageTime && (
+            <p className="text-[12px] text-[#6B7280] truncate sm:text-[14px]">{teacher.subject}</p>
+        </div>
+        {teacher.lastMessageTime && (
             // Original span: text-[10px] text-[#6B7280] ml-2 self-end flex-shrink-0
-			<span className="text-[9px] text-[#6B7280] ml-1 self-end flex-shrink-0 sm:text-[10px] sm:ml-2">{teacher.lastMessageTime}</span>
-		)}
-	</button>
+            <span className="text-[9px] text-[#6B7280] ml-1 self-end flex-shrink-0 sm:text-[10px] sm:ml-2">{teacher.lastMessageTime}</span>
+        )}
+    </button>
 );
 
 // --- Component 2: ChatMessage ---
 interface ChatMessageProps { message: ChatMessageData; }
 export const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
-	const isUser = message.sender === 'user';
-	return (
+    const isUser = message.sender === 'user';
+    return (
         // Original wrapper: flex mb-4 ${isUser ? 'justify-end' : 'justify-start'}
-		<div className={`flex mb-3 sm:mb-4 ${isUser ? 'justify-end' : 'justify-start'}`}>
-			<div
+        <div className={`flex mb-3 sm:mb-4 ${isUser ? 'justify-end' : 'justify-start'}`}>
+            <div
                 // Original bubble: max-w-[60%] w-full px-4 py-3 rounded-2xl shadow
-				className={`max-w-[70%] sm:max-w-[60%] w-auto px-3 py-2 rounded-xl shadow
+                className={`max-w-[70%] sm:max-w-[60%] w-auto px-3 py-2 rounded-xl shadow
                            sm:px-4 sm:py-3 sm:rounded-2xl
                 ${ isUser ? 'bg-[#3366FF] text-white' : 'bg-[#F9FAFB] text-black' }`}
             >
-				{message.text && (
+                {message.text && (
                     // Original text container: flex gap-2 relative ${isUser ? 'flex-row-reverse' : ''}
-					<div className={`flex gap-1.5 relative ${isUser ? 'flex-row-reverse' : ''}`}> {/* Reduced gap */}
+                    <div className={`flex gap-1.5 relative ${isUser ? 'flex-row-reverse' : ''}`}> {/* Reduced gap */}
                         {/* Original p: text-lg font-light ${isUser ? 'text-right pl-5' : 'pr-5'} */}
-						<p className={`text-sm font-light break-words sm:text-lg ${isUser ? 'text-right sm:pl-6' : 'sm:pr-8'}`}>
-							Lorem ipsum dolor sit amet, consectetur adipiscing <br /> elit. {/* Exact text with <br /> */}
-						</p>
+                        <p className={`text-sm font-light break-words sm:text-lg ${isUser ? 'text-right sm:pl-6' : 'sm:pr-8'}`}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing <br /> elit. {/* Exact text with <br /> */}
+                        </p>
                         {/* Original timestamp: absolute tracking-tight text-[8px] font-normal flex items-center text-nowrap text-xs mt-auto ... */}
-						<p
-							className={`absolute tracking-tight text-[7px] font-normal flex items-center whitespace-nowrap mt-auto
+                        <p
+                            className={`absolute tracking-tight text-[7px] font-normal flex items-center whitespace-nowrap mt-auto
                                        sm:text-[8px] 
                             ${ isUser ? 'text-white/85 text-right left-0 bottom-0' 
                                      : 'text-[#6B7280] text-left right-0 bottom-0 sm:bottom-1/2 sm:translate-y-1/2'
                             }`}
                         >
-							{message.timestamp}
-						</p>
-					</div>
-				)}
-				{message.imageUrl && (
+                            {message.timestamp}
+                        </p>
+                    </div>
+                )}
+                {message.imageUrl && (
                     // Original image div: mt-4
-					<div className="mt-2 sm:mt-4">
-						<Image
-							src={message.imageUrl} alt={message.imageName || 'Chat image'}
-							width={300} height={200} // These are max if not constrained by parent
-							className="w-full max-h-32 rounded-xl object-cover sm:max-h-40 md:max-h-[200px] sm:rounded-2xl"
-						/>
-						<div className="flex items-center justify-end mt-1 sm:mt-2">
+                    <div className="mt-2 sm:mt-4">
+                        <Image
+                            src={message.imageUrl} alt={message.imageName || 'Chat image'}
+                            width={300} height={200} // These are max if not constrained by parent
+                            className="w-full max-h-32 rounded-xl object-cover sm:max-h-40 md:max-h-[200px] sm:rounded-2xl"
+                        />
+                        <div className="flex items-center justify-end mt-1 sm:mt-2">
                             {/* Original button: mt-2 flex items-center text-black gap-1.5 text-xs bg-[#B0B0B033] hover:text-blue-600 p-3 rounded-full border-gray-200 justify-center */}
-							<button className="flex items-center text-black gap-1 text-[10px] bg-[#B0B0B033] hover:text-blue-600 p-2 rounded-full justify-center sm:text-xs sm:gap-1.5 sm:p-3">
-								<FiDownload className="w-3 h-3 sm:w-4 sm:h-4" />
-							</button>
-						</div>
-					</div>
-				)}
-			</div>
-		</div>
-	);
+                            <button className="flex items-center text-black gap-1 text-[10px] bg-[#B0B0B033] hover:text-blue-600 p-2 rounded-full justify-center sm:text-xs sm:gap-1.5 sm:p-3">
+                                <FiDownload className="w-3 h-3 sm:w-4 sm:h-4" />
+                            </button>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </div>
+    );
 };
 
 // --- Component 3: TeacherListSidebar ---

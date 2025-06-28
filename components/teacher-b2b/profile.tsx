@@ -26,7 +26,7 @@ const FormInput = ({
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => (
 	<div className="w-full">
-		<label htmlFor={id} className="block text-sm text-black mb-2">
+		<label htmlFor={id} className="block text-sm font-medium sm:text-lg text-black mb-2">
 			{label}
 		</label>
 		<input
@@ -36,7 +36,7 @@ const FormInput = ({
 			value={value}
 			onChange={onChange}
 			placeholder={placeholder}
-			className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5] rounded-3xl text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
+			className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5]  rounded-3xl text-sm  text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
 		/>
 	</div>
 )
@@ -84,10 +84,10 @@ export default function EditStudentProfilePage() {
 							<button className="hover:text-blue-600 focus:outline-none">
 								<FiArrowLeft className="w-6 h-6" />
 							</button>
-							<h1 className="text-md font-semibold ">Edit Profile</h1>
+							<h1 className="text-md sm:text-lg font-semibold ">Edit Profile</h1>
 						</div>
 						<div
-							className="flex items-center mt-4 mb-8 bg-none sm:bg-[url('/teacher-b2b/profile-back.png')] sm:bg-[auto_600px]"
+							className="flex items-center mt-4 mb-8 bg-none   sm:bg-[url('/teacher-b2b/profile-back.png')] sm:bg-[auto_600px]"
 							>
 							<div className="flex items-start bg-white rounded-r-3xl px-4 py-1">
 								{/* Avatar and Name */}
@@ -143,7 +143,7 @@ export default function EditStudentProfilePage() {
 							</div>
 						</form>
 						<div className="w-full flex pt-6 justify-center">
-							<Button className="px-[20%] rounded-full text-xl h-11 mx-auto">Save</Button>
+							<Button className="px-28 rounded-full text-xl h-11 mx-auto">Save</Button>
 						</div>
 					</div>
 

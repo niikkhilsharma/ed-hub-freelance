@@ -70,7 +70,7 @@ const SubjectTabButton: React.FC<{
 }> = ({ tab, isActive, onClick }) => (
   <button
     onClick={onClick}
-    className={`px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-200 whitespace-nowrap
+    className={`px-4 py-2.5 rounded-2xl text-sm sm:text-md font-medium transition-all duration-200 whitespace-nowrap
       ${
         isActive
           ? `bg-[${ACCENT_PINK}] text-white shadow-md`
@@ -224,7 +224,7 @@ export default function MaterialPage() {
   const headerUser = {
     name: "Educator Name",
     role: "Teacher",
-    avatarSrc: "/placeholder-avatar-teacher.jpg",
+    avatarSrc: "/teacher-b2b/profile.png",
   };
   // This page design does not include a prominent title bar or back button below the main header.
   // Navigation would typically be handled by the global Header or side navigation.
