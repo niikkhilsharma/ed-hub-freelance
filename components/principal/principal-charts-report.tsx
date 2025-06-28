@@ -383,7 +383,7 @@ const PrincipalChatrsReport: React.FC = () => {
         {/* Page Title Bar */}
 
 
-        <div className="grid grid-cols-1 sm:grid-cols-[1fr_1fr] p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
+        <div className="grid grid-cols-1 p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
           {/* ====== Overall Charts start ====== */}
 
           <div
