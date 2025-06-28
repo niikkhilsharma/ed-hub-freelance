@@ -60,7 +60,7 @@ export default function NotificationsPage({ imageSrc }: { imageSrc?: string }) {
             {notifications.map((notification) => (
               <div
                 key={notification.id}
-                className="flex items-start gap-4 p-4 bg-[#F9FAFB] rounded-2xl hover:shadow-sm cursor-pointer border border-[#E5E7EB]"
+                className="flex items-start  space-y-4 gap-4 p-4 bg-[#F9FAFB] rounded-3xl hover:shadow-sm cursor-pointer border border-[#E5E7EB]"
               >
                 <Image
                   src={"/svg/notification.svg"}

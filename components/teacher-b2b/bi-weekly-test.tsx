@@ -52,13 +52,13 @@ function TestAnalytics({ complete, incomplete, totalTests, averageScore }: { mon
 				</div>
 				<div className="flex justify-between mx-2">
 					<div className="flex flex-col justify-center items-center">
-						<p className="text-sm text-[#6B7280]">Complete</p>
+						<p className="text-md text-[#6B7280]">Complete</p>
 						<p className="text-md font-semibold">
 							{complete}/{totalTests}
 						</p>
 					</div>
 					<div className="flex flex-col justify-center items-center">
-						<p className="text-sm text-[#6B7280]">Incomplete</p>
+						<p className="text-md text-[#6B7280]">Incomplete</p>
 						<p className="text-md font-semibold text-[#FF3366]">{incomplete}</p>
 					</div>
 				</div>
@@ -80,8 +80,8 @@ export default function TestsPage() {
 
 	return (
 		<div className="min-h-screen bg-[#eeeeee] py-4 ">
-			<div className="container bg-white max-w-7xl rounded-2xl mx-auto ">
-				<div className="bg-white rounded-2xl p-4">
+			<div className="container bg-white max-w-[96rem] rounded-2xl mx-auto p-4 ">
+				<div className="bg-white rounded-2xl mb-14 py-4">
 
 					{/* THIS IS THE CORRECTED LAYOUT CONTAINER */}
 					<div className="grid grid-cols-1 md:grid-cols-7 gap-6">

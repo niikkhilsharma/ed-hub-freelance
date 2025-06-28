@@ -8,7 +8,7 @@ import { FiArrowLeft } from 'react-icons/fi'
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FiShare2 } from "react-icons/fi";
 import MaxWidthWrapper from '../admin/max-width-wrapper'
-
+import Image from 'next/image'
 // Define the File interface
 interface ManagedFile {
 	id: string
@@ -51,15 +51,20 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
 	return (
 		<div className="grid grid-cols-1 sm:grid-cols-3 items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md gap-1">
 			<div className="flex items-center space-x-3 min-w-0 justify-self-start">
-				<FileIcon type={file.type} />
-				<span className="text-sm text-black font-medium truncate" title={file.name}>
+				<Image 
+				src={"/teacher-b2b/pdf.png"}
+				alt="pdf"
+				height={50}
+				width={20}
+				className='h-6 w-6'/>
+				<span className="text-sm sm:text-md text-black font-medium truncate" title={file.name}>
 					{file.name}
 				</span>
 			</div>
-			<span className="text-sm text-gray-500 flex-shrink-0 ml-4 sm:justify-self-center">{file.size}</span>
+			<span className="text-sm sm:text-md text-gray-500 flex-shrink-0 ml-4 sm:justify-self-center">{file.size}</span>
 			<div className="flex gap-4 text-gray-500 justify-self-end">
-				<MdOutlineFileDownload size={20}/>
-				<FiShare2 size={20}/>
+				<MdOutlineFileDownload size={22}/>
+				<FiShare2 size={22}/>
 			</div>
 		</div>
 	)
@@ -163,8 +168,10 @@ export default function StudentSubmittedPapersPage() {
 	return (
 		<div className="bg-[#eeeeee]  min-h-screen flex flex-col">
 			<Header user={headerUser} />
-			<div className=" px-22  bg-white py-4 flex justify-between">
-				<div className="flex items-center gap-2 ">
+			<div className="   bg-white  py-4 ">
+				<div className='   max-w-[96rem]  mx-auto'>
+					<div className='flex justify-between items-center'>
+						<div className="flex items-center gap-2 ">
 					<button
 					onClick={handleBackClick}
 					className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
@@ -172,10 +179,12 @@ export default function StudentSubmittedPapersPage() {
 					<FiArrowLeft className="w-5 h-5" />
 				</button>
 				{/* You can make this title dynamic based on context */}
-				<h1 className="text-lg sm:text-2xl font-bold text-[#FF3366]">Folder Name</h1>
+				<h1 className="text-lg sm:text-base font-bold text-[#FF3366]">Folder Name</h1>
 				</div>
 				<div className="bg-white pr-2 flex items-center">
-					<button className='whitespace-nowrap px-6 py-2 rounded-xl border-[#E5E7E8] border bg-[#F9FAFB] text-xs sm:text-[20px] font-medium'>Manage Group Share</button>
+					<button className='whitespace-nowrap px-4 sm:px-6 py-2 rounded-xl border-[#E5E7E8] border bg-[#F9FAFB] text-sm sm:text-md font-medium'>Manage Group Share</button>
+				</div>
+					</div>
 				</div>
 			</div>
 			<MaxWidthWrapper className="bg-[#eeeeee]">

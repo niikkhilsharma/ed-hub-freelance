@@ -1,9 +1,11 @@
-import ChatPage from '@/components/teacher-b2b/chat-page'
+// page.tsx (e.g. /app/chat/page.tsx)
+import React from "react";
+import  ChatPage  from "@/components/teacher-b2b/chat-page";
 
-export default function Chat() {
-	return (
-		<div>
-			<ChatPage />
-		</div>
-	)
-}
+export default function  Chatpage  ()  {
+  return (
+    <div>
+      <ChatPage />
+    </div>
+  );
+};

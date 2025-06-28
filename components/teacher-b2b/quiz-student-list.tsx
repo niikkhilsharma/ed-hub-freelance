@@ -3,6 +3,7 @@ import React, { useMemo, useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { FiArrowLeft, FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
+import { clsx } from 'clsx';
 
 export default function StudentListPage() {
   const headerUser = {
@@ -16,15 +17,17 @@ export default function StudentListPage() {
       <Header user={headerUser} />
 
       {/* Back Button and Page Title */}
-      <div className="flex items-center gap-2 bg-white px-6 py-4">
+     <div className="bg-white   ">
+       <div className="flex items-center  max-w-[96rem] mx-auto px-6 py-4 gap-2 ">
         <button className="p-1.5 text-black hover:text-[#3366FF] focus:outline-none">
           <FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
         </button>
         <h1 className="text-xl font-bold text-[#FF3366]">Quiz Name</h1>{" "}
         {/* Or dynamic course name */}
       </div>
+     </div>
 
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+      <main className="flex-grow  p-4 sm:p-6 lg:p-8 space-y-8">
         <StudentPerformancePage />
       </main>
 
@@ -163,13 +166,13 @@ const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
       {/* Score and Status */}
       <div className="flex gap-2 flex-shrink-0 sm:mt-0 self-start sm:self-center mr-2">
         <div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center min-w-[75px] sm:min-w-[140px]">
-          <p className="text-sm text-[#6B7280] mb-0.5">Score</p>
+          <p className="text-md text-[#6B7280] mb-0.5">Score</p>
           <p className="text-sm font-bold text-[#3366FF]">
             {student.score}
           </p>
         </div>
         <div className="bg-[#F3F4F6] rounded-xl px-3 py-1.5 sm:px-4 sm:py-3 text-center min-w-[75px] sm:min-w-[140px]">
-          <p className="text-sm text-[#6B7280] mb-0.5">Status</p>
+          <p className="text-md text-[#6B7280] mb-0.5">Status</p>
           <p
             className={`text-md  font-semibold ${
               student.status === "Passed" ? "text-[#4BC4B6]" : "text-[#FF3366CC]"
@@ -197,7 +200,7 @@ const GeneralFilterButton: React.FC<{
 }> = ({ filter, onClick }) => (
   <button
     onClick={onClick}
-    className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-gray-300 bg-[#F9FAFB] text-black rounded-xl text-xs  whitespace-nowrap  hover:bg-gray-100 flex-shrink-0 transition-colors`}
+    className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-gray-300 bg-[#F9FAFB] text-black rounded-xl text-md  whitespace-nowrap  hover:bg-gray-100 flex-shrink-0 transition-colors`}
   >
     <span>{filter.label}</span>
     <FiChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
@@ -225,18 +228,18 @@ const StudentPerformancePage: React.FC = () => {
   }, [students, searchTerm /*, activeFilters */]);
 
   return (
-    <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-6 bg-white rounded-2xl">
+    <main className=" max-w-[96rem] p-4 mx-auto space-y-6 bg-white rounded-2xl">
       {/* Header: Search and Filters */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         {/* Search Input */}
         <div className="relative flex-grow">
-          <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2   h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
+          <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
           <input
             type="text"
             placeholder="Search by name, course, group..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-[#6B7280] bg-white rounded-full focus:ring-2 focus:ring-[#3366FF] focus:border-transparent outline-none text-sm appearance-none"
+            className="w-full pl-10 pr-4 py-3 border border-[#6B7280] bg-white rounded-full focus:ring-2 focus:ring-[#3366FF] focus:border-transparent outline-none text-sm am:text-md appearance-none"
           />
         </div>
 
@@ -247,7 +250,7 @@ const StudentPerformancePage: React.FC = () => {
             className={`p-2.5 sm:p-3 rounded-2xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors`}
             aria-label="Open main filters"
           >
-            <FiFilter className="w-5 h-5 " strokeWidth={2} />
+            <FiFilter className="w-6 h-6 " strokeWidth={2} />
           </button>
           {sampleGeneralFilters.map((filter) => (
             <GeneralFilterButton

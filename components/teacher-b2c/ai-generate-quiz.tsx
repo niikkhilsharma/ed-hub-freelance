@@ -128,7 +128,7 @@ const FormField: React.FC<{
   required,
 }) => (
   <div>
-    <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
+    <label htmlFor={name} className="block text-lg font-medium text-black mb-1">
       {label}
     </label>
     {type === "textarea" ? (
@@ -166,7 +166,7 @@ const FormSelect: React.FC<{
   required?: boolean;
 }> = ({ label, name, value, onChange, options, required }) => (
   <div>
-    <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
+    <label htmlFor={name} className="block text-lg font-medium text-black mb-1">
       {label}
     </label>
     <div className="relative">
@@ -197,7 +197,7 @@ const FormDateInput: React.FC<{
   required?: boolean;
 }> = ({ label, name, value, onChange, required }) => (
   <div>
-    <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
+    <label htmlFor={name} className="block text-lg font-medium text-black mb-1">
       {label}
     </label>
     <div className="relative">
@@ -209,7 +209,7 @@ const FormDateInput: React.FC<{
         onChange={onChange}
         placeholder="Text"
         required={required}
-        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm pr-10`}
+        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-lg pr-10`}
       />
       <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280] pointer-events-none" />
     </div>
@@ -243,7 +243,7 @@ const DurationPointInput: React.FC<{
 
   return (
     <div className="text-center flex flex-col ">
-      <label className="block text-[10px] self-start font-medium text-[#6B7280] mb-1">
+      <label className="block text-[14px] self-start font-medium text-[#6B7280] mb-1">
         {label}
       </label>
       <div
@@ -254,7 +254,7 @@ const DurationPointInput: React.FC<{
           name={name}
           value={value}
           onChange={handleChange}
-          className="w-full text-center bg-transparent outline-none text-sm font-medium text-black appearance-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+          className="w-full text-center bg-transparent outline-none text-lg font-medium text-black appearance-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           maxLength={2}
         />
         <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center h-full justify-center">
@@ -324,12 +324,12 @@ const UnitaryItemCard: React.FC<{
     className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150
       ${
         isSelected
-          ? `bg-orange-100 border-orange-400 shadow-md`
+          ? `border border-[#3366ff] shadow-md`
           : `bg-white hover:bg-gray-200 `
       }`}
   >
-    <h4 className="text-sm font-semibold text-black">{item.title}</h4>
-    <p className="text-xs text-[#6B7280]">{item.subtitle}</p>
+    <h4 className="text-md font-semibold text-black">{item.title}</h4>
+    <p className="text-md text-[#6B7280]">{item.subtitle}</p>
   </button>
 );
 
@@ -473,7 +473,7 @@ const CreateAIAssessmentContent: React.FC = () => {
   {/* Left Column */}
   <div className="sm:w-1/3 space-y-6">
     <FormField
-      label="Assessment Name"
+      label="Quiz Name"
       name="assessmentName"
       value={formData.testName}
       onChange={handleFormChange}
@@ -519,7 +519,7 @@ const CreateAIAssessmentContent: React.FC = () => {
       onChange={handleFormChange}
     />
     <div>
-      <label className="block text-sm font-medium text-black mb-2">
+      <label className="block text-lg font-medium text-black mb-2">
         Duration & Point
       </label>
       <div className="flex  flex-wrap flex-col sm:flex-row gap-2">
@@ -707,7 +707,7 @@ export default function CreateAIAssessmentPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-    <MaxWidthWrapper>
+    
       <div className="bg-gray-100">
       <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
         <button
@@ -729,7 +729,7 @@ export default function CreateAIAssessmentPage() {
         <CreateAIAssessmentContent />
       </main>
       </div>
-    </MaxWidthWrapper>
+    
       {/* Page Title Bar */}
 
       <Footer />

@@ -70,7 +70,7 @@ const Curriculum = () => {
 	<div className="bg-[#eeeeee]">
 		<Header user={headerUser} />
 	  <div className="bg-white py-3">
-		<div className="container mx-2 flex items-center gap-3">
+		<div className=" max-w-[96rem] mx-auto flex items-center gap-3">
 		  <button
 			className="p-1.5 text-black hover:text-gray-700 focus:outline-none rounded-md"
 			aria-label="Go back"
@@ -126,7 +126,7 @@ const Curriculum = () => {
 		  {/* Left column */}
 		  <div className="bg-white p-6 rounded-2xl">
 			<div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
-			  <h2 className="text-md font-semibold h-fit text-[#3366FF] border-b border-[#3366FF] w-fit">
+			  <h2 className="text-md sm:text-lg font-semibold h-fit text-[#3366FF] border-b-[2px] border-[#3366FF] w-fit">
 				Session
 			  </h2>
 			  <div className="flex items-center h-fit gap-2 sm:gap-3 sm:self-center">
@@ -170,7 +170,7 @@ const Curriculum = () => {
 					  <span className="text-lg">{isOpen ? item.title : "Session Name / Number"}</span>
 					  <div>
 						{isOpen ? (
-						  <div className="flex gap-2 text-[#6B7280] text-xs items-center">
+						  <div className="flex gap-3 text-[#6B7280] text-xs items-center">
 							<p>Periods: 18</p>
 							<p>Marks: 20</p>
 							<svg
@@ -226,7 +226,7 @@ const Curriculum = () => {
 		  {/* Right column with two rows */}
 		  <div className="font-medium">
 			<div className="bg-white  md:p-8 h-fit p-6 rounded-2xl overflow-auto">
-			  <h3 className="text-m text-blue-600 text-center font-semibold mb-4">
+			  <h3 className="text-md sm:text-lg text-[#3366ff] text-center tracking-wider font-semibold mb-4">
 				COURSE STRUCTURE CLASS - IX
 			  </h3>
 
@@ -271,8 +271,8 @@ const Curriculum = () => {
 			  {/* Title */}
 			  <div className="text-center space-y-1">
 				<h2 className="text-lg font-semibold uppercase">Mathematics</h2>
-				<p className="font-medium">Question Paper Design</p>
-				<p>Class - IX</p>
+				<p className="font-medium text-lg">Question Paper Design</p>
+				<p  className="font-medium text-lg">Class - IX</p>
 				<div className="flex justify-between mt-2 text-sm font-medium px-2">
 				  <span>Time: 3 Hrs.</span>
 				  <span>Max. Marks: 80</span>

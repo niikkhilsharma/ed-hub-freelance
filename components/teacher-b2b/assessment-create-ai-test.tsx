@@ -403,7 +403,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start max-w-6xl mx-auto">
 					{/* Left Column: Assessment Details Form */}
 					<div className="space-y-6">
-						<FormField label="Assessment Name" name="assessmentName" value={formData.assessmentName} onChange={handleFormChange} />
+						<FormField label="Test Name" name="assessmentName" value={formData.assessmentName} onChange={handleFormChange} />
 						<FormField
 							label="Description"
 							name="description"
@@ -503,7 +503,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 										value="all"
 										checked={studentAssignType === 'all'}
 										onChange={() => setStudentAssignType('all')}
-										className="form-radio h-4 w-4 text-[${PRIMARY_BLUE}] focus:ring-[${PRIMARY_BLUE}]"
+										className="form-radio appearance-none w-5 h-5 rounded-full border-[4px]  text-[${PRIMARY_BLUE}] focus:ring-[${PRIMARY_BLUE}]"
 									/>
 									<span className="text-md text-black">For all</span>
 								</label>
@@ -619,7 +619,8 @@ export default function CreateAIAssessmentPage() {
 			<Header user={headerUser} />
 
 			{/* Page Title Bar */}
-			<div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+			<div className='bg-white'>
+				<div className="flex items-center mx-auto max-w-[96rem] gap-3  px-4 sm:px-6 py-3.5 sticky top-0 z-40">
 				<button
 					onClick={handleBackClick}
 					className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
@@ -627,8 +628,9 @@ export default function CreateAIAssessmentPage() {
 					<FiArrowLeft className="w-5 h-5" />
 				</button>
 				<h1 className="text-lg sm:text-xl font-semibold" style={{ color: ACCENT_PINK_STYLE }}>
-					Create AI Generated Assessment
+					Create AI Generated Test
 				</h1>
+			</div>
 			</div>
 
 			<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">

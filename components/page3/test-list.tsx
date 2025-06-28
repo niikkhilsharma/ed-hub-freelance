@@ -72,7 +72,7 @@ export function TestList({ tests, type }: TestListProps) {
           <div className="flex justify-between items-start">
             {/* Left Section */}
             <div className="w-full ">
-              <h4 className="font-medium text-m sm:text-lg">{test.title}</h4>
+              <h4 className="font-medium text-md sm:text-lg">{test.title}</h4>
               <p className="text-sm text-[#6B7280] pb-3 flex sm:flex-row flex-col gap-2">
                 <span>{test.batch}</span>
                 <span>{test.date}</span>
@@ -107,12 +107,7 @@ export function TestList({ tests, type }: TestListProps) {
             {/* Right Section: Status + Popup Menu */}
             <div className="flex flex-col items-end gap-2 self-center relative">
 
-              <button
-                onClick={() => togglePopup(test.id)}
-                className="p-1 hover:bg-gray-100 rounded"
-              >
-                <Info className="h-5 w-5 text-[#6B7280]" />
-              </button>
+              
               {test.status && (
                 <span className="px-3 py-1 text-sm bg-[#8DD9B31A] text-[#8DD9B3] rounded-2xl mr-2">
                   {test.status}

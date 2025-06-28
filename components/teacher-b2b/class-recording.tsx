@@ -17,6 +17,7 @@ import {
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { CiPlay1 } from "react-icons/ci";
+import { AiOutlineDelete } from "react-icons/ai";
 import { AnimatePresence, motion } from "framer-motion";
 
 // --- Style Constants (from your original code) ---
@@ -36,7 +37,7 @@ interface FilterOption { value: string; label: string; }
 
 // --- Sample Data ---
 const sampleRecordings: ClassRecording[] = [ { id: "rec1", title: "Class 3", subjectUnitName: "Unit Name", periodNumber: "Number", date: "29/5/25", isShared: true, }, { id: "rec2", title: "Class 3", subjectUnitName: "Unit Name", periodNumber: "Number", date: "29/5/25", isShared: true, }, { id: "rec3", title: "Class 3", subjectUnitName: "Unit Name", periodNumber: "Number", date: "29/5/25", isShared: true, }, { id: "rec4", title: "Class 3", subjectUnitName: "Unit Name", periodNumber: "Number", date: "29/5/25", isShared: false, }, { id: "rec5", title: "Class 3", subjectUnitName: "Unit Name", periodNumber: "Number", date: "29/5/25", isShared: false, } ];
-const sampleBatchOptions: FilterOption[] = [{ value: "batchA", label: "Batch A" }];
+const sampleBatchOptions: FilterOption[] = [{ value: "batchA", label: "All Batches" }];
 const sampleSubjectOptions: FilterOption[] = [{ value: "all", label: "Subject" }, { value: "science", label: "Science" }];
 
 
@@ -149,20 +150,20 @@ const RecordingCard: React.FC<{ recording: ClassRecording; onPlay: () => void; o
                 <FiFilm className="w-7 h-7 sm:w-8 sm:h-8 text-[#FFCC00]" />
             </div>
             <div className="min-w-0">
-                <h3 className="text-sm sm:text-base font-semibold text-gray-900 truncate">{recording.title}</h3>
-                <p className="text-xs text-gray-500 mt-0.5 truncate">Subject: {recording.subjectUnitName}</p>
-                <p className="text-xs text-gray-500 mt-0.5 truncate">Period: {recording.periodNumber}</p>
-                <p className="text-xs text-gray-500 mt-0.5 truncate">Date: {recording.date}</p>
+                <h3 className="text-lg  font-semibold text-gray-900 truncate">{recording.title}</h3>
+                <p className="text-sm text-gray-500 mt-0.5 truncate">Subject: {recording.subjectUnitName}</p>
+                <p className="text-sm text-gray-500 mt-0.5 truncate">Period: {recording.periodNumber}</p>
+                <p className="text-sm text-gray-500 mt-0.5 truncate">Date: {recording.date}</p>
             </div>
         </div>
         <div className="flex items-center space-x-2 sm:space-x-4 flex-shrink-0">
             {recording.isShared ? (
-                <button onClick={onShare} className={`px-3 py-1 text-xs ${LIGHT_BLUE_BUTTON_BG} ${LIGHT_BLUE_BUTTON_TEXT} font-medium rounded-full`}>Shared</button>
+                <button onClick={onShare} className={`px-3 py-1.5 text-sm ${LIGHT_BLUE_BUTTON_BG} ${LIGHT_BLUE_BUTTON_TEXT} font-medium rounded-full`}>Shared</button>
             ) : (
                 <button onClick={onShared} className={`p-2 rounded-full ${LIGHT_BLUE_BUTTON_BG} hover:bg-blue-200`} aria-label="Share recording"><FiShare2 className={`w-4 h-4 ${LIGHT_BLUE_BUTTON_TEXT}`} /></button>
             )}
             <button onClick={onPlay} className={`p-2 rounded-full ${LIGHT_GREEN_BUTTON_BG} hover:bg-green-200`} aria-label="Play recording"><CiPlay1 className={`w-4 h-4 ${LIGHT_GREEN_BUTTON_TEXT}`} strokeWidth={2} /></button>
-            <button onClick={onDelete} className={`p-2 rounded-full ${LIGHT_RED_BUTTON_BG} hover:bg-red-200`} aria-label="Delete recording"><FiTrash2 className={`w-4 h-4 ${LIGHT_RED_BUTTON_TEXT}`} /></button>
+            <button onClick={onDelete} className={`p-2 rounded-full ${LIGHT_RED_BUTTON_BG} hover:bg-red-200`} aria-label="Delete recording"><AiOutlineDelete className={`w-4 h-4 ${LIGHT_RED_BUTTON_TEXT}`} /></button>
         </div>
     </div>
 );
@@ -213,7 +214,7 @@ const ClassRecordingContent: React.FC = () => {
                 <div className="space-y-6">
                     {Object.entries(recordingsByDate).map(([date, recs]) => (
                         <div key={date}>
-                            <h2 className="text-lg font-semibold text-black mb-2 ml-1">{date}</h2>
+                            <h2 className="text-lg font-semibold text-black mb-2 ml-1">Date</h2>
                             <div className="space-y-3">
                                 {recs.map((rec) => ( <RecordingCard key={rec.id} recording={rec} onPlay={() => alert(`Playing ${rec.title}`)} onShared={() => handleOpenModal('share', rec)} onShare={() => handleOpenModal('manageAccess', rec)} onDelete={() => handleOpenModal('delete', rec)} /> ))}
                             </div>
