@@ -154,17 +154,17 @@ const StarRatingDisplay: React.FC<{ currentRating: number; maxRating: number }> 
   maxRating,
 }) => {
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center  gap-1 sm:gap-2">
       {Array.from({ length: maxRating }).map((_, index) =>
         index < currentRating ? (
-          <IoStar key={index} className={`w-[15px] h-[15px] ${COLOR_RATING_STARS}`} />
+          <IoStar key={index} className={` h-[13px] w-[13px] lg:w-[15px] sm:h-[15px]  tet-wrap ${COLOR_RATING_STARS}`} />
         ) : (
-          <IoStarOutline key={index} className={`w-[15px] h-[15px] text-gray-300`} />
+          <IoStarOutline key={index} className={`h-[13px] w-[13px] lg:w-[15px] sm:h-[15px] text-wrap text-gray-300`} />
         )
       )}
     </div>
   );
-};
+}
 
 
 interface IndividualSkillScore {
@@ -217,23 +217,30 @@ interface ExtendedAssessmentSummaryData {
 // --- New Sub-component for Individual Scores ---
 const IndividualScoresPanel: React.FC<{ scores: IndividualSkillScore[] }> = ({ scores }) => {
   return (
-    <div className="rounded-3xl p-6 bg-white sm:p-4"> {/* Adjust padding as needed */}
-      <h3 className="text-base font-bold text-black mb-3">Individual Scores</h3>
-      <div className="space-y-3">
-        {scores.map(score => (
-          <div key={score.id} className="flex  gap-2 items-center">
-            <p className="text-sm sm:text-md text-black font-medium  text-wrap truncate pr-2">{score.skillName}</p>
-            <div className="flex-grow bg-white p-[2px] rounded-full h-2.5 sm:h-3 mr-2">
-              <div
-                className={`${score.colorClass} h-full  rounded-full`}
-                style={{ width: `${score.percentage}%` }}
-              ></div>
-            </div>
-           
-          </div>
-        ))}
+   <div className="rounded-3xl p-6 sm:p-4 bg-white">
+  <h3 className="text-base font-bold text-black mb-3">Individual Scores</h3>
+  <div className="space-y-3">
+    {scores.map(score => (
+      <div key={score.id} className="flex items-center gap-2">
+        <p
+          className="text-sm sm:text-md font-medium text-black truncate max-w-[120px] sm:max-w-[160px]"
+          title={score.skillName}
+        >
+          {score.skillName}
+        </p>
+        <div className="flex-grow bg-white rounded-full h-2.5 sm:h-3 relative">
+          <div
+            className={`rounded-full h-full ${score.colorClass}`}
+            style={{ width: `${score.percentage}%` }}
+            aria-label={`${score.skillName} score: ${score.percentage}%`}
+            title={`${score.percentage}%`}
+          />
+        </div>
       </div>
-    </div>
+    ))}
+  </div>
+</div>
+
   );
 };
 
@@ -261,7 +268,7 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
       {/* Assessment Score */}
       <div className={`bg-white p-4 sm:p-6  rounded-2xl text-center`}>
         <p className="sm:text-lg text-md text-[#6b7280] mb-2">Assessment Score</p>
-        <p className={`text-xl  sm:text-4xl font-bold ${COLOR_SCORE_BLUE}`}>{summary.assessmentScore}</p>
+        <p className={`text-lg  sm:text-3xl font-bold ${COLOR_SCORE_BLUE}`}>{summary.assessmentScore}</p>
       </div>
       <IndividualScoresPanel scores={scores}/>
 
@@ -269,17 +276,17 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
       {/* <IndividualScoresPanel scores={summary.individualScores} /> */}
 
       {/* View Detailed Report Button */}
-      <button className={`w-full flex items-center justify-center gap-2 py-2 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
+      <button className={`w-full flex items-center justify-center  gap-1 sm:gap-2  py-2 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
         <IoTimeOutline className={`w-5 h-5 ${COLOR_RATING_STARS}`} />
-        <span className={`text-lg font-medium  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
+        <span className={` text-sm sm:text-md font-medium  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
       </button>
 
       {/* Ratings Section */}
-     <div className='bg-white rounded-xl space-y-2  p-3'>
-       <div className="space-y-6 mt-6 mb-1 pt-1"> {/* Reduced top padding for tighter spacing */}
+     <div className='bg-white sm:px-2  px-4 rounded-xl space-y-2 overflow-x-hidden  py-2'>
+       <div className="sm:space-y-6 mt-6 mb-1 pt-1"> {/* Reduced top padding for tighter spacing */}
         {summary.ratings.map((rating) => (
-          <div key={rating.id} className="flex justify-between items-center">
-            <p className="text-xs sm:text-lg text-black font-medium">{rating.name}</p>
+          <div key={rating.id} className="flex justify-between gap-1 items-center">
+            <p className="text-xs sm:text-sm lg:text-md text-black font-medium">{rating.name}</p>
             <StarRatingDisplay currentRating={rating.score} maxRating={rating.maxScore} />
           </div>
         ))}
@@ -289,7 +296,7 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
       {/* Write a Feedback Form */}
       <form onSubmit={handleFeedbackSubmit} className="space-y-3 pt-1">
         <div className='mt-2'>
-          <label htmlFor="feedback" className="block text-sm  sm:text-lg font-medium text-black mb-1.5">
+          <label htmlFor="feedback" className="block text-sm  sm:text-md font-medium text-black mb-1.5">
             Write a Feedback
           </label>
           <textarea
@@ -298,7 +305,7 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
             value={feedbackText}
             onChange={(e) => setFeedbackText(e.target.value)}
             placeholder="Text"
-            className={`w-full text-[#6B7280] p-2 bg-[#F9FAFB] h-40 border ${BORDER_GRAY} rounded-2xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
+            className={`w-full text-[#6B7280] p-2 bg-[#F9FAFB] sm:h-40 border ${BORDER_GRAY} rounded-2xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
           />
         </div>
         <button
@@ -325,14 +332,14 @@ const AssessmentReviewPage: React.FC = () => {
     // It uses a responsive grid layout
     <div className=" bg-white p-6 rounded-2xl flex  flex-col sm:flex-row gap-8 justify-between">
       {/* Left Column: Questions List */}
-      <div className="w-[55%] space-y-6">
+      <div className="sm:w-[55%] space-y-6">
         {questionsData.map((question) => (
           <QuestionItem key={question.id} question={question} />
         ))}
       </div>
 
       {/* Right Column: Summary Panel */}
-      <div className="w-[40%]">
+      <div className="sm:w-[40%]">
         <SummaryPanel summary={summaryData} />
       </div>
     </div>
@@ -360,7 +367,7 @@ export default function StudentPaperPage() {
                 <h1 className="text-lg font-bold text-[#FF3366]">Student Name</h1> {/* Or dynamic course name */}
               </div>
               </div>
-          <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+          <main className=" max-w-[96rem]  mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
             <AssessmentReviewPage />
           </main>
         </div>

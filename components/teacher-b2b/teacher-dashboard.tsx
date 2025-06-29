@@ -479,27 +479,54 @@ const TeacherDashboard = () => {
 
 									{/* Accordions */}
 									<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
-										{contentItems.map((item, index) => (
-											<AccordionItem key={index} value={`item-${index}`} className="rounded-2xl p-2 border bg-gray-100 shadow">
-												<AccordionTrigger className="text-left rounded-2xl bg-white px-4 py-3">
-													<div>
-														<h2 className="text-base font-medium">{item.title}</h2>
-														<p className="text-sm text-gray-500">
-															Duration: {item.duration} | Topic: {item.topic}
-														</p>
-													</div>
-												</AccordionTrigger>
-												<AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
-													<p className="font-semibold">Before the class</p>
-													<ul className="list-disc pl-4 space-y-1">
-														{item.points.map((point, i) => (
-															<li key={i}>{point}</li>
-														))}
-													</ul>
-												</AccordionContent>
-											</AccordionItem>
-										))}
-									</Accordion>
+  {contentItems.map((item, index) => {
+    const isFirst = index === 0;
+
+    return (
+      <AccordionItem
+        key={index}
+        value={`item-${index}`}
+        className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
+        style={
+          isFirst
+            ? {
+                backgroundImage: "url('/teacher/dashboard/pattern2.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : {}
+        }
+      >
+        {/* Only show dark overlay on the first item */}
+        {isFirst && (
+          <div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
+        )}
+
+        <AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
+          <div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">
+            <h2 className="text-base font-medium">{item.title}</h2>
+            <div>
+              <p className="text-sm text-gray-500">Duration: {item.duration}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">| Topic: {item.topic}</p>
+            </div>
+          </div>
+        </AccordionTrigger>
+
+        <AccordionContent className="max-h-[300px] relative z-10 overflow-y-auto custom-scrollbar p-4 space-y-4 text-sm text-[#6b7280] bg-white items-center rounded-2xl mt-2">
+          <p className="font-semibold text-black">Before the class</p>
+          <ul className="text-sm sm:text-md pl-4 space-y-4">
+            {item.points.map((point, i) => (
+              <li key={i}>{point}</li>
+            ))}
+          </ul>
+        </AccordionContent>
+      </AccordionItem>
+    );
+  })}
+</Accordion>
+
 								</div>
 							</div>
 
@@ -580,28 +607,55 @@ const TeacherDashboard = () => {
 									</div>
 
 									{/* Accordions */}
-									<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
-										{content2Items.map((item, index) => (
-											<AccordionItem key={index} value={`item-${index}`} className="rounded-xl p-2 bg-gray-100 shadow ">
-												<AccordionTrigger className="text-left px-4 py-3 rounded-2xl bg-white">
-													<div>
-														<h2 className="text-base font-medium">{item.title}</h2>
-														<p className="text-sm text-gray-500">
-															Duration: {item.duration} | Topic: {item.topic}
-														</p>
-													</div>
-												</AccordionTrigger>
-												<AccordionContent className="max-h-[300px] overflow-y-auto custom-scrollbar p-4 space-y-2 text-sm text-gray-700 bg-white rounded-2xl mt-2">
-													<p className="font-semibold">Before the class</p>
-													<ul className="list-disc pl-4 space-y-1">
-														{item.points.map((point, i) => (
-															<li key={i}>{point}</li>
-														))}
-													</ul>
-												</AccordionContent>
-											</AccordionItem>
-										))}
-									</Accordion>
+								<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
+  {contentItems.map((item, index) => {
+    const isFirst = index === 0;
+
+    return (
+      <AccordionItem
+        key={index}
+        value={`item-${index}`}
+        className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
+        style={
+          isFirst
+            ? {
+                backgroundImage: "url('/teacher/dashboard/pattern2.png')",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }
+            : {}
+        }
+      >
+        {/* Only show dark overlay on the first item */}
+        {isFirst && (
+          <div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
+        )}
+
+        <AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
+          <div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">
+            <h2 className="text-base font-medium">{item.title}</h2>
+            <div>
+              <p className="text-sm text-gray-500">Duration: {item.duration}</p>
+            </div>
+            <div>
+              <p className="text-sm text-gray-500">| Topic: {item.topic}</p>
+            </div>
+          </div>
+        </AccordionTrigger>
+
+        <AccordionContent className="max-h-[300px] relative z-10 overflow-y-auto custom-scrollbar p-4 space-y-4 text-sm text-[#6b7280] bg-white items-center rounded-2xl mt-2">
+          <p className="font-semibold text-black">Before the class</p>
+          <ul className="text-sm sm:text-md pl-4 space-y-4">
+            {item.points.map((point, i) => (
+              <li key={i}>{point}</li>
+            ))}
+          </ul>
+        </AccordionContent>
+      </AccordionItem>
+    );
+  })}
+</Accordion>
+
 								</div>
 							</div>
 						</div>

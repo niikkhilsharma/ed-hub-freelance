@@ -13,7 +13,7 @@ import {
 } from "react-icons/fi";
 import { FiArrowLeft } from "react-icons/fi";
 import MaxWidthWrapper from "../max-width-wrapper";
-
+import Image from 'next/image'
 // Define the File interface
 interface ManagedFile {
   id: string;
@@ -57,7 +57,12 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
   return (
     <div className="flex items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md">
       <div className="flex items-center space-x-3 min-w-0">
-        <FileIcon type={file.type} />
+        <Image 
+                src={"/teacher-b2b/pdf.png"}
+                alt="pdf"
+                height={50}
+                width={20}
+                className='h-6 w-6'/>
         <span
           className="text-sm text-black font-medium truncate"
           title={file.name}
@@ -120,7 +125,7 @@ const FileManagementContent: React.FC = () => {
             className="p-2.5 rounded-xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors"
             aria-label="Open filters"
           >
-            <FiFilter className="w-5 h-5" strokeWidth={2} />
+            <FiFilter className="w-6 h-6" strokeWidth={2} />
           </button>
           {["Filter 1", "Filter 2", "Filter 3"].map((filterName) => (
             <button
@@ -163,7 +168,7 @@ const FileManagementContent: React.FC = () => {
         className="px-5 ml-auto mt-4  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full shadow-lg hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 text-sm"
         aria-label="Upload new file"
       >
-        Upload
+        Continue
       </button>
       </div>
     </div>
@@ -187,10 +192,11 @@ export default function StudentSubmittedPapersPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-    <MaxWidthWrapper>
+    
       <div className="bg-gray-100">
-
-      <div className="flex items-center gap-2 bg-white px-4 sm:px-6 py-4 shadow-sm">
+  <div className=" bg-white">
+ 
+      <div className="flex items-center gap-2 max-w-[96rem] mx-auto px-4 sm:px-6 py-4 shadow-sm">
         <button
           onClick={handleBackClick}
           className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
@@ -198,10 +204,10 @@ export default function StudentSubmittedPapersPage() {
         >
           <FiArrowLeft className="w-5 h-5" />
         </button>
-        {/* You can make this title dynamic based on context */}
-        <h1 className="text-lg sm:text-xl font-bold text-[#FF3366]">
-          Folder Name
-        </h1>
+        
+      </div>
+     
+
       </div>
 
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
@@ -213,7 +219,7 @@ export default function StudentSubmittedPapersPage() {
         <FileManagementContent />
       </main>
       </div>
-    </MaxWidthWrapper>
+    
       {/* Back Button and Page Title */}
 
       <Footer />

@@ -452,7 +452,8 @@ const StudentReport: React.FC = () => {
 
         {/* Page Title Bar */}
         {/* Page Title Bar */}
-        <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+       <div className="bg-white">
+         <div className="flex items-center gap-3 max-w-[96rem] mx-auto px-4 sm:px-6 py-3.5 sticky top-0 z-40">
           <button
             onClick={handleBackClick}
             className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
@@ -464,6 +465,9 @@ const StudentReport: React.FC = () => {
             Student List
           </h1>
         </div>
+       </div>
+       {/* main div */}
+       <div className="max-w-[96rem] mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-2 md:px-5 gap-4">
           {/* Student Info Card */}
 
@@ -729,22 +733,7 @@ const StudentReport: React.FC = () => {
     p-4 
     bg-gray-100"
         >
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white rounded-2xl p-3 ">
-                    <div className="bg-gray-200 rounded-2xl p-4">
-                        <div className="p-5 bg-blue-500 rounded-xl">Basic acadmics</div>
-                        <div className="mt-2">
-                            {skillCardData.map((card, index) => (
-                                <div className="flex gap-4" key={index}>
-                                    <ProgressCircleItem
-                                percentageText={card.overallProgress}
-                                color={card.progressColor}
-                            />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="bg-red-200 rounded-2xl px-2 py-4"></div>
-                </div> */}
+          
           <div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-6 items-start">
             {skillCardData.map((card, cardIndex) => (
               <div
@@ -968,7 +957,7 @@ const StudentReport: React.FC = () => {
               </tbody>
             </table>
           </div>
-        </main>
+        </main></div> 
         <Footer />
       </div>
     </>
