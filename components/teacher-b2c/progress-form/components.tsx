@@ -163,9 +163,9 @@ export default function AttendanceForm() {
           {students.map((student, index) => (
             <div
               key={index}
-              className="flex items-center justify-between rounded-3xl bg-[#FAF9FB] border border-[#B0B0B0] px-3 py-5 shadow-sm"
+              className="flex items-center justify-between rounded-3xl bg-[#FAF9FB] border border-[#B0B0B0]  sm:px-3 sm:py-5 shadow-sm"
             >
-              <div className="flex items-center space-x-4 ">
+              <div className="flex   items-center space-y-2 space-x-4 ">
                
                   <Image
                     src={student.image}
@@ -181,13 +181,17 @@ export default function AttendanceForm() {
                   <p className="text-gray-500 text-xs">{student.grade}</p>
                   <p className="text-gray-500 text-xs">{student.group}</p>
                 </div>
+              
+            
+               
+              
               </div>
-              <Image
+               <Image
                 src={"/tick.png"}
                 alt="student"
                 width={40}
                 height={40}
-                className="rounded-full"
+                className="rounded-full w-6 h-6 sm:w-10 sm:h-10"
               />
             </div>
           ))}

@@ -47,8 +47,8 @@ export default function StudentSubmittedPapersPage() {
   return (
     <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
       <Header user={headerUser} />
-      <div className=" px-22  bg-white py-4 flex justify-between">
-        <div className="flex items-center gap-2 ">
+      <div className="   bg-white ">
+        <div className="flex items-center  py-4  max-w-[96rem] mx-auto gap-2 ">
           <button
             onClick={handleBackClick}
             className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
@@ -57,7 +57,7 @@ export default function StudentSubmittedPapersPage() {
             <FiArrowLeft className="w-5 h-5" />
           </button>
           {/* You can make this title dynamic based on context */}
-          <h1 className="text-lg sm:text-2xl font-bold text-[#FF3366]">
+          <h1 className="text-lg sm:text-xl font-bold text-[#FF3366]">
             Add Daily Progress
           </h1>
         </div>

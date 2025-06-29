@@ -125,7 +125,7 @@ const TopTabs: React.FC<{
       <button
         key={tab}
         onClick={() => onTabChange(tab)}
-        className={`px-4 sm:px-6 py-2 rounded-2xl text-md font-semibold transition-colors duration-200 ${
+        className={`px-4 sm:px-6 py-2 rounded-2xl text-sm sm:text-md font-semibold transition-colors duration-200 ${
           activeTab === tab
             ? "bg-[#FF3366] text-white"
             : "text-[#6B7280] hover:bg-gray-200"
@@ -198,17 +198,19 @@ export default function FeedbackDashboardPage() {
     <>
       <Header user={headerUser} />
       <div className="bg-[#eeeeee] min-h-screen flex  flex-col">
-        <div className="flex bg-white py-3 px-8 items-center gap-4 mb-2">
+        <div className="p-2 bg-white">
+          <div className="flex max-w-[96rem]  mx-auto items-center gap-4 mb-2">
           <button className="p-2 h-8 rounded-full hover:bg-gray-100">
             <FiArrowLeft className="w-5 h-5" strokeWidth={2} />
           </button>
-          <h1 className="text-2xl font-semibold text-[#FF3366]">
+          <h1 className="sm:text-xl  text-lg font-semibold text-[#FF3366]">
             Student Progress Report
           </h1>
         </div>
+        </div>
         {/* <AcademicFeedbackPage /> */}
 
-        <div className="w-full max-w-7xl mx-auto">
+        <div className="w-full my-2 max-w-7xl mx-auto">
           <TopTabs activeTab={activeTab} onTabChange={setActiveTab} />
         </div>
 

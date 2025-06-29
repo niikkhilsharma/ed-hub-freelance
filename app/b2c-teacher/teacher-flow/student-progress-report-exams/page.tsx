@@ -89,7 +89,7 @@ const ratingHeaders = ["Emerging", "Developing", "Established"];
 const TopTabs: React.FC<{ activeTab: string; onTabChange: (tab: string) => void }> = ({ activeTab, onTabChange }) => (
     <div className="flex justify-center items-center gap-2 mb-6 p-1.5 bg-white rounded-2xl">
         {tabData.map(tab => (
-            <button key={tab} onClick={() => onTabChange(tab)} className={`px-4 sm:px-6 py-2 rounded-2xl text-lg font-semibold transition-colors duration-200 ${ activeTab === tab ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-gray-200'}`}>
+            <button key={tab} onClick={() => onTabChange(tab)} className={`px-4 sm:px-6 py-2 rounded-2xl text-md sm:text-lg font-semibold transition-colors duration-200 ${ activeTab === tab ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-gray-200'}`}>
                 {tab}
             </button>
         ))}
@@ -151,7 +151,7 @@ export default function FeedbackDashboardPage() {
         <div className=" bg-white py-3 px-8 items-center  mb-2">
          <div className="mx-auto gap-4 max-w-screen-2xl flex">
              <button className="p-2 h-8 rounded-full hover:bg-gray-100"><FiArrowLeft className="w-5 h-5" strokeWidth={2} /></button>
-          <h1 className="text-2xl font-semibold text-[#FF3366]">Student Progress Report</h1>
+          <h1 className="sm:text-xl text-lg font-semibold text-[#FF3366]">Student Progress Report</h1>
          </div>
         </div>
         <div className="w-full max-w-7xl  my-4 mx-auto">

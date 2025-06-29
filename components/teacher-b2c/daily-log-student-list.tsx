@@ -38,8 +38,8 @@ export default function CourseCardPage() {
     <>
       <Header user={headerUser} />
       <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
-        <div className=" px-22  bg-white py-4 flex justify-between">
-          <div className="flex items-center gap-2 ">
+        <div className="   bg-white">
+          <div className="flex items-center py-4 max-w-[96rem] mx-auto gap-2 ">
             <button
               className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
               aria-label="Go back"
@@ -53,14 +53,14 @@ export default function CourseCardPage() {
           </div>
         </div>
 
-        <main className="p-2 flex flex-col  max-w-[90vw] sm:p-6 lg:p-8 sm:mx-22 mx-auto bg-white m-6  rounded-2xl">
+        <main className="p-2  w-full sm:p-4 flex flex-col  max-w-[96rem]  mx-auto bg-white my-6  rounded-2xl">
          
 
         <div className="flex justify-center gap-6 mb-4 px-4 border border-[#E5E7EB] p-4 rounded-3xl w-full ">
           {batches.map((batch) => (
             <button
               key={batch}
-              className={`px-2 py-1 rounded-2xl font-semibold text-lg ${
+              className={`px-2 py-1 rounded-2xl font-semibold  text-sm sm:text-lg ${
                 activeBatch === batch
                   ? 'bg-[#FF3366] text-white'
                   : 'text-[#6B7280] hover:text-black'

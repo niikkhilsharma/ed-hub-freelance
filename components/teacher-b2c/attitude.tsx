@@ -62,7 +62,7 @@ export default function StudentAtitude() {
 
     <div className="bg-white   p-6 sm:p-8 mb-4  rounded-2xl ">
       {/* Header for the assessment */}
-      <h1 className="text-2xl sm:text-3xl font-bold text-[#3366ff] mb-6 sm:mb-8 pb-2 ">
+      <h1 className="text-xl sm:text-2xl font-bold text-[#3366ff] mb-6 sm:mb-8 pb-2 ">
         Attitude
       </h1>
 
@@ -86,12 +86,12 @@ export default function StudentAtitude() {
         {attitudeCategories.map((category) => (
           <React.Fragment key={category.id}>
             {/* Attitude Column */}
-            <div className="bg-[#f9fafb] py-14 px-4 h-40  text-xl text-center rounded-xl shadow-sm font-semibold text-black">
+            <div className="bg-[#f9fafb] sm:py-14 sm:px-4 max-h-36  text-sm sm:text-lg text-center rounded-xl shadow-sm font-semibold text-black">
               {category.attitude}
             </div>
 
             {/* Emerging Options Column */}
-            <div className="bg-[#f9fafb]  p-4 rounded-xl shadow-sm flex flex-col justify-center space-y-4">
+            <div className="bg-[#f9fafb] p-2 sm:p-4 rounded-xl shadow-sm flex flex-col justify-items-start  space-y-2">
               {category.options.emerging.map((option, index) => (
                 <label
                   key={index}
@@ -109,7 +109,7 @@ export default function StudentAtitude() {
             </div>
 
             {/* Developing Options Column */}
-            <div className="bg-[#f9fafb]  p-4 rounded-xl shadow-sm flex flex-col justify-center space-y-2">
+            <div className="bg-[#f9fafb]  p-4 rounded-xl shadow-sm flex flex-col justify-start space-y-2">
               {category.options.developing.map((option, index) => (
                 <label
                   key={index}
@@ -127,7 +127,7 @@ export default function StudentAtitude() {
             </div>
 
             {/* Established Options Column */}
-            <div className="bg-[#f9fafb]  p-4 rounded-xl shadow-sm flex flex-col justify-center space-y-2">
+            <div className="bg-[#f9fafb]  p-4 rounded-xl shadow-sm flex flex-col justify-start space-y-2">
               {category.options.established.map((option, index) => (
                 <label
                   key={index}
