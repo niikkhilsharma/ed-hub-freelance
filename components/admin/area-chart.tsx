@@ -47,46 +47,38 @@ export default function AdminAreaChart() {
 
 	const scaledData = data.map(d => ({ ...d, pv: scaleMap(d.pv) }))
 	return (
-		<div className="w-1/3">
-			<h4>A demo of synchronized AreaCharts</h4>
-			<ResponsiveContainer width="100%" height={180}>
-				<AreaChart
-					data={scaledData}
-					syncId="anyId"
-					margin={{
-						top: 30,
-						right: 0,
-						left: 0,
-						bottom: 0,
-					}}>
-					<defs>
-						<linearGradient id="fadeGreen" x1="0" y1="0" x2="0" y2="1">
-							<stop offset="0%" stopColor="#25CD25" stopOpacity={0.8} /> {/* Top color (opaque) */}
-							<stop offset="100%" stopColor="#25CD25" stopOpacity={0} /> {/* Bottom transparent */}
-						</linearGradient>
-					</defs>
+		<ResponsiveContainer width="100%" height={180}>
+			<AreaChart
+				data={scaledData}
+				syncId="anyId"
+				margin={{
+					top: 30,
+					right: 0,
+					left: 0,
+					bottom: 0,
+				}}>
+				<defs>
+					<linearGradient id="fadeGreen" x1="0" y1="0" x2="0" y2="1">
+						<stop offset="0%" stopColor="#25CD25" stopOpacity={0.8} /> {/* Top color (opaque) */}
+						<stop offset="100%" stopColor="#25CD25" stopOpacity={0} /> {/* Bottom transparent */}
+					</linearGradient>
+				</defs>
 
-					<CartesianGrid stroke="#F1F1F1" className="ml-4" />
-					<XAxis
-						dataKey="name"
-						stroke="#F1F1F1"
-						color="black"
-						tick={{ fill: '#7D7D7D', fontSize: 10, fontWeight: 500, dy: 15 }}
-					/>
-					<YAxis
-						stroke="#F1F1F1"
-						tick={{ fill: '#7D7D7D', fontSize: 10, dx: -20, fontWeight: 500 }}
-						tickFormatter={value => {
-							if (value >= 1000) {
-								return `${value / 1000}k` // Convert values to 'k' format
-							}
-							return value
-						}}
-					/>
-					<Tooltip formatter={(value: number) => `${Math.round((value / 100000) * 100)}%`} />
-					<Area type="monotone" dataKey="pv" stroke="#25CD25" fill="url(#fadeGreen)" strokeDasharray="3 3" />
-				</AreaChart>
-			</ResponsiveContainer>
-		</div>
+				<CartesianGrid stroke="#F1F1F1" className="ml-4" />
+				<XAxis dataKey="name" stroke="#F1F1F1" color="black" tick={{ fill: '#7D7D7D', fontSize: 8, fontWeight: 500, dy: 15 }} />
+				<YAxis
+					stroke="#F1F1F1"
+					tick={{ fill: '#7D7D7D', fontSize: 8, dx: -20, fontWeight: 500 }}
+					tickFormatter={value => {
+						if (value >= 1000) {
+							return `${value / 1000}k` // Convert values to 'k' format
+						}
+						return value
+					}}
+				/>
+				<Tooltip formatter={(value: number) => `${Math.round((value / 100000) * 100)}%`} />
+				<Area type="monotone" dataKey="pv" stroke="#25CD25" fill="url(#fadeGreen)" strokeDasharray="3 3" />
+			</AreaChart>
+		</ResponsiveContainer>
 	)
 }

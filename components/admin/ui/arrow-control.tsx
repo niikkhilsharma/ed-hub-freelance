@@ -13,7 +13,7 @@ export default function ArrowControl({
 	return (
 		<Button
 			variant={'outline'}
-			className="flex gap-2 items-center justify-between rounded-xl font-normal w-32 px-2! shadow-none bg-[#F9FAFB] border-[#E5E7EB] tracking-tight">
+			className="flex gap-2 items-center justify-center rounded-xl font-normal w-[8.3rem] shadow-none bg-[#F9FAFB] border-[#E5E7EB] tracking-tight">
 			<CircleArrowLeft onClick={leftOnClick} />
 			{text}
 			<CircleArrowRight onClick={RightOnClick} />
