@@ -2,13 +2,13 @@ import React from 'react'
 import PrincipalLoginBanner from './login-banner'
 import LoginTable from './login-status'
 
-const LoginActivity = () => {
+const LoginActivityTeacher = () => {
   return (
     <>
-    <PrincipalLoginBanner activity="Teacher" />
+    <PrincipalLoginBanner button1='Class 8A' button2='Group A' profileImage='/teacher-b2b/profile2.png' activity="Teacher" />
     <LoginTable />
     </>
   )
 }
 
-export default LoginActivity;
+export default LoginActivityTeacher;

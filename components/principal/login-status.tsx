@@ -26,7 +26,7 @@ const loginData: LoginRecord[] = [
 
 const LoginTable: React.FC = () => {
   return (
-    <div className="overflow-x-auto px-4 rounded-2xl">
+    <div className="overflow-x-auto px-4 rounded-2xl pb-4">
       <table className="min-w-full bg-white px-3 py-2 rounded-2xl border-separate border-spacing-y-2 text-sm">
         <thead>
           <tr className="bg-blue-600  text-white text-left">

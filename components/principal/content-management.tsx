@@ -87,7 +87,7 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
       className={`bg-[#99DEFF] w-16 h-16 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
     >
       <FiFolder
-        className="w-8 h-8 sm:w-12 sm:h-12 text-black opacity-80"
+        className="w-8 h-8 md:w-12 md:h-12 text-black opacity-80"
         strokeWidth={1.5}
       />
     </div>
@@ -98,11 +98,11 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
         </h3>
         <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount} Files</p>
       </div>
-      <div className="w-full bg-gray-100 hidden sm:block rounded-full p-1">
+      <div className="w-full bg-gray-100 hidden lg:block rounded-full p-1">
         <button className="w-full  flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
       </div>
     </div>
-    <div className="w-full bg-gray-100 sm:hidden col-span-2 rounded-full p-1">
+    <div className="w-full bg-gray-100 lg:hidden col-span-2 rounded-full p-1">
       <button className="w-full flex  items-center gap-2 cursor-pointer justify-center text-gray-600 text-lg"> <IoSettingsOutline /> Manage Access</button>
     </div>
   </div>
@@ -158,7 +158,7 @@ const SubjectFolderViewContent: React.FC = () => {
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
           <div className="relative flex-grow">
-            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-full h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
+            <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
             <input
               type="text"
               placeholder="Search folders..."

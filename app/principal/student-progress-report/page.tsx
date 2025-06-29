@@ -130,15 +130,15 @@ const StudentProgressReport = () => {
             Student Report
           </h1>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
+        <div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
           {/* Student Info Card */}
           <div
-            className="lg:col-span-3  p-5 rounded-2xl bg-[url('/pattern.png')] bg-repeat bg-[length:650px_650px]"
+            className=" bg-white rounded-2xl"
             style={{
               borderColor: PALETTE.BORDER_GREY,
             }}
           >
-            <div className="grid bg-white rounded-2xl grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] items-start sm:items-center gap-4">
+            <div className="flex flex-col w-full justify-center sm:flex-row sm:justify-between bg-white rounded-2xl sm:items-center gap-4">
               <Image
                 src="/teacher-b2b/profile2.png"
                 alt="Shlok Agheda"
@@ -146,13 +146,15 @@ const StudentProgressReport = () => {
                 height={72}
                 className="rounded-full h-24 w-24 flex-shrink-0"
               />
-              <div className="flex-grow">
+              <div className="flex-grow relative">
+                <div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute left-[10rem]"><IoMdSettings size={20}/></div>
                 <h2
                   className="text-xl font-semibold"
                   style={{ color: PALETTE.TEXT_DARK }}
                 >
                   Shlok Agheda
                 </h2>
+                
                 <div className="flex flex-wrap items-center gap-1 mt-2">
                   <span
                     className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
@@ -172,23 +174,60 @@ const StudentProgressReport = () => {
                   >
                     Group A
                   </span>
+                 
                 </div>
               </div>
-              <div className="text-[11px] col-span-2 lg:col-span-3 font-medium text-left space-y-0.5 text-black">
+              <div className="text-[11px] font-medium text-left space-y-0.5 text-black">
                 <p>Gender: Male</p>
                 <p>DOB: 15 Jun 2015</p>
                 <p>Email: example@gm.com</p>
-
+                
                 <p>City: Mumbai</p>
                 <p>State: Maharashtra</p>
+              </div>
+            </div>
+            <div className="pt-4 ">
+              <p
+                className="text-sm font-bold mb-3"
+                style={{ color: PALETTE.TEXT_DARK }}
+              >
+                Key Focus Area
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {keyFocusAreas.map((area) => (
+                  <button
+                    key={area}
+                    className="text-xs px-2 py-2.5 text-black rounded-full border"
+                    style={{
+                      backgroundColor: "#F3F4F6",
+                      borderColor: PALETTE.BORDER_GREY,
+                    }}
+                  >
+                    {area}
+                  </button>
+                ))}
+              </div>
+            </div>
+            <div className="">
+              <h2 className='my-2 text-sm font-bold'>Assigned Teachers</h2>
+              <div className="flex flex-wrap gap-4 items-stretch">
+                {Teachers.map((card, index) => (
+                  <div className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
+                    <Image className='rounded-xl' src={card.image} width={80} height={80} alt={card.name} />
+                    <div className="">
+                      <h2 className='font-medium'>{card.name}</h2>
+                      <p className={`text-[${PALETTE.ACCENT_PINK}]`}>{card.subject}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="my-2 mx-4 rounded-2xl overflow-x-auto custom-scrollbar bg-[#f1f1f2] border px-3 py-2">
+      <div className="my-2 mx-4 rounded-2xl bg-[#f1f1f2] border px-3 py-2">
         <h2 className={`text-[${PALETTE.ACCENT_PINK}] font-bold text-m`}>Active Courses</h2>
-        <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 whitespace-nowrap">
+        <div className="flex gap-4 px-2 overflow-x-auto custom-scrollbar pb-4 pt-2 ">
           {courses.map((course, index) => (
             <div key={index} className="min-w-[325px]">
               <CourseCard {...course} />

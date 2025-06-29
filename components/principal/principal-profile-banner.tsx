@@ -47,48 +47,50 @@ const PrincipalProfileBanner = () => {
                     Teacher Report
                 </h1>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-4 gap-6">
+            <div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
                 {/* Student Info Card */}
                 <div
-                    className="lg:col-span-3  bg-white p-5 rounded-2xl bg-[url('/pattern-3.png')] bg-repeat bg-[length:650px_650px]"
+                    className="bg-white p-5 rounded-2xl "
                     style={{
                         borderColor: PALETTE.BORDER_GREY,
                     }}
                 >
-                    <div className="grid bg-white rounded-2xl grid-cols-[auto_1fr] md:grid-cols-[auto_1fr_1fr] items-start sm:items-center gap-4">
-                        <Image
-                            src="/teacher-b2b/profile2.png"
-                            alt="Shlok Agheda"
-                            width={72}
-                            height={72}
-                            className="rounded-full h-24 w-24 flex-shrink-0"
-                        />
-                        <div className="flex-grow">
-                            <h2
-                                className="text-xl font-semibold"
-                                style={{ color: PALETTE.TEXT_DARK }}
-                            >
-                                Shlok Agheda
-                            </h2>
-                            <div className="flex flex-wrap items-center gap-1 mt-2">
-                                <span
-                                    className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
-                                    style={{
-                                        backgroundColor: PALETTE.ACCENT_PINK,
-                                        color: PALETTE.WHITE_CARD,
-                                    }}
+                    <div className="flex flex-col w-full justify-center sm:flex-row sm:justify-between bg-white rounded-2xl sm:items-center gap-4">
+                        <div className="flex gap-4 items-center">
+                            <Image
+                                src="/teacher-b2b/profile2.png"
+                                alt="Shlok Agheda"
+                                width={72}
+                                height={72}
+                                className="rounded-full h-24 w-24 flex-shrink-0"
+                            />
+                            <div className="flex-grow">
+                                <h2
+                                    className="text-xl font-semibold"
+                                    style={{ color: PALETTE.TEXT_DARK }}
                                 >
-                                    Class 8A
-                                </span>
-                                <span
-                                    className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
-                                    style={{
-                                        backgroundColor: PALETTE.ACCENT_PINK,
-                                        color: PALETTE.WHITE_CARD,
-                                    }}
-                                >
-                                    Group A
-                                </span>
+                                    Shlok Agheda
+                                </h2>
+                                <div className="flex flex-wrap items-center gap-1 mt-2">
+                                    <span
+                                        className="text-xs font-medium px-2.5 py-1.5 rounded-l-full rounded-r-full sm:rounded-r-none"
+                                        style={{
+                                            backgroundColor: PALETTE.ACCENT_PINK,
+                                            color: PALETTE.WHITE_CARD,
+                                        }}
+                                    >
+                                        Class Assigned
+                                    </span>
+                                    <span
+                                        className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full rounded-l-full sm:rounded-l-none"
+                                        style={{
+                                            backgroundColor: PALETTE.ACCENT_PINK,
+                                            color: PALETTE.WHITE_CARD,
+                                        }}
+                                    >
+                                        Class Assigned
+                                    </span>
+                                </div>
                             </div>
                         </div>
                         <div className="text-[11px] col-span-2 lg:col-span-3 font-medium text-left space-y-0.5 text-black">
@@ -111,7 +113,7 @@ const PrincipalProfileBanner = () => {
                             {keyFocusAreas.map((area) => (
                                 <button
                                     key={area}
-                                    className="text-xs px-2 py-2 text-black rounded-full border"
+                                    className="text-xs px-2 py-2.5 text-black rounded-full border"
                                     style={{
                                         backgroundColor: "#F3F4F6",
                                         borderColor: PALETTE.BORDER_GREY,

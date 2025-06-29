@@ -48,7 +48,7 @@ interface TabButtonProps {
 const TabButton: React.FC<TabButtonProps> = ({ label, isActive, onClick }) => (
 	<button
 		onClick={onClick}
-		className={`px-5 py-1.5 text-sm font-medium rounded-xl transition-colors duration-150
+		className={`px-12 py-1.5 text-sm font-medium rounded-xl transition-colors duration-150
       ${isActive ? `text-white` : `hover:bg-gray-100 text-[${INACTIVE_TAB_TEXT}]`}`}
 		style={{ backgroundColor: isActive ? ACTIVE_TAB_BG : INACTIVE_TAB_BG }}>
 		{label}
@@ -121,10 +121,12 @@ const PrincipalDashboardPage: React.FC = () => {
 	return (
 		// This div would typically be inside your <main> tag from the parent layout
 		<div className="rounded-2xl bg-white p-4 space-y-6">
-			<div className=" space-y-6 rounded-2xl border border-[#E5E7EB] bg-white p-4 ">
+			<div className="bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px] space-y-6 rounded-2xl border border-[#E5E7EB] bg-white p-4 ">
 				{/* Profile and Stats Section */}
-				<section className="bg-white p-2  ">
-					<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+				<div className="bg-white rounded-2xl">
+					<section className=" p-2 mb-4">
+					<div className="bg-white">
+						<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
 						<div className="flex items-center gap-4">
 							<Image src={profile.avatar} alt={profile.name} width={100} height={100} className="rounded-full" />
 							<div className="space-y-1">
@@ -148,10 +150,11 @@ const PrincipalDashboardPage: React.FC = () => {
 							<StatCard key={stat.label} number={stat.number} label={stat.label} />
 						))}
 					</div>
+					</div>
 				</section>
 
 				{/* Charts Section */}
-				<section className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+				<section className=" grid grid-cols-1 lg:grid-cols-5 gap-6">
 					{/* Overall Progress Chart */}
 					<div className="col-span-2 bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-5 ">
 						<div className="flex justify-between items-center mb-4">
@@ -255,11 +258,7 @@ const PrincipalDashboardPage: React.FC = () => {
 						<div className="space-y-3">
 							{topBranchesData.map(branch => (
 								<div key={branch.label} className="flex items-center justify-around gap-3">
-									<div
-										className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold text-white"
-										style={{ backgroundColor: BAR_CHART_BAR_COLOR }}>
-										{branch.label}
-									</div>
+									
 									<div className="flex-grow rounded-full h-5 relative">
 										<div
 											className="h-6 rounded-full relative"
@@ -267,6 +266,11 @@ const PrincipalDashboardPage: React.FC = () => {
 												width: `${branch.value}%`,
 												backgroundColor: BAR_CHART_BAR_COLOR,
 											}}>
+												<div
+										className="absolute left-1.5 top-1/5 rounded-full flex items-center justify-center text-xs font-semibold text-white"
+										style={{ backgroundColor: BAR_CHART_BAR_COLOR }}>
+										{branch.label}
+									</div>
 											<span className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] font-medium text-white">
 												{branch.displayValue}
 											</span>
@@ -281,6 +285,7 @@ const PrincipalDashboardPage: React.FC = () => {
 						</div>
 					</div>
 				</section>
+				</div>
 			</div>
 
 			{/* Performance Tables Section - Corrected Alignment and Progress Color */}

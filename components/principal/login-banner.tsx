@@ -4,11 +4,14 @@ import React from 'react'
 import { FiArrowLeft } from 'react-icons/fi';
 
 interface PrincipalLoginBannerProps {
-  activity: string;
+    activity: string;
+    profileImage: string;
+    button1: string;
+    button2: string;
 }
 
 // Receive props as an object, not a string
-const PrincipalLoginBanner = ({ activity }: PrincipalLoginBannerProps) => {
+const PrincipalLoginBanner = ({ activity, button1, button2, profileImage }: PrincipalLoginBannerProps) => {
     const handleBackClick = () => {
         if (typeof window !== "undefined") {
             window.history.back();
@@ -34,31 +37,32 @@ const PrincipalLoginBanner = ({ activity }: PrincipalLoginBannerProps) => {
         TEXT_LIGHT: "#9CA3AF", // For tertiary text
         WHITE_CARD: "#FFFFFF",
     };
-   
+
     return (
-        <div className='w-full'><div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
-            <button
-                onClick={handleBackClick}
-                className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
-                aria-label="Go back"
-            >
-                <FiArrowLeft className="w-5 h-5" />
-            </button>
-            <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
-                {`${activity} Login Acivity`}
-            </h1>
-        </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
+        <div className='w-full'>
+            <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+                <button
+                    onClick={handleBackClick}
+                    className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
+                    aria-label="Go back"
+                >
+                    <FiArrowLeft className="w-5 h-5" />
+                </button>
+                <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+                    {`${activity} Login Acivity`}
+                </h1>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-3.5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px] rounded-2xl m-4">
                 {/* Student Info Card */}
                 <div
-                    className="lg:col-span-3 bg-white p-5 rounded-2xl"
+                    className="lg:col-span-3 bg-white p-3 rounded-full"
                     style={{
                         borderColor: PALETTE.BORDER_GREY,
                     }}
                 >
                     <div className="flex  items-start sm:items-center gap-4">
                         <Image
-                            src="/teacher-b2b/profile2.png"
+                            src={profileImage}
                             alt="Shlok Agheda"
                             width={72}
                             height={72}
@@ -79,7 +83,7 @@ const PrincipalLoginBanner = ({ activity }: PrincipalLoginBannerProps) => {
                                         color: PALETTE.WHITE_CARD,
                                     }}
                                 >
-                                    Class 8A
+                                    {button1}
                                 </span>
                                 <span
                                     className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
@@ -88,7 +92,7 @@ const PrincipalLoginBanner = ({ activity }: PrincipalLoginBannerProps) => {
                                         color: PALETTE.WHITE_CARD,
                                     }}
                                 >
-                                    Group A
+                                    {button2}
                                 </span>
                             </div>
                         </div>
@@ -96,13 +100,13 @@ const PrincipalLoginBanner = ({ activity }: PrincipalLoginBannerProps) => {
                             <p>Gender: Male</p>
                             <p>DOB: 15 Jun 2015</p>
                             <p>Email: example@gm.com</p>
-                            
                             <p>City: Mumbai</p>
                             <p>State: Maharashtra</p>
                         </div>
                     </div>
                 </div>
-            </div></div>
+            </div>
+        </div>
     )
 }
 
