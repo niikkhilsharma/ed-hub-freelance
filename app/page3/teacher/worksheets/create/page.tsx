@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { QuizDetailsForm } from "@/components/page3/create-quiz/quiz-details-form";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function CreateTestPage() {
-  const [step, setStep] = useState(1);
+  // const [step, setStep] = useState(1);
   const router = useRouter();
 
   const handleNext = () => {

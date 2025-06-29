@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { MainNav } from "@/components/page3/main-nav"
+// import { MainNav } from "@/components/page3/main-nav"
 import { ClassRecordingsList } from "@/components/page3/videos/class-recordings-list"
 import { ReferenceVideoCards } from "@/components/page3/videos/reference-video-cards"
 import { PedagogyVideosList } from "@/components/page3/videos/pedagogy-videos-list"
@@ -15,7 +15,7 @@ export default function VideosPage() {
   const [activeTab, setActiveTab] = useState("Class Recordings")
   const [isAddVideoOpen, setIsAddVideoOpen] = useState(false)
   const [currentMonth, setCurrentMonth] = useState("May 2025")
-  const [sortOrder, setSortOrder] = useState("Newest to oldest")
+  const [sortOrder] = useState("Newest to oldest")
   const [selectedClass, setSelectedClass] = useState("Class 3")
   const [selectedSubject, setSelectedSubject] = useState("Maths")
 

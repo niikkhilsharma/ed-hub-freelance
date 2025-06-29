@@ -253,7 +253,6 @@ function CourseCard({
   subtitle,
   startTime,
   endTime,
-  type,
 }: {
   image: string;
   title: string;

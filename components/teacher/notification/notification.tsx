@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Sidebar from '@/components/teacher/layout'; // Adjust import path
 import Image from 'next/image';
-import { FiSearch, FiBell, FiChevronDown } from 'react-icons/fi';
 import Header from '../header';
 
 // --- Sample Notification Data ---
@@ -26,7 +25,7 @@ const initialNotifications: Notification[] = Array.from({ length: 6 }, (_, i) =>
 
 
 export default function NotificationPage() {
-    const [notifications, setNotifications] = useState<Notification[]>(initialNotifications);
+    const [notifications] = useState<Notification[]>(initialNotifications);
     // Add state for pagination, filtering, marking as read, etc. if needed
 
     return (

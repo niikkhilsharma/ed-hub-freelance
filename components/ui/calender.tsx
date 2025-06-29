@@ -5,13 +5,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
   DayPicker,
   DayPickerProvider,
-  type DayPickerSingleProps,
+  type DayPickerProps,
 } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 
-export type CalendarProps = DayPickerSingleProps;
+export type CalendarProps = DayPickerProps;
 
 function Calendar({
   className,

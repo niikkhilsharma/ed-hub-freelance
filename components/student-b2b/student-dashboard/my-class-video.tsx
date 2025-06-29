@@ -10,8 +10,8 @@ import { FiArrowLeft, FiChevronDown, FiVolume2, FiMaximize, FiLock } from 'react
 const InfoTabButton = ({ label, isActive, onClick }: { label: string; isActive: boolean; onClick: () => void }) => (
 	<button
 		onClick={onClick}
-		className={`px-5 py-2 text-sm rounded-xl transition-colors ${
-			isActive ? 'bg-[#3366FF] text-white shadow-md' : 'text-[#6B7280] hover:bg-gray-100'
+		className={`px-5 py-1.5 text-sm tracking-wide font-medium rounded-xl transition-colors ${
+			isActive ? 'bg-[#3366FF] text-white  px-6 rounded-xl' : 'text-[#6B7280] hover:bg-gray-100'
 		}`}>
 		{label}
 	</button>
@@ -60,25 +60,17 @@ interface QuizResultItemData {
 	subtitleOrDate: string // "Subtitle" for upcoming, "Date" for results
 	scorePercentage?: number // For result tab
 	isLocked?: boolean
+	date?: string
 }
 const QuizResultItem = ({ item }: { item: QuizResultItemData }) => (
-<<<<<<< HEAD
-  <div className="bg-[#F9FAFB] p-4 rounded-3xl border border-[#E5E7EB] flex items-center justify-between">
-    <div className="flex flex-col justify-between min-h-[60px]">
-      {" "}
-      {/* <-- Fix here */}
-      <h4 className="text-md font-medium text-black">{item.name}</h4>
-      <p className="text-xs text-[#6B7280]">{item.subtitleOrDate}</p>
-    </div>
-=======
 	<div className="bg-[#F9FAFB] p-4 rounded-2xl border border-[#E5E7EB] flex items-center justify-between">
 		<div className="flex flex-col justify-between min-h-[60px]">
 			{' '}
 			{/* <-- Fix here */}
 			<h4 className="text-md font-medium text-black">{item.name}</h4>
 			<p className="text-xs font-light text-[#6B7280]">{item.subtitleOrDate}</p>
+			{item.date && <p className="text-xs font-light text-[#6B7280]">23 / 5 / 2025</p>}
 		</div>
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 
 		<div className="text-right flex-shrink-0 flex flex-col ml-2 self-start gap-1 items-end">
 			{item.isLocked && (
@@ -92,31 +84,6 @@ const QuizResultItem = ({ item }: { item: QuizResultItemData }) => (
 		</div>
 	</div>
 )
-
-const UpcomingResultItem = ({ item }: { item: QuizResultItemData }) => (
-  <div className="bg-[#F9FAFB] p-4 rounded-3xl border border-[#E5E7EB] flex items-center justify-between">
-    <div className="flex flex-col justify-between min-h-[60px]">
-      {" "}
-      {/* <-- Fix here */}
-      <h4 className="text-md font-medium text-black">{item.name}</h4>
-      <p className="text-xs text-[#6B7280]">Subtitle</p>
-      <p className="text-xs text-[#6B7280]">{item.subtitleOrDate}</p>
-    </div>
-
-    <div className="text-right flex-shrink-0 flex flex-col ml-2 self-start gap-1 items-end">
-      {item.isLocked && (
-        <div className="bg-[#FF33661A] rounded-full p-3 h-fit w-fit">
-          <FiLock className="w-4 h-4 text-[#FF3366]" strokeWidth={3} />
-        </div>
-      )}
-      {typeof item.scorePercentage === "number" && !item.isLocked && (
-        <div className="bg-[#99DEFF] text-black text-md font-semibold px-6 py-7 rounded-2xl flex-shrink-0 ml-2">
-          {item.scorePercentage}%
-        </div>
-      )}
-    </div>
-  </div>
-);
 
 // --- Sample Data ---
 const mainCategories = [
@@ -194,17 +161,28 @@ const playlistData: PlaylistItemData[] = [
 	},
 ]
 const upcomingQuizData: QuizResultItemData[] = [
-<<<<<<< HEAD
-  { id: "q1", name: "Quiz Name", subtitleOrDate: "23 / 5 /25", isLocked: false },
-  { id: "q2", name: "Quiz Name", subtitleOrDate: "23 / 5 /25", isLocked: true },
-  { id: "q3", name: "Quiz Name", subtitleOrDate: "23 / 5 /25", isLocked: true },
-];
-=======
-	{ id: 'q1', name: 'Quiz Name', subtitleOrDate: 'Subtitle', isLocked: false },
-	{ id: 'q2', name: 'Quiz Name', subtitleOrDate: 'Subtitle', isLocked: true },
-	{ id: 'q3', name: 'Quiz Name', subtitleOrDate: 'Subtitle', isLocked: true },
+	{
+		id: 'q1',
+		name: 'Quiz Name',
+		subtitleOrDate: 'Subtitle',
+		isLocked: false,
+		date: '23/2/24',
+	},
+	{
+		id: 'q2',
+		name: 'Quiz Name',
+		subtitleOrDate: 'Subtitle',
+		isLocked: true,
+		date: '23/2/24',
+	},
+	{
+		id: 'q3',
+		name: 'Quiz Name',
+		subtitleOrDate: 'Subtitle',
+		isLocked: true,
+		date: '23/2/24',
+	},
 ]
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 const resultData: QuizResultItemData[] = [
 	{ id: 'r1', name: 'Quiz Name', subtitleOrDate: 'Date', scorePercentage: 60 },
 	{ id: 'r2', name: 'Quiz Name', subtitleOrDate: 'Date', scorePercentage: 60 },
@@ -297,6 +275,7 @@ export default function CourseVideoPage() {
 									alt="Video player placeholder"
 									layout="fill"
 									objectFit="cover"
+									className="w-[90%]"
 								/>
 								{/* Custom Controls (Simplified) */}
 								<div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -335,7 +314,7 @@ export default function CourseVideoPage() {
 				<div className="bg-white rounded-2xl shadow-xl p-6">
 					{/* Info Tabs Navigation */}
 					<div>
-						<div className="flex items-center gap-6 mb-6">
+						<div className="flex items-center font-semibold gap-6 mb-6">
 							<InfoTabButton
 								label="Overview"
 								isActive={activeInfoTab === 'Overview'}
@@ -352,20 +331,6 @@ export default function CourseVideoPage() {
 							</div>
 						)}
 
-<<<<<<< HEAD
-            {activeInfoTab === "Quiz" && (
-              <div>
-                <h3 className="text-lg font-semibold text-[#FF3366] mb-4">
-                  Upcoming Quiz
-                </h3>
-                <div className="space-y-3">
-                  {upcomingQuizData.map((quiz) => (
-                    <UpcomingResultItem key={quiz.id} item={quiz} />
-                  ))}
-                </div>
-              </div>
-            )}
-=======
 						{activeInfoTab === 'Quiz' && (
 							<div>
 								<h3 className="text-lg font-semibold text-[#FF3366] mb-4">Upcoming Quiz</h3>
@@ -376,7 +341,6 @@ export default function CourseVideoPage() {
 								</div>
 							</div>
 						)}
->>>>>>> 76ca7de5d37ef16b9eee94641a90c12667648321
 
 						{activeInfoTab === 'Result' && (
 							<div>

@@ -13,7 +13,7 @@ export default function SuccessCard({ successUrl }: { successUrl: string }) {
       <Card className="w-full max-w-md mx-auto rounded-2xl">
         <CardContent className="pt-16 flex flex-col items-center text-center relative">
           <div className="w-20 h-20 rounded-full absolute top-0 self-center transform -translate-y-1/2 bg-[#8DD9B3] flex items-center justify-center mb-2">
-            <Check className="h-8 w-8 text-white" />
+            <Check className="h-8 w-8 text-white" strokeWidth={4}/>
           </div>
   
           <h2 className="text-3xl font-bold mb-6">Thank You!</h2>

@@ -80,7 +80,7 @@ const initialSubmissions: StudentSubmission[] = Array.from({ length: 12 }, (_, i
 
 
 export default function StudentSubmissionsPage() {
-    const [submissions, setSubmissions] = useState<StudentSubmission[]>(initialSubmissions);
+    const [submissions] = useState<StudentSubmission[]>(initialSubmissions);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedStudent, setSelectedStudent] = useState<StudentSubmission | null>(null);
 

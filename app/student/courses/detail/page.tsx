@@ -3,19 +3,30 @@
 import { useEffect, useRef, useState } from "react";
 import StudentWrapper from "@/components/student-wrapper";
 import Image from "next/image";
-
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import {
   ArrowLeft,
-  BarChart3,
   BookOpen,
   ChevronLeft,
   ChevronRight,
   Star,
-  User,
+  Info,
+  Brain,
+  ChartNoAxesColumn,
+  Video,
 } from "lucide-react";
 import FooterNew from "@/components/footer3";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input } from "@/components/ui/input";
+import { FaCircleCheck } from "react-icons/fa6";
 
 interface Review {
   id: number;
@@ -44,7 +55,7 @@ const reviews: Review[] = [
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius. Fusce turpis enim, hendrerit facilisis nisl nec, dictum faucibus nisl. Aliquam erat volutpat. Duis non molestie augue.",
     profileImage: "/student/courses/detail/profile.png",
-  }
+  },
 ];
 interface Course {
   id: string;
@@ -59,7 +70,23 @@ interface Course {
   priceRange: string;
 }
 
-const courses: Course[] = [
+type FormData = {
+  batchSize: string;
+  classBundle: string;
+  batchDays: string;
+  batchTime: string;
+};
+
+type DropdownOptions = {
+  [key in keyof FormData]: string[];
+};
+
+type FormField = {
+  id: keyof FormData;
+  label: string;
+};
+
+export const courses: Course[] = [
   {
     id: "academics",
     title: "Academics",
@@ -203,10 +230,10 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
       {[1, 2, 3, 4, 5].map((star) => (
         <Star
           key={star}
-          className={`w-4 h-4 ${
+          className={`w-3 h-3 ${
             star <= rating
               ? "fill-yellow-400 text-yellow-400"
-              : "fill-gray-200 text-gray-200"
+              : "fill-transparent text-transparent"
           }`}
         />
       ))}
@@ -216,32 +243,39 @@ const StarRating: React.FC<{ rating: number }> = ({ rating }) => {
 
 const ReviewCard: React.FC<{ review: Review }> = ({ review }) => {
   return (
-    <div className="bg-gray-100 rounded-xl p-3 mb-3">
+    <div className="bg-gray-100 rounded-3xl p-4 mb-3">
       <div className="flex items-start gap-3 mb-2">
         <Avatar className="w-14 h-14 self-center flex-shrink-0">
-          <AvatarImage src={review.profileImage || "/placeholder.svg"} alt={review.customerName} />
+          <AvatarImage
+            src={review.profileImage || "/placeholder.svg"}
+            alt={review.customerName}
+          />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
         <div className="flex flex-col gap-1 min-w-0">
-          <h3 className="font-semibold text-sm text-gray-900 truncate">{review.customerName}</h3>
-          <p className="text-gray-600 text-xs">{review.type} / Parent</p>
+          <h3 className="font-medium text-gray-900 truncate">
+            {review.customerName}
+          </h3>
+          <p className="text-[#6B7280] text-xs">{review.type} / Parent</p>
           <StarRating rating={review.rating} />
         </div>
       </div>
-      <p className="text-gray-600 text-xs leading-relaxed line-clamp-3">{review.description}</p>
+      <p className="text-[#6B7280] text-[10px] leading-relaxed line-clamp-5">
+        {review.description}
+      </p>
     </div>
-  )
-}
+  );
+};
 
 export default function CourseDetail() {
   const [activeTab, setActiveTab] = useState("about");
 
   const menuItems = [
-    { id: "about", label: "About Course", icon: User },
+    { id: "about", label: "About Course", icon: Info },
     { id: "benefits", label: "Benefits", icon: Star },
-    { id: "pedagogy", label: "Pedagogy", icon: User },
+    { id: "pedagogy", label: "Pedagogy", icon: Brain },
     { id: "curriculum", label: "Curriculum", icon: BookOpen },
-    { id: "levels", label: "Levels", icon: BarChart3 },
+    { id: "levels", label: "Levels", icon: ChartNoAxesColumn },
   ];
 
   const contentMap = {
@@ -280,6 +314,12 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(true);
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const [formData, setFormData] = useState<FormData>({
+    batchSize: "",
+    classBundle: "",
+    batchDays: "",
+    batchTime: "",
+  });
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } =
@@ -317,8 +357,34 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
     }
   };
 
+  // Options for each dropdown with type safety
+  const dropdownOptions: DropdownOptions = {
+    batchSize: ["Small (10-15)", "Medium (15-20)", "Large (20-30)"],
+    classBundle: ["Starter Pack", "Standard Pack", "Premium Pack"],
+    batchDays: ["Weekdays (Mon-Fri)", "Weekends (Sat-Sun)", "Mixed"],
+    batchTime: [
+      "Morning (9AM-12PM)",
+      "Afternoon (1PM-4PM)",
+      "Evening (5PM-8PM)",
+    ],
+  };
+
+  const formFields: FormField[] = [
+    { id: "batchSize", label: "Batch Size" },
+    { id: "classBundle", label: "Class Bundle" },
+    { id: "batchDays", label: "Batch Days" },
+    { id: "batchTime", label: "Select Batch Time" },
+  ];
+
+  const handleSelectChange = (field: keyof FormData, value: string) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
+
   return (
-    <StudentWrapper blue>
+    <StudentWrapper>
       <div className="bg-white border-b">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex items-center py-4">
@@ -334,10 +400,10 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
         <div className="mx-auto">
           <div className="grid lg:grid-cols-11 gap-4">
             {/* Left Section */}
-            <div className="bg-[#FFFFFF] rounded-2xl p-2 col-span-8">
+            <div className="bg-[#FFFFFF] rounded-2xl p-3 lg:col-span-8">
               <div className="flex gap-6">
                 {/* Course Image */}
-                <div className="flex-2">
+                <div className="flex-[1.75]">
                   <div className="rounded-2xl overflow-hidden">
                     <Image
                       src="/student/courses/detail/hero.png"
@@ -350,29 +416,83 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                 </div>
 
                 {/* Course Details */}
-                <div className="flex-1 flex flex-col justify-start px-4 py-6">
-                  <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                <div className="flex-1 flex flex-col justify-start px-3 py-3 gap-4">
+                  <h1 className="text-4xl font-semibold text-gray-900 pb-2">
                     Course Name
                   </h1>
-                  <p className="text-gray-600 text-lg mb-8">Category</p>
-                  <div className="text-5xl font-bold text-blue-600 mb-8">
+                  <p className="text-gray-600 pb-2">Category</p>
+                  <div className="text-5xl font-bold text-[#3366FF] pb-2">
                     ₹2,000
                   </div>
-                  <Button
-                    className="bg-blue-600 hover:bg-blue-700 text-white text-lg py-6 px-8 rounded-full w-full"
-                    size="lg"
-                  >
-                    Add to Cart
-                  </Button>
+                  <form className="space-y-4">
+                    <div className="space-y-5">
+                      {formFields.map((field) => (
+                        <div key={field.id}>
+                          <Label
+                            htmlFor={field.id}
+                            className="text-sm font-medium"
+                          >
+                            {field.label}
+                            <span className="text-red-500 -translate-x-1 font-medium">
+                              *
+                            </span>
+                          </Label>
+                          <Select
+                            value={formData[field.id]}
+                            onValueChange={(value: string) =>
+                              handleSelectChange(field.id, value)
+                            }
+                          >
+                            <SelectTrigger
+                              id={field.id}
+                              className="w-full bg-[#F9FAFB] border border-[#D5D5D5] rounded-2xl py-1 [&>svg]:text-black"
+                            >
+                              <SelectValue placeholder="Choose an option" />
+                            </SelectTrigger>
+                            <SelectContent className="bg-white shadow-lg rounded-xl">
+                              {dropdownOptions[field.id].map(
+                                (option, index) => (
+                                  <SelectItem
+                                    key={index}
+                                    value={option
+                                      .toLowerCase()
+                                      .replace(/\s+/g, "-")}
+                                  >
+                                    {option}
+                                  </SelectItem>
+                                )
+                              )}
+                            </SelectContent>
+                          </Select>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="w-full flex items-center gap-4 justify-between pt-2">
+                      <Input
+                        type="number"
+                        min={0}
+                        placeholder="00"
+                        className="w-full bg-[#F9FAFB] border border-[#D5D5D5] rounded-2xl"
+                      />
+                      <Button
+                        className="bg-[#3366FF] hover:bg-blue-700 text-white text-lg py-3 px-10 rounded-full h-fit"
+                        size="lg"
+                      >
+                        Add to Cart
+                      </Button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
 
             {/* Right Section - Reviews */}
-            <div className="bg-[#FFFFFF] rounded-2xl p-4 col-span-3">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Reviews</h2>
+            <div className="bg-[#FFFFFF] rounded-2xl p-3 lg:col-span-3">
+              <h2 className="text-2xl font-medium text-gray-900 mb-4">
+                Reviews
+              </h2>
               <div
-                className="h-[550px] overflow-y-auto pr-2"
+                className="h-[550px] overflow-y-auto"
                 style={{
                   scrollbarWidth: "thin",
                   scrollbarColor: "#FFA500 transparent",
@@ -401,11 +521,15 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
+        <div className="relative flex bg-[#FFFFFF] rounded-2xl mx-auto overflow-hidden">
           {/* Fixed Sidebar */}
+          <button className="bg-[#8DD9B3] flex items-center gap-2 px-4 py-3 text-white text-left rounded-[14px] absolute top-5 right-6 cursor-pointer">
+            <Video />
+            Watch Demo Video
+          </button>
           <div className="w-64 flex-shrink-0">
             <div className="p-6">
-              <nav className="space-y-2">
+              <nav className="space-y-6">
                 {menuItems.map((item) => {
                   const IconComponent = item.icon;
                   const isActive = activeTab === item.id;
@@ -415,16 +539,16 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       key={item.id}
                       onClick={() => setActiveTab(item.id)}
                       className={`
-                    w-full flex items-center gap-3 px-4 py-3 rounded-full text-left transition-all duration-200
+                    w-full flex items-center gap-3 px-4 py-2 rounded-full text-left transition-all duration-200
                     ${
                       isActive
-                        ? "bg-pink-500 text-white"
-                        : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
+                        ? "bg-[#FF3366] text-white"
+                        : "text-[#6B7280] hover:bg-gray-100 hover:text-gray-900"
                     }
                   `}
                     >
                       <IconComponent size={20} />
-                      <span className="font-medium">{item.label}</span>
+                      <span className="">{item.label}</span>
                     </button>
                   );
                 })}
@@ -435,12 +559,12 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           {/* Main Content Area */}
           <div className="flex-1 overflow-auto">
             <div className="p-8">
-              <h1 className="text-3xl font-bold text-gray-900 mb-6">
+              <h1 className="text-xl font-semibold mb-4">
                 {contentMap[activeTab as keyof typeof contentMap].title}
               </h1>
 
               <div className="max-w-none">
-                <p className="text-gray-700 leading-relaxed text-base whitespace-pre-line">
+                <p className="leading-relaxed text-xl whitespace-pre-line">
                   {contentMap[activeTab as keyof typeof contentMap].content}
                 </p>
               </div>
@@ -448,8 +572,37 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="bg-[#E5E7EB] p-4 rounded-2xl">
-          <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
+        <div className="relative py-14 rounded-2xl">
+          <div className="relative flex gap-6 items-center flex-col md:flex-row justify-center w-full z-9">
+            <h1 className="text-3xl sm:text-[48px] font-semibold text-white">
+              Book a Free Demo
+            </h1>
+            <button className="bg-white cursor-pointer rounded-full px-8 py-4 text-m font-medium">
+              Click Here
+            </button>
+          </div>
+          <div
+            className="absolute inset-0 rounded-2xl bg-center bg-repeat z-0"
+            style={{
+              backgroundImage: "url('/Background6.png')",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+              filter: "grayscale(10%) brightness(1.1) blur(0.5px)",
+              opacity: 0.3,
+            }}
+          ></div>
+          {/* Bluish Overlay */}
+          <div
+            className="absolute inset-0 rounded-2xl bg-[#3366FF] z-0"
+            style={{
+              opacity: 0.88, // increase to make it more blue
+              mixBlendMode: "multiply", // try "multiply" or "soft-light" too
+            }}
+          ></div>
+        </div>
+
+        <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2">
+          <h1 className="text-2xl text-[#FF3366] font-semibold">
             Related Courses
           </h1>
           {/* Course Slider */}
@@ -457,6 +610,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Left Navigation Button */}
             {showLeftArrow && (
               <button
+                type="button"
                 onClick={() => scroll("left")}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
               >
@@ -467,6 +621,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Right Navigation Button */}
             {showRightArrow && (
               <button
+                type="button"
                 onClick={() => scroll("right")}
                 className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
               >
@@ -485,9 +640,9 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
               {courses.map((course) => (
                 <div
                   key={course.id}
-                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="relative p-4">
+                  <div className="relative p-3">
                     <Image
                       src={course.image || "/placeholder.svg"}
                       alt={course.title}
@@ -495,26 +650,32 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       height={200}
                       className="w-full h-48 object-cover rounded-xl"
                     />
+                    <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
+                      <span className="text-[#FFCC00] text-lg font-bold">
+                        4.2
+                      </span>
+                      <Star className="w-5 h-5 fill-[#FFCC00] stroke-[#FFCC00]" />
+                    </div>
                   </div>
 
-                  <div className="p-4 pt-0">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Course Name
-                    </h3>
+                  <div className="p-3 pt-0 space-y-3">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Course Name
+                      </h3>
+                      <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                        Know More
+                      </button>
+                    </div>
 
                     <div className="space-y-1">
                       {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                         (detail, index) => (
                           <div key={index} className="flex items-center gap-2">
-                            <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                              <Image
-                                src="/student/home/tick2.png"
-                                alt="tick2"
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                            <span className="text-gray-600">{detail}</span>
+                            <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                            <span className="text-[#6B7280] text-sm">
+                              {detail}
+                            </span>
                           </div>
                         )
                       )}
@@ -529,23 +690,25 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         className="w-8 h-8 rounded-full"
                       />
                       <div>
-                        <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+                        <p className="text-md font-semibold">
+                          Mr. Ranvir Ahuja
+                        </p>
                         <p className="text-xs text-[#FF3366]">Teacher</p>
                       </div>
-                      <div className="ml-auto flex gap-1 text-yellow-400">
+                      <div className="ml-auto flex gap-1 text-[#FFCC00]">
                         {[1, 2, 3, 4].map((star) => (
                           <Star key={star} className="w-3 h-3 fill-current" />
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-3 w-full mt-2">
                       <span className="text-[#50C878] font-bold">
                         ₹2,000 - ₹5,000
                       </span>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
                         Add to cart
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -554,8 +717,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="bg-[#E5E7EB] p-4 rounded-2xl">
-          <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
+        <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2">
+          <h1 className="text-2xl text-[#FF3366] font-semibold">
             Recommended Courses
           </h1>
           {/* Course Slider */}
@@ -563,6 +726,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Left Navigation Button */}
             {showLeftArrow && (
               <button
+                type="button"
                 onClick={() => scroll("left")}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
               >
@@ -573,6 +737,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Right Navigation Button */}
             {showRightArrow && (
               <button
+                type="button"
                 onClick={() => scroll("right")}
                 className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
               >
@@ -591,9 +756,9 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
               {courses.map((course) => (
                 <div
                   key={course.id}
-                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="relative p-4">
+                  <div className="relative p-3">
                     <Image
                       src={course.image || "/placeholder.svg"}
                       alt={course.title}
@@ -601,26 +766,32 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       height={200}
                       className="w-full h-48 object-cover rounded-xl"
                     />
+                    <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
+                      <span className="text-[#FFCC00] text-lg font-bold">
+                        4.2
+                      </span>
+                      <Star className="w-5 h-5 fill-[#FFCC00] stroke-[#FFCC00]" />
+                    </div>
                   </div>
 
-                  <div className="p-4 pt-0">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Course Name
-                    </h3>
+                  <div className="p-3 pt-0 space-y-3">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Course Name
+                      </h3>
+                      <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                        Know More
+                      </button>
+                    </div>
 
                     <div className="space-y-1">
                       {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                         (detail, index) => (
                           <div key={index} className="flex items-center gap-2">
-                            <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                              <Image
-                                src="/student/home/tick2.png"
-                                alt="tick2"
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                            <span className="text-gray-600">{detail}</span>
+                            <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                            <span className="text-[#6B7280] text-sm">
+                              {detail}
+                            </span>
                           </div>
                         )
                       )}
@@ -635,23 +806,25 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         className="w-8 h-8 rounded-full"
                       />
                       <div>
-                        <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+                        <p className="text-md font-semibold">
+                          Mr. Ranvir Ahuja
+                        </p>
                         <p className="text-xs text-[#FF3366]">Teacher</p>
                       </div>
-                      <div className="ml-auto flex gap-1 text-yellow-400">
+                      <div className="ml-auto flex gap-1 text-[#FFCC00]">
                         {[1, 2, 3, 4].map((star) => (
                           <Star key={star} className="w-3 h-3 fill-current" />
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-3 w-full mt-2">
                       <span className="text-[#50C878] font-bold">
                         ₹2,000 - ₹5,000
                       </span>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
                         Add to cart
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -660,8 +833,8 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
           </div>
         </div>
 
-        <div className="bg-[#E5E7EB] p-4 rounded-2xl">
-          <h1 className="text-2xl text-[#f9326f] my-4 font-bold">
+        <div className="bg-[#F3F4F680] border border-[#E5E7EB] p-4 rounded-3xl space-y-2 mb-2">
+          <h1 className="text-2xl text-[#FF3366] font-semibold">
             Our Best Sellers
           </h1>
           {/* Course Slider */}
@@ -669,6 +842,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Left Navigation Button */}
             {showLeftArrow && (
               <button
+                type="button"
                 onClick={() => scroll("left")}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
               >
@@ -679,6 +853,7 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
             {/* Right Navigation Button */}
             {showRightArrow && (
               <button
+                type="button"
                 onClick={() => scroll("right")}
                 className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white hover:bg-gray-50 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110 hover:shadow-xl"
               >
@@ -697,9 +872,9 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
               {courses.map((course) => (
                 <div
                   key={course.id}
-                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="flex-none w-80 bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="relative p-4">
+                  <div className="relative p-3">
                     <Image
                       src={course.image || "/placeholder.svg"}
                       alt={course.title}
@@ -707,26 +882,32 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                       height={200}
                       className="w-full h-48 object-cover rounded-xl"
                     />
+                    <div className="absolute right-4 top-4 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
+                      <span className="text-[#FFCC00] text-lg font-bold">
+                        4.2
+                      </span>
+                      <Star className="w-5 h-5 fill-[#FFCC00] stroke-[#FFCC00]" />
+                    </div>
                   </div>
 
-                  <div className="p-4 pt-0">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      Course Name
-                    </h3>
+                  <div className="p-3 pt-0 space-y-3">
+                    <div className="flex justify-between items-center">
+                      <h3 className="text-xl font-bold text-gray-900">
+                        Course Name
+                      </h3>
+                      <button className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer">
+                        Know More
+                      </button>
+                    </div>
 
                     <div className="space-y-1">
                       {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                         (detail, index) => (
                           <div key={index} className="flex items-center gap-2">
-                            <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                              <Image
-                                src="/student/home/tick2.png"
-                                alt="tick2"
-                                fill
-                                className="object-cover"
-                              />
-                            </div>
-                            <span className="text-gray-600">{detail}</span>
+                            <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+                            <span className="text-[#6B7280] text-sm">
+                              {detail}
+                            </span>
                           </div>
                         )
                       )}
@@ -741,23 +922,25 @@ Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed 
                         className="w-8 h-8 rounded-full"
                       />
                       <div>
-                        <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+                        <p className="text-md font-semibold">
+                          Mr. Ranvir Ahuja
+                        </p>
                         <p className="text-xs text-[#FF3366]">Teacher</p>
                       </div>
-                      <div className="ml-auto flex gap-1 text-yellow-400">
+                      <div className="ml-auto flex gap-1 text-[#FFCC00]">
                         {[1, 2, 3, 4].map((star) => (
                           <Star key={star} className="w-3 h-3 fill-current" />
                         ))}
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                    <div className="flex items-center justify-between bg-[#F9FAFB] rounded-3xl px-4 py-3 w-full mt-2">
                       <span className="text-[#50C878] font-bold">
                         ₹2,000 - ₹5,000
                       </span>
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+                      <button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm">
                         Add to cart
-                      </Button>
+                      </button>
                     </div>
                   </div>
                 </div>

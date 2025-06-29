@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Sidebar from '@/components/teacher/layout'; // Adjust import path
 import Image from 'next/image';
 import {
-    FiSearch, FiBell, FiChevronDown, FiCheckSquare, FiSquare,
+    FiSearch, FiBell, FiChevronDown, 
     FiCheckCircle, FiXCircle, FiChevronLeft, FiChevronRight, FiChevronsDown // Added icons
 } from 'react-icons/fi';
 
@@ -38,8 +38,6 @@ const CustomRadio = ({ checked, correct, incorrect }: { checked: boolean, correc
 
 // Number Input with Up/Down Arrows
 const NumberInputStepper = ({ label, value, onChange, min = 0, max = 100 }: { label: string, value: number, onChange: (newValue: number) => void, min?: number, max?: number }) => {
-    const increment = () => onChange(Math.min(max, value + 1));
-    const decrement = () => onChange(Math.max(min, value - 1));
 
     return (
         <div className="flex items-center gap-2">
@@ -81,15 +79,11 @@ const questionData = {
 
 export default function CheckAnswersPage() {
     // In a real app, you'd fetch questions, student answers, etc.
-    const [currentQuestion, setCurrentQuestion] = useState(questionData);
+    const [currentQuestion] = useState(questionData);
     const [addedPoints, setAddedPoints] = useState(0);
     const [totalStudentScore, setTotalStudentScore] = useState(1); // Example score
 
-    const handleOptionClick = (optionId: string) => {
-        // This function would typically be disabled in a "check answers" view,
-        // or used if you allow re-grading. For now, it does nothing.
-        console.log("Option clicked (grading view):", optionId);
-    };
+   
 
     return (
         <div className="flex min-h-screen bg-gray-100">

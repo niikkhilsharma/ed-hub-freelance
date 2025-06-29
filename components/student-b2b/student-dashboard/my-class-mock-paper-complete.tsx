@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import { FiArrowLeft, FiChevronDown, FiCheckCircle, FiXCircle, FiSmile } from 'react-icons/fi'
+import { FiArrowLeft, FiChevronDown,  FiSmile } from 'react-icons/fi'
 import Image from 'next/image'
 
 // --- Main Category Tab Component (Reused) ---
@@ -87,7 +87,7 @@ const QuestionReviewBlock = ({ question, questionNumber }: { question: QuestionR
 )
 
 // --- Radial Progress/Score Chart Component ---
-const ScoreChart = ({ percentage, correct, total }: { percentage: number; correct: number; total: number }) => {
+const ScoreChart = () => {
 	const radius = 40
 	const stroke = 8
 	const normalizedRadius = radius - stroke / 2
@@ -174,9 +174,8 @@ const reviewQuestions: QuestionReviewData[] = [
 		],
 	},
 ]
-const totalQuestionsInTest = 3
-const correctAnswersCount = reviewQuestions.filter(q => q.options.find(opt => opt.isUserSelected && opt.isCorrect)).length
-const scorePercentage = Math.round((correctAnswersCount / totalQuestionsInTest) * 100)
+
+// const scorePercentage = Math.round((correctAnswersCount / totalQuestionsInTest) * 100)
 
 export default function MockTestReviewPage() {
 	const [activeMainCategory, setActiveMainCategory] = useState(mainCategories[0])
@@ -238,7 +237,7 @@ export default function MockTestReviewPage() {
 							{' '}
 							{/* Sticky for score */}
 							<div className="bg-[#F9FAFB] min-h-[450px] flex flex-col justify-between rounded-2xl p-6 md:p-8 w-full">
-								<ScoreChart percentage={scorePercentage} correct={correctAnswersCount} total={totalQuestionsInTest} />
+								<ScoreChart  />
 								<div className="text-center">
 									<p className="text-6xl font-bold text-[#8DD9B3]">90%</p>
 									<p className="text-lg text-[#6B7280] mt-6">
@@ -247,14 +246,7 @@ export default function MockTestReviewPage() {
 								</div>
 							</div>
 							<div className="border border-[#E5E7EB] rounded-2xl p-6 md:p-8 w-full">
-								<Image
-									src="/images/result-table.png"
-									alt="table"
-									width={600}
-									height={632}
-									quality={100}
-									className="h-full w-full object-cover"
-								/>
+								<EvaluationResults />
 							</div>
 						</div>
 					</div>
@@ -264,4 +256,81 @@ export default function MockTestReviewPage() {
 			<Footer />
 		</div>
 	)
+}
+
+function EvaluationResults() {
+  return (
+    <div className="bg-white">
+      {/* Title */}
+      <h1 className="text-3xl font-bold text-black mb-6">
+        Evaluation Results
+      </h1>
+
+      {/* Table */}
+      <div className="border-2 border-black">
+        {/* Header Row */}
+        <div className="bg-black text-white flex">
+          <div className="flex-1 p-4 font-semibold border-r border-white">
+            Section
+          </div>
+          <div className="flex-1 p-4 font-semibold">
+            Scores (in stars out of 5)
+          </div>
+        </div>
+
+        {/* Data Rows */}
+        <div className="bg-white">
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Concept
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Sentence Formation
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Definitions
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex border-b border-black">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Retention
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+
+          <div className="flex">
+            <div className="flex-1 p-4 font-medium border-r border-black">
+              Choice of Words
+            </div>
+            <div className="flex-1 p-4">
+              {/* Empty space for stars */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom Text */}
+      <h2 className="text-2xl font-bold text-black mt-6">
+        Skills a child will develop:
+      </h2>
+    </div>
+  );
 }

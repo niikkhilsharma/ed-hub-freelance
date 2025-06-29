@@ -122,7 +122,7 @@ export default function TeacherProfilePage() {
                                     Satisfied conveying a dependent contented he gentleman agreeable do be. Warrant private blushes removed an in equally totally if. Delivered dejection necessary objection do Mr prevailed. Mr feeling does chiefly cordial in do.
                                 </p>
                                 <p className="text-sm text-gray-600 leading-relaxed mt-3">
-                                    We focus a great deal on the understanding of behavioral psychology and influence triggers which are crucial for becoming a well-rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isn't going to get the job done so that's why this course is packed with practical hands-on examples that you can follow step by step.
+                                    We focus a great deal on the understanding of behavioral psychology and influence triggers which are crucial for becoming a well-rounded Digital Marketer. We understand that theory is important to build a solid foundation, we understand that theory alone isnt going to get the job done so thats why this course is packed with practical hands-on examples that you can follow step by step.
                                 </p>
                             </div>
 

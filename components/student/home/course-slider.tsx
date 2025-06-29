@@ -1,211 +1,346 @@
-import React, { useState, useRef, useEffect } from "react";
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import Image from "next/image";
+
 import { Button } from "@/components/ui/button";
+
+import { FaCircleCheck } from "react-icons/fa6";
+
+import { useRouter } from "next/navigation";
+
+import CustomSelect from "@/components/student/courses/CustomSelect";
 
 interface Course {
   id: string;
+
   title: string;
+
   category: string;
+
   image: string;
+
   features: string[];
+
   teacher: {
     name: string;
+
     image: string;
   };
+
   priceRange: string;
 }
 
 const categories = [
-  "Technology Programs",
-  "Computer Science",
-  "Science",
-  "English",
-  "Public speaking",
-  "Chess",
-  "AI Explorers",
-  "Abacus",
+  "Academic",
+
+  "Notsoextra - Curricular",
+
+  "Foundation",
+
+  "Skill Development",
+
+  "Brain Development",
+
+  "Door Step Tutoring",
+
+  "Skill Club",
 ];
 
 const CourseSlider = () => {
-  const [selectedCategory, setSelectedCategory] = useState(
-    "Technology Programs"
-  );
+  const router = useRouter();
+
+  const [selectedCategory, setSelectedCategory] = useState("Academic");
+
   const [showLeftArrow, setShowLeftArrow] = useState(false);
+
   const [showRightArrow, setShowRightArrow] = useState(true);
+
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 
   const courses: Course[] = [
     {
       id: "academics",
+
       title: "Academics",
-      category: "Science",
+
+      category: "Notsoextra - Curricular",
+
       image: "/student/home/acadmics.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
 
     {
       id: "copy1",
+
       title: "copy1h",
-      category: "Technology Programs",
+
+      category: "Academic",
+
       image: "/student/home/foundation.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "copy2",
+
       title: "copy2h",
-      category: "Technology Programs",
+
+      category: "Academic",
+
       image: "/student/home/foundation.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "foundation",
+
       title: "Foundation",
-      category: "Technology Programs",
+
+      category: "Academic",
+
       image: "/student/home/foundation.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "brain-development",
+
       title: "Brain Development",
-      category: "Science",
+
+      category: "Academic",
+
       image: "/student/home/basic-dev.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "skill-development",
-      title: "Skill Development",
+
+      title: "Foundation",
+
       category: "Public speaking",
+
       image: "/student/home/learn-peace.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "stem-programs",
+
       title: "STEM Programs",
-      category: "Technology Programs",
+
+      category: "Academic",
+
       image: "/student/home/learn-peace2.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "robotics",
+
       title: "Robotics",
-      category: "Technology Programs",
+
+      category: "Academic",
+
       image: "/student/home/robotics.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "phonics",
+
       title: "Phonics",
-      category: "English",
+
+      category: "Skill Development",
+
       image: "/student/home/phonics.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
+
     {
       id: "personality-development",
+
       title: "Personality Development",
-      category: "Public speaking",
+
+      category: "Brain Development",
+
       image: "/student/home/pers-dev.png",
+
       features: [
         "Customized Curriculums & Plans",
+
         "Individualized Classes",
+
         "Skill Development",
+
         "Mentoring",
       ],
+
       teacher: {
         name: "Mrs. Sandeep Kaur",
+
         image: "/student/home/teacher.png",
       },
+
       priceRange: "₹2,000.00 - ₹5,000.00",
     },
   ];
@@ -214,26 +349,39 @@ const CourseSlider = () => {
     (course) => course.category === selectedCategory
   );
 
+  const selectOptions = categories.map((category) => ({
+    value: category,
+
+    label: category,
+  }));
+
   // Check scroll position and update arrow visibility
+
   const checkScrollPosition = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } =
         scrollContainerRef.current;
+
       setShowLeftArrow(scrollLeft > 0);
+
       setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
     }
   };
 
   // Update arrow visibility on category change
+
   useEffect(() => {
     checkScrollPosition();
   }, [filteredCourses]);
 
   // Add scroll event listener
+
   useEffect(() => {
     const container = scrollContainerRef.current;
+
     if (container) {
       container.addEventListener("scroll", checkScrollPosition);
+
       return () => container.removeEventListener("scroll", checkScrollPosition);
     }
   }, []);
@@ -241,7 +389,9 @@ const CourseSlider = () => {
   const scroll = (direction: string) => {
     if (scrollContainerRef.current) {
       const scrollAmount = 320; // Width of one card plus gap
+
       const currentScroll = scrollContainerRef.current.scrollLeft;
+
       const targetScroll =
         direction === "left"
           ? currentScroll - scrollAmount
@@ -249,35 +399,54 @@ const CourseSlider = () => {
 
       scrollContainerRef.current.scrollTo({
         left: targetScroll,
+
         behavior: "smooth",
       });
     }
   };
 
   return (
-    <div className="">
+    <div className="max-w-7xl mx-auto">
       {/* Category Tabs */}
+
       <Tabs
         value={selectedCategory}
         onValueChange={setSelectedCategory}
         className="w-full"
       >
         <TabsList className="flex flex-wrap justify-between gap-2 bg-transparent h-auto">
-          {categories.map((category) => (
-            <TabsTrigger
-              key={category}
-              value={category}
-              className="data-[state=active]:bg-[#8DD9B3] data-[state=active]:text-black cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full"
-            >
-              {category}
-            </TabsTrigger>
-          ))}
+          {categories.map((category) => {
+            const isActive = category === selectedCategory;
+
+            if (isActive) {
+              return (
+                <CustomSelect
+                  key={category}
+                  options={selectOptions}
+                  defaultValue={selectedCategory}
+                  onValueChange={setSelectedCategory}
+                />
+              );
+            }
+
+            return (
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="data-[state=active]:bg-[#FF3366] data-[state=active]:text-white cursor-pointer text-[#6B7280] rounded-full px-4 py-2 text-md font-medium break-words max-w-full"
+              >
+                {category}
+              </TabsTrigger>
+            );
+          })}
         </TabsList>
       </Tabs>
 
       {/* Course Slider */}
+
       <div className="relative">
         {/* Left Navigation Button */}
+
         {showLeftArrow && (
           <button
             onClick={() => scroll("left")}
@@ -288,6 +457,7 @@ const CourseSlider = () => {
         )}
 
         {/* Right Navigation Button */}
+
         {showRightArrow && (
           <button
             onClick={() => scroll("right")}
@@ -298,6 +468,7 @@ const CourseSlider = () => {
         )}
 
         {/* Scrollable Container */}
+
         <div
           ref={scrollContainerRef}
           className={`flex gap-6 overflow-x-auto scrollbar-hide py-4 transition-all duration-300 ${
@@ -316,28 +487,37 @@ const CourseSlider = () => {
                   alt={course.title}
                   width={400}
                   height={200}
-                  className="w-full h-48 object-cover rounded-xl"
+                  className="w-full h-48 object-cover rounded-2xl"
                 />
+
+                <div className="absolute right-5 top-5 flex items-center gap-2 justify-center p-2 rounded-2xl bg-white z-10">
+                  <span className="text-amber-300 text-lg font-bold">4.2</span>
+
+                  <Star className="w-5 h-5 fill-amber-300 stroke-amber-300" />
+                </div>
               </div>
 
-              <div className="p-4 pt-0">
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  Course Name
-                </h3>
+              <div className="p-6 pt-0 space-y-2">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-xl font-bold text-gray-900">
+                    Course Name
+                  </h3>
 
-                <div className="space-y-1">
+                  <button
+                    className="font-main text-sm text-[#FF3366] w-fit border-b border-b-[#FF3366] cursor-pointer"
+                    onClick={() => router.push("/student/courses/know-more")}
+                  >
+                    Know More
+                  </button>
+                </div>
+
+                <div className="space-y-2">
                   {["Detail 1", "Detail 2", "Detail 3", "Detail 4"].map(
                     (detail, index) => (
                       <div key={index} className="flex items-center gap-2">
-                        <div className="relative h-4 w-4 rounded-full overflow-hidden">
-                          <Image
-                            src="/student/home/tick2.png"
-                            alt="tick2"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <span className="text-gray-600">{detail}</span>
+                        <FaCircleCheck className="w-5 h-5 fill-[#99DEFF]" />
+
+                        <span className="text-[#6B7280] text-sm">{detail}</span>
                       </div>
                     )
                   )}
@@ -351,10 +531,13 @@ const CourseSlider = () => {
                     height={24}
                     className="w-8 h-8 rounded-full"
                   />
+
                   <div>
                     <p className="text-md font-bold">Mr. Ranvir Ahuja</p>
+
                     <p className="text-xs text-[#FF3366]">Teacher</p>
                   </div>
+
                   <div className="ml-auto flex gap-1 text-yellow-400">
                     {[1, 2, 3, 4].map((star) => (
                       <Star key={star} className="w-3 h-3 fill-current" />
@@ -362,11 +545,12 @@ const CourseSlider = () => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl px-4 py-2 w-full mt-2">
+                <div className="flex items-center justify-between bg-[#F9FAFB] rounded-xl py-2 w-full mt-2">
                   <span className="text-[#50C878] font-bold">
                     ₹2,000 - ₹5,000
                   </span>
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm">
+
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-3 text-sm h-fit">
                     Add to cart
                   </Button>
                 </div>
@@ -377,6 +561,7 @@ const CourseSlider = () => {
       </div>
 
       {/* Scroll Progress Indicator */}
+
       {filteredCourses.length > 3 && (
         <div className="flex justify-center gap-2 mt-4">
           {Array.from({ length: Math.ceil(filteredCourses.length / 3) }).map(

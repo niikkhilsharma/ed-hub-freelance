@@ -10,35 +10,35 @@ const testimonials = [
     name: "John Doe",
     image: "/johnProfile.png",
     rating: 5,
-    text: "Praesent non enim sed velit malesuada consectetur et a justo. Fusce quis eros sit amet enim laoreet dignissim.",
+    text: "Praesent non enim sed velit malesuada consectetur id a justo. Fusce quis eros sit amet enim laoreet dignissim.",
   },
   {
     id: 2,
-    name: "Jane Smith",
+    name: "John Doe",
     image: "/johnProfile.png",
     rating: 4,
-    text: "Curabitur ac leo nunc. Vestibulum et mauris vel ante finibus maximus nec ut leo.",
+    text: "Praesent non enim sed velit malesuada consectetur id a justo. Fusce quis eros sit amet enim laoreet dignissim.",
   },
   {
     id: 3,
-    name: "Alice Johnson",
+    name: "John Doe",
     image: "/johnProfile.png",
     rating: 5,
-    text: "Fusce nec justo vitae nulla facilisis fermentum. Donec a semper magna.",
+    text: "Praesent non enim sed velit malesuada consectetur id a justo. Fusce quis eros sit amet enim laoreet dignissim.",
   },
   {
     id: 4,
-    name: "Michael Brown",
+    name: "John Doe",
     image: "/johnProfile.png",
     rating: 5,
-    text: "Maecenas sed diam eget risus varius blandit sit amet non magna.",
+    text: "Praesent non enim sed velit malesuada consectetur id a justo. Fusce quis eros sit amet enim laoreet dignissim.",
   },
   {
     id: 5,
-    name: "Emily Davis",
+    name: "John Doe",
     image: "/johnProfile.png",
     rating: 4,
-    text: "Donec ullamcorper nulla non metus auctor fringilla.",
+    text: "Praesent non enim sed velit malesuada consectetur id a justo. Fusce quis eros sit amet enim laoreet dignissim.",
   },
 ]
 
@@ -126,14 +126,14 @@ export default function Testimonials() {
               className="p-2 rounded-full bg-blue-100 text-blue-500 hover:bg-blue-200 transition-colors cursor-pointer"
               aria-label="Previous testimonial"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-5 w-5 text-black" />
             </button>
             <button
               onClick={nextSlide}
               className="p-2 rounded-full bg-blue-100 text-blue-500 hover:bg-blue-200 transition-colors cursor-pointer"
               aria-label="Next testimonial"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-5 w-5 text-black" />
             </button>
           </div>
         </div>
@@ -164,9 +164,9 @@ export default function Testimonials() {
                   className="px-2 "
                   style={{ width: `${100 / duplicatedSlides.length}%` }}
                 >
-                  <div className="bg-[#a8f0c7] rounded-3xl p-6 h-full">
+                  <div className="bg-[#8FDDAA] rounded-3xl p-6 h-full">
                     <div className="flex items-center mb-4">
-                      <div className="relative w-12 h-12 mr-3 rounded-full overflow-hidden border-2 border-white">
+                      <div className="relative w-12 h-12 mr-3 rounded-full overflow-hidden border-3 border-[#F9326F]">
                         <Image
                           src={testimonial.image || "/placeholder.svg"}
                           alt={testimonial.name}
@@ -176,11 +176,10 @@ export default function Testimonials() {
                         />
                       </div>
                       <div>
-                        <h3 className="font-medium text-gray-900">{testimonial.name}</h3>
-                        <div className="flex">{renderStars(testimonial.rating)}</div>
+                        <h3 className="font-medium text-black">{testimonial.name}</h3>
                       </div>
                     </div>
-                    <p className="text-gray-700">{testimonial.text}</p>
+                    <p className="text-black">{testimonial.text}</p>
                   </div>
                 </div>
               ))}

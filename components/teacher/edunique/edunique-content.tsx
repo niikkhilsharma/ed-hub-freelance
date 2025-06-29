@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import Sidebar from '@/components/teacher/layout'; 
-import Image from 'next/image';
+// import Image from 'next/image';
 import {
-    FiSearch, FiBell, FiChevronDown, FiFilter, FiPlusCircle, FiMoreVertical
+    FiSearch, FiChevronDown, FiFilter, FiPlusCircle, FiMoreVertical
 } from 'react-icons/fi';
 import Link from 'next/link';
 import Header from '../header';
