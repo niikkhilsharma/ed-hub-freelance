@@ -51,7 +51,7 @@ const CategoryTab: React.FC<CategoryTabProps> = ({ category, isActive, onClick }
 	return (
 		<button
 			onClick={onClick}
-			className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-lg font-medium transition-all duration-200 whitespace-nowrap
+			className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-md md:text-lg font-medium transition-all duration-200 whitespace-nowrap
         ${isActive ? 'bg-[#FF3366] text-white shadow-md' : 'bg-transparent text-[#6B7280] hover:bg-gray-100'}`}>
 			{category.name}
 		</button>
@@ -64,7 +64,7 @@ interface FolderCardProps {
 
 const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 	return (
-		<div className="bg-slate-50 border rounded-2xl p-4 transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4  max-w-lg">
+		<div className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-4 transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4  max-w-lg">
 			{/* Info Icon */}
 			
 			{/* Folder Icon Area */}
@@ -78,7 +78,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 				<p className="text-xs sm:text-sm text-[#6B7280] mb-5">{folder.fileCount} Files</p>
 				<button
 					onClick={() => alert(`Manage Access for ${folder.name}`)}
-					className="w-full sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs sm:text-xl font-medium rounded-full transition-colors">
+					className="w-full sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-[#f3f4f6] hover:bg-gray-200 text-[#6b7280] text-xs sm:text-md font-medium rounded-full transition-colors">
 					<FiSettings className="w-6 h-6" />
 					Manage Access
 				</button>
@@ -99,9 +99,9 @@ const UploadExistingTestContent: React.FC = () => {
 	}, [allFolders, activeCategoryId])
 
 	return (
-		<div className="bg-white rounded-2xl shadow-xl min-h-screen p-4 ">
+		<div className="bg-white rounded-2xl shadow-xl min-h-screen  px-6 py-4 ">
 			{/* Category Tabs */}
-			<div className="p-2 rounded-2xl flex items-center justify-center mb-6 border border-gray-200">
+			<div className="p-2 rounded-3xl flex items-center justify-center mb-6 border border-[#e5e7eb]">
 				<nav className="flex space-x-1 sm:space-x-4 overflow-x-auto custom-scrollbar-thin">
 					{categories.map(cat => (
 						<CategoryTab
@@ -158,7 +158,7 @@ export default function SelectExistingTestPage() {
 					aria-label="Go back">
 					<FiArrowLeft className="w-6 h-6" />
 				</button>
-				<h1 className="text-lg sm:text-2xl font-semibold text-[#FF3366]">Select Existing Test</h1>
+				<h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Select Existing Test</h1>
 			</div>
 			</div>
 			<MaxWidthWrapper>

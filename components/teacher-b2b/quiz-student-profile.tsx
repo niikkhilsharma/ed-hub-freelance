@@ -417,7 +417,7 @@ const StudentReport: React.FC = () => {
               <FiArrowLeft className="w-5 h-5" />
             </button>
             <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
-              Student List
+              Report
             </h1>
           </div>
         </div>

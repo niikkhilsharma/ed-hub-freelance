@@ -1,9 +1,10 @@
-import StudentReport from '@/components/teacher-b2b/student-profile';
+import StudentReport from '@/components/teacher-b2b/quiz-student-profile';
 import React from 'react'
 
-export default function StudentProgressPage () {
+const StudentProgressPage = () => {
   return (
     <StudentReport />
   )
 }
 
+export default StudentProgressPage;

@@ -3,7 +3,7 @@ import { ChevronDown, X } from 'lucide-react';
 
 export default function ShareVideoPopup() {
   return (
-    <div className="bg-[#FFFFFF] rounded-2xl mx-auto my-20 shadow-xl p-6 w-[400px] max-w-full relative">
+    <div className="bg-[#FFFFFF] rounded-2xl mx-auto my-40 shadow-xl p-6 w-[400px] max-w-full relative">
       {/* Close Button */}
      <button className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black">
         <X size={20} />
@@ -37,7 +37,7 @@ export default function ShareVideoPopup() {
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-end gap-3">
+      <div className="flex justify-center sm:justify-end gap-3">
         <button className="px-4 py-2 rounded-full  text-[#6B7280] border border-[#E5E7EB]">
           Cancel
         </button>

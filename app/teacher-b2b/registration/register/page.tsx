@@ -97,7 +97,7 @@ export default function StudentInfoPage() {
       <main className="w-full max-w-7xl flex flex-col md:flex-row gap-8">
 
         {/* --- Left Panel: Form (No longer has overflow or fixed height) --- */}
-        <div className="w-full md:w-2/5 lg:w-1/3 bg-white p-6 sm:p-8 lg:p-10 rounded-4xl shadow-2xl">
+        <div className="w-full md:w-2/5  lg:w-1/3 bg-white px-6 py-4 rounded-4xl shadow-2xl">
           <form onSubmit={handleSubmit}>
             <FormInput id="name" name="name" label="Name" type="text" placeholder="Enter Name" value={formData.name} onChange={handleChange} />
             <FormInput id="dob" name="dob" label="Date of Birth" type="text" placeholder="DD/MM/YY" value={formData.dob} onChange={handleChange} />
@@ -130,7 +130,7 @@ export default function StudentInfoPage() {
         </div>
 
         {/* --- Right Panel: Image (Stretches to match the left panel's height automatically) --- */}
-        <div className="hidden md:block w-full md:w-3/5 lg:w-2/3 relative rounded-4xl overflow-hidden">
+        <div className="hidden md:block  w-full md:w-3/5 lg:w-2/3 relative rounded-4xl overflow-hidden">
           <div
             className="absolute inset-0 w-full h-full bg-[#f9fafb]"
             style={{

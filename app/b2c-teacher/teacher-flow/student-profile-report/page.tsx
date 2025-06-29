@@ -49,11 +49,11 @@ const PALETTE = {
 const ClassesCard = () => {
 
   return (
-    <div className="flex flex-col gap-4 p-4 rounded-2xl bg-white">
+    <div className="flex flex-col gap-4 p-4  rounded-2xl bg-white">
       {/* Card 1 - Student Journey Report */}
-      <div className="bg-white rounded-xl px-4 py-6 shadow-sm">
+      <div className="bg-white rounded-2xl  p-6 shadow-sm">
         <div className="flex justify-between items-center mb-1">
-          <h3 className="text-[28px] w-[18ch]  font-bold text-[#FFCC00]">
+          <h3 className="sm:text-[24px] text-[20px] w-[15ch]  font-bold text-[#FFCC00]">
             Student Journey Report
           </h3>
           <Image
@@ -73,9 +73,9 @@ const ClassesCard = () => {
       </div>
 
       {/* Card 2 - Month End Report */}
-      <div className="bg-white rounded-xl p-4 border border-blue-200 shadow-sm">
+      <div className="bg-white rounded-2xl  p-4 border border-blue-200 shadow-sm">
         <div className="flex justify-between items-center mb-2">
-          <h3 className="text-[30px] font-bold w-[10ch] text-[#3366FF]">Month End Report</h3>
+          <h3 className="text-[24px]  text-[20px] font-bold w-[10ch] text-[#3366FF]">Month End Report</h3>
            <Image
             src="/teacher/b2c/calender.png"
             alt="Shlok Agheda"
@@ -462,7 +462,8 @@ const StudentReport: React.FC = () => {
         <Header user={headerUser} />
 
         {/* Page Title Bar */}
-        <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+        <div className=" bg-white">
+        <div className="flex items-center mx-auto max-w-[96rem] gap-3 px-4 sm:px-6 py-3.5 sticky top-0 z-40">
           <button
             onClick={handleBackClick}
             className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
@@ -474,113 +475,125 @@ const StudentReport: React.FC = () => {
             Student List
           </h1>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 p-2 md:px-5 gap-4">
+        </div>
+        
+<div className=" max-w-[93rem]  mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3   p-2 my-3 md:px-5 gap-4">
           {/* Student Info Card */}
           <div
-            className="lg:col-span-2 bg-white p-5 rounded-2xl"
-            style={{
-              borderColor: PALETTE.BORDER_GREY,
-            }}
-          >
-            <div className="flex items-start justify-between sm:items-center gap-4">
-              <div className="flex flex-col sm:items-center sm:flex-row gap-4">
-                <Image
-                  src="/teacher-b2b/profile2.png"
-                  alt="Shlok Agheda"
-                  width={72}
-                  height={72}
-                  className="rounded-full h-24 w-24 flex-shrink-0"
-                />
-                <div className="flex-grow">
-                  <h2
-                    className="text-xl font-semibold"
-                    style={{ color: PALETTE.TEXT_DARK }}
-                  >
-                    Shlok Agheda
-                  </h2>
-                  <div className="flex items-center gap-1 mt-2">
-                    <span
-                      className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+                      className="lg:col-span-2 h-fit  p-2 sm:p-3 rounded-2xl"
                       style={{
-                        backgroundColor: PALETTE.ACCENT_PINK,
-                        color: PALETTE.WHITE_CARD,
+                        borderColor: PALETTE.BORDER_GREY,
+                        backgroundImage:"url('/images/brandpatternreport.png')",
+                       backgroundSize: "100% 100%",
+                        backgroundRepeat:"no-repeat", 
                       }}
                     >
-                      Class 8A
-                    </span>
-                    <span
-                      className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
-                      style={{
-                        backgroundColor: PALETTE.ACCENT_PINK,
-                        color: PALETTE.WHITE_CARD,
-                      }}
-                    >
-                      Group A
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="text-[12px] font-medium text-right sm:text-left space-y-0.5 text-black">
-                <p>Gender: Male</p>
-                <p>DOB: 15 Jun 2015</p>
-                <p>Email: example@gm.com</p>
-
-                <p>City: Mumbai</p>
-                <p>State: Maharashtra</p>
-              </div>
-            </div>
-            <div className="pt-4 ">
-              <p
-                className="text-sm font-bold mb-3"
-                style={{ color: PALETTE.TEXT_DARK }}
-              >
-                Key Focus Area
-              </p>
-              <div className="flex flex-wrap gap-4">
-                {keyFocusAreas.map((area) => (
-                  <button
-                    key={area}
-                    className="text-xs px-2 py-2 text-black rounded-full border"
-                    style={{
-                      backgroundColor: "#F3F4F6",
-                      borderColor: PALETTE.BORDER_GREY,
-                    }}
-                  >
-                    {area}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className="pt-4 ">
-              <p
-                className="text-sm font-bold mb-3"
-                style={{ color: PALETTE.TEXT_DARK }}
-              >
-                Parent Control
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <button
-                  className="text-xs px-2 py-2 text-black rounded-full border"
-                  style={{
-                    backgroundColor: "#F3F4F6",
-                    borderColor: PALETTE.BORDER_GREY,
-                  }}
-                >
-                  +91 0000000000
-                </button>
-                <button
-                  className="text-xs px-2 py-2 text-black rounded-full border"
-                  style={{
-                    backgroundColor: "#F3F4F6",
-                    borderColor: PALETTE.BORDER_GREY,
-                  }}
-                >
-                  example@gm.com
-                </button>
-              </div>
-            </div>
-          </div>
+                      <div className="bg-white  rounded-2xl p-4 sm:p-6">
+                      <div className="flex items-start justify-between sm:items-center gap-4">
+                        <div className="flex flex-col sm:items-center sm:flex-row gap-4">
+                          <Image
+                          src="/teacher-b2b/profile2.png"
+                          alt="Shlok Agheda"
+                          width={72}
+                          height={72}
+                          className="rounded-full h-24 w-24 flex-shrink-0"
+                        />
+                        <div className="flex-grow">
+                          <h2
+                            className="text-xl font-semibold"
+                            style={{ color: PALETTE.TEXT_DARK }}
+                          >
+                            Shlok Agheda
+                          </h2>
+                          <div className="flex items-center gap-1 mt-2">
+                            <span
+                              className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+                              style={{
+                                backgroundColor: PALETTE.ACCENT_PINK,
+                                color: PALETTE.WHITE_CARD,
+                              }}
+                            >
+                              Class 8A
+                            </span>
+                            <span
+                              className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
+                              style={{
+                                backgroundColor: PALETTE.ACCENT_PINK,
+                                color: PALETTE.WHITE_CARD,
+                              }}
+                            >
+                              Group A
+                            </span>
+                          </div>
+                        </div>
+                        </div>
+                        <div className="text-[12px] sm:text-[16px] font-medium text-right sm:text-left space-y-0.5 text-black">
+                          <p>Gender: Male</p>
+                          <p>DOB: 15 Jun 2015</p>
+                          <p>Email: example@gm.com</p>
+                          
+                          <p>City: Mumbai</p>
+                          <p>State: Maharashtra</p>
+                        </div>
+                      </div>
+                      <div className="pt-4 ">
+                        <p
+                          className="text-sm font-bold mb-3"
+                          style={{ color: PALETTE.TEXT_DARK }}
+                        >
+                          Key Focus Area
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                          {keyFocusAreas.map((area) => (
+                            <button
+                              key={area}
+                              className="text-xs px-2 py-2 text-black rounded-full border"
+                              style={{
+                                backgroundColor: "#F3F4F6",
+                                borderColor: PALETTE.BORDER_GREY,
+                              }}
+                            >
+                              {area}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="pt-4 ">
+                        <p
+                          className="text-sm font-bold mb-3"
+                          style={{ color: PALETTE.TEXT_DARK }}
+                        >
+                          Parent Control
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                            <button
+                              className="text-xs px-2 py-2 text-black rounded-full border"
+                              style={{
+                                backgroundColor: "#F3F4F6",
+                                borderColor: PALETTE.BORDER_GREY,
+                              }}
+                            >
+                              +91 0000000000
+                            </button>
+                            <button
+                              className="text-xs px-2 py-2 text-black rounded-full border"
+                              style={{
+                                backgroundColor: "#F3F4F6",
+                                borderColor: PALETTE.BORDER_GREY,
+                              }}
+                            >
+                              example@gm.com
+                            </button>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
           <ClassesCard />
+        </div>
+
+        <div className="  rounded-2xl  max-w-[91rem]  mx-auto  bg-[#f9fafb] p-3 border border-[#e5e7eb]">
+Progress Report
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 p-2 md:px-5 md:grid-cols-[2fr_1fr] gap-4">
           {/* ====== Overall Charts start ====== */}
@@ -975,6 +988,7 @@ const StudentReport: React.FC = () => {
             </table>
           </div>
         </main>
+        </div>
         <Footer />
       </div>
     </>

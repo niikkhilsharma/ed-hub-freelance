@@ -37,7 +37,7 @@ export default function ShareVideoPopup() {
       </div>
 
       {/* Buttons */}
-      <div className="flex justify-end gap-3">
+      <div className="flex  justify-center sm:justify-end gap-3">
         <button className="px-4 py-2 rounded-full  text-[#6B7280] border border-[#E5E7EB]">
           Cancel
         </button>

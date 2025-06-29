@@ -10,7 +10,7 @@ export default function UploadPopup({ onClose }: { onClose: () => void }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white rounded-2xl p-6 space-y-4  w-full max-w-lg relative">
+      <div className="bg-white mx-auto rounded-2xl p-6 space-y-4  max-w-lg relative">
         {/* Close Button */}
         <button className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black">
         <X size={20} />
@@ -52,7 +52,7 @@ export default function UploadPopup({ onClose }: { onClose: () => void }) {
         </div>
 
         {/* Buttons */}
-        <div className="flex justify-end gap-4">
+        <div className="flex justify-center sm:justify-end gap-4">
           <button
             onClick={onClose}
             className="rounded-full px-6 py-2 border border-[#E5E7EB] text-[#6B7280] font-semibold"

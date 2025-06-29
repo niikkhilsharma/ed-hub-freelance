@@ -486,7 +486,7 @@ const CreateAIAssessmentContent: React.FC = () => {
           {/* Left Column */}
           <div className="sm:w-1/3 space-y-6">
             <FormField
-              label="Assessment Name"
+              label="Test Name"
               name="assessmentName"
               value={formData.testName}
               onChange={handleFormChange}
@@ -695,7 +695,7 @@ const CreateAIAssessmentContent: React.FC = () => {
           onClick={handleCreate}
           className={`px-4 py-2.5 text-md font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[${PRIMARY_BLUE}]`}
         >
-          {currentStep === 1 ? "Create" : "Create Assessment"}
+          {currentStep === 1 ? "Create" : "Create Test"}
         </button>
       </div>
     </div>
