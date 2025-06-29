@@ -7,9 +7,6 @@ import {
   FiSearch,
   FiChevronDown,
   FiCalendar,
-  // FiClock,
-  // FiX, // Using FiX for the clear icon next to date
-  // FiChevronUp,
   FiArrowLeft,
   FiArrowLeftCircle,
   FiArrowRightCircle, // For number inputs
@@ -27,11 +24,11 @@ interface DropdownOption {
   label: string;
 }
 
-// interface UnitaryItemData {
-//   id: string;
-//   title: string;
-//   subtitle: string;
-// }
+interface UnitaryItemData {
+  id: string;
+  title: string;
+  subtitle: string;
+}
 
 interface StudentData {
   id: string;
@@ -61,12 +58,12 @@ const sampleGroups: DropdownOption[] = [
   { value: "groupBeta", label: "Beta Group" },
 ];
 
-// const sampleUnitaryItems: UnitaryItemData[] = [
-//   { id: "u1", title: "Option Title", subtitle: "Option Subtitle" },
-//   { id: "u2", title: "Option Title", subtitle: "Option Subtitle" },
-//   { id: "u3", title: "Option Title", subtitle: "Option Subtitle" },
-//   { id: "u4", title: "Option Title", subtitle: "Option Subtitle" },
-// ];
+const sampleUnitaryItems: UnitaryItemData[] = [
+  { id: "u1", title: "Option Title", subtitle: "Option Subtitle" },
+  { id: "u2", title: "Option Title", subtitle: "Option Subtitle" },
+  { id: "u3", title: "Option Title", subtitle: "Option Subtitle" },
+  { id: "u4", title: "Option Title", subtitle: "Option Subtitle" },
+];
 
 const sampleStudents: StudentData[] = [
   {
@@ -87,14 +84,6 @@ const sampleStudents: StudentData[] = [
   },
   {
     id: "s3",
-    avatarUrl: AVATAR_PLACEHOLDER,
-    name: "Student Name",
-    courseName: "Course Name",
-    levelGrade: "Level / Grade",
-    group: "Group",
-  },
-  {
-    id: "s4",
     avatarUrl: AVATAR_PLACEHOLDER,
     name: "Student Name",
     courseName: "Course Name",
@@ -139,7 +128,10 @@ const FormField: React.FC<{
   required,
 }) => (
   <div>
-    <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
+    <label
+      htmlFor={name}
+      className="block text-sm  sm:text-lg font-medium text-black mb-1"
+    >
       {label}
     </label>
     {type === "textarea" ? (
@@ -151,7 +143,7 @@ const FormField: React.FC<{
         onChange={onChange}
         placeholder={placeholder || "Text"}
         required={required}
-        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm resize-none`}
+        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none h-[190px] text-sm resize-none`}
       />
     ) : (
       <input
@@ -177,7 +169,10 @@ const FormSelect: React.FC<{
   required?: boolean;
 }> = ({ label, name, value, onChange, options, required }) => (
   <div>
-    <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
+    <label
+      htmlFor={name}
+      className="block text-sm  sm:text-lg  font-medium text-black mb-1"
+    >
       {label}
     </label>
     <div className="relative">
@@ -208,7 +203,10 @@ const FormDateInput: React.FC<{
   required?: boolean;
 }> = ({ label, name, value, onChange, required }) => (
   <div>
-    <label htmlFor={name} className="block text-sm font-medium text-black mb-1">
+    <label
+      htmlFor={name}
+      className="block text-sm  sm:text-lg  font-medium text-black mb-1"
+    >
       {label}
     </label>
     <div className="relative">
@@ -222,7 +220,7 @@ const FormDateInput: React.FC<{
         required={required}
         className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm pr-10`}
       />
-      <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
+      <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280] pointer-events-none" />
     </div>
   </div>
 );
@@ -272,14 +270,14 @@ const DurationPointInput: React.FC<{
           <button
             type="button"
             onClick={handleIncrement}
-            className="text-black hover:text-black h-1/2 flex items-center text-[8px]"
+            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
           >
             ▲
           </button>
           <button
             type="button"
             onClick={handleDecrement}
-            className="text-black hover:text-black h-1/2 flex items-center text-[8px]"
+            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
           >
             ▼
           </button>
@@ -325,24 +323,26 @@ const Stepper: React.FC<{
   </div>
 );
 
-// const UnitaryItemCard: React.FC<{
-//   item: UnitaryItemData;
-//   isSelected: boolean;
-//   onSelect: () => void;
-// }> = ({ item, isSelected, onSelect }) => (
-//   <button
-//     onClick={onSelect}
-//     className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150
-//       ${
-//         isSelected
-//           ? `bg-orange-100 border-orange-400 shadow-md`
-//           : `bg-white hover:bg-gray-200 `
-//       }`}
-//   >
-//     <h4 className="text-sm font-semibold text-black">{item.title}</h4>
-//     <p className="text-xs text-[#6B7280]">{item.subtitle}</p>
-//   </button>
-// );
+const UnitaryItemCard: React.FC<{
+  item: UnitaryItemData;
+  isSelected: boolean;
+  onSelect: () => void;
+}> = ({ item, isSelected, onSelect }) => (
+  <button
+    onClick={onSelect}
+    className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150
+      ${
+        isSelected
+          ? `bg-orange-100 border-orange-400 shadow-md`
+          : `bg-white hover:bg-gray-200 `
+      }`}
+  >
+    <h4 className="text-sm  sm:text-md font-semibold text-black">
+      {item.title}
+    </h4>
+    <p className="text-xs sm:text-sm text-[#6B7280]">{item.subtitle}</p>
+  </button>
+);
 
 const StudentSelectItemCard: React.FC<{
   student: StudentData;
@@ -351,7 +351,7 @@ const StudentSelectItemCard: React.FC<{
 }> = ({ student, isSelected, onSelect }) => (
   <button
     onClick={onSelect}
-    className={`w-full flex items-center p-1.5 rounded-2xl border transition-all duration-150 gap-3
+    className={`w-full flex  flex-row  items-start sm:items-center p-2 sm:p-1.5 rounded-2xl border transition-all duration-150 gap-3
       ${
         isSelected
           ? `bg-blue-50 border-[${PRIMARY_BLUE}]`
@@ -364,15 +364,19 @@ const StudentSelectItemCard: React.FC<{
       className="w-17 h-17 rounded-xl object-cover flex-shrink-0"
     />
     <div className="flex-grow text-left min-w-0">
-      <h4 className="text-sm font-semibold text-black truncate">
+      <h4 className="text-sm sm:text-md font-semibold text-black truncate">
         {student.name}
       </h4>
-      <p className="text-[10px] text-black truncate">{student.courseName}</p>
-      <p className="text-[10px] text-black truncate">{student.levelGrade}</p>
-      <p className="text-[10px] text-black truncate">Group</p>
+      <p className="text-[10px] text-[#6B7280] truncate">
+        {student.courseName}
+      </p>
+      <p className="text-[10px] text-[#6B7280] truncate">
+        {student.levelGrade}
+      </p>
+      <p className="text-[10px] text-[#6B7280] truncate">Group</p>
     </div>
     <div
-      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${
+      className={`appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] text-blue-600 ${
         isSelected
           ? `border-[${PRIMARY_BLUE}] bg-[${PRIMARY_BLUE}]`
           : `border-[#6B7280]`
@@ -385,15 +389,9 @@ const StudentSelectItemCard: React.FC<{
 
 // --- Main Content Component ---
 const CreateAIAssessmentContent: React.FC = () => {
-  const stepperSteps: StepperStep[] = [
-    { id: 1, name: "Worksheet Details" },
-    { id: 2, name: "Review" },
-  ];
-  const [currentStep, setCurrentStep] = useState(1);
-
   // Form State (Left Column)
   const [formData, setFormData] = useState({
-    assessmentName: "",
+    testName: "",
     description: "",
     subject: "",
     class: "",
@@ -407,16 +405,15 @@ const CreateAIAssessmentContent: React.FC = () => {
   });
 
   // Right Column State
-  // const [unitarySearch, setUnitarySearch] = useState("");
-  // const [selectedUnitaryId, setSelectedUnitaryId] = useState<string | null>(
-  //   null
-  // );
+  const [unitarySearch, setUnitarySearch] = useState("");
+  const [selectedUnitaryId, setSelectedUnitaryId] = useState<string | null>(
+    null
+  );
 
   const [studentAssignType, setStudentAssignType] = useState<
     "all" | "selective"
   >("selective");
   const [studentSearch, setStudentSearch] = useState("");
-  // const [studentDateFilter, setStudentDateFilter] = useState("June 2025"); // Example
   const [studentStandardFilter, setStudentStandardFilter] = useState(
     sampleStandards[0]?.value || ""
   );
@@ -433,13 +430,13 @@ const CreateAIAssessmentContent: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // const filteredUnitaryItems = useMemo(
-  //   () =>
-  //     sampleUnitaryItems.filter((item) =>
-  //       item.title.toLowerCase().includes(unitarySearch.toLowerCase())
-  //     ),
-  //   [unitarySearch]
-  // );
+  const filteredUnitaryItems = useMemo(
+    () =>
+      sampleUnitaryItems.filter((item) =>
+        item.title.toLowerCase().includes(unitarySearch.toLowerCase())
+      ),
+    [unitarySearch]
+  );
 
   const filteredStudents = useMemo(
     () =>
@@ -459,7 +456,7 @@ const CreateAIAssessmentContent: React.FC = () => {
 
   const handleCreate = () => {
     console.log("Form Data:", formData);
-    // console.log("Selected Unitary:", selectedUnitaryId);
+    console.log("Selected Unitary:", selectedUnitaryId);
     console.log(
       "Student Assignment:",
       studentAssignType,
@@ -468,207 +465,154 @@ const CreateAIAssessmentContent: React.FC = () => {
     );
     alert("Assessment creation initiated! Check console for data.");
     // Navigate to next step or submit
-    if (currentStep === 1) setCurrentStep(2);
+
     // else actual submission
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl p-4 py-4 sm:px-16">
-      <Stepper
-        steps={stepperSteps}
-        currentStep={currentStep}
-        setCurrentStep={setCurrentStep}
-      />
+    <div className="bg-white w-full rounded-2xl p-4 sm:p-6 lg:p-8">
+      <div className=" mx-auto  justify-evenly flex  flex-col sm:flex-row gap-8 px-4">
+        {/* Left Column */}
+        <div className="sm:w-1/3 space-y-6">
+          <FormField
+            label="Worksheet Name"
+            name="assessmentName"
+            value={formData.testName}
+            onChange={handleFormChange}
+          />
 
-      {currentStep === 1 && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-start max-w-6xl mx-auto">
-          {/* Left Column: Worksheet Details Form */}
-          <div className="space-y-5">
-            <FormField
-              label="Worksheet Name"
-              name="assessmentName"
-              value={formData.assessmentName}
-              onChange={handleFormChange}
-            />
-            <FormField
-              label="Description"
-              name="description"
-              value={formData.description}
-              onChange={handleFormChange}
-              type="textarea"
-            />
-            <FormSelect
-              label="Select Subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleFormChange}
-              options={sampleSubjects}
-            />
-            <FormSelect
-              label="Select Classes"
-              name="class"
-              value={formData.class}
-              onChange={handleFormChange}
-              options={sampleClasses}
-            />
-            <FormSelect
-              label="Select Group"
-              name="group"
-              value={formData.group}
-              onChange={handleFormChange}
-              options={sampleGroups}
-            />
-            <FormDateInput
-              label="Test Date"
-              name="testDate"
-              value={formData.testDate}
-              onChange={handleFormChange}
-            />
-            <FormDateInput
-              label="Expiry Date"
-              name="expiryDate"
-              value={formData.expiryDate}
-              onChange={handleFormChange}
-            />
-
-            <div>
-              <label className="block text-sm font-medium text-black mb-2">
-                Duration & Point
-              </label>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <DurationPointInput
-                  label="Hours"
-                  name="durationHours"
-                  value={formData.durationHours}
-                  onChange={(val) =>
-                    handleDurationPointChange("durationHours", val)
-                  }
+          <FormSelect
+            label="Select Subject"
+            name="subject"
+            value={formData.subject}
+            onChange={handleFormChange}
+            options={sampleSubjects}
+          />
+          <FormSelect
+            label="Select Classes"
+            name="class"
+            value={formData.class}
+            onChange={handleFormChange}
+            options={sampleClasses}
+          />
+          <FormSelect
+            label="Select Group"
+            name="group"
+            value={formData.group}
+            onChange={handleFormChange}
+            options={sampleGroups}
+          />
+          <div className="p-4 rounded-2xl border border-gray-300 bg-[#F9FAFB]">
+            <div className="relative mb-3">
+              <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
+              <input
+                type="text"
+                placeholder="Unitary"
+                value={unitarySearch}
+                onChange={(e) => setUnitarySearch(e.target.value)}
+                className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-xl text-sm sm:text-md outline-none focus:ring-1 focus:ring-blue-500"
+              />
+            </div>
+            <div className="space-y-2 max-h-48 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
+              {filteredUnitaryItems.map((item) => (
+                <UnitaryItemCard
+                  key={item.id}
+                  item={item}
+                  isSelected={selectedUnitaryId === item.id}
+                  onSelect={() => setSelectedUnitaryId(item.id)}
                 />
-                <DurationPointInput
-                  label="Minutes"
-                  name="durationMinutes"
-                  value={formData.durationMinutes}
-                  onChange={(val) =>
-                    handleDurationPointChange("durationMinutes", val)
-                  }
-                />
-                <DurationPointInput
-                  label="Total Points"
-                  name="totalPoints"
-                  value={formData.totalPoints}
-                  onChange={(val) =>
-                    handleDurationPointChange("totalPoints", val)
-                  }
-                />
-                <DurationPointInput
-                  label="Pass Points"
-                  name="passPoints"
-                  value={formData.passPoints}
-                  onChange={(val) =>
-                    handleDurationPointChange("passPoints", val)
-                  }
-                />
-              </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Right Column: Unitary & Student Selection */}
-          <div className="space-y-6 h-full">
-            
+        {/* Right Column */}
+        <div className="sm:w-1/2 space-y-6 flex flex-col">
+          {/* Unitary Selection */}
 
-            {/* Student Selection */}
-            <div
-              className={`p-4 rounded-2xl border h-full ${INPUT_BORDER} bg-[#F9FAFB]`}
-            >
-              <div className="flex items-center space-x-4 mb-3">
-                <label className="flex items-center space-x-1.5 cursor-pointer">
+          {/* Student Selection */}
+          <div className=" bg-[#f9fafb] border border-[#E5E7EB]  h-full p-2 rounded-2xl">
+            <div className="flex items-center space-x-4 mb-3">
+            <label className="flex items-center space-x-1.5 cursor-pointer">
+              <input
+                type="radio"
+                name="studentAssignType"
+                value="all"
+                checked={studentAssignType === "all"}
+                onChange={() => setStudentAssignType("all")}
+                className={`appearance-none w-5 h-5 rounded-full border-[4px] 
+        ${
+          studentAssignType === "all"
+            ? "bg-[#007bff] border-[#007bff]"
+            : "border-[#6b7280]"
+        }`}
+              />
+              <span className="text-md text-black">For all</span>
+            </label>
+
+            <label className="flex items-center space-x-1.5 cursor-pointer">
+              <input
+                type="radio"
+                name="studentAssignType"
+                value="selective"
+                checked={studentAssignType === "selective"}
+                onChange={() => setStudentAssignType("selective")}
+                className={`appearance-none w-5 h-5 rounded-full border-[4px] 
+        ${
+          studentAssignType === "selective"
+            ? " border-[#007bff]"
+            : "border-[#6b7280]"
+        }`}
+              />
+              <span className="text-md text-black">For selective Students</span>
+            </label>
+          </div>
+
+          {studentAssignType === "selective" && (
+            <>
+              <div className="flex gap-2 justify-between mb-2">
+                <div className="relative w-[500px]">
+                  <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
                   <input
-                    type="radio"
-                    name="studentAssignType"
-                    value="all"
-                    checked={studentAssignType === "all"}
-                    onChange={() => setStudentAssignType("all")}
-                    className="form-radio h-4 w-4 text-[${PRIMARY_BLUE}] focus:ring-[${PRIMARY_BLUE}]"
+                    type="text"
+                    placeholder="Search Student"
+                    value={studentSearch}
+                    onChange={(e) => setStudentSearch(e.target.value)}
+                    className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
                   />
-                  <span className="text-md text-black">For all</span>
-                </label>
-                <label className="flex items-center space-x-1.5 cursor-pointer">
-                  <input
-                    type="radio"
-                    name="studentAssignType"
-                    value="selective"
-                    checked={studentAssignType === "selective"}
-                    onChange={() => setStudentAssignType("selective")}
-                    className="form-radio h-4 w-4 text-[${PRIMARY_BLUE}] focus:ring-[${PRIMARY_BLUE}]"
-                  />
-                  <span className="text-md text-black">
-                    For selective Students
-                  </span>
-                </label>
-              </div>
+                </div>
 
-              {studentAssignType === "selective" && (
-                <>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3 items-stretch justify-between ">
-                    <div className="relative flex-grow sm:col-span-1">
-                      <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
-                      <input
-                        type="text"
-                        placeholder="Search Student"
-                        value={studentSearch}
-                        onChange={(e) => setStudentSearch(e.target.value)}
-                        className={`w-full pl-9 pr-3 py-2 ${INPUT_BG} border-[#6B7280] border rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-[${PRIMARY_BLUE}]`}
-                      />
-                    </div>
-                    <div className="relative sm:col-span-1">
-                      <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                        <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                        <span>June 2025</span>
-                        <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" />
-                      </div>
-                    </div>
-                    <div className="relative sm:col-span-1">
-                      <select
-                        value={studentStandardFilter}
-                        onChange={(e) =>
-                          setStudentStandardFilter(e.target.value)
-                        }
-                        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-lg appearance-none text-sm pr-8 focus:outline-none focus:ring-1 focus:ring-[${PRIMARY_BLUE}]`}
-                      >
-                        {sampleStandards.map((opt) => (
-                          <option key={opt.value} value={opt.value}>
-                            {opt.label}
-                          </option>
-                        ))}
-                      </select>
-                      <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
-                    </div>
-                  </div>
-                  <div
-                    className={`space-y-2 max-h-96 overflow-y-auto pr-1 scrollbar-thin ${SCROLLBAR_THUMB_ORANGE} ${SCROLLBAR_TRACK_LIGHT}`}
+                <div className="relative">
+                  <select
+                    value={studentStandardFilter}
+                    onChange={(e) => setStudentStandardFilter(e.target.value)}
+                    className="w-full px-6 py-2 border border-gray-300 rounded-xl text-sm appearance-none pr-8 focus:outline-none focus:ring-1 focus:ring-blue-500"
                   >
-                    {filteredStudents.map((student) => (
-                      <StudentSelectItemCard
-                        key={student.id}
-                        student={student}
-                        isSelected={selectedStudentIds.includes(student.id)}
-                        onSelect={() => toggleStudentSelection(student.id)}
-                      />
+                    {sampleStandards.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
                     ))}
-                  </div>
-                </>
-              )}
-            </div>
+                  </select>
+                  <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
+                </div>
+              </div>
+
+              <div className="space-y-2 h-[26rem] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
+                {filteredStudents.map((student) => (
+                  <StudentSelectItemCard
+                    key={student.id}
+                    student={student}
+                    isSelected={selectedStudentIds.includes(student.id)}
+                    onSelect={() => toggleStudentSelection(student.id)}
+                  />
+                ))}
+              </div>
+            </>
+          )}
           </div>
         </div>
-      )}
-
-      {currentStep === 2 && (
-        <div className="text-center py-12 text-black">
-          <h3 className="text-xl font-semibold mb-2">Review Step</h3>
-          <p>Content for the review step will go here.</p>
-        </div>
-      )}
+      </div>
 
       {/* Action Buttons */}
       <div className="mt-8 flex justify-center space-x-3">
@@ -684,7 +628,7 @@ const CreateAIAssessmentContent: React.FC = () => {
           onClick={handleCreate}
           className={`px-4 py-2.5 text-md font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[${PRIMARY_BLUE}]`}
         >
-          {currentStep === 1 ? "Create" : "Create Assessment"}
+        Upload
         </button>
       </div>
     </div>
@@ -695,7 +639,7 @@ export default function CreateAIAssessmentPage() {
   const headerUser = {
     name: "Educator Name", // Example, should be dynamic
     role: "Teacher", // Example role
-    avatarSrc: "/teacher-b2b/profile.png", // UPDATE THIS PATH
+    avatarSrc: "/teacher-b2b/list-profile.png", // UPDATE THIS PATH
   };
 
   const handleBackClick = () => {
@@ -710,30 +654,26 @@ export default function CreateAIAssessmentPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-    <MaxWidthWrapper>
+
       <div className="bg-gray-100">
+        <div className="bg-white">
+          <div className="flex items-center gap-3 bg max-w-[96rem] mx-auto px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+            <button
+              onClick={handleBackClick}
+              className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
+              aria-label="Go back"
+            >
+              <FiArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+           
+          </div>
+        </div>
 
-      <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
-        <button
-          onClick={handleBackClick}
-          className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
-          aria-label="Go back"
-        >
-          <FiArrowLeft className="w-5 h-5" />
-        </button>
-        <h1
-          className="text-lg sm:text-xl font-semibold"
-          style={{ color: ACCENT_PINK_STYLE }}
-        >
-          Create AI Generated Assessment
-        </h1>
+        <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+          <CreateAIAssessmentContent />
+        </main>
       </div>
 
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-        <CreateAIAssessmentContent />
-      </main>
-      </div>
-    </MaxWidthWrapper>
       {/* Page Title Bar */}
 
       <Footer />

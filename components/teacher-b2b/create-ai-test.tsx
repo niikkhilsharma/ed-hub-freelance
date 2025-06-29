@@ -722,8 +722,10 @@ export default function CreateAIAssessmentPage() {
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
       
-        <div className="bg-gray-100">
-          <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+        
+          <div className="bg-gray-100">
+          <div className="bg-white">
+          <div className="flex items-center gap-3 bg max-w-[96rem] mx-auto px-4 sm:px-6 py-3.5 sticky top-0 z-40">
             <button
               onClick={handleBackClick}
               className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
@@ -738,6 +740,7 @@ export default function CreateAIAssessmentPage() {
               Create AI Generated Test
             </h1>
           </div>
+        </div>
 
           <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
             <CreateAIAssessmentContent />
