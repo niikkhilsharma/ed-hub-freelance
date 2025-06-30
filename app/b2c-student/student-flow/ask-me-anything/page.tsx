@@ -3,7 +3,7 @@ import { FaRegCirclePlay} from "react-icons/fa6"
 import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 import { LuSendHorizontal} from "react-icons/lu"
-import Header from "@/components/b2c-student/Header";
+
 const messages = [
   {
     id: 1,
@@ -17,8 +17,8 @@ const messages = [
       <>
         <p>Great question! 🌱 Photosynthesis is how plants use sunlight, water, and air (carbon dioxide) to make their food. It&apos;s like a magic recipe using sunlight!</p>
         <p className="mt-2">Want to see it in action? Here&apos;s a fun video that explains it:</p>
-        <button className="mt-3 flex items-center space-x-2 w-full bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
-          <FaRegCirclePlay />
+        <button className="mt-3 flex items-center space-x-2 w-full bg-blue-600 text-white px-4 py-2 rounded-3xl hover:bg-blue-700">
+          <FaRegCirclePlay  className="w-5 h-5"/>
           <span>Photosynthesis</span>
         </button>
       </>
@@ -35,7 +35,7 @@ const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeho
  export default function ChatPop  ()  {
   return (
     <div>
-      <Header user={headerUser}/>
+  
     
     <div className="flex items-center justify-center py-8 bg-white px-4">
       
@@ -80,7 +80,7 @@ const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeho
         </div>
 
         {/* Close icon */}
-        <button className="absolute top-4 right-4 bg-gray-200 rounded-full p-3 text-black-500 hover:text-black">
+        <button className="absolute top-4 right-4 bg-[#e5e7eb] rounded-full p-3 text-black-500 hover:text-black">
          < RxCross1 />
         </button>
       </div>

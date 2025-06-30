@@ -29,7 +29,8 @@ export const OptimizedCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ c
 
     return (
         // FIXED: Removed py-2 from the main wrapper for proper vertical padding.
-        <div className="w-full bg-white rounded-2xl py-2">
+        <div >
+        <div className=" max-w-[96rem] bg-white mx-auto rounded-2xl py-2">
             <div className="relative flex items-center">
                 
                 <button
@@ -63,7 +64,7 @@ export const OptimizedCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ c
                                     {activeCategory === category && (
                                         <motion.div
                                             layoutId="highlight"
-                                            className={`absolute px-3 py-2 inset-0 bg-[${PALETTE.ACCENT_PINK}] rounded-xl z-0`}
+                                            className={`absolute px-3 py-2 inset-0 bg-[${PALETTE.ACCENT_PINK}] rounded-2xl z-0`}
                                             initial={{ opacity: 0 }}
                                             animate={{ opacity: 1 }}
                                             exit={{ opacity: 0 }}
@@ -78,6 +79,7 @@ export const OptimizedCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({ c
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 };

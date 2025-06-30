@@ -33,7 +33,7 @@ export default function RootLayout({
         <div lang="en" className={`${poppinsFont.variable} ${adlam.variable}`}>
             <div className="font-main overflow-x-hidden">
                 <div className="bg-gray-100">{children}</div>
-                <Footer />
+               
             </div>
         </div>
     );

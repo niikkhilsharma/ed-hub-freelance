@@ -121,7 +121,7 @@ export default function WorksheetViewPage() {
                         <div className="bg-white flex-1 rounded-2xl px-3 py-6 relative min-w-0">
                             <div className="absolute top-6 right-6 md:top-8 md:right-8 text-right">
                                 <div className="flex gap-3">
-                                    <div className="flex items-center gap-3 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
+                                    <div className="flex items-center gap-3 sm:gap-5  text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
                                         <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" onClick={goToPreviousPage} />
                                         <span>Page {currentPage}</span>
                                         <FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" onClick={goToNextPage} />

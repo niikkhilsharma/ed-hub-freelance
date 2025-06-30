@@ -186,7 +186,8 @@ export default function MyClassAssesmentPage() {
             onCategoryClick={(category) => setActiveMainCategory(category)}
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+        <div className="mx-auto max-w-[96rem]">
+          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
           <div className="md:col-span-1 lg:col-span-1 space-y-4">
             {" "}
             {/* Sidebar takes 1 col on md and lg */}
@@ -195,7 +196,7 @@ export default function MyClassAssesmentPage() {
               activeSubCategory={activeSubCategory}
               onSubCategoryClick={setActiveSubCategory}
             />
-            <FillForm />
+           
           </div>
           <div className="md:col-span-3 lg:col-span-4">
             {" "}
@@ -215,6 +216,7 @@ export default function MyClassAssesmentPage() {
               {renderActiveContent()}
             </ContentDisplayArea>
           </div>
+        </div>
         </div>
       </main>
       

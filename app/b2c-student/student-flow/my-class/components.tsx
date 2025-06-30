@@ -35,16 +35,7 @@ export const LearningAccordion: React.FC<LearningAccordionProps> = ({ week, isOp
     </div>
 );
 
-export const FillForm: React.FC = () => (
-  <div className="w-full p-5 bg-white rounded-2xl flex flex-col items-center justify-center gap-4 flex-shrink-0">
-    <h3 className="text-base md:text-base font-bold text-[#FF3366]">
-      Request Teacher Change
-    </h3>
-    <ActionButton variant="primary" size="sm" className="xs:w-auto">
-      Fill the Form
-    </ActionButton>
-  </div>
-);
+
 
 // --- Assessment Item ---
 interface AssessmentItemProps { assessment: AssessmentItemData; onClick?: () => void; }
@@ -87,7 +78,7 @@ interface SubCategorySidebarProps {
     onSubCategoryClick: (subCategory: string) => void;
 }
 export const SubCategorySidebar: React.FC<SubCategorySidebarProps> = ({ subCategories, activeSubCategory, onSubCategoryClick }) => (
-    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 min-h-81 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
+    <div className="bg-white rounded-2xl p-2 sm:p-3 space-y-1.5 sm:space-y-2 min-h-96 lg:max-h-[calc(100vh-250px)] lg:overflow-y-auto custom-scrollbar-thin"> {/* Adjusted max-h for lg */}
         {subCategories.map(subCat => (
             <SubCategoryItem
                 key={subCat}

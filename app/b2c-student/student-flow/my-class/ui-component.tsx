@@ -40,7 +40,7 @@ interface SubCategoryItemProps {
 export const SubCategoryItem: React.FC<SubCategoryItemProps> = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`w-full text-left px-3 py-2 text-xs rounded-lg sm:px-5 sm:py-3 sm:text-sm sm:rounded-xl transition-colors
+        className={`w-full px-3 py-2 text-xs text-center rounded-lg sm:px-5 sm:py-3 sm:text-sm sm:rounded-xl transition-colors
         ${ isActive
             ? 'bg-[#3366FF] text-white shadow'
             : 'text-[#6B7280] hover:bg-[#F9FAFB]'
