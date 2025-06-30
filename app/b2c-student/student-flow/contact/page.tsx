@@ -1,7 +1,7 @@
 'use client'
 import Header from '@/components/b2c-student/Header2';
 import Footer from '@/components/layout/Footer'
-import Image from 'next/image' // For the bell icon and user avatar
+import Image from 'next/image'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -11,21 +11,19 @@ export default function FAQPage() {
 	const headerUser = {
 		name: 'Shlok Agheda',
 		role: 'Student',
-		avatarSrc: '/images/person.jpg', // UPDATE PATH
-		
+		avatarSrc: '/images/person.jpg',
 	}
-
 	return (
 		<div>
 			<Header user={headerUser} currPage='Contact'/>
 			<div className="min-h-screen flex flex-col bg-[#eeeeee]">
-				<main className="container mx-auto p-6 max-w-7xl rounded-2xl my-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
+				<main className="container mx-auto p-6 max-w-screen-xl rounded-2xl my-6 flex flex-col sm:flex-row gap-4 relative overflow-hidden">
 					<Image
 						src={'/pattern.png'}
 						width={4096}
 						height={2304}
 						alt="pattern"
-						className="w-full h-full brightness-150 absolute top-0 left-0 opacity-30"
+						className="w-full h-full brightness-150 object-cover absolute top-0 left-0 opacity-50"
 					/>
 					<div className="sm:w-[45%] z-10 bg-white rounded-2xl p-4">
 						<h1 className="text-5xl text-[#FF3366] font-bold">Get in touch</h1>
@@ -71,7 +69,7 @@ export default function FAQPage() {
 								width={867}
 								height={1300}
 								alt="student"
-								className="rounded-2xl object-fill aspect-square absolute -top-15 left-0 h-[45rem] w-[48rem]"
+								className="rounded-2xl object-cover aspect-square absolute -top-15 left-0 h-[45rem] w-[48rem]"
 							/>
 						</div>
 						<div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-2xl p-4 w-full">

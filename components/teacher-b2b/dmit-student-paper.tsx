@@ -5,7 +5,6 @@ import { IoCheckmarkCircle, IoCloseCircle, IoTimeOutline, IoStar, IoStarOutline 
 import { FiArrowLeft } from 'react-icons/fi';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import MaxWidthWrapper from '../max-width-wrapper';
 
 // --- Data Interfaces ---
 interface Option {
@@ -351,7 +350,7 @@ export default function StudentPaperPage() {
     name: "Shlok Agheda",
     role: "Student",
     avatarSrc: "/teacher-b2b/profile.png",
-  }; // UPDATE PATH
+  }; 
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
