@@ -199,7 +199,7 @@ export default function StudentSubmittedPapersPage() {
     <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
       <Header user={headerUser} />
       <div className="   bg-white ">
-        <div className="flex items-center  py-4 max-w-[96rem] mx-auto gap-2 ">
+        <div className="flex items-center px-3.5 py-4 max-w-[96rem] mx-auto gap-2 ">
           <button
             onClick={handleBackClick}
             className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"

@@ -52,7 +52,7 @@ const CategoryTab: React.FC<CategoryTabProps> = ({ category, isActive, onClick }
 		<button
 			onClick={onClick}
 			className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-md md:text-lg font-medium transition-all duration-200 whitespace-nowrap
-        ${isActive ? 'bg-[#FF3366] text-white shadow-md' : 'bg-transparent text-[#6B7280] hover:bg-gray-100'}`}>
+        ${isActive ? 'bg-[#FF3366] text-white' : 'bg-transparent text-[#6B7280] hover:bg-gray-100'}`}>
 			{category.name}
 		</button>
 	)
@@ -99,7 +99,7 @@ const UploadExistingTestContent: React.FC = () => {
 	}, [allFolders, activeCategoryId])
 
 	return (
-		<div className="bg-white rounded-2xl shadow-xl min-h-screen  px-6 py-4 ">
+		<div className="bg-white rounded-2xl  min-h-screen  px-6 py-4 ">
 			{/* Category Tabs */}
 			<div className="p-2 rounded-3xl flex items-center justify-center mb-6 border border-[#e5e7eb]">
 				<nav className="flex space-x-1 sm:space-x-4 overflow-x-auto custom-scrollbar-thin">
@@ -116,7 +116,7 @@ const UploadExistingTestContent: React.FC = () => {
 
 			{/* Folders Grid */}
 			{filteredFolders.length > 0 ? (
-				<div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl gap-4 sm:gap-6">
+				<div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl gap-x-4 gap-y-2 sm:gap-6">
 					{filteredFolders.map(folder => (
 						<FolderCard key={folder.id} folder={folder} />
 					))}
