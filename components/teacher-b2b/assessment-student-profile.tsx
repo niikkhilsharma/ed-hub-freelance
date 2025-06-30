@@ -384,18 +384,18 @@ const StudentReport: React.FC = () => {
 					</div>
 				</div>
 				<div className=" max-w-[96rem] mx-auto">
-					<div className="grid grid-cols-1 lg:grid-cols-3 p-2 md:p-5 gap-6">
+					<div className="flex flex-col sm:flex-row p-2 md:p-5 gap-6">
 						{/* Student Info Card */}
 
 						<div
-							className="lg:col-span-3   p-4 rounded-2xl"
+							className="w-full   p-4 rounded-2xl"
 							style={{
 								borderColor: PALETTE.BORDER_GREY,
 								backgroundImage: "url('/images/brandpatternreport.png')",
 								backgroundSize: 'cover',
 							}}>
-							<div className="bg-white rounded-2xl ">
-								<div className="flex  items-start sm:items-center gap-4">
+							<div className="bg-white p-4  rounded-2xl ">
+								<div className="flex  flex-col sm:flex-row   items-start sm:items-center sm:gap-4">
 									<Image
 										src="/teacher-b2b/profile2.png"
 										alt="Shlok Agheda"
@@ -426,7 +426,7 @@ const StudentReport: React.FC = () => {
 											</span>
 										</div>
 									</div>
-									<div className="text-[15px] font-medium text-right sm:text-left space-y-0.5 text-black">
+									<div className="sm:text-[15px] text-[10px] font-medium  sm:text-left space-y-0.5 text-black">
 										<p>Gender: Male</p>
 										<p>DOB: 15 Jun 2015</p>
 										<p>Email: example@gm.com</p>
@@ -484,7 +484,7 @@ const StudentReport: React.FC = () => {
 										<span style={{ color: PALETTE.TEXT_MEDIUM }}>Personality Development</span>
 									</div>
 								</div>
-								<div className="flex items-center gap-2 mt-2 sm:mt-0">
+								<div className="flex  flex-col sm:flex-row items-center gap-2  ">
 									<div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
 										<span>March</span>
 										<FiChevronDown className="w-4 h-4 ml-1" />

@@ -55,7 +55,7 @@ const BaseModal: React.FC<BaseModalProps> = ({
 						animate={{ opacity: 1, scale: 1 }}
 						exit={{ opacity: 0, scale: 0.95 }}
 						transition={{ duration: 0.2 }}
-						className={`bg-white rounded-2xl shadow-xl w-full ${maxWidth} overflow-hidden`}
+						className={`bg-white rounded-3xl shadow-xl w-full ${maxWidth} overflow-hidden`}
 					>
 						{children}
 					</motion.div>
@@ -91,9 +91,9 @@ const ConfirmPasswordModal: React.FC<BaseModalProps> = ({
 					<h2 className="text-xl font-bold">Confirm your choice</h2>
 					<button
 						onClick={onClose}
-						className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+						className="p-1.5 bg-black/5 rounded-full hover:bg-gray-200"
 					>
-						<FiX />
+						<FiX  className="w-4 h-4 text-black"/>
 					</button>
 				</div>
 				<p className="text-[#6B7280] text-sm mb-3 px-2 text-center">
@@ -110,7 +110,7 @@ const ConfirmPasswordModal: React.FC<BaseModalProps> = ({
 						/>
 						<button
 							onClick={() => setShowPassword(!showPassword)}
-							className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B7280]"
+							className="absolute right-3 top-1/2 -translate-y-1/2 text-black"
 						>
 							{showPassword ? <FiEyeOff /> : <FiEye />}
 						</button>
@@ -262,14 +262,14 @@ const DeleteRecordingModal: React.FC<BaseModalProps> = ({
 	onClose,
 }) => (
 	<BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-lg">
-		<div className="p-6">
-			<div className="flex justify-between items-start mb-6">
-				<h2 className="text-xl font-bold text-center w-full pt-1.5">
+		<div className="p-6 ">
+			<div className="flex  space-y-3 justify-between items-start mb-6">
+				<h2 className="text-lg font-bold text-center w-full pt-1.5">
 					Delete Recording
 				</h2>
 				<button
 					onClick={onClose}
-					className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+					className="p-1.5 bg-black/5 rounded-full hover:bg-gray-200"
 				>
 					<FiX />
 				</button>
@@ -285,11 +285,11 @@ const DeleteRecordingModal: React.FC<BaseModalProps> = ({
 			<div className="flex justify-end gap-3 mt-4">
 				<button
 					onClick={onClose}
-					className="px-6 py-2.5 border border-[#E5E7EB] text-[#6B7280] font-semibold rounded-full hover:bg-gray-200"
+					className="px-4 py-2.5 border border-[#E5E7EB] text-[#6B7280] font-semibold rounded-full hover:bg-gray-200"
 				>
 					Cancel
 				</button>
-				<button className="px-8 py-2.5 bg-[#FF33661A] text-[#FF3366] font-semibold rounded-full hover:bg-pink-200">
+				<button className="px-4 py-2.5 bg-[#FF33661A] text-[#FF3366] font-semibold rounded-full hover:bg-pink-200">
 					Delete
 				</button>
 			</div>
