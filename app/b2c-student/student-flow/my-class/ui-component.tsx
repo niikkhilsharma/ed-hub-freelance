@@ -40,7 +40,7 @@ interface SubCategoryItemProps {
 export const SubCategoryItem: React.FC<SubCategoryItemProps> = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`w-full px-3 py-2 text-xs text-center rounded-lg sm:px-5 sm:py-3 sm:text-sm sm:rounded-xl transition-colors
+        className={`w-full  px-3 py-2 text-xs text-center rounded-lg sm:px-5 sm:py-3 sm:text-sm sm:rounded-xl transition-colors
         ${ isActive
             ? 'bg-[#3366FF] text-white shadow'
             : 'text-[#6B7280] hover:bg-[#F9FAFB]'
@@ -96,7 +96,7 @@ interface DateNavigatorProps {
     onNext?: () => void;
 }
 export const DateNavigatorWithArrows: React.FC<DateNavigatorProps> = ({ currentDate, onPrevious, onNext }) => (
-    <div className="flex items-center gap-2 text-xs border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg sm:text-sm sm:gap-2.5 sm:px-3 sm:py-2 sm:rounded-xl">
+    <div className="flex items-center sm:gap-2 text-[10px] border border-[#E5E7EB] text-black bg-[#F9FAFB] px-2.5 py-1.5 rounded-lg md:text-sm gap-1 sm:px-3 sm:py-2 sm:rounded-xl">
         <button onClick={onPrevious} className="disabled:opacity-50" disabled={!onPrevious} aria-label="Previous month">
             <FiArrowLeftCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black cursor-pointer" />
         </button>
@@ -119,11 +119,11 @@ export const FilterDropdown: React.FC<FilterDropdownProps> = ({ value, onChange,
         <select
             value={value}
             onChange={onChange}
-            className="appearance-none border border-[#E5E7EB] text-xs text-black bg-[#F9FAFB] px-3 py-1.5 rounded-lg pr-7 focus:outline-none focus:ring-1 focus:ring-[#3366FF]
-                       sm:text-sm sm:px-4 sm:py-2 sm:rounded-xl sm:pr-8"
+            className="appearance-none border border-[#E5E7EB] text-xs text-black bg-[#F9FAFB]  px-2 sm:px-3 py-1.5 rounded-lg sm:pr-7 focus:outline-none focus:ring-1 focus:ring-[#3366FF]
+                       sm:text-sm  sm:py-2 sm:rounded-xl "
         >
             {options.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
         </select>
-        <FiChevronDown className="absolute right-2 sm:right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-black pointer-events-none" />
+        <FiChevronDown className="absolute sm:right-2 right-1 top-1/2 -translate-y-1/2 w-3.5 h-3.5 sm:w-4 sm:h-4 text-black pointer-events-none" />
     </div>
 );

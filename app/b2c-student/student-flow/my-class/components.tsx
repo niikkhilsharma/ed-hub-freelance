@@ -53,7 +53,7 @@ export const AssessmentItem: React.FC<AssessmentItemProps> = ({ assessment, onCl
 interface MockPaperItemProps { item: MockPaperItemData; onClick?: () => void; }
 export const MockPaperItem: React.FC<MockPaperItemProps> = ({ item, onClick }) => (
     <button onClick={onClick} className="w-full flex justify-between items-center p-3 sm:p-4 text-left bg-gray-50/70 hover:bg-gray-100/70 rounded-2xl border border-[#E5E7EB]  transition-colors">
-        <h3 className="tracking-wide text-black text-sm sm:text-base">{item.title}</h3>
+        <h3 className="tracking-wide text-black font-medium text-sm sm:text-lg">{item.title}</h3>
         <FiChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-black flex-shrink-0" />
     </button>
 );
@@ -106,13 +106,13 @@ interface ContentDisplayAreaProps {
 }
 export const ContentDisplayArea: React.FC<ContentDisplayAreaProps> = (props) => (
     <div className="bg-white rounded-2xl  p-4 md:p-6">
-        <div className="mb-4 md:mb-6 flex flex-col md:flex-row justify-between items-start sm:items-center gap-3 sm:gap-0">
-            <nav className="-mb-px flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
+        <div className="mb-4 md:mb-6 flex flex-col sm:flex-row   justify-between items-start sm:items-center sm:gap-3 gap-1">
+            <nav className="-mb-px flex  space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin" aria-label="Content Tabs">
                 {props.contentTabs.map(tab => (
                     <ContentUITab key={tab} label={tab} isActive={props.activeContentTab === tab} onClick={() => props.onContentTabClick(tab)} />
                 ))}
             </nav>
-            <div className="flex items-center gap-2 sm:gap-3 self-end md:self-center">
+            <div className="flex   items-center gap-2 sm:gap-3 self-end md:self-center">
                 <FilterDropdown
                     value={props.currentWeekFilter}
                     onChange={props.onWeekFilterChange}
