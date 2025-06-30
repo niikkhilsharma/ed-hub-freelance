@@ -44,8 +44,8 @@ export default function ManageCardPage() {
       batches: 2,
       students: 25,
     },
-    
-    
+
+
   ];
   return (
     <>
@@ -66,17 +66,17 @@ export default function ManageCardPage() {
           </div>
         </div>
 
-        <main className="p-1 max-w-[90vw] sm:p-6 lg:p-8 sm:mx-22 mx-auto bg-white m-6  rounded-2xl h-[70%]">
+        <main className="p-4  bg-white my-4 lg:my-6 mx-2 lg:mx-8  sm:mx-4 rounded-2xl min-h-screen">
           <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-items-center">
             {courses.map((course, index) => (
               <div
                 key={index}
-                className="flex flex-col w-[350px] h-[350px] gap-2 px-2 py-1 border border-[#E5E7EB] bg-[#FAF9FB] rounded-2xl "
+                className="flex flex-col gap-2 p-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-2xl "
               >
-                <div className="h-[90%]  rounded-xl overflow-hidden">
+                <div className="rounded-xl overflow-hidden">
                   <Image
                     src={course.image}
-                    width={300}
+                    width={260}
                     height={200}
                     alt={course.name}
                     className="w-full h-full object-contain"
@@ -89,8 +89,8 @@ export default function ManageCardPage() {
                     <span className="text-[#6B7280]">{course.batches}</span>
                   </h3>
                   <h3 className="text-sm font-medium text-black">
-  No. of Students: <span className="text-[#6B7280]">{course.students}</span>
-</h3>
+                    No. of Students: <span className="text-[#6B7280]">{course.students}</span>
+                  </h3>
                 </div>
               </div>
             ))}

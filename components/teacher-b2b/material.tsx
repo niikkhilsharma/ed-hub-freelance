@@ -36,7 +36,6 @@ interface FolderItem {
 interface GeneralFilterOption {
   id: string;
   label: string;
-  // Define specific options for each filter if they are dropdowns
 }
 
 // --- Sample Data ---
@@ -121,8 +120,6 @@ const SubjectFolderViewContent: React.FC = () => {
     sampleSubjectTabs[0]?.id || ""
   );
   const [searchTerm, setSearchTerm] = useState("");
-  // Add states for general filters if their logic becomes more complex (e.g., selected options for dropdowns)
-  // const [activeGeneralFilters, setActiveGeneralFilters] = useState({});
 
   const filteredFoldersBySubject = useMemo(() => {
     return sampleFolders.filter(
