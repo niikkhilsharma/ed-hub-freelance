@@ -12,6 +12,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi'
 import { FaSearch } from 'react-icons/fa'
+import { Star as StarIcon, StarOff as StarOutline } from "lucide-react";
 
 const PALETTE = {
 	GREEN_LIGHT: '#8DD9B3', // Basic Academic Skills BG
@@ -33,6 +34,24 @@ const PALETTE = {
 	TEXT_LIGHT: '#9CA3AF', // For tertiary text
 	WHITE_CARD: '#FFFFFF',
 }
+
+
+const renderStars = (rating: number, size: number = 20) => {
+	return Array.from({ length: 5 }, (_, i) =>
+		i < rating ? (
+			<StarIcon key={i} size={size} className="text-yellow-400 fill-yellow-400" />
+		) : (
+			<StarIcon
+				key={i}
+				size={size}
+				className="text-yellow-400"
+				fill="none"
+				strokeWidth={1.5}
+			/>
+		)
+	);
+};
+
 
 const studentData = [
 	{
@@ -289,18 +308,21 @@ const TeacherDashboard = () => {
 							<div className="bg-white rounded-2xl p-4 shadow-sm space-y-4">
 								<div className="flex items-center justify-between gap-4">
 									<div className="flex gap-6 items-center">
-										<Image src="/teacher-b2b/profile2.png" alt="Profile" width={90} height={90} className="rounded-full" />
+										<Image src="/teacher-b2b/profile.png" alt="Profile" width={90} height={90} className="h-21 w-21 object-cover rounded-full" />
 										<div>
 											<h2 className="text-lg font-semibold whitespace-nowrap mb-1">Ronak Mathur</h2>
-											<div className="text-sm text-gray-500 mb-1">⭐️⭐️⭐️⭐️</div>
-											<span className="bg-pink-200 text-pink-700 px-2 py-1 text-xs rounded-full inline-block mt-1">Group A</span>
+											<div className="text-sm text-gray-500 mb-1 flex">{renderStars(4)}</div>
+											<div className='flex gap-2'>
+												<span className="bg-[#FF3366] text-white px-2 py-1 text-xs rounded-full inline-block mt-1">Group A</span>
+												<span className="bg-[#E5E7EB] text-black px-2 py-1 text-xs rounded-full inline-block mt-1">Part Time</span>
+											</div>
 										</div>
 									</div>
-									<div className="text-xs font-medium text-gray-600 space-y-1">
+									<div className="text-xs font-medium text-black space-y-1">
 										<p>Gender: Male</p>
 										<p>DOB: 5 Jun 2015</p>
 										<p className="whitespace-nowrap">Email: example@gmail.com</p>
-										
+
 										<p>City: Mumbai</p>
 										<p>State: Maharashtra</p>
 									</div>
@@ -378,6 +400,7 @@ const TeacherDashboard = () => {
 								))}
 							</div>
 						</div>
+
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[3fr_2fr] gap-2 md:gap-4 py-2">
 							{/* First item - Full width on sm to md, 40% on lg */}
 							<div className="rounded-2xl bg-white py-4 px-8 shadow space-y-6">
@@ -479,53 +502,53 @@ const TeacherDashboard = () => {
 
 									{/* Accordions */}
 									<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
-  {contentItems.map((item, index) => {
-    const isFirst = index === 0;
+										{contentItems.map((item, index) => {
+											const isFirst = index === 0;
 
-    return (
-      <AccordionItem
-        key={index}
-        value={`item-${index}`}
-        className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
-        style={
-          isFirst
-            ? {
-                backgroundImage: "url('/teacher/dashboard/pattern2.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }
-            : {}
-        }
-      >
-        {/* Only show dark overlay on the first item */}
-        {isFirst && (
-          <div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
-        )}
+											return (
+												<AccordionItem
+													key={index}
+													value={`item-${index}`}
+													className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
+													style={
+														isFirst
+															? {
+																backgroundImage: "url('/teacher/dashboard/pattern2.png')",
+																backgroundSize: "cover",
+																backgroundPosition: "center",
+															}
+															: {}
+													}
+												>
+													{/* Only show dark overlay on the first item */}
+													{isFirst && (
+														<div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
+													)}
 
-        <AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
-          <div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">
-            <h2 className="text-base font-medium">{item.title}</h2>
-            <div>
-              <p className="text-sm text-gray-500">Duration: {item.duration}</p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">| Topic: {item.topic}</p>
-            </div>
-          </div>
-        </AccordionTrigger>
+													<AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
+														<div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">
+															<h2 className="text-base font-medium">{item.title}</h2>
+															<div>
+																<p className="text-sm text-gray-500">Duration: {item.duration}</p>
+															</div>
+															<div>
+																<p className="text-sm text-gray-500">| Topic: {item.topic}</p>
+															</div>
+														</div>
+													</AccordionTrigger>
 
-        <AccordionContent className="max-h-[300px] relative z-10 overflow-y-auto custom-scrollbar p-4 space-y-4 text-sm text-[#6b7280] bg-white items-center rounded-2xl mt-2">
-          <p className="font-semibold text-black">Before the class</p>
-          <ul className="text-sm sm:text-md pl-4 space-y-4">
-            {item.points.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
-          </ul>
-        </AccordionContent>
-      </AccordionItem>
-    );
-  })}
-</Accordion>
+													<AccordionContent className="max-h-[300px] relative z-10 overflow-y-auto custom-scrollbar p-4 space-y-4 text-sm text-[#6b7280] bg-white items-center rounded-2xl mt-2">
+														<p className="font-semibold text-black">Before the class</p>
+														<ul className="text-sm sm:text-md pl-4 space-y-4">
+															{item.points.map((point, i) => (
+																<li key={i}>{point}</li>
+															))}
+														</ul>
+													</AccordionContent>
+												</AccordionItem>
+											);
+										})}
+									</Accordion>
 
 								</div>
 							</div>
@@ -607,54 +630,54 @@ const TeacherDashboard = () => {
 									</div>
 
 									{/* Accordions */}
-								<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
-  {contentItems.map((item, index) => {
-    const isFirst = index === 0;
+									<Accordion type="single" defaultValue="item-0" collapsible className="space-y-2">
+										{contentItems.map((item, index) => {
+											const isFirst = index === 0;
 
-    return (
-      <AccordionItem
-        key={index}
-        value={`item-${index}`}
-        className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
-        style={
-          isFirst
-            ? {
-                backgroundImage: "url('/teacher/dashboard/pattern2.png')",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }
-            : {}
-        }
-      >
-        {/* Only show dark overlay on the first item */}
-        {isFirst && (
-          <div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
-        )}
+											return (
+												<AccordionItem
+													key={index}
+													value={`item-${index}`}
+													className={`relative rounded-2xl p-2 ${!isFirst ? 'bg-[#F9FAFB]' : ''}`}
+													style={
+														isFirst
+															? {
+																backgroundImage: "url('/teacher/dashboard/pattern2.png')",
+																backgroundSize: "cover",
+																backgroundPosition: "center",
+															}
+															: {}
+													}
+												>
+													{/* Only show dark overlay on the first item */}
+													{isFirst && (
+														<div className="absolute inset-0 bg-black/40 z-0 rounded-2xl"></div>
+													)}
 
-        <AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
-          <div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">
-            <h2 className="text-base font-medium">{item.title}</h2>
-            <div>
-              <p className="text-sm text-gray-500">Duration: {item.duration}</p>
-            </div>
-            <div>
-              <p className="text-sm text-gray-500">| Topic: {item.topic}</p>
-            </div>
-          </div>
-        </AccordionTrigger>
+													<AccordionTrigger className="text-left z-10 rounded-2xl bg-white px-4 py-3">
+														<div className="flex flex-col items-center space-x-4 justify-between sm:flex-row">
+															<h2 className="text-base font-medium">{item.title}</h2>
+															<div>
+																<p className="text-sm text-gray-500">Duration: {item.duration}</p>
+															</div>
+															<div>
+																<p className="text-sm text-gray-500">| Topic: {item.topic}</p>
+															</div>
+														</div>
+													</AccordionTrigger>
 
-        <AccordionContent className="max-h-[300px] relative z-10 overflow-y-auto custom-scrollbar p-4 space-y-4 text-sm text-[#6b7280] bg-white items-center rounded-2xl mt-2">
-          <p className="font-semibold text-black">Before the class</p>
-          <ul className="text-sm sm:text-md pl-4 space-y-4">
-            {item.points.map((point, i) => (
-              <li key={i}>{point}</li>
-            ))}
-          </ul>
-        </AccordionContent>
-      </AccordionItem>
-    );
-  })}
-</Accordion>
+													<AccordionContent className="max-h-[300px] relative z-10 overflow-y-auto custom-scrollbar p-4 space-y-4 text-sm text-[#6b7280] bg-white items-center rounded-2xl mt-2">
+														<p className="font-semibold text-black">Before the class</p>
+														<ul className="text-sm sm:text-md pl-4 space-y-4">
+															{item.points.map((point, i) => (
+																<li key={i}>{point}</li>
+															))}
+														</ul>
+													</AccordionContent>
+												</AccordionItem>
+											);
+										})}
+									</Accordion>
 
 								</div>
 							</div>
