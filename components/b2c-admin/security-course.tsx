@@ -5,7 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
-
+import Navbar from '@/components/b2c-admin/Navbar'
 // --- Recording Card Component ---
 interface Course {
   id: string;
@@ -121,7 +121,7 @@ const ICON_BUTTON_TEXT_PINK = `text-[${ACCENT_PINK}]`
 const ICON_BUTTON_BG_LIGHT_GRAY = 'bg-gray-100'
   return (
     <>
-      <Header user={headerUser} />
+      <Navbar/>
       <div className="bg-[#eeeeee]   py-6 sm:py-8 lg:py-10 min-h-screen ">
        
 
