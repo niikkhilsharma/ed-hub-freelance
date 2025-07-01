@@ -35,13 +35,13 @@ export const OptimizedCategoryTabsBar: React.FC<MainCategoryTabsBarProps> = ({
     // FIXED: Removed py-2 from the main wrapper for proper vertical padding.
     <div>
       <div className=" max-w-[96rem] flex-wrap bg-white mx-auto rounded-2xl py-2">
-        <div className="relative flex items-center">
+        <div className="relative  flex-grow flex items-center">
           <button
             onClick={handleScroll}
             className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full  hover:bg-gray-100 transition-colors  md:flex flex items-center justify-center"
             aria-label="Scroll left"
           >
-            <FiArrowLeft className="w-5 h-5 text-black"  />
+            <FiArrowLeft className="w-5 h-5 hidden md:block text-black"  />
           </button>
 
           <div

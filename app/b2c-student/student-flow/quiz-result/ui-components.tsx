@@ -52,11 +52,11 @@ export const OptionReviewDisplay: React.FC<{ option: OptionReviewUIData }> = ({ 
 
     return (
         // Original: w-full flex items-center p-3.5 rounded-full transition-all duration-150 ${optionStyle}
-        <div className={`w-full flex items-center p-3 rounded-full transition-all duration-150 
-                       sm:p-3.5 
+        <div className={`w-full flex items-center p-3  md:p-4 rounded-full transition-all duration-150 
+                       
                        ${selectedSpecificBg || optionStyle}`}> {/* Apply specific BG if set, else default */}
             {icon && <span className="mr-1.5 sm:mr-2">{icon}</span>}
-            <span className={`text-xs sm:text-sm font-semibold ${textColor}`}>{option.text}</span>
+            <span className={`text-xs md:text-lg font-semibold ${textColor}`}>{option.text}</span>
         </div>
     );
 };

@@ -3,7 +3,7 @@
 
 import React, { useState } from "react";
 import Header from '@/components/b2c-student/Header'
-
+import Footer from "@/components/layout/Footer";
 // Removed FiArrowLeft from here as it's not in page header, but in ui-components if needed
 import {
   SubCategorySidebar,
@@ -219,7 +219,7 @@ export default function MyClassAssesmentPage() {
         </div>
         </div>
       </main>
-      
+      <Footer/>
     </div>
   );
 }
