@@ -1,9 +1,9 @@
-import ChatPage from '@/components/teacher-b2b/chat-page'
+import ChatPage from '@/components/principal/chat-page'
 
 export default function Chat() {
-    return (
-        <div>
-            <ChatPage />
-        </div>
-    )
+	return (
+		<div>
+			<ChatPage />
+		</div>
+	)
 }
