@@ -1,9 +1,9 @@
 import React from 'react'
-
-const page = () => {
+import CourseLoginPage from "@/components/b2c-admin/course-login-activity"
+export default function  page  () {
   return (
-    <div>page</div>
+    <div>
+        < CourseLoginPage/>
+    </div>
   )
 }
-
-export default page
