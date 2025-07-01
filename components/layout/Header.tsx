@@ -83,8 +83,8 @@ export default function Header({ user, isAskme = true }: HeaderProps) {
 				{/* Right Side */}
 				<div className="flex items-center space-x-2 lg:space-x-4">
 					{isAskme && (
-						<button className="flex items-center gap-2 px-2 py-2 bg-[#E3F2FD26] text-white text-sm font-medium rounded-full hover:bg-white/30 transition-colors">
-							<Image src="/page3/student_b2b/AI Button.svg" alt="Ask me bot" width={231} height={46} className="w-10" />
+						<button className="flex items-center gap-2 py-2 px-2 sm:px-2 sm:py-2 bg-[#E3F2FD26] text-white  text-xs sm:text-sm font-medium rounded-full hover:bg-white/30 transition-colors">
+							<Image src="/page3/student_b2b/AI Button.svg" alt="Ask me bot" width={231} height={46} className="sm:w-10 w-6" />
 							Ask me!
 						</button>
 					)}
