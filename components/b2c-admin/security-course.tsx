@@ -111,7 +111,7 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
      
     },
   ];
-  const ACCENT_PINK = '#FF3366' // For active Class/Batch/Group tabs and remove icon
+const ACCENT_PINK = '#FF3366' // For active Class/Batch/Group tabs and remove icon
 const PRIMARY_BLUE = '#3366FF' // Placeholder if needed for other active states
 const INPUT_BG_SEARCH = 'bg-white'
 const INPUT_BG_FILTERS = 'bg-gray-50' // Background for filter dropdowns
