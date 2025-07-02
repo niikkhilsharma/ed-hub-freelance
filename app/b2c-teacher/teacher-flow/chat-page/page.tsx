@@ -1,4 +1,4 @@
-import ChatPage from '@/components/principal/chat-page'
+import  ChatPage  from "@/components/teacher-b2b/chat-page";
 
 export default function Chat() {
 	return (
