@@ -127,38 +127,38 @@ const FormField: React.FC<{
   placeholder,
   required,
 }) => (
-  <div>
-    <label
-      htmlFor={name}
-      className="block text-sm  sm:text-lg font-medium text-black mb-1"
-    >
-      {label}
-    </label>
-    {type === "textarea" ? (
-      <textarea
-        id={name}
-        name={name}
-        rows={3}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder || "Text"}
-        required={required}
-        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none h-[190px] text-sm resize-none`}
-      />
-    ) : (
-      <input
-        type="text" // Changed from type to always be text for simplicity, date handled separately
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder={placeholder || "Text"}
-        required={required}
-        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm`}
-      />
-    )}
-  </div>
-);
+    <div>
+      <label
+        htmlFor={name}
+        className="block text-sm  sm:text-lg font-medium text-black mb-1"
+      >
+        {label}
+      </label>
+      {type === "textarea" ? (
+        <textarea
+          id={name}
+          name={name}
+          rows={3}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder || "Text"}
+          required={required}
+          className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-xl focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none h-[190px] text-sm resize-none`}
+        />
+      ) : (
+        <input
+          type="text" // Changed from type to always be text for simplicity, date handled separately
+          id={name}
+          name={name}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder || "Text"}
+          required={required}
+          className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm`}
+        />
+      )}
+    </div>
+  );
 
 const FormSelect: React.FC<{
   label: string;
@@ -301,20 +301,18 @@ const Stepper: React.FC<{
       >
         <span
           className={`w-6 h-6 rounded-full flex items-center justify-center text-xs  border
-          ${
-            currentStep === step.id
+          ${currentStep === step.id
               ? `text-[${ACCENT_PINK}] border-[${ACCENT_PINK}]`
               : `text-black border-black group-hover:text-black group-hover:border-black`
-          }`}
+            }`}
         >
           {step.id}
         </span>
         <span
-          className={`text-sm font-bold ${
-            currentStep === step.id
+          className={`text-sm font-bold ${currentStep === step.id
               ? `text-[${ACCENT_PINK}]`
               : "text-black group-hover:text-black"
-          }`}
+            }`}
         >
           {step.name}
         </span>
@@ -331,10 +329,9 @@ const UnitaryItemCard: React.FC<{
   <button
     onClick={onSelect}
     className={`w-full text-left p-3 rounded-full transition-all px-4 duration-150
-      ${
-        isSelected
-          ? `bg-orange-100 border-orange-400 shadow-md`
-          : `bg-white hover:bg-gray-200 `
+      ${isSelected
+        ? `bg-orange-100 border-orange-400 shadow-md`
+        : `bg-white hover:bg-gray-200 `
       }`}
   >
     <h4 className="text-sm  sm:text-md font-semibold text-black">{item.title}</h4>
@@ -350,10 +347,9 @@ const StudentSelectItemCard: React.FC<{
   <button
     onClick={onSelect}
     className={`w-full flex  flex-row  items-start sm:items-center p-2 sm:p-1.5 rounded-2xl border transition-all duration-150 gap-3
-      ${
-        isSelected
-          ? `bg-blue-50 border-[${PRIMARY_BLUE}]`
-          : ` ${INPUT_BORDER} hover:bg-gray-50 hover:border-black`
+      ${isSelected
+        ? `bg-blue-50 border-[${PRIMARY_BLUE}]`
+        : ` ${INPUT_BORDER} hover:bg-gray-50 hover:border-black`
       }`}
   >
     <img
@@ -374,11 +370,10 @@ const StudentSelectItemCard: React.FC<{
       <p className="text-[10px] text-[#6B7280] truncate">Group</p>
     </div>
     <div
-      className={`appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] text-blue-600 ${
-        isSelected
+      className={`appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] text-blue-600 ${isSelected
           ? `border-[${PRIMARY_BLUE}] bg-[${PRIMARY_BLUE}]`
           : `border-[#6B7280]`
-      }`}
+        }`}
     >
       {isSelected && <div className="w-2 h-2 bg-white rounded-full"></div>}
     </div>
@@ -599,76 +594,76 @@ const CreateAIAssessmentContent: React.FC = () => {
             </div>
 
             {/* Student Selection */}
-           <div className="flex items-center space-x-4 mb-3">
-  <label className="flex items-center space-x-1.5 cursor-pointer">
-    <input
-      type="radio"
-      name="studentAssignType"
-      value="all"
-      checked={studentAssignType === "all"}
-      onChange={() => setStudentAssignType("all")}
-      className={`appearance-none w-5 h-5 rounded-full border-[4px] 
+            <div className="flex items-center space-x-4 mb-3">
+              <label className="flex items-center space-x-1.5 cursor-pointer">
+                <input
+                  type="radio"
+                  name="studentAssignType"
+                  value="all"
+                  checked={studentAssignType === "all"}
+                  onChange={() => setStudentAssignType("all")}
+                  className={`appearance-none w-5 h-5 rounded-full border-[4px] 
         ${studentAssignType === "all" ? "bg-[#007bff] border-[#007bff]" : "border-[#6b7280]"}`}
-    />
-    <span className="text-md text-black">For all</span>
-  </label>
+                />
+                <span className="text-md text-black">For all</span>
+              </label>
 
-  <label className="flex items-center space-x-1.5 cursor-pointer">
-    <input
-      type="radio"
-      name="studentAssignType"
-      value="selective"
-      checked={studentAssignType === "selective"}
-      onChange={() => setStudentAssignType("selective")}
-      className={`appearance-none w-5 h-5 rounded-full border-[4px] 
+              <label className="flex items-center space-x-1.5 cursor-pointer">
+                <input
+                  type="radio"
+                  name="studentAssignType"
+                  value="selective"
+                  checked={studentAssignType === "selective"}
+                  onChange={() => setStudentAssignType("selective")}
+                  className={`appearance-none w-5 h-5 rounded-full border-[4px] 
         ${studentAssignType === "selective" ? " border-[#007bff]" : "border-[#6b7280]"}`}
-    />
-    <span className="text-md text-black">For selective Students</span>
-  </label>
-</div>
+                />
+                <span className="text-md text-black">For selective Students</span>
+              </label>
+            </div>
 
-{studentAssignType === "selective" && (
-  <>
-    <div className="flex gap-2 justify-between mb-2">
-      <div className="relative w-[500px]">
-        <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
-        <input
-          type="text"
-          placeholder="Search Student"
-          value={studentSearch}
-          onChange={(e) => setStudentSearch(e.target.value)}
-          className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
-        />
-      </div>
+            {studentAssignType === "selective" && (
+              <>
+                <div className="flex gap-2 justify-between mb-2">
+                  <div className="relative w-[500px]">
+                    <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
+                    <input
+                      type="text"
+                      placeholder="Search Student"
+                      value={studentSearch}
+                      onChange={(e) => setStudentSearch(e.target.value)}
+                      className="w-full pl-9 pr-3 py-2 border border-gray-300 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    />
+                  </div>
 
-      <div className="relative">
-        <select
-          value={studentStandardFilter}
-          onChange={(e) => setStudentStandardFilter(e.target.value)}
-          className="w-full px-6 py-2 border border-gray-300 rounded-xl text-sm appearance-none pr-8 focus:outline-none focus:ring-1 focus:ring-blue-500"
-        >
-          {sampleStandards.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-        <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
-      </div>
-    </div>
+                  <div className="relative">
+                    <select
+                      value={studentStandardFilter}
+                      onChange={(e) => setStudentStandardFilter(e.target.value)}
+                      className="w-full px-6 py-2 border border-gray-300 rounded-xl text-sm appearance-none pr-8 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                    >
+                      {sampleStandards.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                    <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
+                  </div>
+                </div>
 
-    <div className="space-y-2 h-[26rem] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
-      {filteredStudents.map((student) => (
-        <StudentSelectItemCard
-          key={student.id}
-          student={student}
-          isSelected={selectedStudentIds.includes(student.id)}
-          onSelect={() => toggleStudentSelection(student.id)}
-        />
-      ))}
-    </div>
-  </>
-)}
+                <div className="space-y-2 h-[26rem] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-orange-300 scrollbar-track-gray-100">
+                  {filteredStudents.map((student) => (
+                    <StudentSelectItemCard
+                      key={student.id}
+                      student={student}
+                      isSelected={selectedStudentIds.includes(student.id)}
+                      onSelect={() => toggleStudentSelection(student.id)}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
 
           </div>
         </div>
@@ -721,10 +716,10 @@ export default function CreateAIAssessmentPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-      
-        
-          <div className="bg-gray-100">
-          <div className="bg-white">
+
+
+      <div className="bg-gray-100">
+        <div className="bg-white">
           <div className="flex items-center gap-3 bg max-w-[96rem] mx-auto px-4 sm:px-6 py-3.5 sticky top-0 z-40">
             <button
               onClick={handleBackClick}
@@ -742,11 +737,11 @@ export default function CreateAIAssessmentPage() {
           </div>
         </div>
 
-          <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-            <CreateAIAssessmentContent />
-          </main>
-        </div>
-      
+        <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+          <CreateAIAssessmentContent />
+        </main>
+      </div>
+
       {/* Page Title Bar */}
 
       <Footer />

@@ -50,7 +50,11 @@ const loginHistoryData: LoginHistoryEntry[] = [
 ];
 
 // --- Your Final Component with Responsiveness ---
-const Activity: React.FC = ({isStudent=false}:{isStudent?:boolean}) => {
+type ActivityProps = {
+  isStudent?: boolean;
+};
+
+const Activity: React.FC<ActivityProps> = ({ isStudent = false }) => {
     const tableHeaders = ["Login Date", "Login Time", "IP Address", "Device", "State / City", "Status"];
 
     return (
@@ -60,7 +64,7 @@ const Activity: React.FC = ({isStudent=false}:{isStudent?:boolean}) => {
             <div className="p-3 rounded-2xl w-full max-w-screen-xl mx-auto border border-gray-200 overflow-hidden"
                 style={{ backgroundImage: "url('/pattern.png')", backgroundSize: "1200px" }}
             >
-                <div className="bg-white rounded-2xl p-4 sm:p-6 relative overflow-hidden">
+                <div className="bg-white rounded-2xl px-4 py-2 relative overflow-hidden">
                     <div className='flex flex-col md:flex-row justify-between items-center gap-4'>
                         <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 relative z-10 w-full sm:w-auto">
                             <Image
@@ -115,11 +119,11 @@ const Activity: React.FC = ({isStudent=false}:{isStudent?:boolean}) => {
 
             {/* Table Card */}
             {/* The outer div handles horizontal scrolling on smaller screens */}
-            <div className="overflow-x-auto custom-scrollbar">
+            <div className="overflow-x-auto  bg-white p-3 rounded-2xl w-full max-w-screen-xl mx-auto border border-gray-200 ">
                 {/* The inner div has a minimum width to force scrolling */}
-                <div className="bg-white p-3 rounded-2xl space-y-2 w-full max-w-screen-xl mx-auto border border-gray-200 min-w-[700px]">
+                <div className="space-y-2 min-w-[700px]">
                     {/* Header Row */}
-                    <div className="grid grid-cols-6 gap-x-2 sm:gap-x-4 p-2 sm:p-3 rounded-xl bg-[#3366FF] text-white text-xs sm:text-sm font-semibold tracking-wide">
+                    <div className="grid grid-cols-6 gap-x-2 sm:gap-x-4 px-2 sm:px-3 py-5 rounded-2xl bg-[#3366FF] text-white text-xs sm:text-sm font-semibold tracking-wide">
                         {tableHeaders.map(header => (
                             <div key={header} className="text-center">
                                 {header}
@@ -131,14 +135,14 @@ const Activity: React.FC = ({isStudent=false}:{isStudent?:boolean}) => {
                     {loginHistoryData.map(entry => (
                         <div
                             key={entry.id}
-                            className="grid grid-cols-6 gap-x-2 sm:gap-x-4 p-2 sm:p-3 rounded-xl text-center bg-[#F9FAFB] border border-[#E5E7EB] hover:bg-gray-200 transition-colors text-xs sm:text-sm items-center"
+                            className="grid grid-cols-6 gap-x-2 sm:gap-x-4 p-2 sm:p-3 rounded-xl text-center bg-[#F9FAFB] border border-[#E5E7EB] hover:bg-gray-200 transition-colors text-xs md:text-sm items-center"
                         >
                             <div className="text-black">{entry.loginDate}</div>
                             <div className="text-black">{entry.loginTime}</div>
                             <div className="text-black">{entry.ipAddress}</div>
                             <div className="text-black">{entry.device}</div>
                             <div className="text-black">{entry.stateCity}</div>
-                            <div className={`font-semibold ${entry.status === 'Success' ? 'text-[#28A745]' : 'text-[#DC3545]'}`}>
+                            <div className={`${entry.status === 'Success' ? 'text-[#28A745]' : 'text-[#DC3545]'}`}>
                                 {entry.status}
                             </div>
                         </div>
