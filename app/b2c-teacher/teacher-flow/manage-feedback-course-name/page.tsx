@@ -15,16 +15,6 @@ const BLUE_COLOR = "#3366FF";
 const INPUT_BG_FILTERS = "bg-gray-100";
 const CHART_BAR_COLORS = ["#3366FF", "#FFCC00", "#FF99B7", "#8DD9B3"];
 
-// --- PROVIDED SVG COMPONENT ---
-const SmileyIcon = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg width={74} height={74} viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
-        <path d="M37.0013 67.8332C54.0301 67.8332 67.8346 54.0286 67.8346 36.9998C67.8346 19.9711 54.0301 6.1665 37.0013 6.1665C19.9725 6.1665 6.16797 19.9711 6.16797 36.9998C6.16797 54.0286 19.9725 67.8332 37.0013 67.8332Z" stroke="#3366FF" strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M24.668 43.1665C24.668 43.1665 29.293 49.3332 37.0013 49.3332C44.7096 49.3332 49.3346 43.1665 49.3346 43.1665" stroke="#3366FF" strokeWidth={5} strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M27.75 27.75H27.7808" stroke="#3366FF" strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M46.25 27.75H46.2808" stroke="#3366FF" strokeWidth={6} strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-);
-
 // --- DATA ---
 const feedbackData = Array.from({ length: 9 }, (_, i) => ({
     id: `fb${i}`,
