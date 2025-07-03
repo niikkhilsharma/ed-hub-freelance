@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import Navbar from '@/components/b2c-admin/Navbar'
+import Link from "next/link";
 // --- Recording Card Component ---
 interface Course {
   id: string;
@@ -152,6 +153,7 @@ const ICON_BUTTON_BG_LIGHT_GRAY = 'bg-gray-100'
                 </div>
 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-4 py-4">
   {courses.map((course, index) => (
+     <Link href="./course-login-activity">
     <div
       key={index}
       className="flex flex-col w-full max-h-[330px] gap-3 px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl shadow-sm"
@@ -182,6 +184,7 @@ const ICON_BUTTON_BG_LIGHT_GRAY = 'bg-gray-100'
         </h3>
       </div>
     </div>
+    </Link>
   ))}
 </div>
 

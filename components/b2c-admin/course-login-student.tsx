@@ -1,7 +1,7 @@
 // components/PeopleGrid.jsx
 "use client"
 import React from 'react';
-
+import Link from 'next/link';
 export default function StudentGrid ()  {
   const personImageUrl = '/admin/student.png'; 
 
@@ -15,6 +15,7 @@ export default function StudentGrid ()  {
     <div className="container  custom-scrollbar-thin mx-auto py-4"> 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {people.map((person) => (
+           <Link href="/admin-b2c/admin-panel/student-login-activity">
          
           <div
             key={person.id}
@@ -31,6 +32,7 @@ export default function StudentGrid ()  {
               <p className="text-lg font-semibold text-gray-800">{person.name}</p>
             </div>
           </div>
+          </Link>
         ))}
       </div>
     </div>
