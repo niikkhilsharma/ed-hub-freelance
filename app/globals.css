@@ -159,14 +159,16 @@ h3 {
 }
 /* A thinner, less intrusive scrollbar for horizontal scrolling elements */
 .custom-scrollbar-thin::-webkit-scrollbar {
-  height: 4px; /* Makes the scrollbar thinner */
+  height: 1px; 
+  /* Makes the scrollbar thinner */
 }
 .custom-scrollbar-thin::-webkit-scrollbar-track {
   background: transparent;
 }
 .custom-scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #e5e7eb; /* light-gray */
+  background: #ffc79a; /* light-gray */
   border-radius: 10px;
+ 
 }
 .custom-scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background: #d1d5db; /* medium-gray */

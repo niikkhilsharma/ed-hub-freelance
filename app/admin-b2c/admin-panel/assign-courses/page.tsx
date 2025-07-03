@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import GoBack from "@/components/principal/goback";// Adjust this path if needed
-
+import AssignmentForm from "@/components/b2c-admin/assign-courses-students"
 export default function AssignCourses() {
   const [activeTab, setActiveTab] = useState("students");
 
@@ -14,8 +14,8 @@ export default function AssignCourses() {
     }`;
 
   return (
-    <div className="bg-white max-w-screen-2xl mx-auto my-2 p-6 rounded-2xl shadow">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+    <div className="bg-white  max-w-screen-2xl mx-auto my-2 p-6 rounded-2xl shadow">
+      <div className="flex mb-8 flex-col sm:flex-row justify-between items-start sm:items-center">
         <GoBack GoBackHeading="Assign Courses" />
         
         <div className="flex gap-4 sm:gap-6 p-2 border border-[#E5E7EB] rounded-2xl">
@@ -33,6 +33,7 @@ export default function AssignCourses() {
           </button>
         </div>
       </div>
+      <AssignmentForm/>
     </div>
   );
 }
