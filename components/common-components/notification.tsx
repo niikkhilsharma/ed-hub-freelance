@@ -25,6 +25,7 @@ const initialNotifications: NotificationItemData[] = Array.from(
   })
 );
 
+
 export default function NotificationsPage({ imageSrc }: { imageSrc?: string }) {
   const [notifications] = useState<NotificationItemData[]>(initialNotifications);
 

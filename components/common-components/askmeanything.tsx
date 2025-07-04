@@ -1,9 +1,10 @@
-import React from "react";
+"use client"
+import React ,{useState} from "react";
 import { FaRegCirclePlay} from "react-icons/fa6"
 import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";
 import { LuSendHorizontal} from "react-icons/lu"
-import Header from "@/components/b2c-student/Header";
+
 const messages = [
   {
     id: 1,
@@ -31,15 +32,18 @@ const messages = [
   },
 ];
 const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeholder-avatar-student.jpg" };
+type ChatPopProps = {
+  onClose: () => void;
+};
+ export default function ChatPop ({ onClose }: ChatPopProps)  {
 
- export default function ChatPop  ()  {
   return (
-    <div>
-      <Header user={headerUser}/>
     
-    <div className="flex items-center justify-center py-8 bg-white px-4">
+    
+    
+   
       
-      <div className="w-full max-w-screen-md rounded-2xl  flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4  sm:space-y-6  py-6 px-8 shadow-xl relative "
+      <div className="w-full max-w-screen-md mx-auto  rounded-2xl  flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4  sm:space-y-6  py-6 px-8 shadow-xl relative "
       style={{backgroundImage:"url('/chatpopupbg.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
 
         <div className="absolute h-full inset-0 bg-[#F9FAFB] opacity-70 rounded-2xl z-0"></div>
@@ -80,12 +84,12 @@ const headerUser = { name: "Shlok Agheda", role: "Student", avatarSrc: "/placeho
         </div>
 
         {/* Close icon */}
-        <button className="absolute top-4 right-4 bg-gray-200 rounded-full p-3 text-black-500 hover:text-black">
+        <button   onClick={onClose} className="absolute z-20 cursor-pointer top-4 right-4 bg-[#e5e7eb] rounded-full p-3 text-black ">
          < RxCross1 />
         </button>
       </div>
-    </div>
-    </div>
+   
+    
   );
 };
 

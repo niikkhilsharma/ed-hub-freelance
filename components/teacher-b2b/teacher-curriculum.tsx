@@ -109,7 +109,7 @@ const Curriculum = () => {
 
 		<div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
 		  {/* Left column */}
-		  <div className="bg-white overflow-y-scroll custom-scrollbar-thin p-6 rounded-2xl">
+		 <div className="bg-white  p-6 rounded-2xl">
 			<div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
 			  <h2 className="text-md sm:text-lg font-semibold h-fit text-[#3366FF] border-b-[2px] border-[#3366FF] w-fit">
 				Session

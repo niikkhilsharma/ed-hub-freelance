@@ -7,7 +7,7 @@ import {
   FiChevronUp,
   // Add other icons if they appear in dropdown content or expanded sections
 } from "react-icons/fi";
-import Header from "@/components/layout/Header"; // Adjust path as needed
+import Header from "@/components/teacher-b2b/layout/Header"
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 // import MaxWidthWrapper from '../max-width-wrapper'
 import MaxWidthWrapper from "../admin/max-width-wrapper";
