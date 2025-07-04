@@ -82,18 +82,14 @@ const ReviewList = () => {
           {/* Cards */}
           {sampleData.map((item) => (
             <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
-              <div className ="w-20 h-20 rounded-xl relative overflow-hidden">
+              <div className ="w-50 h-50 rounded-xl relative overflow-hidden">
                 <Image src={item.image} alt={item.name} fill className="object-cover" />
               </div>
               <div className="flex-1">
                 <div className="font-semibold text-m">{item.name}</div>
-               
                     <div className="text-sm font-semibold text-[#FF3366]">{item.course}</div>
                     <div className="text-xs text-gray-500">{item.level}</div>
                     <div className="text-xs text-gray-500">{item.group}</div>
-                    
-                 
-               
               </div>
             </div>
           ))}
