@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from '@/components/b2c-admin/Navbar'
+import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
-import PeopleGrid from "@/components/b2c-admin/course-login-teachers";
-import StudentGrid from "./course-login-student";
+import PeopleGrid from "@/components/b2c-admin/attandance-teacher";
+import StudentGrid from "./attandance-student";
 
 // Dummy user
 const headerUser = {
@@ -28,7 +28,7 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
 
 const topTabs = ["Batch 1", "Batch 2", "Batch 3", "Batch 4", "Batch 5"];
 
-export default function CourseLoginPage() {
+export default function AttendancePage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeTab, setActiveTab] = useState<"teachers" | "students">(
     "teachers"
@@ -50,10 +50,10 @@ export default function CourseLoginPage() {
 
   return (
     <>
-      <Navbar user={headerUser} activeState='security'/>
+      
 
       <div className="bg-[#eeeeee] py-6 sm:py-8 lg:py-10 min-h-screen">
-        <main className="p-2 max-w-[90rem] sm:p-6 mb-32 sm:mb-[320px]   mx-auto bg-white my-6 rounded-3xl">
+        <main className="p-2 max-w-[90rem] sm:p-6 mb-32 sm:mb-[320px] mx-auto bg-white my-6 rounded-3xl">
           {/* Search & Filter Section */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
@@ -69,16 +69,16 @@ export default function CourseLoginPage() {
 
             <div className="flex items-center gap-2 overflow-x-auto">
               <button
-                
+                onClick={() => alert("Main filter icon clicked.")}
                 className="p-2.5 sm:p-3 rounded-2xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors"
                 aria-label="Open main filters"
               >
                 <FiFilter className="w-5 h-5" strokeWidth={2} />
               </button>
 
-              {sampleGeneralFilters.map((filter,indx) => (
+              {sampleGeneralFilters.map((filter) => (
                 <GeneralFilterButton
-                  key={indx}
+                  key={filter.id}
                   filter={filter}
                   onClick={() => alert(`${filter.label} clicked.`)}
                 />
@@ -135,7 +135,7 @@ export default function CourseLoginPage() {
           </div>
         </main>
 
-        <Footer />
+      
       </div>
     </>
   );

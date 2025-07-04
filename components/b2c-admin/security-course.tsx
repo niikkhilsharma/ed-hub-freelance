@@ -122,7 +122,7 @@ const ICON_BUTTON_TEXT_PINK = `text-[${ACCENT_PINK}]`
 const ICON_BUTTON_BG_LIGHT_GRAY = 'bg-gray-100'
   return (
     <>
-      <Navbar/>
+    <Navbar user={headerUser} activeState='Security'/>
       <div className="bg-[#eeeeee]   py-6 sm:py-8 lg:py-10 min-h-screen ">
        
 
