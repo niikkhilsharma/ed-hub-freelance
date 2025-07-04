@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Header from '@/components/layout/Header';
+import Header from '@/components/teacher-b2b/layout/Header';
 import { IoIosArrowDown } from "react-icons/io";
 import {
   FiArrowLeft,
@@ -11,7 +11,7 @@ import {
   FiChevronDown,
 } from "react-icons/fi";
 import Footer from "../layout/Footer";
-
+import GoBack from "../principal/goback";
 const categories = [
   "Category 1",
   "Category 2",
@@ -69,22 +69,7 @@ const Curriculum = () => {
   return (
 	<div className="bg-[#eeeeee]">
 		<Header user={headerUser} />
-	  <div className="bg-white py-3">
-		<div className=" max-w-[96rem] mx-auto flex items-center gap-3">
-		  <button
-			className="p-1.5 text-black hover:text-gray-700 focus:outline-none rounded-md"
-			aria-label="Go back"
-		  >
-			<FiArrowLeft className="w-5 h-5" />
-		  </button>
-		  <h1
-			className="text-lg sm:text-xl font-semibold"
-			style={{ color: PALETTE.ACCENT_PINK }}
-		  >
-			Curriculum
-		  </h1>
-		</div>
-	  </div>
+	 <GoBack GoBackHeading={'Curriculum'}/>
 
 	  <div className=" px-4 mx-auto max-w-screen-2xl">
 		<div className="px-4 pt-4">
@@ -124,7 +109,7 @@ const Curriculum = () => {
 
 		<div className="grid grid-cols-1   md:grid-cols-[3fr_2fr] gap-4 sm:gap-8 p-4">
 		  {/* Left column */}
-		  <div className="bg-white p-6 rounded-2xl">
+		  <div className="bg-white overflow-y-scroll custom-scrollbar-thin p-6 rounded-2xl">
 			<div className="flex  flex-col sm:flex-row items-center justify-between gap-2 xs:flex-col mb-3">
 			  <h2 className="text-md sm:text-lg font-semibold h-fit text-[#3366FF] border-b-[2px] border-[#3366FF] w-fit">
 				Session
