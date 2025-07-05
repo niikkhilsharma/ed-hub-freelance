@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client"; // needed for client components using hooks
 
 import Image from "next/image";

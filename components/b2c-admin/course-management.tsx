@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/layout/Header";
+ import Link from "next/link";
+import Navbar from "@/components/b2c-admin/Navbar"
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
-
+import ScrollableButton from "./scrollable-button";
 // --- Recording Card Component ---
 interface Course {
   id: string;
@@ -26,6 +27,7 @@ import {
   FiChevronDown,
   FiMinusCircle,
 } from "react-icons/fi";
+
 
 export default function CourseManagementPage() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -111,7 +113,7 @@ export default function CourseManagementPage() {
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
     <>
-      <Header user={headerUser} />
+       <Navbar user={headerUser} activeState='course'/>
       <div className="bg-[#eeeeee]   py-6 sm:py-8 lg:py-10 min-h-screen ">
         <main className="p-2 max-w-[90rem] sm:p-6  mb-32 sm:mb-[320px]  mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
@@ -156,39 +158,30 @@ export default function CourseManagementPage() {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-4 py-4">
-            {courses.map((course, index) => (
-              <div
-                key={index}
-                className="flex flex-col w-full max-h-[330px]  px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl shadow-sm"
-              >
-                {/* Image section */}
-                {/* Removed fixed height classes h-48 and sm:h-52 */}
-                {/* Added aspect-[3/2] to maintain a consistent 3:2 aspect ratio for the image container */}
-                <div className="w-full aspect-[3/2] rounded-2xl overflow-hidden">
-                  <Image
-                    src={course.image}
-                    // These width/height are hints for optimization/layout aspect ratio calculation,
-                    // but the CSS aspect-[3/2] on the parent overrides the container's height.
-                    width={300}
-                    height={200}
-                    alt={course.name}
-                    // w-full h-full object-cover ensures the image fills the container
-                    // while maintaining its own aspect ratio and cropping if needed.
-                    className="w-full h-full object-contain "
-                  />
-                </div>
+  {courses.map((course, index) => (
+    <Link  href="/admin-b2c/admin-panel/course-management-teacher">
+      <div className="flex flex-col w-full max-h-[330px] px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+        <div className="w-full aspect-[3/2] rounded-2xl overflow-hidden">
+          <Image
+            src={course.image}
+            width={300}
+            height={200}
+            alt={course.name}
+            className="w-full h-full object-contain"
+          />
+        </div>
 
-                {/* Text section */}
-                <div className="flex flex-col gap-1 px-1 text-black">
-                  <h2 className="font-bold text-lg">{course.name}</h2>
-                  <h3 className="text-sm font-medium">
-                    Domain:{" "}
-                    <span className="text-[#6B7280]">{course.domain}</span>
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="flex flex-col gap-1 px-1 text-black">
+          <h2 className="font-bold text-lg">{course.name}</h2>
+          <h3 className="text-sm font-medium">
+            Domain: <span className="text-[#6B7280]">{course.domain}</span>
+          </h3>
+        </div>
+      </div>
+    </Link>
+  ))}
+</div>
+<ScrollableButton ButtonHeading="Add Courses"/>
         </main>
 
         <Footer />
