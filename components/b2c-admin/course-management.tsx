@@ -2,11 +2,11 @@
 
 import { useState } from "react";
  import Link from "next/link";
-import Navbar from "@/components/b2c-admin/Navbar"
+// import Navbar from "@/components/b2c-admin/Navbar"
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
-import ScrollableButton from "./scrollable-button";
+import ScrollableButton from "./common-component/scrollable-button";
 // --- Recording Card Component ---
 interface Course {
   id: string;
@@ -113,7 +113,7 @@ export default function CourseManagementPage() {
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
     <>
-       <Navbar user={headerUser} activeState='course'/>
+       
       <div className="bg-[#eeeeee]   py-6 sm:py-8 lg:py-10 min-h-screen ">
         <main className="p-2 max-w-[90rem] sm:p-6  mb-32 sm:mb-[320px]  mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
@@ -184,7 +184,7 @@ export default function CourseManagementPage() {
 <ScrollableButton ButtonHeading="Add Courses"/>
         </main>
 
-        <Footer />
+      
       </div>
     </>
   );

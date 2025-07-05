@@ -1,12 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
 import { FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import PeopleGrid from "@/components/b2c-admin/attandance-teacher";
 import StudentGrid from "./attandance-student";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
+type Checked = DropdownMenuCheckboxItemProps["checked"];
 // Dummy user
 const headerUser = {
   name: "Shlok Agheda",
@@ -68,21 +77,61 @@ export default function AttendancePage() {
             </div>
 
             <div className="flex items-center gap-2 overflow-x-auto">
-              <button
-                onClick={() => alert("Main filter icon clicked.")}
-                className="p-2.5 sm:p-3 rounded-2xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors"
-                aria-label="Open main filters"
-              >
-                <FiFilter className="w-5 h-5" strokeWidth={2} />
-              </button>
-
-              {sampleGeneralFilters.map((filter) => (
-                <GeneralFilterButton
-                  key={filter.id}
-                  filter={filter}
-                  onClick={() => alert(`${filter.label} clicked.`)}
-                />
-              ))}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 1
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 2nd */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 2
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 3rd */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 3
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 4th */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 4
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14 px-0">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 

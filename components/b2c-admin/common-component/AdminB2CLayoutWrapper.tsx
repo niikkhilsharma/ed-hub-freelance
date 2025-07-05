@@ -2,7 +2,7 @@
 "use client";
 
 // import { usePathname } from "next/navigation";
-import Header from '@/components/layout/Header'
+import Navbar from "@/components/b2c-admin/Navbar"
 import Footer from '@/components/layout/Footer'
 import { ReactNode } from "react";
 
@@ -22,7 +22,7 @@ const AdminB2CLayoutWrapper = ({ children }: Props) => {
     };
     return (
         <>
-            <Header user={headerUser} />
+           <Navbar user={headerUser} activeState='dashboard'/>
             <div className="bg-gray-100">{children}</div>
             <Footer />
         </>

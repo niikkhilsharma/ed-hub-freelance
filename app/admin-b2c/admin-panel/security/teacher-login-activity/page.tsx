@@ -1,7 +1,6 @@
 import Activity from "@/components/b2c-admin/activity";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
 import GoBack from "@/components/principal/goback";
+
 
 export default function CourseDetail() {
     const headerUser = {
@@ -11,10 +10,10 @@ export default function CourseDetail() {
 
     }
     return <div>
-        <Header user={headerUser} />
+      
         <GoBack GoBackHeading="Teacher Login Activity" />
         <Activity />
-        <Footer />
+        
 
     </div>
 }

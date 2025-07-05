@@ -159,8 +159,8 @@ h3 {
 }
 /* A thinner, less intrusive scrollbar for horizontal scrolling elements */
 .custom-scrollbar-thin::-webkit-scrollbar {
-  height: 1px; 
-  width:40px;
+  height: 6px; 
+
   /* Makes the scrollbar thinner */
 }
 .custom-scrollbar-thin::-webkit-scrollbar-track {

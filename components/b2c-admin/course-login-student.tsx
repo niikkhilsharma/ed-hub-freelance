@@ -5,20 +5,20 @@ import Link from 'next/link';
 export default function StudentGrid ()  {
   const personImageUrl = '/admin/student.png'; 
 
-  const people = Array.from({ length: 14 }, (_, i) => ({
+  const people = Array.from({ length: 200 }, (_, i) => ({
     id: i,
     name: ' Student Name', 
     image: personImageUrl, 
   }));
 
   return (
-    <div className="container  custom-scrollbar-thin mx-auto py-4"> 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {people.map((person) => (
-           <Link href="/admin-b2c/admin-panel/student-login-activity">
+    <div className="overflow-y-auto max-h-[80vh] custom-scrollbar-thin mx-auto py-4"> 
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mx-2">
+        {people.map((person,index) => (
+           <Link href="/admin-b2c/admin-panel/security/student-login-activity" key={index}>
          
           <div
-            key={person.id}
+            key={index}
             className="flex items-center bg-[#f3f4f6] rounded-2xl p-4 space-x-4 shadow-sm"
           >
             {/* Image */}
