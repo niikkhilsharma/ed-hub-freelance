@@ -6,6 +6,7 @@ const filters = ['Filter 1', 'Filter 2', 'Filter 3', 'Filter 4'];
 import { FaSearch } from 'react-icons/fa';
 import { IoIosArrowDown } from 'react-icons/io';
 import { MdOutlineDateRange } from "react-icons/md";
+import AdminB2CWrapper from "@/components/b2c-admin/common-component/AdminB2CPageWrapper";
 
 type leavecards = {
     id: number,
@@ -43,24 +44,23 @@ const ExtraLectureManager = () => {
     return (
         <>
 
-
-            <div className="p-4 ">
+            <AdminB2CWrapper>
                 {/* Tabs */}
                 <div className="bg-white rounded-2xl p-4">
 
                     <div className="flex items-center flex-col sm:flex-row mb-4 gap-2">
                         {/* Search Input */}
                         <div className="relative w-full ">
-                            <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400 text-sm" />
+                            <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-md" />
                             <input
                                 type="text"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                                 placeholder="Search"
-                                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                                className="w-full pl-10 pr-4 py-2 border border-gray-700 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                             />
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
                             {filters.map((filter, index) => (
                                 <div key={filter} className="relative">
                                     <select
@@ -77,13 +77,11 @@ const ExtraLectureManager = () => {
                             ))}
                         </div>
                     </div >
-
-
-                    <div className="max-h-screen overflow-y-auto grid gap-1 grid-cols-1 sm:grid-cols-2 custom-peach-scrollbar">
+                    <div className="max-h-[764px] overflow-y-auto grid gap-1 grid-cols-1 sm:grid-cols-2 custom-peach-scrollbar">
                         {teachers.map((item) => (
                             <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-4 inline-block mr-2 mb-4  relative">
                                 <div className="flex">
-                                    <div className="rounded-xl relative overflow-hidden">
+                                    <div className="rounded-3xl bg-white p-2 md:p-3 relative overflow-hidden">
                                         <Image src={item.image} alt={item.name} width={100} height={100} className="object-cover" />
                                     </div>
                                     <div className="flex-1 flex flex-col gap-1 justify-between ml-4">
@@ -104,7 +102,7 @@ const ExtraLectureManager = () => {
                                     <p className="text-center text-black-600 text-base">
                                         {item.reason}</p>
                                 </div>
-                                <div className="space-y-6 my-3">
+                                <div className="space-y-6 my-3 mx-2">
                                     {/* Schedule Date */}
                                     <div className="space-y-2">
                                         <label className="text-sm font-medium text-black">Schedule Date</label>
@@ -150,7 +148,8 @@ const ExtraLectureManager = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+
+            </AdminB2CWrapper>
         </>
     )
 }
