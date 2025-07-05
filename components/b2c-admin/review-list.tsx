@@ -17,9 +17,7 @@ type CardData = {
 const teachers = Array.from({ length:5}, (_, i) => ({
   id: i + 6,
   name: 'Name',
-  
   course: 'course',
-  
   group: 'Batch Assigned',
   image: '/teacher-avatar-4.png', // Use same image or add logic to vary if needed
 }));
@@ -76,8 +74,6 @@ const ReviewList = () => {
         </div>
         <ClassTab />
         <div className="mb-4 sm:grid-cols-2 gap-4">
-
-
           {/* Cards */}
           {sampleData.map((item) => (
             <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl px-2 py-1 shadow-sm">
