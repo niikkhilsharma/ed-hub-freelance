@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { FiSearch, FiChevronDown } from "react-icons/fi"; // Example icons
-
+import { FiCalendar } from "react-icons/fi";
+import { AiOutlineClockCircle } from "react-icons/ai";
 interface Student {
   id: number;
   name: string;
@@ -33,8 +34,13 @@ const TeacherForm: React.FC = () => {
     "all" | "selective"
   >("all");
   const [searchTerm, setSearchTerm] = useState<string>("");
-const [students, setStudents] = useState<Student[]>(generateDummyStudents(20));
-
+  const [students, setStudents] = useState<Student[]>(
+    generateDummyStudents(20)
+  );
+  const [demoTitle, setDemoTitle] = useState("");
+const [meetingUrl, setMeetingUrl] = useState("");
+const [date, setDate] = useState("");
+const [time, setTime] = useState("16:40");
   const courseOptions = ["Option 1", "Option 2", "Option 3"];
   const batchOptions = ["Option 1", "Option 2", "Option 3"];
   const categories = [1, 2, 3, 4, 5];
@@ -91,56 +97,68 @@ const [students, setStudents] = useState<Student[]>(generateDummyStudents(20));
       </div>
 
       <div className="bg-white rounded-xl w-full p-6 flex flex-col sm:flex-row justify-between max-w-screen-xl mx-auto">
-        <div className="space-y-6 w-full sm:w-[40%]">
+        <div className="space-y-8  w-full sm:w-[40%]">
+               <h2 className="text-xl font-semibold text-center mb-10">Schedule Demo</h2>
+          {/* Demo Title */}
           <div>
-            <label
-              htmlFor="select-course"
-              className="block text-black text-sm md:text-lg font-medium mb-2"
-            >
-              Select Course
-            </label>
-            <div className="relative">
-              <select
-                id="select-course"
-                value={selectedCourse}
-                onChange={(e) => setSelectedCourse(e.target.value)}
-                className="block w-full appearance-none rounded-full border border-[#d5d5d5] bg-[#F9FAFB] py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 pr-8"
-              >
-                {courseOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <FiChevronDown className="h-4 w-4" />
-              </div>
+            <label className="block text-sm  sm:text-lg font-medium mb-1">Demo Title</label>
+            <div className="relative py-2">
+              <input
+                type="text"
+                value={demoTitle}
+                onChange={(e) => setDemoTitle(e.target.value)}
+                placeholder="Text"
+                className="w-full text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] focus:outline-none"
+              />
             </div>
           </div>
 
+          {/* Meeting URL */}
           <div>
-            <label
-              htmlFor="select-batch"
-              className="block text-gray-700 font-medium mb-2"
-            >
-              Select Batch
+            <label className="block text-sm  sm:text-lg font-medium mb-1">
+              Meeting URL
             </label>
-            <div className="relative">
-              <select
-                id="select-batch"
-                value={selectedBatch}
-                onChange={(e) => setSelectedBatch(e.target.value)}
-                className="block w-full appearance-none rounded-full border border-[#d5d5d5] bg-[#F9FAFB] py-2 px-3 text-black leading-tight focus:outline-none focus:border-blue-500 pr-8"
-              >
-                {batchOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <FiChevronDown className="h-4 w-4" />
-              </div>
+            <div className="relative py-2">
+              <input
+                type="text"
+                value={meetingUrl}
+                onChange={(e) => setMeetingUrl(e.target.value)}
+                placeholder="Text"
+                className="w-full text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] focus:outline-none"
+              />
+            </div>
+          </div>
+
+          {/* Deadline Date */}
+          <div>
+            <label className="block text-sm sm:text-lg font-medium mb-1">
+             Date
+            </label>
+            <div className="relative py-2">
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+                placeholder="DD/MM/YYYY"
+                className="w-full text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0"
+              />
+              <FiCalendar className="absolute right-5 sm:w-6 sm:h-6 w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+            </div>
+          </div>
+
+          {/* Deadline Time */}
+          <div>
+            <label className="block text-sm  sm:text-lg font-medium mb-1">
+             Time
+            </label>
+            <div className="relative py-2">
+              <input
+                type="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                className="w-full text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0"
+              />
+              <AiOutlineClockCircle className="absolute w-5 h-6 right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
             </div>
           </div>
         </div>
@@ -170,7 +188,7 @@ const [students, setStudents] = useState<Student[]>(generateDummyStudents(20));
                 className="form-radio h-5 w-5 sm:h-6 sm:w-6 text-blue-600 border-[4px]  appearance-none rounded-full border-[#6b7280] focus:ring-blue-500"
               />
               <span className="ml-2 text-black text-sm sm:text-lg font-medium">
-                For selective Teachers
+                For Selective Teachers
               </span>
             </label>
           </div>
@@ -190,24 +208,36 @@ const [students, setStudents] = useState<Student[]>(generateDummyStudents(20));
             </div>
             <div className="relative">
               <select className="appearance-none flex items-center gap-4 rounded-xl border border-[#e5e7eb] bg-[#faf9fb] py-2 px-3 text-[#1e1e1e] leading-tight focus:outline-none text-sm md:text-md w-full pr-8">
-                <option className="bg-[#faf9fb]" value="all">Filter </option>
-                <option className="bg-[#faf9fb]" value="all">Option 1</option>
-                <option className="bg-[#faf9fb]" value="passed">Option 2</option>
+                <option className="bg-[#faf9fb]" value="all">
+                  Filter{" "}
+                </option>
+                <option className="bg-[#faf9fb]" value="all">
+                  Option 1
+                </option>
+                <option className="bg-[#faf9fb]" value="passed">
+                  Option 2
+                </option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#1e1e1e]">
                 <FiChevronDown className="h-4 w-4" />
               </div>
-            </div> 
-              <div className="relative">
+            </div>
+            <div className="relative">
               <select className="appearance-none flex items-center gap-4 rounded-xl border border-[#e5e7eb] bg-[#faf9fb] py-2 px-3 text-[#1e1e1e] leading-tight focus:outline-none text-sm md:text-md w-full pr-8">
-                <option className="bg-[#faf9fb]" value="all">Filter</option>
-                <option className="bg-[#faf9fb]" value="all">Option 1</option>
-                <option className="bg-[#faf9fb]" value="passed">Option 2</option>
+                <option className="bg-[#faf9fb]" value="all">
+                  Filter
+                </option>
+                <option className="bg-[#faf9fb]" value="all">
+                  Option 1
+                </option>
+                <option className="bg-[#faf9fb]" value="passed">
+                  Option 2
+                </option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#1e1e1e]">
                 <FiChevronDown className="h-4 w-4" />
               </div>
-            </div> 
+            </div>
           </div>
 
           <div className="space-y-4 max-h-96 overflow-y-auto custom-scrollbar-thin pr-2">
@@ -228,19 +258,29 @@ const [students, setStudents] = useState<Student[]>(generateDummyStudents(20));
                 <div className="flex-1 text-sm md:text-lg">
                   <div className="font-bold text-black">{student.name}</div>
                   <div className="text-[#ff3366]">{student.subject}</div>
-                   <div className="text-[#6b7280]">{student.course}</div>
+                  <div className="text-[#6b7280]">{student.course}</div>
                   <div className="text-[#6b7280]">{student.batch}</div>
                 </div>
                 <div className="flex items-center pl-4">
                   <input
-                    type={studentSelectionType === "selective" ? "checkbox" : "radio"}
-                    checked={studentSelectionType === "selective" ? student.selected : false}
+                    type={
+                      studentSelectionType === "selective"
+                        ? "checkbox"
+                        : "radio"
+                    }
+                    checked={
+                      studentSelectionType === "selective"
+                        ? student.selected
+                        : false
+                    }
                     onChange={() =>
                       studentSelectionType === "selective" &&
                       handleStudentSelect(student.id)
                     }
                     className={`form-${
-                      studentSelectionType === "selective" ? "checkbox" : "radio"
+                      studentSelectionType === "selective"
+                        ? "checkbox"
+                        : "radio"
                     } h-5 w-5 sm:h-6 sm:w-6 form-radio text-blue-600 border-[4px] appearance-none rounded-full border-[#6b7280] focus:ring-blue-500`}
                     disabled={studentSelectionType !== "selective"}
                   />
@@ -255,13 +295,13 @@ const [students, setStudents] = useState<Student[]>(generateDummyStudents(20));
           </div>
         </div>
       </div>
-      
+
       <div className="flex justify-center">
         <button
           onClick={handleAssignCourse}
-          className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+          className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-3 px-4 sm:px-6 md:px-8 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Assign Course
+          Schedule
         </button>
       </div>
     </div>

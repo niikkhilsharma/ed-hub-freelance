@@ -13,12 +13,12 @@ export default function PeopleGrid ()  {
 
   return (
     <div className=" overflow-y-auto custom-scrollbar-thin  max-h-[80vh] mx-auto py-4"> 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {people.map((person) => (
-           <Link href="/admin-b2c/admin-panel/teacher-login-activity">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mx-2">
+        {people.map((person,index) => (
+           <Link href="/admin-b2c/admin-panel/security/teacher-login-activity" key={index}>
          
           <div
-            key={person.id}
+            key={index}
             className="flex items-center bg-[#f3f4f6] rounded-2xl p-4 space-x-4 shadow-sm" 
           >
             {/* Image */}

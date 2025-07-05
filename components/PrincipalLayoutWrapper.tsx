@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { ReactNode } from "react";
+import PrincipalHeader from "./layout/PrincipalHeader";
 
 interface Props {
     children: ReactNode;
@@ -15,14 +16,10 @@ const PrincipalLayoutWrapper = ({ children }: Props) => {
 
     // Check if it's the specific route
     const hideLayout = pathname.startsWith("/principal/registration");
-    const headerUser = {
-        name: "Educator Name",
-        role: "Teacher",
-        avatarSrc: "/principal/profile-image.jpg",
-    };
+   
     return (
         <>
-             {!hideLayout && <Header user={headerUser} />}
+             {!hideLayout && <PrincipalHeader />}
             <div className="bg-gray-100">{children}</div>
             {!hideLayout && <Footer />}
         </>

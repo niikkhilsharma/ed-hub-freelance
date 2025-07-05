@@ -1,12 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from '@/components/b2c-admin/Navbar'
-import Footer from "@/components/layout/Footer";
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
 import PeopleGrid from "@/components/b2c-admin/course-login-teachers";
 import StudentGrid from "./course-login-student";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
+type Checked = DropdownMenuCheckboxItemProps["checked"];
 // Dummy user
 const headerUser = {
   name: "Shlok Agheda",
@@ -50,8 +59,6 @@ export default function CourseLoginPage() {
 
   return (
     <>
-      <Navbar user={headerUser} activeState='security'/>
-
       <div className="bg-[#eeeeee] py-6 sm:py-8 lg:py-10 min-h-screen">
         <main className="p-2 max-w-[90rem] sm:p-6 mb-32 sm:mb-[320px]   mx-auto bg-white my-6 rounded-3xl">
           {/* Search & Filter Section */}
@@ -60,7 +67,7 @@ export default function CourseLoginPage() {
               <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
               <input
                 type="text"
-                placeholder="Search students..."
+                placeholder="Search "
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full pl-10 pr-4 py-2.5 sm:py-3 text-sm bg-white border-2 border-[#6B7280] rounded-full focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none"
@@ -68,21 +75,61 @@ export default function CourseLoginPage() {
             </div>
 
             <div className="flex items-center gap-2 overflow-x-auto">
-              <button
-                
-                className="p-2.5 sm:p-3 rounded-2xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors"
-                aria-label="Open main filters"
-              >
-                <FiFilter className="w-5 h-5" strokeWidth={2} />
-              </button>
-
-              {sampleGeneralFilters.map((filter,indx) => (
-                <GeneralFilterButton
-                  key={indx}
-                  filter={filter}
-                  onClick={() => alert(`${filter.label} clicked.`)}
-                />
-              ))}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 1
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 2nd */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 2
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 3rd */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 3
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 4th */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 4
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14 px-0">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 
@@ -134,8 +181,6 @@ export default function CourseLoginPage() {
             {activeTab === "teachers" ? <PeopleGrid /> : <StudentGrid />}
           </div>
         </main>
-
-        <Footer />
       </div>
     </>
   );
