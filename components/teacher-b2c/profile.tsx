@@ -75,7 +75,7 @@ export default function EditStudentProfilePage() {
 		<>
 			<Header user={headerUser} />
 			<div className="bg-[#eeeeee] min-h-screen flex flex-col">
-				<main className="flex-grow container mx-auto p-4 sm:p-6">
+				<main className="flex-grow w-full max-w-screen-xl mx-auto p-4 sm:p-6">
 					<div className="bg-white rounded-2xl p-6  md:p-8">
 						{/* Profile Header Section */}
 						<div className="flex gap-2 ">

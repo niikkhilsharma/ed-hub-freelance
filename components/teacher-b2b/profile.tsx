@@ -2,11 +2,13 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import Header from '@/components/layout/Header' // Assuming Header is in this path
+import Header from '@/components/teacher-b2b/layout/Header' // Assuming Header is in this path
 import Footer from '@/components/layout/Footer' // Assuming Footer is in this path
 import { FiArrowLeft, FiEdit2 } from 'react-icons/fi' // Edit icon
 import { Button } from '../ui/button'
 import Newsletter from '../common-components/Newsletter'
+import { useRouter } from 'next/navigation'
+import { Router } from 'lucide-react'
 // import MaxWidthWrapper from '../max-width-wrapper'
 
 // Helper Input Component
@@ -26,7 +28,7 @@ const FormInput = ({
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) => (
 	<div className="w-full">
-		<label htmlFor={id} className="block text-sm font-medium sm:text-lg text-black mb-2">
+		<label htmlFor={id} className="block text-sm sm:text-lg text-black mb-2">
 			{label}
 		</label>
 		<input
@@ -36,12 +38,18 @@ const FormInput = ({
 			value={value}
 			onChange={onChange}
 			placeholder={placeholder}
-			className="w-full px-4 py-3 bg-[#F9FAFB] border border-[#D5D5D5]  rounded-3xl text-sm  text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
+			className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5]  rounded-3xl text-sm  text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent focus:bg-white"
 		/>
 	</div>
 )
 
 export default function EditStudentProfilePage() {
+	const router = useRouter();
+
+	const handleBack = () => {
+		router.push('/teacher-b2b/teacher-flow/dashboard');
+	};
+
 	const [formData, setFormData] = useState({
 		name: '',
 		emailAddress: '',
@@ -74,21 +82,21 @@ export default function EditStudentProfilePage() {
 
 	return (
 		<>
-			<Header user={headerUser} />
+			<Header user={headerUser} activeState='Dashboard'/>
 			<div className="bg-gray-100 min-h-screen flex flex-col">
-				<main className="flex-grow container mx-auto p-4 sm:p-6">
+				<main className="flex-grow w-full max-w-screen-xl mx-auto p-4 sm:p-6">
 					<div className="bg-white rounded-2xl p-6  md:p-8">
 						{/* Profile Header Section */}
 						<div className="flex gap-2 ">
 							{/* Back Button */}
-							<button className="hover:text-blue-600 focus:outline-none">
+							<button className="hover:text-[#3366FF] focus:outline-none cursor-pointer" onClick={handleBack}>
 								<FiArrowLeft className="w-6 h-6" />
 							</button>
-							<h1 className="text-md sm:text-lg font-semibold ">Edit Profile</h1>
+							<h1 className="text-md sm:text-lg ">Edit Profile</h1>
 						</div>
 						<div
-							className="flex items-center mt-4 mb-8 bg-none   sm:bg-[url('/teacher-b2b/profile-back.png')] sm:bg-[auto_600px]"
-							>
+							className="flex items-center mt-4 mb-8 bg-none rounded-full sm:bg-[url('/teacher-b2b/profile-back.png')] sm:bg-[auto_600px]"
+						>
 							<div className="flex items-start bg-white rounded-r-3xl px-4 py-1">
 								{/* Avatar and Name */}
 								<div className="relative mt-3   mr-6">
@@ -109,12 +117,12 @@ export default function EditStudentProfilePage() {
 								</div>
 							</div>
 
-							
+
 						</div>
 
 						{/* Profile Form */}
 						<form onSubmit={handleProfileSave}>
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-5 mb-8">
+							<div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-5">
 								<FormInput label="Name" id="name" placeholder="Name" value={formData.name} onChange={handleChange} />
 								<FormInput
 									label="Email Address"
@@ -140,14 +148,14 @@ export default function EditStudentProfilePage() {
 								<FormInput label="State" id="state" placeholder="Maharashtra" value={formData.state} onChange={handleChange} />
 
 								<FormInput label="Pin code" id="pinCode" placeholder="000000" value={formData.pinCode} onChange={handleChange} />
+
+								<Button onClick={() => {
+									router.push('/teacher-b2b/teacher-flow/dashboard');
+								}} className="px-4 h-12 rounded-full text-xl w-full mt-6 md:col-start-2">Save</Button>
 							</div>
 						</form>
-						<div className="w-full flex pt-6 justify-center">
-							<Button className="px-28 rounded-full text-xl h-11 mx-auto">Save</Button>
-						</div>
 					</div>
 
-					{/* Newsletter Subscription Section */}
 					<Newsletter />
 				</main>
 			</div>
