@@ -1,26 +1,22 @@
 "use client";
 
-import Header from "@/components/layout/Header"; // Adjust path as needed
-import Footer from "@/components/layout/Footer"; // Adjust path as needed
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import React, { useState, useMemo } from "react";
 import {
   FiSearch,
   FiFilter,
   FiChevronDown,
-  FiFileText,
-  FiImage,
-  // FiUpload,
 } from "react-icons/fi";
 import { FiArrowLeft } from "react-icons/fi";
-import MaxWidthWrapper from "../max-width-wrapper";
 import Image from 'next/image'
+
 // Define the File interface
 interface ManagedFile {
   id: string;
   name: string;
-  type: "pdf" | "image" | "doc" | "other"; // Add more types as needed
-  size: string; // e.g., "300 KB", "1.2 MB"
-  // Add other properties like uploadDate, url etc. if needed
+  type: "pdf" | "image" | "doc" | "other";
+  size: string;
 }
 
 // Sample Data
@@ -36,33 +32,17 @@ const dummyFiles: ManagedFile[] = [
   { id: "9", name: "Report_v3.pdf", type: "pdf", size: "900 KB" },
 ];
 
-// File Icon Component
-const FileIcon: React.FC<{ type: ManagedFile["type"] }> = ({ type }) => {
-  const iconProps = "w-5 h-5 text-[#F9FAFB]0 flex-shrink-0";
-  switch (type) {
-    case "pdf":
-      return <FiFileText className={iconProps} />; // Using FiFileText for PDF, as common
-    case "image":
-      return <FiImage className={iconProps} />;
-    // Add more cases for other file types
-    // case 'doc':
-    //   return <FiFileText className={iconProps} />; // Or a specific Word icon
-    default:
-      return <FiFileText className={iconProps} />; // Generic file icon
-  }
-};
-
 // FileItem Component
 const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
   return (
     <div className="flex items-center justify-between py-3 px-2 hover:bg-[#F9FAFB] transition-colors duration-150 rounded-md">
       <div className="flex items-center space-x-3 min-w-0">
-        <Image 
-                src={"/teacher-b2b/pdf.png"}
-                alt="pdf"
-                height={50}
-                width={20}
-                className='h-6 w-6'/>
+        <Image
+          src={"/teacher-b2b/pdf.png"}
+          alt="pdf"
+          height={50}
+          width={20}
+          className='h-6 w-6' />
         <span
           className="text-sm text-black font-medium truncate"
           title={file.name}
@@ -80,22 +60,16 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
 // Main File Management Content Component
 const FileManagementContent: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  // In a real app, file data would likely come from props or a global state/API call
   const [files] = useState<ManagedFile[]>(dummyFiles);
-
-  // Add states for filters if/when their logic is defined
-  // const [activeFilters, setActiveFilters] = useState({});
 
   const filteredFiles = useMemo(() => {
     const f = files.filter((file) =>
       file.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    // Add further filtering logic here based on activeFilters
     return f;
   }, [files, searchTerm /*, activeFilters */]);
 
   const handleUploadClick = () => {
-    // Trigger file input click or open upload modal
     alert("Upload button clicked! Implement file upload logic.");
   };
 
@@ -163,13 +137,13 @@ const FileManagementContent: React.FC = () => {
             </p>
           </div>
         )}
-      <button
-        onClick={handleUploadClick}
-        className="px-5 ml-auto mt-4  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full shadow-lg hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 text-sm"
-        aria-label="Upload new file"
-      >
-        Continue
-      </button>
+        <button
+          onClick={handleUploadClick}
+          className="px-5 ml-auto mt-4  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full shadow-lg hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 text-sm"
+          aria-label="Upload new file"
+        >
+          Continue
+        </button>
       </div>
     </div>
   );
@@ -179,11 +153,10 @@ export default function StudentSubmittedPapersPage() {
   const headerUser = {
     name: "Shlok Agheda",
     role: "Student",
-    avatarSrc: "/placeholder-avatar-student.jpg", // UPDATE THIS PATH
+    avatarSrc: "/placeholder-avatar-student.jpg",
   };
 
   const handleBackClick = () => {
-    // Implement back navigation, e.g., using Next.js router or window.history
     if (typeof window !== "undefined") {
       window.history.back();
     }
@@ -192,35 +165,28 @@ export default function StudentSubmittedPapersPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-    
+
       <div className="bg-gray-100">
-  <div className=" bg-white">
- 
-      <div className="flex items-center gap-2 max-w-[96rem] mx-auto px-4 sm:px-6 py-4 shadow-sm">
-        <button
-          onClick={handleBackClick}
-          className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
-          aria-label="Go back"
-        >
-          <FiArrowLeft className="w-5 h-5" />
-        </button>
-        
-      </div>
-     
+        <div className=" bg-white">
 
-      </div>
+          <div className="flex items-center gap-2 max-w-[96rem] mx-auto px-4 sm:px-6 py-4 shadow-sm">
+            <button
+              onClick={handleBackClick}
+              className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
+              aria-label="Go back"
+            >
+              <FiArrowLeft className="w-5 h-5" />
+            </button>
 
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-        {/* 
-          The space-y-8 from your example is removed here if FileManagementContent 
-          is the only direct child and already has its own internal spacing/padding.
-          If you have other elements directly within main, you can add space-y back.
-        */}
-        <FileManagementContent />
-      </main>
+          </div>
+
+
+        </div>
+
+        <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+          <FileManagementContent />
+        </main>
       </div>
-    
-      {/* Back Button and Page Title */}
 
       <Footer />
     </div>

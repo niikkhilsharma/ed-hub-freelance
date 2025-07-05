@@ -6,13 +6,11 @@ import {
   FiSearch,
   FiChevronDown,
   FiShare2,
-  FiTrash2,
   FiFilm,
   FiArrowLeftCircle,
   FiArrowRightCircle,
   FiUploadCloud,
-  FiX,
-  FiPlus, // Icon for Add button
+  FiX
 } from "react-icons/fi";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -43,7 +41,7 @@ const sampleSubjectOptions: FilterOption[] = [{ value: "all", label: "Subject" }
 
 // --- MODAL & FORM COMPONENTS (Integrated from your popups file) ---
 
-interface BaseModalProps { isOpen: boolean; onClose: () => void; children: React.ReactNode; maxWidth?: string; }
+interface BaseModalProps { isOpen: boolean; onClose: () => void; children?: React.ReactNode; maxWidth?: string; }
 const BaseModal: React.FC<BaseModalProps> = ({ isOpen, onClose, children, maxWidth = "max-w-md" }) => {
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => { if (event.key === "Escape") onClose(); };
@@ -203,7 +201,6 @@ const ClassRecordingContent: React.FC = () => {
                     <div className="relative flex-grow"><FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-black pointer-events-none" /><input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className={`w-full pl-10 pr-4 py-2.5 border border-[#6B7280] bg-white rounded-full focus:ring-2 focus:ring-[#3366FF] focus:border-transparent outline-none text-sm`} /></div>
                 </div>
                 <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-end lg:justify-start flex-shrink-0">
-                    {/* <button onClick={() => handleOpenModal('addVideo')} className={`flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-[${PRIMARY_BLUE}] rounded-lg hover:bg-blue-700 transition-colors`}><FiPlus/> Add Recording</button> */}
                     <div className="flex items-center gap-2 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl"><FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" /><span>June 2025</span><FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" /></div>
                     <FilterDropdown options={sampleBatchOptions} value={batchFilter} onChange={setBatchFilter} />
                     <FilterDropdown options={sampleSubjectOptions} value={subjectFilter} onChange={setSubjectFilter} />
@@ -224,10 +221,10 @@ const ClassRecordingContent: React.FC = () => {
             ) : ( <div className="text-center py-12 text-gray-500"><FiFilm className="w-16 h-16 mx-auto mb-4 text-gray-400" /><h3 className="text-xl font-semibold mb-2">No Recordings Found</h3><p className="text-sm">Try adjusting your search or filter criteria.</p></div> )}
 
             {/* Render Modals */}
-            <AddVideoModal isOpen={openModal === 'addVideo'} onClose={handleCloseModal} children={undefined} />
-            <ShareVideoModal isOpen={openModal === 'share'} onClose={handleCloseModal} title="Share Video" children={undefined} />
-            <ShareVideoModal isOpen={openModal === 'manageAccess'} onClose={handleCloseModal} title="Shared With - Manage Access" children={undefined} />
-            <DeleteRecordingModal isOpen={openModal === 'delete'} onClose={handleCloseModal} recording={selectedRecording} children={undefined} />
+            <AddVideoModal isOpen={openModal === 'addVideo'} onClose={handleCloseModal} />
+            <ShareVideoModal isOpen={openModal === 'share'} onClose={handleCloseModal} title="Share Video" />
+            <ShareVideoModal isOpen={openModal === 'manageAccess'} onClose={handleCloseModal} title="Shared With - Manage Access" />
+            <DeleteRecordingModal isOpen={openModal === 'delete'} onClose={handleCloseModal} recording={selectedRecording} />
         </div>
     );
 };

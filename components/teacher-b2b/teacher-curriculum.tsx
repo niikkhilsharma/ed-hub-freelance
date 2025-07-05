@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Header from '@/components/teacher-b2b/layout/Header';
 import { IoIosArrowDown } from "react-icons/io";
 import {
-  FiArrowLeft,
   FiArrowLeftCircle,
   FiArrowRightCircle,
   FiChevronDown,

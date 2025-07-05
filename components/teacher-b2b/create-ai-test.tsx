@@ -7,11 +7,8 @@ import {
   FiSearch,
   FiChevronDown,
   FiCalendar,
-  FiArrowLeft,
-  FiArrowLeftCircle,
-  FiArrowRightCircle, // For number inputs
+  FiArrowLeft
 } from "react-icons/fi";
-import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- Data Interfaces ---
 interface StepperStep {
@@ -103,11 +100,8 @@ const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF";
 const INPUT_BG = "bg-[#F9FAFB]"; // Slightly off-white for inputs
 const INPUT_BORDER = "border-[#D5D5D5]";
-const SCROLLBAR_THUMB_ORANGE = "scrollbar-thumb-[#FFC79A]"; // Custom class for scrollbar
-const SCROLLBAR_TRACK_LIGHT = "scrollbar-track-[#FFC79A]"; // Custom class for scrollbar track
 
 // --- Helper Components ---
-
 const FormField: React.FC<{
   label: string;
   name: string;

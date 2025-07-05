@@ -3,7 +3,6 @@ import React, { useMemo, useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { FiArrowLeft, FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
-import { clsx } from 'clsx';
 
 export default function StudentListPage() {
   const headerUser = {

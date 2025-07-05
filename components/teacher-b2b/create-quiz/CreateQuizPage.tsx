@@ -9,8 +9,7 @@ import {
 import Header from "@/components/layout/Header"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
 import { v4 as uuidv4 } from "uuid";
-import CreateBWTestContent from "@/components/teacher-b2b/create-quiz/CreateQuizContent"; // We will create this next
-import MaxWidthWrapper from "@/components/max-width-wrapper";
+import CreateBWTestContent from "@/components/teacher-b2b/create-quiz/CreateQuizContent";
 
 // --- Style Constants (Global for this file) ---
 export const ACCENT_PINK = "#FF3366";

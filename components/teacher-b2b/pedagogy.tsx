@@ -3,22 +3,16 @@
 import React, { useState, useEffect, useMemo } from "react";
 import {
   FiArrowLeft,
-  FiChevronDown,
-  FiChevronUp,
-  // Add other icons if they appear in dropdown content or expanded sections
 } from "react-icons/fi";
 import Header from "@/components/teacher-b2b/layout/Header"
-import Footer from "@/components/layout/Footer"; // Adjust path as needed
-// import MaxWidthWrapper from '../max-width-wrapper'
+import Footer from "@/components/layout/Footer";
 import MaxWidthWrapper from "../admin/max-width-wrapper";
-import { Divide } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoIosArrowDown } from "react-icons/io";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366"; // For active Category tabs
 const PRIMARY_BLUE = "#3366FF"; // For active Chapter tabs and Learning Objectives title
-const CHAPTER_ACCORDION_BG = "bg-[#F9FAFB]"; // Background for chapter accordions
 const SCROLLBAR_THUMB_ORANGE = "scrollbar-thumb-[#FFC79A]";
 const SCROLLBAR_TRACK_LIGHT = "scrollbar-track-orange-100";
 
@@ -38,7 +32,6 @@ interface ChapterAccordionItem {
   id: string;
   name: string;
   chapterId: string; // Link to ChapterSubTab
-  // Potentially content for when expanded, but image doesn't show it
 }
 
 interface LearningObjective {
