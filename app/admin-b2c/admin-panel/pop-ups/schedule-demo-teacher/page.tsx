@@ -16,7 +16,7 @@ export default function RequestAssessmentModal() {
 
         {/* Static Assessment Button */}
         <div className="my-8">
-          <label className="block text-sm font-medium mb-1">Demo Title</label>
+          <label className="block text-sm  sm:text-lg font-medium mb-1">Demo Title</label>
           <div className="relative py-2">
             <button
               className="w-full text-left text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] flex items-center justify-between"
@@ -28,7 +28,7 @@ export default function RequestAssessmentModal() {
           </div>
         </div>
          <div className="my-8">
-          <label className="block text-sm font-medium mb-1">Meeting URL</label>
+          <label className="block text-sm sm:text-lg font-medium mb-1">Meeting URL</label>
           <div className="relative py-2">
             <button
               className="w-full text-left text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] flex items-center justify-between"
@@ -42,7 +42,7 @@ export default function RequestAssessmentModal() {
 
         {/* Deadline Date */}
         <div className="my-8">
-          <label className="block text-sm font-medium mb-1">Deadline Date</label>
+          <label className="block text-sm  sm:text-lg font-medium mb-1"> Date</label>
           <div className="relative py-2">
             <input
               type="date"
@@ -56,7 +56,7 @@ export default function RequestAssessmentModal() {
 
         {/* Deadline Time */}
         <div className="my-8">
-          <label className="block text-sm font-medium mb-1">Deadline Time</label>
+          <label className="block text-sm sm:text-lg font-medium mb-1"> Time</label>
           <div className="relative py-2">
             <input
               type="time"

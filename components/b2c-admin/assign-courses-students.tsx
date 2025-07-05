@@ -1,7 +1,7 @@
 // components/AssignmentForm.tsx
 
 import React, { useState } from "react";
-import { BsSearch, BsChevronDown } from "react-icons/bs"; // Example icons
+import { FiSearch, FiChevronDown } from "react-icons/fi"; // Example icons
 
 interface Student {
   id: number;
@@ -13,81 +13,17 @@ interface Student {
   selected: boolean;
 }
 
-const dummyStudents: Student[] = [
-  {
-    id: 1,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
+const generateDummyStudents = (count: number): Student[] => {
+  return Array.from({ length: count }, (_, index) => ({
+    id: index + 1,
+    name: `Student`,
+    course: `Course `,
+    level: `  level/grade `,
+    group: `Group `,
     imageUrl: "/images/placeholder.jpg",
     selected: false,
-  },
-  {
-    id: 2,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
-    imageUrl: "/images/placeholder.jpg",
-    selected: false,
-  },
-  {
-    id: 3,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
-    imageUrl: "/images/placeholder.jpg",
-    selected: false,
-  },
-  // Add more dummy students as needed to make the list scroll
-  {
-    id: 4,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
-    imageUrl: "/images/placeholder.jpg",
-    selected: false,
-  },
-  {
-    id: 5,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
-    imageUrl: "/images/placeholder.jpg",
-    selected: false,
-  },
-  {
-    id: 6,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
-    imageUrl: "/images/placeholder.jpg",
-    selected: false,
-  },
-  {
-    id: 7,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
-    imageUrl: "/images/placeholder.jpg",
-    selected: false,
-  },
-  {
-    id: 8,
-    name: "Student Name",
-    course: "Course Name",
-    level: "Level / Grade",
-    group: "Group",
-    imageUrl: "/images/placeholder.jpg",
-    selected: false,
-  },
-];
+  }));
+};
 
 const AssignmentForm: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<number>(1);
@@ -97,7 +33,7 @@ const AssignmentForm: React.FC = () => {
     "all" | "selective"
   >("all");
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [students, setStudents] = useState<Student[]>(dummyStudents); // State for student list
+  const [students, setStudents] = useState<Student[]>(generateDummyStudents(20)); // State for student list
 
   // You would typically fetch course/batch options and student data here
   const courseOptions = ["Option 1", "Option 2", "Option 3"];
@@ -148,7 +84,7 @@ const AssignmentForm: React.FC = () => {
             onClick={() => setSelectedCategory(cat)}
             className={`py-2 px-4 rounded-2xl text-sm  sm:text-md md:text-lg font-medium transition-colors duration-200 ${
               selectedCategory === cat
-                ? "bg-[#ff3366] text-white"
+                ? "bg-[#ff99b7] text-white"
                 : "text-[#6b7280] hover:text-gray-800"
             }`}
           >
@@ -182,7 +118,7 @@ const AssignmentForm: React.FC = () => {
                 ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <BsChevronDown className="h-4 w-4" />
+                <FiChevronDown className="h-4 w-4" />
               </div>
             </div>
           </div>
@@ -208,7 +144,7 @@ const AssignmentForm: React.FC = () => {
                 ))}
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <BsChevronDown className="h-4 w-4" />
+                <FiChevronDown className="h-4 w-4" />
               </div>
             </div>
           </div>
@@ -238,11 +174,11 @@ const AssignmentForm: React.FC = () => {
                 value="selective"
                 checked={studentSelectionType === "selective"}
                 onChange={() => setStudentSelectionType("selective")}
-                className="form-radio h-5 w-5 sm:h-6 sm:w-6 text-blue-600 border-[4px] rounded-full border-[#6b7280] focus:ring-blue-500"
+                className="form-radio h-5 w-5 sm:h-6 sm:w-6 text-blue-600 border-[4px] appearance-none  rounded-full border-[#6b7280] focus:ring-blue-500"
               />
 
               <span className="ml-2 text-black  text-sm sm:text-lg font-medium">
-                For selective Students
+                For Selective Students
               </span>
             </label>
           </div>
@@ -251,7 +187,7 @@ const AssignmentForm: React.FC = () => {
           <div className="flex items-center space-x-2">
             <div className="relative flex-1">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-black">
-                <BsSearch className="h-4 w-4" />
+                <FiSearch className="h-4 w-4" />
               </span>
               <input
                 type="text"
@@ -272,7 +208,7 @@ const AssignmentForm: React.FC = () => {
 
               {/* Custom Chevron Icon */}
               <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-[#1e1e1e]">
-                <BsChevronDown className="h-4 w-4" />
+                <FiChevronDown className="h-4 w-4" />
               </div>
             </div>
           </div>
