@@ -133,7 +133,7 @@ export default function SecurityCoursePage() {
               <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2  h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
               <input
                 type="text"
-                placeholder="Search students..."
+                placeholder="Search "
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className={`w-full pl-10 pr-4 py-2.5 sm:py-3 text-sm ${INPUT_BG_SEARCH} border-2 border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
@@ -144,7 +144,7 @@ export default function SecurityCoursePage() {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
-                    Filter
+                    Filter 1
                     <FiChevronDown className="text-sm" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -163,8 +163,8 @@ export default function SecurityCoursePage() {
               {/* 2nd */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button className="flex items-center gap-1 focus-visible:outline-none focus-visible:ring-0 rounded-xl  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
-                    Filter
+                  <Button className="flex items-center gap-2 focus-visible:outline-none focus-visible:ring-0 rounded-xl  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 2
                     <FiChevronDown className="text-sm" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -183,8 +183,8 @@ export default function SecurityCoursePage() {
               {/* 3rd */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button className="flex items-center gap-1 focus-visible:outline-none focus-visible:ring-0 rounded-xl  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
-                    Filter
+                  <Button className="flex items-center gap-3 focus-visible:outline-none focus-visible:ring-0 rounded-xl  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 3
                     <FiChevronDown className="text-sm" />
                   </Button>
                 </DropdownMenuTrigger>

@@ -7,6 +7,18 @@ import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import ScrollableButton from "./common-component/scrollable-button";
+import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+type Checked = DropdownMenuCheckboxItemProps["checked"];
 // --- Recording Card Component ---
 interface Course {
   id: string;
@@ -114,8 +126,8 @@ export default function CourseManagementPage() {
   return (
     <>
        
-      <div className="bg-[#eeeeee]   py-6 sm:py-8 lg:py-10 min-h-screen ">
-        <main className="p-2 max-w-[90rem] sm:p-6  mb-32 sm:mb-[320px]  mx-auto bg-white my-6  rounded-3xl">
+      <div className="bg-[#eeeeee]   py-6   min-h-screen ">
+        <main className="p-2 max-w-[90rem] sm:p-6  mb-32   mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
               <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2  h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
@@ -141,33 +153,63 @@ export default function CourseManagementPage() {
               >
                 Edit Membership Plans
               </button>
-              <button
-                onClick={() => alert("Main filter icon clicked.")}
-                className={`p-2.5 sm:p-3 rounded-2xl hover:bg-gray-100 text-[${ACCENT_PINK}] flex-shrink-0 transition-colors`}
-                aria-label="Open main filters"
-              >
-                <FiFilter className="w-5 h-5 " strokeWidth={2} />
-              </button>
-              {sampleGeneralFilters.map((filter) => (
-                <GeneralFilterButton
-                  key={filter.id}
-                  filter={filter}
-                  onClick={() => alert(`${filter.label} clicked.`)}
-                />
-              ))}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex font-medium items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 1
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 2nd */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex  font-medium items-center gap-2 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 2
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 3rd */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="flex font-medium items-center gap-3 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
+                    Filter 3
+                    <FiChevronDown className="text-sm" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-14">
+                  <DropdownMenuSeparator />
+                  <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
+                  <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {/* 4th */}
+             
+            
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-4 py-4">
   {courses.map((course, index) => (
     <Link  href="/admin-b2c/admin-panel/course-management-teacher">
       <div className="flex flex-col w-full max-h-[330px] px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-        <div className="w-full aspect-[3/2] rounded-2xl overflow-hidden">
+        <div className="w-full aspect-auto rounded-2xl overflow-hidden">
           <Image
             src={course.image}
             width={300}
             height={200}
             alt={course.name}
-            className="w-full h-full object-contain"
+            className="w-full h-full object-cover"
           />
         </div>
 
