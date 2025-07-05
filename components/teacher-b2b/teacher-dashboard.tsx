@@ -313,8 +313,7 @@ const TeacherDashboard = () => {
 											<h2 className="text-lg font-semibold whitespace-nowrap mb-1">Ronak Mathur</h2>
 											<div className="text-sm text-gray-500 mb-1 flex">{renderStars(4)}</div>
 											<div className='flex gap-2'>
-												<span className="bg-[#FF3366] text-white px-2 py-1 text-xs rounded-full inline-block mt-1">Group A</span>
-												<span className="bg-[#E5E7EB] text-black px-2 py-1 text-xs rounded-full inline-block mt-1">Part Time</span>
+												<span className="bg-[#FF3366] text-white px-2 py-1.5 text-xs rounded-full inline-block mt-1">Group A</span>
 											</div>
 										</div>
 									</div>

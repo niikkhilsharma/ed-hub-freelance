@@ -18,8 +18,8 @@ const Newsletter = () => {
                 backgroundSize: '1500px',
             }}>
             <div className="relative z-10">
-                <h2 className="text-2xl md:text-3xl font-bold mb-3">Subscribe to our newsletter</h2>
-                <p className="text-sm opacity-90 mb-8 max-w-lg mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3">Subscribe to our newsletter</h2>
+                <p className="text-xs md:text-sm opacity-90 mb-8 max-w-lg mx-auto">Lorem Ipsum is simply dummy text of the printing.</p>
                 <form
                     onSubmit={handleNewsletterSubmit}
                     className="max-w-md mx-auto">
@@ -29,20 +29,15 @@ const Newsletter = () => {
                         value={newsletterEmail}
                         onChange={e => setNewsletterEmail(e.target.value)}
                         placeholder="Email Address"
-                        className="flex-grow px-5 py-2.5 text-gray-700 text-md bg-transparent border-none focus:outline-none placeholder-gray-400"
+                        className="w-full px-5 py-2.5 text-gray-700 text-md bg-transparent border-none focus:outline-none placeholder-gray-400"
                         required
                     />
                     <button
                         type="submit"
-                        className="px-10 py-2.5 bg-[#FFCC00] hidden sm:block text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors">
+                        className="px-10 py-2.5 bg-[#FFCC00]   text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors">
                         Send
                     </button>
                     </div>
-                    <button
-                        type="submit"
-                        className="px-10 py-2.5 bg-[#FFCC00] sm:hidden block w-[80%] mx-auto mt-2 text-white font-semibold text-sm rounded-full hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:ring-offset-2 transition-colors">
-                        Send
-                    </button>
                 </form>
             </div>
         </div>

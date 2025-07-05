@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { BsSearch, BsChevronDown } from 'react-icons/bs'; // Example icons
+import { FiSearch } from 'react-icons/fi';
 
 interface Student {
     id: number;
@@ -166,7 +167,7 @@ const AssignmentForm: React.FC = () => {
                     <div className="flex items-center space-x-2">
                         <div className="relative flex-1">
                             <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-black">
-                                <BsSearch className="h-4 w-4" />
+                                <FiSearch className="h-4 w-4" />
                             </span>
                             <input
                                 type="text"

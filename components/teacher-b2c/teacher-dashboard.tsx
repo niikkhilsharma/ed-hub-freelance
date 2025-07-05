@@ -1,18 +1,15 @@
 'use client'
 import Header from '@/components/layout/Header'
-import React, { useMemo } from 'react'
+import React from 'react'
 import MaxWidthWrapper from '../admin/max-width-wrapper'
 import Footer from '../layout/Footer'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import Image from 'next/image'
 import { useState } from 'react'
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
-import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi'
 import { FaSearch } from 'react-icons/fa'
-import { Star as StarIcon, StarOff as StarOutline } from "lucide-react";
+import { Star as StarIcon } from "lucide-react";
 
 const PALETTE = {
 	GREEN_LIGHT: '#8DD9B3', // Basic Academic Skills BG
