@@ -293,19 +293,13 @@ const VideoContentPage: React.FC = () => {
     return allVideos.filter((video) => {
       // Basic tab filtering
       if (video.type !== activeTab) return false;
-
-      // Add batch and subject filtering logic here if those fields are present on VideoCardData
-      // For now, only tab filtering is applied.
-      // Example for batch: if (batchFilter !== 'all' && video.batch !== batchFilter) return false;
-      // Example for subject: if (subjectFilter !== 'all' && video.cardSubject !== subjectFilter) return false; // Assuming 'cardSubject' field
-
       return true;
     });
-  }, [allVideos, activeTab, batchFilter, subjectFilter]); // Include all filters in dependency array
+  }, [allVideos, activeTab]); // Include all filters in dependency array
 
   return (
     <div className=" bg-white rounded-2xl h-fit flex-grow container mx-auto p-4 sm:p-6 space-y-6 relative">
-      {/* Top Bar: Tabs & Filters */}
+
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
         <div className="flex space-x-4 sm:space-x-6 overflow-x-auto custom-scrollbar-thin self-start sm:self-center">
           {TABS.map((tab) => (
@@ -349,8 +343,6 @@ const VideoContentPage: React.FC = () => {
           <p>Try adjusting your filters or add new videos.</p>
         </div>
       )}
-
-      {/* Add Videos Button - Floating Action Button style */}
       
     </div>
   );

@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useMemo } from 'react'
-import { FiArrowLeft, FiFolder, FiSettings, FiInfo } from 'react-icons/fi'
+import { FiArrowLeft, FiFolder, FiSettings } from 'react-icons/fi'
 import Header from '@/components/layout/Header' // Adjust path as needed
 import Footer from '@/components/layout/Footer' // Adjust path as needed
 import MaxWidthWrapper from '../admin/max-width-wrapper'

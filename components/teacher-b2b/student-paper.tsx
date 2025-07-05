@@ -5,7 +5,6 @@ import { IoCheckmarkCircle, IoCloseCircle, IoTimeOutline, IoStar, IoStarOutline 
 import { FiArrowLeft } from 'react-icons/fi';
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import MaxWidthWrapper from '../max-width-wrapper';
 
 // --- Data Interfaces ---
 interface Option {
@@ -28,12 +27,6 @@ interface RatingCategory {
   score: number;
   maxScore: number;
 }
-
-// interface AssessmentSummaryData {
-//   assessmentScore: number;
-//   incorrectAnswers: number;
-//   ratings: RatingCategory[];
-// }
 
 // --- Sample Data ---
 const sampleQuestionsData: Question[] = [
@@ -96,7 +89,6 @@ const COLOR_SCORE_BLUE = 'text-[#3366FF]';
 const COLOR_RATING_STARS = 'text-[#FF3366]'; // Pinkish-red from your theme
 const COLOR_BUTTON_PRIMARY_BG = 'bg-[#3366FF]';
 const COLOR_BUTTON_PRIMARY_TEXT = 'text-white';
-const BACKGROUND_LIGHT_GRAY_BOX = 'bg-[#F3F4F6]'; // For score boxes and report button
 const BORDER_GRAY = 'border-[#D5D5D5]'; // Consistent border color
 
 // --- Sub-components ---
@@ -161,47 +153,6 @@ const StarRatingDisplay: React.FC<{ currentRating: number; maxRating: number }> 
     </div>
   );
 }
-
-
-interface IndividualSkillScore {
-  id: string;
-  skillName: string;
-  percentage: number;
-  colorClass: string; // Tailwind CSS class for the progress bar color e.g., 'bg-blue-500'
-}
-
-const scores: IndividualSkillScore[] = [
-  {
-    id: "1",
-    skillName: "Academic Skills",
-    percentage: 40,
-    colorClass: "bg-blue-500",
-  },
-  {
-    id: "2",
-    skillName: "Brain Development",
-    percentage: 60,
-    colorClass: "bg-yellow-400",
-  },
-  {
-    id: "3",
-    skillName: "Personality Development",
-    percentage: 50,
-    colorClass: "bg-pink-300",
-  },
-  {
-    id: "4",
-    skillName: "Emotional Intelligence",
-    percentage: 20,
-    colorClass: "bg-green-300",
-  },
-  {
-    id: "5",
-    skillName: "Pedagogy learning",
-    percentage: 40,
-    colorClass: "bg-orange-300",
-  },
-];
 
 interface ExtendedAssessmentSummaryData {
   assessmentScore: number;

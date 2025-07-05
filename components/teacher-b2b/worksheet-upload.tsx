@@ -8,11 +8,7 @@ import {
   FiChevronDown,
   FiCalendar,
   FiArrowLeft,
-  FiArrowLeftCircle,
-  FiArrowRightCircle, // For number inputs
 } from "react-icons/fi";
-import MaxWidthWrapper from "../max-width-wrapper";
-
 // --- Data Interfaces ---
 interface StepperStep {
   id: number;
@@ -98,13 +94,9 @@ const sampleStandards: DropdownOption[] = [
   // ... more standards
 ];
 
-// --- Style Constants ---
-const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF";
-const INPUT_BG = "bg-[#F9FAFB]"; // Slightly off-white for inputs
+const INPUT_BG = "bg-[#F9FAFB]";
 const INPUT_BORDER = "border-[#D5D5D5]";
-const SCROLLBAR_THUMB_ORANGE = "scrollbar-thumb-[#FFC79A]"; // Custom class for scrollbar
-const SCROLLBAR_TRACK_LIGHT = "scrollbar-track-[#FFC79A]"; // Custom class for scrollbar track
 
 // --- Helper Components ---
 
@@ -192,134 +184,6 @@ const FormSelect: React.FC<{
       </select>
       <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
     </div>
-  </div>
-);
-
-const FormDateInput: React.FC<{
-  label: string;
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  required?: boolean;
-}> = ({ label, name, value, onChange, required }) => (
-  <div>
-    <label
-      htmlFor={name}
-      className="block text-sm  sm:text-lg  font-medium text-black mb-1"
-    >
-      {label}
-    </label>
-    <div className="relative">
-      <input
-        type="text" // Use text to allow placeholder and custom icon handling; use a date picker library for actual date selection
-        id={name}
-        name={name}
-        value={value}
-        onChange={onChange}
-        placeholder="Text"
-        required={required}
-        className={`w-full px-3 py-2 ${INPUT_BG} ${INPUT_BORDER} border rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none text-sm pr-10`}
-      />
-      <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B7280] pointer-events-none" />
-    </div>
-  </div>
-);
-
-const DurationPointInput: React.FC<{
-  label: string;
-  value: string;
-  onChange: (newValue: string) => void;
-  name: string;
-}> = ({ label, value, onChange, name }) => {
-  const handleIncrement = () => {
-    const numValue = parseInt(value) || 0;
-    onChange(String(numValue + 1).padStart(2, "0"));
-  };
-  const handleDecrement = () => {
-    const numValue = parseInt(value) || 0;
-    onChange(String(Math.max(0, numValue - 1)).padStart(2, "0"));
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const rawValue = e.target.value;
-    const num = parseInt(rawValue);
-    if (!isNaN(num) && num >= 0 && num <= 99) {
-      // Assuming max 99 for HH/MM/Points
-      onChange(String(num).padStart(2, "0"));
-    } else if (rawValue === "") {
-      onChange("00");
-    }
-  };
-
-  return (
-    <div className="text-center flex flex-col ">
-      <label className="block text-[10px] self-start font-medium text-[#6B7280] mb-1">
-        {label}
-      </label>
-      <div
-        className={`relative inline-flex items-center justify-between px-2 py-1.5 ${INPUT_BG} ${INPUT_BORDER} border rounded-full  w-20 h-9`}
-      >
-        <input
-          type="text" // text to control formatting
-          name={name}
-          value={value}
-          onChange={handleChange}
-          className="w-full text-center bg-transparent outline-none text-sm font-medium text-black appearance-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-          maxLength={2}
-        />
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col items-center h-full justify-center">
-          <button
-            type="button"
-            onClick={handleIncrement}
-            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
-          >
-            ▲
-          </button>
-          <button
-            type="button"
-            onClick={handleDecrement}
-            className="text-[#6B7280] hover:text-black h-1/2 flex items-center text-[8px]"
-          >
-            ▼
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Stepper: React.FC<{
-  steps: StepperStep[];
-  currentStep: number;
-  setCurrentStep: (step: number) => void;
-}> = ({ steps, currentStep, setCurrentStep }) => (
-  <div className="flex items-center justify-center space-x-4 sm:space-x-8 mb-6 sm:mb-10">
-    {steps.map((step) => (
-      <button
-        key={step.id}
-        onClick={() => setCurrentStep(step.id)}
-        className="flex items-center space-x-2 group focus:outline-none"
-      >
-        <span
-          className={`w-6 h-6 rounded-full flex items-center justify-center text-xs  border
-          ${
-            currentStep === step.id
-              ? `text-[${ACCENT_PINK}] border-[${ACCENT_PINK}]`
-              : `text-black border-black group-hover:text-black group-hover:border-black`
-          }`}
-        >
-          {step.id}
-        </span>
-        <span
-          className={`text-sm font-bold ${
-            currentStep === step.id
-              ? `text-[${ACCENT_PINK}]`
-              : "text-black group-hover:text-black"
-          }`}
-        >
-          {step.name}
-        </span>
-      </button>
-    ))}
   </div>
 );
 
