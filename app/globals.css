@@ -160,8 +160,6 @@ h3 {
 /* A thinner, less intrusive scrollbar for horizontal scrolling elements */
 .custom-scrollbar-thin::-webkit-scrollbar {
   height: 6px; 
-
-  /* Makes the scrollbar thinner */
 }
 .custom-scrollbar-thin::-webkit-scrollbar-track {
   background: transparent;
@@ -178,5 +176,17 @@ h3 {
   width: 6px; /* Make it thinner - adjust as needed */
 }
 
+/* Custom peach color scrollbar  */
 
+.custom-peach-scrollbar::-webkit-scrollbar {
+	width: 12px;
+	height: 6px;
+}
+.custom-peach-scrollbar::-webkit-scrollbar-thumb {
+	background-color: #FFC79A;
+	border-radius: 9999px;
+}
 
+.custom-peach-scrollbar::-webkit-scrollbar-track {
+	background-color: transparent;
+}
