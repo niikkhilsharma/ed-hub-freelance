@@ -30,22 +30,6 @@ const dummyFiles: ManagedFile[] = [
   { id: '9', name: 'File Name', type: 'pdf', size: '300 KB' },
 ];
 
-// File Icon Component
-const FileIcon: React.FC<{ type: ManagedFile['type'] }> = ({ type }) => {
-	const iconProps = 'w-5 h-5 text-[#F9FAFB]0 flex-shrink-0'
-	switch (type) {
-		case 'pdf':
-			return <FiFileText className={iconProps} /> // Using FiFileText for PDF, as common
-		case 'image':
-			return <FiImage className={iconProps} />
-		// Add more cases for other file types
-		// case 'doc':
-		//   return <FiFileText className={iconProps} />; // Or a specific Word icon
-		default:
-			return <FiFileText className={iconProps} /> // Generic file icon
-	}
-}
-
 // FileItem Component
 const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
 	return (
@@ -84,11 +68,6 @@ const FileManagementContent: React.FC = () => {
 		// Add further filtering logic here based on activeFilters
 		return f
 	}, [files, searchTerm /*, activeFilters */])
-
-	const handleUploadClick = () => {
-		// Trigger file input click or open upload modal
-		alert('Upload button clicked! Implement file upload logic.')
-	}
 
 	return (
 		<div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 relative min-h-screen flex flex-col">

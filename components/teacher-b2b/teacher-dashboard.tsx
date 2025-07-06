@@ -12,7 +12,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
 import { FiArrowLeftCircle, FiArrowRightCircle } from 'react-icons/fi'
 import { FaSearch } from 'react-icons/fa'
-import { Star as StarIcon, StarOff as StarOutline } from "lucide-react";
+import { Star as StarIcon } from "lucide-react";
 
 const PALETTE = {
 	GREEN_LIGHT: '#8DD9B3', // Basic Academic Skills BG
@@ -172,64 +172,6 @@ const timetableData = [
 ]
 
 const contentItems = [
-	{
-		title: 'Chapter Name',
-		duration: '5 Hrs/Week',
-		topic: 'Topic Name',
-		points: [
-			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
-			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
-			'3. Definition of nth root of a real number.',
-			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
-		],
-	},
-	{
-		title: 'Chapter Name',
-		duration: '5 Hrs/Week',
-		topic: 'Topic Name',
-		points: [
-			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
-			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
-			'3. Definition of nth root of a real number.',
-			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
-		],
-	},
-	{
-		title: 'Chapter Name',
-		duration: '5 Hrs/Week',
-		topic: 'Topic Name',
-		points: [
-			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
-			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
-			'3. Definition of nth root of a real number.',
-			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
-		],
-	},
-	{
-		title: 'Chapter Name',
-		duration: '5 Hrs/Week',
-		topic: 'Topic Name',
-		points: [
-			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
-			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
-			'3. Definition of nth root of a real number.',
-			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
-		],
-	},
-	// repeat 3 more with different content if needed
-]
-const content2Items = [
-	{
-		title: 'Chapter Name',
-		duration: '5 Hrs/Week',
-		topic: 'Topic Name',
-		points: [
-			'1. Study the Lesson Plan. Prepare a list of students according to their groups. Keep the printouts of the next homework assignment ready and answers of the previous one.',
-			'2. Encourage students to speak up and participate in the discussion. Getting the answer right is not the purpose, trying and thinking aloud is more important.',
-			'3. Definition of nth root of a real number.',
-			'4. Review the addition and subtraction of proper and improper fractions, and mixed numbers.',
-		],
-	},
 	{
 		title: 'Chapter Name',
 		duration: '5 Hrs/Week',

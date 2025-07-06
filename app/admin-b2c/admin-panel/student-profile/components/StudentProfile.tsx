@@ -65,11 +65,6 @@ const CourseCard: React.FC<CourseCardProps> = ({
 };
 
 const StudentProfile = () => {
-  // const handleBackClick = () => {
-  //   if (typeof window !== "undefined") {
-  //     window.history.back();
-  //   }
-  // };
   const PALETTE = {
     GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
     GREEN_DARK: "#4BC4B6", // Not explicitly used but similar to progress bar

@@ -35,7 +35,7 @@ interface StudentListItem {
   id: string;
   name: string;
   avatarUrl: string;
-  classBatchGroupId: string; // Link to ClassBatchGroupTab
+  classBatchGroupId?: string; // Link to ClassBatchGroupTab
 }
 
 interface GeneralFilterOption {
@@ -185,15 +185,6 @@ const StudentListViewContent: React.FC = () => {
     return students;
   }, [filteredStudentsByTab, searchTerm /*, activeGeneralFilters */]);
 
-  const handleRemoveStudent = (studentId: string) => {
-    setStudentsList((prev) => prev.filter((s) => s.id !== studentId));
-    alert(`Student ${studentId} removed (locally). Implement backend removal.`);
-  };
-
-  const handleTransferStudent = (studentId: string) => {
-    alert(`Transfer/Sort action for student ${studentId}. Implement logic.`);
-  };
-
   return (
     <div className="bg-white rounded-2xl shadow-xl p-4 sm:p-6 space-y-5 sm:space-y-6">
       {/* Top Section: Class/Batch/Group Tabs */}
@@ -250,7 +241,7 @@ const StudentListViewContent: React.FC = () => {
             <StudentItemRow
               key={i}
               student={{
-                id: i,
+                id: `${i}`,
                 name: `Student ${i}`,
                 avatarUrl: "https://via.placeholder.com/40",
               }}

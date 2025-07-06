@@ -18,7 +18,6 @@ import {
 import Image from "next/image"; // For profile picture
 import Header from "../layout/Header";
 import Footer from "../layout/Footer";
-import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {

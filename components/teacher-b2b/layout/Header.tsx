@@ -1,11 +1,9 @@
 
-"use client"; // needed for client components using hooks
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // App Router hook for current path
 import {
-  FiBookOpen,
   FiMessageSquare,
   FiVideo,
   FiBell,
@@ -16,7 +14,7 @@ import { FaRegSmile } from "react-icons/fa";
 import { GoDatabase, GoPeople } from "react-icons/go";
 import { useState } from "react"; // Import useState
 import ChatPop from "@/components/common-components/askmeanything";
-import NotificationsPage from "@/components/common-components/notification";
+
 // Separate NavItem component - Can potentially accept an onClick for mobile menu closing
 const NavItem = ({
   icon: Icon,
@@ -55,7 +53,6 @@ interface HeaderProps {
 }
 
 export default function Header({ user, isAskme = true, activeState = "" }: HeaderProps) {
-  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
   const [isChatOpen, setIsChatOpen] = useState(false);
 

@@ -5,10 +5,8 @@ import {
   TestDetailsData,
   TestQuestion,
   sampleClassesData,
-  sampleGroupsData, // Import sample data for display
-  INPUT_BORDER,
-  PRIMARY_BLUE, // Import styles
-} from "./CreateBWTestPage"; // Assuming co-location for simplicity of imports
+  sampleGroupsData,
+} from "./CreateBWTestPage";
 
 interface TestReviewStepProps {
   testDetails: TestDetailsData;

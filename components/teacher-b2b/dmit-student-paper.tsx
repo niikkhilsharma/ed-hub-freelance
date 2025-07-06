@@ -99,7 +99,6 @@ const COLOR_SCORE_BLUE = 'text-[#3366FF]';
 const COLOR_RATING_STARS = 'text-[#FF3366]'; // Pinkish-red from your theme
 const COLOR_BUTTON_PRIMARY_BG = 'bg-[#3366FF]';
 const COLOR_BUTTON_PRIMARY_TEXT = 'text-white';
-const BACKGROUND_LIGHT_GRAY_BOX = 'bg-[#F3F4F6]'; // For score boxes and report button
 const BORDER_GRAY = 'border-[#D5D5D5]'; // Consistent border color
 
 // --- Sub-components ---

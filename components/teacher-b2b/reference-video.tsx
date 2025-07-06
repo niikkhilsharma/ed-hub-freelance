@@ -4,16 +4,12 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ReferenceVideoContentPage from "@/components/teacher-b2b/reference-video-content-page"; // Assuming VideoContentPage.tsx is in the same directory or adjust path
 import { FiArrowLeft, FiPlus } from "react-icons/fi"; // Ensure FiArrowLeft is imported
-import MaxWidthWrapper from "../max-width-wrapper";
 
 export default function RecordingsPage() {
-  // Renaming to VideoListingPage or similar might be more accurate
-  // const [recordingsByDate, setRecordingsByDate] = useState<RecordingsByDate[]>(initialRecordingsData) // Removed as not used for video page
-
   // Dummy user for Header
   const headerUser = {
     name: "Shlok Agheda",
-    role: "Teacher", // Assuming this is for a teacher view based on "Add Videos"
+    role: "Teacher",
     avatarSrc: "/teacher-b2b/profile.png", // UPDATE PATH
   };
 
@@ -26,13 +22,12 @@ export default function RecordingsPage() {
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
       <Header user={headerUser} />
-  
-        <div className="bg-gray-100">
-          <div className="bg-white">
-            {" "}
-            {/* Adjusted padding slightly */}
+
+      <div className="bg-gray-100">
+        <div className="bg-white">
+          {" "}
           <div className="flex items-center gap-3 max-w-[96rem] mx-auto  px-4 sm:px-6 py-2  sticky top-0 z-40">
-             <button
+            <button
               onClick={handleBackClick}
               className="p-1.5 text-gray-700 hover:text-[#FF3366] focus:outline-none rounded-md"
               aria-label="Go back"
@@ -40,25 +35,21 @@ export default function RecordingsPage() {
               <FiArrowLeft className="w-5 h-5" />
             </button>
           </div>
-           
-                       {/* No title text is shown in the image for this specific page header */}
-          </div>
 
-          <div className="p-8 min-h-screen">
-            {/* This is the main content for the videos page */}
-            <ReferenceVideoContentPage />{" "}
-          </div>
-          <button
-            onClick={() => alert("Add Videos Clicked!")}
-            className={` mb-16 mr-52 mt-4 ml-auto relative bottom-0 bg-[#FFCC00] text-white font-semibold px-4 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-1 text-sm sm:text-md`}
-            aria-label="Add new videos"
-          >
-            <FiPlus className="w-5 h-5 " />
-            Add Videos
-          </button>
         </div>
-      
-      {/* Page Title Bar - Minimal as per image */}
+
+        <div className="p-8 min-h-screen">
+          <ReferenceVideoContentPage />{" "}
+        </div>
+        <button
+          onClick={() => alert("Add Videos Clicked!")}
+          className={` mb-16 mr-52 mt-4 ml-auto relative bottom-0 bg-[#FFCC00] text-white font-semibold px-4 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-1 text-sm sm:text-md`}
+          aria-label="Add new videos"
+        >
+          <FiPlus className="w-5 h-5 " />
+          Add Videos
+        </button>
+      </div>
 
       <Footer />
     </div>
