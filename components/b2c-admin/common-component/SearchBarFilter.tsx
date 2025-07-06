@@ -36,10 +36,10 @@ interface SearchFilterProps {
 
 const SearchFilter: FC<SearchFilterProps> = ({ filters }) => {
   return (
-    <div className="w-full bg-white text-black flex flex-col sm:flex-row gap-4 items-center px-4 py-2 rounded-xl">
+    <div className="w-full bg-white text-black flex flex-col sm:flex-row gap-4 items-center py-2 rounded-xl">
       {/* Search Input */}
-      <div className="flex items-center w-full sm:w-auto flex-grow border border-gray-300 rounded-full px-4 py-2 focus-within:ring-2 focus-within:ring-gray-400">
-        <FiSearch className="text-gray-500 mr-2" />
+      <div className="flex items-center w-full sm:w-auto flex-grow border-1 border-gray-600 rounded-full px-3 py-2 focus-within:ring-2 focus-within:ring-gray-400">
+        <FiSearch size={20} className="text-black mr-2" />
         <input
           type="text"
           placeholder="Search"
