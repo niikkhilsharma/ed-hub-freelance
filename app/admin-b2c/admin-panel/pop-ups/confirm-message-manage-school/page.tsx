@@ -17,12 +17,14 @@ const RejectConfirmationPopup = () => {
   return (
     <>
       {/* Trigger Button */}
-      <button
+     <div className="justify-center items-center flex  my-40 bg-white">
+       <button
         onClick={() => setIsOpen(true)}
-        className="px-3  py-2  my-52 justify-center rounded-full bg-blue-600 text-white font-medium"
+        className="px-3  py-2   justify-center rounded-full bg-blue-600 text-white font-medium"
       >
         Reject Student
       </button>
+     </div>
 
       {/* Popup Modal */}
       {isOpen && (
@@ -33,7 +35,7 @@ const RejectConfirmationPopup = () => {
               onClick={handleCancel}
               className="absolute top-6 right-5 text-black bg-black/5 rounded-full p-1 hover:text-black transition"
             >
-              <IoClose className="w-5 h-5" />
+              <IoClose className="w-5 sm:h-6 sm:w-6 h-5" />
             </button>
 
             {/* Title */}

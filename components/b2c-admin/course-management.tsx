@@ -1,9 +1,8 @@
 "use client";
 
 import { useState } from "react";
- import Link from "next/link";
-// import Navbar from "@/components/b2c-admin/Navbar"
-import Footer from "@/components/layout/Footer";
+import Link from "next/link";
+
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import ScrollableButton from "./common-component/scrollable-button";
@@ -18,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import { useRouter } from "next/navigation";
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 // --- Recording Card Component ---
 interface Course {
@@ -41,6 +41,7 @@ import {
 } from "react-icons/fi";
 
 
+
 export default function CourseManagementPage() {
   const [searchTerm, setSearchTerm] = useState("");
   // Dummy user for Header
@@ -49,6 +50,7 @@ export default function CourseManagementPage() {
     role: "Student",
     avatarSrc: "/teacher-b2b/profile.png", // UPDATE PATH
   };
+  const router = useRouter()
 
   const GeneralFilterButton: React.FC<{
     filter: GeneralFilterOption;
@@ -125,7 +127,6 @@ export default function CourseManagementPage() {
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
     <>
-       
       <div className="bg-[#eeeeee]   py-6   min-h-screen ">
         <main className="p-2 max-w-[90rem] sm:p-6  mb-32   mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
@@ -141,14 +142,13 @@ export default function CourseManagementPage() {
             </div>
 
             <div className="flex items-center gap-2 overflow-x-auto">
+             <button
+      onClick={() =>  router.push("/admin-b2c/admin-panel/remove-courses")}
+      className="flex items-center cursor-pointer justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors"
+    >
+      Remove Course
+    </button>
               <button
-                
-                className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5  border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors`}
-              >
-                Remove Course
-              </button>
-              <button
-                
                 className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors`}
               >
                 Edit Membership Plans
@@ -195,38 +195,35 @@ export default function CourseManagementPage() {
                 </DropdownMenuContent>
               </DropdownMenu>
               {/* 4th */}
-             
-            
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-4 py-4">
-  {courses.map((course, index) => (
-    <Link  href="/admin-b2c/admin-panel/course-management-teacher">
-      <div className="flex flex-col w-full max-h-[330px] px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl shadow-sm hover:shadow-md transition-shadow">
-        <div className="w-full aspect-auto rounded-2xl overflow-hidden">
-          <Image
-            src={course.image}
-            width={300}
-            height={200}
-            alt={course.name}
-            className="w-full h-full object-cover"
-          />
-        </div>
+            {courses.map((course, index) => (
+              <Link href="/admin-b2c/admin-panel/course-management-teacher" key={index}>
+                <div className="flex flex-col w-full max-h-[330px] px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl shadow-sm hover:shadow-md transition-shadow">
+                  <div className="w-full aspect-auto rounded-2xl overflow-hidden">
+                    <Image
+                      src={course.image}
+                      width={300}
+                      height={200}
+                      alt={course.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
 
-        <div className="flex flex-col gap-1 px-1 text-black">
-          <h2 className="font-bold text-lg">{course.name}</h2>
-          <h3 className="text-sm font-medium">
-            Domain: <span className="text-[#6B7280]">{course.domain}</span>
-          </h3>
-        </div>
-      </div>
-    </Link>
-  ))}
-</div>
-<ScrollableButton ButtonHeading="Add Courses"/>
+                  <div className="flex flex-col gap-1 px-1 text-black">
+                    <h2 className="font-bold text-lg">{course.name}</h2>
+                    <h3 className="text-sm font-medium">
+                      Domain:{" "}
+                      <span className="text-[#6B7280]">{course.domain}</span>
+                    </h3>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <ScrollableButton ButtonHeading="Add Courses" />
         </main>
-
-      
       </div>
     </>
   );
