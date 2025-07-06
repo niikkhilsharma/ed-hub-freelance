@@ -20,7 +20,6 @@ const SettingCheckbox: React.FC<SettingCheckboxProps> = ({ label, isChecked, onT
         tabIndex={0}
         onKeyDown={(e) => { if(e.key === ' ' || e.key === 'Enter') onToggle() }}
     >
-        {/* The custom checkbox circle */}
         <div 
             className={`w-6 h-6 rounded-full flex items-center justify-center transition-colors duration-150
                 ${isChecked ? 'bg-[#3366FF]' : 'bg-gray-200 group-hover:bg-gray-300'}`}

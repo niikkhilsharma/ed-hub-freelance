@@ -10,10 +10,6 @@ export default function CourseDetail() {
 
     }
     return <div>
-        <Header user={headerUser} />
-
         <ContentManagementFiles />
-        <Footer />
-
     </div>
 }

@@ -1,15 +1,16 @@
 
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import {
   FiSearch,
   FiChevronDown,
   FiFolder
 } from "react-icons/fi";
 import { MdSettings } from "react-icons/md";
-import { LuInfo } from "react-icons/lu";
 
 import GoBack from "@/components/principal/goback";
+import { useRouter } from "next/navigation";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -61,28 +62,13 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
   { id: "filter3", label: "Filter 3" },
 ];
 
-// --- Helper Components ---
-
-// const SubjectTabButton: React.FC<{
-//   tab: SubjectTab;
-//   isActive: boolean;
-//   onClick: () => void;
-//   }> = ({ tab, isActive, onClick }) => (
-//   <button
-//     onClick={onClick}
-//     className={`px-5 py-2.5 rounded-2xl text-sm font-medium transition-all duration-200 whitespace-nowrap
-//       ${isActive
-//         ? `bg-[${ACCENT_PINK}] text-white shadow-md`
-//         : "bg-transparent text-gray-600 hover:bg-gray-100"
-//       }`}
-//   >
-//     {tab.name}
-//   </button>
-// );
-
-const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
+const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTMLDivElement | null>, Router: AppRouterInstance }> = ({ folder, reference, Router }) => (
   <div
-    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
+    className={`${FOLDER_CARD_BG} rounded-2xl p-3 border cursor-pointer border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
+    ref={reference}
+    onClick={() => {
+      Router.push('/admin-b2c/admin-panel/content-management-files');
+    }}
   >
     <div
       className={`bg-[#99DEFF] w-28 h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
@@ -101,7 +87,7 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
       </div>
       <div className="w-ful flex gap-2 ">
 
-        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg"> <MdSettings /> Manage Access</button>
+        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base hover:bg-gray-200 lg:text-lg"> <MdSettings /> Manage Access</button>
       </div>
     </div>
   </div>
@@ -147,12 +133,38 @@ const SubjectFolderViewContent: React.FC = () => {
     return folders;
   }, [filteredFoldersBySubject, searchTerm /*, activeGeneralFilters */]);
 
+  const cardHeightRef = useRef<HTMLDivElement | null>(null);
+  const [cardHeight, setCardHeight] = useState<number>(138);
+  const Router = useRouter();
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (cardHeightRef.current) {
+        setCardHeight(cardHeightRef.current.offsetHeight);
+      }
+    }
+
+    updateHeight();
+
+    const observer = new ResizeObserver(() => {
+      updateHeight();
+    })
+
+    if (cardHeightRef.current) {
+      observer.observe(cardHeightRef.current);
+    }
+
+    return () => {
+      if (cardHeightRef.current) {
+        observer.unobserve(cardHeightRef.current)
+      }
+      observer.disconnect();
+    }
+
+  }, [])
+
   return (
     <>
-      {/* Top Section: Subject Tabs */}
-
-
-
       <div className="bg-white rounded-2xl  p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
@@ -163,10 +175,15 @@ const SubjectFolderViewContent: React.FC = () => {
               placeholder="Search folders..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
+              className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border-2 border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
             />
           </div>
           <div className="flex items-center gap-2 overflow-x-auto">
+            <button
+              className={`flex items-center justify-center gap-1.5 px-2 py-2.5 bg-[#FF3366] text-white  rounded-full text-xs sm:text-sm whitespace-nowrap hover:bg-[#FF3366]/80 cursor-pointer flex-shrink-0 transition-colors`}
+            >
+              <span>Create Folder</span>
+            </button>
 
             {sampleGeneralFilters.map((filter) => (
               <GeneralFilterButton
@@ -183,9 +200,12 @@ const SubjectFolderViewContent: React.FC = () => {
         </div>
         {/* Bottom Section: Folders Grid */}
         {searchedAndFilteredFolders.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 overflow-y-auto custom-scrollbar-thin pr-2"
+            style={{
+              height: `${cardHeight * 6 + (20 * 5)}px`,
+            }}>
             {searchedAndFilteredFolders.map((folder) => (
-              <FolderCard key={folder.id} folder={folder} />
+              <FolderCard key={folder.id} folder={folder} reference={cardHeightRef} Router={Router} />
             ))}
           </div>
         ) : (

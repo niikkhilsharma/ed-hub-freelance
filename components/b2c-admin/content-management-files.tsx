@@ -1,6 +1,6 @@
 
 "use client";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import {
   FiSearch,
   FiChevronDown,
@@ -8,8 +8,8 @@ import {
 } from "react-icons/fi";
 import { MdOutlineFileDownload, MdSettings } from "react-icons/md";
 import { LuInfo } from "react-icons/lu";
-import MaxWidthWrapper from "../max-width-wrapper";
 import GoBack from "@/components/principal/goback";
+import { useRouter } from "next/navigation";
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -61,9 +61,10 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
   { id: "filter3", label: "Filter 3" },
 ];
 
-const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
+const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTMLDivElement | null>}> = ({ folder, reference }) => (
   <div
     className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
+    ref={reference}
   >
     <div className="absolute right-5 top-5 text-gray-400">
       <LuInfo />
@@ -85,10 +86,10 @@ const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
       </div>
       <div className="flex gap-2 w-full flex-wrap xl:flex-nowrap">
         <div className="w-full flex gap-2 ">
-          <button className="bg-gray-100 text-nowrap w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg"> <MdSettings /> Manage Access</button>
+          <button className="bg-gray-100 text-nowrap w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg hover:bg-gray-200"> <MdSettings /> Manage Access</button>
         </div>
         <div className="w-full flex gap-2 ">
-          <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg"> <MdOutlineFileDownload /> Download</button>
+          <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg hover:bg-gray-200"> <MdOutlineFileDownload /> Download</button>
         </div>
       </div>
     </div>
@@ -135,12 +136,39 @@ const SubjectFolderViewContent: React.FC = () => {
     return folders;
   }, [filteredFoldersBySubject, searchTerm /*, activeGeneralFilters */]);
 
+
+  const cardHeightRef = useRef<HTMLDivElement | null>(null);
+  const [cardHeight, setCardHeight] = useState<number>(138);
+  const Router = useRouter();
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (cardHeightRef.current) {
+        setCardHeight(cardHeightRef.current.offsetHeight);
+      }
+    }
+
+    updateHeight();
+
+    const observer = new ResizeObserver(() => {
+      updateHeight();
+    })
+
+    if (cardHeightRef.current) {
+      observer.observe(cardHeightRef.current);
+    }
+
+    return () => {
+      if (cardHeightRef.current) {
+        observer.unobserve(cardHeightRef.current)
+      }
+      observer.disconnect();
+    }
+
+  }, [])
+
   return (
     <>
-      {/* Top Section: Subject Tabs */}
-
-
-
       <div className="bg-white rounded-2xl  p-4 sm:p-6 lg:p-8 space-y-6">
         {/* Mid Section: Search and General Filters */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
@@ -151,7 +179,7 @@ const SubjectFolderViewContent: React.FC = () => {
               placeholder="Search folders..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
+              className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border-2 border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
             />
           </div>
           <div className="flex items-center gap-2 overflow-x-auto">
@@ -171,9 +199,12 @@ const SubjectFolderViewContent: React.FC = () => {
         </div>
         {/* Bottom Section: Folders Grid */}
         {searchedAndFilteredFolders.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 overflow-y-auto custom-scrollbar-thin pr-2"
+            style={{
+              height: `${cardHeight * 6 + (20 * 5)}px`,
+            }}>
             {searchedAndFilteredFolders.map((folder) => (
-              <FolderCard key={folder.id} folder={folder} />
+              <FolderCard key={folder.id} folder={folder} reference={cardHeightRef}/>
             ))}
           </div>
         ) : (
