@@ -12,8 +12,8 @@ const filters = ['Filter 1', 'Filter 1', 'Filter 1', 'Filter 1', 'Filter 1', 'Fi
 
 function FilterBar() {
     return (
-        <div className="flex items-center gap-6 my-4 flex-wrap">
-            <span className="text-sm font-semibold text-gray-800">Filters</span>
+        <div className="flex border-b-1 border-gray-300 py-4 items-center gap-2 md:gap-6 flex-wrap">
+            <span className="text-sm font-semibold text-gray-800 w-full md:w-fit">Filters</span>
             {filters.map((filter, index) => (
                 <div key={index} className="relative">
                     <select className="appearance-none rounded-lg bg-[#f9fafb] border border-gray-200 text-sm text-black px-4 py-2 pr-10 focus:outline-none">

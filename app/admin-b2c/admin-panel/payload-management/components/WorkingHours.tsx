@@ -1,7 +1,8 @@
 'use client';
 
-import { FaTrash, FaEdit, FaPlus } from 'react-icons/fa';
-
+import { FiEdit2 } from "react-icons/fi";
+import { BsTrash } from "react-icons/bs";
+import { GoPlus } from "react-icons/go";
 const workingHours = [
   {
     day: 'Sunday',
@@ -55,9 +56,9 @@ const workingHours = [
 
 export default function WorkingHours() {
   return (
-    <div className="max-w-4xl mx-auto p-4 space-y-6">
+    <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-wrap gap-2 py-4 md:py-6 border-b-1 border-gray-300 items-center justify-between">
         <div>
           <h2 className="text-lg font-semibold text-gray-800">Working Hours</h2>
           <p className="text-sm text-gray-500">See the days and time this teacher is working.</p>
@@ -68,48 +69,57 @@ export default function WorkingHours() {
       </div>
 
       {/* Table Header */}
-      <div className="grid grid-cols-6 gap-4 text-sm font-semibold text-gray-600 px-4">
-        <div>Day</div>
-        <div>Hours</div>
-        <div>Repeats</div>
-        <div>Location</div>
-        <div>State / City</div>
-        <div></div>
-      </div>
+      <div className="overflow-x-auto custom-scrollbar-thin pb-1">
+  <div className="min-w-[800px]">
+    <div className="grid grid-cols-6 pt-2 pb-6 gap-4 text-sm font-semibold px-4">
+      <p className='text-start md:pl-12'>Day</p>
+      <p className='text-center'>Hours</p>
+      <p className='text-center'>Repeats</p>
+      <p className='text-center'>Location</p>
+      <p className='text-center'>State / City</p>
+      <p className='text-center'></p>
+    </div>
 
-      {/* Rows */}
-      <div className="space-y-3">
-        {workingHours.map((item, idx) => (
-          <div
-            key={idx}
-            className="grid grid-cols-6 gap-4 bg-[#f9fafb] px-4 py-3 rounded-xl items-center text-sm"
-          >
-            <div className="font-medium">{item.day}</div>
-            <div className={item.working ? '' : 'text-gray-400 italic'}>{item.hours}</div>
-            <div>{item.repeats}</div>
-            <div>{item.location}</div>
-            <div>{item.city}</div>
-            <div className="flex items-center gap-3 justify-end text-gray-500">
-              {item.working ? (
-                <>
-                  <FaEdit className="cursor-pointer hover:text-[#3366ff]" />
-                  <FaTrash className="cursor-pointer hover:text-[#ff3366]" />
-                </>
-              ) : (
-                <FaPlus className="cursor-pointer hover:text-[#3366ff]" />
-              )}
-            </div>
+    <div className="space-y-3">
+      {workingHours.map((item, idx) => (
+        <div
+          key={idx}
+          className="grid grid-cols-6 gap-4 bg-gray-100 border px-4 py-3.5 rounded-2xl items-center text-sm"
+        >
+          <div className="font-medium pr-16 text-center">{item.day}</div>
+          <div className={item.working ? 'text-center' : 'text-gray-400 text-center'}>{item.hours}</div>
+          <div className='text-center'>{item.repeats}</div>
+          <div className='text-center'>{item.location}</div>
+          <div className='text-center'>{item.city}</div>
+          <div className="flex items-center gap-3 justify-end text-gray-500">
+            {item.working ? (
+              <>
+                <div className="rounded-full bg-white p-2">
+                  <FiEdit2 className="cursor-pointer text-black" />
+                </div>
+                <div className="rounded-full bg-white p-2">
+                  <BsTrash className="cursor-pointer text-black" />
+                </div>
+              </>
+            ) : (
+              <div className="rounded-full bg-white p-2 mr-5">
+                <GoPlus className="cursor-pointer text-black" />
+              </div>
+            )}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
 
       {/* Footer */}
       <div className="space-y-2">
-        <p className="text-sm font-medium text-gray-700">Total Working Hours Calculated</p>
-        <div className="bg-[#f5f5f5] text-sm text-gray-700 px-4 py-2 rounded-md w-fit">
+        <p className="text-sm font-medium ">Total Working Hours Calculated</p>
+        <div className="bg-[#f5f5f5] text-sm text-gray-700 px-4 py-2 rounded-xl max-w-md">
           11.05 Hours Per Month
         </div>
-        <button className="bg-[#3366ff] text-white text-sm px-6 py-2 rounded-full hover:opacity-90">
+        <button className="bg-[#3366ff] text-white text-sm px-8 py-2 rounded-full hover:opacity-90">
           Next
         </button>
       </div>
