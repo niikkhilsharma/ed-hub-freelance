@@ -12,7 +12,7 @@ export default function StudentGrid ()  {
   }));
 
   return (
-    <div className="overflow-y-auto max-h-[80vh] custom-scrollbar-thin mx-auto py-4"> 
+    <div className="overflow-y-auto max-h-[80vh] custom-peach-scrollbar mx-auto py-4"> 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mx-2">
         {people.map((person,index) => (
            <Link href="/admin-b2c/admin-panel/security/student-login-activity" key={index}>

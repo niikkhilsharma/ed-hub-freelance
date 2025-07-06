@@ -200,7 +200,7 @@ const [time, setTime] = useState("16:40");
               </span>
               <input
                 type="text"
-                placeholder="Search Student"
+                placeholder="Search  Teacher"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="w-full rounded-full border-[2px] border-[#6b7280] bg-white py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500"
@@ -240,7 +240,7 @@ const [time, setTime] = useState("16:40");
             </div>
           </div>
 
-          <div className="space-y-4 max-h-96 overflow-y-auto custom-scrollbar-thin pr-2">
+          <div className="space-y-4 max-h-96 overflow-y-auto custom-peach-scrollbar pr-2">
             {filteredStudents.map((student) => (
               <div
                 key={student.id}

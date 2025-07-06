@@ -16,7 +16,7 @@ interface Student {
 const generateDummyStudents = (count: number): Student[] => {
   return Array.from({ length: count }, (_, index) => ({
     id: index + 1,
-    name: `Student`,
+    name: `Student Name`,
     course: `Course `,
     level: `  level/grade `,
     group: `Group `,
@@ -214,7 +214,7 @@ const AssignmentForm: React.FC = () => {
           </div>
 
           {/* Student List */}
-          <div className="space-y-4 max-h-96 overflow-y-auto custom-scrollbar-thin pr-2">
+          <div className="space-y-4 max-h-96 overflow-y-auto custom-peach-scrollbar pr-2">
             {" "}
             {/* Added max-h and overflow-y-auto */}
             {filteredStudents.map((student) => (
