@@ -56,7 +56,7 @@ const reschedulingRequests: RequestItem[] = Array.from({ length: 6 }, (_, i) => 
 const TopTabButton: React.FC<{ label: string; isActive: boolean; onClick: () => void; }> = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`px-4 py-2 sm:px-6 sm:py-2.5 text-xs sm:text-sm font-semibold rounded-2xl transition-colors cursor-pointer
+        className={`p-2 sm:py-2.5 text-xs sm:text-sm rounded-2xl transition-colors cursor-pointer
         ${isActive ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-gray-100'}`}
     >
         {label}
@@ -65,7 +65,7 @@ const TopTabButton: React.FC<{ label: string; isActive: boolean; onClick: () => 
 
 const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
     <div className="relative">
-        <select className="appearance-none w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-3 py-2 text-xs sm:text-sm text-black pr-4 focus:outline-none focus:ring-1 focus:ring-blue-500">
+        <select className="appearance-none w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-2 py-2 text-xs sm:text-sm text-black pr-4 focus:outline-none focus:ring-1 focus:ring-blue-500">
             <option>{label}</option>
             <option>Option A</option>
             <option>Option B</option>
@@ -74,7 +74,7 @@ const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
     </div>
 );
 
-const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<HTMLDivElement | null> }> = ({ request, reference }) => (
+const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<HTMLDivElement | null>, togglePopup: () => void }> = ({ request, reference, togglePopup }) => (
     <div ref={reference} className="bg-[#F9FAFB] rounded-2xl border border-[#B0B0B0] p-3 flex flex-col gap-3 transition-shadow duration-150 hover:shadow-lg">
         {/* Student Info Section */}
         <div className="flex items-center gap-3 sm:gap-4">
@@ -118,10 +118,10 @@ const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<H
 
         {/* Action Buttons */}
         <div className="flex justify-center items-center gap-3">
-            <button className="px-6 py-2 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors cursor-pointer">
+            <button onClick={togglePopup} className="w-28 py-2 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors cursor-pointer">
                 Reject
             </button>
-            <button className="px-6 py-2 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
+            <button onClick={togglePopup} className="w-28 py-2 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
                 Approve
             </button>
         </div>
@@ -132,6 +132,8 @@ const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<H
 // --- Main Page Component ---
 export default function RequestManagementPage() {
     const [activeTab, setActiveTab] = useState<'rescheduling' | 'cancellation'>('cancellation');
+    const [isPopupOpen, setIsPopupOpen] = useState<boolean>(true);
+    const togglePopup = () => setIsPopupOpen(!isPopupOpen);
 
     const requestsToDisplay = activeTab === 'cancellation' ? cancellationRequests : reschedulingRequests;
 
@@ -139,10 +141,15 @@ export default function RequestManagementPage() {
     const heightRef = useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
+        if (heightRef.current) {
+            setMinHeight(heightRef.current.offsetHeight);
+        }
+    }, [activeTab])
+
+    useEffect(() => {
         const updateHeight = () => {
             if (heightRef.current) {
                 setMinHeight(heightRef.current.offsetHeight);
-                console.log(heightRef.current.offsetHeight);
             }
         }
 
@@ -167,8 +174,8 @@ export default function RequestManagementPage() {
 
     return (
         // Using your provided page template structure
-        <div className="bg-[#eeeeee] min-h-screen flex flex-col">
-            <GoBack GoBackHeading="Lecture Adjustment Requests" /> {/* This is your template component */}
+        <div className={`bg-[#eeeeee] min-h-screen flex flex-col relative`}>
+            <GoBack GoBackHeading="Lecture Adjustment Requests" toLink='/admin-b2c/admin-panel/dashboard' /> {/* This is your template component */}
             <div className='p-4 sm:p-6 lg:p-8'>
                 <main className="bg-white rounded-2xl flex-grow w-full max-w-screen-xl mx-auto p-4">
 
@@ -187,7 +194,7 @@ export default function RequestManagementPage() {
                             <input
                                 type="text"
                                 placeholder="Search"
-                                className="w-full pl-10 pr-4 py-2.5 border-2 border-[#6B7280] rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                className="w-full pl-10 pr-4 py-2 border-2 border-[#6B7280] rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
                             />
                         </div>
                         <div className="w-full sm:w-auto grid grid-cols-2 sm:flex sm:items-center gap-2 flex-shrink-0">
@@ -200,15 +207,58 @@ export default function RequestManagementPage() {
 
                     {/* Requests Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 custom-scrollbar-thin overflow-y-auto pr-3 pb-2" style={{
-                        height: `${minHeight + 200}px`
+                        height: `${minHeight}px`
                     }}>
                         {requestsToDisplay.map(request => (
-                            <RequestCard key={request.id} request={request} reference={heightRef} />
+                            <RequestCard key={request.id} request={request} reference={heightRef} togglePopup={togglePopup} />
                         ))}
                     </div>
 
                 </main>
             </div>
+            {isPopupOpen ? <ReschedulePopup onCancel={togglePopup} onConfirm={togglePopup} /> : <div />}
         </div>
     );
 }
+
+
+
+
+
+interface RescheduleProps {
+    onCancel: () => void;
+    onConfirm: () => void;
+}
+
+const ReschedulePopup: React.FC<RescheduleProps> = ({ onCancel, onConfirm }) => {
+    return (
+        <div className="fixed inset-0 flex items-center justify-center z-30">
+            <div className=' bg-black opacity-50 absolute h-full w-full z-10' />
+            <div className="relative z-50 bg-white rounded-3xl p-4 w-[90%] max-w-lg text-center shadow-lg">
+                <h2 className="text-xl font-semibold mb-4">Confirmation</h2>
+                <p className="text-black text-sm leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis
+                    lacinia ante, nec accumsan enim. Vestibulum lacinia fermentum
+                    pretium. Nunc elementum ligula nec erat bibendum vulputate. Etiam
+                    sagittis, tellus laoreet semper vehicula, orci eros facilisis purus,
+                    at viverra ex lectus nec orci.
+                </p>
+
+                <div className="mt-4 flex justify-center gap-4">
+                    <button
+                        onClick={onCancel}
+                        className="bg-[#6B72801A] text-[#6B7280] font-medium px-6 py-2 rounded-full hover:bg-gray-200 transition cursor-pointer"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        onClick={onConfirm}
+                        className="bg-[#3366FF] text-white font-medium px-6 py-2 rounded-full hover:bg-blue-700 transition cursor-pointer"
+                    >
+                        Confirm
+                    </button>
+                </div>
+            </div>
+        </div>
+    );
+};

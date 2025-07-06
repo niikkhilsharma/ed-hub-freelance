@@ -7,7 +7,7 @@ import { FiUploadCloud, FiChevronDown } from 'react-icons/fi';
 // --- StepperTabButton ---
 interface StepperTabButtonProps { label: string; isActive: boolean; onClick: () => void; }
 export const StepperTabButton: React.FC<StepperTabButtonProps> = ({ label, isActive, onClick }) => (
-    <button onClick={onClick} className={`px-4 py-2 text-xs rounded-xl whitespace-nowrap sm:px-5 sm:py-2.5 sm:text-sm sm:font-medium sm:rounded-2xl transition-colors ${isActive ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-gray-100'}`}>
+    <button onClick={onClick} className={`px-4 py-2 text-xs rounded-xl whitespace-nowrap sm:px-5 sm:py-2.5 sm:text-sm sm:font-medium sm:rounded-2xl transition-colors cursor-pointer ${isActive ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-gray-100'}`}>
         {label}
     </button>
 );
@@ -90,12 +90,12 @@ export const RadioButtonGroup: React.FC<RadioButtonGroupProps> = ({ label, name,
 // --- ActionButton ---
 interface ActionButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> { variant?: 'primary' | 'secondary' | 'outline'; }
 export const ActionButton: React.FC<ActionButtonProps> = ({ children, variant = 'primary', className, ...props }) => {
-    const baseStyle = "font-semibold py-3 px-8 text-sm transition-colors duration-150";
+    const baseStyle = "font-semibold py-3 text-sm transition-colors duration-150 cursor-pointer";
     let variantStyle = '';
     switch (variant) {
         case 'secondary': variantStyle = "bg-white w-full  text-black border border-[#D5D5D5] hover:bg-gray-100 rounded-2xl"; break;
         case 'outline': variantStyle = "bg-[#F9FAFB] w-full  text-black border border-[#D5D5D5] hover:bg-gray-50 rounded-2xl"; break;
-        case 'primary': default: variantStyle = "bg-[#3366FF] w-fit text-white hover:bg-blue-700 rounded-full";
+        case 'primary': default: variantStyle = "bg-[#3366FF] px-8 w-fit text-white hover:bg-blue-700 rounded-full";
     }
     return <button className={`${baseStyle} ${variantStyle} ${className}`} {...props}>{children}</button>;
 };

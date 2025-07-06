@@ -3,23 +3,20 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { IoVideocamOutline } from "react-icons/io5";
-import { LuInfo, LuBrain } from "react-icons/lu";
-import { CiStar } from "react-icons/ci";
-import { MdBarChart } from "react-icons/md";
-import { IoBookOutline } from "react-icons/io5";
-import { FaChevronDown, FaMinus, FaPlus } from 'react-icons/fa';
-import { FiStar } from 'react-icons/fi';
+import { LuBrain } from "react-icons/lu";
+import { FiInfo, FiStar, FiBookOpen, FiBarChart2 } from 'react-icons/fi';
+import { FaChevronDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const Course = () => {
   const [selected, setSelected] = useState<number | null>(0);
   const buttons = [
-    { label: 'About Course', icon: <LuInfo /> },
-    { label: 'Benefits', icon: <CiStar /> },
+    { label: 'About Course', icon: <FiInfo /> },
+    { label: 'Benefits', icon: <FiStar /> },
     { label: 'Pedagogy', icon: <LuBrain /> },
-    { label: 'Curriculum', icon: <MdBarChart /> },
-    { label: 'Levels', icon: <IoBookOutline /> },
-  ];
+    { label: 'Curriculum', icon: <FiBookOpen /> }, 
+    { label: 'Levels', icon: <FiBarChart2 strokeWidth={3}/> }, 
+];
   return (
     <div>
 
@@ -46,7 +43,7 @@ const Course = () => {
                 <motion.button
                   key={index}
                   onClick={() => setSelected(index)}
-                  className="flex items-center gap-1 cursor-pointer rounded-full px-2 py-2 transition-colors duration-50 flex-shrink-0"
+                  className="flex lg:w-full items-center justify-start gap-1 rounded-full px-2 py-2 transition-colors duration-50 flex-shrink-0 cursor-pointer"
                   animate={{
                     backgroundColor: isActive ? '#FF3366' : 'transparent',
                     color: isActive ? '#ffffff' : '#9CA3AF',
@@ -181,7 +178,7 @@ function CourseOptionsCard() {
       <div className="mt-6 flex items-center gap-3">
         <NumberStepper />
 
-        <button className="flex-1 bg-[#3366FF] hover:bg-blue-700 text-white text-sm py-3 rounded-full font-medium transition">
+        <button className="flex-1 bg-[#3366FF] hover:bg-blue-700 text-white text-sm py-3 rounded-full font-medium transition cursor-pointer">
           Add to Cart
         </button>
       </div>

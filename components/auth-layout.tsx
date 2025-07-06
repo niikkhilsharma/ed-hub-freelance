@@ -42,28 +42,28 @@ export default function AuthLayout({ children, leftPanelTitle, leftPanelDescript
 
           {/* Text Content */}
           <div className="relative z-10">
-            <h1 className="text-3xl font-bold mb-3">{leftPanelTitle}</h1>
-            <p className="text-sm max-w-[45ch] leading-relaxed">{leftPanelDescription}</p>
+            <h1 className="text-2xl font-semibold mb-3">{leftPanelTitle}</h1>
+            <p className="text-xs max-w-[45ch] leading-relaxed">{leftPanelDescription}</p>
           </div>
 
           {/* Yellow Curve and Image Container */}
           <div className="absolute bottom-0 left-0 w-full h-full z-0 overflow-hidden pointer-events-none">
             <div
-              className="absolute rounded-full scale-75"
+              className="absolute rounded-full scale-74"
               style={{
                 backgroundColor: COLORS.yellowAccent,
                 width: '125%',
                 height: '150%',
-                bottom: '-80%',
-                left: '-12%',
+                bottom: '-82%',
+                left: '-11%',
               }}></div>
             <Image
               src="/images/teacher-student-main.png"
               alt="Teacher helping student"
-              width={500}
-              height={400}
+              width={764}
+              height={505}
               priority
-              className="w-full max-w-md h-auto object-contain drop-shadow-xl absolute bottom-0 -translate-x-1/2 left-1/2"
+              className="w-full max-w-[34rem] h-auto object-contain drop-shadow-xl absolute bottom-0 -translate-x-1/2 left-1/2"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function AuthLayout({ children, leftPanelTitle, leftPanelDescript
         {/* Right Section - Content Area                                        */}
         {/* ====================================================================== */}
         <div
-          className="w-full md:w-1/2 p-8 lg:p-16 flex flex-col justify-start"
+          className="w-full md:w-1/2 p-8 lg:py-12 lg:px-20 flex flex-col justify-start"
           style={{ backgroundColor: COLORS.lightPink }}>
           <div className="w-full max-w-md mx-auto">{children}</div>
         </div>

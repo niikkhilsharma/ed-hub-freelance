@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FiArrowLeft, FiSearch, FiCalendar, FiClock, FiChevronDown } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
 
 // --- Data Interfaces ---
 interface SelectableItem {
@@ -61,7 +62,7 @@ const TargetAudienceToggle: React.FC<{
 const CategoryTab: React.FC<{ label: string; isActive: boolean; onClick: () => void; }> = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm sm:font-medium sm:rounded-xl transition-colors cursor-pointer
+        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap  sm:text-sm sm:font-medium transition-colors cursor-pointer
         ${isActive ? 'bg-[#FF99B7] text-white ' : 'text-[#6B7280] hover:bg-gray-100'}`}
     >
         {label}
@@ -86,13 +87,13 @@ const SelectableItemCard: React.FC<{
             alt={item.name}
             width={208}
             height={160}
-            className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
+            className="w-18 h-18 rounded-2xl object-cover flex-shrink-0"
         />
         <div className="flex-grow text-left min-w-0">
-            <h4 className="text-sm font-semibold text-black truncate">{item.name}</h4>
+            <h4 className={`font-semibold text-black truncate ${activeTarget === "Teacher" ? "text-base" : "text-sm"}`}>{item.name}</h4>
             {item.details.map((detail, index) => (
                 // The first detail is styled red like "Subject"
-                <p key={index} className={`text-[10px] truncate text-[#6B7280] ${index === 0 ? (activeTarget === "Teacher" ? "text-[#FF3366]" : "") : ""}`}>
+                <p key={index} className={` truncate text-[#6B7280] ${index === 0 ? (activeTarget === "Teacher" ? "text-[#FF3366] text-sm font-medium" : "text-[10px]") : "text-[10px]"}`}>
                     {detail}
                 </p>
             ))}
@@ -119,6 +120,8 @@ export default function ScheduleMeeting() {
 
     const [leftHeight, setLeftHeight] = useState<number>(0);
     const leftRef = useRef<HTMLDivElement | null>(null);
+
+    const Router = useRouter();
 
     useEffect(() => {
         setActiveCategory(targetAudience === 'Students' ? studentCategories[0] : departmentCategories[0]);
@@ -171,15 +174,20 @@ export default function ScheduleMeeting() {
                 {/* Header */}
                 <div className="flex justify-between items-center mb-4 sm:mb-6">
                     <div className="flex items-center gap-2 sm:gap-3">
-                        <button className="p-1 hover:bg-gray-100 rounded-md cursor-pointer"><FiArrowLeft className="w-5 h-5 text-black" /></button>
+                        <button className="p-1 hover:bg-gray-100 rounded-md cursor-pointer"
+                            onClick={() => {
+                                Router.push('admin-b2c/admin-panel/dashboard');
+                            }}>
+                            <FiArrowLeft className="w-5 h-5 text-black" />
+                        </button>
                         <h1 className="text-lg font-semibold text-[#FF3366]">Schedule Meeting</h1>
                     </div>
                     <TargetAudienceToggle activeTarget={targetAudience} onTargetChange={setTargetAudience} />
                 </div>
 
                 {/* Category Tabs */}
-                <div className="border border-[#B0B0B0] px-2 py-1 rounded-2xl mb-4 flex items-center justify-center">
-                    <div className="flex space-x-1 overflow-x-auto custom-scrollbar-thin ">
+                <div className="border border-[#E5E7EB] px-2 py-1 rounded-2xl mb-4 flex items-center justify-center">
+                    <div className="flex space-x-3 overflow-x-auto custom-scrollbar-thin ">
                         {categories.map(cat => (
                             <CategoryTab
                                 key={cat}
@@ -317,7 +325,10 @@ export default function ScheduleMeeting() {
 
                 {/* Footer Button */}
                 <div className="mt-6 sm:mt-8 flex justify-center">
-                    <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
+                    <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
+                        onClick={() => {
+                            Router.push('admin-b2c/admin-panel/dashboard');
+                        }}>
                         Schedule
                     </button>
                 </div>

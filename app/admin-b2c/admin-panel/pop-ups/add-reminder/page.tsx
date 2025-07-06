@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FiArrowLeft, FiSearch, FiCalendar, FiClock, FiChevronDown } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
 
 // --- Data Interfaces ---
 interface SelectableItem {
@@ -17,14 +18,14 @@ interface TeacherData extends SelectableItem { }
 
 
 // --- Sample Data ---
-const sampleStudents: StudentData[] = Array.from({ length: 3 }, (_, i) => ({
+const sampleStudents: StudentData[] = Array.from({ length: 6 }, (_, i) => ({
     id: `student-${i}`,
     name: `Student Name`,
     avatarSrc: `/admin/student.png`,
     details: ["Course Name", "Level / Grade", "Group"]
 }));
 
-const sampleTeachers: TeacherData[] = Array.from({ length: 4 }, (_, i) => ({
+const sampleTeachers: TeacherData[] = Array.from({ length: 6 }, (_, i) => ({
     id: `teacher-${i}`,
     name: `Name`,
     avatarSrc: `/admin/teacher.png`,
@@ -61,7 +62,7 @@ const TargetAudienceToggle: React.FC<{
 const CategoryTab: React.FC<{ label: string; isActive: boolean; onClick: () => void; }> = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap sm:px-3 sm:py-2 sm:text-sm sm:font-medium sm:rounded-xl transition-colors cursor-pointer
+        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap  sm:text-sm sm:font-medium transition-colors cursor-pointer
         ${isActive ? 'bg-[#FF99B7] text-white ' : 'text-[#6B7280] hover:bg-gray-100'}`}
     >
         {label}
@@ -86,13 +87,13 @@ const SelectableItemCard: React.FC<{
             alt={item.name}
             width={208}
             height={160}
-            className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
+            className="w-18 h-18 rounded-2xl object-cover flex-shrink-0"
         />
         <div className="flex-grow text-left min-w-0">
-            <h4 className="text-sm font-semibold text-black truncate">{item.name}</h4>
+            <h4 className={`font-semibold text-black truncate ${activeTarget === "Teacher" ? "text-base" : "text-sm"}`}>{item.name}</h4>
             {item.details.map((detail, index) => (
                 // The first detail is styled red like "Subject"
-                <p key={index} className={`text-[10px] truncate text-[#6B7280] ${index === 0 ? (activeTarget === "Teacher" ? "text-[#FF3366]" :"") : ""}`}>
+                <p key={index} className={` truncate text-[#6B7280] ${index === 0 ? (activeTarget === "Teacher" ? "text-[#FF3366] text-sm font-medium" : "text-[10px]") : "text-[10px]"}`}>
                     {detail}
                 </p>
             ))}
@@ -119,6 +120,8 @@ export default function AddReminderPage() {
 
     const [leftHeight, setLeftHeight] = useState<number>(0);
     const leftRef = useRef<HTMLDivElement | null>(null);
+
+    const Router = useRouter();
 
     useEffect(() => {
         setActiveCategory(targetAudience === 'Students' ? studentCategories[0] : departmentCategories[0]);
@@ -171,7 +174,12 @@ export default function AddReminderPage() {
                 {/* Header */}
                 <div className="flex justify-between items-center mb-4 sm:mb-6">
                     <div className="flex items-center gap-2 sm:gap-3">
-                        <button className="p-1 hover:bg-gray-100 rounded-md"><FiArrowLeft className="w-5 h-5 text-black" /></button>
+                        <button className="p-1 hover:bg-gray-100 rounded-md cursor-pointer"
+                            onClick={() => {
+                                Router.push('admin-b2c/admin-panel/dashboard');
+                            }}>
+                            <FiArrowLeft className="w-5 h-5 text-black" />
+                        </button>
                         <h1 className="text-lg font-semibold text-[#FF3366]">Add Reminder</h1>
                     </div>
                     <TargetAudienceToggle activeTarget={targetAudience} onTargetChange={setTargetAudience} />
@@ -179,7 +187,7 @@ export default function AddReminderPage() {
 
                 {/* Category Tabs */}
                 <div className="border border-[#B0B0B0] px-2 py-1 rounded-2xl mb-4 flex items-center justify-center">
-                    <div className="flex space-x-1 overflow-x-auto custom-scrollbar-thin ">
+                    <div className="flex space-x-3 overflow-x-auto custom-scrollbar-thin ">
                         {categories.map(cat => (
                             <CategoryTab
                                 key={cat}
@@ -253,8 +261,8 @@ export default function AddReminderPage() {
                                 </span>
                                 <input
                                     type="text"
-                                    placeholder="Search Student"
-                                    className="w-full rounded-full border border-[#6b7280] py-2.5 pl-8 pr-3 items-center text-[#6B7280] leading-tight focus:bg-white focus:outline-none focus:border-black"
+                                    placeholder={`Search ${targetAudience === 'Students' ? 'Student' : 'Teacher'}`}
+                                    className="w-full rounded-full border-2 border-[#6b7280] py-2.5 pl-8 pr-3 items-center text-[#6B7280] leading-tight focus:bg-white focus:outline-none focus:border-black"
                                 />
                             </div>
                             <div className="relative">
@@ -265,7 +273,7 @@ export default function AddReminderPage() {
                         </div>
                         {/* Scrollable list */}
                         <div className="space-y-1.5 h-full overflow-y-auto custom-scrollbar-thin pr-1" style={{
-                            height: leftHeight > 0 ? `${leftHeight - 120 + (targetAudience === "Teacher" ? 100 : 0)}px` : 'auto',
+                            height: leftHeight > 0 ? `${leftHeight - 120 + (targetAudience === "Teacher" ? 75 : 0)}px` : 'auto',
                         }}>
                             {selectableList.map(item => (
                                 <SelectableItemCard
@@ -281,8 +289,11 @@ export default function AddReminderPage() {
                 </div>
 
                 {/* Footer Button */}
-                <div className="mt-6 sm:mt-8 flex justify-center">
-                    <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors">
+                <div className={`mt-6 sm:mt-8 flex justify-center ${targetAudience === "Students" ? "" : " mb-24 "}`}>
+                    <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
+                        onClick={() => {
+                            Router.push('admin-b2c/admin-panel/dashboard');
+                        }}>
                         Set Reminder
                     </button>
                 </div>

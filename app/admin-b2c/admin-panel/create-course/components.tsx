@@ -3,6 +3,7 @@
 
 import React from 'react';
 import { StepperTabButton, FormInput, FileUploadInput, DropdownSelect, RadioButtonGroup, ActionButton } from './ui-components';
+import { useRouter } from 'next/navigation';
 
 // --- Reusable Interfaces ---
 export interface VideoData { id: string; videoTitle: string; videoDescription: string; }
@@ -21,7 +22,7 @@ const SectionHeader: React.FC<{ title: string }> = ({ title }) => (
 export const CourseDetailPart: React.FC = () => (
     <div className="space-y-4">
         <SectionHeader title="Course Detail" />
-        <div className="max-w-lg space-y-4 px-2 sm:px-0"> 
+        <div className="max-w-lg space-y-4 px-2 sm:px-0">
             <FormInput label="Enter Course Name" id="courseName" placeholder="Name" />
             <FormInput label="About Course" id="aboutCourse" placeholder="Text" isTextArea />
             <DropdownSelect label="Course Category" id="courseCategory" value="Skill Development" onChange={() => { }} options={["Skill Development", "Academics", "Sports"]} />
@@ -43,7 +44,7 @@ export const KnowMorePart: React.FC = () => (
             <FormInput label="Characteristics" id="Characteristics" placeholder="Text" isTextArea />
             <FileUploadInput label="Upload Banner 1" id="Banner 1" placeholder="Upload Image" />
             <FileUploadInput label="Upload Banner 2" id="Banner 2" placeholder="Upload Image" />
-            <FileUploadInput label="Upload Banner 3" id="Banner 3" placeholder="Upload Image" />
+            <FileUploadInput label="Upload Supporting Files" id="Banner 3" placeholder="Upload File" />
         </div>
     </div>
 );
@@ -132,12 +133,42 @@ export const ModulesAndVideosPart: React.FC<ModulesAndVideosPartProps> = ({ modu
     </div>
 );
 
-// --- CourseCreationStepper ---
-interface CourseCreationStepperProps { steps: string[]; activeStep: string; onStepClick: (step: string) => void; }
-export const CourseCreationStepper: React.FC<CourseCreationStepperProps> = ({ steps, activeStep, onStepClick }) => (
-    <div className="border border-[#E5E7EB] px-2 py-1.5 mb-4 rounded-xl sm:rounded-2xl flex items-center justify-start sm:justify-center">
-        <nav className="flex space-x-1 sm:space-x-2 overflow-x-auto custom-scrollbar-thin">
-            {steps.map((step) => <StepperTabButton key={step} label={step} isActive={activeStep === step} onClick={() => onStepClick(step)} />)}
-        </nav>
-    </div>
-);
+interface CourseCreationStepperProps {
+    steps: string[];
+    activeStep: string;
+    onStepClick: (step: string) => void;
+}
+
+export const CourseCreationStepper: React.FC<CourseCreationStepperProps> = ({ steps, activeStep, onStepClick }) => {
+
+    const Router = useRouter();
+    return (
+        <div className="border border-[#E5E7EB] px-2 py-1.5 mb-4 rounded-xl sm:rounded-2xl w-full">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-center gap-2 relative">
+                <nav className="w-full flex justify-start sm:justify-center overflow-x-auto custom-scrollbar-thin">
+                    <div className="flex items-center space-x-1 sm:space-x-2 min-w-max">
+                        {steps.map((step) => (
+                            <StepperTabButton
+                                key={step}
+                                label={step}
+                                isActive={activeStep === step}
+                                onClick={() => onStepClick(step)}
+                            />
+                        ))}
+                    </div>
+                </nav>
+                {activeStep === "Preview" &&
+                    <div className="w-full lg:w-auto lg:absolute lg:right-0">
+                        <button
+                        onClick={()=>{
+                            Router.push('/admin-b2c/admin-panel/know-more')
+                        }}
+                            className={`font-semibold text-xs sm:text-sm transition-colors duration-150 cursor-pointer bg-[#F9FAFB] w-full lg:w-auto text-black border border-[#D5D5D5] hover:bg-gray-50 rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 flex-shrink-0 whitespace-nowrap`}>
+                            Preview Know More
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    );
+}
