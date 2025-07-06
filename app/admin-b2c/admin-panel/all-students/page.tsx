@@ -7,12 +7,12 @@ import TabSwitch from "@/components/common-components/TabSwitch";
 import { useState } from "react";
 
 const users = Array.from({ length: 16 }, (_, i) => ({
-  name: `Name`,
-  image: '/common-images/teacher.png',
-  role: 'Teacher' as 'Teacher',
+  name: `Student Name`,
+  image: '/common-images/student.png',
+  role: 'Student' as 'Student',
   subtitle: 'Subject',
-  classInfo: 'Class Assigned',
-  batchInfo: 'Batch Assigned',
+  classInfo: 'Level / Grade',
+  batchInfo: 'Group',
 }));
 
 const filters = [
@@ -23,12 +23,12 @@ const filters = [
     { id: 'f5', label: 'Filter 3' },
 ];
 
-const AllTeacher = () => {
+const AllStudent = () => {
    const tabs = ["Batch 1", "Batch 2", "Batch 3", "Batch 4", "Batch 5"]
       const [selectedTab, setSelectedTab] = useState(tabs[0])
   return (
     <>
-      <BackButton Heading="All Teachers"/>
+      <BackButton Heading="All Students"/>
       <AdminB2CWrapper>
         <div className="bg-white rounded-3xl p-4">
            <SearchFilter filters={filters} />
@@ -45,4 +45,4 @@ const AllTeacher = () => {
   )
 }
 
-export default AllTeacher;
+export default AllStudent;

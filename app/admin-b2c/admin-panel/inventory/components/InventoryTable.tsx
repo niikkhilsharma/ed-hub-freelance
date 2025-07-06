@@ -18,25 +18,26 @@ interface InventoryTableProps {
 
 const InventoryTable: FC<InventoryTableProps> = ({ data }) => {
   return (
-    <div className="w-full bg-white p-4 rounded-2xl shadow-sm">
+    <div className="w-full bg-white p-4 overflow-x-auto custom-scrollbar-thin rounded-2xl shadow-sm">
+
       {/* Table Header */}
-      <div className="grid grid-cols-4 bg-green-200 text-black font-semibold text-sm rounded-t-2xl px-4 py-3">
+      <div className="grid grid-cols-4 bg-[#8DD9B3] text-black font-semibold text-sm rounded-2xl p-4 md:pl-12 md:pr-20 md:py-6">
         <div className="text-left">Image</div>
-        <div className="text-left">Item Name</div>
-        <div className="text-left">Description</div>
-        <div className="text-left">Stock</div>
+        <div className="text-center">Item Name</div>
+        <div className="text-center">Description</div>
+        <div className="text-end">Stock</div>
       </div>
 
       {/* Table Body */}
-      <div className="flex flex-col gap-4 mt-2">
-        {data.map((item, index) => (
+      <div className="flex relative  flex-col gap-4 mt-2">
+        {data.map((item) => (
           <div
             key={item.id}
-            className={`relative grid grid-cols-4 items-center bg-[#F9F9F9] px-4 py-4 rounded-2xl`}
+            className={`relative border grid grid-cols-4 items-center bg-[#F9F9F9] px-4 py-4 rounded-2xl md:pl-12 md:pr-20`}
           >
             {/* Image */}
             <div className="flex items-center">
-              <div className="w-20 h-14 rounded-xl relative overflow-hidden">
+              <div className="w-24 h-16 rounded-xl relative overflow-hidden">
                 <Image
                   src={item.image}
                   alt="item"
@@ -47,29 +48,27 @@ const InventoryTable: FC<InventoryTableProps> = ({ data }) => {
             </div>
 
             {/* Name */}
-            <div className="text-sm">{item.name}</div>
+            <div className="text-sm text-center">{item.name}</div>
 
             {/* Description */}
-            <div className="text-sm">{item.description}</div>
+            <div className="text-sm text-center">{item.description}</div>
 
             {/* Stock */}
-            <div className="text-sm text-right">{item.stock}</div>
+            <div className="text-sm text-end">{item.stock}</div>
 
-            {/* Floating Buttons */}
-            {index === 3 && (
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2 z-10">
-                <button className="flex items-center gap-1 bg-yellow-400 text-white px-3 py-1.5 rounded-full text-xs font-medium shadow hover:opacity-90">
-                  <FiPlus size={14} />
-                  Assign Task
-                </button>
-                <button className="flex items-center gap-1 bg-yellow-400 text-white px-3 py-1.5 rounded-full text-xs font-medium shadow hover:opacity-90">
-                  <FiPlus size={14} />
-                  Add Item
-                </button>
-              </div>
-            )}
+
           </div>
         ))}
+        <div className="fixed right-2 sm:right-10 top-1/2 -translate-y-1/2 flex gap-2 z-10">
+          <button className="flex items-center gap-1 bg-yellow-400 text-white px-3 py-2.5 rounded-full text-xs font-medium shadow hover:opacity-90">
+            <FiPlus size={14} />
+            Assign Task
+          </button>
+          <button className="flex items-center gap-1 bg-yellow-400 text-white px-3 py-2.5 rounded-full text-xs font-medium shadow hover:opacity-90">
+            <FiPlus size={14} />
+            Add Item
+          </button>
+        </div>
       </div>
     </div>
   );

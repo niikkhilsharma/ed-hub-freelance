@@ -1,7 +1,7 @@
 'use client';
 
 import { FC } from 'react';
-import { FiSearch } from 'react-icons/fi';
+import { FiChevronDown, FiSearch } from 'react-icons/fi';
 
 // Type for individual filter
 interface FilterOption {
@@ -20,13 +20,9 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
       {filters.map((filter, index) => (
         <button
           key={filter.id}
-          className={`text-sm px-4 py-2 rounded-md border ${
-            index === 0
-              ? 'bg-white shadow-sm border-gray-400'
-              : 'bg-gray-100 border-gray-300 hover:bg-gray-200'
-          }`}
+          className={`text-sm px-2 py-2 flex items-center gap-3 rounded-xl border bg-gray-100 border-gray-300 hover:bg-gray-200`}
         >
-          {filter.label} <span className="ml-1">▼</span>
+          {filter.label} <FiChevronDown />
         </button>
       ))}
     </div>

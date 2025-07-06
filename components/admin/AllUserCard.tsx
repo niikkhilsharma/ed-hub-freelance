@@ -25,28 +25,33 @@ const UserCard: FC<UserCardProps> = ({
   const isPink = role === 'Teacher' || role === 'Mentor';
 
   return (
-    <div className="w-full bg-[#f7f8f9] rounded-2xl px-4 py-3 flex items-center gap-4 shadow-sm hover:shadow transition">
+    <div className="w-full bg-[#f7f8f9] rounded-2xl p-2 flex items-center gap-4">
       {/* Profile */}
-      <div className="w-14 h-14 rounded-2xl overflow-hidden border">
+      <div className={`relative rounded-2xl overflow-hidden border ${role === "Teacher"
+          ? "w-20 h-20"
+          : role === "Mentor"
+            ? "w-20 h-20"
+            : role === "Student"
+              ? "w-18 h-14"
+              : ""
+        }`}>
         <Image
           src={image}
           alt={name}
-          width={56}
-          height={56}
+          fill
           className="w-full h-full object-cover"
         />
       </div>
 
       {/* Info */}
       <div className="text-sm leading-tight">
-        <p className="font-semibold text-gray-900">{name}</p>
-        <p
-          className={`font-medium ${
-            isPink ? 'text-[#ff3366]' : 'text-gray-500'
-          }`}
-        >
-          {subtitle}
-        </p>
+        <p className={`${role === "Student" ? "font-medium" : "font-semibold"} text-base text-gray-900`}>{name}</p>
+        {isPink && (
+          <p className="font-medium text-[#ff3366]">
+            {subtitle}
+          </p>
+        )}
+
         <p className="text-xs text-gray-500">{classInfo}</p>
         <p className="text-xs text-gray-500">{batchInfo}</p>
       </div>

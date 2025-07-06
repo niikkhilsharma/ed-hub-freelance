@@ -12,13 +12,13 @@ const filters = [
 
 const Inventory = () => {
 
-const items = Array.from({ length: 9 }, (_, i) => ({
-  id: i,
-  name: 'Lorem Ipsum',
-  description: 'Lorem ipsum',
-  stock: 12,
-  image: '/principal/school-login-banner.png', // Change this to a valid local image or remote URL
-}));
+    const items = Array.from({ length: 9 }, (_, i) => ({
+        id: i,
+        name: 'Lorem Ipsum',
+        description: 'Lorem ipsum',
+        stock: 12,
+        image: '/principal/school-login-banner.png', // Change this to a valid local image or remote URL
+    }));
     return (
         <>
             <BackButton Heading="Inventory" />
@@ -26,6 +26,7 @@ const items = Array.from({ length: 9 }, (_, i) => ({
                 <div className="bg-white rounded-3xl">
                     <SearchFilter filters={filters} />
                     <InventoryTable data={items} />
+                    
                 </div>
             </AdminB2CWrapper>
         </>
