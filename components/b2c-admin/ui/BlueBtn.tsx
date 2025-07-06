@@ -4,9 +4,9 @@ type BlueBtnProps = {
 
 const BlueBtn = ({ title }: BlueBtnProps) => {
   return (
-    <div className="rounded-[42px] text-xl font-semibold bg-[#3366ff] text-white px-2 py-4 cursor-pointer inline-block">
+    <button className="rounded-[42px] text-lg font-semibold bg-[#3366ff] text-white px-2.5 py-4 cursor-pointer inline-block">
       {title}
-    </div>
+    </button>
   );
 };
 

@@ -4,7 +4,7 @@ type GrayBtnProps = {
 
 const GrayBtn = ({ title }: GrayBtnProps) => {
   return (
-    <div className="rounded-[42px] text-xl font-semibold border border-[#E5E7EB] text-[#6B7280] p-4 cursor-pointer inline-block">
+    <div className="rounded-[42px] text-lg font-semibold border border-[#E5E7EB] text-[#6B7280] px-5 py-4 cursor-pointer inline-block">
       {title}
     </div>
   );

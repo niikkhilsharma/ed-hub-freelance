@@ -1,5 +1,7 @@
 'use client';
 
+import BlueBtn from '@/components/b2c-admin/ui/BlueBtn';
+import GrayBtn from '@/components/b2c-admin/ui/GrayBtn';
 import { FC } from 'react';
 import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 
@@ -8,8 +10,6 @@ const CustomNumberInput: FC<{
   value: number;
   onChange: (value: number) => void;
 }> = ({ label, value, onChange }) => {
-  const increase = () => onChange(value + 1);
-  const decrease = () => onChange(Math.max(0, value - 1));
 
   return (
     <div className="flex flex-col items-center gap-1 text-sm">
@@ -19,17 +19,9 @@ const CustomNumberInput: FC<{
           type="number"
           value={value.toString().padStart(2, '0')}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-16 text-center py-2 rounded-full border border-gray-300 appearance-none no-spinner text-sm"
+          className="w-16 text-center bg-gray-100 py-2 rounded-full border border-gray-300  text-sm"
         />
         {/* Custom Arrows */}
-        <div className="absolute right-1 top-1/2 -translate-y-1/2 flex flex-col items-center gap-1 text-gray-500">
-          <button type="button" onClick={increase}>
-            <FiChevronUp size={14} />
-          </button>
-          <button type="button" onClick={decrease}>
-            <FiChevronDown size={14} />
-          </button>
-        </div>
       </div>
     </div>
   );
@@ -46,7 +38,7 @@ const CreateTest: FC = () => {
         <input
           type="text"
           placeholder="Text"
-          className="w-full px-4 py-2 rounded-full border border-gray-300 text-sm"
+          className="w-full px-4 bg-gray-100 py-2 rounded-full border border-gray-300 text-sm"
         />
       </div>
 
@@ -58,7 +50,7 @@ const CreateTest: FC = () => {
         <textarea
           placeholder="Text"
           rows={8}
-          className="w-full px-4 py-2 rounded-xl border border-gray-300 text-sm resize-none"
+          className="w-full px-4 py-2 bg-gray-100 rounded-xl border border-gray-300 text-sm resize-none"
         />
       </div>
 
@@ -72,6 +64,10 @@ const CreateTest: FC = () => {
           <CustomNumberInput label="Minutes" value={0} onChange={() => {}} />
           <CustomNumberInput label="Total Points" value={0} onChange={() => {}} />
           <CustomNumberInput label="Pass Points" value={0} onChange={() => {}} />
+        </div>
+        <div className="flex justify-center gap-4 my-8">
+          <GrayBtn title='Cancel' />
+          <BlueBtn title='Continue' />
         </div>
       </div>
     </form>

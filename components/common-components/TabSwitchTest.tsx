@@ -13,7 +13,7 @@ const TabSwitchTest: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) =
   return (
     <div className="pb-4">
       <div className="w-full flex justify-center bg-white rounded-2xl py-2">
-        <div className="flex overflow-x-auto custom-scrollbar-thin justify-center px-2 gap-4">
+        <div className="flex flex-wrap justify-start sm:justify-center px-2 sm:gap-4">
           {tabs.map((tab, index) => {
             const isSelected = selected === tab;
             return (
@@ -24,7 +24,7 @@ const TabSwitchTest: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) =
               >
                 {/* Number Circle */}
                 <motion.div
-                  className={`w-6 h-6 flex items-center justify-center rounded-full font-bold text-xs border-2 ${
+                  className={`w-8 h-8 flex items-center justify-center rounded-full font-bold text-xs border-2 ${
                     isSelected ? 'border-[#FF3366] text-[#FF3366]' : 'border-gray-400 text-gray-500'
                   }`}
                   animate={{ color: isSelected ? '#FF3366' : '#6B7280', borderColor: isSelected ? '#FF3366' : '#D1D5DB' }}
@@ -35,7 +35,7 @@ const TabSwitchTest: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) =
 
                 {/* Tab Text */}
                 <motion.span
-                  className={`text-xs sm:text-sm md:text-md font-medium`}
+                  className={`text-sm md:text-md font-medium`}
                   animate={{ color: isSelected ? '#FF3366' : '#4B5563' }} // Tailwind: pink-500 or gray-700
                   transition={{ duration: 0.3 }}
                 >

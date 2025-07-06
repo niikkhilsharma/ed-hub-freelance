@@ -7,6 +7,7 @@ import { useState } from "react";
 import CreateTest from "./components/CreateTest";
 import ReviewQuestion from "./components/ReviewQuestion";
 import TestDetails from "./components/TestDetails";
+import "./test.css"
 
 const CreateDmitTest = () => {
     const tabs = ['DMIT Test Details', 'DMIT Test Questionnaire', 'Review']; // Normal string array
