@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiX, FiChevronDown } from "react-icons/fi";
-import { BaseModal, PopupProp } from "../page";
+import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
 
 const AddCourseModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   const [selectedCourse, setSelectedCourse] = useState("Option 1");

@@ -7,6 +7,7 @@ import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
 import ScrollableButton from "./common-component/scrollable-button";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
+import AddCourseModal from "@/components/b2c-admin/add-course";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -42,6 +43,8 @@ import {
 
 export default function CourseManagementPage() {
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Dummy user for Header
   const headerUser = {
     name: "Shlok Agheda",
@@ -140,17 +143,20 @@ export default function CourseManagementPage() {
             </div>
 
             <div className="flex items-center gap-2 overflow-x-auto">
-              <Link href="./remove-courses" passHref>
+              <Link href="/admin-b2c/admin-panel/remove-courses" passHref>
                 <button className="flex items-center cursor-pointer justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors">
                   Remove Course
                 </button>
               </Link>
-              <Link href="./remove-courses" passHref>
-              <button
-                className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors`}
+              <Link
+                href="/admin-b2c/admin-panel/admin-course-management"
+                passHref
               >
-                Edit Membership Plans
-              </button>
+                <button
+                  className={`flex items-center  cursor-pointer justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors`}
+                >
+                  Edit Membership Plans
+                </button>
               </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -224,7 +230,15 @@ export default function CourseManagementPage() {
               </Link>
             ))}
           </div>
-          <ScrollableButton ButtonHeading="Add Courses" />
+          <ScrollableButton
+            onClick={() => setIsModalOpen(true)}
+            ButtonHeading="Add Courses"
+          />
+
+          <AddCourseModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+          />
         </main>
       </div>
     </>

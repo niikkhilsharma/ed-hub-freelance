@@ -14,7 +14,7 @@ const TeacherCard = () => {
       {/* Left: Teacher Info */}
       <div className="bg-white w-full lg:w-[55%] relative flex flex-col p-4 sm:p-6 rounded-3xl">
         {/* Settings Icon - adjusted right positioning for responsiveness */}
-        <div className="absolute top-4 right-4 bg-[#faf9fb] border border-[#e5e7eb] rounded-full p-2">
+        <div className="absolute top-4 right-4  xl:right-[16rem] bg-[#faf9fb] border border-[#e5e7eb] rounded-full  p-1 xl:p-2">
           <FiSettings className="text-black w-4 h-4 sm:w-5 sm:h-5 cursor-pointer" />
         </div>
 

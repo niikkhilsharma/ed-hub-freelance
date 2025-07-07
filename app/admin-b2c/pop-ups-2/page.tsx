@@ -20,7 +20,6 @@ import { IoCloudUploadOutline } from "react-icons/io5";
 import ExistingDmitModal from "./components/existing-dmit-test";
 import AssignPenaltyModal from "./components/AssignPelanty";
 import RemoveCourseModal from "./components/RemoveCourseModal";
-import AddCourseModal from "./components/AddCourseModal";
 import ConfirmChoiceModal from "./components/ConfirmModal";
 import ReassignClassModal from "./components/Reassign";
 import RescheduleMeetingTeacher from "./components/RescheduleMeetingTeacher";
