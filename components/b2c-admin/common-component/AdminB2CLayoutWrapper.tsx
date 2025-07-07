@@ -11,10 +11,7 @@ interface Props {
 }
 
 const AdminB2CLayoutWrapper = ({ children }: Props) => {
-    // const pathname = usePathname();
-
-    // Check if it's the specific route
-    // const hideLayout = pathname.startsWith("/principal/registration");
+    
     const headerUser = {
         name: "Educator Name",
         role: "Teacher",
@@ -22,7 +19,7 @@ const AdminB2CLayoutWrapper = ({ children }: Props) => {
     };
     return (
         <>
-           <Navbar user={headerUser} activeState='dashboard'/>
+           <Navbar user={headerUser}/>
             <div className="bg-gray-100">{children}</div>
             <Footer />
         </>
