@@ -1,9 +1,8 @@
-"use client"
-import React, { useState } from 'react';
+
+import React from 'react';
 import { FiCalendar, FiChevronDown, FiClock, FiSearch } from 'react-icons/fi';
 import Image from 'next/image';
 import { BaseModal, PopupProp } from '../page';
-import TabSwitchLight from '@/components/common-components/TabSwitchLight';
 import { FC } from 'react';
 
 interface FilterOption {
@@ -22,7 +21,7 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
             {filters.map((filter) => (
                 <button
                     key={filter.id}
-                    className={`text-sm px-2 py-2 flex items-center gap-3 rounded-xl border bg-gray-100 whitespace-nowrap border-gray-300 hover:bg-gray-200`}
+                    className={`text-sm px-2 py-2 flex items-center gap-3 rounded-xl border bg-gray-100 border-gray-300 whitespace-nowrap hover:bg-gray-200`}
                 >
                     {filter.label} <FiChevronDown />
                 </button>
@@ -32,20 +31,18 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
 };
 
 
-const RescheduleMeetingTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
+const RescheduleMeetingStudent: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
-    const departmentTabs = ["Department 1", "Department 2", "Department 3", "Department 4", "Department 5"];
-    const [activeDept, setActiveDept] = useState(departmentTabs[0]);
 
     const students = Array.from({ length: 3 }).map((_, i) => ({
         name: 'Name',
         subject: 'Subject',
         course: 'Course Assigned',
         batch: 'Batch Assigned',
-        image: '/common-images/teacher.png',
+        image: '/common-images/student.png',
     }));
     const filter = [
-        { id: "f1", label: "Filter 1" },
+        { id: "f1", label: "1st STD" },
     ];
     return (
         <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
@@ -53,30 +50,32 @@ const RescheduleMeetingTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
 
                 <h2 className="text-lg font-semibold text-center mb-6">Edit Meeting</h2>
-                <div className="">
-                    <TabSwitchLight tabs={departmentTabs} selected={activeDept} onChange={setActiveDept} />
-                </div>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Left Form */}
+
                     <div className="space-y-4 mt-2">
+                        {/* Meeting Title */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Meeting Title</label>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Lecture Title</label>
                             <input
                                 type="text"
-                                placeholder="Meeting Title"
+                                placeholder="Text"
                                 className="w-full border rounded-full px-4 py-2 bg-gray-100 text-sm"
                             />
                         </div>
 
+                        {/* Meeting URL */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Meeting URL</label>
                             <input
                                 type="text"
-                                placeholder="URL"
+                                placeholder="Text"
                                 className="w-full border rounded-full px-4 py-2 bg-gray-100 text-sm"
                             />
                         </div>
 
+                        {/* Date */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
                             <div className="relative">
@@ -89,26 +88,52 @@ const RescheduleMeetingTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                             </div>
                         </div>
 
+                        {/* Time */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">Time</label>
                             <div className="relative">
                                 <input
                                     type="text"
-                                    placeholder="18:00"
+                                    placeholder="16:00"
                                     className="w-full border rounded-full px-4 py-2 bg-gray-100 text-sm pr-10"
                                 />
                                 <FiClock className="absolute right-3 top-2.5 text-gray-400" size={16} />
                             </div>
                         </div>
-                    </div>
 
+                        {/* Select Course */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Select Course</label>
+                            <div className="relative">
+                                <select className="w-full appearance-none border rounded-full px-4 py-2 bg-gray-100 text-sm pr-10">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                                <FiChevronDown className="absolute right-3 top-2.5 text-gray-400 pointer-events-none" size={16} />
+                            </div>
+                        </div>
+
+                        {/* Select Batch */}
+                        <div>
+                            <label className="block text-sm font-medium text-gray-700 mb-1">Select Batch</label>
+                            <div className="relative">
+                                <select className="w-full appearance-none border rounded-full px-4 py-2 bg-gray-100 text-sm pr-10">
+                                    <option>Option 1</option>
+                                    <option>Option 2</option>
+                                    <option>Option 3</option>
+                                </select>
+                                <FiChevronDown className="absolute right-3 top-2.5 text-gray-400 pointer-events-none" size={16} />
+                            </div>
+                        </div>
+                    </div>
 
                     {/* Right List */}
                     <div className='bg-gray-100 px-3 pb-3 pt-4 rounded-2xl'>
                         <h3 className="text-sm font-semibold mb-3">Student List</h3>
 
                         <div className="flex items-center gap-6">
-                            <label className="flex items-center gap-2 text-base font-medium text-gray-700">
+                            <label className="flex items-center gap-2 text-base font-medium ">
                                 <input
                                     type="radio"
                                     name="teacherType"
@@ -124,7 +149,7 @@ const RescheduleMeetingTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                                     value="selective"
                                     className="form-radio"
                                 />
-                                For Selective Teacher
+                                For Selective Students
                             </label>
                         </div>
 
@@ -190,4 +215,4 @@ const RescheduleMeetingTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
     );
 };
 
-export default RescheduleMeetingTeacher;
+export default RescheduleMeetingStudent;

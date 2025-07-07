@@ -24,6 +24,7 @@ import AddCourseModal from "./components/AddCourseModal";
 import ConfirmChoiceModal from "./components/ConfirmModal";
 import ReassignClassModal from "./components/Reassign";
 import RescheduleMeetingTeacher from "./components/RescheduleMeetingTeacher";
+import RescheduleMeetingStudent from "./components/RescheduleMeetingStudent";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -197,6 +198,7 @@ export default function AllPopupsPage() {
         { id: "confirmMessage", label: "Confirm Message Pop Up" },
         { id: "reassign", label: "Reassign" },
         { id: "rescheduleMeetingTeacher", label: "Reschedule Meeting Teacher" },
+        { id: "RescheduleMeetingStudent", label: "Reschedule Meeting Student" },
 
     ];
 
@@ -267,6 +269,10 @@ export default function AllPopupsPage() {
             />
             <RescheduleMeetingTeacher
                 isOpen={openModal === "rescheduleMeetingTeacher"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RescheduleMeetingStudent
+                isOpen={openModal === "RescheduleMeetingStudent"}
                 onClose={() => setOpenModal(null)}
             />
         </div>
