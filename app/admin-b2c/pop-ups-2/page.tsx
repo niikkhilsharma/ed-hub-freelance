@@ -13,6 +13,17 @@ import {
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 import TabSwitcher from "./components/FolderDetails";
+import ManageAccess from "./components/ManageAccess";
+import MeetingDetailTeacher from "./components/MeetingDetailTeacher";
+import MeetingDetailStudent from "./components/MeetingDetailStudent";
+import { IoCloudUploadOutline } from "react-icons/io5";
+import ExistingDmitModal from "./components/existing-dmit-test";
+import AssignPenaltyModal from "./components/AssignPelanty";
+import RemoveCourseModal from "./components/RemoveCourseModal";
+import AddCourseModal from "./components/AddCourseModal";
+import ConfirmChoiceModal from "./components/ConfirmModal";
+import ReassignClassModal from "./components/Reassign";
+import RescheduleMeetingTeacher from "./components/RescheduleMeetingTeacher";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -21,11 +32,11 @@ interface BaseModalProps {
     children: React.ReactNode;
     maxWidth: string;
 }
-interface PopupProp {
+export interface PopupProp {
     isOpen: boolean;
     onClose: () => void;
 }
-const BaseModal: React.FC<BaseModalProps> = ({
+export const BaseModal: React.FC<BaseModalProps> = ({
     isOpen,
     onClose,
     children,
@@ -92,6 +103,80 @@ const CreateFolder: React.FC<PopupProp> = ({
         </BaseModal>
     );
 };
+const UploadFileImage: React.FC<PopupProp> = ({
+    isOpen,
+    onClose,
+}) => {
+    return (
+        <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
+            <div className="rounded-3xl px-4 pt-6 pb-4 ">
+                <div className="flex justify-between items-center">
+                    <h2 className="text-xl font-semibold">Upload Image</h2>
+                    <button
+                        onClick={onClose}
+                        className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
+                    >
+                        <FiX />
+                    </button>
+                </div>
+
+                <div className="flex flex-col gap-1 pb-4 mt-6">
+                    <label className='font-medium text-md mb-2' htmlFor="url">Enter URL</label>
+                    <input id="url" type="text" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='Text' />
+                </div>
+                <div className="text-center mt-4 mb-6">Or</div>
+                <label className='font-medium text-md '>Upload Document</label>
+                <div className="flex items-center gap-2 rounded-full my-2 border border-gray-300 bg-gray-50 p-2 text-gray-400">
+                    <div className="p-1 bg-pink-100 rounded-full">
+                        <IoCloudUploadOutline className="text-[#FF3366]" size={20} />
+                    </div>
+                    <span className="truncate">Document Name</span>
+                </div>
+            </div>
+        </BaseModal>
+    );
+};
+
+const AddItem: React.FC<PopupProp> = ({
+    isOpen,
+    onClose,
+}) => {
+    return (
+        <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
+            <div className="rounded-3xl px-4 pt-6 pb-4 ">
+                <div className="flex justify-center items-center">
+                    <h2 className="text-xl font-semibold">Add Item</h2>
+
+                </div>
+
+                <div className="flex flex-col gap-1 pb-4 mt-6">
+                    <label className='font-medium text-md mb-2' htmlFor="itemName">Item Name</label>
+                    <input id="itemName" type="text" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='Text' />
+                </div>
+
+                <div className="flex flex-col gap-1 pb-4 my-4">
+                    <label className='font-medium text-md mb-2' htmlFor="description">Description</label>
+                    <input id="description" type="text" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='Text' />
+                </div>
+
+                <label className='font-medium text-md '>Upload Document</label>
+                <div className="flex items-center gap-2 rounded-full my-2 border border-gray-300 bg-gray-50 p-2 text-gray-400">
+                    <div className="p-1 bg-pink-100 rounded-full">
+                        <IoCloudUploadOutline className="text-[#FF3366]" size={20} />
+                    </div>
+                    <span className="truncate">Document Name</span>
+                </div>
+
+
+
+                <div className="flex flex-col gap-1 pb-4 mt-6">
+                    <label className='font-medium text-md mb-2' htmlFor="stocks">Stocks</label>
+                    <input id="stocks" type="text" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='Text' />
+                </div>
+            </div>
+        </BaseModal>
+    );
+};
 
 // --- Main Page Component to trigger modals ---
 export default function AllPopupsPage() {
@@ -100,6 +185,18 @@ export default function AllPopupsPage() {
 
     const modalButtons = [
         { id: "createFolder", label: "Create Folder" },
+        { id: "manageAccess", label: "Manage Access" },
+        { id: "meetingDetailTeacher", label: "Meeting Detail Teacher" },
+        { id: "meetingDetailStudent", label: "Meeting Detail Student" },
+        { id: "uploadFileImage", label: "Upload File Image" },
+        { id: "existDmitTest", label: "Existing Dmit Test" },
+        { id: "assignPelanty", label: "Assign Pelanty" },
+        { id: "addItemPopUp", label: "Add Item PopUp" },
+        { id: "removeCourse", label: "Remove Course Pop Up" },
+        { id: "addCourse", label: "Add Course Pop Up" },
+        { id: "confirmMessage", label: "Confirm Message Pop Up" },
+        { id: "reassign", label: "Reassign" },
+        { id: "rescheduleMeetingTeacher", label: "Reschedule Meeting Teacher" },
 
     ];
 
@@ -122,6 +219,54 @@ export default function AllPopupsPage() {
 
             <CreateFolder
                 isOpen={openModal === "createFolder"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ManageAccess
+                isOpen={openModal === "manageAccess"}
+                onClose={() => setOpenModal(null)}
+            />
+            <MeetingDetailTeacher
+                isOpen={openModal === "meetingDetailTeacher"}
+                onClose={() => setOpenModal(null)}
+            />
+            <MeetingDetailStudent
+                isOpen={openModal === "meetingDetailStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <UploadFileImage
+                isOpen={openModal === "uploadFileImage"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ExistingDmitModal
+                isOpen={openModal === "existDmitTest"}
+                onClose={() => setOpenModal(null)}
+            />
+            <AssignPenaltyModal
+                isOpen={openModal === "assignPelanty"}
+                onClose={() => setOpenModal(null)}
+            />
+            <AddItem
+                isOpen={openModal === "addItemPopUp"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RemoveCourseModal
+                isOpen={openModal === "removeCourse"}
+                onClose={() => setOpenModal(null)}
+            />
+            <AddCourseModal
+                isOpen={openModal === "addCourse"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ConfirmChoiceModal
+                isOpen={openModal === "confirmMessage"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ReassignClassModal
+                isOpen={openModal === "reassign"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RescheduleMeetingTeacher
+                isOpen={openModal === "rescheduleMeetingTeacher"}
                 onClose={() => setOpenModal(null)}
             />
         </div>
