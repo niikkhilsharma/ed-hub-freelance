@@ -11,6 +11,8 @@ import { MdSettings } from "react-icons/md";
 import GoBack from "@/components/principal/goback";
 import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import CreateFolderModal from "@/app/admin-b2c/pop-ups-2/components/CreateFolder";
+import ManageAccess from "@/app/admin-b2c/pop-ups-2/components/ManageAccess";
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -62,7 +64,7 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
   { id: "filter3", label: "Filter 3" },
 ];
 
-const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTMLDivElement | null>, Router: AppRouterInstance }> = ({ folder, reference, Router }) => (
+const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTMLDivElement | null>, Router: AppRouterInstance, setOpenModal: React.Dispatch<React.SetStateAction<"createFolder" | "manageAccess" | null>> }> = ({ folder, reference, Router, setOpenModal }) => (
   <div
     className={`${FOLDER_CARD_BG} rounded-2xl p-3 border cursor-pointer border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
     ref={reference}
@@ -87,7 +89,9 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
       </div>
       <div className="w-ful flex gap-2 ">
 
-        <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base hover:bg-gray-200 lg:text-lg"> <MdSettings /> Manage Access</button>
+        <button
+          onClick={() => setOpenModal("manageAccess")}
+          className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base hover:bg-gray-200 lg:text-lg"> <MdSettings /> Manage Access</button>
       </div>
     </div>
   </div>
@@ -107,7 +111,7 @@ const GeneralFilterButton: React.FC<{
 );
 
 // --- SubjectFolderViewContent Component ---
-const SubjectFolderViewContent: React.FC = () => {
+const SubjectFolderViewContent: React.FC<{ setOpenModal: React.Dispatch<React.SetStateAction<"createFolder" | "manageAccess" | null>> }> = ({ setOpenModal }) => {
   const [activeSubjectId] = useState<string>(
     sampleSubjectTabs[0]?.id || ""
   );
@@ -180,6 +184,9 @@ const SubjectFolderViewContent: React.FC = () => {
           </div>
           <div className="flex items-center gap-2 overflow-x-auto">
             <button
+              onClick={() => {
+                setOpenModal("createFolder");
+              }}
               className={`flex items-center justify-center gap-1.5 px-2 py-2.5 bg-[#FF3366] text-white  rounded-full text-xs sm:text-sm whitespace-nowrap hover:bg-[#FF3366]/80 cursor-pointer flex-shrink-0 transition-colors`}
             >
               <span>Create Folder</span>
@@ -205,7 +212,7 @@ const SubjectFolderViewContent: React.FC = () => {
               height: `${cardHeight * 6 + (20 * 5)}px`,
             }}>
             {searchedAndFilteredFolders.map((folder) => (
-              <FolderCard key={folder.id} folder={folder} reference={cardHeightRef} Router={Router} />
+              <FolderCard key={folder.id} folder={folder} reference={cardHeightRef} Router={Router} setOpenModal={setOpenModal} />
             ))}
           </div>
         ) : (
@@ -227,12 +234,21 @@ const SubjectFolderViewContent: React.FC = () => {
 export default function MaterialPageCourse() {
   // This page design does not include a prominent title bar or back button below the main header.
   // Navigation would typically be handled by the global Header or side navigation.
+  const [openModal, setOpenModal] = useState<"createFolder" | "manageAccess" | null>(null);
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
+      <CreateFolderModal
+        isOpen={openModal === "createFolder"}
+        onClose={() => setOpenModal(null)}
+      />
+      <ManageAccess
+        isOpen={openModal === "manageAccess"}
+        onClose={() => setOpenModal(null)}
+      />
       <GoBack GoBackHeading="Content Management" />
       <main className="flex-grow w-full max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-8">
-        <SubjectFolderViewContent />
+        <SubjectFolderViewContent setOpenModal={setOpenModal} />
       </main>
     </div>
   );
