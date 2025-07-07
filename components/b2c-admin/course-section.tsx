@@ -60,7 +60,7 @@ const CourseSection = () => {
             </div>
             
             {/* Gradient Fade Effect */}
-            <div className="absolute top-0 right-0 w-8 sm:w-12 h-full bg-gradient-to-l from-white/80 to-transparent pointer-events-none z-10"></div>
+            
           </div>
         </div>
       ))}
