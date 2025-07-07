@@ -40,8 +40,6 @@ import {
   FiMinusCircle,
 } from "react-icons/fi";
 
-
-
 export default function CourseManagementPage() {
   const [searchTerm, setSearchTerm] = useState("");
   // Dummy user for Header
@@ -50,7 +48,7 @@ export default function CourseManagementPage() {
     role: "Student",
     avatarSrc: "/teacher-b2b/profile.png", // UPDATE PATH
   };
-  const router = useRouter()
+  const router = useRouter();
 
   const GeneralFilterButton: React.FC<{
     filter: GeneralFilterOption;
@@ -142,17 +140,18 @@ export default function CourseManagementPage() {
             </div>
 
             <div className="flex items-center gap-2 overflow-x-auto">
-             <button
-      onClick={() =>  router.push("/admin-b2c/admin-panel/remove-courses")}
-      className="flex items-center cursor-pointer justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors"
-    >
-      Remove Course
-    </button>
+              <Link href="./remove-courses" passHref>
+                <button className="flex items-center cursor-pointer justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors">
+                  Remove Course
+                </button>
+              </Link>
+              <Link href="./remove-courses" passHref>
               <button
                 className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors`}
               >
                 Edit Membership Plans
               </button>
+              </Link>
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className="flex font-medium items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
@@ -199,7 +198,10 @@ export default function CourseManagementPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-2 sm:px-4 py-4">
             {courses.map((course, index) => (
-              <Link href="/admin-b2c/admin-panel/course-management-teacher" key={index}>
+              <Link
+                href="/admin-b2c/admin-panel/course-management-teacher"
+                key={index}
+              >
                 <div className="flex flex-col w-full max-h-[330px] px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl shadow-sm hover:shadow-md transition-shadow">
                   <div className="w-full aspect-auto rounded-2xl overflow-hidden">
                     <Image
