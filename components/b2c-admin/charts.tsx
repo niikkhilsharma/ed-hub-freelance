@@ -383,7 +383,7 @@ const ChartsReport: React.FC = () => {
         {/* Page Title Bar */}
 
 
-        <div className="grid max-w-[93rem] mx-auto grid-cols-1 p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
+        <div className="grid max-w-[90rem] mx-auto grid-cols-1 p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
           {/* ====== Overall Charts start ====== */}
 
           <div

@@ -38,7 +38,7 @@ const CourseCard = () => (
 
 const CourseSection = () => {
   return (
-    <div className=" max-w-[93rem] px-4 py-6 overflow-x-auto  mx-auto">
+    <div className=" max-w-[90rem] px-4 py-6 overflow-x-auto  mx-auto">
       {courseSections.map((section, index) => (
         <div key={index} className="mb-10">
           <h2 className="text-[#ff3366] text-lg font-semibold mb-4">{section.title}</h2>
