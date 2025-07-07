@@ -25,6 +25,7 @@ import ConfirmChoiceModal from "./components/ConfirmModal";
 import ReassignClassModal from "./components/Reassign";
 import RescheduleMeetingTeacher from "./components/RescheduleMeetingTeacher";
 import RescheduleMeetingStudent from "./components/RescheduleMeetingStudent";
+import CreateFolderModal from "./components/CreateFolder";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -83,27 +84,6 @@ export const BaseModal: React.FC<BaseModalProps> = ({
 };
 
 
-const CreateFolder: React.FC<PopupProp> = ({
-    isOpen,
-    onClose,
-}) => {
-    return (
-        <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-3xl">
-            <div className="rounded-3xl px-4 pt-6 pb-4 ">
-                <div className="flex justify-between items-start">
-                    <h2 className="text-xl font-semibold">Create Folder</h2>
-                    <button
-                        onClick={onClose}
-                        className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
-                    >
-                        <FiX />
-                    </button>
-                </div>
-                <TabSwitcher />
-            </div>
-        </BaseModal>
-    );
-};
 const UploadFileImage: React.FC<PopupProp> = ({
     isOpen,
     onClose,
@@ -219,7 +199,7 @@ export default function AllPopupsPage() {
                 ))}
             </div>
 
-            <CreateFolder
+            <CreateFolderModal
                 isOpen={openModal === "createFolder"}
                 onClose={() => setOpenModal(null)}
             />
