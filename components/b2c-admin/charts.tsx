@@ -376,14 +376,10 @@ const ChartsReport: React.FC = () => {
   return (
     <>
 
-      <div className="bg-gray-100">
-        {/* Header would go here - Assuming it's outside this component's direct render */}
+      <div className="">
+       
 
-        {/* Page Title Bar */}
-        {/* Page Title Bar */}
-
-
-        <div className="grid max-w-[90rem] mx-auto grid-cols-1 p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
+<div className="grid w-full max-w-[90rem] mx-auto grid-cols-1 gap-4 p-2 sm:p-4  lg:grid-cols-[2fr_1fr] lg:gap-6">
           {/* ====== Overall Charts start ====== */}
 
           <div
@@ -430,7 +426,7 @@ const ChartsReport: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 mt-2 sm:mt-0">
+              <div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
                 <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
                   <span>{currentMonth}</span>
                   <FiChevronDown className="w-4 h-4 ml-1" />
@@ -501,33 +497,29 @@ const ChartsReport: React.FC = () => {
 
           {/* Personal Development Card */}
           <div
-            className="p-5 h-full rounded-2xl relative"
-            style={{
-              backgroundColor: PALETTE.WHITE_CARD,
-            }}
-          >
-            <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
-              {personalDevData.title}
-            </h3>
-            <div className="space-y-3  custom-scrollbar overflow-y-auto pr-3  scrollbar-track-gray-200 scrollbar-thumb-rounded-full">
-              {" "}
-              {/* Custom scrollbar */}
-              {personalDevData.skills.map((skill, i) => (
-                <ProgressCircleItem
-                  key={i}
-                  percentageText={skill.progress}
-                  color={skill.color}
-                  skillName={skill.name}
-                  details={skill.details}
-                />
-              ))}
-            </div>
-            {/* The thin scrollbar visual element from the image - hard to replicate exactly without custom overlay */}
-            <div className="absolute right-1 top-16 bottom-5 w-1 bg-gray-300 rounded-full opacity-50 hidden sm:block"></div>
-          </div>
+  className="p-5 h-[500px] rounded-2xl relative"
+  style={{
+    backgroundColor: PALETTE.WHITE_CARD,
+  }}
+>
+  <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
+    {personalDevData.title}
+  </h3>
+  <div className="space-y-3 overflow-y-scroll custom-grey-scrollbar pr-3 max-h-[424px]">
+    {personalDevData.skills.map((skill, i) => (
+      <ProgressCircleItem
+        key={i}
+        percentageText={skill.progress}
+        color={skill.color}
+        skillName={skill.name}
+        details={skill.details}
+      />
+    ))}
+  </div>
+</div>
         </div>
         <main
-          className="grid h-full  max-w-[93rem] mx-auto  my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 bg-gray-100"
+          className="grid h-full  max-w-[93rem] mx-auto  my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 "
         >
 
           <div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-4 items-start">

@@ -45,9 +45,10 @@ export default function RequestAssessmentModal() {
           <label className="block text-sm  sm:text-lg font-medium mb-1"> Date</label>
           <div className="relative py-2">
             <input
-              type="date"
+              type="text"
               value={date}
               onChange={(e) => setDate(e.target.value)}
+              placeholder="DD / MM/ YYYY"
               className="w-full text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0"
             />
             <FiCalendar className="absolute right-5 w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />

@@ -178,14 +178,28 @@ h3 {
 /* Custom peach color scrollbar  */
 
 .custom-peach-scrollbar::-webkit-scrollbar {
-  width: 12px;
-  height: 6px;
+  width: 18px;
+  height: 3px;
 }
+
+
 .custom-peach-scrollbar::-webkit-scrollbar-thumb {
   background-color: #ffc79a;
   border-radius: 9999px;
 }
 
+
 .custom-peach-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+.custom-grey-scrollbar::-webkit-scrollbar {
+  width: 18px;
+  height: 6px;
+}
+.custom-grey-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #d1d5db;
+  border-radius: 9999px;
+}
+.custom-grey-scrollbar::-webkit-scrollbar-track {
   background-color: transparent;
 }

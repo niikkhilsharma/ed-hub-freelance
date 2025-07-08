@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
+import MaxWidthWrapper from "../max-width-wrapper";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import PeopleGrid from "@/components/b2c-admin/attandance-teacher";
 import StudentGrid from "./attandance-student";
@@ -58,11 +59,9 @@ export default function AttendancePage() {
   );
 
   return (
-    <>
-      
-
-      <div className="bg-[#eeeeee] py-6 sm:py-8 lg:py-10 min-h-screen">
-        <main className="p-2 max-w-[90rem] sm:p-6 mb-32 sm:mb-[320px] mx-auto bg-white my-6 rounded-3xl">
+    <MaxWidthWrapper>
+      <div className="bg-[#eeeeee] py-6 px-16  min-h-screen">
+        <main className="p-2 max-w-[90rem] sm:p-6   mx-auto bg-white my-6 rounded-3xl">
           {/* Search & Filter Section */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
@@ -76,7 +75,7 @@ export default function AttendancePage() {
               />
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
@@ -158,23 +157,28 @@ export default function AttendancePage() {
               Students
             </button>
           </div>
-          <div className="w-full my-2 bg-white  border border-[#e5e7eb] rounded-2xl p-2 shadow space-y-6">
-            <div className="flex justify-center space-x-4">
-              {topTabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setSelectedTopTab(tab)}
-                  className={`px-3 py-2 rounded-2xl text-xl font-medium transition-colors ${
-                    selectedTopTab === tab
-                      ? "bg-[#FF3366] text-white"
-                      : "text-[#6B7280] hover:bg-gray-100"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
+          <div className="w-full my-2 bg-white border border-[#e5e7eb] rounded-2xl p-2 shadow space-y-6">
+   
+    <div className="flex justify-center">
+    
+      <div className="flex justify-start space-x-4 overflow-x-auto whitespace-nowrap no-scrollbar">
+        {topTabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setSelectedTopTab(tab)}
+         
+            className={`flex-shrink-0 flex-wrap sm:px-3 p-2 sm:py-2 rounded-2xl text-xs sm:text-lg md:text-xl font-medium transition-colors ${
+              selectedTopTab === tab
+                ? "bg-[#FF3366] text-white"
+                : "text-[#6B7280] hover:bg-gray-100"
+            }`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
 
           {/* Toggle Between Teachers and Students */}
 
@@ -186,6 +190,6 @@ export default function AttendancePage() {
 
       
       </div>
-    </>
+    </MaxWidthWrapper>
   );
 }

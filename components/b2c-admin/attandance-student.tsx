@@ -19,17 +19,17 @@ export default function StudentGrid ()  {
          
           <div
             key={person.id}
-            className="flex items-center bg-[#f3f4f6] rounded-2xl p-4 space-x-4 shadow-sm"
+            className="flex items-center bg-[#f3f4f6] rounded-2xl p-2 space-x-4 shadow-sm"
           >
             {/* Image */}
             <img
               src={person.image}
               alt={person.name}
-              className="w-14 h-14 sm:w-16 sm:h-16 rounded-lg object-cover" 
+              className="w-14 h-14 sm:w-24 sm:h-20 rounded-2xl object-cover" 
             />
            
             <div className="flex-grow"> 
-              <p className="text-lg font-semibold text-gray-800">{person.name}</p>
+              <p className="text-lg font-medium text-black">{person.name}</p>
             </div>
           </div>
           </Link>

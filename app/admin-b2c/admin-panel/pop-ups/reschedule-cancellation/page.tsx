@@ -1,41 +1,36 @@
-"use client";
-import React from "react";
+'use client';
 
-interface RescheduleProps {
-  onCancel: () => void;
-  onConfirm: () => void;
-}
+import React, { useState } from 'react';
+import Reschedule from '@/components/Reschedule'; // Make sure this path is correct
 
-const Reschedule: React.FC<RescheduleProps> = ({ onCancel, onConfirm }) => {
+export default function RescheduleExamplePage() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleCancel = () => {
+    console.log("User cancelled the action");
+    setShowPopup(false);
+  };
+
+  const handleConfirm = () => {
+    console.log("User confirmed the action");
+    setShowPopup(false);
+  };
+
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-      <div className="bg-white rounded-3xl p-6  w-[90%] max-w-xl text-center shadow-lg">
-        <h2 className="text-xl font-semibold mb-4">Confirmation</h2>
-        <p className="text-black text-sm sm:text-base leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis
-          lacinia ante, nec accumsan enim. Vestibulum lacinia fermentum
-          pretium. Nunc elementum ligula nec erat bibendum vulputate. Etiam
-          sagittis, tellus laoreet semper vehicula, orci eros facilisis purus,
-          at viverra ex lectus nec orci.
-        </p>
-
-        <div className="mt-6 flex justify-center gap-4">
-          <button
-            onClick={onCancel}
-            className="bg-[#6b7280]/10 text-gray-500 font-medium px-4 py-3 rounded-full hover:bg-gray-200 transition"
-          >
-            Cancel
-          </button>
-          <button
-            onClick={onConfirm}
-            className="bg-[#3366ff] text-white font-medium px-4 py-3 rounded-full hover:bg-blue-700 transition"
-          >
-            Confirm
-          </button>
-        </div>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="text-center">
+        <h1 className="text-2xl font-bold mb-4">Reschedule Popup Demo</h1>
+        <button
+          onClick={() => setShowPopup(true)}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full transition"
+        >
+          Open Reschedule Popup
+        </button>
       </div>
+
+      {showPopup && (
+        <Reschedule onCancel={handleCancel} onConfirm={handleConfirm} />
+      )}
     </div>
   );
-};
-
-export default Reschedule;
+}

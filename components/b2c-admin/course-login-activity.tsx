@@ -74,7 +74,7 @@ export default function CourseLoginPage() {
               />
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
@@ -82,7 +82,7 @@ export default function CourseLoginPage() {
                     <FiChevronDown className="text-sm" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-14">
+                <DropdownMenuContent className="w-10 border-none">
                   <DropdownMenuSeparator />
                   <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
@@ -96,7 +96,7 @@ export default function CourseLoginPage() {
                     <FiChevronDown className="text-sm" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-14">
+                <DropdownMenuContent className="w-10 border-none">
                   <DropdownMenuSeparator />
                   <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
@@ -110,7 +110,7 @@ export default function CourseLoginPage() {
                     <FiChevronDown className="text-sm" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-14">
+                <DropdownMenuContent className="w-14 border-none">
                   <DropdownMenuSeparator />
                   <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
@@ -124,7 +124,7 @@ export default function CourseLoginPage() {
                     <FiChevronDown className="text-sm" />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-14 px-0">
+                <DropdownMenuContent className="w-14 px-0 border-none">
                   <DropdownMenuSeparator />
                   <DropdownMenuCheckboxItem>Option 1</DropdownMenuCheckboxItem>
                   <DropdownMenuCheckboxItem>Option 2</DropdownMenuCheckboxItem>
@@ -156,23 +156,28 @@ export default function CourseLoginPage() {
               Students
             </button>
           </div>
-          <div className="w-full my-2 bg-white  border border-[#e5e7eb] rounded-2xl p-2 shadow space-y-6">
-            <div className="flex justify-center space-x-4">
-              {topTabs.map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setSelectedTopTab(tab)}
-                  className={`px-3 py-2 rounded-2xl text-xl font-medium transition-colors ${
-                    selectedTopTab === tab
-                      ? "bg-[#FF3366] text-white"
-                      : "text-[#6B7280] hover:bg-gray-100"
-                  }`}
-                >
-                  {tab}
-                </button>
-              ))}
-            </div>
-          </div>
+                <div className="w-full my-2 bg-white border border-[#e5e7eb] rounded-2xl p-2 shadow space-y-6">
+   
+    <div className="flex justify-center">
+    
+      <div className="flex justify-start space-x-4 overflow-x-auto whitespace-nowrap no-scrollbar">
+        {topTabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setSelectedTopTab(tab)}
+         
+            className={`flex-shrink-0 flex-wrap sm:px-3 p-2 sm:py-2 rounded-2xl text-xs sm:text-lg md:text-xl font-medium transition-colors ${
+              selectedTopTab === tab
+                ? "bg-[#FF3366] text-white"
+                : "text-[#6B7280] hover:bg-gray-100"
+            }`}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
 
           {/* Toggle Between Teachers and Students */}
 

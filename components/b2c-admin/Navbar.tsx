@@ -96,7 +96,7 @@ const Navbar = ({ user }: NavbarProps) => {
           </div>
 
           {/* Desktop Nav */}
-          <div className="bg-[#e3f2fd]/15 rounded-full px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 hidden sm:flex items-center justify-center gap-4 sm:gap-5 md:gap-6 overflow-x-auto  scrollbar-none max-w-full">
+          <div className="bg-[#e3f2fd]/15 rounded-full px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 hidden sm:flex items-center justify-center gap-4 sm:gap-5 md:gap-6 overflow-x-auto  no-scrollbar max-w-full">
             {navItems.map((item) => (
               <Link key={item.key} href={item.href}>
                 <button
