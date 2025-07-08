@@ -9,7 +9,6 @@ type leavecards = {
     image: string,
     name: string,
     course: string,
-    level: string,
     group: string,
     reason: string,
     email: string
@@ -18,8 +17,7 @@ type leavecards = {
 const teachers = Array.from({ length: 6 }, (_, i) => ({
     id: i + 5,
     name: 'Name',
-    course: 'Subject',
-    level: 'Class Assigned',
+    course: 'Course Name',
     group: 'Batch Assigned',
     image: "/teacher-avatar-4.png", // Use same image or add logic to vary if needed,
     reason: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam cum illum, itaque et perferendis ea hic alias modi ex reiciendis animi eum quam minus, autem deserunt voluptatibus ducimus, officiis corporis?',
@@ -47,20 +45,19 @@ const TeacherLeave = () => {
 
                     <SearchFilter filters={filters} />
 
-                    <div className="max-h-screen grid-cols-1 md:grid grid-cols-2 overflow-y-auto custom-peach-scrollbar">
+                    <div className="max-h-screen grid-cols-1 md:grid grid-cols-2 overflow-y-auto custom-scrollbar-thin sm:custom-peach-scrollbar">
                         {teachers.map((item) => (
-                            <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 inline-block mr-4 mb-4  relative">
+                            <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-2 inline-block mr-2 sm:mr-4 mb-4  relative">
                                 <div className="flex">
                                     <div className="rounded-xl relative overflow-hidden">
-                                        <Image src={item.image} alt={item.name} width={100} height={100} className="object-cover" />
+                                        <Image src={item.image} alt={item.name} width={90} height={90} className="object-cover" />
                                     </div>
-                                    <div className="flex-1 ml-4">
-                                        <div className="font-semibold text-m ">{item.name}</div>
-                                        <div className="text-sm font-semibold text-[#FF3366]">{item.course}</div>
-                                        <div className="text-xs text-gray-500">{item.level}</div>
+                                    <div className="flex-1 ml-4 flex flex-col justify-between">
+                                        <div className="font-semibold text-lg ">{item.name}</div>
+                                        <div className="text-base font-medium text-[#FF3366]">{item.course}</div>
                                         <div className="text-xs text-gray-500"> {item.group} </div>
                                         <div className="text-xs text-gray-500"> {item.email} </div>
-                                        <div className="text-xs  lg:absolute text-gray-500 top-5 right-5 flex items-center"><MdOutlineDateRange />From 6/8/25 to 6/6/25</div>
+                                        <div className="text-xs  lg:absolute text-gray-500 top-5 right-5 flex items-center gap-1"><MdOutlineDateRange size={23}/>From 6/8/25 to 6/6/25</div>
 
                                     </div>
                                 </div>
@@ -69,11 +66,11 @@ const TeacherLeave = () => {
                                     <p className="text-center text-black-600 text-base">
                                         {item.reason}</p>
                                 </div>
-                                <div className="flex justify-center gap-4 mt-4">
-                                    <button className="px-6 py-2 bg-red-100 text-red-500 rounded-3xl">
+                                <div className="flex justify-center items-center gap-4 mt-4">
+                                    <button className="px-6 py-2.5 bg-red-100 text-[#ff3366] rounded-3xl">
                                         Reject
                                     </button>
-                                    <button className="px-6 py-2 bg-[#3366FF] text-white rounded-3xl">
+                                    <button className="px-6 py-2.5 bg-[#3366FF] text-white rounded-3xl">
                                         Approve
                                     </button>
                                 </div>

@@ -18,7 +18,7 @@ const TabSwitch: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) => {
               key={tab}
               onClick={() => onChange(tab)}
               className={`
-                relative px-3.5 py-2 rounded-xl text-xs sm:text-sm md:text-md cursor-pointer font-medium transition-colors duration-200
+                relative px-2 py-2 rounded-xl text-xs sm:text-sm md:text-md cursor-pointer font-medium transition-colors duration-200
                 ${selected === tab
                   ? 'text-white bg-[#FF3366]'
                   : 'text-gray-700 hover:bg-gray-200'
