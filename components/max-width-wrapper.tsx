@@ -23,7 +23,7 @@ export default function MaxWidthWrapper({ children, className = '' }: { children
 				}}></div>
 
 			{/* Content */}
-			<div className={cn('relative z-10 container mx-auto px-4', className)}>{children}</div>
+			<div className={cn('relative z-10 max-w-screen-xl mx-auto px-4', className)}>{children}</div>
 		</div>
 	)
 }
