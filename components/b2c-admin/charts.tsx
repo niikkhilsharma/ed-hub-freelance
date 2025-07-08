@@ -10,8 +10,12 @@ import {
   FiZap,
   FiArrowLeftCircle,
   FiArrowRightCircle,
-} from "react-icons/fi"; // Add icons as needed
-
+} from "react-icons/fi"; 
+import { LuOmega } from "react-icons/lu";
+import { MdOutlineSuperscript ,MdOutlineFunctions} from "react-icons/md";
+import { TbMathFunction } from "react-icons/tb";// Add icons as needed
+import { RiPsychotherapyLine } from "react-icons/ri";
+import { MdOutlineTheaterComedy } from "react-icons/md";
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {
   GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
@@ -143,9 +147,9 @@ const ChartsReport: React.FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <FiSearch key="s" className="w-4 h-4" />,
+        <LuOmega key="s" className="w-4 h-4" />,
         <FiPercent key="p" className="w-4 mt-4.5 h-4" />,
-        <FiAward key="a" className="w-4 h-4" />,
+        <MdOutlineSuperscript key="a" className="w-4 h-4" />,
       ],
       skills: Array(7).fill({
         name: "Subject 1",
@@ -160,9 +164,9 @@ const ChartsReport: React.FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <FiBarChart2 key="b" className="w-4 h-4" />,
-        <FiAward key="a" className="w-4 mt-4.5 h-4" />,
-        <FiZap key="z" className="w-4 h-4" />,
+        <MdOutlineFunctions key="b" className="w-4 h-4" />,
+        < RiPsychotherapyLine  key="a" className="w-4 mt-4.5 h-4" />,
+        <TbMathFunction key="z" className="w-4 h-4" />,
       ],
       skills: [
         {
@@ -187,8 +191,8 @@ const ChartsReport: React.FC = () => {
     overallProgress: "4/5",
     progressPercent: 80,
     iconSet: [
-      <FiAward key="a" className="w-4 mt-4.5 h-4" />,
-      <FiZap key="z" className="w-4 h-4" />,
+      <MdOutlineTheaterComedy key="a" className="w-6 text-[#893544] mt-4.5 h-6" />,
+      
     ], // Example icons
     skills: [
       {
@@ -302,6 +306,174 @@ const ChartsReport: React.FC = () => {
       },
       {
         name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,

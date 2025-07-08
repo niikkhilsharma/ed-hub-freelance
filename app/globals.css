@@ -194,10 +194,10 @@ h3 {
 }
 .custom-grey-scrollbar::-webkit-scrollbar {
   width: 18px;
-  height: 6px;
+  height: 4px;
 }
 .custom-grey-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #d1d5db;
+  background-color: #6b7280;
   border-radius: 9999px;
 }
 .custom-grey-scrollbar::-webkit-scrollbar-track {
