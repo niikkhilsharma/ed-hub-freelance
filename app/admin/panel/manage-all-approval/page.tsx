@@ -12,10 +12,10 @@ import { cn } from '@/lib/utils'
 import NamingBar from '@/components/admin/ui/naming-bar'
 
 export default function ManageAllApprovals() {
-	const tabs = ['Schools', 'Teachers', 'Students'] as const;
-	type Tab = typeof tabs[number]; // "Schools" | "Teachers" | "Students"
+	const tabs = ['Schools', 'Teachers', 'Students'] as const
+	type Tab = (typeof tabs)[number] // "Schools" | "Teachers" | "Students"
 
-	const [activeTab, setActiveTab] = useState<Tab>('Schools');
+	const [activeTab, setActiveTab] = useState<Tab>('Schools')
 
 	return (
 		<div className="bg-gray-100/60 min-h-screen">

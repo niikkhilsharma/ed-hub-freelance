@@ -27,7 +27,7 @@ export default function SchoolManagementReportPage() {
 	const tabs = ['Analysis', 'Teachers', 'Students', 'Content']
 	return (
 		<div>
-			<NamingBar name="School Name" />
+			<NamingBar name="School Name |  Branch Name" />
 			<MaxWidthWrapper className="bg-white rounded-2xl py-4 my-4 overflow-hidden">
 				<div className="flex items-center justify-start gap-8 mb-4 font-medium">
 					{tabs.map((tab, indx) => (
@@ -44,7 +44,7 @@ export default function SchoolManagementReportPage() {
 					<div className="flex flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
 						<div className="w-full lg:w-[70%]">
 							<Image
-								src={'/images/school.jpg'}
+								src={'/admin/admin-branch-report.jpg'}
 								width={1880}
 								height={1250}
 								alt="School Management Report"
