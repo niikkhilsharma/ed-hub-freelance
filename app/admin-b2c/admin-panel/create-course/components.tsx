@@ -79,7 +79,7 @@ export const BatchAndTimePart: React.FC = () => {
     return (
         <div className="space-y-4">
             <SectionHeader title="Batch and Time" />
-            <div className="max-w-xl space-y-6 px-2 sm:px-0">
+            <div className="max-w-xl space-y-10 px-2 sm:px-0">
                 <RadioButtonGroup label="Batch Size" name="batchSize" options={["1:1 Class", "1:5 Class", "1:10 Class"]} selectedValue={batchSize} onSelect={setBatchSize} />
                 <RadioButtonGroup label="Batch Time" name="batchTime" options={["Morning", "Afternoon", "Evening", "Night"]} selectedValue={batchTime} onSelect={setBatchTime} />
                 <RadioButtonGroup label="Batch Days" name="batchDays" options={["Mon - Thu", "Tue - Fri", "Wed - Sat", "Weekend", "Custom Day"]} selectedValue={batchDays} onSelect={setBatchDays} />

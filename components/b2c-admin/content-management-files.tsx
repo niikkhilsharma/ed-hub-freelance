@@ -78,21 +78,21 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
         strokeWidth={1.5}
       />
     </div>
-    <div className="flex flex-col flex-wrap w-full gap-4">
+    <div className="flex flex-col flex-wrap w-full gap-2 sm:gap-4">
       <div className="">
         <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
           {folder.name}
         </h3>
-        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
+        <p className="text-xs lg:text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
       </div>
-      <div className="flex gap-2 w-full flex-wrap xl:flex-nowrap">
-        <div className="w-full flex gap-2 ">
+      <div className="flex gap-1 lg:gap-2 w-full flex-wrap sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
+        <div className="w-full flex gap-1 sm:gap-2 ">
           <button
             onClick={() => setOpenModal("manageAccess")}
-            className="bg-gray-100 text-nowrap w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg hover:bg-gray-200"> <MdSettings /> Manage Access</button>
+            className="bg-gray-100 text-nowrap w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-base hover:bg-gray-200"> <MdSettings /> Manage Access</button>
         </div>
-        <div className="w-full flex gap-2 ">
-          <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg hover:bg-gray-200"> <MdOutlineFileDownload /> Download</button>
+        <div className="w-full flex gap-1 sm:gap-2 ">
+          <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-base hover:bg-gray-200"> <MdOutlineFileDownload /> Download</button>
         </div>
       </div>
     </div>
@@ -185,7 +185,7 @@ const SubjectFolderViewContent: React.FC<{ setOpenModal: React.Dispatch<React.Se
               className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border-2 border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
             />
           </div>
-          <div className="flex items-center gap-2 overflow-x-auto">
+          <div className="flex items-center gap-2">
 
             {sampleGeneralFilters.map((filter) => (
               <GeneralFilterButton

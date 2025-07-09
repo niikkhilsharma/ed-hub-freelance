@@ -96,14 +96,14 @@ const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<H
 
         {/* Details Section */}
         <div className="text-xs text-black space-y-1">
-            <p className="font-medium text-black">{request.assignedFaculty}</p>
+            <p className=" text-black">{request.assignedFaculty}</p>
             {request.type === 'cancellation' && (
-                <p className="font-medium text-black">Lecture Date:{" "}{request.lectureDate}</p>
+                <p className=" text-black">Lecture Date:{" "}{request.lectureDate}</p>
             )}
             {request.type === 'rescheduling' && (
                 <>
-                    <p className="font-medium text-black">Original Lecture Date:{" "} {request.lectureDate}</p>
-                    <p className="font-medium text-black">Requested: Reschedule to {request.requestedDate}, {request.requestedTime}</p>
+                    <p className=" text-black">Original Lecture Date:{" "} {request.lectureDate}</p>
+                    <p className=" text-black">Requested: Reschedule to {request.requestedDate}, {request.requestedTime}</p>
                 </>
             )}
         </div>
@@ -131,8 +131,8 @@ const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<H
 
 // --- Main Page Component ---
 export default function RequestManagementPage() {
-    const [activeTab, setActiveTab] = useState<'rescheduling' | 'cancellation'>('cancellation');
-    const [isPopupOpen, setIsPopupOpen] = useState<boolean>(true);
+    const [activeTab, setActiveTab] = useState<'rescheduling' | 'cancellation'>('rescheduling');
+    const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
     const togglePopup = () => setIsPopupOpen(!isPopupOpen);
 
     const requestsToDisplay = activeTab === 'cancellation' ? cancellationRequests : reschedulingRequests;
