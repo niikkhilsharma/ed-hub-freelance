@@ -3,7 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-
+import { usePathname } from "next/navigation";
 import {
   FiMessageSquare,
   FiVideo,
@@ -21,25 +21,31 @@ const NavItem = ({
   icon: Icon,
   label,
   href,
-  active = false,
-  onLinkClick, // Added prop to close mobile menu
+  onLinkClick,
 }: {
   icon: React.ElementType;
   label: string;
   href: string;
-  active?: boolean;
-  onLinkClick?: () => void; // Optional handler for click
-}) => (
-  <Link
-    href={href}
-    className={`flex items-center gap-1 px-2 lg:gap-2 lg:px-3 py-2 text-sm font-semibold rounded-full transition-colors ${active ? "text-[#FFCC00]" : "text-white hover:bg-[#3366FF]/70"
-      } `}
-    onClick={onLinkClick} // Call the handler on click
-  >
-    <Icon className="w-5 h-5" />
-    {label}
-  </Link>
-);
+  onLinkClick?: () => void;
+}) => {
+  const pathname = usePathname();
+  const isActive = pathname.startsWith(href); // ✅ Matches current route
+
+  return (
+    <Link
+      href={href}
+      className={`flex items-center gap-1 px-2 lg:gap-2 lg:px-3 py-2 text-sm font-semibold rounded-full transition-colors ${
+        isActive
+          ? "text-[#FFCC00]" // Active: Yellow
+          : "text-white hover:bg-[#3366FF]/70"
+      }`}
+      onClick={onLinkClick}
+    >
+      <Icon className="w-5 h-5" />
+      {label}
+    </Link>
+  );
+};
 
 interface UserProfile {
   name: string;
@@ -56,6 +62,7 @@ interface HeaderProps {
 export default function Header({ user, isAskme = true, activeState = "" }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false); // State for mobile menu
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
     {
@@ -66,7 +73,7 @@ export default function Header({ user, isAskme = true, activeState = "" }: Heade
     {
       icon: GoPeople,
       label: "Students",
-      href: "/student-b2b/student-dashboard/my-course",
+      href: "/b2c-teacher/teacher-flow/students",
     },
     {
       icon: GoDatabase,
@@ -92,7 +99,7 @@ export default function Header({ user, isAskme = true, activeState = "" }: Heade
 
   return (
     <header className={`bg-[#3366FF] text-white sticky top-0 z-50 print:hidden `}>
-      <div className={` mx-auto px-4 h-20 flex justify-between items-center max-w-screen-2xl`}>
+      <div className={` mx-auto h-20 flex justify-between items-center max-w-screen-2xl`}>
 
         <div className=" flex items-center gap-4">
 

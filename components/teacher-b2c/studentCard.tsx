@@ -1,18 +1,11 @@
 "use client";
 
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/header1";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
+import MaxWidthWrapper from "../max-width-wrapper";
 
-// --- Recording Card Component ---
-// interface Course {
-//     id: string;
-//     imageSrc: string;
-//     courseName: string;
-//     noofbatch: string;
-//     noofBtudents: string; 
-// }
-
+import Link from "next/link";
 export default function StudentCard() {
     const headerUser = {
         name: "Shlok Agheda",
@@ -45,11 +38,14 @@ export default function StudentCard() {
     return (
         <>
             <Header user={headerUser} />
-            <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
-
+            
+           
+<MaxWidthWrapper>
+     <div className="bg-[#eeeeee]  min-h-screen  px-4 flex flex-col">
                 <main className="p-4  bg-white my-4 lg:my-6 mx-2 lg:mx-8  sm:mx-4 rounded-2xl min-h-screen">
-                    <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-items-center">
+                    <div className="flex flex-col sm:flex-row flex-wrap overflow-y-scroll no-scrollbar gap-8 sm:gap-4  justify-items-center">
                         {courses.map((course, index) => (
+                            <Link>
                             <div
                                 key={index}
                                 className="flex flex-col gap-2 p-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-2xl "
@@ -64,22 +60,25 @@ export default function StudentCard() {
                                     />
                                 </div>
                                 <div className="flex flex-col gap-1 px-2 text-black">
-                                    <h2 className="font-bold text-lg">{course.name}</h2>
-                                    <h3 className="text-sm font-medium text-blacl">
-                                        No. of Batch:{" "}
+                                    <h2 className="font-semibold text-lg">{course.name}</h2>
+                                    <p className="text-md font-normal text-black">
+                                        No. of Batches:{" "}
                                         <span className="text-[#6B7280]">{course.batches}</span>
-                                    </h3>
-                                    <h3 className="text-sm font-medium text-black">
+                                    </p>
+                                    <p className="text-sm font-normal text-black">
                                         No. of Students: <span className="text-[#6B7280]">{course.students}</span>
-                                    </h3>
+                                    </p>
                                 </div>
                             </div>
+                            </Link>
                         ))}
                     </div>
                 </main>
-
+                </div>
+</MaxWidthWrapper>
                 <Footer />
-            </div>
+            
+              
         </>
     );
 }
