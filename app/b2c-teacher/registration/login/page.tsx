@@ -1,9 +1,9 @@
-import StudentLoginForm from '@/components/student/auth/login'
+import TeacherLoginForm from '@/components/teacher-b2c/registration/login';
 
-export default async function StudentLogin() {
+export default async function TeacherLogin() {
 	return (
 		<div>
-			<StudentLoginForm/>
+			<TeacherLoginForm/>
 		</div>
 	)
 }
