@@ -73,10 +73,10 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
     }}
   >
     <div
-      className={`bg-[#99DEFF] w-28 h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
+      className={`bg-[#99DEFF] h-22 w-22 sm:w-28 sm:h-28 rounded-xl flex items-center justify-center flex-shrink-0`}
     >
       <FiFolder
-        className="w-12 h-12 text-black opacity-80"
+        className="h-10 w-10 sm:w-12 sm:h-12 text-black opacity-80"
         strokeWidth={1.5}
       />
     </div>
@@ -182,7 +182,7 @@ const SubjectFolderViewContent: React.FC<{ setOpenModal: React.Dispatch<React.Se
               className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border-2 border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
             />
           </div>
-          <div className="flex items-center gap-2 overflow-x-auto">
+          <div className="flex items-center gap-2">
             <button
               onClick={() => {
                 setOpenModal("createFolder");

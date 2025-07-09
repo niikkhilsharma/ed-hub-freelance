@@ -10,7 +10,7 @@ export default function MaxWidthWrapper({ children, className = '' }: { children
 				className="absolute inset-0 bg-center bg-repeat z-0"
 				style={{
 					backgroundImage: "url('/Background2.png')",
-					backgroundSize: '400px',
+					backgroundSize: '600px',
 					filter: 'grayscale(10%) brightness(1.1) blur(0.5px)',
 					opacity: 0.3,
 				}}></div>
