@@ -66,7 +66,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 	return (
 		<div className="bg-[#f9fafb] border  border-[#e5e7eb] rounded-2xl p-4 transition-shadow duration-200 relative flex flex-col sm:flex-row sm:items-center gap-4  max-w-lg">
 			{/* Info Icon */}
-			
+
 			{/* Folder Icon Area */}
 			<div className="bg-[#99DEFF] w-24 h-24 sm:w-26 sm:h-26 rounded-xl flex items-center justify-center flex-shrink-0">
 				<FiFolder className="w-10 h-10 sm:w-12 sm:h-12 text-black opacity-80" strokeWidth={1.5} />
@@ -148,18 +148,18 @@ export default function SelectExistingTestPage() {
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 			<Header user={headerUser} />
-			<div className='bg-white'>
+			<div className="bg-white">
 				<div className="flex items-center gap-3 max-w-[96rem] mx-auto    py-3.5 sticky top-0 z-40">
-				{' '}
-				{/* Made title bar sticky */}
-				<button
-					onClick={handleBackClick}
-					className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md"
-					aria-label="Go back">
-					<FiArrowLeft className="w-6 h-6" />
-				</button>
-				<h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Select Existing Test</h1>
-			</div>
+					{' '}
+					{/* Made title bar sticky */}
+					<button
+						onClick={handleBackClick}
+						className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md"
+						aria-label="Go back">
+						<FiArrowLeft className="w-6 h-6" />
+					</button>
+					<h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Select Existing Test</h1>
+				</div>
 			</div>
 			<MaxWidthWrapper>
 				<div className="bg-[#eeeeee]">
@@ -168,8 +168,6 @@ export default function SelectExistingTestPage() {
 					</main>
 				</div>
 			</MaxWidthWrapper>
-			{/* Page Title Bar */}
-
 			<Footer />
 		</div>
 	)
