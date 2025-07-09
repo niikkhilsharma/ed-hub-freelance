@@ -3,7 +3,7 @@
 import Header from "@/components/layout/header1";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import MaxWidthWrapper from "../max-width-wrapper";
+import MaxWidthWrapper from "../admin/max-width-wrapper";
 
 import Link from "next/link";
 export default function StudentCard() {
@@ -45,7 +45,7 @@ export default function StudentCard() {
                 <main className="p-4  bg-white my-4 lg:my-6 mx-2 lg:mx-8  sm:mx-4 rounded-2xl min-h-screen">
                     <div className="flex flex-col sm:flex-row flex-wrap overflow-y-scroll no-scrollbar gap-8 sm:gap-4  justify-items-center">
                         {courses.map((course, index) => (
-                            <Link>
+                            <Link href="/b2c-teacher/teacher-flow/">
                             <div
                                 key={index}
                                 className="flex flex-col gap-2 p-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-2xl "
