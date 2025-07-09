@@ -39,7 +39,7 @@ export default function StudentCard() {
 			<Header user={headerUser} />
 
 			<MaxWidthWrapper className="bg-[#eeeeee] min-h-screen px-4 flex flex-col">
-				<main className="p-4  bg-white my-4 lg:my-6 mx-2 lg:mx-8  sm:mx-4 rounded-2xl min-h-screen">
+				<main className="p-4  bg-white my-4 lg:my-6  rounded-3xl min-h-screen">
 					<div className="flex flex-col sm:flex-row flex-wrap overflow-y-scroll no-scrollbar gap-8 sm:gap-4  justify-items-center">
 						{courses.map((course, index) => (
 							<Link key={index} href={'#'} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
