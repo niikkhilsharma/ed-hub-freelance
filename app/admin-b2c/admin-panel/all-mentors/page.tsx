@@ -1,5 +1,5 @@
 "use client"
-import UserCard from "@/components/admin/AllUserCard"
+import UserCard from "@/components/b2c-admin/AllUserCard"
 import AdminB2CWrapper from "@/components/b2c-admin/common-component/AdminB2CPageWrapper";
 import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
 import BackButton from "@/components/common-components/BackButton";

@@ -2,9 +2,13 @@ import PrincipalChatrsReport from '@/components/principal/principal-charts-repor
 import { IoMdSettings } from "react-icons/io";
 import React from 'react'
 import Image from 'next/image';
-import { FiArrowLeft } from 'react-icons/fi';
+import { PiBookOpenTextLight } from 'react-icons/pi';
 
 import { FaStar } from 'react-icons/fa';
+import StudentPanel from './StudentControlPanel';
+import { IoSettingsOutline } from 'react-icons/io5';
+import { AiOutlineStar } from 'react-icons/ai';
+import { HiOutlineMail } from 'react-icons/hi';
 
 interface CourseCardProps {
   image: string;
@@ -113,75 +117,68 @@ const StudentProfile = () => {
   return (
     <>
       <div className='w-full'>
-        <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
-          <button
-            // onClick={handleBackClick}
-            className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
-            aria-label="Go back"
-          >
-            <FiArrowLeft className="w-5 h-5" />
-          </button>
-          <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
-            Student Report
-          </h1>
-        </div>
+
         <div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
-          {/* Student Info Card */}
+
           <div
-            className=" bg-white rounded-2xl"
+            className="rounded-2xl"
             style={{
               borderColor: PALETTE.BORDER_GREY,
             }}
           >
-            <div className="flex flex-col w-full justify-center sm:flex-row sm:justify-between bg-white rounded-2xl sm:items-center gap-4">
-              <Image
-                src="/teacher-b2b/profile2.png"
-                alt="Shlok Agheda"
-                width={72}
-                height={72}
-                className="rounded-full h-24 w-24 flex-shrink-0"
-              />
-              <div className="flex-grow relative">
-                <div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute left-[10rem]"><IoMdSettings size={20}/></div>
-                <h2
-                  className="text-xl font-semibold"
-                  style={{ color: PALETTE.TEXT_DARK }}
-                >
-                  Shlok Agheda
-                </h2>
-                
-                <div className="flex flex-wrap items-center gap-1 mt-2">
-                  <span
-                    className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
-                    style={{
-                      backgroundColor: PALETTE.ACCENT_PINK,
-                      color: PALETTE.WHITE_CARD,
-                    }}
-                  >
-                    Class 8A
-                  </span>
-                  <span
-                    className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
-                    style={{
-                      backgroundColor: PALETTE.ACCENT_PINK,
-                      color: PALETTE.WHITE_CARD,
-                    }}
-                  >
-                    Group A
-                  </span>
-                 
+            <div className="flex flex-wrap border gap-4 w-full justify-between bg-white rounded-2xl items-center px-4 py-3">
+                <Image
+                  src="/teacher-b2b/profile2.png"
+                  alt="Shlok Agheda"
+                  width={72}
+                  height={72}
+                  className="rounded-full h-24 w-24 flex-shrink-0"
+                />
+                <div className="flex-grow relative">
+                  <div className="relative  inline-block">
+                    <div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute -right-12"><IoSettingsOutline size={20} /></div>
+                    <h2
+                      className="text-xl font-semibold"
+                      style={{ color: PALETTE.TEXT_DARK }}
+                    >
+                      Student Name
+                    </h2>
+
+                    <div className="flex flex-wrap items-center gap-1 mt-2">
+                      <span
+                        className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+                        style={{
+                          backgroundColor: PALETTE.ACCENT_PINK,
+                          color: PALETTE.WHITE_CARD,
+                        }}
+                      >
+                        Course Name
+                      </span>
+                      <span
+                        className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
+                        style={{
+                          backgroundColor: PALETTE.ACCENT_PINK,
+                          color: PALETTE.WHITE_CARD,
+                        }}
+                      >
+                        Course Name
+                      </span>
+
+                    </div>
+                  </div>
+                </div>
+              <div className="flex whitespace-nowrap gap-4 md:gap-6 ">
+                <div className="text-base  text-left space-y-0.5 text-black">
+                  <p><strong className='font-medium'>City:</strong>{" "}Mumbai</p>
+                  <p><strong className='font-medium'>State:</strong>{" "}Maharashtra</p>
+                </div>
+                <div className="text-base text-left space-y-0.5 text-black">
+                  <p><strong className='font-medium'>Gender:</strong>{" "}Male</p>
+                  <p><strong className='font-medium'>DOB:</strong>{" "}15 June 2015</p>
                 </div>
               </div>
-              <div className="text-[11px] font-medium text-left space-y-0.5 text-black">
-                <p>Gender: Male</p>
-                <p>DOB: 15 Jun 2015</p>
-                <p>Email: example@gm.com</p>
-                
-                <p>City: Mumbai</p>
-                <p>State: Maharashtra</p>
-              </div>
             </div>
-            <div className="pt-4 ">
+            <div className="pt-4 pb-2 px-4 border bg-white mt-2 rounded-2xl">
               <p
                 className="text-sm font-bold mb-3"
                 style={{ color: PALETTE.TEXT_DARK }}
@@ -203,20 +200,58 @@ const StudentProfile = () => {
                 ))}
               </div>
             </div>
-            <div className="">
+            <div className="w-full my-4 rounded-2xl border border-gray-200 p-4 md:px-6 bg-white">
+              {/* Heading */}
+              <p className="text-sm font-semibold mb-4">Parent / Guardian Details</p>
+
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                {/* Left: Details */}
+                <div className="flex flex-wrap gap-4">
+                  <div className="rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-500 bg-gray-50">
+                    Name
+                  </div>
+                  <div className="rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-500 bg-gray-50">
+                    +91 0000000000
+                  </div>
+                  <div className="rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-500 bg-gray-50">
+                    example@gm.com
+                  </div>
+                </div>
+
+                {/* Right: Actions */}
+                <div className="flex flex-wrap gap-2">
+                  <button className="flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-700 bg-white hover:bg-gray-50">
+                    <AiOutlineStar className="text-yellow-500 text-lg" />
+                    Give Suggestion
+                  </button>
+                  <button className="flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-700 bg-white hover:bg-gray-50">
+                    <HiOutlineMail className="text-red-500 text-lg" />
+                    Mail to Parents
+                  </button>
+                  <button className="flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2 text-sm text-gray-700 bg-white hover:bg-gray-50">
+                    <PiBookOpenTextLight className="text-blue-500 text-lg" />
+                    Allot a Course
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="bg-white px-2 sm:px-4 pt-2 pb-1 mt-4 rounded-2xl">
               <h2 className='my-2 text-sm font-bold'>Assigned Teachers</h2>
               <div className="flex flex-wrap gap-4 items-stretch">
                 {Teachers.map((card, index) => (
-                  <div className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
-                    <Image className='rounded-xl' src={card.image} width={80} height={80} alt={card.name} />
+                  <div className="py-2 md:pr-8 pr-2 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
+                    <div className="relative w-16 h-16 md:w-18 md:h-18">
+                      <Image className='rounded-2xl object-cover' src={card.image} fill alt={card.name} />
+                    </div>
                     <div className="">
-                      <h2 className='font-medium'>{card.name}</h2>
-                      <p className={`text-[${PALETTE.ACCENT_PINK}]`}>{card.subject}</p>
+                      <h2 className='font-semibold'>{card.name}</h2>
+                      <p className={`text-[#ff3366] text-sm`}>{card.subject}</p>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+            <StudentPanel />
           </div>
         </div>
       </div>

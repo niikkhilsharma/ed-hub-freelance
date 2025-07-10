@@ -1,12 +1,15 @@
 import GoBack from '@/components/principal/goback';
-import Management from '@/components/b2c-admin/management';
 import React from 'react'
+import CourseManagement from './ManageComponent';
+import AdminB2CWrapper from '@/components/b2c-admin/common-component/AdminB2CPageWrapper';
 
 const Managements = () => {
   return (
     <>
       <GoBack GoBackHeading="Course Name" />
-      <Management />
+      <AdminB2CWrapper>
+        <CourseManagement />
+      </AdminB2CWrapper>
     </>
   )
 }
