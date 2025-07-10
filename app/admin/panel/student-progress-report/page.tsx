@@ -6,13 +6,14 @@ import NamingBar from '@/components/admin/ui/naming-bar'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Progress } from '@/components/ui/progress'
 import Image from 'next/image'
+import { FaStar } from 'react-icons/fa'
 import { FiChevronDown } from 'react-icons/fi'
 
-export default function TeacherPerformancePage() {
+export default function StudentProgressReportPage() {
 	return (
 		<>
 			<div className="bg-[#EEEEEE] min-h-screen">
-				<NamingBar name="Teacher Report" />
+				<NamingBar name="Student Report" />
 				<div className="px-4 space-y-4 my-10">
 					<MaxWidthWrapper className="bg-white rounded-2xl py-4 ">
 						<div>
@@ -24,10 +25,10 @@ export default function TeacherPerformancePage() {
 									</Avatar>
 
 									<div className="space-y-2">
-										<h1 className="font-semibold text-xl tracking-wide">Teacher Name</h1>
+										<h1 className="font-semibold text-xl tracking-wide">Shlok Ageda</h1>
 										<div className="flex gap-1 justify-center items-center">
-											<div className="bg-[#FF3366] rounded-l-full text-xs font-light p-2 w-fit text-white">Class Assigned</div>
-											<div className="bg-[#FF3366] rounded-r-full text-xs font-light p-2 w-fit text-white">Class Assigned</div>
+											<div className="bg-[#FF3366] rounded-l-full text-xs font-light p-2 w-fit text-white">Class 8A</div>
+											<div className="bg-[#FF3366] rounded-r-full text-xs font-light p-2 w-fit text-white">Group A</div>
 										</div>
 									</div>
 								</div>
@@ -54,11 +55,36 @@ export default function TeacherPerformancePage() {
 							</div>
 							{/* Contact Details */}
 							<div className="mt-4">
-								<h6 className="font-medium text-sm">Contact Details</h6>
+								<h6 className="font-medium text-sm">Key Focus Areas</h6>
 								<div className="flex gap-4 items-center justify-start text-sm mt-4">
-									<p className="bg-[#F3F4F6] p-2 rounded-full border border-[#B0B0B0]">+91 0000000000</p>
-									<p className="bg-[#F3F4F6] p-2 rounded-full border border-[#B0B0B0]">example@gm.com</p>
+									<p className="bg-[#F3F4F6] p-2 rounded-full border border-[#B0B0B0]">Academics</p>
+									<p className="bg-[#F3F4F6] p-2 rounded-full border border-[#B0B0B0]">Personal Development</p>
+									<p className="bg-[#F3F4F6] p-2 rounded-full border border-[#B0B0B0]">Brain Development</p>
 								</div>
+							</div>
+
+							{/* Assigned Teachers */}
+							<div className="mt-6">
+								<h6 className="font-medium text-sm mb-4">Assigned Teachers</h6>
+								<div className="flex gap-4 overflow-y-scroll scrollbar-hide">
+									<TecherChip />
+									<TecherChip />
+									<TecherChip />
+									<TecherChip />
+								</div>
+							</div>
+						</div>
+					</MaxWidthWrapper>
+
+					<MaxWidthWrapper className="bg-[#F1F1F2] p-4 rounded-2xl border border-[#E5E7EB]">
+						<div>
+							<h1 className="text-[#FF3366] font-semibold text-xl">Active Courses</h1>
+							<div className="mt-4 overflow-x-scroll flex gap-6">
+								<CourseCard />
+								<CourseCard />
+								<CourseCard />
+								<CourseCard />
+								<CourseCard />
 							</div>
 						</div>
 					</MaxWidthWrapper>
@@ -380,7 +406,7 @@ const StudentReport = () => {
 							</thead>
 							<tbody>
 								{testResultsData.map((row, i) => (
-									<tr key={i} className="odd:bg-[#F7F9FF] even:bg-[#FFFFFF] text-[#777777]">
+									<tr key={i} className="odd:bg-[#F7F9FF] even:bg-[#FFFFFF] text-[#777777] ">
 										<td className="p-4">{row.test}</td>
 										<td className="p-4">{row.date1}</td>
 										<td className="p-4">{row.date2}</td>
@@ -472,6 +498,62 @@ const ProgressCircleItem = ({
 			<div className="flex flex-col gap-2 ml-2">
 				<p className="text-sm text-[#626262]">{skillName}</p>
 				<p className="text-xs font-light text-[#626262]">{details}</p>
+			</div>
+		</div>
+	)
+}
+
+function TecherChip() {
+	return (
+		<div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
+			<Image
+				src={'/images/teacher.jpg'}
+				width={480}
+				height={331}
+				alt="teacher profile image"
+				className="rounded-2xl w-18 h-18 object-cover"
+			/>
+			<div>
+				<p className="font-semibold text-lg">Name</p>
+				<p className="text-[#FF3366] text-sm font-medium">Subject</p>
+			</div>
+		</div>
+	)
+}
+function CourseCard() {
+	return (
+		<div className="bg-white rounded-2xl pt-3 px-3 pb-2 w-80 h-72">
+			<div className="">
+				<div>
+					<Image
+						src={'/personality.png'}
+						width={932}
+						height={460}
+						alt="Course Image"
+						className="w-full h-[10.5rem] object-fill object-left-top"
+					/>
+				</div>
+				<div className="mt-4">
+					<h1 className="font-semibold text-lg">Course Name</h1>
+					<div className="flex gap-2 items-center mt-2">
+						<Avatar className="size-10">
+							<AvatarImage src="/admin/writer.jpg" className="object-top" />
+							<AvatarFallback>CN</AvatarFallback>
+						</Avatar>
+						<div className="flex gap-6 justify-between items-center w-full">
+							<div>
+								<h1 className="text-nowrap font-semibold">Mr. Ranvir Ahuja</h1>
+								<p className="text-sm text-[#FF3366]">Teacher</p>
+							</div>
+
+							<div className="flex gap-1">
+								{Array.from({ length: 4 }).map((_, i) => (
+									<FaStar key={i} className="w-3 text-[#FFCC00] h-3" />
+								))}
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	)
