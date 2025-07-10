@@ -15,7 +15,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<div className={(poppinsFont.className, poppinsFont.variable, 'bg-gray-200')}>
+		<div className={(poppinsFont.className, poppinsFont.variable, 'bg-[#EEEEEE]')}>
 			<Navbar user={{ name: 'Nikhil', role: 'Student', avatarSrc: '/images/person.jpg' }} isAskme={false} />
 			{children}
 			<Footer />
