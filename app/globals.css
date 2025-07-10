@@ -203,3 +203,23 @@ h3 {
 .custom-grey-scrollbar::-webkit-scrollbar-track {
   background-color: transparent;
 }
+
+
+/* grey thing scrollbar  */
+
+.custom-scrollbar-thin-grey::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar-thumb {
+  background: #6b7280; /* light-gray */
+  border-radius: 10px;
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db; /* medium-gray */
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar {
+  width: 10px; /* Make it thinner - adjust as needed */
+}
