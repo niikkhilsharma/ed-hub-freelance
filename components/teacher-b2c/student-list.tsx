@@ -26,7 +26,8 @@ export default function StudentListPage() {
             </div>
       </div>
 
-            <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+            <main className="flex-grow container  mx-auto p-4 min-h-screen sm:p-6 lg:p-8 space-y-8">
+                
                 <StudentPerformancePage />
             </main>
 
