@@ -136,7 +136,7 @@ const dummyStudents: Student[] = [
 // StudentCard Component
 const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
 	return (
-		<div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-2 flex flex-col gap-3 sm:flex-row sm:items-center sm:space-x-4 hover:shadow-md transition-shadow duration-200">
+		<div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-1 flex flex-col gap-3 sm:flex-row sm:items-center sm:space-x-4 hover:shadow-md transition-shadow duration-200">
 			{/* Avatar */}
 			<Image
 				width={100}
@@ -150,7 +150,7 @@ const StudentCard: React.FC<{ student: Student }> = ({ student }) => {
 			<div className="flex-grow min-w-0">
 				{' '}
 				{/* min-w-0 prevents text overflow issues */}
-				<h3 className="text-base sm:text-lg font-semibold text-black">{student.name}</h3>
+				<h3 className="text-base sm:text-lg font-normal text-black">{student.name}</h3>
 				<p className="text-xs  text-[#6B7280] mt-0.5">{student.courseName}</p>
 				<p className="text-xs  text-[#6B7280] mt-0.5">{student.levelGrade}</p>
 				<p className="text-xs  text-[#6B7280] mt-0.5">{student.group}</p>
@@ -187,9 +187,9 @@ const GeneralFilterButton: React.FC<{
 }> = ({ filter, onClick }) => (
 	<button
 		onClick={onClick}
-		className={`flex items-center justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-gray-300 bg-[#F9FAFB] text-black rounded-xl text-xs  whitespace-nowrap  hover:bg-gray-100 flex-shrink-0 transition-colors`}>
+		className={`flex items-center justify-center gap-1 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-gray-300 bg-[#F9FAFB] text-black rounded-xl text-xs sm:text-sm  whitespace-nowrap  hover:bg-gray-100 flex-shrink-0 transition-colors`}>
 		<span>{filter.label}</span>
-		<FiChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
+		<FiChevronDown className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-black" />
 	</button>
 )
 
@@ -216,7 +216,7 @@ const StudentPerformancePage: React.FC = () => {
 	return (
 		<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-6 bg-white rounded-2xl">
 			{/* Header: Search and Filters */}
-			<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+			<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
 				{/* Search Input */}
 				<div className="relative flex-grow">
 					<FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-full h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
@@ -233,9 +233,9 @@ const StudentPerformancePage: React.FC = () => {
 				<div className="flex items-center gap-2 overflow-x-auto">
 					<button
 						onClick={() => alert('Main filter icon clicked.')}
-						className={`p-2.5 sm:p-3 rounded-2xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors`}
+						className={`p-2.5 sm:p-3  text-semibold rounded-2xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors`}
 						aria-label="Open main filters">
-						<FiFilter className="w-5 h-5 " strokeWidth={2} />
+						<FiFilter className="w-5 sm:h-6 sm:w-6 h-5 " strokeWidth={2} />
 					</button>
 					{sampleGeneralFilters.map(filter => (
 						<GeneralFilterButton key={filter.id} filter={filter} onClick={() => alert(`${filter.label} clicked.`)} />

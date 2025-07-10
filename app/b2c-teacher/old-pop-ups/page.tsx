@@ -497,80 +497,8 @@ const UnpinModal: React.FC<BaseModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-// 11. upload questionary
-interface UploadQuestionaryModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
 
-const UploadQuestionaryModal: React.FC<UploadQuestionaryModalProps> = ({
-  isOpen,
-  onClose,
-}) => {
-  return (
-    <BaseModal isOpen={isOpen} onClose={onClose}>
-      <div className="bg-white mx-auto rounded-2xl p-6 space-y-4 max-w-xl relative">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black"
-        >
-          <FiX size={20} />
-        </button>
 
-        <h2 className="text-lg font-semibold mb-4">Upload Questionary File</h2>
-
-        {/* URL Input */}
-        <div className="mb-4">
-          <label className="block font-medium mb-2">Enter URL</label>
-          <input
-            type="text"
-			value = "url"
-            placeholder="Text"
-            className="w-full rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
-
-        <p className="text-center my-2 text-gray-500 font-medium">Or</p>
-
-        {/* File Upload */}
-        <div className="mb-6">
-          <label className="block font-medium font-Poppins mb-2">
-            Upload Document
-          </label>
-          <div className="flex items-center gap-2 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full px-4 py-2">
-            <Image
-              src="/teacher/b2c/upload.png"
-              alt="upload"
-              height={40}
-              width={40}
-            />
-            <input
-              type="text"
-              placeholder="Document Name"
-              value="fileName"
-             
-              className="bg-transparent outline-none w-full text-md font-Poppins text-[#6B7280]"
-            />
-          </div>
-        </div>
-
-        {/* Buttons */}
-        <div className="flex justify-center sm:justify-end gap-4">
-          <button
-            onClick={onClose}
-            className="rounded-full px-6 py-2 border border-[#E5E7EB] text-[#6B7280] font-semibold"
-          >
-            Cancel
-          </button>
-          <button className="rounded-full px-6 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition">
-            Add
-          </button>
-        </div>
-      </div>
-    </BaseModal>
-  );
-};
 
 
 // --- Main Page Component to trigger modals ---
@@ -603,7 +531,7 @@ export default function AllPopupsPage() {
     { id: "createNewGroup", label: "Create New Group" },
     { id: "manageGroup", label: "Manage Group" },
     { id: "uploadVideos", label: "Upload Videos" },
-    { id: "uploadquestionary", label: "upload questionary " },
+    
   ];
 
   return (
@@ -671,10 +599,7 @@ export default function AllPopupsPage() {
         onClose={() => setOpenModal(null)}
         children={undefined}
       />
-      <UploadQuestionaryModal
-        isOpen={openModal === "uploadquestionaryfile"}
-        onClose={() => setOpenModal(null)}
-      />
+     
     </div>
   );
 }
