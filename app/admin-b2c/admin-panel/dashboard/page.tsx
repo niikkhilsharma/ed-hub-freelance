@@ -13,6 +13,8 @@ import { useState } from 'react'
 import TabSwitch from '@/components/common-components/TabSwitch'
 import AdminToolkit from './AdminToolkit'
 import Overview from './AdminOverview'
+import ArrowUi from './ArrowUi'
+import { HiChevronDown } from 'react-icons/hi'
 
 export default function DashboardPage() {
 	const tabs = ["Online", "Offline"]
@@ -51,6 +53,14 @@ export default function DashboardPage() {
 								</CardDescription>
 							</CardHeader>
 						</Card>
+						<Card className="shadow-none bg-[#F9FAFB] w-full sm:w-1/3">
+							<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
+								<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">15</CardTitle>
+								<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
+									Mentors
+								</CardDescription>
+							</CardHeader>
+						</Card>
 					</div>
 
 					{/* Progress and Chart Section */}
@@ -72,7 +82,7 @@ export default function DashboardPage() {
 									/>
 								</div>
 								<div>
-									<ArrowControl leftOnClick={() => { }} RightOnClick={() => { }} text="Branch 1" />
+									<ArrowUi leftOnClick={() => { }} RightOnClick={() => { }} text="Filter" />
 								</div>
 							</CardHeader>
 							<div className="px-2 sm:px-4">
@@ -166,8 +176,26 @@ export default function DashboardPage() {
 						</Card>
 
 						{/* Chart Card */}
-						<div className="w-full lg:w-[55%] border rounded-2xl p-3 sm:p-4 bg-[#F9FAFB] flex flex-col xl:flex-row justify-center gap-4 items-start xl:items-center">
+						<div className="w-full lg:w-[55%] border rounded-2xl p-3 sm:p-4 bg-[#F9FAFB] flex flex-col justify-between gap-4 items-start">
+							<div className="flex w-full flex-wrap gap-4 justify-between">
+									<ArrowUi leftOnClick={() => { }} RightOnClick={() => { }} text="Online" />
+									<div className="flex flex-wrap gap-4.5">
+										{Array(4)
+											.fill(null)
+											.map((_, index) => (
+												<div
+													key={index}
+													className="flex items-center justify-between px-2 py-1.25 border border-gray-300 rounded-xl cursor-pointer bg-[#F9FAFB] text-sm text-black tracking-tight font-normal"
+												>
+													Filter
+													<HiChevronDown className="w-5 h-5 ml-6 text-black" />
+												</div>
+											))}
+									</div>
+								</div>
+							<div className="flex w-full flex-col xl:flex-row justify-center gap-4 items-start xl:items-center">
 							<div className="w-full xl:flex-1">
+								
 								<h3 className="text-sm sm:text-base font-medium mb-2 sm:mb-4">Top Institute</h3>
 								<ChartBarLabelCustom />
 							</div>
@@ -194,6 +222,7 @@ export default function DashboardPage() {
 										<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
 									</div>
 								</div>
+							</div>
 							</div>
 						</div>
 					</div>
