@@ -2,9 +2,9 @@ import PrincipalChatrsReport from '@/components/principal/principal-charts-repor
 import { IoMdSettings } from 'react-icons/io'
 import React from 'react'
 import Image from 'next/image'
-import { FiArrowLeft } from 'react-icons/fi'
 
 import { FaStar } from 'react-icons/fa'
+import { FiArrowLeft } from 'react-icons/fi'
 
 interface CourseCardProps {
 	image: string

@@ -20,7 +20,7 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
       {filters.map((filter) => (
         <button
           key={filter.id}
-          className={`text-sm px-2 py-2 flex items-center gap-3 rounded-xl border bg-gray-100 border-gray-300 hover:bg-gray-200`}
+          className={`text-xs sm:text-sm px-2 py-2 flex items-center gap-3 rounded-xl border bg-gray-100 border-gray-300 hover:bg-gray-200`}
         >
           {filter.label} <FiChevronDown />
         </button>
