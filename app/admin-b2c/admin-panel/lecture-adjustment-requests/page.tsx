@@ -234,7 +234,7 @@ const ReschedulePopup: React.FC<RescheduleProps> = ({ onCancel, onConfirm }) => 
     return (
         <div className="fixed inset-0 flex items-center justify-center z-30">
             <div className=' bg-black opacity-50 absolute h-full w-full z-10' />
-            <div className="relative z-50 bg-white rounded-3xl p-4 w-[90%] max-w-lg text-center shadow-lg">
+            <div className="relative z-50 bg-white rounded-3xl p-6 w-[90%] max-w-lg text-center shadow-lg">
                 <h2 className="text-xl font-semibold mb-4">Confirmation</h2>
                 <p className="text-black font-normal text-sm leading-relaxed">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis
