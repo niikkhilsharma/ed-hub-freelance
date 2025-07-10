@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { FiChevronDown, FiDownload, FiSearch } from 'react-icons/fi';
+import { FiArrowLeft, FiChevronDown, FiDownload, FiSearch } from 'react-icons/fi';
 import { ChatInput } from './ui-components'; // Import ChatInput
 
 // --- Data Interfaces (from your original) ---
@@ -148,8 +148,9 @@ interface ChatAreaProps {
     selectedTeacher: TeacherContact | undefined; messages: ChatMessageData[]; newMessage: string;
     onNewMessageChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onSendMessage: (e: React.FormEvent) => void;
+    onBackClick?: () => void;
 }
-export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, newMessage, onNewMessageChange, onSendMessage, }) => (
+export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, newMessage, onNewMessageChange, onSendMessage, onBackClick, }) => (
     // Original wrapper: w-full sm:w-[70%] bg-white rounded-3xl shadow-xl flex flex-col h-[calc(100vh-4rem)]
     <div className="w-full relative z-0 lg:w-[65%] bg-[#EEEEEE] rounded-2xl sm:rounded-3xl flex flex-col 
                    h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-4rem)]"
@@ -166,9 +167,18 @@ export const ChatArea: React.FC<ChatAreaProps> = ({ selectedTeacher, messages, n
         {selectedTeacher ? (
             <>
                 {/* Original header: p-4 flex items-center gap-3 shrink-0 */}
-                <div className="p-2 mt-4  z-20 relative flex items-center gap-2 rounded-full bg-white  sm:gap-3">
-                    <Image src={selectedTeacher.avatarSrc} alt={selectedTeacher.name} width={40} height={40} className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10" />
-                    <h3 className="text-md font-semibold text-black sm:text-lg">{selectedTeacher.name}</h3>
+                <div className="p-2 mt-4 justify-between z-20 relative flex items-center gap-2 rounded-full bg-white  sm:gap-3">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                        <Image src={selectedTeacher.avatarSrc} alt={selectedTeacher.name} width={40} height={40} className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10" />
+                        <h3 className="text-md font-semibold text-black sm:text-lg">{selectedTeacher.name}</h3>
+                    </div>
+                    {onBackClick && (
+                        <div className="p-3 border-b flex items-center bg-white z-30 lg:hidden">
+                            <button onClick={onBackClick} className="text-blue-600 font-medium flex items-center gap-2">
+                                <FiArrowLeft size={20} />
+                            </button>
+                        </div>
+                    )}
                 </div>
                 {/* Original messages: flex-grow p-4 space-y-4 overflow-y-auto custom-scrollbar */}
                 <div className="flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4 sm:space-y-4">

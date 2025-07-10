@@ -125,6 +125,7 @@ export default function ChatPage() {
                                     newMessage={newMessage}
                                     onNewMessageChange={(e) => setNewMessage(e.target.value)}
                                     onSendMessage={handleSendMessage}
+                                    
                                 />
                             </motion.div>
                         )}
