@@ -20,7 +20,7 @@ const AdminB2CLayoutWrapper = ({ children }: Props) => {
     return (
         <>
            <Navbar user={headerUser}/>
-            <div className="bg-gray-100">{children}</div>
+            <div className="bg-[#E3E3E3]">{children}</div>
             <Footer />
         </>
     );

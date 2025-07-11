@@ -14,57 +14,67 @@ import {
   FiTrash2,
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
+import RequestPayRaise from "./components/RequestPayRaise";
+import ShiftStudentModal from "./components/ShiftStudent";
+import RemoveStudent from "./components/RemoveStudent";
+import ShiftStudentConfirmModal from "./components/ConfirmShift";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  children: React.ReactNode;
-  maxWidth?: string;
+    isOpen: boolean;
+    onClose: () => void;
+    children: React.ReactNode;
+    maxWidth?: string;
 }
-const BaseModal: React.FC<BaseModalProps> = ({
-  isOpen,
-  onClose,
-  children,
-  maxWidth = "max-w-md",
-}) => {
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleEsc);
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-      document.body.style.overflow = "auto";
-    };
-  }, [isOpen, onClose]);
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div
-          onClick={onClose}
-          className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center p-4 z-50"
-        >
-          <motion.div
-            onClick={(e) => e.stopPropagation()}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
-            className={`bg-white rounded-3xl shadow-xl w-full ${maxWidth} overflow-hidden`}
-          >
-            {children}
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
+export interface PopupProp {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+export const BaseModal: React.FC<BaseModalProps> = ({
+    isOpen,
+    onClose,
+    children,
+    maxWidth,
+}) => {
+    useEffect(() => {
+        const handleEsc = (event: KeyboardEvent) => {
+            if (event.key === "Escape") onClose();
+        };
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+            window.addEventListener("keydown", handleEsc);
+        } else {
+            document.body.style.overflow = "auto";
+        }
+        return () => {
+            window.removeEventListener("keydown", handleEsc);
+            document.body.style.overflow = "auto";
+        };
+    }, [isOpen, onClose]);
+
+    return (
+        <AnimatePresence>
+            {isOpen && (
+                <div
+                    onClick={onClose}
+                    className="fixed inset-0 bg-[#0000004a] flex items-center justify-center p-4 z-50"
+                >
+                    <motion.div
+                        onClick={(e) => e.stopPropagation()}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.95 }}
+                        transition={{ duration: 0.2 }}
+                        className={`bg-white rounded-3xl w-full ${maxWidth} overflow-hidden`}
+                    >
+                        {children}
+                    </motion.div>
+                </div>
+            )}
+        </AnimatePresence>
+    );
 };
 
 // --- Helper Components for Forms ---
@@ -81,7 +91,7 @@ const FormGroup: React.FC<{ label: string; children: React.ReactNode }> = ({
 );
 
 // --- 1. Confirm Password Modal ---
-const ConfirmPasswordModal: React.FC<BaseModalProps> = ({
+const ConfirmPasswordModal: React.FC<PopupProp> = ({
   isOpen,
   onClose,
 }) => {
@@ -145,7 +155,7 @@ const ConfirmPasswordModal: React.FC<BaseModalProps> = ({
 
 // --- 2. Add Video Modal ---
 const AddVideoModal: React.FC<BaseModalProps> = ({ isOpen, onClose }) => (
-  <BaseModal isOpen={isOpen} onClose={onClose}>
+  <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
     <div className="p-6">
       <div className="flex justify-between items-center mb-3">
         <h2 className="text-xl font-bold">Add Videos</h2>
@@ -222,7 +232,7 @@ const ShareVideoModal: React.FC<ShareModalProps> = ({
   onClose,
   title,
 }) => (
-  <BaseModal isOpen={isOpen} onClose={onClose}>
+  <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold">{title}</h2>
@@ -331,38 +341,7 @@ const EditDemoVideoModal: React.FC<BaseModalProps> = ({ isOpen, onClose }) => (
     </div>
   </BaseModal>
 );
-// --- 6. Request pay raise
-const PayRaiseModal: React.FC<BaseModalProps> = ({ isOpen, onClose }) => {
-  return (
-    <BaseModal isOpen={isOpen} onClose={onClose}>
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-4">
-          <h2 className="text-xl font-bold">Request a Pay Raise</h2>
-          <button
-            onClick={onClose}
-            className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"
-          >
-            <FiX />
-          </button>
-        </div>
-        <FormGroup label=" ">
-          <div className="relative">Hola</div>
-        </FormGroup>
-        <div className="flex justify-end gap-3 mt-4">
-          <button
-            onClick={onClose}
-            className="px-6 py-2.5 border border-[#E5E7EB] text-[#6B7280] font-semibold rounded-full hover:bg-gray-200"
-          >
-            Cancel
-          </button>
-          <button className="px-8 py-2.5 bg-[#3366FF] text-white font-semibold rounded-full hover:bg-blue-700">
-            Apply
-          </button>
-        </div>
-      </div>
-    </BaseModal>
-  );
-};
+
 // --- 7. Schedule Meeting
 const ScheduleMeetingModal: React.FC<BaseModalProps> = ({
   isOpen,
@@ -513,11 +492,10 @@ export default function AllPopupsPage() {
     { id: "manageAccess", label: "Manage Access" },
     { id: "deleteRecording", label: "Delete Recording" },
     { id: "editDemoVideo", label: "Edit Demo Video" },
-    { id: "payRaise", label: "Pay Raise" },
+    { id: "payRaise", label: "Request Pay Raise" },
     { id: "scheduleMeeting", label: "Schedule Meeting" },
     { id: "reScheduleMeetingTeacher", label: "Reschedule Meeting Teacher" },
     { id: "reScheduleMeetingStudent", label: "Reschedule Meeting Student" },
-    // done till here
     { id: "viewMeetingTeacher", label: "View Meeting Teacher" },
     { id: "viewMeetingStudent", label: "View Meeting Student" },
     { id: "pinChat", label: "Pin Chat" },
@@ -554,7 +532,6 @@ export default function AllPopupsPage() {
       <ConfirmPasswordModal
         isOpen={openModal === "confirmPassword"}
         onClose={() => setOpenModal(null)}
-        children={undefined}
       />
 
       <AddVideoModal
@@ -584,10 +561,21 @@ export default function AllPopupsPage() {
         onClose={() => setOpenModal(null)}
         children={undefined}
       />
-      <PayRaiseModal
+      <RequestPayRaise
         isOpen={openModal === "payRaise"}
         onClose={() => setOpenModal(null)}
-        children={undefined}
+      />
+      <ShiftStudentModal
+        isOpen={openModal === "shiftStudent"}
+        onClose={() => setOpenModal(null)}
+      />
+      <ShiftStudentConfirmModal
+        isOpen={openModal === "confirmShiftStudent"}
+        onClose={() => setOpenModal(null)}
+      />
+      <RemoveStudent
+        isOpen={openModal === "confirmRemoveShiftStudent"}
+        onClose={() => setOpenModal(null)}
       />
       <PinModal
         isOpen={openModal === "pinChat"}
