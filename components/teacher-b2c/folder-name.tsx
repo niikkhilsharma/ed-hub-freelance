@@ -106,7 +106,7 @@ const FileManagementContent: React.FC = () => {
   };
 
   return (
-    <div className="bg-white h-250 rounded-2xl shadow-lg p-4 sm:p-6 relative min-h-screen flex flex-col">
+    <div className="bg-white rounded-2xl shadow-lg h-270 p-4 sm:p-6 relative min-h-screen flex flex-col">
       {" "}
       {/* Header: Search and Filters */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6">

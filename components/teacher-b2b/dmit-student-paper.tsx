@@ -81,9 +81,10 @@ const sampleSummaryData: ExtendedAssessmentSummaryData = {
     { id: 'is5', skillName: 'Pedagogy learning', percentage: 40, colorClass: 'bg-[#FFC79A]' }, // Using Tailwind orange
   ],
   ratings: [
-    { id: 'r1', name: 'Concept', score: 3, maxScore: 5 },
-    { id: 'r2', name: 'Critical thinking', score: 4, maxScore: 5 },
+    { id: 'r1', name: 'Concept', score: 4, maxScore: 5 },
+    { id: 'r2', name: 'Critical thinking', score: 3, maxScore: 5 },
     { id: 'r3', name: 'Application of Concept', score: 5, maxScore: 5 },
+    { id: 'r4', name: 'Retention', score: 4, maxScore: 5 },
     { id: 'r4', name: 'Retention', score: 4, maxScore: 5 },
     { id: 'r5', name: 'Logical Reasoning', score: 4, maxScore: 5 },
   ],
@@ -230,12 +231,12 @@ const IndividualScoresPanel: React.FC<{ scores: IndividualSkillScore[] }> = ({ s
           <div
             className={`rounded-full h-full ${score.colorClass}`}
             style={{ width: `${score.percentage}%` }}
-            aria-label={`${score.skillName} score: ${score.percentage}%`}
+            aria-label={`${score.skillName} 
+            score: ${score.percentage}%`}
             title={`${score.percentage}%`}
           />
           
         </div>
-        <span className="text-sm">{score.percentage}%</span>
       </div>
     ))}
   </div>
@@ -276,9 +277,9 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
       {/* <IndividualScoresPanel scores={summary.individualScores} /> */}
 
       {/* View Detailed Report Button */}
-      <button className={`w-full flex items-center justify-center  gap-1 sm:gap-2  py-3 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
-        <IoTimeOutline className={`w-5 h-7 ${COLOR_RATING_STARS}`} />
-        <span className={` text-xl sm:text-md font-medium  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
+      <button className={`w-full flex items-center justify-center  gap-1 sm:gap-2  py-2 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
+        <IoTimeOutline className={`w-5 h-5 ${COLOR_RATING_STARS}`} />
+        <span className={` text-sm sm:text-md font-medium  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
       </button>
 
       {/* Ratings Section */}
