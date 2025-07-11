@@ -129,7 +129,7 @@ export default function CourseManagementPage() {
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
     <MaxWidthWrapper>
-      <div className="bg-[#eeeeee]   py-4 px-1 sm:px-16  min-h-screen ">
+      <div className="  py-4 px-1 sm:px-16  min-h-screen ">
         <main className="p-2 max-w-[90rem] sm:p-6    mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
