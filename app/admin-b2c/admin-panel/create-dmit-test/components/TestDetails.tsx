@@ -126,7 +126,7 @@ const TeatDetails: FC = () => {
 
         {/* Option Count */}
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium">Options</label>
+          <label className="text-lg">Options</label>
           <CustomNumberInput value={optionCount} onChange={setOptionCount} />
         </div>
 
@@ -280,7 +280,7 @@ const TeatDetails: FC = () => {
 
         {/* Option Count */}
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium">Options</label>
+          <label className="text-lg">Options</label>
           <CustomNumberInput value={optionCount} onChange={setOptionCount} />
         </div>
 
