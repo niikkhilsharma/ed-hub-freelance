@@ -1,7 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { FaCalendarAlt, FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown } from 'react-icons/fa';
+import { FiCalendar } from "react-icons/fi";
 
 export default function StudentProfile() {
   return (
@@ -91,7 +92,7 @@ export default function StudentProfile() {
         <div className="space-y-1">
           <label className="text-sm font-medium">D.O.B.</label>
           <div className="relative">
-            <FaCalendarAlt className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none" />
+            <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"/>
             <input
               type="date"
               className="w-full rounded-[12px] mt-2 border border-gray-200 px-4 py-2 text-sm bg-[#f9fafb] pr-10 appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0"
@@ -198,6 +199,23 @@ export default function StudentProfile() {
           />
         </div>
 
+        {/* Contact Number */}
+        <div className="col-span-1 md:col-span-2 space-y-1">
+          <label className="text-sm font-medium">Contact Number</label>
+          <div className="flex items-center flex-wrap justify-between gap-4">
+            <input
+              type="text"
+              defaultValue="+00 0000000000"
+              className="flex-1 rounded-[12px] mt-2 border md:max-w-md border-gray-200 px-4 py-2 text-sm bg-[#f9fafb]"
+            />
+            <button
+              type="button"
+              className="whitespace-nowrap bg-[#3366ff] text-white text-sm px-4 py-2.5 rounded-full"
+            >
+              Change Number
+            </button>
+          </div>
+        </div>
 
         {/* Email */}
         <div className="col-span-1 md:col-span-2 space-y-1">
@@ -213,24 +231,6 @@ export default function StudentProfile() {
               className="whitespace-nowrap bg-[#3366ff] text-white text-sm px-4 py-2.5 rounded-full"
             >
               Change Email
-            </button>
-          </div>
-        </div>
-
-        {/* Contact Number */}
-        <div className="col-span-1 md:col-span-2 space-y-1">
-          <label className="text-sm font-medium">Contact Number</label>
-          <div className="flex items-center flex-wrap justify-between gap-4">
-            <input
-              type="text"
-              defaultValue="+00 0000000000"
-              className="flex-1 rounded-[12px] mt-2 border md:max-w-md border-gray-200 px-4 py-2 text-sm bg-[#f9fafb]"
-            />
-            <button
-              type="button"
-              className="whitespace-nowrap bg-[#3366ff] text-white text-sm px-4 py-2.5 rounded-full"
-            >
-              Change Number
             </button>
           </div>
         </div>

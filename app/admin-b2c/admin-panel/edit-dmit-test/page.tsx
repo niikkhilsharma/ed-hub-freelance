@@ -8,12 +8,12 @@ import ReviewQuestion from "./components/ReviewQuestion";
 import TestDetails from "./components/TestDetails";
 
 const CreateDmitTest = () => {
-    const tabs = ['DMIT Test Questionnaire', 'Review']; // Normal string array
+    const tabs = ['Test Details', 'Review']; // Normal string array
 
     const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
     const headingMap = {
-        'DMIT Test Questionnaire': 'Test Name',
+        'Test Details': 'Test Name',
         'Review': 'Review Questions',
     } as Record<string, string>;
 
