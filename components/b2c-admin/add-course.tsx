@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiX, FiChevronDown } from "react-icons/fi";
+import Link from "next/link";
 import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
 
 const AddCourseModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
@@ -67,11 +68,13 @@ const AddCourseModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
           >
             Add
           </button>
+          <Link  href="/admin-b2c/admin-panel/create-course" >
           <button
             className="rounded-full px-4 py-3 bg-yellow-400 text-white text-sm font-medium hover:bg-yellow-500"
           >
             Create New Course
           </button>
+          </Link>
         </div>
       </div>
     </BaseModal>

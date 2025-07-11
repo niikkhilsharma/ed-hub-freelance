@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
-import MaxWidthWrapper from "../max-width-wrapper";
+import MaxWidthWrapper from "../../components/admin/max-width-wrapper"
 import ScrollableButton from "./common-component/scrollable-button";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import AddCourseModal from "@/components/b2c-admin/add-course";
