@@ -25,11 +25,11 @@ const Overview: React.FC = () => {
                 {summaryStats.map((stat) => (
                     <div
                         key={stat.label}
-                        className={`rounded-2xl p-4 text-center ${stat.bg} border ${stat.bg === 'bg-white' ? 'border-gray-200' : 'border-transparent'
+                        className={`rounded-2xl px-4 py-6 text-center ${stat.bg} border ${stat.bg === 'bg-white' ? 'border-gray-200' : 'border-transparent'
                             }`}
                     >
-                        <p className="text-sm font-medium">{stat.label}</p>
-                        <p className="text-2xl font-bold">{stat.value}</p>
+                        <p className="text-lg lg:text-xl mb-2 font-medium">{stat.label}</p>
+                        <p className="text-2xl lg:text-[38px] font-bold">{stat.value}</p>
                     </div>
                 ))}
             </div>
@@ -53,14 +53,14 @@ const Overview: React.FC = () => {
                     {tableData.map((row, idx) => (
                         <div
                             key={idx}
-                            className="flex items-center bg-gray-100 text-sm rounded-2xl px-12 py-3 border border-gray-200 gap-x-6"
+                            className="flex items-center bg-[#f9fafb] text-sm rounded-2xl px-12 py-3 border border-gray-200 gap-x-6"
                         >
                             <div className="flex-1 flex justify-start items-center">{row.student}</div>
                             <div className="flex-1 flex justify-center items-center">{row.course}</div>
                             <div className="flex-1 flex justify-center items-center">{row.lastActive}</div>
                             <div className="flex-1 flex justify-center items-center">{row.resumedOn}</div>
                             <div className="flex-1 flex justify-end items-center">
-                                <button className="rounded-full bg-white border border-gray-300 px-4 py-1 hover:bg-gray-100 transition">
+                                <button className="rounded-full bg-white border border-gray-300 px-4 py-1 hover:bg-[#f9fafb] transition">
                                     Details
                                 </button>
                             </div>
