@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FiSearch, FiChevronDown } from "react-icons/fi"; // Example icons
 import { FiCalendar } from "react-icons/fi";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import Link from "next/link";
 interface Student {
   id: number;
   name: string;
@@ -297,12 +298,14 @@ const [time, setTime] = useState("16:00");
       </div>
 
       <div className="flex justify-center">
+        <Link href="/admin-b2c/admin-panel/mentor-profile">
         <button
           onClick={handleAssignCourse}
           className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-3 px-4 sm:px-6 md:px-8 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Schedule
         </button>
+        </Link>
       </div>
     </div>
   );

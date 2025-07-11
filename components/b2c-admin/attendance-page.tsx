@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { FiSearch, FiFilter, FiChevronDown } from "react-icons/fi";
-import MaxWidthWrapper from "../max-width-wrapper";
+import MaxWidthWrapper from "../../components/admin/max-width-wrapper";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import PeopleGrid from "@/components/b2c-admin/attandance-teacher";
 import StudentGrid from "./attandance-student";
@@ -60,7 +60,7 @@ export default function AttendancePage() {
 
   return (
     <MaxWidthWrapper>
-      <div className="bg-[#eeeeee] py-6 px-16  min-h-screen">
+      <div className="py-6 px-16  min-h-screen">
         <main className="p-2 max-w-[90rem] sm:p-6   mx-auto bg-white my-6 rounded-3xl">
           {/* Search & Filter Section */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
