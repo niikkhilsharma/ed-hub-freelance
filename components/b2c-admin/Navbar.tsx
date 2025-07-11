@@ -29,7 +29,7 @@ export const adminNavItems = [
     icon: <FaRegSmile className="text-lg sm:text-2xl" />,
     key: "dashboard",
     href: "/admin-b2c/admin-panel/dashboard",
-    paths: ["/dashboard"],
+    paths: ["/dashboard", "/inventory", "/manage-teacher-leave", "extra-lecture-manager", "/attendance-course", "/request-drop-course", "/request-teach-more", "/review-list", "/teacher-attendence", "/student-attendence"],
   },
   {
     label: "DMIT Test",
@@ -56,8 +56,8 @@ export const adminNavItems = [
     label: "Security",
     icon: <FiShield className="text-lg sm:text-2xl" />,
     key: "security",
-    href: `${basePath}/security`,
-    paths: ["/security"],
+    href: `${basePath}/security/security-course`,
+    paths: ["/security/course-login-activity", "/security/security-course", "/security/student-login-acitvity"],
   },
   {
     label: "Chat",
@@ -74,7 +74,7 @@ export const secondaryNavItems = [
     icon: <FaRegSmile className="text-lg sm:text-2xl" />,
     key: "dashboard",
     href: "/admin-b2c/admin-panel/dashboard",
-    paths: ["/dashboard"],
+    paths: ["/dashboard", "/extra-lecture-manager", "/inventory"],
   },
   {
     label: "Student",
@@ -112,16 +112,7 @@ const getNavItemsForRoute = (pathname: string) => {
   return isSecondary ? secondaryNavItems : adminNavItems;
 };
 
-// const getActiveNavKey = (
-//   pathname: string,
-//   navItems: typeof adminNavItems
-// ): string | null => {
-//   const subpath = pathname.replace(basePath, "") || "/";
-//   const match = navItems.find((item) =>
-//     item.paths.some((p) => subpath.startsWith(p))
-//   );
-//   return match?.key ?? null;
-// };
+
 const getActiveNavKey = (
   pathname: string,
   navItems: typeof adminNavItems
@@ -130,53 +121,9 @@ const getActiveNavKey = (
   const match = navItems.find((item) =>
     item.paths.some((p) => subpath.startsWith(p))
   );
-  return match?.key ?? "dashboard"; // Default to dashboard if no match
+  return match?.key ?? "";
 };
 
-// const navItems = [
-//   {
-//     label: "Dashboard",
-//     icon: <FaRegSmile className="text-lg sm:text-2xl" />,
-//     key: "dashboard",
-//     href: "/admin/dashboard",
-//     paths: ["/admin/dashboard"],
-//   },
-//   {
-//     label: "DMIT Test",
-//     icon: <FiGrid className="text-lg sm:text-2xl" />,
-//     key: "dmit",
-//     href: "/principal/dmit",
-//     paths: [""],
-//   },
-//   {
-//     label: "Material",
-//     icon: <BiCoinStack className="text-lg sm:text-2xl" />,
-//     key: "material",
-//     href: "/principal/material",
-//     paths: [""],
-//   },
-//   {
-//     label: "Course MGMT",
-//     icon: <FiBookOpen className="text-lg sm:text-2xl" />,
-//     key: "course",
-//     href: "",
-//     paths: [""],
-//   },
-//   {
-//     label: "Security",
-//     icon: <FiShield className="text-lg sm:text-2xl" />,
-//     key: "security",
-//     href: "/admin-b2c/admin-panel/security",
-//     paths: [""],
-//   },
-//   {
-//     label: "Chat",
-//     icon: <FiMessageCircle className="text-lg sm:text-2xl" />,
-//     key: "chat",
-//     href: "/principal/chat",
-//     paths: [""],
-//   },
-// ];
 
 interface NavbarProps {
   user: {
@@ -194,11 +141,6 @@ const Navbar = ({ user }: NavbarProps) => {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
-  const getActiveKeyFromPath = (path: string) => {
-    const match = navItems.find((item) => path.startsWith(item.href));
-    return match?.key || "dashboard";
   };
 
 

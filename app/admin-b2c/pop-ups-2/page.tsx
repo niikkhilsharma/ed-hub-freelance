@@ -12,7 +12,6 @@ import {
     FiTrash2,
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
-import TabSwitcher from "./components/FolderDetails";
 import ManageAccess from "./components/ManageAccess";
 import MeetingDetailTeacher from "./components/MeetingDetailTeacher";
 import MeetingDetailStudent from "./components/MeetingDetailStudent";

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiSearch, FiX } from 'react-icons/fi';
 import { BaseModal, PopupProp } from '../page';
+import Link from 'next/link';
 
 
 const ExistingDmitModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
@@ -37,11 +38,11 @@ const ExistingDmitModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
         {/* Test List */}
         <div className="flex flex-col gap-2 max-h-[50vh] overflow-y-auto pr-2 custom-peach-scrollbar">
           {testList.map((test, idx) => (
-            <div key={idx} className="border rounded-xl bg-gray-50 px-4 py-3">
+            <Link href={"/admin-b2c/admin-panel/edit-dmit-test"} key={idx} className="border rounded-xl block bg-gray-50 px-4 py-3">
               <p className="font-medium text-sm">{test.name}</p>
               <p className="text-xs text-gray-500">{test.duration}</p>
               <p className="text-xs text-gray-500">{test.modified}</p>
-            </div>
+            </Link>
           ))}
         </div>
 

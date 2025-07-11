@@ -53,15 +53,15 @@ const AttendenceBanner = ({ name, button1, button2, profileImage }: PrincipalLog
                                 </span>
                             </div>
                         </div>
-                        <div className="text-base gap-x-8 gap-y-2 flex items-center space-y-0.5 text-black">
+                        <div className="text-base gap-x-8 md:gap-y-2 flex flex-col md:flex-row items-start md:items-center space-y-0.5 text-black">
                             <div className="flex flex-col gap-1">
-                                <p><strong className="font-semibold">City:</strong>{" "}Mumbai</p>
-                                <p><strong className="font-semibold">State:</strong>{" "}Maharashtra</p>
+                                <p className='text-sm md:text-base'><strong className="font-semibold">City:</strong>{" "}Mumbai</p>
+                                <p className='text-sm md:text-base'><strong className="font-semibold">State:</strong>{" "}Maharashtra</p>
                             </div>
                             <div className="flex flex-col gap-1">
-                                <p><strong className="font-semibold">Gender:</strong>{" "}Male</p>
-                                <p><strong className="font-semibold">DOB:</strong>{" "}15 Jun 2015</p>
-                                <p><strong className="font-semibold">Email:</strong>{" "}example@gm.com</p>
+                                <p className='text-sm md:text-base'><strong className="font-semibold">Gender:</strong>{" "}Male</p>
+                                <p className='text-sm md:text-base'><strong className="font-semibold">DOB:</strong>{" "}15 Jun 2015</p>
+                                <p className='text-sm md:text-base'><strong className="font-semibold">Email:</strong>{" "}example@gm.com</p>
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,7 @@ const filters = [
                     <SearchFilter filters={filters} />
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4 py-4">
                         {courses.map((course, index) => (
-                            <Link href="/admin-b2c/admin-panel/course-management-teacher" key={index}>
+                            <Link href="/admin-b2c/admin-panel/attendance" key={index}>
                                 <div className="flex flex-col w-full max-h-[330px] px-2 py-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-3xl ">
                                     <div className="w-full aspect-auto rounded-2xl overflow-hidden">
                                         <Image
