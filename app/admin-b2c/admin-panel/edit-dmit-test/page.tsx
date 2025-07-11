@@ -6,7 +6,7 @@ import TabSwitchTest from "@/components/common-components/TabSwitchTest";
 import { useState } from "react";
 import ReviewQuestion from "./components/ReviewQuestion";
 import TestDetails from "./components/TestDetails";
-
+import "./edit.css"
 const CreateDmitTest = () => {
     const tabs = ['Test Details', 'Review']; // Normal string array
 
