@@ -8,12 +8,12 @@ import {
     TeacherContact, // Import type
     ChatMessageData // Import type
 } from './components';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Sample Data (Strictly from your original) ---
 const teachersListData: TeacherContact[] = Array.from({ length: 10 }, (_, i) => ({ // Kept 10 distinct teacher entries
     id: `teacher${i + 1}`,
-    name: 'Student Name', // All are "Teacher Name"
-    subject: 'Subject',    // All are "Subject"
+    name: 'Name', // All are "Teacher Name"
     avatarSrc: `/teacher-avatar-chat-${(i % 3) + 1}.jpg`,
     lastMessageTime: '7:00 pm',
     // isActive is handled by activeTeacherId state
@@ -36,7 +36,7 @@ export default function ChatPage() {
     const [messages, setMessages] = useState<ChatMessageData[]>(initialChatMessagesData);
     const [newMessage, setNewMessage] = useState('');
 
-    
+
     const selectedTeacher = teachersListData.find(t => t.id === activeTeacherId);
 
     const handleTeacherSelect = (teacherId: string) => {
@@ -54,29 +54,85 @@ export default function ChatPage() {
         setMessages(prevMessages => [...prevMessages, messageToSend]);
         setNewMessage('');
     };
+    const [showChatOnMobile, setShowChatOnMobile] = useState(false);
 
+    const handleSelect = (id: string) => {
+        handleTeacherSelect(id);
+        setShowChatOnMobile(true);
+    };
+
+    const handleBack = () => {
+        setShowChatOnMobile(false);
+    };
     return (
-        <div className=" min-h-screen  bg-[#EEEEEE] flex flex-col"
-        
-        >
-            
-            {/* Original main: flex-grow container mx-auto p-4 sm:p-6 lg:p-8 flex gap-5 items-start */}
-            <main className=" z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 
-                           sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start"> {/* Responsive padding, gap, and flex direction */}
-                <TeacherListSidebar
-                    teachers={teachersListData} // Using the 10-item list for initial render
-                    activeTeacherId={activeTeacherId}
-                    onTeacherSelect={handleTeacherSelect}
-                />
-                <ChatArea
-                    selectedTeacher={selectedTeacher}
-                    messages={messages}
-                    newMessage={newMessage}
-                    onNewMessageChange={(e) => setNewMessage(e.target.value)}
-                    onSendMessage={handleSendMessage}
-                />
+        <div className="min-h-screen bg-[#EEEEEE] flex flex-col">
+            <main className="z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start">
+                {/* 🖥️ Desktop Layout */}
+                <div className="hidden lg:flex w-full gap-5">
+                    <TeacherListSidebar
+                        teachers={teachersListData}
+                        activeTeacherId={activeTeacherId}
+                        onTeacherSelect={handleTeacherSelect}
+                    />
+                    <ChatArea
+                        selectedTeacher={selectedTeacher}
+                        messages={messages}
+                        newMessage={newMessage}
+                        onNewMessageChange={(e) => setNewMessage(e.target.value)}
+                        onSendMessage={handleSendMessage}
+                    />
+                </div>
+
+                {/* 📱 Mobile / Tablet Layout */}
+                {/* 📱 Mobile / Tablet Layout */}
+                <div className="lg:hidden relative w-full min-h-[400px]"> {/* <-- Give it a min height to prevent blank */}
+                    <AnimatePresence mode="wait" initial={false}>
+                        {!showChatOnMobile ? (
+                            <motion.div
+                                key="list"
+                                initial={{ x: 0 }}
+                                animate={{ x: 0 }}
+                                exit={{ x: '-100%' }}
+                                transition={{ duration: 0.4 }}
+                                className="absolute top-0 left-0 w-full z-10"
+                            >
+                                <TeacherListSidebar
+                                    teachers={teachersListData}
+                                    activeTeacherId={activeTeacherId}
+                                    onTeacherSelect={(id) => {
+                                        handleSelect(id);
+                                        setShowChatOnMobile(true); // trigger animation
+                                    }}
+                                />
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="chat"
+                                initial={{ x: '100%' }}
+                                animate={{ x: 0 }}
+                                exit={{ x: '100%' }}
+                                transition={{ duration: 0.4 }}
+                                className="absolute top-0 left-0 w-full z-20 bg-white"
+                            >
+                                <div className="p-3 border-b flex items-center bg-white sticky top-0 z-30">
+                                    <button onClick={() => setShowChatOnMobile(false)} className="text-blue-600 font-medium">
+                                        ← Back
+                                    </button>
+                                </div>
+                                <ChatArea
+                                    selectedTeacher={selectedTeacher}
+                                    messages={messages}
+                                    newMessage={newMessage}
+                                    onNewMessageChange={(e) => setNewMessage(e.target.value)}
+                                    onSendMessage={handleSendMessage}
+                                    
+                                />
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
             </main>
-            
         </div>
     );
 }
