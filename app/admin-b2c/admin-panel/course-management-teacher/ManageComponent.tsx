@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
 import TabSwitch from '@/components/common-components/TabSwitch';
+import Link from 'next/link';
 
 
 type CardData = {
@@ -74,26 +75,42 @@ const CourseManagement = () => {
                 {/* <ClassTab /> */}
                 <TabSwitch tabs={tabs} selected={selected} onChange={setSelected} />
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {/* Cards */}
-                    {filteredData.map((item) => (
-                        <div key={item.id} className="flex items-center border border-gray-300 gap-4 bg-gray-100 rounded-2xl px-2 py-1">
-                            <div className={`${item.role === "teacher" ? "w-20 h-20" : "w-18 h-16"} rounded-xl relative overflow-hidden`}>
-                                <Image src={item.image} alt={item.name} fill className="object-cover" />
-                            </div>
-                            <div className="flex-1">
-                                <div className="font-semibold text-m">{item.name}</div>
-                                {item.role === 'teacher' && (
-                                    <>
-                                        <div className="text-sm font-semibold text-[#FF3366]">{item.course}</div>
+  {filteredData.map((item) => {
+    const linkHref =
+      item.role === 'teacher'
+        ? `/admin-b2c/admin-panel/teacher-profile`
+        : `/admin-b2c/admin-panel/student-profile`;
 
-                                    </>
-                                )}
-                                <div className="text-xs text-gray-500">{item.level}</div>
-                                <div className="text-xs text-gray-500">{item.group}</div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+    return (
+      <Link href={linkHref} key={item.id} passHref>
+        <div className="flex items-center border border-gray-300 gap-4 bg-[#f9fafb] rounded-2xl px-2 py-1 cursor-pointer hover:shadow-md transition">
+          <div
+            className={`${
+              item.role === 'teacher' ? 'w-20 h-20' : 'w-18 h-16'
+            } rounded-xl relative overflow-hidden`}
+          >
+            <Image
+              src={item.image}
+              alt={item.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="flex-1">
+            <div className="font-semibold text-sm">{item.name}</div>
+            {item.role === 'teacher' && (
+              <div className="text-sm font-semibold text-[#FF3366]">
+                {item.course}
+              </div>
+            )}
+            <div className="text-xs text-gray-500">{item.level}</div>
+            <div className="text-xs text-gray-500">{item.group}</div>
+          </div>
+        </div>
+      </Link>
+    );
+  })}
+</div>
             </div>
         </div>
     );

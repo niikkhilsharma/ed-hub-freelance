@@ -3,8 +3,12 @@
 
 import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
 import Image from "next/image";
+import { useState } from "react";
+import RemoveCourseModal from "../../pop-ups-2/components/RemoveCourseModal";
 
 export default function RemoveCourse() {
+
+  const [removeCourse, setRemoveCourse] = useState(false)
 
   const filter = [
     { id: "filter1", label: "Filter 1" },
@@ -48,11 +52,15 @@ export default function RemoveCourse() {
                     </h3>
                   </div>
 
-                  <button className="rounded-full w-full px-4 py-2 cursor-pointer text-[#ff3366] bg-red-100 font-medium mt-2">Remove Course</button>
+                  <button className="rounded-full w-full px-4 py-2 cursor-pointer text-[#ff3366] bg-[#ff33661a] font-medium mt-2"
+                  onClick={() => setRemoveCourse(true)}>Remove</button>
                 </div>
             ))}
           </div>
       </div>
+      <RemoveCourseModal
+      isOpen={removeCourse} onClose={() => setRemoveCourse(false)} 
+      />
     </>
   );
 }

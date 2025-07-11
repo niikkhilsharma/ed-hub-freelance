@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { FaChevronDown } from 'react-icons/fa';
 
 export default function TeacherSettingsForm() {
@@ -27,11 +28,11 @@ export default function TeacherSettingsForm() {
       <Dropdown label="Example Question" options={['Solution', 'No Solution']} />
 
       {/* Save Button */}
-      <div>
+      <Link href="/admin-b2c/admin-panel/teacher-profile">
         <button className="bg-[#3366ff] text-white text-sm font-medium py-2 px-8 rounded-full hover:opacity-90">
           Save
         </button>
-      </div>
+      </Link>
     </div>
   );
 }

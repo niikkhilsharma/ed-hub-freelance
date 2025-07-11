@@ -117,7 +117,7 @@ const UploadFileImage: React.FC<PopupProp> = ({
     );
 };
 
-const AddItem: React.FC<PopupProp> = ({
+export const AddItem: React.FC<PopupProp> = ({
     isOpen,
     onClose,
 }) => {

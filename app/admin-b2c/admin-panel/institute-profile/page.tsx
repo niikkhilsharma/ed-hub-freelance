@@ -11,6 +11,7 @@ import ArrowControl from '@/components/admin/ui/arrow-control'
 import RadarChartAdmin from '@/components/admin/radar-chart'
 import { FiChevronDown } from 'react-icons/fi'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 
 const PieChartAdmin = dynamic(() => import('@/components/admin/pie-chart'), {
     ssr: false,
@@ -24,19 +25,30 @@ const PieChartAdmin = dynamic(() => import('@/components/admin/pie-chart'), {
 export default function SchoolManagementReportPage() {
     const [selectedTab, setSelectedTab] = useState<string>('Analysis')
 
-    const tabs = ['Analysis', 'Teachers', 'Students', 'Content']
+    const tabs = ['Analysis', 'Teachers', 'Students', 'Content'];
+    const tabPaths: Record<string, string> = {
+        Analysis: '/admin-b2c/admin-panel/institute-profile',
+        Teachers: '/admin-b2c/admin-panel/course-management-teacher',
+        Students: '/admin-b2c/admin-panel/course-management-teacher',
+        Content: '/admin-b2c/admin-panel/content-management',
+    };
     return (
         <div>
             <NamingBar name="Institute Name" />
             <MaxWidthWrapper className="bg-white rounded-2xl py-4 my-4 overflow-hidden">
                 <div className="flex items-center justify-start gap-8 mb-4 font-medium">
                     {tabs.map((tab, indx) => (
-                        <div
-                            className={cn('text-[#6B7280]', selectedTab === tab && 'text-[#3366FF] underline underline-offset-8 decoration-2')}
-                            onClick={() => setSelectedTab(tab)}
-                            key={indx}>
-                            {tab}
-                        </div>
+                        <Link href={tabPaths[tab]} key={indx}>
+                            <div
+                                className={cn(
+                                    'text-[#6B7280] cursor-pointer',
+                                    selectedTab === tab && 'text-[#3366FF] underline underline-offset-8 decoration-2'
+                                )}
+                                onClick={() => setSelectedTab(tab)}
+                            >
+                                {tab}
+                            </div>
+                        </Link>
                     ))}
                 </div>
 
@@ -245,53 +257,59 @@ export default function SchoolManagementReportPage() {
 
 function TecherChip() {
     return (
-        <div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
-            <Image
-                src={'/images/teacher.jpg'}
-                width={480}
-                height={331}
-                alt="teacher profile image"
-                className="rounded-2xl w-18 h-18 object-cover"
-            />
-            <div>
-                <p className="font-semibold text-lg">Name</p>
-                <p className="text-[#FF3366] text-sm font-medium">Subject</p>
-            </div>
-        </div>
+        <>
+            <Link href="/admin-b2c/admin-panel/course-management-teacher" className="block">
+                <div className="rounded-2xl bg-[#F3F4F6] flex gap-4 items-center p-2 min-w-52 w-52">
+                    <Image
+                        src={'/images/teacher.jpg'}
+                        width={480}
+                        height={331}
+                        alt="teacher profile image"
+                        className="rounded-2xl w-18 h-18 object-cover"
+                    />
+                    <div>
+                        <p className="font-semibold text-lg">Name</p>
+                        <p className="text-[#FF3366] text-sm font-medium">Subject</p>
+                    </div>
+                </div>
+            </Link>
+        </>
     )
 }
 
 function ClassBox() {
     return (
-        <div className="border p-4 rounded-2xl w-full">
-            <div className="flex gap-2 items-center mb-4">
-                <h1 className="text-[#1D5851] font-semibold text-lg px-2">Class 1</h1>
-                <span className="rounded-2xl text-[#F9326F] border px-1 py-0.5 text-[10px] border-[#F9326F]">
-                    Total Groups <span className="font-bold ml-1">4</span>
-                </span>
-            </div>
+        <Link href="/admin-b2c/admin-panel/course-management-teacher" className="block">
+            <div className="border p-4 rounded-2xl w-full">
+                <div className="flex gap-2 items-center mb-4">
+                    <h1 className="text-[#1D5851] font-semibold text-lg px-2">Class 1</h1>
+                    <span className="rounded-2xl text-[#F9326F] border px-1 py-0.5 text-[10px] border-[#F9326F]">
+                        Total Groups <span className="font-bold ml-1">4</span>
+                    </span>
+                </div>
 
-            <div className="bg-[#D3F5FF] rounded-2xl px-4 py-2">
-                <h1 className="text-[#1D5851] font-bold">Class Completion Progress</h1>
-                <div className="my-2">
-                    <h3 className="text-sm text-[#5E5E5E]">60%</h3>
-                    <Progress value={80} className="rounded-full mt-1 bg-white" />
+                <div className="bg-[#D3F5FF] rounded-2xl px-4 py-2">
+                    <h1 className="text-[#1D5851] font-bold">Class Completion Progress</h1>
+                    <div className="my-2">
+                        <h3 className="text-sm text-[#5E5E5E]">60%</h3>
+                        <Progress value={80} className="rounded-full mt-1 bg-white" />
+                    </div>
+                </div>
+
+                <div className="bg-[#F8F8F8] text-[#1D5851] py-4 px-8 mt-4 rounded-2xl flex items-center justify-between">
+                    <p>Students Enrolled</p>
+                    <p className="text-[#5E5E5E] font-bold">20</p>
+                </div>
+                <div className="bg-[#F8F8F8] text-[#1D5851] py-4 px-8 mt-4 rounded-2xl flex items-center justify-between">
+                    <p>Average Score</p>
+                    <p className="text-[#5E5E5E] font-bold">75/100</p>
+                </div>
+                <div className="bg-[#F8F8F8] text-[#1D5851] py-4 px-8 mt-4 rounded-2xl flex items-center justify-between">
+                    <p>Teachers Onboarded</p>
+                    <p className="text-[#5E5E5E] font-bold">20</p>
                 </div>
             </div>
-
-            <div className="bg-[#F8F8F8] text-[#1D5851] py-4 px-8 mt-4 rounded-2xl flex items-center justify-between">
-                <p>Students Enrolled</p>
-                <p className="text-[#5E5E5E] font-bold">20</p>
-            </div>
-            <div className="bg-[#F8F8F8] text-[#1D5851] py-4 px-8 mt-4 rounded-2xl flex items-center justify-between">
-                <p>Average Score</p>
-                <p className="text-[#5E5E5E] font-bold">75/100</p>
-            </div>
-            <div className="bg-[#F8F8F8] text-[#1D5851] py-4 px-8 mt-4 rounded-2xl flex items-center justify-between">
-                <p>Teachers Onboarded</p>
-                <p className="text-[#5E5E5E] font-bold">20</p>
-            </div>
-        </div>
+        </Link>
     )
 }
 

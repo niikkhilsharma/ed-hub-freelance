@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { FaChevronDown } from 'react-icons/fa';
 import { FiCalendar } from "react-icons/fi";
 
@@ -238,14 +239,15 @@ export default function StudentProfile() {
       </form>
 
       {/* Save Button */}
-      <div>
+      <Link href={"/admin-b2c/admin-panel/student-profile"}>
         <button
           type="submit"
-          className="bg-[#3366ff] text-white px-8 py-2 text-sm rounded-full hover:opacity-90"
+          className="bg-[#3366ff] cursor-pointer text-white px-8 py-2 text-sm rounded-full hover:opacity-90"
         >
           Save
         </button>
-      </div>
+      </Link>
     </div>
+    
   );
 }
