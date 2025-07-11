@@ -19,7 +19,7 @@ export default function AssignCourses() {
         <div className=" p-1 border border-[#E5E7EB]  rounded-2xl">
           <button className="p-2 bg-[#8DD9B3] text-white rounded-2xl"
           >
-            For Teachers
+            For Teacher
           </button>
         </div>
       </div>

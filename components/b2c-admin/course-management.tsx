@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import Image from "next/image";
 import { FiArrowLeft } from "react-icons/fi";
+import MaxWidthWrapper from "../../components/admin/max-width-wrapper"
 import ScrollableButton from "./common-component/scrollable-button";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import AddCourseModal from "@/components/b2c-admin/add-course";
@@ -127,9 +128,9 @@ export default function CourseManagementPage() {
   const ICON_BUTTON_TEXT_PINK = `text-[${ACCENT_PINK}]`;
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
-    <>
-      <div className="bg-[#eeeeee]   py-6   min-h-screen ">
-        <main className="p-2 max-w-[90rem] sm:p-6  mb-32   mx-auto bg-white my-6  rounded-3xl">
+    <MaxWidthWrapper>
+      <div className="  py-4 px-1 sm:px-16  min-h-screen ">
+        <main className="p-2 max-w-[90rem] sm:p-6    mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
               <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2  h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
@@ -142,7 +143,7 @@ export default function CourseManagementPage() {
               />
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar ">
               <Link href="/admin-b2c/admin-panel/remove-courses" passHref>
                 <button className="flex items-center cursor-pointer justify-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2.5 border border-[#E5E7EB] bg-[#F9FAFB] text-black rounded-2xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors">
                   Remove Course
@@ -241,6 +242,6 @@ export default function CourseManagementPage() {
           />
         </main>
       </div>
-    </>
+    </MaxWidthWrapper>
   );
 }

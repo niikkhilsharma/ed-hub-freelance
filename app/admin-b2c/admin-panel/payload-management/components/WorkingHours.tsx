@@ -72,7 +72,7 @@ export default function WorkingHours() {
       <div className="overflow-x-auto custom-scrollbar-thin pb-1">
   <div className="min-w-[800px]">
     <div className="grid grid-cols-6 pt-2 pb-6 gap-4 text-sm font-semibold px-4">
-      <p className='text-start md:pl-12'>Day</p>
+      <p className='text-start pl-[25%]'>Day</p>
       <p className='text-center'>Hours</p>
       <p className='text-center'>Repeats</p>
       <p className='text-center'>Location</p>
@@ -86,7 +86,7 @@ export default function WorkingHours() {
           key={idx}
           className="grid grid-cols-6 gap-4 bg-gray-100 border px-4 py-3.5 rounded-2xl items-center text-sm"
         >
-          <div className="font-medium pr-16 text-center">{item.day}</div>
+          <div className="font-medium pr-[25%] text-center">{item.day}</div>
           <div className={item.working ? 'text-center' : 'text-gray-400 text-center'}>{item.hours}</div>
           <div className='text-center'>{item.repeats}</div>
           <div className='text-center'>{item.location}</div>

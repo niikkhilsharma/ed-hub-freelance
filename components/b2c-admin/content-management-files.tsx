@@ -10,6 +10,7 @@ import { MdOutlineFileDownload, MdSettings } from "react-icons/md";
 import { LuInfo } from "react-icons/lu";
 import GoBack from "@/components/principal/goback";
 import { useRouter } from "next/navigation";
+import ManageAccess from "@/app/admin-b2c/pop-ups-2/components/ManageAccess";
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -61,7 +62,7 @@ const sampleGeneralFilters: GeneralFilterOption[] = [
   { id: "filter3", label: "Filter 3" },
 ];
 
-const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTMLDivElement | null>}> = ({ folder, reference }) => (
+const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTMLDivElement | null>, setOpenModal: React.Dispatch<React.SetStateAction<"manageAccess" | null>> }> = ({ folder, reference, setOpenModal }) => (
   <div
     className={`${FOLDER_CARD_BG} rounded-2xl p-3 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-4 relative`}
     ref={reference}
@@ -77,19 +78,21 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
         strokeWidth={1.5}
       />
     </div>
-    <div className="flex flex-col flex-wrap w-full gap-4">
+    <div className="flex flex-col flex-wrap w-full gap-2 sm:gap-4">
       <div className="">
         <h3 className="text-sm sm:text-lg font-semibold text-black truncate">
           {folder.name}
         </h3>
-        <p className="text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
+        <p className="text-xs lg:text-sm text-[#6B7280] mt-1">{folder.fileCount}</p>
       </div>
-      <div className="flex gap-2 w-full flex-wrap xl:flex-nowrap">
-        <div className="w-full flex gap-2 ">
-          <button className="bg-gray-100 text-nowrap w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg hover:bg-gray-200"> <MdSettings /> Manage Access</button>
+      <div className="flex gap-1 lg:gap-2 w-full flex-wrap sm:flex-nowrap md:flex-wrap lg:flex-nowrap">
+        <div className="w-full flex gap-1 sm:gap-2 ">
+          <button
+            onClick={() => setOpenModal("manageAccess")}
+            className="bg-gray-100 text-nowrap w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-base hover:bg-gray-200"> <MdSettings /> Manage Access</button>
         </div>
-        <div className="w-full flex gap-2 ">
-          <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base lg:text-lg hover:bg-gray-200"> <MdOutlineFileDownload /> Download</button>
+        <div className="w-full flex gap-1 sm:gap-2 ">
+          <button className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-sm md:text-base hover:bg-gray-200"> <MdOutlineFileDownload /> Download</button>
         </div>
       </div>
     </div>
@@ -110,7 +113,7 @@ const GeneralFilterButton: React.FC<{
 );
 
 // --- SubjectFolderViewContent Component ---
-const SubjectFolderViewContent: React.FC = () => {
+const SubjectFolderViewContent: React.FC<{ setOpenModal: React.Dispatch<React.SetStateAction<"manageAccess" | null>> }> = ({ setOpenModal }) => {
   const [activeSubjectId] = useState<string>(
     sampleSubjectTabs[0]?.id || ""
   );
@@ -182,7 +185,7 @@ const SubjectFolderViewContent: React.FC = () => {
               className={`w-full pl-10 pr-4 py-3 text-sm ${INPUT_BG_SEARCH} border-2 border-[#6B7280] rounded-full focus:ring-1 focus:ring-[${PRIMARY_BLUE}] focus:border-[${PRIMARY_BLUE}] outline-none`}
             />
           </div>
-          <div className="flex items-center gap-2 overflow-x-auto">
+          <div className="flex items-center gap-2">
 
             {sampleGeneralFilters.map((filter) => (
               <GeneralFilterButton
@@ -204,7 +207,7 @@ const SubjectFolderViewContent: React.FC = () => {
               height: `${cardHeight * 6 + (20 * 5)}px`,
             }}>
             {searchedAndFilteredFolders.map((folder) => (
-              <FolderCard key={folder.id} folder={folder} reference={cardHeightRef}/>
+              <FolderCard key={folder.id} folder={folder} reference={cardHeightRef} setOpenModal={setOpenModal} />
             ))}
           </div>
         ) : (
@@ -226,13 +229,18 @@ const SubjectFolderViewContent: React.FC = () => {
 export default function MaterialPageCourse() {
   // This page design does not include a prominent title bar or back button below the main header.
   // Navigation would typically be handled by the global Header or side navigation.
+  const [openModal, setOpenModal] = useState<"manageAccess" | null>(null);
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
+      <ManageAccess
+        isOpen={openModal === "manageAccess"}
+        onClose={() => setOpenModal(null)}
+      />
       <div className="bg-gray-100">
         <GoBack GoBackHeading="Folder Name" />
         <main className="flex-grow w-full max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-8">
-          <SubjectFolderViewContent />
+          <SubjectFolderViewContent setOpenModal={setOpenModal} />
         </main>
       </div>
     </div>

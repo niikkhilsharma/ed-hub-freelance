@@ -1,11 +1,16 @@
-import React from 'react'
-import AttendancePage from "@/components/b2c-admin/attendance-page"
+import React from "react";
+import AttendancePage from "@/components/b2c-admin/attendance-page";
 import GoBack from "@/components/principal/goback";
-export default function  page  () {
+import Link from "next/link";
+export default function page() {
   return (
     <div>
-        <GoBack GoBackHeading="Attendance" />
-        <AttendancePage/>
+      <Link href="/admin-b2c/admin-panel/dashboard">
+        
+          <GoBack GoBackHeading="Attendance" />
+        
+      </Link>
+      <AttendancePage />
     </div>
-  )
+  );
 }

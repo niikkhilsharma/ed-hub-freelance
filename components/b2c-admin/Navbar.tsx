@@ -15,47 +15,168 @@ import {
   FiBookOpen,
   FiGrid,
   FiShield,
-  FiMessageCircle
+  FiMessageCircle,
+  FiUsers
 } from "react-icons/fi";
+import { IoVideocamOutline } from "react-icons/io5";
 
-const navItems = [
+const basePath = "/admin-b2c/admin-panel";
+const secondaryRoutes = ["/inventory", "/extra-lecture-manager"];
+
+export const adminNavItems = [
   {
     label: "Dashboard",
     icon: <FaRegSmile className="text-lg sm:text-2xl" />,
     key: "dashboard",
-    href: "/admin/dashboard",
+    href: "/admin-b2c/admin-panel/dashboard",
+    paths: ["/dashboard"],
   },
   {
     label: "DMIT Test",
     icon: <FiGrid className="text-lg sm:text-2xl" />,
     key: "dmit",
-    href: "/principal/dmit",
+    href: "/admin-b2c/admin-panel/admin-dmit-test",
+    paths: ["/admin-dmit-test", "/create-dmit-test", "/edit-dmit-test"],
   },
   {
     label: "Material",
     icon: <BiCoinStack className="text-lg sm:text-2xl" />,
     key: "material",
-    href: "/principal/material",
+    href: "/admin-b2c/admin-panel/content-management",
+    paths: ["/content-management", "/content-management-files"],
   },
   {
     label: "Course MGMT",
     icon: <FiBookOpen className="text-lg sm:text-2xl" />,
     key: "course",
-    href: "/admin-b2c/admin-panel/course-management",
+    href: `/admin-b2c/admin-panel/course-management`,
+    paths: ["/course-management", "/all-mentors", "/all-teachers", "/all-students", "/all-institutions", "/institute-profile", "/course-management-teacher", "/admin-course-management", "/remove-courses", "/know-more", "/create-course"]
   },
   {
     label: "Security",
     icon: <FiShield className="text-lg sm:text-2xl" />,
     key: "security",
-    href: "/admin-b2c/admin-panel/security",
+    href: `${basePath}/security`,
+    paths: ["/security"],
   },
   {
     label: "Chat",
     icon: <FiMessageCircle className="text-lg sm:text-2xl" />,
     key: "chat",
-    href: "/principal/chat",
+    href: "/admin-b2c/admin-panel/chat",
+    paths: ["/chat"],
   },
 ];
+
+export const secondaryNavItems = [
+  {
+    label: "Dashboard",
+    icon: <FaRegSmile className="text-lg sm:text-2xl" />,
+    key: "dashboard",
+    href: "/admin-b2c/admin-panel/dashboard",
+    paths: ["/dashboard"],
+  },
+  {
+    label: "Student",
+    icon: <FiUsers className="text-lg sm:text-2xl" />,
+    key: "student",
+    href: "/admin-b2c/admin-panel/student-profile",
+    paths: [""],
+  },
+  {
+    label: "Material",
+    icon: <BiCoinStack className="text-lg sm:text-2xl" />,
+    key: "material",
+    href: "/admin-b2c/admin-panel/content-management",
+    paths: ["/content-management", "/content-management-files"],
+  },
+  {
+    label: "Recordings",
+    icon: <IoVideocamOutline className="text-lg sm:text-2xl" />,
+    key: "course",
+    href: `#`,
+    paths: [""],
+  },
+  {
+    label: "Chat",
+    icon: <FiMessageCircle className="text-lg sm:text-2xl" />,
+    key: "chat",
+    href: "/admin-b2c/admin-panel/chat",
+    paths: ["/chat"],
+  },
+];
+
+const getNavItemsForRoute = (pathname: string) => {
+  const subpath = pathname.replace(basePath, "") || "/";
+  const isSecondary = secondaryRoutes.some((r) => subpath.startsWith(r));
+  return isSecondary ? secondaryNavItems : adminNavItems;
+};
+
+// const getActiveNavKey = (
+//   pathname: string,
+//   navItems: typeof adminNavItems
+// ): string | null => {
+//   const subpath = pathname.replace(basePath, "") || "/";
+//   const match = navItems.find((item) =>
+//     item.paths.some((p) => subpath.startsWith(p))
+//   );
+//   return match?.key ?? null;
+// };
+const getActiveNavKey = (
+  pathname: string,
+  navItems: typeof adminNavItems
+): string => {
+  const subpath = pathname.replace(basePath, "") || "/";
+  const match = navItems.find((item) =>
+    item.paths.some((p) => subpath.startsWith(p))
+  );
+  return match?.key ?? "dashboard"; // Default to dashboard if no match
+};
+
+// const navItems = [
+//   {
+//     label: "Dashboard",
+//     icon: <FaRegSmile className="text-lg sm:text-2xl" />,
+//     key: "dashboard",
+//     href: "/admin/dashboard",
+//     paths: ["/admin/dashboard"],
+//   },
+//   {
+//     label: "DMIT Test",
+//     icon: <FiGrid className="text-lg sm:text-2xl" />,
+//     key: "dmit",
+//     href: "/principal/dmit",
+//     paths: [""],
+//   },
+//   {
+//     label: "Material",
+//     icon: <BiCoinStack className="text-lg sm:text-2xl" />,
+//     key: "material",
+//     href: "/principal/material",
+//     paths: [""],
+//   },
+//   {
+//     label: "Course MGMT",
+//     icon: <FiBookOpen className="text-lg sm:text-2xl" />,
+//     key: "course",
+//     href: "",
+//     paths: [""],
+//   },
+//   {
+//     label: "Security",
+//     icon: <FiShield className="text-lg sm:text-2xl" />,
+//     key: "security",
+//     href: "/admin-b2c/admin-panel/security",
+//     paths: [""],
+//   },
+//   {
+//     label: "Chat",
+//     icon: <FiMessageCircle className="text-lg sm:text-2xl" />,
+//     key: "chat",
+//     href: "/principal/chat",
+//     paths: [""],
+//   },
+// ];
 
 interface NavbarProps {
   user: {
@@ -67,6 +188,8 @@ interface NavbarProps {
 
 const Navbar = ({ user }: NavbarProps) => {
   const pathname = usePathname();
+  const navItems = getNavItemsForRoute(pathname);
+  const activeTab = getActiveNavKey(pathname, navItems);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -78,7 +201,6 @@ const Navbar = ({ user }: NavbarProps) => {
     return match?.key || "dashboard";
   };
 
-  const activeTab = getActiveKeyFromPath(pathname);
 
   return (
     <div className="bg-[#3366ff]">
@@ -96,7 +218,7 @@ const Navbar = ({ user }: NavbarProps) => {
           </div>
 
           {/* Desktop Nav */}
-          <div className="bg-[#e3f2fd]/15 rounded-full px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 hidden sm:flex items-center justify-center gap-4 sm:gap-5 md:gap-6 overflow-x-auto  scrollbar-none max-w-full">
+          <div className="bg-[#e3f2fd]/15 rounded-full px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 hidden sm:flex items-center justify-center gap-4 sm:gap-5 md:gap-6 overflow-x-auto  no-scrollbar max-w-full">
             {navItems.map((item) => (
               <Link key={item.key} href={item.href}>
                 <button

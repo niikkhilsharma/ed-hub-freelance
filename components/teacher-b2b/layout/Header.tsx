@@ -3,6 +3,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+
 import {
   FiMessageSquare,
   FiVideo,
@@ -90,8 +91,8 @@ export default function Header({ user, isAskme = true, activeState = "" }: Heade
   };
 
   return (
-    <header className={` text-white sticky top-0 z-50 print:hidden `}>
-      <div className={`bg-[#3366FF] mx-auto px-4 h-20 flex justify-between items-center max-w-screen-2xl`}>
+    <header className={`bg-[#3366FF] text-white sticky top-0 z-50 print:hidden `}>
+      <div className={` mx-auto px-4 h-20 flex justify-between items-center max-w-screen-2xl`}>
 
         <div className=" flex items-center gap-4">
 
@@ -157,7 +158,7 @@ export default function Header({ user, isAskme = true, activeState = "" }: Heade
 
               {isChatOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 ">
-                  <div className="relative w-[360px] sm:w-[600px] md:w-[800px] max-w-[90vw]">
+                  <div className="relative w-[360px]  sm:w-[600px] md:w-[800px] max-w-[90vw]">
                     <ChatPop
                       onClose={() => {
                         console.log("Closing chat");

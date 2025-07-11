@@ -178,14 +178,54 @@ h3 {
 /* Custom peach color scrollbar  */
 
 .custom-peach-scrollbar::-webkit-scrollbar {
-  width: 12px;
-  height: 6px;
+  width: 18px;
+  height: 3px;
 }
+
+
 .custom-peach-scrollbar::-webkit-scrollbar-thumb {
   background-color: #ffc79a;
   border-radius: 9999px;
 }
 
+
 .custom-peach-scrollbar::-webkit-scrollbar-track {
   background-color: transparent;
+}
+.custom-grey-scrollbar::-webkit-scrollbar {
+  width: 18px;
+  height: 4px;
+}
+.custom-grey-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #6b7280;
+  border-radius: 9999px;
+}
+.custom-grey-scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+
+/* grey thing scrollbar  */
+
+.custom-scrollbar-thin-grey::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar-thumb {
+  background: #6b7280; /* light-gray */
+  border-radius: 10px;
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db; /* medium-gray */
+}
+.custom-scrollbar-thin-grey::-webkit-scrollbar {
+  width: 10px; /* Make it thinner - adjust as needed */
+}
+
+/* Adding common color acroos the project */
+
+.card-bg-color{
+  background-color: #f9fafb; 
 }

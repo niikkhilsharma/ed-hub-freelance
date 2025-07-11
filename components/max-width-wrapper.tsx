@@ -10,7 +10,7 @@ export default function MaxWidthWrapper({ children, className = '' }: { children
 				className="absolute inset-0 bg-center bg-repeat z-0"
 				style={{
 					backgroundImage: "url('/Background2.png')",
-					backgroundSize: '400px',
+					backgroundSize: '600px',
 					filter: 'grayscale(10%) brightness(1.1) blur(0.5px)',
 					opacity: 0.3,
 				}}></div>
@@ -23,7 +23,7 @@ export default function MaxWidthWrapper({ children, className = '' }: { children
 				}}></div>
 
 			{/* Content */}
-			<div className={cn('relative z-10 container mx-auto px-4', className)}>{children}</div>
+			<div className={cn('relative z-10 max-w-screen-xl mx-auto px-4', className)}>{children}</div>
 		</div>
 	)
 }

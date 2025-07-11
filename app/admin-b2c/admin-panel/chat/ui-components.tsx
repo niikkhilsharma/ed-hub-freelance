@@ -27,11 +27,9 @@ export const ChatInput: React.FC<ChatInputProps> = ({
             className="flex-grow bg-transparent px-2.5 py-1.5 text-xs text-[#6B7280] focus:outline-none placeholder-gray-400
                        sm:px-3 sm:py-2 sm:text-sm"
         />
-        {/* Original button: p-2 text-[#6B7280] cursor-pointer hover:text-blue-600 focus:outline-none */}
         <button type="button" className="p-1.5 text-[#6B7280] cursor-pointer hover:text-blue-600 focus:outline-none sm:p-2">
             <FiPaperclip className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
-        {/* Original button: p-2.5 mr-2 text-[#FF3366] rounded-full cursor-pointer focus:outline-none */}
         <button
             type="submit"
             className="p-2 text-[#FF3366] rounded-full cursor-pointer focus:outline-none disabled:opacity-50

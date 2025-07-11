@@ -1,11 +1,11 @@
-import StudentProfile from "./components/StudentProfile";
+import StudentProfile from './components/StudentProfile'
 
 const SchoolProfile = () => {
-    return (
-        <>
-        <StudentProfile />
-        </>
-    )
+	return (
+		<>
+			<StudentProfile />
+		</>
+	)
 }
 
-export default SchoolProfile;
+export default SchoolProfile

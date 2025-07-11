@@ -1,7 +1,8 @@
 // components/AssignmentForm.tsx
 
 import React, { useState } from "react";
-import { FiSearch, FiChevronDown } from "react-icons/fi"; // Example icons
+import { FiSearch, FiChevronDown } from "react-icons/fi";
+import Link from 'next/link';
 
 interface Student {
   id: number;
@@ -257,12 +258,14 @@ const [students, setStudents] = useState<Student[]>(generateDummyStudents(20));
       </div>
       
       <div className="flex justify-center">
+        <Link href="/admin-b2c/admin-panel/mentor-profile">
         <button
           onClick={handleAssignCourse}
           className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Assign Course
         </button>
+        </Link>
       </div>
     </div>
   );

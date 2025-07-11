@@ -25,6 +25,7 @@ import ReassignClassModal from "./components/Reassign";
 import RescheduleMeetingTeacher from "./components/RescheduleMeetingTeacher";
 import RescheduleMeetingStudent from "./components/RescheduleMeetingStudent";
 import CreateFolderModal from "./components/CreateFolder";
+import AddCourseModal from "@/components/b2c-admin/add-course";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {

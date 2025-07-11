@@ -12,7 +12,7 @@ import {
 	FiArrowLeftCircle,
 	FiArrowRightCircle,
 } from 'react-icons/fi' // Add icons as needed
-import Header from '@/components/b2c-student/Header';
+import Header from '@/components/b2c-student/Header'
 import Footer from '@/components/layout/Footer'
 // import MaxWidthWrapper from '@/components/max-width-wrapper'
 import { cn } from '@/lib/utils'
@@ -364,7 +364,6 @@ const StudentReport: React.FC = () => {
 		name: 'Shlok Agheda',
 		role: 'Student',
 		avatarSrc: '/images/person.jpg', // UPDATE PATH
-		
 	}
 
 	return (

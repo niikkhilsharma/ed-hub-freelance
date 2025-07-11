@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
+import MaxWidthWrapper from "../max-width-wrapper";
 import { FiArrowLeft } from "react-icons/fi";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
@@ -125,8 +126,8 @@ export default function SecurityCoursePage() {
   const ICON_BUTTON_TEXT_PINK = `text-[${ACCENT_PINK}]`;
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
-    <>
-      <div className="bg-[#eeeeee]   py-6 sm:py-8 lg:py-10 min-h-screen ">
+    <MaxWidthWrapper>
+      <div className="bg-[#eeeeee]   py-6 sm:px-16 px-4 min-h-screen ">
         <main className="p-2 max-w-[90rem] sm:p-6  mb-32 sm:mb-[320px]  mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
@@ -140,7 +141,7 @@ export default function SecurityCoursePage() {
               />
             </div>
 
-            <div className="flex items-center gap-2 overflow-x-auto">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button className="flex items-center gap-1 rounded-xl focus-visible:outline-none focus-visible:ring-0  hover:bg-[#F9fafb]/80 text-[#1e1e1e] bg-[#F9FAFB] border border-[#e5e7eb]">
@@ -225,9 +226,9 @@ export default function SecurityCoursePage() {
                   {/* Text section */}
                   <div className="flex flex-col gap-1 px-1 text-black">
                     <h2 className="font-bold text-lg">{course.name}</h2>
-                    <h3 className="text-sm font-medium">
+                    <h3 className="text-sm font-normal">
                       Domain:{" "}
-                      <span className="text-[#6B7280]">{course.domain}</span>
+                      <span className="text-[#6B7280] font-normal">{course.domain}</span>
                     </h3>
                   </div>
                 </div>
@@ -236,6 +237,6 @@ export default function SecurityCoursePage() {
           </div>
         </main>
       </div>
-    </>
+   </MaxWidthWrapper>
   );
 }

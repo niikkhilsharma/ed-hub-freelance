@@ -96,14 +96,14 @@ const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<H
 
         {/* Details Section */}
         <div className="text-xs text-black space-y-1">
-            <p className="font-medium text-black">{request.assignedFaculty}</p>
+            <p className=" text-black">{request.assignedFaculty}</p>
             {request.type === 'cancellation' && (
-                <p className="font-medium text-black">Lecture Date:{" "}{request.lectureDate}</p>
+                <p className=" text-black">Lecture Date:{" "}{request.lectureDate}</p>
             )}
             {request.type === 'rescheduling' && (
                 <>
-                    <p className="font-medium text-black">Original Lecture Date:{" "} {request.lectureDate}</p>
-                    <p className="font-medium text-black">Requested: Reschedule to {request.requestedDate}, {request.requestedTime}</p>
+                    <p className=" text-black">Original Lecture Date:{" "} {request.lectureDate}</p>
+                    <p className=" text-black">Requested: Reschedule to {request.requestedDate}, {request.requestedTime}</p>
                 </>
             )}
         </div>
@@ -131,8 +131,8 @@ const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<H
 
 // --- Main Page Component ---
 export default function RequestManagementPage() {
-    const [activeTab, setActiveTab] = useState<'rescheduling' | 'cancellation'>('cancellation');
-    const [isPopupOpen, setIsPopupOpen] = useState<boolean>(true);
+    const [activeTab, setActiveTab] = useState<'rescheduling' | 'cancellation'>('rescheduling');
+    const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
     const togglePopup = () => setIsPopupOpen(!isPopupOpen);
 
     const requestsToDisplay = activeTab === 'cancellation' ? cancellationRequests : reschedulingRequests;
@@ -234,9 +234,9 @@ const ReschedulePopup: React.FC<RescheduleProps> = ({ onCancel, onConfirm }) => 
     return (
         <div className="fixed inset-0 flex items-center justify-center z-30">
             <div className=' bg-black opacity-50 absolute h-full w-full z-10' />
-            <div className="relative z-50 bg-white rounded-3xl p-4 w-[90%] max-w-lg text-center shadow-lg">
+            <div className="relative z-50 bg-white rounded-3xl p-6 w-[90%] max-w-lg text-center shadow-lg">
                 <h2 className="text-xl font-semibold mb-4">Confirmation</h2>
-                <p className="text-black text-sm leading-relaxed">
+                <p className="text-black font-normal text-sm leading-relaxed">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis
                     lacinia ante, nec accumsan enim. Vestibulum lacinia fermentum
                     pretium. Nunc elementum ligula nec erat bibendum vulputate. Etiam
@@ -247,13 +247,13 @@ const ReschedulePopup: React.FC<RescheduleProps> = ({ onCancel, onConfirm }) => 
                 <div className="mt-4 flex justify-center gap-4">
                     <button
                         onClick={onCancel}
-                        className="bg-[#6B72801A] text-[#6B7280] font-medium px-6 py-2 rounded-full hover:bg-gray-200 transition cursor-pointer"
+                        className="bg-[#6B72801A] text-[#6B7280] font-medium px-4 py-3 rounded-full hover:bg-gray-200 transition cursor-pointer"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={onConfirm}
-                        className="bg-[#3366FF] text-white font-medium px-6 py-2 rounded-full hover:bg-blue-700 transition cursor-pointer"
+                        className="bg-[#3366FF] text-white font-medium px-4 py-3 rounded-full hover:bg-blue-700 transition cursor-pointer"
                     >
                         Confirm
                     </button>

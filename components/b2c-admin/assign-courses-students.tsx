@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { FiSearch, FiChevronDown } from "react-icons/fi"; // Example icons
+import Link from 'next/link'; 
 
 interface Student {
   id: number;
@@ -276,14 +277,14 @@ const AssignmentForm: React.FC = () => {
         </div>
       </div>
       <div className=" flex justify-center">
-        {" "}
-        {/* Center on small screens, align left on large */}
+        <Link href="/admin-b2c/admin-panel/mentor-profile">
         <button
           onClick={handleAssignCourse}
           className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Assign Course
         </button>
+        </Link>
       </div>
 
       {/* Assign Course Button */}

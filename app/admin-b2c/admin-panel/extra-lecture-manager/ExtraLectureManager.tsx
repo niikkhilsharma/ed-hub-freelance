@@ -22,7 +22,7 @@ const teachers = Array.from({ length: 9 }, (_, i) => ({
     id: i + 5,
     name: 'Teacher Name',
     course: 'Course Name',
-    group: 'Batch Assigned',
+    group: 'Batch',
     image: "/teacher-avatar-4.png", // Use same image or add logic to vary if needed,
     reason: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam cum illum, itaque et perferendis ea hic alias modi ex reiciendis animi eum quam minus, autem deserunt voluptatibus ducimus, officiis corporis?',
     email: "Email ID"
@@ -78,7 +78,7 @@ const ExtraLectureManager = () => {
                         </div>
                     </div >
                     <div className="max-h-[764px] overflow-y-auto grid gap-1 grid-cols-1 sm:grid-cols-2 custom-peach-scrollbar">
-                        {teachers.map((item) => (
+                        {teachers.map((item, index) => (
                             <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-4 inline-block mr-2 mb-4  relative">
                                 <div className="flex">
                                     <div className="rounded-3xl bg-white p-2 md:p-3 relative overflow-hidden">
@@ -93,8 +93,16 @@ const ExtraLectureManager = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-2 pt-4">
-                                    <p className=""><strong className="font-medium">Remaning Topics:</strong> Lorem Ipusm</p>
-                                    <p className=""><strong className="font-medium">Remaning Left:</strong> Lorem Ipusm</p>
+                                    <p className=""><strong className="font-medium">Remaining Topics:</strong> Lorem Ipusm</p>
+                                    {index % 2 === 0 ? (
+        <p className="">
+          <strong className="font-medium">Remaining Left:</strong> Lorem Ipusm
+        </p>
+      ) : (
+        <p className="">
+          <strong className="font-medium">Remaining Subtopics:</strong> Lorem Ipusm
+        </p>
+      )}
                                     <p className=""><strong className="font-medium">Deadline Missed:</strong> 22 / 6 / 25</p>
                                 </div>
                                 <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl max-w-xl mt-5 mb-3 mx-2  ">

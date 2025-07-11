@@ -44,7 +44,7 @@ const CourseCard = () => (
 
 const CourseSection = () => {
   return (
-    <div className="max-w-[90rem] px-3 sm:px-4 lg:px-6 py-4 sm:py-6 mx-auto">
+    <div className="max-w-[90rem] px-3 sm:px-4 lg:px-6 py-2 mx-auto">
       {courseSections.map((section, index) => (
         <div key={index} className="mb-8 sm:mb-10">
           <h2 className="text-[#ff3366] text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4 px-1">

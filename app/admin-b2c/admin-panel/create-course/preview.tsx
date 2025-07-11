@@ -211,13 +211,37 @@ const reviews: Review[] = [
     review:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius. Fusce turpis enim, hendrerit facilisis nisl nec, dictum faucibus nisl. Aliquam erat volutpat. Duis non molestie augue.',
   },
+  {
+    name: 'Customer Name',
+    role: 'Student / Parent',
+    image: "/images/profile2.jpg",
+    rating: 4,
+    review:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius. Fusce turpis enim, hendrerit facilisis nisl nec, dictum faucibus nisl. Aliquam erat volutpat. Duis non molestie augue.',
+  },
+  {
+    name: 'Customer Name',
+    role: 'Student / Parent',
+    image: "/images/profile2.jpg",
+    rating: 4,
+    review:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius. Fusce turpis enim, hendrerit facilisis nisl nec, dictum faucibus nisl. Aliquam erat volutpat. Duis non molestie augue.',
+  },
+  {
+    name: 'Customer Name',
+    role: 'Student / Parent',
+    image: "/images/profile2.jpg",
+    rating: 4,
+    review:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin tortor at lacus ultricies, quis blandit sem varius. Fusce turpis enim, hendrerit facilisis nisl nec, dictum faucibus nisl. Aliquam erat volutpat. Duis non molestie augue.',
+  },
 ];
 
 function ReviewCard() {
   return (
     <div className="bg-white rounded-2xl">
       <h2 className="text-xl font-semibold mb-4">Reviews</h2>
-      <div className="space-y-3 max-h-125 overflow-y-auto">
+      <div className="space-y-3 max-h-125 overflow-y-auto custom-scrollbar-thin pr-1">
         {reviews.map((myreview, index) => (
           <div key={index}>
             <FeedbackCard name={myreview.name} role={myreview.role} review={myreview.review} image={myreview.image} />

@@ -10,8 +10,12 @@ import {
   FiZap,
   FiArrowLeftCircle,
   FiArrowRightCircle,
-} from "react-icons/fi"; // Add icons as needed
-
+} from "react-icons/fi"; 
+import { LuOmega } from "react-icons/lu";
+import { MdOutlineSuperscript ,MdOutlineFunctions} from "react-icons/md";
+import { TbMathFunction } from "react-icons/tb";// Add icons as needed
+import { RiPsychotherapyLine } from "react-icons/ri";
+import { MdOutlineTheaterComedy } from "react-icons/md";
 // --- COLOR PALETTE (as provided) ---
 const PALETTE = {
   GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
@@ -143,9 +147,9 @@ const ChartsReport: React.FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <FiSearch key="s" className="w-4 h-4" />,
+        <LuOmega key="s" className="w-4 h-4" />,
         <FiPercent key="p" className="w-4 mt-4.5 h-4" />,
-        <FiAward key="a" className="w-4 h-4" />,
+        <MdOutlineSuperscript key="a" className="w-4 h-4" />,
       ],
       skills: Array(7).fill({
         name: "Subject 1",
@@ -160,9 +164,9 @@ const ChartsReport: React.FC = () => {
       overallProgress: "4/5",
       progressPercent: 80,
       iconSet: [
-        <FiBarChart2 key="b" className="w-4 h-4" />,
-        <FiAward key="a" className="w-4 mt-4.5 h-4" />,
-        <FiZap key="z" className="w-4 h-4" />,
+        <MdOutlineFunctions key="b" className="w-4 h-4" />,
+        < RiPsychotherapyLine  key="a" className="w-4 mt-4.5 h-4" />,
+        <TbMathFunction key="z" className="w-4 h-4" />,
       ],
       skills: [
         {
@@ -187,8 +191,8 @@ const ChartsReport: React.FC = () => {
     overallProgress: "4/5",
     progressPercent: 80,
     iconSet: [
-      <FiAward key="a" className="w-4 mt-4.5 h-4" />,
-      <FiZap key="z" className="w-4 h-4" />,
+      <MdOutlineTheaterComedy key="a" className="w-6 text-[#893544] mt-4.5 h-6" />,
+      
     ], // Example icons
     skills: [
       {
@@ -306,6 +310,174 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
+       {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Presentation",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Problem Solving",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+      {
+        name: "Confidence",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
+       {
+        name: "Written",
+        details: "Pedagogy and Plan",
+        progress: "3/4",
+        color: PALETTE.ACCENT_RED,
+      },
     ],
   };
 
@@ -376,14 +548,10 @@ const ChartsReport: React.FC = () => {
   return (
     <>
 
-      <div className="bg-gray-100">
-        {/* Header would go here - Assuming it's outside this component's direct render */}
+      <div className="">
+       
 
-        {/* Page Title Bar */}
-        {/* Page Title Bar */}
-
-
-        <div className="grid max-w-[90rem] mx-auto grid-cols-1 p-2 md:p-5 md:grid-cols-[2fr_1fr] gap-4">
+<div className="grid w-full max-w-[90rem] mx-auto grid-cols-1 gap-4 p-2 sm:p-4  lg:grid-cols-[2fr_1fr] lg:gap-6">
           {/* ====== Overall Charts start ====== */}
 
           <div
@@ -430,7 +598,7 @@ const ChartsReport: React.FC = () => {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 mt-2 sm:mt-0">
+              <div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
                 <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
                   <span>{currentMonth}</span>
                   <FiChevronDown className="w-4 h-4 ml-1" />
@@ -501,33 +669,29 @@ const ChartsReport: React.FC = () => {
 
           {/* Personal Development Card */}
           <div
-            className="p-5 h-full rounded-2xl relative"
-            style={{
-              backgroundColor: PALETTE.WHITE_CARD,
-            }}
-          >
-            <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
-              {personalDevData.title}
-            </h3>
-            <div className="space-y-3  custom-scrollbar overflow-y-auto pr-3  scrollbar-track-gray-200 scrollbar-thumb-rounded-full">
-              {" "}
-              {/* Custom scrollbar */}
-              {personalDevData.skills.map((skill, i) => (
-                <ProgressCircleItem
-                  key={i}
-                  percentageText={skill.progress}
-                  color={skill.color}
-                  skillName={skill.name}
-                  details={skill.details}
-                />
-              ))}
-            </div>
-            {/* The thin scrollbar visual element from the image - hard to replicate exactly without custom overlay */}
-            <div className="absolute right-1 top-16 bottom-5 w-1 bg-gray-300 rounded-full opacity-50 hidden sm:block"></div>
-          </div>
+  className="p-5 h-[500px] rounded-2xl relative"
+  style={{
+    backgroundColor: PALETTE.WHITE_CARD,
+  }}
+>
+  <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
+    {personalDevData.title}
+  </h3>
+  <div className="space-y-3 overflow-y-scroll custom-grey-scrollbar pr-3 max-h-[424px]">
+    {personalDevData.skills.map((skill, i) => (
+      <ProgressCircleItem
+        key={i}
+        percentageText={skill.progress}
+        color={skill.color}
+        skillName={skill.name}
+        details={skill.details}
+      />
+    ))}
+  </div>
+</div>
         </div>
         <main
-          className="grid h-full  max-w-[93rem] mx-auto  my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 bg-gray-100"
+          className="grid h-full  max-w-[93rem] mx-auto  my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 "
         >
 
           <div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-4 items-start">

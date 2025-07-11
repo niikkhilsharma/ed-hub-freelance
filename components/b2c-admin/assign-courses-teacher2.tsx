@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { FiSearch, FiChevronDown } from "react-icons/fi"; // Example icons
 import { FiCalendar } from "react-icons/fi";
 import { AiOutlineClockCircle } from "react-icons/ai";
+import Link from "next/link";
 interface Student {
   id: number;
   name: string;
@@ -40,7 +41,7 @@ const TeacherForm: React.FC = () => {
   const [demoTitle, setDemoTitle] = useState("");
 const [meetingUrl, setMeetingUrl] = useState("");
 const [date, setDate] = useState("");
-const [time, setTime] = useState("16:40");
+const [time, setTime] = useState("16:00");
   const courseOptions = ["Option 1", "Option 2", "Option 3"];
   const batchOptions = ["Option 1", "Option 2", "Option 3"];
   const categories = [1, 2, 3, 4, 5];
@@ -136,10 +137,10 @@ const [time, setTime] = useState("16:40");
             </label>
             <div className="relative py-2">
               <input
-                type="date"
+                type="text"
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
-                placeholder="DD/MM/YYYY"
+                placeholder="DD / MM/ YYYY"
                 className="w-full text-[#6b7280] rounded-full px-4 py-2 bg-[#F9FAFB] border border-[#D5D5D5] appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0"
               />
               <FiCalendar className="absolute right-5 sm:w-6 sm:h-6 w-5 h-5 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
@@ -297,12 +298,14 @@ const [time, setTime] = useState("16:40");
       </div>
 
       <div className="flex justify-center">
+        <Link href="/admin-b2c/admin-panel/mentor-profile">
         <button
           onClick={handleAssignCourse}
           className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-3 px-4 sm:px-6 md:px-8 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
           Schedule
         </button>
+        </Link>
       </div>
     </div>
   );

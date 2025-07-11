@@ -27,8 +27,8 @@ export default function DmitTestReview() {
 				<MaxWidthWrapper className="bg-white p-4 sm:p-8 rounded-2xl">
 					<PointSection
 						points={[
-							{ value: 1, name: 'Test Details', isActive: true },
-							{ value: 2, name: 'Review', isActive: false },
+							{ value: 1, name: 'Test Details', isActive: false },
+							{ value: 2, name: 'Review', isActive: true },
 						]}
 					/>
 					{/* Text */}
