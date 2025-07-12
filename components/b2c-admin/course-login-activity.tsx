@@ -14,7 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
+import MaxWidthWrapper from "../admin/max-width-wrapper";
 type Checked = DropdownMenuCheckboxItemProps["checked"];
 // Dummy user
 const headerUser = {
@@ -58,8 +58,8 @@ export default function CourseLoginPage() {
   );
 
   return (
-    <>
-      <div className="bg-[#eeeeee] py-6 sm:py-8 lg:py-10 min-h-screen">
+    <MaxWidthWrapper>
+      <div className=" py-6 sm:py-8 lg:py-10 min-h-screen">
         <main className="p-2 max-w-[90rem] sm:p-6 mb-32 sm:mb-[320px]   mx-auto bg-white my-6 rounded-3xl">
           {/* Search & Filter Section */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
@@ -182,11 +182,11 @@ export default function CourseLoginPage() {
           {/* Toggle Between Teachers and Students */}
 
           {/* Conditional Grid */}
-          <div className="w-full  my-2 ">
+          <div className="w-full   ">
             {activeTab === "teachers" ? <PeopleGrid /> : <StudentGrid />}
           </div>
         </main>
       </div>
-    </>
+    </MaxWidthWrapper>
   );
 }

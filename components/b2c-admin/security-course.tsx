@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import MaxWidthWrapper from "../max-width-wrapper";
+import MaxWidthWrapper from "../../components/admin/max-width-wrapper";
 import { FiArrowLeft } from "react-icons/fi";
 import { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { Button } from "@/components/ui/button";
@@ -127,7 +127,7 @@ export default function SecurityCoursePage() {
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
     <MaxWidthWrapper>
-      <div className="bg-[#eeeeee]   py-6 sm:px-16 px-4 min-h-screen ">
+      <div className="  py-6 md:px-16 min-h-screen ">
         <main className="p-2 max-w-[90rem] sm:p-6  mb-32 sm:mb-[320px]  mx-auto bg-white my-6  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
