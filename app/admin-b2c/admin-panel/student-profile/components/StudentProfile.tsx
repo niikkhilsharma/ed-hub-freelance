@@ -1,10 +1,13 @@
 import PrincipalChatrsReport from '@/components/principal/principal-charts-report'
-import { IoMdSettings } from 'react-icons/io'
 import React from 'react'
 import Image from 'next/image'
 
-import { FaStar } from 'react-icons/fa'
-import { FiArrowLeft } from 'react-icons/fi'
+import { FaRegStar, FaStar } from 'react-icons/fa'
+import { FiMail } from 'react-icons/fi'
+import { HiOutlineBookOpen } from 'react-icons/hi'
+import { IoSettingsOutline } from 'react-icons/io5'
+import StudentPanel from './StudentControlPanel'
+import Link from 'next/link'
 
 interface CourseCardProps {
 	image: string
@@ -91,59 +94,102 @@ const StudentProfile = () => {
 	return (
 		<>
 			<div className="w-full">
-				
+
 				<div className="p-2 md:p-4 rounded-2xl gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
 					{/* Student Info Card */}
-					<div
-						className=" bg-white rounded-2xl"
+					<div className=" rounded-2xl"
 						style={{
 							borderColor: PALETTE.BORDER_GREY,
 						}}>
-						<div className="flex flex-col w-full justify-center sm:flex-row sm:justify-between bg-white rounded-2xl sm:items-center gap-4">
-							<Image
-								src="/teacher-b2b/profile2.png"
-								alt="Shlok Agheda"
-								width={72}
-								height={72}
-								className="rounded-full h-24 w-24 flex-shrink-0"
-							/>
-							<div className="flex-grow relative">
-								<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-gray-100 absolute left-[10rem]">
-									<IoMdSettings size={20} />
+						<div className="flex flex-col w-full justify-center sm:flex-row sm:justify-between px-4 py-2 bg-white border border-gray-200 rounded-2xl sm:items-center gap-4">
+							<div className="flex items-center flex-wrap relative gap-4">
+								<Image
+									src="/teacher-b2b/profile2.png"
+									alt="Shlok Agheda"
+									width={72}
+									height={72}
+									className="rounded-full h-24 w-24 flex-shrink-0"
+								/>
+								<div className="flex-grow relative">
+									<div className="inline relative">
+									<h2 className="text-xl max-w-36 font-semibold" style={{ color: PALETTE.TEXT_DARK }}>
+										Student Name
+									</h2>
+									<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-[#f9fafb] absolute right-0">
+									<IoSettingsOutline size={20} />
 								</div>
-								<h2 className="text-xl font-semibold" style={{ color: PALETTE.TEXT_DARK }}>
-									Shlok Agheda
-								</h2>
+									</div>
 
-								<div className="flex flex-wrap items-center gap-1 mt-2">
-									<span
-										className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
-										style={{
-											backgroundColor: PALETTE.ACCENT_PINK,
-											color: PALETTE.WHITE_CARD,
-										}}>
-										Class 8A
-									</span>
-									<span
-										className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
-										style={{
-											backgroundColor: PALETTE.ACCENT_PINK,
-											color: PALETTE.WHITE_CARD,
-										}}>
-										Group A
-									</span>
+									<div className="flex flex-wrap items-center relative gap-1 mt-2">
+
+										<span
+											className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+											style={{
+												backgroundColor: PALETTE.ACCENT_PINK,
+												color: PALETTE.WHITE_CARD,
+											}}>
+											Course Name
+										</span>
+										<span
+											className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
+											style={{
+												backgroundColor: PALETTE.ACCENT_PINK,
+												color: PALETTE.WHITE_CARD,
+											}}>
+											Course Name
+										</span>
+									</div>
 								</div>
+								
 							</div>
-							<div className="text-[11px] font-medium text-left space-y-0.5 text-black">
-								<p>Gender: Male</p>
-								<p>DOB: 15 Jun 2015</p>
-								<p>Email: example@gm.com</p>
+							 <div className="text-base gap-x-8 md:gap-y-2 flex flex-col md:flex-row items-start md:items-center space-y-0.5 text-black">
+                            <div className="flex flex-col gap-1">
+                                <p className='text-sm md:text-base'><strong className="font-semibold">City:</strong>{" "}Mumbai</p>
+                                <p className='text-sm md:text-base'><strong className="font-semibold">State:</strong>{" "}Maharashtra</p>
+                            </div>
+                            <div className="flex flex-col gap-1">
+                                <p className='text-sm md:text-base'><strong className="font-semibold">Gender:</strong>{" "}Male</p>
+                                <p className='text-sm md:text-base'><strong className="font-semibold">DOB:</strong>{" "}15 Jun 2015</p>
+                            </div>
+                        </div>
+						</div>
 
-								<p>City: Mumbai</p>
-								<p>State: Maharashtra</p>
+						<div className="bg-white p-4 mt-4 rounded-2xl border border-gray-200">
+							<h2 className="font-semibold text-sm mb-3">Parent / Guardian Details</h2>
+
+							<div className="flex flex-wrap gap-4 items-center justify-between">
+								{/* Info Blocks */}
+								<div className="flex flex-wrap gap-4 flex-1 min-w-[300px]">
+									<div className="rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-sm w-40 text-gray-600">
+										Name
+									</div>
+									<div className="rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-sm w-44 text-gray-600">
+										+91 0000000000
+									</div>
+									<div className="rounded-full border border-gray-300 bg-gray-50 px-4 py-2 text-sm w-52 text-gray-600 truncate">
+										example@gm.com
+									</div>
+								</div>
+
+								{/* Action Buttons */}
+								<div className="flex gap-3 mt-4 md:mt-0">
+									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50">
+										<FaRegStar className="text-yellow-400" />
+										Give Suggestion
+									</button>
+									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50">
+										<FiMail className="text-[#FF3366]" />
+										Mail to Parents
+									</button>
+									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50">
+										<HiOutlineBookOpen className="text-[#3366FF]" />
+										Allot a Course
+									</button>
+								</div>
 							</div>
 						</div>
-						<div className="pt-4 ">
+
+						<div className="pt-4 bg-white rounded-2xl border px-4 pt-4 pb-2 border-gray-200 mt-4">
 							<p className="text-sm font-bold mb-3" style={{ color: PALETTE.TEXT_DARK }}>
 								Key Focus Area
 							</p>
@@ -154,27 +200,27 @@ const StudentProfile = () => {
 										className="text-xs px-2 py-2.5 text-black rounded-full border"
 										style={{
 											backgroundColor: '#F3F4F6',
-											borderColor: PALETTE.BORDER_GREY,
 										}}>
 										{area}
 									</button>
 								))}
 							</div>
 						</div>
-						<div className="">
+						<div className="bg-white border px-4 pt-2 rounded-2xl pb-1 border-gray-200 mt-4">
 							<h2 className="my-2 text-sm font-bold">Assigned Teachers</h2>
 							<div className="flex flex-wrap gap-4 items-stretch">
 								{Teachers.map((card, index) => (
-									<div className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
+									<Link href={"/admin-b2c/admin-panel/teacher-profile"} className="py-2 pr-16 pl-2 bg-gray-100 flex items-center gap-4 rounded-2xl border-gray-200" key={index}>
 										<Image className="rounded-xl" src={card.image} width={80} height={80} alt={card.name} />
 										<div className="">
 											<h2 className="font-medium">{card.name}</h2>
 											<p className={`text-[${PALETTE.ACCENT_PINK}]`}>{card.subject}</p>
 										</div>
-									</div>
+									</Link>
 								))}
 							</div>
 						</div>
+						<div className=""><StudentPanel /></div>
 					</div>
 				</div>
 			</div>
