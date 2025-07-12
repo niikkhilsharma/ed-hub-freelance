@@ -404,7 +404,7 @@ const CreateAIAssessmentContent: React.FC = () => {
                 value="all"
                 checked={studentAssignType === "all"}
                 onChange={() => setStudentAssignType("all")}
-                className={`appearance-none w-5 h-5 rounded-full border-[4px] 
+                className={`appearance-none w-6 h-6 rounded-full border-[4px] 
         ${
           studentAssignType === "all"
             ? "bg-[#007bff] border-[#007bff]"
