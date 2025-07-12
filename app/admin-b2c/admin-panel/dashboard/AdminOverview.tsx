@@ -55,9 +55,9 @@ const Overview: React.FC = () => {
                     );
                 })}
             </div>
-            <div className="overflow-x-auto max-w-[850px] custom-scrollbar-thin">
+            <div className="overflow-x-auto w-full pb-1 custom-scrollbar-thin">
                 {/* Table Header */}
-                <div className="flex bg-[#8DD9B3] justify-between items-center font-semibold text-sm rounded-2xl px-12 py-5.5 gap-x-6 mb-3">
+                <div className="flex bg-[#8DD9B3] min-w-[850px] justify-between items-center font-semibold text-sm rounded-2xl w-full px-12 py-5.5 gap-x-6 mb-3">
                     {columns.map((col, i) => (
                         <div
                             key={i}
@@ -71,7 +71,7 @@ const Overview: React.FC = () => {
                 </div>
 
                 {/* Table Rows */}
-                <div className="space-y-2">
+                <div className="space-y-2 w-full min-w-[850px]">
                     {tableData.map((row, idx) => (
                         <div
                             key={idx}
