@@ -91,16 +91,8 @@ const StudentProfile = () => {
 	return (
 		<>
 			<div className="w-full">
-				<div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
-					<button
-						// onClick={handleBackClick}
-						className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md" // Using ACCENT_PINK for hover
-						aria-label="Go back">
-						<FiArrowLeft className="w-5 h-5" />
-					</button>
-					<h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Student Report</h1>
-				</div>
-				<div className="p-2 md:p-4 mt-4 rounded-2xl mx-2 md:mx-5 gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
+				
+				<div className="p-2 md:p-4 rounded-2xl gap-6 bg-[url('/principal/dashboard-pattern.png')] bg-repeat bg-[length:650px_650px]">
 					{/* Student Info Card */}
 					<div
 						className=" bg-white rounded-2xl"
