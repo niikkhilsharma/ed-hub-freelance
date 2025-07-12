@@ -29,7 +29,7 @@ const CreateDmitTest = () => {
                         onChange={setSelectedTab}
                     />
                     {selectedTab === "Test Details" && (
-                        <TestDetails />
+                        <TestDetails setSelectedTab={setSelectedTab}/>
                     )}
                     {selectedTab === "Review" && (
                         <ReviewQuestion />

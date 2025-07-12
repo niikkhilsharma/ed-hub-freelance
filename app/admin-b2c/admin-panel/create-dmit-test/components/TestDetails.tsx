@@ -174,7 +174,7 @@ const TeatDetails: FC = () => {
 
         {/* File Upload */}
         <div>
-          <label className="block w-max px-4 py-3.5 bg-yellow-400 rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
+          <label className="block w-max px-4 py-3.5 bg-[#FFCC00] rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
             Upload Image / File
             <input type="file" hidden />
           </label>
@@ -328,7 +328,7 @@ const TeatDetails: FC = () => {
 
         {/* File Upload */}
         <div>
-          <label className="block w-max px-4 py-3.5 bg-yellow-400 rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
+          <label className="block w-max px-4 py-3.5 bg-[#FFCC00] rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
             Upload Image / File
             <input type="file" hidden />
           </label>

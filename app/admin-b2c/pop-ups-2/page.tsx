@@ -83,7 +83,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
 };
 
 
-const UploadFileImage: React.FC<PopupProp> = ({
+export const UploadFileImage: React.FC<PopupProp> = ({
     isOpen,
     onClose,
 }) => {
@@ -146,8 +146,6 @@ export const AddItem: React.FC<PopupProp> = ({
                     </div>
                     <span className="truncate">Document Name</span>
                 </div>
-
-
 
                 <div className="flex flex-col gap-1 pb-4 mt-6">
                     <label className='font-medium text-md mb-2' htmlFor="stocks">Stocks</label>
