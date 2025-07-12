@@ -111,19 +111,21 @@ const StudentProfile = () => {
 									className="rounded-full h-24 w-24 flex-shrink-0"
 								/>
 								<div className="flex-grow relative">
-									<div className="inline relative">
-									<h2 className="text-xl max-w-36 font-semibold" style={{ color: PALETTE.TEXT_DARK }}>
-										Student Name
-									</h2>
-									<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 bg-[#f9fafb] absolute right-0">
-									<IoSettingsOutline size={20} />
-								</div>
+									<div className=" max-w-52 md:max-w-60 relative">
+										<h2 className="text-xl font-semibold" style={{ color: PALETTE.TEXT_DARK }}>
+											Student Name
+										</h2>
+										<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 block md:hidden bg-[#f9fafb] absolute right-0 -md:right-10">
+											<IoSettingsOutline size={20} />
+										</div>
 									</div>
-
+										<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 hidden md:block bg-[#f9fafb] absolute -right-10">
+											<IoSettingsOutline size={20} />
+										</div>
 									<div className="flex flex-wrap items-center relative gap-1 mt-2">
 
 										<span
-											className="text-xs font-medium px-2.5 py-1.5 rounded-l-full"
+											className="text-sm font-medium px-2.5 py-1.5 rounded-l-full"
 											style={{
 												backgroundColor: PALETTE.ACCENT_PINK,
 												color: PALETTE.WHITE_CARD,
@@ -131,7 +133,7 @@ const StudentProfile = () => {
 											Course Name
 										</span>
 										<span
-											className="text-xs font-meduim px-2.5 py-1.5 rounded-r-full"
+											className="text-sm font-meduim px-2.5 py-1.5 rounded-r-full"
 											style={{
 												backgroundColor: PALETTE.ACCENT_PINK,
 												color: PALETTE.WHITE_CARD,
@@ -140,18 +142,18 @@ const StudentProfile = () => {
 										</span>
 									</div>
 								</div>
-								
+
 							</div>
-							 <div className="text-base gap-x-8 md:gap-y-2 flex flex-col md:flex-row items-start md:items-center space-y-0.5 text-black">
-                            <div className="flex flex-col gap-1">
-                                <p className='text-sm md:text-base'><strong className="font-semibold">City:</strong>{" "}Mumbai</p>
-                                <p className='text-sm md:text-base'><strong className="font-semibold">State:</strong>{" "}Maharashtra</p>
-                            </div>
-                            <div className="flex flex-col gap-1">
-                                <p className='text-sm md:text-base'><strong className="font-semibold">Gender:</strong>{" "}Male</p>
-                                <p className='text-sm md:text-base'><strong className="font-semibold">DOB:</strong>{" "}15 Jun 2015</p>
-                            </div>
-                        </div>
+							<div className="text-base gap-x-8 md:gap-y-2 flex flex-col md:flex-row items-start md:items-center space-y-0.5 text-black">
+								<div className="flex flex-col gap-1">
+									<p className='text-sm md:text-base'><strong className="font-semibold">City:</strong>{" "}Mumbai</p>
+									<p className='text-sm md:text-base'><strong className="font-semibold">State:</strong>{" "}Maharashtra</p>
+								</div>
+								<div className="flex flex-col gap-1">
+									<p className='text-sm md:text-base'><strong className="font-semibold">Gender:</strong>{" "}Male</p>
+									<p className='text-sm md:text-base'><strong className="font-semibold">DOB:</strong>{" "}15 Jun 2015</p>
+								</div>
+							</div>
 						</div>
 
 						<div className="bg-white p-4 mt-4 rounded-2xl border border-gray-200">
@@ -172,7 +174,7 @@ const StudentProfile = () => {
 								</div>
 
 								{/* Action Buttons */}
-								<div className="flex gap-3 mt-4 md:mt-0">
+								<div className="flex flex-wrap gap-3 mt-4 md:mt-0">
 									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50">
 										<FaRegStar className="text-yellow-400" />
 										Give Suggestion

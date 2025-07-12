@@ -6,7 +6,7 @@ import { IoCalendarOutline, IoSearchOutline } from "react-icons/io5";
 const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   return (
     <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-5xl">
-      <div className="relative bg-white p-6 rounded-2xl w-full">
+      <div className="relative bg-white p-6 rounded-2xl w-full max-h-[95vh] overflow-y-auto custom-scrollbar-thin mr-1">
         {/* Close Button */}
         <button
           onClick={onClose}
