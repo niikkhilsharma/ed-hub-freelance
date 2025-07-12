@@ -214,9 +214,9 @@ const StudentPerformancePage: React.FC = () => {
 	}, [students, searchTerm /*, activeFilters */])
 
 	return (
-		<main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 space-y-6 bg-white rounded-2xl">
+		<main className="flex-grow container mx-auto p-4 h-350 sm:p-6 lg:p-8 space-y-6 bg-white rounded-2xl">
 			{/* Header: Search and Filters */}
-			<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+			<div className="flex  flex-col md:flex-row md:items-center md:justify-between gap-4">
 				{/* Search Input */}
 				<div className="relative flex-grow">
 					<FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-full h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />

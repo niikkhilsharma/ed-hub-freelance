@@ -6,14 +6,14 @@ import TabSwitchTest from "@/components/common-components/TabSwitchTest";
 import { useState } from "react";
 import ReviewQuestion from "./components/ReviewQuestion";
 import TestDetails from "./components/TestDetails";
-
+import "./edit.css"
 const CreateDmitTest = () => {
     const tabs = ['Test Details', 'Review']; // Normal string array
 
     const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
     const headingMap = {
-        'DMIT Test Questionnaire': 'Test Name',
+        'Test Details': 'Test Name',
         'Review': 'Review Questions',
     } as Record<string, string>;
 
@@ -29,7 +29,7 @@ const CreateDmitTest = () => {
                         onChange={setSelectedTab}
                     />
                     {selectedTab === "Test Details" && (
-                        <TestDetails />
+                        <TestDetails setSelectedTab={setSelectedTab}/>
                     )}
                     {selectedTab === "Review" && (
                         <ReviewQuestion />

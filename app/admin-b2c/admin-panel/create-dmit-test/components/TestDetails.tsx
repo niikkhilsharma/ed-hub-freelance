@@ -126,7 +126,7 @@ const TeatDetails: FC = () => {
 
         {/* Option Count */}
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium">Options</label>
+          <label className="text-lg">Options</label>
           <CustomNumberInput value={optionCount} onChange={setOptionCount} />
         </div>
 
@@ -174,7 +174,7 @@ const TeatDetails: FC = () => {
 
         {/* File Upload */}
         <div>
-          <label className="block w-max px-4 py-3.5 bg-yellow-400 rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
+          <label className="block w-max px-4 py-3.5 bg-[#FFCC00] rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
             Upload Image / File
             <input type="file" hidden />
           </label>
@@ -280,7 +280,7 @@ const TeatDetails: FC = () => {
 
         {/* Option Count */}
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium">Options</label>
+          <label className="text-lg">Options</label>
           <CustomNumberInput value={optionCount} onChange={setOptionCount} />
         </div>
 
@@ -307,7 +307,7 @@ const TeatDetails: FC = () => {
         </div>
 
         {/* Correct Option Selector */}
-        <div className="flex items-center gap-4 flex-wrap">
+        <div className="flex items-center gap-4 md:gap-10 mt-6 flex-wrap">
           {options.map((opt) => (
             <label key={opt} className="flex items-center gap-2 cursor-pointer">
               <input
@@ -320,7 +320,7 @@ const TeatDetails: FC = () => {
               <span className="w-5 h-5 rounded-full border-2 border-gray-400 peer-checked:border-[#3366ff] peer-checked:bg-[#3366ff] relative">
                 <span className="absolute inset-[4px] bg-white rounded-full"></span>
               </span>
-              <span className="text-base font-medium">{opt}</span>
+              <span className="text-lg font-normal">{opt}</span>
             </label>
           ))}
         </div>
@@ -328,7 +328,7 @@ const TeatDetails: FC = () => {
 
         {/* File Upload */}
         <div>
-          <label className="block w-max px-4 py-3.5 bg-yellow-400 rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
+          <label className="block w-max px-4 py-3.5 bg-[#FFCC00] rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90">
             Upload Image / File
             <input type="file" hidden />
           </label>

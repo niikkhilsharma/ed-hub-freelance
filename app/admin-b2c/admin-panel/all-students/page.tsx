@@ -7,6 +7,7 @@ import TabSwitch from "@/components/common-components/TabSwitch";
 import { useState } from "react";
 
 const users = Array.from({ length: 16 }, (_, i) => ({
+   id: String(i + 1),
   name: `Student Name`,
   image: '/common-images/student.png',
   role: 'Student' as 'Student',

@@ -1,7 +1,8 @@
 'use client';
 
+import { AddItem } from '@/app/admin-b2c/pop-ups-2/page';
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 
 interface Item {
@@ -17,8 +18,10 @@ interface InventoryTableProps {
 }
 
 const InventoryTable: FC<InventoryTableProps> = ({ data }) => {
+  const [taskPopup, setTaskPopup]= useState(false)
+  const [itemPopup, setItemPopup]= useState(false)
   return (
-    <div className="w-full bg-white p-4 overflow-x-auto custom-scrollbar-thin rounded-2xl shadow-sm">
+    <div className="w-full bg-white p-4 overflow-x-auto custom-scrollbar-thin rounded-2xl -sm">
 
       {/* Table Header */}
       <div className="grid grid-cols-4 bg-[#8DD9B3] text-black font-semibold text-sm rounded-2xl p-4 md:pl-12 md:pr-20 md:py-6">
@@ -60,16 +63,23 @@ const InventoryTable: FC<InventoryTableProps> = ({ data }) => {
           </div>
         ))}
         <div className="fixed right-2 sm:right-10 top-1/2 -translate-y-1/2 flex gap-2 z-10">
-          <button className="flex items-center gap-1 bg-yellow-400 text-white px-3 py-2.5 rounded-full text-xs font-medium shadow hover:opacity-90">
+          <button className="flex items-center gap-1 bg-[#FFCC00] text-white px-3 py-2.5 rounded-full text-xs font-medium cursor-pointer hover:opacity-90"
+          onClick={() => setTaskPopup(true)}
+          >
             <FiPlus size={14} />
             Assign Task
           </button>
-          <button className="flex items-center gap-1 bg-yellow-400 text-white px-3 py-2.5 rounded-full text-xs font-medium shadow hover:opacity-90">
+          <button className="flex items-center gap-1 bg-[#FFCC00] text-white px-3 py-2.5 rounded-full text-xs font-medium cursor-pointer hover:opacity-90"
+          onClick={() => setItemPopup(true)}>
             <FiPlus size={14} />
             Add Item
           </button>
         </div>
       </div>
+
+      <AddItem
+      isOpen={itemPopup} onClose={() => setItemPopup(false)} 
+      />
     </div>
   );
 };

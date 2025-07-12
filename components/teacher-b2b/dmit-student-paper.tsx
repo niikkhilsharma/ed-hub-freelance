@@ -81,10 +81,11 @@ const sampleSummaryData: ExtendedAssessmentSummaryData = {
     { id: 'is5', skillName: 'Pedagogy learning', percentage: 40, colorClass: 'bg-[#FFC79A]' }, // Using Tailwind orange
   ],
   ratings: [
-    { id: 'r1', name: 'Concept', score: 3, maxScore: 5 },
-    { id: 'r2', name: 'Critical thinking', score: 4, maxScore: 5 },
+    { id: 'r1', name: 'Concept', score: 4, maxScore: 5 },
+    { id: 'r2', name: 'Critical thinking', score: 3, maxScore: 5 },
     { id: 'r3', name: 'Application of Concept', score: 5, maxScore: 5 },
-    { id: 'r4', name: 'Retention', score: 3, maxScore: 5 },
+    { id: 'r4', name: 'Retention', score: 4, maxScore: 5 },
+    { id: 'r4', name: 'Retention', score: 4, maxScore: 5 },
     { id: 'r5', name: 'Logical Reasoning', score: 4, maxScore: 5 },
   ],
 };
@@ -230,9 +231,11 @@ const IndividualScoresPanel: React.FC<{ scores: IndividualSkillScore[] }> = ({ s
           <div
             className={`rounded-full h-full ${score.colorClass}`}
             style={{ width: `${score.percentage}%` }}
-            aria-label={`${score.skillName} score: ${score.percentage}%`}
+            aria-label={`${score.skillName} 
+            score: ${score.percentage}%`}
             title={`${score.percentage}%`}
           />
+          
         </div>
       </div>
     ))}

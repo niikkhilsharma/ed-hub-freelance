@@ -2,11 +2,8 @@
 import React, { useState } from "react";
 import Image from 'next/image';
 
-const filters = ['Filter 1', 'Filter 2', 'Filter 3', 'Filter 4'];
-import { FaSearch } from 'react-icons/fa';
-import { IoIosArrowDown } from 'react-icons/io';
-import { MdOutlineDateRange } from "react-icons/md";
 import AdminB2CWrapper from "@/components/b2c-admin/common-component/AdminB2CPageWrapper";
+import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
 
 type leavecards = {
     id: number,
@@ -32,15 +29,13 @@ export const sampleData: leavecards[] = [...teachers];
 
 const ExtraLectureManager = () => {
     // const [activeTab, setActiveTab] = useState<'teacher'>('teacher');
+const filters = [
+    {id: "f1", label: "Filter 1"},
+     {id: "f2", label: "Filter 2"},
+      {id: "f3", label: "Filter 3"},
+       {id: "f4", label: "Filter 4"},
+];
 
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedFilters, setSelectedFilters] = useState<string[]>(filters.map(() => ''));
-
-    const handleFilterChange = (index: number, value: string) => {
-        const updated = [...selectedFilters];
-        updated[index] = value;
-        setSelectedFilters(updated);
-    };
     return (
         <>
 
@@ -48,40 +43,12 @@ const ExtraLectureManager = () => {
                 {/* Tabs */}
                 <div className="bg-white rounded-2xl p-4">
 
-                    <div className="flex items-center flex-col sm:flex-row mb-4 gap-2">
-                        {/* Search Input */}
-                        <div className="relative w-full ">
-                            <FaSearch className="absolute top-1/2 left-3 transform -translate-y-1/2 text-black text-md" />
-                            <input
-                                type="text"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                placeholder="Search"
-                                className="w-full pl-10 pr-4 py-2 border border-gray-700 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
-                            />
-                        </div>
-                        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2">
-                            {filters.map((filter, index) => (
-                                <div key={filter} className="relative">
-                                    <select
-                                        className="appearance-none border border-gray-300 text-sm px-3 py-2 rounded-xl pr-4 bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                                        value={selectedFilters[index]}
-                                        onChange={(e) => handleFilterChange(index, e.target.value)}
-                                    >
-                                        <option value="">{filter}</option>
-                                        <option value="Option 1">Option 1</option>
-                                        <option value="Option 2">Option 2</option>
-                                    </select>
-                                    <IoIosArrowDown className="pointer-events-none absolute right-2 top-1/2 transform -translate-y-1/2 font-medium text-gray-500 text-xs" />
-                                </div>
-                            ))}
-                        </div>
-                    </div >
+                    <SearchFilter filters={filters}/>
                     <div className="max-h-[764px] overflow-y-auto grid gap-1 grid-cols-1 sm:grid-cols-2 custom-peach-scrollbar">
                         {teachers.map((item, index) => (
                             <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-4 inline-block mr-2 mb-4  relative">
                                 <div className="flex">
-                                    <div className="rounded-3xl bg-white p-2 md:p-3 relative overflow-hidden">
+                                    <div className="rounded-3xl bg-white p-1.5 relative overflow-hidden">
                                         <Image src={item.image} alt={item.name} width={100} height={100} className="object-cover" />
                                     </div>
                                     <div className="flex-1 flex flex-col gap-1 justify-between ml-4">

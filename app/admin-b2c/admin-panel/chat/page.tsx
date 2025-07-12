@@ -86,15 +86,15 @@ export default function ChatPage() {
                 {/* 📱 Mobile / Tablet Layout */}
                 {/* 📱 Mobile / Tablet Layout */}
                 <div className="lg:hidden relative w-full min-h-[400px]"> {/* <-- Give it a min height to prevent blank */}
-                    <AnimatePresence mode="wait" initial={false}>
+                    <AnimatePresence mode="sync" initial={false}>
                         {!showChatOnMobile ? (
                             <motion.div
                                 key="list"
                                 initial={{ x: 0 }}
                                 animate={{ x: 0 }}
                                 exit={{ x: '-100%' }}
-                                transition={{ duration: 0.4 }}
-                                className="absolute top-0 left-0 w-full z-10"
+                                transition={{ duration: 0.25 }}
+                                className="absolute top-0 left-0 w-full h-full z-10"
                             >
                                 <TeacherListSidebar
                                     teachers={teachersListData}
@@ -112,20 +112,16 @@ export default function ChatPage() {
                                 animate={{ x: 0 }}
                                 exit={{ x: '100%' }}
                                 transition={{ duration: 0.4 }}
-                                className="absolute top-0 left-0 w-full z-20 bg-white"
+                                className="absolute top-0 left-0 w-full h-full z-20 bg-white"
                             >
-                                <div className="p-3 border-b flex items-center bg-white sticky top-0 z-30">
-                                    <button onClick={() => setShowChatOnMobile(false)} className="text-blue-600 font-medium">
-                                        ← Back
-                                    </button>
-                                </div>
+
                                 <ChatArea
                                     selectedTeacher={selectedTeacher}
                                     messages={messages}
                                     newMessage={newMessage}
                                     onNewMessageChange={(e) => setNewMessage(e.target.value)}
                                     onSendMessage={handleSendMessage}
-                                    
+                                    onBackClick={() => setShowChatOnMobile(false)}
                                 />
                             </motion.div>
                         )}

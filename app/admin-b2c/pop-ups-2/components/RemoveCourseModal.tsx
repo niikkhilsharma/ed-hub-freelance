@@ -39,7 +39,7 @@ const RemoveCourseModal: React.FC<PopupProp> = ({
             Cancel
           </button>
           <button
-            className="rounded-full px-6 py-2 bg-red-100 text-red-500 text-sm font-medium hover:bg-red-200"
+            className="rounded-full px-6 py-2 bg-[#ff33661a] text-[#ff3366] text-sm font-medium hover:bg-red-200"
           >
             Remove
           </button>

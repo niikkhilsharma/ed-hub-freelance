@@ -12,7 +12,6 @@ import {
     FiTrash2,
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
-import TabSwitcher from "./components/FolderDetails";
 import ManageAccess from "./components/ManageAccess";
 import MeetingDetailTeacher from "./components/MeetingDetailTeacher";
 import MeetingDetailStudent from "./components/MeetingDetailStudent";
@@ -84,7 +83,7 @@ export const BaseModal: React.FC<BaseModalProps> = ({
 };
 
 
-const UploadFileImage: React.FC<PopupProp> = ({
+export const UploadFileImage: React.FC<PopupProp> = ({
     isOpen,
     onClose,
 }) => {
@@ -118,7 +117,7 @@ const UploadFileImage: React.FC<PopupProp> = ({
     );
 };
 
-const AddItem: React.FC<PopupProp> = ({
+export const AddItem: React.FC<PopupProp> = ({
     isOpen,
     onClose,
 }) => {
@@ -147,8 +146,6 @@ const AddItem: React.FC<PopupProp> = ({
                     </div>
                     <span className="truncate">Document Name</span>
                 </div>
-
-
 
                 <div className="flex flex-col gap-1 pb-4 mt-6">
                     <label className='font-medium text-md mb-2' htmlFor="stocks">Stocks</label>

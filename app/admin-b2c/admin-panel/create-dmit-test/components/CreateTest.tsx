@@ -3,7 +3,6 @@
 import BlueBtn from '@/components/b2c-admin/ui/BlueBtn';
 import GrayBtn from '@/components/b2c-admin/ui/GrayBtn';
 import { FC } from 'react';
-import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 
 const CustomNumberInput: FC<{
   label: string;

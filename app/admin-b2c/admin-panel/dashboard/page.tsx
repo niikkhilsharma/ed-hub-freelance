@@ -15,6 +15,7 @@ import AdminToolkit from './AdminToolkit'
 import Overview from './AdminOverview'
 import ArrowUi from './ArrowUi'
 import { HiChevronDown } from 'react-icons/hi'
+import Link from 'next/link'
 
 export default function DashboardPage() {
 	const tabs = ["Online", "Offline"]
@@ -29,38 +30,46 @@ export default function DashboardPage() {
 				<div className="flex bg-white flex-col gap-4 sm:gap-6 p-2 sm:p-4 border rounded-2xl">
 					{/* Stats Cards */}
 					<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
-						<Card className="shadow-none bg-[#F9FAFB] w-full sm:w-1/3">
-							<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
-								<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">10</CardTitle>
-								<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
-									Schools
-								</CardDescription>
-							</CardHeader>
-						</Card>
-						<Card className="shadow-none bg-[#F9FAFB] w-full sm:w-1/3">
-							<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
-								<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">250</CardTitle>
-								<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
-									Teachers
-								</CardDescription>
-							</CardHeader>
-						</Card>
-						<Card className="shadow-none bg-[#F9FAFB] w-full sm:w-1/3">
-							<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
-								<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">6000</CardTitle>
-								<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
-									Students
-								</CardDescription>
-							</CardHeader>
-						</Card>
-						<Card className="shadow-none bg-[#F9FAFB] w-full sm:w-1/3">
-							<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
-								<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">15</CardTitle>
-								<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
-									Mentors
-								</CardDescription>
-							</CardHeader>
-						</Card>
+						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-institutions"}>
+							<Card className="shadow-none bg-[#F9FAFB] w-full">
+								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
+									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">10</CardTitle>
+									<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
+										Institues
+									</CardDescription>
+								</CardHeader>
+							</Card>
+						</Link>
+						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-institutions"}>
+							<Card className="shadow-none bg-[#F9FAFB] w-full">
+								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
+									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">250</CardTitle>
+									<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
+										Teachers
+									</CardDescription>
+								</CardHeader>
+							</Card>
+						</Link>
+						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-institutions"}>
+							<Card className="shadow-none bg-[#F9FAFB] w-full">
+								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
+									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">6000</CardTitle>
+									<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
+										Students
+									</CardDescription>
+								</CardHeader>
+							</Card>
+						</Link>
+						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-institutions"}>
+							<Card className="shadow-none bg-[#F9FAFB] w-full">
+								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
+									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">15</CardTitle>
+									<CardDescription className="text-[#000000] font-semibold tracking-wide text-sm sm:text-base">
+										Mentors
+									</CardDescription>
+								</CardHeader>
+							</Card>
+						</Link>
 					</div>
 
 					{/* Progress and Chart Section */}
@@ -178,51 +187,51 @@ export default function DashboardPage() {
 						{/* Chart Card */}
 						<div className="w-full lg:w-[55%] border rounded-2xl p-3 sm:p-4 bg-[#F9FAFB] flex flex-col justify-between gap-4 items-start">
 							<div className="flex w-full flex-wrap gap-4 justify-between">
-									<ArrowUi leftOnClick={() => { }} RightOnClick={() => { }} text="Online" />
-									<div className="flex flex-wrap gap-4.5">
-										{Array(4)
-											.fill(null)
-											.map((_, index) => (
-												<div
-													key={index}
-													className="flex items-center justify-between px-2 py-1.25 border border-gray-300 rounded-xl cursor-pointer bg-[#F9FAFB] text-sm text-black tracking-tight font-normal"
-												>
-													Filter
-													<HiChevronDown className="w-5 h-5 ml-6 text-black" />
-												</div>
-											))}
-									</div>
+								<ArrowUi leftOnClick={() => { }} RightOnClick={() => { }} text="Online" />
+								<div className="flex flex-wrap gap-4.5">
+									{Array(4)
+										.fill(null)
+										.map((_, index) => (
+											<div
+												key={index}
+												className="flex items-center justify-between px-2 py-1.25 border border-gray-300 rounded-xl cursor-pointer bg-[#F9FAFB] text-sm text-black tracking-tight font-normal"
+											>
+												Filter
+												<HiChevronDown className="w-5 h-5 ml-6 text-black" />
+											</div>
+										))}
 								</div>
+							</div>
 							<div className="flex w-full flex-col xl:flex-row justify-center gap-4 items-start xl:items-center">
-							<div className="w-full xl:flex-1">
-								
-								<h3 className="text-sm sm:text-base font-medium mb-2 sm:mb-4">Top Institute</h3>
-								<ChartBarLabelCustom />
-							</div>
-							<div className="w-full xl:w-auto xl:">
-								<div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-1 gap-2 xl:gap-1">
-									<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
-										<div className="font-bold text-nowrap text-sm">A :</div>
-										<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
-									</div>
-									<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
-										<div className="font-bold text-nowrap text-sm">B :</div>
-										<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
-									</div>
-									<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
-										<div className="font-bold text-nowrap text-sm">C :</div>
-										<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
-									</div>
-									<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
-										<div className="font-bold text-nowrap text-sm">D :</div>
-										<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
-									</div>
-									<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
-										<div className="font-bold text-nowrap text-sm">E :</div>
-										<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
+								<div className="w-full xl:flex-1">
+
+									<h3 className="text-sm sm:text-base font-medium mb-2 sm:mb-4">Top Institute</h3>
+									<ChartBarLabelCustom />
+								</div>
+								<div className="w-full xl:w-auto xl:">
+									<div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-1 gap-2 xl:gap-1">
+										<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
+											<div className="font-bold text-nowrap text-sm">A :</div>
+											<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
+										</div>
+										<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
+											<div className="font-bold text-nowrap text-sm">B :</div>
+											<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
+										</div>
+										<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
+											<div className="font-bold text-nowrap text-sm">C :</div>
+											<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
+										</div>
+										<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
+											<div className="font-bold text-nowrap text-sm">D :</div>
+											<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
+										</div>
+										<div className="flex justify-start xl:justify-center items-center gap-2 flex-nowrap">
+											<div className="font-bold text-nowrap text-sm">E :</div>
+											<div className="font-medium text-nowrap text-sm truncate">Institute Name</div>
+										</div>
 									</div>
 								</div>
-							</div>
 							</div>
 						</div>
 					</div>
@@ -233,7 +242,7 @@ export default function DashboardPage() {
 
 			{/* Admin Overview */}
 			<Overview />
-			{/* School Cards Grid */}
+			{/* Institue Cards Grid */}
 			<div className="rounded-3xl bg-white py-2 ">
 				<div className="pt-2 px-4">
 					<SearchFilterBar />
@@ -256,7 +265,8 @@ export default function DashboardPage() {
 
 const SchoolCard = () => {
 	return (
-		<Card className="shadow-none rounded-2xl bg-[#F9FAFB] flex flex-col sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
+		<Link href={"/admin-b2c/admin-panel/institute-profile"}>
+		<Card className="shadow-none rounded-2xl bg-[#F9FAFB] flex flex-col w-full sm:flex-row gap-3 sm:gap-4 p-3 sm:p-4">
 			<div className="w-full sm:w-48">
 				<Image
 					src={'/common-images/institute.jpg'}
@@ -288,6 +298,7 @@ const SchoolCard = () => {
 				</div>
 			</div>
 		</Card>
+		</Link>
 	)
 }
 

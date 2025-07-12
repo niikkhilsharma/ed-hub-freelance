@@ -223,3 +223,9 @@ h3 {
 .custom-scrollbar-thin-grey::-webkit-scrollbar {
   width: 10px; /* Make it thinner - adjust as needed */
 }
+
+/* Adding common color acroos the project */
+
+.card-bg-color{
+  background-color: #f9fafb; 
+}

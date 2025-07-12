@@ -1,5 +1,7 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import clsx from 'clsx';
+import AssignPenaltyModal from '../../pop-ups-2/components/AssignPelanty';
 
 type LoginStatus = 'Present' | 'Absent' | 'Leave' | 'Fail';
 
@@ -26,11 +28,12 @@ const loginData: LoginRecord[] = [
 ];
 
 const TeacherTable: React.FC = () => {
+  const [actionTab, setActionTab] = useState(false)
   return (
     <div className="overflow-x-auto rounded-2xl custom-scrollbar-thin">
-      <table className="min-w-[800px] px-3 py-2 rounded-2xl w-full bg-white text-sm text-center border-separate border-spacing-y-2">
+      <table className="min-w-[900px] px-3 py-2 rounded-2xl w-full bg-white text-sm text-center border-separate border-spacing-y-2">
         <thead>
-          <tr className="bg-[#3366ff] text-white">
+          <tr className="bg-[#3366ff] text-white whitespace-nowrap">
             <th className="px-8 py-5 text-left rounded-tl-2xl rounded-bl-2xl">Login Date</th>
             <th className="px-8 py-5">Login Time</th>
             <th className="px-8 py-5">IP Address</th>
@@ -48,11 +51,11 @@ const TeacherTable: React.FC = () => {
               <tr
                 key={index}
                 className={clsx(
-                  'text-black',
-                  record.status === 'Absent' && 'bg-red-50',
-                  record.status === 'Leave' && 'bg-yellow-50',
-                  record.status === 'Fail' && 'bg-gray-100',
-                  record.status === 'Present' && 'bg-gray-100'
+                  'text-black whitespace-nowrap',
+                  record.status === 'Absent' && 'bg-[#FF33661A]',
+                  record.status === 'Leave' && 'bg-[#FFCC001A]',
+                  record.status === 'Fail' && 'bg-[#f9fafb]',
+                  record.status === 'Present' && 'bg-[#f9fafb]'
                 )}
               >
                 <td className="px-8 py-4 text-left border-l border-y border-gray-200  rounded-tl-2xl rounded-bl-2xl">{record.date}</td>
@@ -64,10 +67,10 @@ const TeacherTable: React.FC = () => {
                   <span
                     className={clsx(
                       'font-medium',
-                      record.status === 'Present' && 'text-green-600',
-                      record.status === 'Fail' && 'text-red-500',
-                      record.status === 'Absent' && 'text-red-500',
-                      record.status === 'Leave' && 'text-yellow-500'
+                      record.status === 'Present' && 'text-[#28A745]',
+                      record.status === 'Fail' && 'text-[#DC3545]',
+                      record.status === 'Absent' && 'text-[#DC3545]',
+                      record.status === 'Leave' && 'text-[#FFCC00]'
                     )}
                   >
                     {record.status}
@@ -75,11 +78,13 @@ const TeacherTable: React.FC = () => {
                 </td>
                 <td className="px-4 py-4 border-r border-y border-gray-200  text-right rounded-tr-2xl rounded-br-2xl">
                   {isFailOrAbsent ? (
-                    <button className="border bg-white border-gray-300 rounded-full px-4 py-1 text-xs font-medium hover:bg-gray-100">
+                    <button className="border w-full bg-white border-gray-300 rounded-full px-4 py-1 text-xs font-medium cursor-pointer hover:bg-gray-100"
+                    onClick={() => setActionTab(true)}
+                    >
                       Action
                     </button>
                   ) : (
-                    <span className="text-gray-400">-</span>
+                    <span className="text-black w-full block text-center">-</span>
                   )}
                 </td>
               </tr>
@@ -87,7 +92,11 @@ const TeacherTable: React.FC = () => {
           })}
         </tbody>
       </table>
+    <AssignPenaltyModal 
+    isOpen={actionTab} onClose={() => setActionTab(false)}
+    />
     </div>
+    
   );
 };
 

@@ -53,8 +53,15 @@ const workingHours = [
     working: true,
   },
 ];
+interface WorkingHoursProps {
+  setSelectedTab: (tab: string) => void;
+}
 
-export default function WorkingHours() {
+const WorkingHours: React.FC<WorkingHoursProps> = ({ setSelectedTab }) => {
+  const handleClick = () => {
+  setSelectedTab("Other Details");
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -84,7 +91,7 @@ export default function WorkingHours() {
       {workingHours.map((item, idx) => (
         <div
           key={idx}
-          className="grid grid-cols-6 gap-4 bg-gray-100 border px-4 py-3.5 rounded-2xl items-center text-sm"
+          className="grid grid-cols-6 gap-4 bg-[#f9fafb] border px-4 py-3.5 rounded-2xl items-center text-sm"
         >
           <div className="font-medium pr-[25%] text-center">{item.day}</div>
           <div className={item.working ? 'text-center' : 'text-gray-400 text-center'}>{item.hours}</div>
@@ -119,10 +126,13 @@ export default function WorkingHours() {
         <div className="bg-[#f5f5f5] text-sm text-gray-700 px-4 py-2 rounded-xl max-w-md">
           11.05 Hours Per Month
         </div>
-        <button className="bg-[#3366ff] text-white text-sm px-8 py-2 rounded-full hover:opacity-90">
+        <button className="bg-[#3366ff] cursor-pointer text-white text-sm px-8 py-2 rounded-full hover:opacity-90"
+           onClick={handleClick}>
           Next
         </button>
       </div>
     </div>
   );
 }
+
+export default WorkingHours;
