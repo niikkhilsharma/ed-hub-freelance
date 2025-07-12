@@ -1,8 +1,11 @@
 'use client';
-import { FC } from 'react';
+import Link from 'next/link';
 import { FiCheck } from 'react-icons/fi';
+interface TabProps {
+  setSelectedTab: (tab: string) => void;
+}
 
-const Review: FC = () => {
+const Review: React.FC<TabProps> = ({ setSelectedTab }) => {
   const question = {
     number: 1,
     question: 'Which part of the plant makes food ?',
@@ -11,7 +14,10 @@ const Review: FC = () => {
     options: ['Option', 'Option', 'Option'],
     correctIndex: 0,
   };
-
+  const handleClickBack = () => {
+    setSelectedTab("DMIT Test Questionnaire");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <div className="w-full px-4 md:px-10 lg:px-16 py-8 space-y-8 bg-white">
       {/* Test Info */}
@@ -26,7 +32,8 @@ const Review: FC = () => {
           <p>Total Point: 100</p>
         </div>
 
-        <button className="px-6 py-2 bg-gray-100 rounded-full text-sm shadow-sm hover:opacity-90">
+        <button className="px-6 py-2 bg-gray-100 rounded-full text-sm shadow-sm hover:opacity-90"
+        onClick={handleClickBack}>
           Edit
         </button>
       </div>
@@ -63,7 +70,8 @@ const Review: FC = () => {
           ))}
         </div>
 
-        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90">
+        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90"
+        onClick={handleClickBack}>
           Edit
         </button>
       </div>
@@ -99,7 +107,8 @@ const Review: FC = () => {
           ))}
         </div>
 
-        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90">
+        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90"
+        onClick={handleClickBack}>
           Edit
         </button>
       </div>
@@ -107,9 +116,11 @@ const Review: FC = () => {
         <div className="rounded-[42px] text-base md:text-lg font-semibold border border-[#E5E7EB] text-[#6B7280] px-4 py-3 cursor-pointer inline-block">
           Cancel
         </div>
+        <Link href={"/admin-b2c/admin-panel/admin-dmit-test"}>
         <button className="rounded-[42px] text-base md:text-lg font-semibold bg-[#3366ff] text-white px-4 py-3 cursor-pointer inline-block">
           Publish
         </button>
+        </Link>
       </div>
     </div>
   );

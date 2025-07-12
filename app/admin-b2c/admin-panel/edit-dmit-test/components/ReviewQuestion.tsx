@@ -2,7 +2,11 @@
 import { FC } from 'react';
 import { FiCheck } from 'react-icons/fi';
 
-const Review: FC = () => {
+interface DetailsProps {
+  setSelectedTab: (tab: string) => void;
+}
+
+const Review: React.FC<DetailsProps> = ({ setSelectedTab }) => {
   const question = {
     number: 1,
     question: 'Which part of the plant makes food ?',
@@ -11,7 +15,10 @@ const Review: FC = () => {
     options: ['Option', 'Option', 'Option'],
     correctIndex: 0,
   };
-
+const handleClick = () => {
+    setSelectedTab("Test Details");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <div className="w-full px-4 md:px-10 lg:px-16 py-8 space-y-8 bg-white">
       {/* Test Info */}
@@ -26,7 +33,8 @@ const Review: FC = () => {
           <p>Total Point: 100</p>
         </div>
 
-        <button className="px-6 py-2 bg-gray-100 rounded-full text-sm shadow-sm hover:opacity-90">
+        <button className="px-6 py-2 bg-gray-100 rounded-full text-sm shadow-sm hover:opacity-90"
+        onClick={() => setSelectedTab("Test Details")}>
           Edit
         </button>
       </div>
@@ -63,7 +71,8 @@ const Review: FC = () => {
           ))}
         </div>
 
-        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90">
+        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90"
+        onClick={handleClick}>
           Edit
         </button>
       </div>
@@ -99,7 +108,8 @@ const Review: FC = () => {
           ))}
         </div>
 
-        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90">
+        <button className="mt-2 px-4 py-2 bg-gray-100 rounded-full text-sm hover:opacity-90"
+        onClick={() => setSelectedTab("Test Details")}>
           Edit
         </button>
       </div>

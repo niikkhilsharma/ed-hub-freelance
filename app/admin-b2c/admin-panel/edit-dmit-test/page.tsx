@@ -32,7 +32,7 @@ const CreateDmitTest = () => {
                         <TestDetails setSelectedTab={setSelectedTab}/>
                     )}
                     {selectedTab === "Review" && (
-                        <ReviewQuestion />
+                        <ReviewQuestion setSelectedTab={setSelectedTab}/>
                     )}
                 </div>
                     

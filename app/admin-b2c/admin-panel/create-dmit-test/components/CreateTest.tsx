@@ -2,7 +2,12 @@
 
 import BlueBtn from '@/components/b2c-admin/ui/BlueBtn';
 import GrayBtn from '@/components/b2c-admin/ui/GrayBtn';
+import Link from 'next/link';
 import { FC } from 'react';
+
+interface TabProps {
+  setSelectedTab: (tab: string) => void;
+}
 
 const CustomNumberInput: FC<{
   label: string;
@@ -26,7 +31,11 @@ const CustomNumberInput: FC<{
   );
 };
 
-const CreateTest: FC = () => {
+const CreateTest: React.FC<TabProps> = ({ setSelectedTab }) => {
+  const handleClick = () => {
+    setSelectedTab("DMIT Test Questionnaire");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <form className="max-w-lg mx-auto w-full space-y-6 py-2 md:py-4 px-2">
       {/* Test Name */}
@@ -59,14 +68,19 @@ const CreateTest: FC = () => {
           Duration & Point
         </p>
         <div className="grid grid-cols-4 gap-2">
-          <CustomNumberInput label="Hours" value={0} onChange={() => {}} />
-          <CustomNumberInput label="Minutes" value={0} onChange={() => {}} />
-          <CustomNumberInput label="Total Points" value={0} onChange={() => {}} />
-          <CustomNumberInput label="Pass Points" value={0} onChange={() => {}} />
+          <CustomNumberInput label="Hours" value={0} onChange={() => { }} />
+          <CustomNumberInput label="Minutes" value={0} onChange={() => { }} />
+          <CustomNumberInput label="Total Points" value={0} onChange={() => { }} />
+          <CustomNumberInput label="Pass Points" value={0} onChange={() => { }} />
         </div>
         <div className="flex justify-center gap-4 my-8">
-          <GrayBtn title='Cancel' />
-          <BlueBtn title='Continue' />
+          <Link href={"/admin-b2c/admin-panel/admin-dmit-test"}>
+            <GrayBtn title='Cancel' />
+          </Link>
+          <button className="rounded-[42px] text-lg font-semibold bg-[#3366ff] text-white px-2.5 py-4 cursor-pointer inline-block"
+          onClick={handleClick}>
+            Continue
+          </button>
         </div>
       </div>
     </form>

@@ -32,13 +32,13 @@ const CreateDmitTest = () => {
                         onChange={setSelectedTab}
                     />
                     {selectedTab === "DMIT Test Details" && (
-                        <CreateTest />
+                        <CreateTest setSelectedTab={setSelectedTab}/>
                     )}
                     {selectedTab === "DMIT Test Questionnaire" && (
-                        <TestDetails />
+                        <TestDetails setSelectedTab={setSelectedTab}/>
                     )}
                     {selectedTab === "Review" && (
-                        <ReviewQuestion />
+                        <ReviewQuestion setSelectedTab={setSelectedTab}/>
                     )}
                 </div>
                     
