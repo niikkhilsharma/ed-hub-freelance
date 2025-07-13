@@ -15,14 +15,19 @@ export default function ArrowUi({
 }) {
 	return (
 		<Button
-			variant={'outline'}
+			variant="outline"
 			className={cn(
-				'flex gap-2 items-center justify-between rounded-xl font-normal w-[8.3rem] shadow-none bg-[#F9FAFB] border-[#E5E7EB] tracking-tight',
+				'flex gap-2 items-center justify-between rounded-xl font-normal min-w-[8.3rem] shadow-none bg-[#F9FAFB] border-[#E5E7EB] tracking-tight',
 				className
-			)}>
-			<CircleArrowLeft onClick={leftOnClick} />
+			)}
+		>
+			<div onClick={leftOnClick} className="cursor-pointer">
+				<CircleArrowLeft />
+			</div>
 			{text}
-			<CircleArrowRight onClick={RightOnClick} />
+			<div onClick={RightOnClick} className="cursor-pointer">
+				<CircleArrowRight />
+			</div>
 		</Button>
-	)
+	);
 }
