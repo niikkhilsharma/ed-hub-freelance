@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import { MdOutlineDateRange } from "react-icons/md";
 import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
+import { useState } from 'react';
+import ReassignClassModal from '../../pop-ups-2/components/Reassign';
 
 type leavecards = {
     id: number,
@@ -27,8 +29,8 @@ const teachers = Array.from({ length: 6 }, (_, i) => ({
 export const sampleData: leavecards[] = [...teachers];
 
 const TeacherLeave = () => {
-    // const [activeTab, setActiveTab] = useState<'teacher'>('teacher');
 
+    const [activePopup, setActivePopup] = useState(false);
 
     const filters = [
         { id: 'f1', label: 'Filter 1' },
@@ -67,10 +69,11 @@ const TeacherLeave = () => {
                                         {item.reason}</p>
                                 </div>
                                 <div className="flex justify-center items-center gap-4 mt-4">
-                                    <button className="px-6 py-2.5 bg-red-100 text-[#ff3366] rounded-3xl">
+                                    <button className="px-6 cursor-pointer py-2.5 bg-red-100 text-[#ff3366] rounded-3xl">
                                         Reject
                                     </button>
-                                    <button className="px-6 py-2.5 bg-[#3366FF] text-white rounded-3xl">
+                                    <button className="px-6 cursor-pointer py-2.5 bg-[#3366FF] text-white rounded-3xl"
+                                    onClick={() => setActivePopup(true)}>
                                         Approve
                                     </button>
                                 </div>
@@ -81,6 +84,7 @@ const TeacherLeave = () => {
                     </div>
                 </div>
             </div>
+            <ReassignClassModal isOpen={activePopup} onClose={() => setActivePopup(false)}/>
         </>
     )
 }

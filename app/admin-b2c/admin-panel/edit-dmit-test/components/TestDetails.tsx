@@ -14,7 +14,7 @@ const CustomNumberInput: FC<{
         type="number"
         value={value.toString().padStart(2, '0')}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full bg-gray-100 text-center py-2 rounded-full border border-gray-300 text-sm no-spinner"
+        className="w-full bg-[#f9fafb] text-center py-2 rounded-full border border-gray-300 text-sm no-spinner"
       />
     </div>
   );
@@ -27,7 +27,7 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
     setSelectedTab("Review");
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  const [uploadImage, setUploadImage] = useState(false)
+  const [uploadImage, setUploadImage] = useState(false);
   const [points, setPoints] = useState(0);
   const [optionCount, setOptionCount] = useState(4);
   const [correctOption, setCorrectOption] = useState('Option 1');
@@ -46,12 +46,12 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
               <input
                 type="text"
                 placeholder="Question"
-                className="flex-1 px-4 py-2 bg-gray-100 rounded-full border border-gray-300 text-sm"
+                className="flex-1 px-4 py-2 bg-[#f9fafb] rounded-full border border-gray-300 text-sm"
               />
             </div>
           </div>
           <div className="flex md:justify-end items-center gap-2">
-            <span className="text-md font-medium">Points</span>
+            <span className="text-md font-normal">Points</span>
             <CustomNumberInput value={points} onChange={setPoints} />
           </div>
         </div>
@@ -144,7 +144,7 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
             <input
               type="text"
               placeholder="Question"
-              className="w-full mt-1 px-4 py-2 bg-gray-100 rounded-full border border-gray-300 text-sm"
+              className="w-full mt-1 px-4 py-2 bg-[#f9fafb] rounded-full border border-gray-300 text-sm"
             />
           </div>
         ))}
@@ -155,7 +155,7 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
           <input
             type="text"
             placeholder="Tip"
-            className="w-full mt-1 px-4 py-2 rounded-full bg-gray-100 border border-gray-300 text-sm"
+            className="w-full mt-1 px-4 py-2 rounded-full bg-[#f9fafb] border border-gray-300 text-sm"
           />
         </div>
 
@@ -182,12 +182,13 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
         {/* File Upload */}
         <div>
           <button className="block w-max px-4 py-3.5 bg-[#FFCC00] rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90"
+          type="button"
             onClick={() => setUploadImage(true)}>
             Upload Image / File
             <input type="file" hidden />
           </button>
           <div className="my-2 pb-1 border-b-2 border-gray-400   ">
-            <p className="text-xs text-center py-3.5 px-3 rounded-2xl inline-block bg-gray-100">Image/file name.extension</p>
+            <p className="text-xs text-center py-3.5 px-3 rounded-2xl inline-block bg-[#f9fafb]">Image/file name.extension</p>
           </div>
         </div>
       </form>
@@ -201,12 +202,12 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
               <input
                 type="text"
                 placeholder="Question"
-                className="flex-1 px-4 py-2 bg-gray-100 rounded-full border border-gray-300 text-sm"
+                className="flex-1 px-4 py-2 bg-[#f9fafb] rounded-full border border-gray-300 text-sm"
               />
             </div>
           </div>
           <div className="flex md:justify-end items-center gap-2">
-            <span className="text-md font-medium">Points</span>
+            <span className="text-md font-normal">Points</span>
             <CustomNumberInput value={points} onChange={setPoints} />
           </div>
         </div>
@@ -299,7 +300,7 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
             <input
               type="text"
               placeholder="Question"
-              className="w-full mt-1 px-4 py-2 bg-gray-100 rounded-full border border-gray-300 text-sm"
+              className="w-full mt-1 px-4 py-2 bg-[#f9fafb] rounded-full border border-gray-300 text-sm"
             />
           </div>
         ))}
@@ -310,7 +311,7 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
           <input
             type="text"
             placeholder="Tip"
-            className="w-full mt-1 px-4 py-2 rounded-full bg-gray-100 border border-gray-300 text-sm"
+            className="w-full mt-1 px-4 py-2 rounded-full bg-[#f9fafb] border border-gray-300 text-sm"
           />
         </div>
 
@@ -336,13 +337,14 @@ const TestDetails: React.FC<DetailsProps> = ({ setSelectedTab }) => {
 
         {/* File Upload */}
         <div>
-          <button className="block w-max px-4 py-3.5 bg-yellow-400 rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90"
+          <button className="block w-max px-4 py-3.5 bg-[#FFCC00] rounded-full text-white font-medium text-sm cursor-pointer  hover:opacity-90"
+          type="button"
             onClick={() => setUploadImage(true)}>
             Upload Image / File
             <input type="file" hidden />
           </button>
           <div className="my-2 pb-1 border-b-2 border-gray-400   ">
-            <p className="text-xs text-center py-3.5 px-3 rounded-2xl inline-block bg-gray-100">Image/file name.extension</p>
+            <p className="text-xs text-center py-3.5 px-3 rounded-2xl inline-block bg-[#f9fafb]">Image/file name.extension</p>
           </div>
         </div>
 

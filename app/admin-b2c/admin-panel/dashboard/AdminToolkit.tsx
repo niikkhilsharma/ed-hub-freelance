@@ -33,7 +33,7 @@ const actions = [
   {
     label: 'Extra Lecture Manager',
     icon: <LuHash className="text-[#6b7280] w-5 h-6" />,
-    href: 'extraa-lecture-manager',
+    href: 'extra-lecture-manager',
   },
   {
     label: 'Inventory',
