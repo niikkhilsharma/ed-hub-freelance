@@ -129,8 +129,8 @@ export default function CourseManagementPage() {
   const ICON_BUTTON_BG_LIGHT_GRAY = "bg-gray-100";
   return (
     <MaxWidthWrapper>
-      <div className="  py-4 px-1 sm:px-16  min-h-screen ">
-        <main className="p-2 max-w-[90rem] sm:p-6    mx-auto bg-white my-6  rounded-3xl">
+      <div className="py-4 md:py-8  md:pb-16">
+        <main className="p-2 max-w-[90rem] sm:p-6    lg:mx-auto bg-white  rounded-3xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
               <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2  h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
@@ -221,10 +221,10 @@ export default function CourseManagementPage() {
                   </div>
 
                   <div className="flex flex-col gap-1 px-1 text-black">
-                    <h2 className="font-bold text-lg">{course.name}</h2>
-                    <h3 className="text-sm font-medium">
+                    <h2 className="font-semibold  text-md md:text-lg">{course.name}</h2>
+                    <h3 className="text-sm font-normal">
                       Domain:{" "}
-                      <span className="text-[#6B7280]">{course.domain}</span>
+                      <span className="text-[#6B7280] font-normal">{course.domain}</span>
                     </h3>
                   </div>
                 </div>
