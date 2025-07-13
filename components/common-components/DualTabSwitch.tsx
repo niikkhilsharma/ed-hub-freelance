@@ -12,13 +12,13 @@ interface TabSwitcherProps {
 
 const DualTabSwitcher: React.FC<TabSwitcherProps> = ({ tabs, activeTab, setActiveTab }) => {
   return (
-    <div className="relative inline-flex">
+    <div className="relative inline-flex ">
       {tabs.map((tab) => (
         <button
           key={tab}
           onClick={() => setActiveTab(tab)}
           className={clsx(
-            'relative px-2 py-2 text-sm font-medium transition cursor-pointer',
+            'relative px-2 py-2 text-base mr-4 font-medium transition cursor-pointer',
             activeTab === tab ? 'text-[#3366ff]' : 'text-gray-600'
           )}
 
