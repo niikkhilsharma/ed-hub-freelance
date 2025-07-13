@@ -8,18 +8,145 @@ import { FiInfo, FiStar, FiBookOpen, FiBarChart2 } from 'react-icons/fi';
 import { FaChevronDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
+const AboutCourse = () => (
+  <>
+    <p className="mt-2 text-sm text-black">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, corporis natus. Voluptatibus aliquam repudiandae assumenda, placeat, maxime fugit tenetur libero eveniet sunt cupiditate iusto aperiam, ipsa eligendi at. Architecto, praesentium.
+      Porro corporis laborum magnam non perspiciatis fugiat sed fugit excepturi facilis autem dolor et, pariatur, repellat quis tempore ut assumenda sunt ad rem nisi. Officiis alias ipsum facere ad iusto.
+      Cupiditate vero ullam provident distinctio obcaecati voluptate. Obcaecati cum fugit nisi ullam quo. Quae, vero voluptates et sint perspiciatis adipisci, aut id libero porro tempora magni facilis itaque officiis minus.
+      Optio repellendus quam eaque architecto porro eligendi magnam atque vel pariatur amet! Sint quis, saepe sequi nam facere rem eius voluptates vitae, nemo fuga quaerat illum quasi voluptatum, facilis perferendis?
+    </p>
+    <p className="mt-4 text-sm text-black">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rerum nam velit ullam aliquam quo quibusdam voluptatibus neque, libero, aperiam enim, animi hic nobis reiciendis itaque! Asperiores reprehenderit earum iure!
+      Doloremque quidem dolore quibusdam qui nobis facere ipsa voluptas necessitatibus fugit! Enim delectus asperiores, aliquid natus fugit necessitatibus suscipit, magni, harum nostrum dolorem ab ut voluptatem aut at nesciunt. Voluptatibus.
+    </p>
+  </>
+)
+
+// --- Main DetailChecklist Component ---
+export const DetailChecklist: React.FC = () => {
+  return (
+    // Wrapper for the list
+    <div className="p-4 space-y-3">
+      {[
+        "Detail 1", "Detail 2", "Detail 3", "Detail 4",
+        "Detail 6", "Detail 7", "Detail 8" // "Detail 5" is missing as per your image
+      ].map((detail, index) => (
+        <div key={index} className="flex items-center gap-2">
+          <div className="flex-shrink-0">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#8dd9b3" fillOpacity="0.5" />
+              <path d="M17.3333 8.5L10.4999 15.3333L7.66659 12.5" stroke="#ffffff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <span className="text-sm sm:text-base text-black">
+            {detail}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+// --- Main LevelInfo Component ---
+const LevelInfoCards: React.FC = () => {
+  return (
+    <div className="w-full space-y-2 mt-4 h-full overflow-auto custom-scrollbar-blue pr-2 max-h-[378px] sm:max-h-[350px] lg:max-h-[315px] xl:max-h-[300px]">
+      {[
+        {
+          id: 'level-1',
+          title: 'Level 1',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum venenatis odio pellentesque elementum. Aliquam non fringilla nibh. In pulvinar massa at ante placerat lacinia in at turpis.'
+        },
+        {
+          id: 'level-2',
+          title: 'Level 2',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum.'
+        },
+        {
+          id: 'level-3',
+          title: 'Level 3',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum venenatis odio pellentesque elementum.'
+        },
+        {
+          id: 'level-4',
+          title: 'Level 4',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum venenatis odio pellentesque elementum. Aliquam non fringilla nibh. In pulvinar massa at ante placerat lacinia in at turpis.'
+        },
+      ].map(level => {
+        return (
+          <div
+            key={level.id}
+            className={`w-full text-left p-4 rounded-2xl transition-all duration-200 relative border border-[#E5E7EB] overflow-hidden bg-[#F9FAFB]`}
+          >
+            <h3 className="text-base font-light text-black mb-1 px-1">
+              {level.title}
+            </h3>
+            <p className="text-xs sm:text-sm font-light text-[#6B7280] leading-relaxed">
+              {level.description}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const CurriculumCards: React.FC = () => {
+  return (
+    <div className="w-full space-y-2 mt-4 h-full overflow-auto custom-scrollbar-blue pr-2 max-h-[378px] sm:max-h-[350px] lg:max-h-[315px] xl:max-h-[300px]">
+      {[
+        {
+          id: 'level-1',
+          title: 'Module 1',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum venenatis odio pellentesque elementum. Aliquam non fringilla nibh. In pulvinar massa at ante placerat lacinia in at turpis.'
+        },
+        {
+          id: 'level-2',
+          title: 'Module 2',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum.'
+        },
+        {
+          id: 'level-3',
+          title: 'Module 3',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum venenatis odio pellentesque elementum.'
+        },
+        {
+          id: 'level-4',
+          title: 'Module 4',
+          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit ex justo, condimentum venenatis odio pellentesque elementum. Aliquam non fringilla nibh. In pulvinar massa at ante placerat lacinia in at turpis.'
+        },
+      ].map(level => {
+        return (
+          <div
+            key={level.id}
+            className={`w-full text-left p-4 rounded-2xl transition-all duration-200 relative border border-[#E5E7EB] overflow-hidden bg-[#F9FAFB]`}
+          >
+            <h3 className="text-base font-light text-black mb-1 px-1">
+              {level.title}
+            </h3>
+            <p className="text-xs sm:text-sm font-light text-[#6B7280] leading-relaxed">
+              {level.description}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+
 const Course = () => {
-  const [selected, setSelected] = useState<number | null>(0);
+  const [selected, setSelected] = useState<number>(0);
   const buttons = [
-    { label: 'About Course', icon: <FiInfo /> },
-    { label: 'Benefits', icon: <FiStar /> },
-    { label: 'Pedagogy', icon: <LuBrain /> },
-    { label: 'Curriculum', icon: <FiBookOpen /> }, 
-    { label: 'Levels', icon: <FiBarChart2 strokeWidth={3}/> }, 
-];
+    { label: 'About Course', icon: <FiInfo />, desc: <AboutCourse /> },
+    { label: 'Benefits', icon: <FiStar />, desc: <DetailChecklist /> },
+    { label: 'Pedagogy', icon: <LuBrain />, desc: <AboutCourse /> },
+    { label: 'Curriculum', icon: <FiBookOpen />, desc: <CurriculumCards /> },
+    { label: 'Levels', icon: <FiBarChart2 strokeWidth={3} />, desc: <LevelInfoCards /> },
+  ];
   return (
     <div>
-
       <div className="grid grid-cols-1 lg:grid-cols-7 gap-4">
         <div className="bg-white rounded-2xl p-4 grid grid-cols-1 md:grid-cols-5 gap-4 col-span-1 lg:col-span-5">
           <div className="relative md:h-full md:w-full h-76 md:col-span-3">
@@ -61,19 +188,10 @@ const Course = () => {
 
           <div className="lg:col-span-6">
             <div className="flex flex-wrap w-full gap-2 justify-between items-center">
-              <h3 className="text-lg font-semibold">About Course</h3>
+              <h3 className="text-lg font-semibold">{buttons[selected].label}</h3>
               <button className='rounded-xl p-2 w-fit bg-[#8DD9B3] text-white flex items-center gap-2 text-sm font-medium whitespace-nowrap'><IoVideocamOutline size={25} />Watch demo Video</button>
             </div>
-            <p className="mt-2 text-sm text-black">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed, corporis natus. Voluptatibus aliquam repudiandae assumenda, placeat, maxime fugit tenetur libero eveniet sunt cupiditate iusto aperiam, ipsa eligendi at. Architecto, praesentium.
-              Porro corporis laborum magnam non perspiciatis fugiat sed fugit excepturi facilis autem dolor et, pariatur, repellat quis tempore ut assumenda sunt ad rem nisi. Officiis alias ipsum facere ad iusto.
-              Cupiditate vero ullam provident distinctio obcaecati voluptate. Obcaecati cum fugit nisi ullam quo. Quae, vero voluptates et sint perspiciatis adipisci, aut id libero porro tempora magni facilis itaque officiis minus.
-              Optio repellendus quam eaque architecto porro eligendi magnam atque vel pariatur amet! Sint quis, saepe sequi nam facere rem eius voluptates vitae, nemo fuga quaerat illum quasi voluptatum, facilis perferendis?
-            </p>
-            <p className="mt-4 text-sm text-black">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi rerum nam velit ullam aliquam quo quibusdam voluptatibus neque, libero, aperiam enim, animi hic nobis reiciendis itaque! Asperiores reprehenderit earum iure!
-              Doloremque quidem dolore quibusdam qui nobis facere ipsa voluptas necessitatibus fugit! Enim delectus asperiores, aliquid natus fugit necessitatibus suscipit, magni, harum nostrum dolorem ab ut voluptatem aut at nesciunt. Voluptatibus.
-            </p>
+            {buttons[selected].desc}
           </div>
         </div>
       </div>
@@ -241,7 +359,7 @@ function ReviewCard() {
   return (
     <div className="bg-white rounded-2xl">
       <h2 className="text-xl font-semibold mb-4">Reviews</h2>
-      <div className="space-y-3 max-h-125 overflow-y-auto custom-scrollbar-thin pr-1">
+      <div className="space-y-3 max-h-90 lg:max-h-125 overflow-y-auto custom-scrollbar-thin pr-1">
         {reviews.map((myreview, index) => (
           <div key={index}>
             <FeedbackCard name={myreview.name} role={myreview.role} review={myreview.review} image={myreview.image} />

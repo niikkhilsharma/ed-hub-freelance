@@ -175,6 +175,24 @@ h3 {
   width: 10px; /* Make it thinner - adjust as needed */
 }
 
+/* blue scrollbar */
+.custom-scrollbar-blue::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-scrollbar-blue::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar-blue::-webkit-scrollbar-thumb {
+  background: #3366ff; /* light-gray */
+  border-radius: 10px;
+}
+.custom-scrollbar-blue::-webkit-scrollbar-thumb:hover {
+  background: #d1d5db; /* medium-gray */
+}
+.custom-scrollbar-blue::-webkit-scrollbar {
+  width: 10px; /* Make it thinner - adjust as needed */
+}
+
 /* Custom peach color scrollbar  */
 
 .custom-peach-scrollbar::-webkit-scrollbar {

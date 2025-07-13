@@ -1,7 +1,7 @@
 // components.tsx
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { StepperTabButton, FormInput, FileUploadInput, DropdownSelect, RadioButtonGroup, ActionButton } from './ui-components';
 import { useRouter } from 'next/navigation';
 
@@ -50,15 +50,39 @@ export const KnowMorePart: React.FC = () => (
 );
 
 // Part 2: Add Levels
-export const AddLevelsPart: React.FC = () => (
-    <div className="space-y-4">
-        <SectionHeader title="Add Levels" />
-        <div className="max-w-lg w-full space-y-4 px-2 sm:px-0">
-            <label className="block text-sm text-black mb-1.5 sm:mb-2">Add Levels</label>
-            <div className=''><ActionButton variant="outline" className=''>Add Levels</ActionButton></div>
+export const AddLevelsPart: React.FC = () => {
+    const [modal, setModal] = useState<boolean>(false);
+    return (
+        <div className="space-y-4">
+            <SectionHeader title="Add Levels" />
+            <div className="max-w-lg w-full space-y-4 px-2 sm:px-0">
+                <label className="block text-sm text-black mb-1.5 sm:mb-2">Add Levels</label>
+
+                {modal && <div className="p-4 border border-[#D5D5D5] rounded-2xl space-y-4 bg-[#F9FAFB]">
+                    <label className="block font-medium text-center text-sm text-black mb-1.5 sm:mb-2">Add Levels</label>
+
+                    <FormInput
+                        label="Level Number"
+                        id={`levelNumber`}
+                        placeholder="Text"
+                    />
+                    <FormInput
+                        label="Level Description"
+                        id={`levelDescription`}
+                        placeholder="Text"
+                    />
+
+                    <div className='flex gap-2 w-fit mx-auto'>
+                        <button onClick={() => { setModal(false) }} className=" bg-[#FF33661A] text-[#FF3366]  py-3 text-sm transition-colors duration-150 cursor-pointer w-32 hover:bg-pink-200 rounded-full">Cancel</button>
+                        <button className=" bg-[#3366FF] text-white font-medium py-3 text-sm transition-colors duration-150 cursor-pointer w-32 hover:bg-blue-500 rounded-full">Add</button>
+                    </div>
+                </div>}
+
+                <div className=''><ActionButton onClick={() => { setModal(true) }} variant="outline" className=''>{modal ? "Add Level" : "Add Levels"}</ActionButton></div>
+            </div>
         </div>
-    </div>
-);
+    );
+}
 
 // Part 3: Pricing & Discounts
 export const PricingDiscountsPart: React.FC = () => (
@@ -97,41 +121,94 @@ interface ModulesAndVideosPartProps {
     onAddVideo: (moduleIndex: number) => void;
     onAddNewModule: () => void;
 }
-export const ModulesAndVideosPart: React.FC<ModulesAndVideosPartProps> = ({ modules, onModuleChange, onVideoChange, onAddVideo, onAddNewModule }) => (
-    <div className="space-y-4">
-        <SectionHeader title="Modules and Videos" />
-        <div className="max-w-lg space-y-6 px-2">
-            {modules.map((module, moduleIndex) => (
-                <div key={module.id} className="space-y-4 ">
-                    <FormInput
-                        label="Module Title" id={`moduleTitle-${module.id}`} placeholder="Text"
-                        value={module.moduleTitle}
-                        onChange={(e) => onModuleChange(moduleIndex, e as any)}
-                    />
-                    {module.videos.map((video, videoIndex) => (
-                        <div key={video.id} className="space-y-4">
-                            <FormInput
-                                label="Video Title" id={`videoTitle-${video.id}`} placeholder="Text"
-                                value={video.videoTitle}
-                                onChange={(e) => onVideoChange(moduleIndex, videoIndex, e as any)}
-                            />
-                            <FileUploadInput label={`Upload Video ${videoIndex + 1}`} id={`videoFile-${video.id}`} placeholder="Upload Image" />
-                            <FormInput
-                                label="Video Description" id={`videoDescription-${video.id}`} placeholder="Text"
-                                value={video.videoDescription}
-                                onChange={(e) => onVideoChange(moduleIndex, videoIndex, e as any)}
-                            />
+export const ModulesAndVideosPart: React.FC<ModulesAndVideosPartProps> = ({ modules, onModuleChange, onVideoChange, onAddVideo, onAddNewModule }) => {
+    const [videoModal, setVideoModal] = useState<boolean>(false);
+    const [moduleModal, setModuleModal] = useState<boolean>(true);
+    return (
+        <div className="space-y-4">
+            <SectionHeader title="Modules and Videos" />
+            <div className="max-w-lg space-y-6 px-2">
+                {modules.map((module, moduleIndex) => (
+                    <div key={module.id} className="space-y-4 ">
+                        <FormInput
+                            label="Module Title" id={`moduleTitle-${module.id}`} placeholder="Text"
+                            value={module.moduleTitle}
+                            onChange={(e) => onModuleChange(moduleIndex, e as any)}
+                        />
+                        {module.videos.map((video, videoIndex) => (
+                            <div key={video.id} className="space-y-4">
+                                <FormInput
+                                    label="Video Title" id={`videoTitle-${video.id}`} placeholder="Text"
+                                    value={video.videoTitle}
+                                    onChange={(e) => onVideoChange(moduleIndex, videoIndex, e as any)}
+                                />
+                                <FileUploadInput label={`Upload Video ${videoIndex + 1}`} id={`videoFile-${video.id}`} placeholder="Upload Image" />
+                                <FormInput
+                                    label="Video Description" id={`videoDescription-${video.id}`} placeholder="Text"
+                                    value={video.videoDescription}
+                                    onChange={(e) => onVideoChange(moduleIndex, videoIndex, e as any)}
+                                />
+                            </div>
+                        ))}
+                        <div className="flex flex-col gap-4 ">
+                            <div className='flex flex-col gap-4'>
+
+                                {videoModal && <div className="p-4 border border-[#D5D5D5] rounded-2xl space-y-4 bg-[#F9FAFB]">
+                                    <label className="block font-medium text-center text-sm text-black mb-1.5 sm:mb-2">Add Video</label>
+
+                                    <FormInput
+                                        label="Video Title"
+                                        id={`levelNumber`}
+                                        placeholder="Text"
+                                    />
+                                    <FileUploadInput label={`Upload Video 1`} id={`videoFile2`} placeholder="Upload Image" />
+                                    <FormInput
+                                        label="Video Description"
+                                        id={`levelDescription`}
+                                        placeholder="Text"
+                                    />
+
+                                    <div className='flex gap-2 w-fit mx-auto'>
+                                        <button onClick={() => { setVideoModal(false) }} className=" bg-[#FF33661A] text-[#FF3366] font-medium py-3 text-sm transition-colors duration-150 cursor-pointer w-32 hover:bg-pink-200 rounded-full">Cancel</button>
+                                        <button className=" bg-[#3366FF] text-white font-medium py-3 text-sm transition-colors duration-150 cursor-pointer w-32 hover:bg-blue-500 rounded-full">Add</button>
+                                    </div>
+                                </div>}
+                                <ActionButton variant="outline" onClick={() => setVideoModal(true)}>{videoModal ? "Add Video" : "Add More Videos"}</ActionButton>
+                            </div>
+                            <div className='flex flex-col gap-4'>
+                                {moduleModal && <div className="p-4 border border-[#D5D5D5] rounded-2xl space-y-4 bg-[#F9FAFB]">
+                                    <label className="block font-medium text-center text-sm text-black mb-1.5 sm:mb-2">Add Levels</label>
+
+                                    <FormInput
+                                        label="Module Title"
+                                        id={`levelNumber`}
+                                        placeholder="Text"
+                                    />
+                                    <FormInput
+                                        label="Video Title"
+                                        id={`levelNumber`}
+                                        placeholder="Text"
+                                    />
+                                    <FileUploadInput label={`Upload Video 1`} id={`videoFile2`} placeholder="Upload Image" />
+                                    <FormInput
+                                        label="Video Description"
+                                        id={`levelDescription`}
+                                        placeholder="Text"
+                                    />
+
+                                    <div className='flex gap-2 w-fit mx-auto'>
+                                        <button onClick={() => { setModuleModal(false) }} className=" bg-[#FF33661A] text-[#FF3366] font-medium py-3 text-sm transition-colors duration-150 cursor-pointer w-32 hover:bg-pink-200 rounded-full">Cancel</button>
+                                    </div>
+                                </div>}
+                                <ActionButton variant="outline" onClick={() => setModuleModal(true)}>Add New Module</ActionButton>
+                            </div>
                         </div>
-                    ))}
-                    <div className="flex flex-col gap-4 ">
-                        <ActionButton variant="outline" onClick={() => onAddVideo(moduleIndex)}>Add More Videos</ActionButton>
-                        <ActionButton variant="outline" onClick={onAddNewModule}>Add New Module</ActionButton>
                     </div>
-                </div>
-            ))}
+                ))}
+            </div>
         </div>
-    </div>
-);
+    );
+}
 
 interface CourseCreationStepperProps {
     steps: string[];
@@ -160,9 +237,9 @@ export const CourseCreationStepper: React.FC<CourseCreationStepperProps> = ({ st
                 {activeStep === "Preview" &&
                     <div className="w-full lg:w-auto lg:absolute lg:right-0">
                         <button
-                        onClick={()=>{
-                            Router.push('/admin-b2c/admin-panel/know-more')
-                        }}
+                            onClick={() => {
+                                Router.push('/admin-b2c/admin-panel/know-more')
+                            }}
                             className={`font-semibold text-xs sm:text-sm transition-colors duration-150 cursor-pointer bg-[#F9FAFB] w-full lg:w-auto text-black border border-[#D5D5D5] hover:bg-gray-50 rounded-xl px-3 py-2 sm:px-4 sm:py-2.5 flex-shrink-0 whitespace-nowrap`}>
                             Preview Know More
                         </button>
