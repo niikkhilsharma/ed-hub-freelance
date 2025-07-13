@@ -1,12 +1,11 @@
 "use client";
-import {  LuCalendarCheck, LuClipboardList,  LuHash,  LuPackage, LuUserCheck, LuUsers } from "react-icons/lu";
 import Link from "next/link";
 import { CiPower } from "react-icons/ci";
 const actions = [
   {
     label: 'Profile Management',
     icon: <CiPower className="text-[#6b7280] w-5 h-5" />,
-    href: '#',
+    href: '/admin-b2c/admin-panel/student-profile-management',
   },
 ];
 const StudentPanel = () => {

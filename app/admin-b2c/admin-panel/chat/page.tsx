@@ -61,9 +61,6 @@ export default function ChatPage() {
         setShowChatOnMobile(true);
     };
 
-    const handleBack = () => {
-        setShowChatOnMobile(false);
-    };
     return (
         <div className="min-h-screen bg-[#EEEEEE] flex flex-col">
             <main className="z-20 relative flex-grow container mx-auto p-2 flex flex-col gap-3 sm:p-4 md:p-6 lg:p-8 sm:gap-5 lg:flex-row lg:items-start">

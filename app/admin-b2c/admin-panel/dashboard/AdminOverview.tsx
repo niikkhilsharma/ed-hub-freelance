@@ -1,11 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
-const summaryStats = [
-    { label: 'Resumed', value: 10, bg: 'bg-[#99DEFF]' },
-    { label: 'New Enrollments', value: 5, bg: 'bg-white' },
-    { label: 'Continued', value: 8, bg: 'bg-white' },
+type Stat = {
+    label: string;
+    value: number;
+};
+
+const summaryStats: Stat[] = [
+    { label: 'Resumed', value: 10 },
+    { label: 'New Enrollments', value: 5 },
+    { label: 'Continued', value: 8 },
 ];
 
 const tableData = Array(7).fill({
@@ -18,24 +24,40 @@ const tableData = Array(7).fill({
 const columns = ['Student', 'Course', 'Last Active Date', 'Resumed On', 'Action'];
 
 const Overview: React.FC = () => {
+    const [activeTab, setActiveTab] = useState('Resumed');
     return (
         <div className="space-y-4 rounded-2xl p-4 mb-4 mt-2 bg-white">
             {/* Summary Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {summaryStats.map((stat) => (
-                    <div
-                        key={stat.label}
-                        className={`rounded-2xl px-4 py-6 text-center ${stat.bg} border ${stat.bg === 'bg-white' ? 'border-gray-200' : 'border-transparent'
-                            }`}
-                    >
-                        <p className="text-lg lg:text-xl mb-2 font-medium">{stat.label}</p>
-                        <p className="text-2xl lg:text-[38px] font-bold">{stat.value}</p>
-                    </div>
-                ))}
+                {summaryStats.map((stat) => {
+                    const isActive = stat.label === activeTab;
+
+                    return (
+                        <motion.div
+                            key={stat.label}
+                            onClick={() => setActiveTab(stat.label)}
+                            whileTap={{ scale: 0.97 }}
+                            layout
+                            className={`cursor-pointer rounded-2xl px-4 py-6 text-center transition-colors duration-300 ${isActive ? 'bg-[#99DEFF] border-transparent' : 'bg-white border border-gray-200'
+                                }`}
+                        >
+                            <p className="text-lg lg:text-xl mb-2 font-medium">{stat.label}</p>
+                            <motion.p
+                                key={isActive ? 'active' : 'inactive'}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-2xl lg:text-[38px] font-bold"
+                            >
+                                {stat.value}
+                            </motion.p>
+                        </motion.div>
+                    );
+                })}
             </div>
-            <div className="overflow-x-auto min-w-[850px] custom-scrollbar-thin">
+            <div className="overflow-x-auto w-full pb-1 custom-scrollbar-thin">
                 {/* Table Header */}
-                <div className="flex bg-[#8DD9B3] justify-between items-center font-semibold text-sm rounded-2xl px-12 py-5.5 gap-x-6 mb-3">
+                <div className="flex bg-[#8DD9B3] min-w-[850px] justify-between items-center font-semibold text-sm rounded-2xl w-full px-12 py-5.5 gap-x-6 mb-3">
                     {columns.map((col, i) => (
                         <div
                             key={i}
@@ -49,7 +71,7 @@ const Overview: React.FC = () => {
                 </div>
 
                 {/* Table Rows */}
-                <div className="space-y-2">
+                <div className="space-y-2 w-full min-w-[850px]">
                     {tableData.map((row, idx) => (
                         <div
                             key={idx}

@@ -78,7 +78,7 @@ const FolderCard: React.FC<FolderCardProps> = ({ folder }) => {
 				<p className="text-xs sm:text-sm text-[#6B7280] mb-5">{folder.fileCount} Files</p>
 				<button
 					onClick={() => alert(`Manage Access for ${folder.name}`)}
-					className="w-full sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-[#f3f4f6] hover:bg-gray-200 text-[#6b7280] text-xs sm:text-md font-medium rounded-full transition-colors">
+					className="w-full text-xl sm:self-start flex items-center justify-center gap-2 px-4 py-2.5 bg-[#f3f4f6] hover:bg-gray-200 text-[#6b7280] sm:text-md rounded-full transition-colors">
 					<FiSettings className="w-6 h-6" />
 					Manage Access
 				</button>

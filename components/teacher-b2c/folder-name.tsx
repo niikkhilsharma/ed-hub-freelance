@@ -198,7 +198,7 @@ export default function StudentSubmittedPapersPage() {
   return (
     <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
       <Header user={headerUser} />
-      <div className="   bg-white ">
+      <div className="bg-white ">
         <div className="flex items-center px-3.5 py-4 max-w-[96rem] mx-auto gap-2 ">
           <button
             onClick={handleBackClick}
@@ -215,7 +215,7 @@ export default function StudentSubmittedPapersPage() {
       </div>
       <MaxWidthWrapper className="bg-[#eeeeee]">
         <div className="bg-[#eeeeee]">
-          <main className="flex-grow container mx-auto px-2 py-4 sm:p-6">
+          <main className="flex-grow h-260 container mx-auto px-2 py-4 mb-4 sm:p-6">
             {/* 
           The space-y-8 from your example is removed here if FileManagementContent 
           is the only direct child and already has its own internal spacing/padding.
