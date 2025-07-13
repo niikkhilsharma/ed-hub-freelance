@@ -124,7 +124,9 @@
 .info-button {
   @apply text-gray-400 hover:text-gray-600 cursor-pointer;
 }
-
+button{
+  cursor: pointer;
+}
 .info-popup {
   @apply absolute right-0 top-8 bg-white shadow-lg rounded-md overflow-hidden z-10 w-48;
 }

@@ -17,7 +17,7 @@ export default function StudentGrid() {
 			<div className="grid grid-cols-1 md:grid-cols-2 mx-2 gap-4">
 				{people.map((person, indx) => (
 					<Link
-						href="/admin-b2c/admin-panel/student-attendence"
+						href="/admin-b2c/admin-panel/student-attendance"
 						key={indx}
 						className="flex items-center bg-[#f3f4f6] rounded-2xl p-2 space-x-4">
 						<Image

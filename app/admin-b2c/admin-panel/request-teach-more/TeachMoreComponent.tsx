@@ -1,7 +1,7 @@
-
-import { Divide } from "lucide-react";
-import { FiChevronDown } from "react-icons/fi";
+"use client"
+import { useState } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5"
+import RejectRequestPopup from "../../pop-ups-2/components/reject-request-popup";
 
 
 interface CustomSelectProps {
@@ -24,6 +24,8 @@ const CustomSelect = ({ label, options }: CustomSelectProps) => {
 
 
 const TeachMoreCourseComponent = () => {
+  const [rejectPopup, setRejectPopup] = useState(false);
+  const [approvePopup, setApprovePopup] = useState(false);
   return (
     <>
       <form className="flex flex-col text-sm">
@@ -136,20 +138,22 @@ const TeachMoreCourseComponent = () => {
         </div>
         <div className="font-medium flex-wrap flex justify-center gap-2 mt-6 md:mt-8">
           <button
-            type="submit"
+            type="button"
+            onClick={() => setRejectPopup(true)}
             className=" rounded-full bg-pink-50 text-sm md:text-base text-[#ff3366] cursor-pointer py-2.5 px-6 transition duration-200"
           >
             Reject Request
           </button>
           <button
-            type="submit"
+            type="button"
+            onClick={() => setApprovePopup(true)}
             className=" rounded-full text-sm md:text-base bg-blue-600 cursor-pointer text-white py-2.5 px-4 transition duration-200"
           >
             Approve Request
           </button>
         </div>
       </form>
-
+      <RejectRequestPopup isOpen={rejectPopup} onClose={() => setRejectPopup(false)} />
 
     </>
   )

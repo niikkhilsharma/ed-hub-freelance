@@ -16,11 +16,14 @@ const DashboardOverview = () => {
       { topic: 'Topic', subtopics: ['Subtopic', 'Subtopic', 'Subtopic', 'Subtopic'] },
     ],
     2: [
-      { topic: 'Topic 2A', subtopics: ['Subtopic', 'Subtopic'] },
-      { topic: 'Topic 2B', subtopics: ['Subtopic', 'Subtopic'] },
+      { topic: 'Topic', subtopics: ['Subtopic', 'Subtopic', 'Subtopic', 'Subtopic'] },
+      { topic: 'Topic', subtopics: ['Subtopic', 'Subtopic', 'Subtopic', 'Subtopic'] },
+      { topic: 'Topic', subtopics: ['Subtopic', 'Subtopic', 'Subtopic', 'Subtopic'] },
     ],
     3: [
-      { topic: 'Topic 3A', subtopics: ['Subtopic', 'Subtopic'] },
+      { topic: 'Topic', subtopics: ['Subtopic', 'Subtopic', 'Subtopic', 'Subtopic'] },
+      { topic: 'Topic', subtopics: ['Subtopic', 'Subtopic', 'Subtopic', 'Subtopic'] },
+      { topic: 'Topic', subtopics: ['Subtopic', 'Subtopic', 'Subtopic', 'Subtopic'] },
     ],
   };
 
@@ -58,11 +61,10 @@ const DashboardOverview = () => {
             <button
               key={batch}
               onClick={() => setSelectedBatch(batch)}
-              className={`px-4 py-2.5 rounded-2xl text-sm font-medium transition ${
-                selectedBatch === batch
+              className={`px-4 py-2.5 rounded-2xl text-sm font-medium transition ${selectedBatch === batch
                   ? 'bg-pink-300 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
-              }`}
+                }`}
             >
               Batch {batch}
             </button>

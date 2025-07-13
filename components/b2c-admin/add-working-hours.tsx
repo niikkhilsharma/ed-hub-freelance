@@ -1,12 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { Calendar, Plus, X } from "lucide-react";
-import { FiCrosshair } from "react-icons/fi";
-import { FaCross } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
 const weekdays = ["S", "M", "T", "W", "T", "F", "S"];
 
-const AddWorkingHours = () => {
+const AddWorkingHours: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   const [startDate, setStartDate] = useState("");
   const [endDateEnabled, setEndDateEnabled] = useState(false);
   const [endDate, setEndDate] = useState("");
@@ -16,9 +15,10 @@ const AddWorkingHours = () => {
   const [selectedDay, setSelectedDay] = useState("M");
   const [location, setLocation] = useState("All Locations");
 
-  const handleDayClick = (day) => {
-    setSelectedDay(day);
-  };
+ const handleDayClick = (day: string) => {
+  setSelectedDay(day);
+};
+
 
   const handleSubmit = () => {
     const formData = {
@@ -34,7 +34,8 @@ const AddWorkingHours = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto px-6 py-6 bg-white rounded-2xl shadow-sm border border-gray-100">
+    <BaseModal onClose={onClose} isOpen={isOpen} maxWidth="max-w-xl">
+    <div className=" mx-auto px-6 py-6 bg-white rounded-2xl shadow-sm border border-gray-100">
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-900 mb-1">
           Add Working Hours
@@ -204,6 +205,7 @@ const AddWorkingHours = () => {
         </button>
       </div>
     </div>
+    </BaseModal>
   );
 };
 

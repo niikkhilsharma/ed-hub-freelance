@@ -1,11 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { FaChevronDown } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
 export default function TeacherSettingsForm() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-lg mt-4">
       {/* Note Textarea */}
       <div className="space-y-2">
         <label className="text-sm font-medium text-black">Note for the Teacher</label>
@@ -16,16 +17,16 @@ export default function TeacherSettingsForm() {
       </div>
 
       {/* Training Period */}
-      <Dropdown label="Training Period" options={['1 Month', '2 Months', '3 Months']} />
+      <Dropdown label="Training Period" options={['Option 1', 'Option 2']} />
 
       {/* Payment Per Hour */}
-      <Dropdown label="Payment Per Hour" options={['Rs. 00000', 'Rs. 10000', 'Rs. 15000']} />
+      <Dropdown label="Payment Per Hour" options={['Option 1', 'Option 2']} />
 
       {/* Probation Period */}
-      <Dropdown label="Probation Period" options={['Solution', 'No Solution']} />
+      <Dropdown label="Probation Period" options={['Option 1', 'Option 2']} />
 
       {/* Example Question */}
-      <Dropdown label="Example Question" options={['Solution', 'No Solution']} />
+      <Dropdown label="Example Question" options={['Option 1', 'Option 2']} />
 
       {/* Save Button */}
       <Link href="/admin-b2c/admin-panel/teacher-profile">
@@ -37,18 +38,55 @@ export default function TeacherSettingsForm() {
   );
 }
 
-// Reusable Dropdown component
-function Dropdown({ label, options }: { label: string; options: string[] }) {
+
+interface DropdownProps {
+  label: string;
+  options: string[];
+}
+
+ function Dropdown({ label, options }: DropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(options[0]);
+
+  const toggleOpen = () => setIsOpen(!isOpen);
+
+  const handleSelect = (option: string) => {
+    setSelected(option);
+    setIsOpen(false);
+  };
+
   return (
-    <div className="space-y-2 relative">
+    <div className="space-y-2">
       <label className="text-sm font-medium text-black">{label}</label>
-      <div className="relative">
-        <select className="appearance-none w-full bg-[#f9fafb] text-black text-sm py-2 px-4 pr-10 rounded-2xl border border-gray-200 focus:outline-none">
-          {options.map((option, i) => (
-            <option key={i}>{option}</option>
-          ))}
-        </select>
-        <FaChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none" />
+
+      <div
+        className={`bg-[#f9fafb] border border-gray-200 rounded-2xl text-sm text-black cursor-pointer transition-all`}
+        onClick={toggleOpen}
+      >
+        <div className="flex items-center justify-between px-4 py-2">
+          <span>{selected}</span>
+          {isOpen ? (
+            <FaChevronUp className="text-gray-500 text-xs" />
+          ) : (
+            <FaChevronDown className="text-gray-500 text-xs" />
+          )}
+        </div>
+
+        {isOpen && (
+          <div className="flex flex-col">
+            {options.map((option, index) => (
+              <div
+                key={index}
+                onClick={() => handleSelect(option)}
+                className={`px-4 py-2 text-center text-gray-600 text-sm ${
+                  option === selected ? 'text-blue-600  rounded-2xl' : ''
+                }`}
+              >
+                {option}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

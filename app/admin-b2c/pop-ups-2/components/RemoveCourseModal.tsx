@@ -34,12 +34,13 @@ const RemoveCourseModal: React.FC<PopupProp> = ({
         <div className="mt-6 flex justify-end gap-4">
           <button
             onClick={onClose}
-            className="rounded-full px-6 py-2 border border-gray-300 text-sm font-medium text-gray-500 hover:bg-gray-100"
+            className="rounded-full px-4 py-3 border border-gray-300 text-sm font-medium text-gray-500 "
           >
             Cancel
           </button>
           <button
-            className="rounded-full px-6 py-2 bg-[#ff33661a] text-[#ff3366] text-sm font-medium hover:bg-red-200"
+          onClick={onClose}
+            className="rounded-full px-4 py-3 bg-[#ff33661a] text-[#ff3366] text-sm font-medium "
           >
             Remove
           </button>

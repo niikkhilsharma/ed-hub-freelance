@@ -2,13 +2,29 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { FiChevronDown } from 'react-icons/fi';
+import { FiChevronDown, FiCheck } from 'react-icons/fi';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const subjects = Array.from({ length: 8 }, (_, i) => `Subject ${i + 1}`);
+const plans = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
 
 const AdminCourse: React.FC = () => {
-  const [selectedSubject, setSelectedSubject] = useState<string | null>(null);
+  const [selectedSubjects, setSelectedSubjects] = useState<string[]>([]);
   const [selectedPlan, setSelectedPlan] = useState('Option 1');
+  const [isPlanOpen, setIsPlanOpen] = useState(false);
+
+  const handleSubjectChange = (subject: string) => {
+    setSelectedSubjects((prev) =>
+      prev.includes(subject)
+        ? prev.filter((s) => s !== subject)
+        : [...prev, subject]
+    );
+  };
+
+  const handlePlanClick = (plan: string) => {
+    setSelectedPlan(plan);
+    setIsPlanOpen(false);
+  };
 
   return (
     <div className="flex gap-6 flex-col sm:flex-row rounded-2xl border border-gray-200 bg-white p-6">
@@ -19,18 +35,59 @@ const AdminCourse: React.FC = () => {
 
           <div className="space-y-6">
             {/* Custom Dropdown */}
-            <div className="relative">
-              <label className="block text-sm mb-1">Choose Membership Plan</label>
-              <select
-                value={selectedPlan}
-                onChange={(e) => setSelectedPlan(e.target.value)}
-                className="w-full appearance-none bg-[#f9fafb] rounded-full border border-gray-300 px-4 py-2 pr-10 text-sm"
-              >
-                <option>Option 1</option>
-                <option>Option 2</option>
-              </select>
-              <FiChevronDown className="absolute right-3 top-8 text-black pointer-events-none" size={18} />
+<div className="relative w-full">
+  <label className="block text-sm mb-1">Choose Membership Plan</label>
+
+  <motion.div
+    layout
+    transition={{ duration: 0.3 }}
+    className={`w-full bg-[#f9fafb] border border-gray-300 overflow-hidden 
+      ${isPlanOpen ? 'rounded-t-2xl' : 'rounded-full'} cursor-pointer`}
+    onClick={() => setIsPlanOpen(prev => !prev)}
+  >
+    {/* Selected Option */}
+    <div className="flex items-center justify-between px-4 py-2 text-sm">
+      <span className="text-black">{selectedPlan}</span>
+      <FiChevronDown
+        className={`ml-2 text-black transition-transform duration-200 ${isPlanOpen ? 'rotate-180' : ''}`}
+        size={18}
+      />
+    </div>
+
+    {/* Expandable Options */}
+    <AnimatePresence>
+      {isPlanOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.25 }}
+          className="pb-2 space-y-1"
+        >
+          {plans.map((option, index) => (
+            <div
+              key={option}
+              onClick={(e) => {
+                e.stopPropagation(); // Prevent parent click
+                handlePlanClick(option);
+              }}
+              className={`px-4 py-2 mx-2 rounded-full text-sm
+                ${selectedPlan === option
+                  ? 'bg-[#99DEFF] text-blue-600 font-medium'
+                  : 'text-gray-600 hover:bg-gray-100 text-center'}
+                ${index === 0 ? 'text-center' : 'text-center'}
+              `}
+            >
+              {option}
             </div>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </motion.div>
+</div>
+
+
 
             {/* Validity */}
             <div>
@@ -56,37 +113,42 @@ const AdminCourse: React.FC = () => {
 
         {/* Buttons */}
         <div className="flex items-center justify-center sm:justify-end gap-4">
-          <Link href={"/admin-b2c/admin-panel/course-management"} className="rounded-full px-6 py-2 text-sm font-medium text-[#ff3366] bg-[#ffe6ec] hover:bg-[#ffd4df] transition">
+          <Link href="/admin-b2c/admin-panel/course-management" className="rounded-full px-6 py-2 text-sm font-medium text-[#ff3366] bg-[#ffe6ec] hover:bg-[#ffd4df] transition">
             Discard
           </Link>
-          <Link href={"/admin-b2c/admin-panel/course-management"} className="rounded-full px-6 py-2 text-sm font-medium text-white bg-[#3366ff] hover:bg-[#2b5de0] transition">
+          <Link href="/admin-b2c/admin-panel/course-management" className="rounded-full px-6 py-2 text-sm font-medium text-white bg-[#3366ff] hover:bg-[#2b5de0] transition">
             Save
           </Link>
         </div>
       </div>
 
       {/* Right Subject Selector */}
-      <div className="w-full max-w-xs bg-[#f9fafb] border rounded-2xl p-4 ">
+      <div className="w-full max-w-xs bg-[#f9fafb] border rounded-2xl p-4">
         <h3 className="text-lg font-semibold mb-3">Select Subjects</h3>
-        <div className="space-y-5 overflow-y-auto custom-scrollbar-thin max-h-[280px]">
-          {subjects.map((subject, index) => (
-            <label key={index} className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="radio"
-                name="subject"
-                value={subject}
-                checked={selectedSubject === subject}
-                onChange={() => setSelectedSubject(subject)}
-                className="peer hidden"
-              />
-              <div className="w-4 h-4 rounded-full border-2 border-[#6b7280] peer-checked:border-[#3366ff] flex items-center justify-center">
-                <div className="w-4 h-4 rounded-full bg-[#3366ff] peer-checked:block hidden" />
-              </div>
-              <span className="text-base font-normal">{subject}</span>
-            </label>
-          ))}
+        <div className="space-y-5 overflow-y-auto custom-scrollbar-thin max-h-[300px]">
+          {subjects.map((subject, index) => {
+            const isChecked = selectedSubjects.includes(subject);
+            return (
+              <label key={index} className="flex items-center gap-2 cursor-pointer text-sm font-normal text-black">
+                <input
+                  type="checkbox"
+                  name="subject"
+                  value={subject}
+                  checked={isChecked}
+                  onChange={() => handleSubjectChange(subject)}
+                  className="peer hidden"
+                />
+                <div
+                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center
+                    ${isChecked ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-600'}`}
+                >
+                  {isChecked && <FiCheck size={14} className="text-white" />}
+                </div>
+                <span className="font-medium">{subject}</span>
+              </label>
+            );
+          })}
         </div>
-
       </div>
     </div>
   );

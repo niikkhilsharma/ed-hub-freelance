@@ -16,7 +16,7 @@ export default function PeopleGrid() {
 			<div className="grid grid-cols-1 md:grid-cols-2 gap-4 mx-2">
 				{people.map((person, indx) => (
 					<Link
-						href="/admin-b2c/admin-panel/teacher-attendence "
+						href="/admin-b2c/admin-panel/teacher-attendance "
 						key={indx}
 						className="flex items-center bg-[#f3f4f6] rounded-2xl p-2 space-x-4">
 						{/* Image */}
