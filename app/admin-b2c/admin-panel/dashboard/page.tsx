@@ -11,24 +11,46 @@ import TabSwitch from '@/components/common-components/TabSwitch'
 import AdminToolkit from './AdminToolkit'
 import Overview from './AdminOverview'
 import ArrowUi from './ArrowUi'
-import { HiChevronDown } from 'react-icons/hi'
 import Link from 'next/link'
 import AdminAreaChart from '@/components/admin/area-chart'
 import SearchFilterStart from '@/components/b2c-admin/common-component/SearchBarFilterStart'
+import FilterList from './FilterList'
 
 export default function DashboardPage() {
 	const tabs = ["Online", "Offline"]
 	const [activeTab, setActiveTab] = useState(tabs[0])
 	const [label, setLabel] = useState<'Filter' | 'Branch 2'>('Filter');
-	const [onOff, setOnOff] = useState<'Offline' | 'Online'>('Offline');
+	const [onOff, setOnOff] = useState<'Offline' | 'Online'>('Online');
+	const months = ['June 2025', 'July 2025', 'August 2025'];
+	const [monthIndex, setMonthIndex] = useState(0); // 0 = June
 	const handleRightClick = () => {
-		if (label === 'Filter') setLabel('Branch 2');
-		if (onOff === 'Offline') setOnOff('Online');
+		if (monthIndex < months.length - 1) {
+			setMonthIndex((prev) => prev + 1);
+		}
 	};
 
 	const handleLeftClick = () => {
+		if (monthIndex > 0) {
+			setMonthIndex((prev) => prev - 1);
+		}
+	};
+
+	// For label Arrow
+	const handleLabelRightClick = () => {
+		if (label === 'Filter') setLabel('Branch 2');
+	};
+
+	const handleLabelLeftClick = () => {
 		if (label === 'Branch 2') setLabel('Filter');
+	};
+
+	// For onOff Arrow
+	const handleOnOffRightClick = () => {
 		if (onOff === 'Online') setOnOff('Offline');
+	};
+
+	const handleOnOffLeftClick = () => {
+		if (onOff === 'Offline') setOnOff('Online');
 	};
 	const StartFilter = [
 		{ id: "f1", label: "Filter 1" },
@@ -108,8 +130,8 @@ export default function DashboardPage() {
 								<div>
 									<ArrowUi
 										text={label}
-										leftOnClick={handleLeftClick}
-										RightOnClick={handleRightClick}
+										leftOnClick={handleLabelLeftClick}
+										RightOnClick={handleLabelRightClick}
 									/>
 								</div>
 							</CardHeader>
@@ -117,7 +139,12 @@ export default function DashboardPage() {
 								<div className="border rounded-2xl p-3 sm:p-4 bg-white overflow-hidden">
 									<div className="flex flex-row justify-between items-center gap-2 mb-4 sm:mb-0">
 										<h3 className="text-sm sm:text-base font-medium">Overall Progress</h3>
-										<ArrowControl RightOnClick={() => { }} text="June 2025" leftOnClick={() => { }} />
+										<ArrowUi
+											text={months[monthIndex]}
+											leftOnClick={handleLeftClick}
+											RightOnClick={handleRightClick}
+										/>
+
 									</div>
 									<div className="w-full">
 
@@ -134,22 +161,10 @@ export default function DashboardPage() {
 							<div className="flex w-full flex-wrap gap-4 justify-between">
 								<ArrowUi
 									text={onOff}
-									leftOnClick={handleLeftClick}
-									RightOnClick={handleRightClick}
+									leftOnClick={handleOnOffLeftClick}
+									RightOnClick={handleOnOffRightClick}
 								/>
-								<div className="flex flex-wrap gap-4.5">
-									{Array(4)
-										.fill(null)
-										.map((_, index) => (
-											<div
-												key={index}
-												className="flex items-center justify-between px-2 py-1.25 border border-gray-300 rounded-xl cursor-pointer bg-[#F9FAFB] text-sm text-black tracking-tight font-normal"
-											>
-												Filter
-												<HiChevronDown className="w-5 h-5 ml-6 text-black" />
-											</div>
-										))}
-								</div>
+								<FilterList />
 							</div>
 							<div className="flex w-full flex-col xl:flex-row justify-center gap-4 items-start xl:items-center">
 								<div className="w-full xl:flex-1">
