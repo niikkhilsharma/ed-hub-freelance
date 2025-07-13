@@ -7,7 +7,7 @@ import DualTabSwitcher from "@/components/common-components/DualTabSwitch";
 import TabSwitch from "@/components/common-components/TabSwitch";
 import { useState } from "react";
 
-const users = Array.from({ length: 16 }, (_, i) => ({
+const users = Array.from({ length: 8 }, (_, i) => ({
     name: `School Name`,
     image: '/common-images/school-banner.jpg',
     address: 'Addresses',
@@ -32,7 +32,7 @@ const AllInstitution = () => {
      const [activeTab, setActiveTab] = useState(dualTabs[0]);
     return (
         <>
-            <BackButton Heading="All Teachers" />
+            <BackButton Heading="All Intitutes" />
             <AdminB2CWrapper>
                 <div className="bg-white rounded-3xl p-4">
                     <SearchFilter filters={filters} />
@@ -40,7 +40,7 @@ const AllInstitution = () => {
                         <DualTabSwitcher tabs={dualTabs} activeTab={activeTab} setActiveTab={setActiveTab}/>
                     </div>
                     <TabSwitch tabs={tabs} selected={selectedTab} onChange={setSelectedTab} />
-                    <div className="grid grid-cols-1 sm:grid-cols-2 max-h-screen overflow-y-auto custom-peach-scrollbar gap-4 pr-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pr-2">
                         {users.map((user, index) => (
                             <InstitueCard key={index} {...user} />
                         ))}
