@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { FiSearch, FiChevronDown } from 'react-icons/fi';
 import GoBack from "@/components/principal/goback"; // Assuming this component exists as per your template
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // --- Data Interfaces ---
 interface RequestItem {
@@ -63,15 +64,28 @@ const TopTabButton: React.FC<{ label: string; isActive: boolean; onClick: () => 
     </button>
 );
 
+// --- Component 2: StyledSelect (wrapper for Shadcn Select) ---
+interface StyledSelectProps {
+    defaultValue?: string;
+    placeholder: string;
+    items: { value: string; label: string }[];
+}
+export const StyledSelect: React.FC<StyledSelectProps> = ({ defaultValue, placeholder, items }) => (
+    <Select defaultValue={defaultValue}>
+        <SelectTrigger className="w-full rounded-xl sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
+            <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+            {items.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+        </SelectContent>
+    </Select>
+);
 const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
-    <div className="relative">
-        <select className="appearance-none w-full bg-[#F9FAFB] border border-[#E5E7EB] rounded-xl px-2 py-2 text-xs sm:text-sm text-black pr-4 focus:outline-none focus:ring-1 focus:ring-blue-500">
-            <option>{label}</option>
-            <option>Option A</option>
-            <option>Option B</option>
-        </select>
-        <FiChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-black pointer-events-none" />
-    </div>
+    <StyledSelect
+        defaultValue="all"
+        placeholder={label}
+        items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
+    />
 );
 
 const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<HTMLDivElement | null>, togglePopup: () => void }> = ({ request, reference, togglePopup }) => (

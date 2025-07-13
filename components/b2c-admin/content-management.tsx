@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import CreateFolderModal from "@/app/admin-b2c/pop-ups-2/components/CreateFolder";
 import ManageAccess from "@/app/admin-b2c/pop-ups-2/components/ManageAccess";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -97,17 +98,28 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
   </div>
 );
 
-const GeneralFilterButton: React.FC<{
-  filter: GeneralFilterOption;
-  onClick: () => void;
-}> = ({ filter, onClick }) => (
-  <button
-    onClick={onClick}
-    className={`flex items-center justify-center gap-1.5 px-3.5 py-2.5 border border-gray-300 ${INPUT_BG_FILTERS} text-[#1E1E1E] font-medium rounded-xl text-xs sm:text-sm whitespace-nowrap hover:bg-gray-100 flex-shrink-0 transition-colors`}
-  >
-    <span>{filter.label}</span>
-    <FiChevronDown className="w-4 h-4 text-[#1E1E1E]" />
-  </button>
+// --- Component 2: StyledSelect (wrapper for Shadcn Select) ---
+interface StyledSelectProps {
+  defaultValue?: string;
+  placeholder: string;
+  items: { value: string; label: string }[];
+}
+export const StyledSelect: React.FC<StyledSelectProps> = ({ defaultValue, placeholder, items }) => (
+  <Select defaultValue={defaultValue}>
+    <SelectTrigger className="w-full rounded-xl sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
+      <SelectValue placeholder={placeholder} />
+    </SelectTrigger>
+    <SelectContent>
+      {items.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+    </SelectContent>
+  </Select>
+);
+const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
+  <StyledSelect
+    defaultValue="all"
+    placeholder={label}
+    items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
+  />
 );
 
 // --- SubjectFolderViewContent Component ---
@@ -192,17 +204,10 @@ const SubjectFolderViewContent: React.FC<{ setOpenModal: React.Dispatch<React.Se
               <span>Create Folder</span>
             </button>
 
-            {sampleGeneralFilters.map((filter) => (
-              <GeneralFilterButton
-                key={filter.id}
-                filter={filter}
-                onClick={() =>
-                  alert(
-                    `${filter.label} clicked. Implement specific filter logic.`
-                  )
-                }
-              />
-            ))}
+            <FilterDropdown label="Filter 1" />
+            <FilterDropdown label="Filter 2" />
+            <FilterDropdown label="Filter 3" />
+
           </div>
         </div>
         {/* Bottom Section: Folders Grid */}

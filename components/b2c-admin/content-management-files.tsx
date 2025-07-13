@@ -11,6 +11,7 @@ import { LuInfo } from "react-icons/lu";
 import GoBack from "@/components/principal/goback";
 import { useRouter } from "next/navigation";
 import ManageAccess from "@/app/admin-b2c/pop-ups-2/components/ManageAccess";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 // --- Style Constants ---
 // const ACCENT_PINK = "#FF3366";
@@ -112,6 +113,30 @@ const GeneralFilterButton: React.FC<{
   </button>
 );
 
+// --- Component 2: StyledSelect (wrapper for Shadcn Select) ---
+interface StyledSelectProps {
+  defaultValue?: string;
+  placeholder: string;
+  items: { value: string; label: string }[];
+}
+export const StyledSelect: React.FC<StyledSelectProps> = ({ defaultValue, placeholder, items }) => (
+  <Select defaultValue={defaultValue}>
+    <SelectTrigger className="w-full rounded-xl sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
+      <SelectValue placeholder={placeholder} />
+    </SelectTrigger>
+    <SelectContent>
+      {items.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+    </SelectContent>
+  </Select>
+);
+const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
+  <StyledSelect
+    defaultValue="all"
+    placeholder={label}
+    items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
+  />
+);
+
 // --- SubjectFolderViewContent Component ---
 const SubjectFolderViewContent: React.FC<{ setOpenModal: React.Dispatch<React.SetStateAction<"manageAccess" | null>> }> = ({ setOpenModal }) => {
   const [activeSubjectId] = useState<string>(
@@ -186,18 +211,9 @@ const SubjectFolderViewContent: React.FC<{ setOpenModal: React.Dispatch<React.Se
             />
           </div>
           <div className="flex items-center gap-2">
-
-            {sampleGeneralFilters.map((filter) => (
-              <GeneralFilterButton
-                key={filter.id}
-                filter={filter}
-                onClick={() =>
-                  alert(
-                    `${filter.label} clicked. Implement specific filter logic.`
-                  )
-                }
-              />
-            ))}
+            <FilterDropdown label="Filter 1" />
+            <FilterDropdown label="Filter 2" />
+            <FilterDropdown label="Filter 3" />
           </div>
         </div>
         {/* Bottom Section: Folders Grid */}
