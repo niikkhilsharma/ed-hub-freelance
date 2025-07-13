@@ -25,6 +25,13 @@ import RescheduleMeetingTeacher from "./components/RescheduleMeetingTeacher";
 import RescheduleMeetingStudent from "./components/RescheduleMeetingStudent";
 import CreateFolderModal from "./components/CreateFolder";
 import AddCourseModal from "@/components/b2c-admin/add-course";
+import RejectRequestPopup from "./components/reject-request-popup";
+import AddReminder from "./components/add-reminder";
+import ScheduleMeeting from "./components/scheduleMeeting";
+import ProfileSettingTeacher from "./components/profileSettingTeacher";
+import ProfileSettingStudent from "./components/profileSettingStudent";
+import AllotCoursePopup from "./components/allotNewCourse";
+import EditWorkingHoursPopup from "./components/editWorkingHours";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -176,6 +183,13 @@ export default function AllPopupsPage() {
         { id: "reassign", label: "Reassign" },
         { id: "rescheduleMeetingTeacher", label: "Reschedule Meeting Teacher" },
         { id: "RescheduleMeetingStudent", label: "Reschedule Meeting Student" },
+        { id: "RejectRequestPopup", label: "Reject Request Popup" },
+        { id: "AddReminder", label: "Add Reminder" },
+        { id: "ScheduleMeeting", label: "Schedule Meeting" },
+        { id: "ProfileSettingTeacher", label: "Profile Student Teacher" },
+        { id: "ProfileSettingStudent", label: "Profile Student Student" },
+        { id: "AllotCoursePopup", label: "Allot Course Popup" },
+        { id: "EditWorkingHoursPopup", label: "Edit Working Hours Popup" },
 
     ];
 
@@ -250,6 +264,34 @@ export default function AllPopupsPage() {
             />
             <RescheduleMeetingStudent
                 isOpen={openModal === "RescheduleMeetingStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RejectRequestPopup
+                isOpen={openModal === "RejectRequestPopup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <AddReminder
+                isOpen={openModal === "AddReminder"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ScheduleMeeting
+                isOpen={openModal === "ScheduleMeeting"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ProfileSettingTeacher
+                isOpen={openModal === "ProfileSettingTeacher"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ProfileSettingStudent
+                isOpen={openModal === "ProfileSettingStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <AllotCoursePopup
+                isOpen={openModal === "AllotCoursePopup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <EditWorkingHoursPopup
+                isOpen={openModal === "EditWorkingHoursPopup"}
                 onClose={() => setOpenModal(null)}
             />
         </div>

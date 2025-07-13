@@ -107,6 +107,10 @@ export function TestList({ tests, type }: TestListProps) {
             {/* Right Section: Status + Popup Menu */}
             <div className="flex flex-col items-end gap-2 self-center relative">
 
+              {type !== "completed" && (
+                <Info className="h-4 w-4 cursor-pointer" onClick={()=>togglePopup(test.id)}/>
+              )}
+
               
               {test.status && (
                 <span className="px-3 py-1 text-sm bg-[#8DD9B31A] text-[#8DD9B3] rounded-2xl mr-2">

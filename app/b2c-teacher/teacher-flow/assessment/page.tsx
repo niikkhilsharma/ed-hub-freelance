@@ -1,9 +1,5 @@
-import CreateTest from '@/components/teacher-b2b/create-test/CreateBWTestPage'
+import TestsPage from "@/components/teacher-b2c/tests/mainPage";
 
-export default function CourseDetail() {
-	return (
-		<div>
-			<CreateTest />
-		</div>
-	)
-}
+export default function BWTest() {
+	return <TestsPage testType="Assessment"/>
+};

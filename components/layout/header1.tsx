@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { FiMessageSquare, FiVideo, FiBell, FiMenu, FiX } from 'react-icons/fi' // Added FiMenu and FiX
 import { FaRegSmile } from 'react-icons/fa'
 import { GoDatabase, GoPeople } from 'react-icons/go'
@@ -15,20 +14,20 @@ const NavItem = ({
 	label,
 	href,
 	onLinkClick,
+	active
 }: {
 	icon: React.ElementType
 	label: string
 	href: string
 	onLinkClick?: () => void
+	active?: boolean
 }) => {
-	const pathname = usePathname()
-	const isActive = pathname.startsWith(href) // ✅ Matches current route
 
 	return (
 		<Link
 			href={href}
 			className={`flex items-center gap-1 px-2 lg:gap-2 lg:px-3 py-2 text-sm font-semibold rounded-full transition-colors ${
-				isActive
+				active
 					? 'text-[#FFCC00]' // Active: Yellow
 					: 'text-white hover:bg-[#3366FF]/70'
 			}`}
@@ -46,12 +45,14 @@ interface UserProfile {
 }
 
 interface HeaderProps {
-	user: UserProfile
+	user?: UserProfile
 	isAskme?: boolean
 	activeState?: string
 }
 
-export default function Header({ user, isAskme = true, activeState = '' }: HeaderProps) {
+const headerUser: UserProfile = { name: 'Shlok Agheda', role: 'Student', avatarSrc: '/b2c-student/profile.jpg' };
+
+export default function Header({ user = headerUser, isAskme = true, activeState = '' }: HeaderProps) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false) // State for mobile menu
 	const [isChatOpen, setIsChatOpen] = useState(false)
 
@@ -132,7 +133,7 @@ export default function Header({ user, isAskme = true, activeState = '' }: Heade
 							<button
 								type="button" // ⬅️ Important to prevent default form behavior
 								onClick={() => setIsChatOpen(true)}
-								className="flex items-center gap-1 py-2 px-2 sm:gap-2 sm:px-3 sm:py-2 bg-[#E3F2FD26] text-white text-xs sm:text-sm font-medium rounded-full hover:bg-white/30 transition-colors">
+								className="flex items-center gap-1 py-2 px-2 sm:gap-2 sm:px-3 sm:py-2 bg-[#E3F2FD26] text-white text-xs sm:text-sm font-medium rounded-full hover:bg-white/30 transition-colors cursor-pointer">
 								<Image
 									src="/page3/student_b2b/AI Button.svg"
 									alt="Ask me bot"
