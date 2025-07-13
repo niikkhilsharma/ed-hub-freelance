@@ -5,6 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FiArrowLeft, FiChevronDown, FiDownload, FiSearch } from 'react-icons/fi';
 import { ChatInput } from './ui-components'; // Import ChatInput
+import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
 
 // --- Data Interfaces (from your original) ---
 export interface TeacherContact {
@@ -103,6 +104,9 @@ interface TeacherListSidebarProps {
     activeTeacherId: string | null;
     onTeacherSelect: (teacherId: string) => void;
 }
+const filter = [
+    {id: "t1", label: "Teachers"}
+]
 export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers, activeTeacherId, onTeacherSelect }) => (
     <div className="w-full lg:w-[35%] bg-white rounded-2xl sm:rounded-3xl  p-3 sm:p-4 self-stretch flex flex-col">
         {/* Original h2: text-lg tracking-wide font-popp font-semibold text-[#FF3366] mb-4 px-2 */}
@@ -111,22 +115,7 @@ export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers
         </h2>
         <div className="w-full bg-white text-black flex gap-4 items-center py-2 rounded-xl">
             {/* Search Input */}
-            <div className="flex items-center w-full sm:w-auto flex-grow border-1 border-gray-600 rounded-full px-3 py-2 focus-within:ring-2 focus-within:ring-gray-400">
-                <FiSearch size={20} className="text-black mr-2" />
-                <input
-                    type="text"
-                    placeholder="Search"
-                    className="w-full bg-transparent outline-none text-sm"
-                />
-            </div>
-
-            <div className="flex flex-wrap gap-1">
-                <button
-                    className={`text-xs sm:text-sm px-2 py-2 flex items-center gap-1 rounded-xl border bg-gray-100 border-gray-300 hover:bg-gray-200`}
-                >
-                    Teachers <FiChevronDown />
-                </button>
-            </div>
+            <SearchFilter filters={filter}/>
         </div>
         {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
         <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar-thin-grey pr-1 sm:pr-2">

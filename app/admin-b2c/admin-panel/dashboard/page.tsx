@@ -66,8 +66,8 @@ export default function DashboardPage() {
 				}}>
 				<div className="flex bg-white flex-col gap-4 sm:gap-6 p-2 sm:p-4 border rounded-2xl">
 					{/* Stats Cards */}
-					<div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
-						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-institutions"}>
+					<div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full">
+						<Link className='w-full' href={"/admin-b2c/admin-panel/all-institutions"}>
 							<Card className="shadow-none bg-[#F9FAFB] w-full">
 								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
 									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">10</CardTitle>
@@ -77,7 +77,7 @@ export default function DashboardPage() {
 								</CardHeader>
 							</Card>
 						</Link>
-						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-teachers"}>
+						<Link className='w-full' href={"/admin-b2c/admin-panel/all-teachers"}>
 							<Card className="shadow-none bg-[#F9FAFB] w-full">
 								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
 									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">250</CardTitle>
@@ -87,7 +87,7 @@ export default function DashboardPage() {
 								</CardHeader>
 							</Card>
 						</Link>
-						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-students"}>
+						<Link className='w-full' href={"/admin-b2c/admin-panel/all-students"}>
 							<Card className="shadow-none bg-[#F9FAFB] w-full">
 								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
 									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">6000</CardTitle>
@@ -97,7 +97,7 @@ export default function DashboardPage() {
 								</CardHeader>
 							</Card>
 						</Link>
-						<Link className='w-full sm:w-1/3' href={"/admin-b2c/admin-panel/all-mentors"}>
+						<Link className='w-full' href={"/admin-b2c/admin-panel/all-mentors"}>
 							<Card className="shadow-none bg-[#F9FAFB] w-full">
 								<CardHeader className="flex flex-col justify-center items-center gap-2 p-4 sm:p-6">
 									<CardTitle className="text-[#3366FF] text-2xl sm:text-3xl lg:text-4xl">15</CardTitle>

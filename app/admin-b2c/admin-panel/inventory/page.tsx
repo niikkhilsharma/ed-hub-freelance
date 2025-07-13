@@ -24,7 +24,9 @@ const Inventory = () => {
             <BackButton Heading="Inventory" />
             <AdminB2CWrapper>
                 <div className="bg-white rounded-3xl">
-                    <SearchFilter filters={filters} />
+                    <div className="px-4">
+                        <SearchFilter filters={filters} />
+                    </div>
                     <InventoryTable data={items} />
                     
                 </div>

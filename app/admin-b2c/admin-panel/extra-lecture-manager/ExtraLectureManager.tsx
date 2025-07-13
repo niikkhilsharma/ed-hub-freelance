@@ -29,12 +29,12 @@ export const sampleData: leavecards[] = [...teachers];
 
 const ExtraLectureManager = () => {
     // const [activeTab, setActiveTab] = useState<'teacher'>('teacher');
-const filters = [
-    {id: "f1", label: "Filter 1"},
-     {id: "f2", label: "Filter 2"},
-      {id: "f3", label: "Filter 3"},
-       {id: "f4", label: "Filter 4"},
-];
+    const filters = [
+        { id: "f1", label: "Filter 1" },
+        { id: "f2", label: "Filter 2" },
+        { id: "f3", label: "Filter 3" },
+        { id: "f4", label: "Filter 4" },
+    ];
 
     return (
         <>
@@ -43,8 +43,8 @@ const filters = [
                 {/* Tabs */}
                 <div className="bg-white rounded-2xl p-4">
 
-                    <SearchFilter filters={filters}/>
-                    <div className="max-h-[764px] overflow-y-auto grid gap-1 grid-cols-1 sm:grid-cols-2 custom-peach-scrollbar">
+                    <SearchFilter filters={filters} />
+                    <div className="max-h-[764px] overflow-y-auto grid gap-1 grid-cols-1 sm:grid-cols-2 custom-scrollbar-thin">
                         {teachers.map((item, index) => (
                             <div key={item.id} className="flex flex-wrap items-center border border-gray-300 gap-4 bg-gray-50 rounded-2xl p-4 inline-block mr-2 mb-4  relative">
                                 <div className="flex">
@@ -62,14 +62,14 @@ const filters = [
                                 <div className="flex flex-col gap-2 pt-4">
                                     <p className=""><strong className="font-medium">Remaining Topics:</strong> Lorem Ipusm</p>
                                     {index % 2 === 0 ? (
-        <p className="">
-          <strong className="font-medium">Remaining Left:</strong> Lorem Ipusm
-        </p>
-      ) : (
-        <p className="">
-          <strong className="font-medium">Remaining Subtopics:</strong> Lorem Ipusm
-        </p>
-      )}
+                                        <p className="">
+                                            <strong className="font-medium">Remaining Left:</strong> Lorem Ipusm
+                                        </p>
+                                    ) : (
+                                        <p className="">
+                                            <strong className="font-medium">Remaining Subtopics:</strong> Lorem Ipusm
+                                        </p>
+                                    )}
                                     <p className=""><strong className="font-medium">Deadline Missed:</strong> 22 / 6 / 25</p>
                                 </div>
                                 <div className="flex flex-col items-center space-y-4 p-4 bg-gray-100 rounded-2xl max-w-xl mt-5 mb-3 mx-2  ">
@@ -80,7 +80,7 @@ const filters = [
                                 <div className="space-y-6 my-3 mx-2">
                                     {/* Schedule Date */}
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-black">Schedule Date</label>
+                                        <label className="text-base font-medium text-black">Schedule Date</label>
                                         <input
                                             type="text"
                                             placeholder="Text"
@@ -90,7 +90,7 @@ const filters = [
 
                                     {/* Schedule Time */}
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-black">Schedule Time</label>
+                                        <label className="text-base font-medium text-black">Schedule Time</label>
                                         <input
                                             type="text"
                                             placeholder="Text"
@@ -100,7 +100,7 @@ const filters = [
 
                                     {/* Fee */}
                                     <div className="space-y-2">
-                                        <label className="text-sm font-medium text-black">
+                                        <label className="text-base font-medium text-black">
                                             Fee to be Paid by Parents (₹)
                                         </label>
                                         <input

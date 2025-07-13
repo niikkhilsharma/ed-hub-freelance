@@ -1,4 +1,5 @@
 
+import { Divide } from "lucide-react";
 import { FiChevronDown } from "react-icons/fi";
 import { IoCloudUploadOutline } from "react-icons/io5"
 
@@ -13,14 +14,9 @@ const CustomSelect = ({ label, options }: CustomSelectProps) => {
     <div>
       <label className="block font-medium mb-1">{label}</label>
       <div className="relative">
-        <select
-          className="w-full appearance-none text-gray-500  font-normal rounded-xl border border-gray-300 bg-[#f9fafb] p-2 pr-10"
-        >
-          {options.map((opt) => (
-            <option key={opt}>{opt}</option>
-          ))}
-        </select>
-        <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={18} />
+        <div className="w-full appearance-none text-gray-500  font-normal rounded-xl border border-gray-300 bg-[#f9fafb] p-2 pr-10">
+          {options}
+        </div>
       </div>
     </div>
   );
@@ -35,11 +31,11 @@ const TeachMoreCourseComponent = () => {
           <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-[#B0B0B014] font-semibold rounded-xl"> Contact Information</h1>
           <div className="max-w-md flex flex-col gap-1 pt-4 pb-4">
             <label className='font-medium text-base' htmlFor="fullName">Full Name</label>
-            <input id="fullName" type="text" className='rounded-xl px-4 py-2 bg-[#f9fafb] border' placeholder='Text' />
+            <div id="fullName" className='rounded-xl px-4 py-2 bg-[#f9fafb] border text-gray-500' >Text</div>
           </div>
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-base' htmlFor="email">Email</label>
-            <input id="email" type="email" className='rounded-xl px-4 py-2 bg-[#f9fafb] border' placeholder='Text' />
+            <div id="email"  className='text-gray-500 rounded-xl px-4 py-2 bg-[#f9fafb] border'  >Text</div>
           </div>
         </div>
         <div className="flex flex-col gap-2">
@@ -53,7 +49,7 @@ const TeachMoreCourseComponent = () => {
           </div>
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-base' htmlFor="weeklyHours">Weekly Work Hours</label>
-            <input id="weeklyHours" type="text" className='rounded-xl px-4 py-2 bg-[#f9fafb] border' placeholder='Text' />
+            <div id="weeklyHours" className='rounded-xl px-4 py-2 bg-[#f9fafb] border text-gray-500'  >Text</div>
           </div>
         </div>
         <div className="flex flex-col gap-1">
@@ -63,7 +59,7 @@ const TeachMoreCourseComponent = () => {
 
           <div className="max-w-md w-full space-y-4 py-3.5">
             {/* Preferred New Course */}
-            <CustomSelect label="Preferred New Course" options={["Option 1"]} />
+            <CustomSelect label="Preferred New Course" options={["Course Name"]} />
 
             {/* Ideal Teaching Hours */}
             <CustomSelect label="Ideal Teaching Hours" options={["80 Hours"]} />
@@ -102,10 +98,10 @@ const TeachMoreCourseComponent = () => {
               <label className="block font-medium mb-1">
                 Motivation & Experience for This New Teaching Area
               </label>
-              <textarea
-                rows={4}
-                className="w-full rounded-xl border border-gray-300 bg-[#f9fafb] p-3 resize-none"
-              />
+              <div
+                
+                className="w-full h-36 rounded-xl border border-gray-300 bg-[#f9fafb] p-3 resize-none"
+              ></div>
             </div>
           </div>
         </div>
@@ -114,28 +110,27 @@ const TeachMoreCourseComponent = () => {
 
           <div className="max-w-md flex flex-col gap-1 pt-2 pb-4">
             <label className='font-medium text-base' htmlFor="teachingExperience">Your Total Teaching Experience (in years)</label>
-            <input id="teachingExperience" type="text" className='rounded-xl px-4 py-2 bg-[#f9fafb] border' placeholder='6 years' />
+            <div id="teachingExperience" className='rounded-xl px-4 py-2 bg-[#f9fafb] border text-gray-500'  >6 years</div>
           </div>
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-base' htmlFor="timeServed">Time Served at Edunique (in months)</label>
-            <input id="timeServed" type="text" className='rounded-xl px-4 py-2 bg-[#f9fafb] border' placeholder='18 Months' />
+            <div id="timeServed" className='rounded-xl px-4 py-2 bg-[#f9fafb] border text-gray-500' >18 Months</div>
           </div>
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-base' htmlFor="hourlyRate">Current Hourly Rate (₹)</label>
-            <input id="hourlyRate" type="number" className='rounded-xl px-4 py-2 bg-[#f9fafb] border' placeholder='20000' />
+            <div id="hourlyRate" className='rounded-xl px-4 py-2 bg-[#f9fafb] border text-gray-500'  >20000</div>
           </div>
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-base' htmlFor="newHourlyRate">Expected New Hourly Rate (₹)</label>
-            <input id="newHourlyRate" type="number" className='rounded-xl px-4 py-2 bg-[#f9fafb] border' placeholder='40000' />
+            <div id="newHourlyRate" className='rounded-xl px-4 py-2 bg-[#f9fafb] border text-gray-500' >40000</div>
           </div>
           <div className="max-w-md">
               <label className="block font-medium mb-1">
                 Reason for requesting a raise?
               </label>
-              <textarea
-                rows={2}
-                className="w-full rounded-xl border border-gray-300 bg-[#f9fafb] p-3 resize-none"
-              />
+              <div
+                className="text-gray-500 h-16 w-full rounded-xl border border-gray-300 bg-[#f9fafb] p-3 resize-none"
+              ></div>
             </div>
 
         </div>

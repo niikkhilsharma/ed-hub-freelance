@@ -34,7 +34,7 @@ const AllMentors = () => {
         <div className="bg-white rounded-3xl p-4">
            <SearchFilter filters={filters} />
           <TabSwitch tabs={tabs} selected={selectedTab} onChange={setSelectedTab} />
-          <div className="grid grid-cols-1 sm:grid-cols-2 max-h-screen overflow-y-auto custom-peach-scrollbar gap-4 pr-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 max-h-screen overflow-y-auto custom-scrollbar-thin gap-4 pr-2">
             {users.map((user, index) => (
               <UserCard key={index} {...user} />
             ))}

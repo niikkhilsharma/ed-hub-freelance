@@ -1,5 +1,6 @@
 'use client';
 
+import AddReminder from '@/app/admin-b2c/pop-ups-2/components/add-reminder';
 import { AddItem } from '@/app/admin-b2c/pop-ups-2/page';
 import Image from 'next/image';
 import { FC, useState } from 'react';
@@ -36,7 +37,7 @@ const InventoryTable: FC<InventoryTableProps> = ({ data }) => {
         {data.map((item) => (
           <div
             key={item.id}
-            className={`relative border grid grid-cols-4 items-center bg-[#F9F9F9] px-4 py-4 rounded-2xl md:pl-12 md:pr-20`}
+            className={`relative border grid grid-cols-4 items-center bg-[#F9F9F9] px-4 py-3 rounded-2xl md:pl-12 md:pr-20`}
           >
             {/* Image */}
             <div className="flex items-center">
@@ -62,7 +63,7 @@ const InventoryTable: FC<InventoryTableProps> = ({ data }) => {
 
           </div>
         ))}
-        <div className="fixed right-2 sm:right-10 top-1/2 -translate-y-1/2 flex gap-2 z-10">
+        <div className="fixed right-2 sm:right-10 top-[90%] -translate-y-1/2 flex gap-2 z-10">
           <button className="flex items-center gap-1 bg-[#FFCC00] text-white px-3 py-2.5 rounded-full text-xs font-medium cursor-pointer hover:opacity-90"
           onClick={() => setTaskPopup(true)}
           >
@@ -80,6 +81,10 @@ const InventoryTable: FC<InventoryTableProps> = ({ data }) => {
       <AddItem
       isOpen={itemPopup} onClose={() => setItemPopup(false)} 
       />
+       <AddReminder
+      isOpen={taskPopup} onClose={() => setTaskPopup(false)} 
+      />
+      
     </div>
   );
 };

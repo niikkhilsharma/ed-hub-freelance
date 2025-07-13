@@ -141,7 +141,7 @@ export const AddItem: React.FC<PopupProp> = ({
                     <input id="itemName" type="text" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='Text' />
                 </div>
 
-                <div className="flex flex-col gap-1 pb-4 my-4">
+                <div className="flex flex-col gap-1 pb-4 my-2">
                     <label className='font-medium text-md mb-2' htmlFor="description">Description</label>
                     <input id="description" type="text" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='Text' />
                 </div>
@@ -154,9 +154,13 @@ export const AddItem: React.FC<PopupProp> = ({
                     <span className="truncate">Document Name</span>
                 </div>
 
-                <div className="flex flex-col gap-1 pb-4 mt-6">
+                <div className="flex flex-col gap-1 pb-4 mt-4">
                     <label className='font-medium text-md mb-2' htmlFor="stocks">Stocks</label>
                     <input id="stocks" type="text" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='Text' />
+                </div>
+                <div className="w-full flex items-center justify-center">
+                    <button
+                    onClick={onClose} className="cursor-pointer text-center px-6 py-2.5 rounded-full text-white bg-[#3366ff]">Add Item</button>
                 </div>
             </div>
         </BaseModal>
