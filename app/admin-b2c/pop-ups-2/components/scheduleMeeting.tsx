@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FiArrowLeft, FiSearch, FiCalendar, FiClock, FiChevronDown } from 'react-icons/fi';
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 
 // --- Data Interfaces ---
 interface SelectableItem {
@@ -19,14 +20,14 @@ interface TeacherData extends SelectableItem { }
 
 
 // --- Sample Data ---
-const sampleStudents: StudentData[] = Array.from({ length: 3 }, (_, i) => ({
+const sampleStudents: StudentData[] = Array.from({ length: 9 }, (_, i) => ({
     id: `student-${i}`,
     name: `Student Name`,
     avatarSrc: `/admin/student.png`,
     details: ["Course Name", "Level / Grade", "Group"]
 }));
 
-const sampleTeachers: TeacherData[] = Array.from({ length: 3 }, (_, i) => ({
+const sampleTeachers: TeacherData[] = Array.from({ length: 9 }, (_, i) => ({
     id: `teacher-${i}`,
     name: `Name`,
     avatarSrc: `/admin/teacher.png`,
@@ -110,7 +111,7 @@ const SelectableItemCard: React.FC<{
 
 
 // --- Main Page Component ---
-export default function ScheduleMeeting({ isOpen, onClose } : {
+export default function ScheduleMeeting({ isOpen, onClose }: {
     isOpen: boolean;
     onClose: () => void;
 }) {
@@ -130,13 +131,14 @@ export default function ScheduleMeeting({ isOpen, onClose } : {
     useEffect(() => {
         setActiveCategory(targetAudience === 'Students' ? studentCategories[0] : departmentCategories[0]);
     }, [targetAudience])
-    
+
+    const updateHeight = () => {
+        if (leftRef.current) {
+            setLeftHeight(leftRef.current.offsetHeight);
+        }
+    };
+
     useLayoutEffect(() => {
-        const updateHeight = () => {
-            if (leftRef.current) {
-                setLeftHeight(leftRef.current.offsetHeight);
-            }
-        };
 
         updateHeight();
 
@@ -155,6 +157,16 @@ export default function ScheduleMeeting({ isOpen, onClose } : {
             resizeObserver.disconnect();
         };
     }, [targetAudience])
+
+    useEffect(()=>{
+        const timer = setTimeout(()=>{
+            updateHeight();
+        },200);
+
+        return () => {
+            clearTimeout(timer);
+        }
+    })
 
     const handleItemSelect = (itemId: string) => {
         setSelectedItems(prev => {
@@ -307,14 +319,16 @@ export default function ScheduleMeeting({ isOpen, onClose } : {
                                 />
                             </div>
                             <div className="relative">
-                                <button className="flex items-center gap-4 rounded-xl border border-[#D5D5D5] py-2 px-3 text-[#1e1e1e] leading-tight focus:outline-none focus:border-blue-500 text-base ">
-                                    Filter <FiChevronDown className="ml-1 h-4 w-4" />
-                                </button>
+                                <StyledSelect
+                                    defaultValue="all"
+                                    placeholder="Filter"
+                                    items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Batch 1" }]}
+                                />
                             </div>
                         </div>
                         {/* Scrollable list */}
                         <div className="space-y-1.5 h-full overflow-y-auto custom-scrollbar-thin pr-1" style={{
-                            height: leftHeight > 0 ? `${leftHeight - 120}px` : 'auto',
+                            height: leftHeight > 0 ? `${leftHeight - 124}px` : 'auto',
                         }}>
                             {selectableList.map(item => (
                                 <SelectableItemCard
@@ -393,3 +407,21 @@ export const NewBaseModal: React.FC<NewBaseModalProps> = ({
         </AnimatePresence>
     );
 };
+
+// --- Component 2: StyledSelect (wrapper for Shadcn Select) ---
+interface StyledSelectProps {
+    defaultValue?: string;
+    placeholder: string;
+    items: { value: string; label: string }[];
+    // Add onChange handler if needed
+}
+export const StyledSelect: React.FC<StyledSelectProps> = ({ defaultValue, placeholder, items }) => (
+    <Select defaultValue={defaultValue}>
+        <SelectTrigger className="w-full rounded-xl sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
+            <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+        <SelectContent>
+            {items.map(item => <SelectItem key={item.value} value={item.value}>{item.label}</SelectItem>)}
+        </SelectContent>
+    </Select>
+);
