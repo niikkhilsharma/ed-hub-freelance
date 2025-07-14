@@ -6,6 +6,8 @@ import { FiArrowLeft, FiSearch, FiCalendar, FiClock, FiChevronDown } from 'react
 import { useRouter } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
+import { FaPlus } from 'react-icons/fa';
+import { GoPlus } from 'react-icons/go';
 
 // --- Data Interfaces ---
 interface SelectableItem {
@@ -22,9 +24,9 @@ interface TeacherData extends SelectableItem { }
 // --- Sample Data ---
 const sampleStudents: StudentData[] = Array.from({ length: 9 }, (_, i) => ({
     id: `student-${i}`,
-    name: `Student Name`,
-    avatarSrc: `/admin/student.png`,
-    details: ["Course Name", "Level / Grade", "Group"]
+    name: `Name`,
+    avatarSrc: `/admin/teacher.png`,
+     details: ["Subject", "Course Assigned", "Batch Assigned"]
 }));
 
 const sampleTeachers: TeacherData[] = Array.from({ length: 9 }, (_, i) => ({
@@ -40,25 +42,7 @@ const studentCategories = ["Category 1", "Category 2", "Category 3", "Category 4
 // --- Helper UI Components ---
 
 // Top right toggle (For Students / For Teacher)
-const TargetAudienceToggle: React.FC<{
-    activeTarget: 'Students' | 'Teacher';
-    onTargetChange: (target: 'Students' | 'Teacher') => void;
-}> = ({ activeTarget, onTargetChange }) => (
-    <div className="flex items-center gap-2 border border-[#E5E7EB] p-1 rounded-2xl">
-        <button
-            onClick={() => onTargetChange('Students')}
-            className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-xl transition-colors ${activeTarget === 'Students' ? 'bg-[#8DD9B3] text-white' : 'text-[#6B7280] hover:bg-[#B0B0B0]'} cursor-pointer`}
-        >
-            For Students
-        </button>
-        <button
-            onClick={() => onTargetChange('Teacher')}
-            className={`px-3 py-1.5 text-xs sm:text-sm font-medium rounded-xl transition-colors ${activeTarget === 'Teacher' ? 'bg-[#8DD9B3] text-white' : 'text-[#6B7280] hover:bg-[#B0B0B0]'} cursor-pointer`}
-        >
-            For Teacher
-        </button>
-    </div>
-);
+
 
 // Department/Category tabs
 const CategoryTab: React.FC<{ label: string; isActive: boolean; onClick: () => void; }> = ({ label, isActive, onClick }) => (
@@ -92,10 +76,10 @@ const SelectableItemCard: React.FC<{
             className="w-18 h-18 rounded-2xl object-cover flex-shrink-0"
         />
         <div className="flex-grow text-left min-w-0">
-            <h4 className={`font-semibold text-black truncate ${activeTarget === "Teacher" ? "text-base" : "text-sm"}`}>{item.name}</h4>
+            <h4 className={`font-semibold text-black truncate ${activeTarget === "Students" ? "text-base" : "text-sm"}`}>{item.name}</h4>
             {item.details.map((detail, index) => (
                 // The first detail is styled red like "Subject"
-                <p key={index} className={` truncate text-[#6B7280] ${index === 0 ? (activeTarget === "Teacher" ? "text-[#FF3366] text-sm font-medium" : "text-[10px]") : "text-[10px]"}`}>
+                <p key={index} className={` truncate text-[#6B7280] ${index === 0 ? (activeTarget === "Students" ? "text-[#FF3366] text-sm font-medium" : "text-[10px]") : "text-[10px]"}`}>
                     {detail}
                 </p>
             ))}
@@ -111,12 +95,12 @@ const SelectableItemCard: React.FC<{
 
 
 // --- Main Page Component ---
-export default function AddReminder({ isOpen, onClose }: {
+export default function AddReminderStudent({ isOpen, onClose }: {
     isOpen: boolean;
     onClose: () => void;
 }) {
     // State to toggle between Student and Teacher views
-    const [targetAudience, setTargetAudience] = useState<'Students' | 'Teacher'>('Teacher');
+    const [targetAudience, setTargetAudience] = useState<'Students' | 'Teacher'>('Students');
     const [activeCategory, setActiveCategory] = useState(studentCategories[0]);
 
     // State for the right-side selection list
@@ -198,9 +182,8 @@ export default function AddReminder({ isOpen, onClose }: {
                             }}>
                             <FiArrowLeft className="w-5 h-5 text-black" />
                         </button>
-                        <h1 className="text-lg font-semibold text-[#FF3366]">Add Reminder</h1>
+                        <h1 className="text-lg font-semibold text-[#FF3366]">Assign Task List</h1>
                     </div>
-                    <TargetAudienceToggle activeTarget={targetAudience} onTargetChange={setTargetAudience} />
                 </div>
 
                 {/* Category Tabs */}
@@ -222,54 +205,37 @@ export default function AddReminder({ isOpen, onClose }: {
                     {/* Left Column: Form Fields */}
                     <div ref={leftRef} className="space-y-4">
                         <div>
-                            <label className="block text-sm  text-black mb-1">Reminder Title</label>
+                            <label className="block text-sm  text-black mb-1">Task 1 Name</label>
                             <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
                         </div>
                         <div>
-                            <label className="block text-sm  text-black mb-1">Reminder Description</label>
+                            <label className="block text-sm  text-black mb-1">Task 1 Description</label>
                             <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
                         </div>
                         <div>
-                            <label className="block text-sm  text-black mb-1">Reminder Date</label>
-                            <div className="relative">
-                                <input type="text" placeholder="DD / MM / YYYY" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                <FiCalendar className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                            </div>
+                            <label className="block text-sm  text-black mb-1">Task 2 Name</label>
+                            <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
                         </div>
                         <div>
-                            <label className="block text-sm  text-black mb-1">Reminder Timer</label>
-                            <div className="relative">
-                                <input type="text" placeholder="16:00" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
-                                <FiClock className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                            </div>
+                            <label className="block text-sm  text-black mb-1">Task 2 Description</label>
+                            <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
                         </div>
-
-                        {/* Conditional Fields for "For Students" view */}
-                        {targetAudience === 'Students' && (
-                            <>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Select Course</label>
-                                    <div className="relative">
-                                        <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
-                                        <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <label className="block text-sm  text-black mb-1">Select Batch</label>
-                                    <div className="relative">
-                                        <select className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full appearance-none focus:ring-1 focus:ring-blue-500 outline-none text-sm pr-8"><option>Option 1</option></select>
-                                        <FiChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#F9FAFB]0" />
-                                    </div>
-                                </div>
-                            </>
-                        )}
+                       <div>
+                            <label className="block text-sm  text-black mb-1">Task 3 Name</label>
+                            <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                        </div>
+                        <div>
+                            <label className="block text-sm  text-black mb-1">Task 3 Description</label>
+                            <input type="text" placeholder="Text" className="w-full px-4 py-2.5 bg-[#F9FAFB] border border-[#D5D5D5] rounded-full focus:ring-1 focus:ring-blue-500 outline-none text-sm" />
+                        </div>
+                        <button className=" p-2 border rounded-full text-black bg-[#f9fafb]"><GoPlus/></button>
                     </div>
 
                     {/* Right Column: Selection List */}
                     <div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-4 space-y-3">
                         <div className="flex items-center space-x-4">
                             <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For all" checked={selectionType === 'For all'} onChange={() => setSelectionType('For all')} className="form-radio text-[#3366FF] font-normal" />For all</label>
-                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For Selective" checked={selectionType === 'For Selective'} onChange={() => setSelectionType('For Selective')} className="form-radio text-[#3366FF] font-normal" />For Selective {targetAudience === "Teacher" ? "Teachers" : "Students"}</label>
+                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For Selective" checked={selectionType === 'For Selective'} onChange={() => setSelectionType('For Selective')} className="form-radio text-[#3366FF] font-normal" />For Selective {targetAudience === "Teacher" ? "Teachers" : "Teachers"}</label>
                         </div>
                         {/* Search and Filter */}
                         <div className="flex items-center space-x-2">
@@ -279,7 +245,7 @@ export default function AddReminder({ isOpen, onClose }: {
                                 </span>
                                 <input
                                     type="text"
-                                    placeholder={`Search ${targetAudience === 'Students' ? 'Student' : 'Teacher'}`}
+                                    placeholder={`Search Teachers`}
                                     className="w-full rounded-full border-2 border-[#6b7280] py-2.5 pl-8 pr-3 items-center text-[#6B7280] leading-tight focus:bg-white focus:outline-none focus:border-black"
                                 />
                             </div>
@@ -312,7 +278,7 @@ export default function AddReminder({ isOpen, onClose }: {
                 <div className={`mt-6 sm:mt-8 flex justify-center ${targetAudience === "Students" ? "" : " mb-24 "}`}>
                     <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
                         onClick={onClose}>
-                        Set Reminder
+                        Assign Task List
                     </button>
                 </div>
 

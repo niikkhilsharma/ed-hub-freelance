@@ -74,7 +74,7 @@ const CourseManagement = () => {
         </div>
         {/* <ClassTab /> */}
         <TabSwitch tabs={tabs} selected={selected} onChange={setSelected} />
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-h-screen overflow-y-auto custom-scrollbar-thin">
           {filteredData.map((item) => {
             const linkHref =
               item.role === 'teacher'

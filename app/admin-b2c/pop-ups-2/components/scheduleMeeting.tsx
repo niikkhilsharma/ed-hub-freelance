@@ -64,7 +64,7 @@ const TargetAudienceToggle: React.FC<{
 const CategoryTab: React.FC<{ label: string; isActive: boolean; onClick: () => void; }> = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap  sm:text-sm sm:font-medium transition-colors cursor-pointer
+        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap  sm:text-sm transition-colors cursor-pointer
         ${isActive ? 'bg-[#FF99B7] text-white ' : 'text-[#6B7280] hover:bg-gray-100'}`}
     >
         {label}
@@ -346,9 +346,7 @@ export default function ScheduleMeeting({ isOpen, onClose }: {
                 {/* Footer Button */}
                 <div className="mt-6 sm:mt-8 flex justify-center">
                     <button className="w-fit px-6 py-2.5 text-sm text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer"
-                        onClick={() => {
-                            Router.push('admin-b2c/admin-panel/dashboard');
-                        }}>
+                        onClick={onClose}>
                         Schedule
                     </button>
                 </div>

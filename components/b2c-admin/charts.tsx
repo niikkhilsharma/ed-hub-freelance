@@ -10,9 +10,10 @@ import {
   FiZap,
   FiArrowLeftCircle,
   FiArrowRightCircle,
-} from "react-icons/fi"; 
+  FiChevronUp,
+} from "react-icons/fi";
 import { LuOmega } from "react-icons/lu";
-import { MdOutlineSuperscript ,MdOutlineFunctions} from "react-icons/md";
+import { MdOutlineSuperscript, MdOutlineFunctions } from "react-icons/md";
 import { TbMathFunction } from "react-icons/tb";// Add icons as needed
 import { RiPsychotherapyLine } from "react-icons/ri";
 import { MdOutlineTheaterComedy } from "react-icons/md";
@@ -102,7 +103,11 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 const ChartsReport: React.FC = () => {
   // Dummy state for month/year filter for Overall Progress chart
   const [currentMonth] = useState("Month"); // Default text
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   // Simplified data for the line chart (hardcoded points)
   const lineChartData = {
@@ -165,7 +170,7 @@ const ChartsReport: React.FC = () => {
       progressPercent: 80,
       iconSet: [
         <MdOutlineFunctions key="b" className="w-4 h-4" />,
-        < RiPsychotherapyLine  key="a" className="w-4 mt-4.5 h-4" />,
+        < RiPsychotherapyLine key="a" className="w-4 mt-4.5 h-4" />,
         <TbMathFunction key="z" className="w-4 h-4" />,
       ],
       skills: [
@@ -192,7 +197,7 @@ const ChartsReport: React.FC = () => {
     progressPercent: 80,
     iconSet: [
       <MdOutlineTheaterComedy key="a" className="w-6 text-[#893544] mt-4.5 h-6" />,
-      
+
     ], // Example icons
     skills: [
       {
@@ -310,13 +315,13 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Confidence",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Presentation",
         details: "Pedagogy and Plan",
         progress: "3/4",
@@ -334,7 +339,7 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Presentation",
         details: "Pedagogy and Plan",
         progress: "3/4",
@@ -352,19 +357,19 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Written",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Problem Solving",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Presentation",
         details: "Pedagogy and Plan",
         progress: "3/4",
@@ -382,19 +387,19 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Written",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Problem Solving",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Presentation",
         details: "Pedagogy and Plan",
         progress: "3/4",
@@ -412,19 +417,19 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Written",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Problem Solving",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Presentation",
         details: "Pedagogy and Plan",
         progress: "3/4",
@@ -442,19 +447,19 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Written",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Problem Solving",
         details: "Pedagogy and Plan",
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Presentation",
         details: "Pedagogy and Plan",
         progress: "3/4",
@@ -472,7 +477,7 @@ const ChartsReport: React.FC = () => {
         progress: "3/4",
         color: PALETTE.ACCENT_RED,
       },
-       {
+      {
         name: "Written",
         details: "Pedagogy and Plan",
         progress: "3/4",
@@ -549,9 +554,9 @@ const ChartsReport: React.FC = () => {
     <>
 
       <div className="">
-       
 
-<div className="grid w-full max-w-[90rem] mx-auto grid-cols-1 gap-4 p-2 sm:p-4  lg:grid-cols-[2fr_1fr] lg:gap-6">
+
+        <div className="grid w-full max-w-[90rem] mx-auto grid-cols-1 gap-4 p-2 sm:p-4  lg:grid-cols-[2fr_1fr] lg:gap-6">
           {/* ====== Overall Charts start ====== */}
 
           <div
@@ -599,9 +604,32 @@ const ChartsReport: React.FC = () => {
                 </div>
               </div>
               <div className="flex items-center flex-wrap gap-2 mt-2 sm:mt-0">
-                <div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-                  <span>{currentMonth}</span>
-                  <FiChevronDown className="w-4 h-4 ml-1" />
+                <div className="relative inline-block text-left">
+                  {/* Button + Border container */}
+                  <div
+                    className={`bg-[#f9fafb] ${isOpen ? "rounded-t-xl border-t border-x" : "rounded-xl border"
+                      } box-border`}
+                  >
+                    <button
+                      onClick={toggleDropdown}
+                      className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full"
+                    >
+                      Month
+                      {isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+                    </button>
+                  </div>
+
+                  {/* Dropdown content */}
+                  {isOpen && (
+                    <div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border">
+                      <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
+                        Option 1
+                      </button>
+                      <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
+                        Option 2
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <div className="flex items-center gap-4 sm:gap-6 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
                   <FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
@@ -669,26 +697,26 @@ const ChartsReport: React.FC = () => {
 
           {/* Personal Development Card */}
           <div
-  className="p-5 h-[500px] rounded-2xl relative"
-  style={{
-    backgroundColor: PALETTE.WHITE_CARD,
-  }}
->
-  <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
-    {personalDevData.title}
-  </h3>
-  <div className="space-y-3 overflow-y-scroll custom-grey-scrollbar pr-3 max-h-[424px]">
-    {personalDevData.skills.map((skill, i) => (
-      <ProgressCircleItem
-        key={i}
-        percentageText={skill.progress}
-        color={skill.color}
-        skillName={skill.name}
-        details={skill.details}
-      />
-    ))}
-  </div>
-</div>
+            className="p-5 h-[500px] rounded-2xl relative"
+            style={{
+              backgroundColor: PALETTE.WHITE_CARD,
+            }}
+          >
+            <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
+              {personalDevData.title}
+            </h3>
+            <div className="space-y-3 overflow-y-scroll custom-grey-scrollbar pr-3 max-h-[424px]">
+              {personalDevData.skills.map((skill, i) => (
+                <ProgressCircleItem
+                  key={i}
+                  percentageText={skill.progress}
+                  color={skill.color}
+                  skillName={skill.name}
+                  details={skill.details}
+                />
+              ))}
+            </div>
+          </div>
         </div>
         <main
           className="grid h-full  max-w-[93rem] mx-auto  my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 "

@@ -10,6 +10,7 @@ import {
 	FiZap,
 	FiArrowLeftCircle,
 	FiArrowRightCircle,
+	FiChevronUp,
 } from 'react-icons/fi' // Add icons as needed
 
 // --- COLOR PALETTE (as provided) ---
@@ -83,8 +84,11 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({ percentageTe
 
 const PrincipalChatrsReport: React.FC = () => {
 	// Dummy state for month/year filter for Overall Progress chart
-	const [currentMonth] = useState('Month') // Default text
+const [isOpen, setIsOpen] = useState(false);
 
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 	// Simplified data for the line chart (hardcoded points)
 	const lineChartData = {
 		labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -378,10 +382,34 @@ const PrincipalChatrsReport: React.FC = () => {
 								</div>
 							</div>
 							<div className="flex items-center gap-2 mt-2 sm:mt-0">
-								<div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
-									<span>{currentMonth}</span>
-									<FiChevronDown className="w-4 h-4 ml-1" />
-								</div>
+								 <div className="relative inline-block text-left">
+      {/* Button + Border container */}
+      <div
+        className={`bg-[#f9fafb] ${
+          isOpen ? "rounded-t-xl border-t border-x" : "rounded-xl border"
+        } box-border`}
+      >
+        <button
+          onClick={toggleDropdown}
+          className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full"
+        >
+          Month
+          {isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+        </button>
+      </div>
+
+      {/* Dropdown content */}
+      {isOpen && (
+        <div className="absolute left-0 top-full w-full bg-[#f9fafb] border-x border-b rounded-b-xl z-10 box-border">
+          <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
+            Option 1
+          </button>
+          <button className="whitespace-nowrap justify-center py-2 w-full flex items-center text-gray-500 cursor-pointer">
+            Option 2
+          </button>
+        </div>
+      )}
+    </div>
 								<div className="flex items-center gap-2.5 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl">
 									<FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" />
 									<span>2025</span>
