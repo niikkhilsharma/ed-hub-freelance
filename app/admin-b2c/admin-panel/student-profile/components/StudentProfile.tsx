@@ -1,5 +1,6 @@
+"use client"
 import PrincipalChatrsReport from '@/components/principal/principal-charts-report'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 
 import { FaRegStar, FaStar } from 'react-icons/fa'
@@ -8,6 +9,9 @@ import { HiOutlineBookOpen } from 'react-icons/hi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import StudentPanel from './StudentControlPanel'
 import Link from 'next/link'
+import ProfileSettingsStudentPopup from '@/app/admin-b2c/pop-ups-2/components/profileSettingStudent'
+import AllotCoursePopup from '@/app/admin-b2c/pop-ups-2/components/allotNewCourse'
+import SuggestionPopup from '../../pop-ups/send-suggestion/page'
 
 interface CourseCardProps {
 	image: string
@@ -50,6 +54,9 @@ const CourseCard: React.FC<CourseCardProps> = ({ image, rating, courseName, teac
 }
 
 const StudentProfile = () => {
+	const [editPopup, setEditPopup] = useState(false);
+	const [suggetionPopup, setSuggestionPopup] = useState(false);
+	const [coursePopup, setCoursePopup] = useState(false);
 	const PALETTE = {
 		GREEN_LIGHT: '#8DD9B3', // Basic Academic Skills BG
 		GREEN_DARK: '#4BC4B6', // Not explicitly used but similar to progress bar
@@ -115,13 +122,15 @@ const StudentProfile = () => {
 										<h2 className="text-xl font-semibold" style={{ color: PALETTE.TEXT_DARK }}>
 											Student Name
 										</h2>
-										<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 block md:hidden bg-[#f9fafb] absolute right-0 -md:right-10">
+										<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 block md:hidden bg-[#f9fafb] absolute right-0 -md:right-10"
+											onClick={() => setEditPopup(true)}>
 											<IoSettingsOutline size={20} />
 										</div>
 									</div>
-										<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 hidden md:block bg-[#f9fafb] absolute -right-10">
-											<IoSettingsOutline size={20} />
-										</div>
+									<div className="rounded-full top-0 -sm:top-[100%] border border-gray-200 p-1 hidden md:block bg-[#f9fafb] absolute -right-10"
+										onClick={() => setEditPopup(true)}>
+										<IoSettingsOutline size={20} />
+									</div>
 									<div className="flex flex-wrap items-center relative gap-1 mt-2">
 
 										<span
@@ -175,7 +184,8 @@ const StudentProfile = () => {
 
 								{/* Action Buttons */}
 								<div className="flex flex-wrap gap-3 mt-4 md:mt-0">
-									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50">
+									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50"
+									onClick={() => setSuggestionPopup(true)}>
 										<FaRegStar className="text-yellow-400" />
 										Give Suggestion
 									</button>
@@ -183,7 +193,8 @@ const StudentProfile = () => {
 										<FiMail className="text-[#FF3366]" />
 										Mail to Parents
 									</button>
-									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50">
+									<button className="flex items-center gap-2 rounded-full border border-gray-300 bg-white px-4 py-2 text-sm hover:bg-gray-50"
+									onClick={() => setCoursePopup(true)}>
 										<HiOutlineBookOpen className="text-[#3366FF]" />
 										Allot a Course
 									</button>
@@ -237,6 +248,9 @@ const StudentProfile = () => {
 				</div>
 			</div>
 			<PrincipalChatrsReport />
+			<ProfileSettingsStudentPopup onClose={() => setEditPopup(false)} isOpen={editPopup} />
+			<SuggestionPopup onClose={() => setSuggestionPopup(false)} isOpen={suggetionPopup} />
+				<AllotCoursePopup onClose={() => setCoursePopup(false)} isOpen={coursePopup} />
 		</>
 	)
 }

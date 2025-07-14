@@ -1,20 +1,17 @@
 "use client";
+import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
 import { useState } from "react";
 
-export default function SuggestionPopup() {
-  const [isOpen, setIsOpen] = useState(true);
+const SuggestionPopup : React.FC<PopupProp> = ({
+    isOpen,
+    onClose,
+}) => {
   const [suggestion, setSuggestion] = useState("");
 
-  const handleSend = () => {
-    console.log("Suggestion submitted:", suggestion);
-    setIsOpen(false);
-  };
-
-  if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-3xl max-w-md w-full p-6 shadow-lg">
+    <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
+      <div className="bg-white rounded-3xl w-full p-6 shadow-lg">
         {/* Title */}
         <h2 className="sm:text-lg text-md font-semibold text-black mb-4">Send Suggestion to Student</h2>
 
@@ -32,13 +29,14 @@ export default function SuggestionPopup() {
         {/* Send Button */}
         <div className="flex justify-center mt-6">
           <button
-            onClick={handleSend}
             className="bg-[#3366ff] text-white px-6 sm:px-8 py-2 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors"
           >
             Send
           </button>
         </div>
       </div>
-    </div>
+      </BaseModal>
   );
 }
+
+export default SuggestionPopup;
