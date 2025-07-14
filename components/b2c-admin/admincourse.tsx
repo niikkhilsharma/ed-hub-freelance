@@ -124,12 +124,12 @@ const AdminCourse: React.FC = () => {
 
       {/* Right Subject Selector */}
       <div className="w-full max-w-[25%] bg-[#f9fafb] border rounded-2xl p-4">
-        <h3 className="text-lg font-semibold mb-3">Select Subjects</h3>
+        <h3 className="text-lg md:text-xl font-semibold mb-5">Select Subjects</h3>
         <div className="space-y-5 overflow-y-auto custom-scrollbar-thin max-h-[300px]">
           {subjects.map((subject, index) => {
             const isChecked = selectedSubjects.includes(subject);
             return (
-              <label key={index} className="flex items-center gap-2 cursor-pointer text-sm font-normal text-black">
+              <label key={index} className="flex items-center gap-2 cursor-pointer text-base font-normal text-black">
                 <input
                   type="checkbox"
                   name="subject"
@@ -139,12 +139,14 @@ const AdminCourse: React.FC = () => {
                   className="peer hidden"
                 />
                 <div
-                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center bg-white
-                    ${isChecked ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-600'}`}
+                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center 
+                    ${isChecked ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-600 bg-white'}`}
                 >
-                  {isChecked && <FiCheck size={14} className="text-white" />}
+                  {isChecked && <FiCheck size={14} className="text-white" strokeWidth={3}/>}
                 </div>
-                <span className="font-medium">{subject}</span>
+                <span className="font-normal">
+                   {subject.replace(" ", "\u00A0\u00A0\u00A0\u00A0")}
+                </span>
               </label>
             );
           })}
