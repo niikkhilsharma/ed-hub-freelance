@@ -14,7 +14,7 @@ export default function ShareVideoPopup() {
 
       {/* Select Class */}
       <div className="mb-4">
-        <label className="block mb-1 text-sm font-medium text-[#6B7280]">Select Class</label>
+        <label className="block mb-1 text-sm font-medium text-black-300">Select Class</label>
         <div className="relative">
           <select className="w-full appearance-none bg-[#F9FAFB] border border-[#D5D5D5] rounded-full px-4 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option>Option 1</option>
@@ -26,7 +26,7 @@ export default function ShareVideoPopup() {
 
       {/* Select Group */}
       <div className="mb-6">
-        <label className="block mb-1 text-sm font-medium text-[#6B7280]">Select Group</label>
+        <label className="block mb-1 text-sm font-medium text-black-300">Select Group</label>
         <div className="relative">
           <select className="w-full appearance-none border bg-[#F9FAFB]  border-[#D5D5D5] rounded-full px-4 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option>Option 1</option>
