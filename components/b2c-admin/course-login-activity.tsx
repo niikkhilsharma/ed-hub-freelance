@@ -60,11 +60,11 @@ export default function CourseLoginPage() {
   return (
     <MaxWidthWrapper>
       <div className=" py-6 sm:py-8 lg:py-10 min-h-screen">
-        <main className="p-2 max-w-[90rem] sm:p-6 mb-32 sm:mb-[320px]   mx-auto bg-white my-6 rounded-3xl">
+        <main className="p-2 max-w-screen-xl sm:p-6 mb-32 sm:mb-[320px]   mx-auto bg-white my-6 rounded-3xl">
           {/* Search & Filter Section */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
             <div className="relative flex-grow">
-              <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 sm:w-5 sm:h-5 text-black pointer-events-none" />
+              <FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 text-black pointer-events-none" />
               <input
                 type="text"
                 placeholder="Search "

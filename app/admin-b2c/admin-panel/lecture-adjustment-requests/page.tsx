@@ -84,7 +84,7 @@ const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
     <StyledSelect
         defaultValue="all"
         placeholder={label}
-        items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
+        items={[{ value: "all", label }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
     />
 );
 
@@ -132,10 +132,10 @@ const RequestCard: React.FC<{ request: RequestItem, reference: React.RefObject<H
 
         {/* Action Buttons */}
         <div className="flex justify-center items-center gap-3">
-            <button onClick={togglePopup} className="w-28 py-2 text-sm font-semibold text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors cursor-pointer">
+            <button onClick={togglePopup} className="w-28 py-2 text-sm  text-[#FF3366] bg-[#FF33661A] rounded-full hover:bg-red-200 transition-colors cursor-pointer">
                 Reject
             </button>
-            <button onClick={togglePopup} className="w-28 py-2 text-sm font-semibold text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
+            <button onClick={togglePopup} className="w-28 py-2 text-sm   text-white bg-[#3366FF] rounded-full hover:bg-blue-700 transition-colors cursor-pointer">
                 Approve
             </button>
         </div>
@@ -195,7 +195,7 @@ export default function RequestManagementPage() {
 
                     {/* Top Tabs */}
                     <div className="flex justify-center items-center mb-4">
-                        <div className="flex items-center justify-center border w-full border-[#E5E7EB] p-1.5 rounded-2xl space-x-2">
+                        <div className="flex items-center justify-center border w-full border-[#E5E7EB] p-1.5 rounded-2xl space-x-2 sm:space-x-4">
                             <TopTabButton label="Class Rescheduling" isActive={activeTab === 'rescheduling'} onClick={() => setActiveTab('rescheduling')} />
                             <TopTabButton label="Class Cancellation" isActive={activeTab === 'cancellation'} onClick={() => setActiveTab('cancellation')} />
                         </div>
