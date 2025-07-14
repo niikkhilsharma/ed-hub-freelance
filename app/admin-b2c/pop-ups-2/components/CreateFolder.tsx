@@ -63,13 +63,22 @@ const CreateFolderModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
     const [activeCatTab, setActiveCatTab] = useState<string>(categoryTabs[0]);
 
     const isTeacherTab = activeInnerTab === 'Teacher';
-    const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
+    const [selectedTeacherIndices, setSelectedTeacherIndices] = useState<number[]>([]);
+    const [selectedStudentIndices, setSelectedStudentIndices] = useState<number[]>([]);
 
     const toggleSelection = (index: number) => {
-        setSelectedIndices((prev) =>
-            prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-        );
+        if (isTeacherTab) {
+            setSelectedTeacherIndices((prev) =>
+                prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+            );
+        } else {
+            setSelectedStudentIndices((prev) =>
+                prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+            );
+        }
     };
+
+    const selectedIndices = isTeacherTab ? selectedTeacherIndices : selectedStudentIndices;
     // Reset tabs when switching innerTab
     useEffect(() => {
         if (isTeacherTab) {
@@ -253,7 +262,8 @@ const CreateFolderModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                             >
                                 Cancel
                             </button>
-                            <button className="rounded-full px-6 py-2 bg-[#3366ff] text-white text-sm font-medium hover:bg-blue-600">
+                            <button className="rounded-full px-6 py-2 bg-[#3366ff] text-white text-sm font-medium hover:bg-blue-600"
+                                onClick={onClose}>
                                 Create
                             </button>
                         </div>
