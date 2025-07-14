@@ -1,38 +1,30 @@
 'use client';
-import React, { useState } from "react";
+import React from "react";
 import { BaseModal, PopupProp } from "../page";
 import { IoTimeOutline } from "react-icons/io5";
 import Image from "next/image";
-import ClassTimetable from "./ClassTimeTable";
 import { HiOutlineCalendar } from "react-icons/hi";
-import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
-import { FaCheck } from "react-icons/fa";
+import ScheduleTimetable from "./ScheduleTimetable";
 
-const filter = [
-  { id: "f1", label: "1st STD" }
-]
 
-const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
-    const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
 
-  const handleSelect = (index: number) => {
-    setSelectedIndices((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    );
-  };
+
+
+
+const ScheduleInterview: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   return (
     <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-8xl">
       <div className="relative bg-white p-6 rounded-2xl w-full max-h-[95vh] overflow-y-auto custom-scrollbar-thin mr-1">
 
 
         {/* Title */}
-        <h2 className="text-left font-semibold text-base mb-4">Reassign Class</h2>
+        <h2 className="text-left font-semibold text-base mb-4">Schedule Interview</h2>
 
         {/* Date & Time Fields */}
         <div className="grid grid-cols-1 gap-4 mb-6">
           {/* Reassign Date */}
           <div className="relative">
-            <label className="block text-sm font-medium text-black mb-1">Reassign Date</label>
+            <label className="block text-sm font-medium text-black mb-1">Date</label>
             <input
               type="text"
               placeholder="DD / MM / YYYY"
@@ -45,7 +37,7 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
           {/* Reassign Time */}
           <div className="relative">
-            <label className="block text-sm font-medium text-black mb-1">Reassign Time</label>
+            <label className="block text-sm font-medium text-black mb-1">Time</label>
             <input
               type="text"
               placeholder="Time"
@@ -61,55 +53,43 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-6">
           {/* Teacher List Panel */}
           <div className="bg-[#f9fafb] border rounded-2xl lg:min-w-[420px]  p-4">
-
-            <div className="relative w-full">
-              <SearchFilter filters={filter} />
-            </div>
+              
+              <h2 className="font-medium text-gray-500">Please schedule an interview and complete handover formalities.</h2>
 
             {/* Teachers */}
-             <div className="space-y-3 max-h-[400px] overflow-y-auto custom-scrollbar-thin pr-1">
-      {[...Array(5)].map((_, i) => {
-        const isSelected = selectedIndices.includes(i);
+            <div className="space-y-3 max-h-[400px] overflow-y-auto custom-scrollbar-thin pr-1">
+              {[...Array(1)].map((_, i) => (
+                <label
+                  key={i}
+                  className="flex items-center gap-4 py-1 px-2 rounded-2xl border border-gray-200 cursor-pointer hover:shadow-sm"
+                >
+                  <Image
+                    src="/common-images/teacher.png"
+                    alt="Teacher"
+                    width={75}
+                    height={75}
+                    className="w-20 h-20"
+                  />
+                  <div className="flex-1">
+                    <p className="text-base font-semibold text-black">Name</p>
+                  </div>
+                  <label className="inline-flex items-center cursor-pointer">
+                    <input
+                      type="radio"
+                      name="teacher"
+                      className="sr-only peer"
+                    />
+                    <div className="w-6 h-6 rounded-full border-3 border-gray-600 peer-checked:border-[4px] peer-checked:border-[#3366ff] transition" />
+                  </label>
 
-        return (
-          <label
-            key={i}
-            onClick={() => handleSelect(i)}
-            className={`flex items-center gap-4 py-2 px-3 rounded-2xl border cursor-pointer hover:shadow-sm transition
-              ${isSelected ? 'border-[#3366ff] bg-[#e6f0ff]' : 'border-gray-200'}
-            `}
-          >
-            <Image
-              src="/common-images/teacher.png"
-              alt="Teacher"
-              width={75}
-              height={75}
-              className="w-20 h-20"
-            />
 
-            <div className="flex-1">
-              <p className="text-base font-semibold text-black">Name</p>
-              <p className="text-sm text-[#ff3366]">Course</p>
-              <p className="text-xs text-gray-500">Detail 1</p>
-              <p className="text-xs text-gray-500">Detail 2</p>
+                </label>
+              ))}
             </div>
-
-            {/* Custom toggle circle */}
-            <div
-              className={`w-6 h-6 rounded-full border-2 flex items-center justify-center
-                ${isSelected ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-400'}
-              `}
-            >
-              {isSelected && <FaCheck className="text-white text-[10px]" />}
-            </div>
-          </label>
-        );
-      })}
-    </div>
           </div>
 
           {/* Timetable Panel */}
-          <ClassTimetable />
+          <ScheduleTimetable />
         </div>
 
         {/* Footer Buttons */}
@@ -124,7 +104,7 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
             className="rounded-full max-w-32 w-full cursor-pointer px-6 py-2.5 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700"
             onClick={onClose}
           >
-            Reassign
+            Schedule
           </button>
         </div>
       </div>
@@ -132,4 +112,4 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   );
 };
 
-export default ReassignClassModal;
+export default ScheduleInterview;

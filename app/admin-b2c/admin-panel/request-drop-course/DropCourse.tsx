@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FiCalendar } from "react-icons/fi";
 import RejectRequestPopup from "../../pop-ups-2/components/reject-request-popup";
+import ScheduleInterview from "../../pop-ups-2/components/ScheduleInterview";
 
 const DropCourseComponent = () => {
     const [rejectPopup, setRejectPopup] = useState(false);
@@ -100,7 +101,7 @@ const DropCourseComponent = () => {
 
             </ form>
              <RejectRequestPopup isOpen={rejectPopup} onClose={() => setRejectPopup(false)} />
-
+                            <ScheduleInterview isOpen={approvePopup} onClose={() => setApprovePopup(false)}/>
         </>
     );
 };

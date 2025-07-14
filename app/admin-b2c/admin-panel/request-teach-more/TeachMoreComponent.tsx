@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { IoCloudUploadOutline } from "react-icons/io5"
 import RejectRequestPopup from "../../pop-ups-2/components/reject-request-popup";
+import ScheduleInterview from "../../pop-ups-2/components/ScheduleInterview";
 
 
 interface CustomSelectProps {
@@ -37,7 +38,7 @@ const TeachMoreCourseComponent = () => {
           </div>
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-base' htmlFor="email">Email</label>
-            <div id="email"  className='text-gray-500 rounded-xl px-4 py-2 bg-[#f9fafb] border'  >Text</div>
+            <div id="email" className='text-gray-500 rounded-xl px-4 py-2 bg-[#f9fafb] border'  >Text</div>
           </div>
         </div>
         <div className="flex flex-col gap-2">
@@ -80,7 +81,7 @@ const TeachMoreCourseComponent = () => {
               <label className="block font-medium mb-1">
                 Qualifications & Certifications for New Subject(s)
               </label>
-             
+
               <div className="flex items-center gap-2 rounded-2xl mb-2 border border-gray-300 bg-[#f9fafb] p-2 text-gray-400">
                 <div className="p-1 bg-pink-100 rounded-xl">
                   <IoCloudUploadOutline className="text-[#FF3366]" size={20} />
@@ -101,7 +102,7 @@ const TeachMoreCourseComponent = () => {
                 Motivation & Experience for This New Teaching Area
               </label>
               <div
-                
+
                 className="w-full h-36 rounded-xl border border-gray-300 bg-[#f9fafb] p-3 resize-none"
               ></div>
             </div>
@@ -127,13 +128,13 @@ const TeachMoreCourseComponent = () => {
             <div id="newHourlyRate" className='rounded-xl px-4 py-2 bg-[#f9fafb] border text-gray-500' >40000</div>
           </div>
           <div className="max-w-md">
-              <label className="block font-medium mb-1">
-                Reason for requesting a raise?
-              </label>
-              <div
-                className="text-gray-500 h-16 w-full rounded-xl border border-gray-300 bg-[#f9fafb] p-3 resize-none"
-              ></div>
-            </div>
+            <label className="block font-medium mb-1">
+              Reason for requesting a raise?
+            </label>
+            <div
+              className="text-gray-500 h-16 w-full rounded-xl border border-gray-300 bg-[#f9fafb] p-3 resize-none"
+            ></div>
+          </div>
 
         </div>
         <div className="font-medium flex-wrap flex justify-center gap-2 mt-6 md:mt-8">
@@ -154,7 +155,7 @@ const TeachMoreCourseComponent = () => {
         </div>
       </form>
       <RejectRequestPopup isOpen={rejectPopup} onClose={() => setRejectPopup(false)} />
-
+      <ScheduleInterview isOpen={approvePopup} onClose={() => setApprovePopup(false)} />
     </>
   )
 }
