@@ -2,10 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 import { FaChevronDown } from 'react-icons/fa';
 import { FiCalendar } from "react-icons/fi";
 
 export default function StudentProfile() {
+  const [isOpen, setIsOpen] = useState(false);
+    const [isStateOpen, setIsStateOpen] = useState(false);
+    const [isGenderOpen, setIsGenderOpen] = useState(false);
+    const options = ['Option 1', 'Option 2'];
   return (
     <div className="bg-white rounded-3xl p-4 space-y-4">
       <h2 className="text-lg font-semibold text-[#ff3366] border bg-gray-100 rounded-2xl border-gray-200 py-3.5 px-2 text-center">Edit Student&apos;s Profile</h2>
@@ -32,9 +37,9 @@ export default function StudentProfile() {
       </div>
 
       {/* Form */}
-      <form className="grid grid-cols-1 md:grid-cols-2 pb-6 border-b-1 border-gray-200 gap-4 md:gap-x-[4rem] gap-y-7">
+      <form className="grid grid-cols-1 items-center md:grid-cols-2 pb-6 border-b-1 border-gray-200 gap-4 md:gap-x-[4rem] gap-y-7">
         {/* First Name */}
-        <div className="space-y-1">
+       <div className="space-y-1">
           <label className="text-sm font-medium">First Name</label>
           <input
             type="text"
@@ -54,38 +59,101 @@ export default function StudentProfile() {
         </div>
 
         {/* City */}
-        <div className="space-y-1">
+        <div className="space-y-1 w-full">
           <label className="text-sm font-medium">City</label>
-          <div className="relative">
-            <select className="w-full appearance-none rounded-[12px] mt-2 border border-gray-200 px-4 py-2 text-sm bg-[#f9fafb] pr-10">
-              <option>Pune</option>
-              <option>Mumbai</option>
-            </select>
-            <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs" />
+
+          <div className="bg-[#f9fafb] border border-gray-200 rounded-[12px] text-sm text-black mt-2">
+            <div
+              className="flex items-center justify-between px-4 py-2 cursor-pointer"
+              onClick={() => setIsOpen((prev) => !prev)}
+            >
+              <span>Pune</span>
+              <FaChevronDown
+                className={`text-black text-xs transition-transform duration-200 ${isOpen ? 'rotate-180' : ''
+                  }`}
+              />
+            </div>
+
+            {/* Dropdown options */}
+            {isOpen && (
+              <div className="flex flex-col pb-2">
+                {options.map((opt, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => setIsOpen(false)} // Just closing dropdown
+                    className="text-center text-gray-600 px-4 py-2 text-sm cursor-pointer transition hover:bg-gray-100"
+                  >
+                    {opt}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {/* State */}
-        <div className="space-y-1">
+        <div className="space-y-1 w-full">
           <label className="text-sm font-medium">State</label>
-          <div className="relative">
-            <select className="w-full appearance-none rounded-[12px] mt-2 border border-gray-200 px-4 py-2 text-sm bg-[#f9fafb] pr-10">
-              <option>Maharashtra</option>
-              <option>Gujarat</option>
-            </select>
-            <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs" />
+
+          <div className="bg-[#f9fafb] border border-gray-200 rounded-[12px] text-sm text-black mt-2">
+            <div
+              className="flex items-center justify-between px-4 py-2 cursor-pointer"
+              onClick={() => setIsStateOpen((prev) => !prev)}
+            >
+              <span>Maharastra</span>
+              <FaChevronDown
+                className={`text-black text-xs transition-transform duration-200 ${isStateOpen ? 'rotate-180' : ''
+                  }`}
+              />
+            </div>
+
+            {/* Dropdown options */}
+            {isStateOpen && (
+              <div className="flex flex-col pb-2">
+                {options.map((opt, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => setIsStateOpen(false)} // Just closing dropdown
+                    className="text-center text-gray-600 px-4 py-2 text-sm cursor-pointer transition hover:bg-gray-100"
+                  >
+                    {opt}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
         {/* Gender */}
-        <div className="space-y-1">
+        <div className="space-y-1 w-full">
           <label className="text-sm font-medium">Gender</label>
-          <div className="relative">
-            <select className="w-full appearance-none rounded-[12px] mt-2 border border-gray-200 px-4 py-2 text-sm bg-[#f9fafb] pr-10">
-              <option>Male</option>
-              <option>Female</option>
-            </select>
-            <FaChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs" />
+
+          <div className="bg-[#f9fafb] border border-gray-200 rounded-[12px] text-sm text-black mt-2">
+            <div
+              className="flex items-center justify-between px-4 py-2 cursor-pointer"
+              onClick={() => setIsGenderOpen((prev) => !prev)}
+            >
+              <span>Male</span>
+              <FaChevronDown
+                className={`text-black text-xs transition-transform duration-200 ${isGenderOpen ? 'rotate-180' : ''
+                  }`}
+              />
+            </div>
+
+            {/* Dropdown options */}
+            {isGenderOpen && (
+              <div className="flex flex-col pb-2">
+                {options.map((opt, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => setIsGenderOpen(false)} // Just closing dropdown
+                    className="text-center text-gray-600 px-4 py-2 text-sm cursor-pointer transition hover:bg-gray-100"
+                  >
+                    {opt}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -93,14 +161,16 @@ export default function StudentProfile() {
         <div className="space-y-1">
           <label className="text-sm font-medium">D.O.B.</label>
           <div className="relative">
-            <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs pointer-events-none"/>
+            <FiCalendar className="absolute right-3 top-1/2 -translate-y-1/2 text-black text-xs pointer-events-none" size={20}/>
             <input
-              type="date"
+              type="text"
+              placeholder='DD / MM / YY'
               className="w-full rounded-[12px] mt-2 border border-gray-200 px-4 py-2 text-sm bg-[#f9fafb] pr-10 appearance-none [&::-webkit-calendar-picker-indicator]:opacity-0"
             />
           </div>
 
         </div>
+
 
         {/* Email */}
         <div className="col-span-1 md:col-span-2 space-y-1">
@@ -239,13 +309,11 @@ export default function StudentProfile() {
       </form>
 
       {/* Save Button */}
-      <Link href={"/admin-b2c/admin-panel/student-profile"}>
-        <button
-          type="submit"
+      <Link href={"/admin-b2c/admin-panel/student-profile"}
+     
           className="bg-[#3366ff] cursor-pointer text-white px-8 py-2 text-sm rounded-full hover:opacity-90"
         >
           Save
-        </button>
       </Link>
     </div>
     

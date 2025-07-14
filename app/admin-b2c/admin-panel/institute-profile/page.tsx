@@ -58,7 +58,7 @@ export default function SchoolManagementReportPage() {
                         className="absolute inset-0 z-0 bg-[url('/common-images/pattern.png')] bg-cover bg-center filter grayscale opacity-60"
                         aria-hidden="true"
                     ></div>
-                    <div className="flex p-1 rounded-t-2xl relative bg-white z-10 flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
+                    <div className="flex p-1 rounded-2xl relative bg-white z-10 flex-wrap lg:flex-nowrap gap-4 sm:gap-6">
                         <div className="w-full lg:w-[70%]">
                             <Image
                                 src={'/common-images/school-image.png'}

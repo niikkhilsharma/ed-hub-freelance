@@ -35,57 +35,57 @@ const AdminCourse: React.FC = () => {
 
           <div className="space-y-6">
             {/* Custom Dropdown */}
-<div className="relative w-full">
-  <label className="block text-sm mb-1">Choose Membership Plan</label>
+            <div className="relative w-full">
+              <label className="block text-sm mb-1">Choose Membership Plan</label>
 
-  <motion.div
-    layout
-    transition={{ duration: 0.3 }}
-    className={`w-full bg-[#f9fafb] border border-gray-300 overflow-hidden 
-      ${isPlanOpen ? 'rounded-t-2xl' : 'rounded-full'} cursor-pointer`}
-    onClick={() => setIsPlanOpen(prev => !prev)}
-  >
-    {/* Selected Option */}
-    <div className="flex items-center justify-between px-4 py-2 text-sm">
-      <span className="text-black">{selectedPlan}</span>
-      <FiChevronDown
-        className={`ml-2 text-black transition-transform duration-200 ${isPlanOpen ? 'rotate-180' : ''}`}
-        size={18}
-      />
-    </div>
+              <motion.div
+                layout
+                transition={{ duration: 0.3 }}
+                className={`w-full bg-[#f9fafb] border border-gray-300 overflow-hidden 
+      ${isPlanOpen ? 'rounded-2xl' : 'rounded-full'} cursor-pointer`}
+                onClick={() => setIsPlanOpen(prev => !prev)}
+              >
+                {/* Selected Option */}
+                <div className="flex items-center justify-between px-4 py-2 text-sm">
+                  <span className="text-black">{selectedPlan}</span>
+                  <FiChevronDown
+                    className={`ml-2 text-black transition-transform duration-200 ${isPlanOpen ? 'rotate-180' : ''}`}
+                    size={18}
+                  />
+                </div>
 
-    {/* Expandable Options */}
-    <AnimatePresence>
-      {isPlanOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.25 }}
-          className="pb-2 space-y-1"
-        >
-          {plans.map((option, index) => (
-            <div
-              key={option}
-              onClick={(e) => {
-                e.stopPropagation(); // Prevent parent click
-                handlePlanClick(option);
-              }}
-              className={`px-4 py-2 mx-2 rounded-full text-sm
+                {/* Expandable Options */}
+                <AnimatePresence>
+                  {isPlanOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="pb-2 space-y-1"
+                    >
+                      {plans.map((option, index) => (
+                        <div
+                          key={option}
+                          onClick={(e) => {
+                            e.stopPropagation(); // Prevent parent click
+                            handlePlanClick(option);
+                          }}
+                          className={`px-4 py-2 mx-2 rounded-full text-sm
                 ${selectedPlan === option
-                  ? 'bg-[#99DEFF] text-blue-600 font-medium'
-                  : 'text-gray-600 hover:bg-gray-100 text-center'}
+                              ? 'bg-[#99DEFF] text-blue-600 font-medium'
+                              : 'text-gray-600 hover:bg-gray-100 text-center'}
                 ${index === 0 ? 'text-center' : 'text-center'}
               `}
-            >
-              {option}
+                        >
+                          {option}
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             </div>
-          ))}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  </motion.div>
-</div>
 
 
 

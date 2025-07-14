@@ -4,10 +4,19 @@ import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import ExistingDmitModal from "../../pop-ups-2/components/existing-dmit-test";
 import Link from "next/link";
+import { AnimatePresence, motion } from 'framer-motion';
+import { FiChevronDown } from "react-icons/fi";
 
 const DmitTestForm = () => {
-    const [isViewTestModalOpen, setIsViewTestModalOpen] = useState(false);
 
+    const [selectedPlan, setSelectedPlan] = useState('Option 1');
+    const [isPlanOpen, setIsPlanOpen] = useState(false);
+    const [isViewTestModalOpen, setIsViewTestModalOpen] = useState(false);
+    const handlePlanClick = (plan: string) => {
+        setSelectedPlan(plan);
+        setIsPlanOpen(false);
+    };
+    const plans = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
     return (
         <>
             <div className="bg-white pt-6 px-4 pb-3 rounded-3xl">
@@ -30,13 +39,53 @@ const DmitTestForm = () => {
                         <label className="block text-base md:text-lg font-medium text-black">
                             Choose Existing Test (to Edit)
                         </label>
-                        <div className="relative">
-                            <select className="appearance-none w-full bg-[#f9fafb] text-black text-sm md:text-base p-2.5 pr-10 rounded-full border border-gray-300 focus:outline-none">
-                                <option>Option 1</option>
-                                <option>Option 2</option>
-                            </select>
-                            <FaChevronDown className="absolute right-4 top-1/2 transform -translate-y-1/2 text-black pointer-events-none" />
-                        </div>
+                        <motion.div
+                            layout
+                            transition={{ duration: 0.3 }}
+                            className={`w-full bg-[#f9fafb] border border-gray-300 overflow-hidden 
+      ${isPlanOpen ? 'rounded-2xl' : 'rounded-full'} cursor-pointer`}
+                            onClick={() => setIsPlanOpen(prev => !prev)}
+                        >
+                            {/* Selected Option */}
+                            <div className="flex items-center justify-between px-4 py-3 text-sm">
+                                <span className="text-black">{selectedPlan}</span>
+                                <FiChevronDown
+                                    className={`ml-2 text-black transition-transform duration-200 ${isPlanOpen ? 'rotate-180' : ''}`}
+                                    size={18}
+                                />
+                            </div>
+
+                            {/* Expandable Options */}
+                            <AnimatePresence>
+                                {isPlanOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        transition={{ duration: 0.25 }}
+                                        className="pb-2 space-y-1"
+                                    >
+                                        {plans.map((option, index) => (
+                                            <div
+                                                key={option}
+                                                onClick={(e) => {
+                                                    e.stopPropagation(); // Prevent parent click
+                                                    handlePlanClick(option);
+                                                }}
+                                                className={`px-4 py-2.5 mx-2 rounded-full text-sm
+                ${selectedPlan === option
+                                                        ? 'bg-[#99DEFF] text-blue-600 font-medium'
+                                                        : 'text-gray-600 hover:bg-gray-100 text-center'}
+                ${index === 0 ? 'text-center' : 'text-center'}
+              `}
+                                            >
+                                                {option}
+                                            </div>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </motion.div>
                     </div>
 
                     {/* Test Name */}
@@ -74,7 +123,7 @@ const DmitTestForm = () => {
                             >
                                 View Existing Test
                             </button>
-                           
+
                             <button className="bg-[#3366ff] text-white text-sm font-medium py-3  rounded-full hover:opacity-90 w-full sm:w-32 cursor-pointer">
                                 Save
                             </button>
@@ -83,10 +132,10 @@ const DmitTestForm = () => {
 
                 </div>
             </div>
-             <ExistingDmitModal
-                                isOpen={isViewTestModalOpen}
-                                onClose={() => setIsViewTestModalOpen(false)}
-                            />
+            <ExistingDmitModal
+                isOpen={isViewTestModalOpen}
+                onClose={() => setIsViewTestModalOpen(false)}
+            />
 
         </>
     )
