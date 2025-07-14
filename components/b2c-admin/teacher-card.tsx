@@ -27,7 +27,7 @@ const TeacherCard = () => {
             </div>
 
             {/* Profile Section: Image, Name, Tags */}
-            <div className="flex flex-col xl:flex-row gap-5 items-center sm:items-start mb-6 text-center sm:text-left"> {/* Adjusted gap, alignment, and margin */}
+            <div className="flex flex-col xl:flex-row gap-5 items-center sm:items-start mb-2 text-center sm:text-left"> {/* Adjusted gap, alignment, and margin */}
               {/* Profile Image */}
               <div className="flex-shrink-0">
                 {/* Using fill and parent div for better responsiveness/aspect ratio control, or fixed size with object-cover */}
