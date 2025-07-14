@@ -12,7 +12,7 @@ import {
   FiArrowRightCircle,
   FiChevronDown,
 } from "react-icons/fi";
-import { ACCENT_PINK } from "../teacher-b2b/create-test/CreateBWTestPage";
+import { ACCENT_PINK } from "../teacher-b2b/create-test/CreateTestPage";
 // import { url } from "inspector";
 
 const categories = [

@@ -1,4 +1,4 @@
-import CreateTest from '@/components/teacher-b2b/create-test/CreateBWTestPage'
+import CreateTest from '@/components/teacher-b2b/create-test/CreateTestPage'
 
 export default function CourseDetail() {
 	return (

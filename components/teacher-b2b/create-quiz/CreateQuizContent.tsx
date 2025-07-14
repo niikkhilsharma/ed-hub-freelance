@@ -6,14 +6,14 @@ import {
   StepperStep, TestDetailsData, TestQuestion,
   sampleClassesData, sampleGroupsData, // Import sample data for defaults
   Stepper // Import Stepper from the main page file
-} from "@/components/teacher-b2b/create-test/CreateBWTestPage"; // Assuming co-location for simplicity of imports
+} from "@/components/teacher-b2b/create-test/CreateTestPage"; // Assuming co-location for simplicity of imports
 
 import TestDetailsStep from "@/components/teacher-b2b/create-quiz/QuizDetailsStep";
 import TestQuestionnaireStep from "@/components/teacher-b2b/create-quiz/QuizQuestionnaireStep";
 import TestReviewStep from "@/components/teacher-b2b/create-quiz/QuizReviewStep";
 
 // Re-export or re-define constants if needed and not directly imported
-import { PRIMARY_BLUE, YELLOW_BUTTON_BG } from "@/components/teacher-b2b/create-test/CreateBWTestPage";
+import { PRIMARY_BLUE, YELLOW_BUTTON_BG } from "@/components/teacher-b2b/create-test/CreateTestPage";
 
 
 const CreateBWTestContent: React.FC = () => {

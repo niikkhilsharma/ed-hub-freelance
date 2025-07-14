@@ -123,7 +123,7 @@ interface ModulesAndVideosPartProps {
 }
 export const ModulesAndVideosPart: React.FC<ModulesAndVideosPartProps> = ({ modules, onModuleChange, onVideoChange, onAddVideo, onAddNewModule }) => {
     const [videoModal, setVideoModal] = useState<boolean>(false);
-    const [moduleModal, setModuleModal] = useState<boolean>(true);
+    const [moduleModal, setModuleModal] = useState<boolean>(false);
     return (
         <div className="space-y-4">
             <SectionHeader title="Modules and Videos" />
@@ -177,7 +177,7 @@ export const ModulesAndVideosPart: React.FC<ModulesAndVideosPartProps> = ({ modu
                             </div>
                             <div className='flex flex-col gap-4'>
                                 {moduleModal && <div className="p-4 border border-[#D5D5D5] rounded-2xl space-y-4 bg-[#F9FAFB]">
-                                    <label className="block font-medium text-center text-sm text-black mb-1.5 sm:mb-2">Add Levels</label>
+                                    <label className="block font-medium text-center text-sm text-black mb-1.5 sm:mb-2">Add Module</label>
 
                                     <FormInput
                                         label="Module Title"
