@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { FiX } from 'react-icons/fi';
+import { FiCheck, FiX } from 'react-icons/fi';
 import Image from 'next/image';
 import { BaseModal, PopupProp } from '../page';
 import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
@@ -30,14 +30,14 @@ const fileData = Array.from({ length: 5 }).map(() => ({
     icon: '/common-images/file-name.png',
 }));
 
-const teacherData: Teacher[] = Array.from({ length: 3 }).map(() => ({
+const teacherData: Teacher[] = Array.from({ length: 15 }).map(() => ({
     name: 'Name',
     course: 'Course Involved',
     batch: 'Batch Assigned',
     image: '/common-images/teacher.png',
 }));
 
-const studentData: Student[] = Array.from({ length: 3 }).map(() => ({
+const studentData: Student[] = Array.from({ length: 15 }).map(() => ({
     name: 'Student Name',
     course: 'Course Name',
     level: 'Level / Grade',
@@ -63,7 +63,13 @@ const CreateFolderModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
     const [activeCatTab, setActiveCatTab] = useState<string>(categoryTabs[0]);
 
     const isTeacherTab = activeInnerTab === 'Teacher';
+    const [selectedIndices, setSelectedIndices] = useState<number[]>([]);
 
+    const toggleSelection = (index: number) => {
+        setSelectedIndices((prev) =>
+            prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+        );
+    };
     // Reset tabs when switching innerTab
     useEffect(() => {
         if (isTeacherTab) {
@@ -75,7 +81,7 @@ const CreateFolderModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
     return (
         <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
-            <div className="relative bg-white p-6 rounded-2xl max-h-[95vh] overflow-y-auto custom-peach-scrollbar w-full">
+            <div className="relative bg-white p-6 rounded-2xl max-h-[95vh] overflow-y-auto custom-scrollbar w-full">
                 {/* Close Button */}
                 <button
                     onClick={onClose}
@@ -190,35 +196,52 @@ const CreateFolderModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                             </div>
 
                             {/* Dynamic List */}
-                            <div className="space-y-3 max-h-[17rem] overflow-y-auto pr-2 custom-peach-scrollbar">
-                                {(isTeacherTab ? teacherData : studentData).map((person, i) => (
-                                    <div
-                                        key={i}
-                                        className="flex items-center justify-between bg-gray-50 rounded-2xl p-3"
-                                    >
-                                        <div className="flex items-center gap-4">
-                                            <Image
-                                                src={person.image}
-                                                alt={person.name}
-                                                width={60}
-                                                height={60}
-                                                className="rounded-2xl object-cover"
-                                            />
-                                            <div>
-                                                <p className="font-medium text-sm">{person.name}</p>
-                                                <p className="text-xs text-[#FF3366]">{person.course}</p>
-                                                {isTeacherTab ? (
-                                                    <p className="text-xs text-gray-500">{(person as Teacher).batch}</p>
-                                                ) : (
-                                                    <p className="text-xs text-gray-500">
-                                                        {(person as Student).level} / {(person as Student).group}
-                                                    </p>
+                            <div className="space-y-3 max-h-[15rem] overflow-y-auto pr-2 custom-peach-scrollbar">
+                                {(isTeacherTab ? teacherData : studentData).map((person, i) => {
+                                    const isChecked = selectedIndices.includes(i);
+
+                                    return (
+                                        <div
+                                            key={i}
+                                            className="flex items-center justify-between bg-gray-50 rounded-2xl py-1 px-2 cursor-pointer border border-gray-200 hover:shadow-sm transition"
+                                            onClick={() => toggleSelection(i)}
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <Image
+                                                    src={person.image}
+                                                    alt={person.name}
+                                                    width={75}
+                                                    height={75}
+                                                    className="rounded-2xl object-cover"
+                                                />
+                                                <div>
+                                                    <p className="font-medium text-sm">{person.name}</p>
+                                                    <p className="text-xs text-gray-500">{person.course}</p>
+                                                    {isTeacherTab ? (
+                                                        <p className="text-xs text-gray-500">{(person as Teacher).batch}</p>
+                                                    ) : (
+                                                        <p className="text-xs text-gray-500">
+                                                            {(person as Student).level} / {(person as Student).group}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                className={`w-5 h-5 flex items-center justify-center rounded-full border-2  ${isChecked ? "bg-[#3366ff] border-[#3366ff]" : "bg-transparent border-gray-500"
+                                                    }`}
+                                            >
+                                                {isChecked && (
+                                                    <FiCheck
+                                                        size={14}
+                                                        strokeWidth={3}
+                                                        className="text-white font-bold"
+                                                    />
                                                 )}
                                             </div>
                                         </div>
-                                        <input type="radio" name="person" />
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
 
