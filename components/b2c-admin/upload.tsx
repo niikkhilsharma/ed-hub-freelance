@@ -20,8 +20,10 @@ export default function UploadContentPopup() {
     setIsOpen(false);
   };
 
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
+  interface FileUploadEvent extends React.ChangeEvent<HTMLInputElement> {}
+
+  const handleFileUpload = (event: FileUploadEvent): void => {
+    const file: File | undefined = event.target.files?.[0];
     if (file) {
       setDocumentName(file.name);
     }

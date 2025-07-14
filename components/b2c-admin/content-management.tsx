@@ -118,7 +118,7 @@ const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
   <StyledSelect
     defaultValue="all"
     placeholder={label}
-    items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
+    items={[{ value: "all", label }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
   />
 );
 

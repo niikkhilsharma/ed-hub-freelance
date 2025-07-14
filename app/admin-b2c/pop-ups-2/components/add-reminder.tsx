@@ -64,7 +64,7 @@ const TargetAudienceToggle: React.FC<{
 const CategoryTab: React.FC<{ label: string; isActive: boolean; onClick: () => void; }> = ({ label, isActive, onClick }) => (
     <button
         onClick={onClick}
-        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap  sm:text-sm sm:font-medium transition-colors cursor-pointer
+        className={`px-2 py-2 text-xs rounded-xl whitespace-nowrap  sm:text-sm transition-colors cursor-pointer
         ${isActive ? 'bg-[#FF99B7] text-white ' : 'text-[#6B7280] hover:bg-gray-100'}`}
     >
         {label}
@@ -268,8 +268,8 @@ export default function AddReminder({ isOpen, onClose }: {
                     {/* Right Column: Selection List */}
                     <div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-4 space-y-3">
                         <div className="flex items-center space-x-4">
-                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For all" checked={selectionType === 'For all'} onChange={() => setSelectionType('For all')} className="form-radio text-[#3366FF]" />For all</label>
-                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For Selective" checked={selectionType === 'For Selective'} onChange={() => setSelectionType('For Selective')} className="form-radio text-[#3366FF]" />For Selective {targetAudience}</label>
+                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For all" checked={selectionType === 'For all'} onChange={() => setSelectionType('For all')} className="form-radio text-[#3366FF] font-normal" />For all</label>
+                            <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For Selective" checked={selectionType === 'For Selective'} onChange={() => setSelectionType('For Selective')} className="form-radio text-[#3366FF] font-normal" />For Selective {targetAudience === "Teacher" ? "Teachers" : "Students"}</label>
                         </div>
                         {/* Search and Filter */}
                         <div className="flex items-center space-x-2">

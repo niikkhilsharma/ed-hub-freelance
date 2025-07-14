@@ -133,7 +133,7 @@ const FilterDropdown: React.FC<{ label: string }> = ({ label }) => (
   <StyledSelect
     defaultValue="all"
     placeholder={label}
-    items={[{ value: "all", label: "Filter" }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
+    items={[{ value: "all", label }, { value: "batch1", label: "Option 1" }, { value: "batch2", label: "Option 2" }]}
   />
 );
 
@@ -246,20 +246,133 @@ export default function MaterialPageCourse() {
   // This page design does not include a prominent title bar or back button below the main header.
   // Navigation would typically be handled by the global Header or side navigation.
   const [openModal, setOpenModal] = useState<"manageAccess" | null>(null);
+  const [isUploadOpen, setIsUploadOpen] = useState<boolean>(false)
 
   return (
-    <div className="bg-[#eeeeee] min-h-screen flex flex-col">
+    <div className="bg-[#eeeeee] min-h-screen flex flex-col relative">
       <ManageAccess
         isOpen={openModal === "manageAccess"}
         onClose={() => setOpenModal(null)}
       />
+      {isUploadOpen && <UploadContentPopup setIsUploadOpen={setIsUploadOpen}/>}
       <div className="bg-gray-100">
         <GoBack GoBackHeading="Folder Name" />
         <main className="flex-grow w-full max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-8">
           <SubjectFolderViewContent setOpenModal={setOpenModal} />
         </main>
       </div>
+        <button type="button" onClick={()=>setIsUploadOpen(true)} className={`bg-[#FFCC00] absolute bottom-5 right-20 md:right-50 z-30 w-full sm:w-auto text-white px-3 py-2.5 text-sm sm:px-3 sm:py-3.5 sm:text-base font-medium hover:opacity-90 rounded-full transition-opacity`}>
+          Upload File
+        </button>
     </div>
   );
 }
 
+import { AiOutlineCloudUpload } from "react-icons/ai";
+import { IoClose } from "react-icons/io5";
+
+function UploadContentPopup({ 
+  setIsUploadOpen
+ } : {
+  setIsUploadOpen:React.Dispatch<React.SetStateAction<boolean>>
+}) {
+  const [urlText, setUrlText] = useState('');
+  const [documentName, setDocumentName] = useState('');
+
+  const handleClose = () => {
+    setIsUploadOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsUploadOpen(false);
+  };
+
+  const handleContinue = () => {
+    setIsUploadOpen(false);
+  };
+
+  interface FileUploadEvent extends React.ChangeEvent<HTMLInputElement> { }
+
+  const handleFileUpload = (event: FileUploadEvent): void => {
+    const file: File | undefined = event.target.files?.[0];
+    if (file) {
+      setDocumentName(file.name);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/30 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-3xl w-full max-w-lg mx-auto shadow-xl">
+        {/* Header */}
+        <div className="flex items-center justify-between p-6 border-[#e5e7eb]">
+          <h2 className="text-lg font-semibold text-gray-900">Upload Content File</h2>
+          <button
+            onClick={handleClose}
+            className="p-1 bg-black/5  cursor-pointer rounded-full transition-colors"
+          >
+            <IoClose className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 space-y-4">
+          {/* URL Input Section */}
+          <div>
+            <label className="block text-sm sm:text-lg font-medium text-black mb-2">
+              Enter URL
+            </label>
+            <input
+              type="text"
+              value={urlText}
+              onChange={(e) => setUrlText(e.target.value)}
+              placeholder="Text"
+              className="w-full px-4 py-3 border border-[#e5e7eb] bg-[#faf9fb] rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            />
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center justify-center">
+            <span className="text-sm sm:text-lg text-black">Or</span>
+          </div>
+
+          {/* Document Upload Section */}
+          <div>
+            <label className="block text-sm sm:text-lg font-medium text-black mb-2">
+              Upload Document
+            </label>
+            <div className="relative">
+              <input
+                type="file"
+                onChange={handleFileUpload}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                accept=".pdf,.doc,.docx,.txt"
+              />
+              <div className="w-full px-4 py-3 border border-[#e5e7eb] bg-[#faf9fb] rounded-full flex items-center space-x-3 hover:bg-gray-50 transition-colors cursor-pointer">
+                <AiOutlineCloudUpload className="w-5 sm:w-6 sm:h-6 h-5 text-[#ff3366]" />
+                <span className="text-[#6b7280] flex-1">
+                  {documentName || 'Document Name'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="flex items-center justify-end space-x-3 p-4 ">
+          <button
+            onClick={handleCancel}
+            className="px-4 py-3 text-[#6b7280]  cursor-pointer border border-[#e5e7eb] rounded-full  transition-colors"
+          >
+            Cancel
+          </button>
+          <button
+            onClick={handleContinue}
+            className="px-3 py-3 bg-[#3366ff] cursor-pointer  text-white rounded-full hover:bg-blue-600 transition-colors"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
