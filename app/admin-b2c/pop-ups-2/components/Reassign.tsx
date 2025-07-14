@@ -76,7 +76,6 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
             key={i}
             onClick={() => handleSelect(i)}
             className={`flex items-center gap-4 py-2 px-3 rounded-2xl border cursor-pointer hover:shadow-sm transition
-              ${isSelected ? 'border-[#3366ff] bg-[#e6f0ff]' : 'border-gray-200'}
             `}
           >
             <Image
@@ -96,8 +95,8 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
             {/* Custom toggle circle */}
             <div
-              className={`w-6 h-6 rounded-full border flex items-center justify-center
-                
+              className={`w-6 h-6 rounded-full border-3 flex items-center justify-center
+                ${isSelected ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-500'}
               `}
             >
               {isSelected && <FaCheck className="text-white text-[10px]" />}
