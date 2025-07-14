@@ -12,6 +12,7 @@ import RadarChartAdmin from '@/components/admin/radar-chart'
 import { FiChevronDown } from 'react-icons/fi'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import BackButton from '@/components/common-components/BackButton'
 
 const PieChartAdmin = dynamic(() => import('@/components/admin/pie-chart'), {
     ssr: false,
@@ -34,7 +35,7 @@ export default function SchoolManagementReportPage() {
     };
     return (
         <div>
-            <NamingBar name="Institute Name" />
+            <BackButton Heading="Institute Name" />
             <MaxWidthWrapper className="bg-white rounded-2xl py-4 my-4 overflow-hidden">
                 <div className="flex items-center justify-start gap-8 mb-4 font-medium">
                     {tabs.map((tab, indx) => (

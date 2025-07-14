@@ -1,18 +1,22 @@
 "use client";
 
+import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
 import { useState } from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FiCalendar } from "react-icons/fi";
 import { IoIosArrowDown } from "react-icons/io";
 
-export default function RequestAssessmentModal() {
+const RequestDiagnostic : React.FC<PopupProp> = ({
+    isOpen,
+    onClose,
+}) => {
   const [assessment, setAssessment] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("16:00");
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-      <div className="bg-white p-8 rounded-3xl shadow-lg w-[90%] max-w-md">
+     <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
+      <div className="bg-white p-8 rounded-3xl w-[90%]">
         <h2 className="text-xl font-semibold text-center mb-6">Request Diagnostic Test</h2>
 
         {/* Select Assessment */}
@@ -71,6 +75,9 @@ export default function RequestAssessmentModal() {
           </button>
         </div>
       </div>
-    </div>
+      </BaseModal>
   );
 }
+
+
+export default RequestDiagnostic;

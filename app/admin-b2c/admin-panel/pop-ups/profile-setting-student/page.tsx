@@ -1,5 +1,6 @@
 "use client";
 
+import { BaseModal, PopupProp } from '@/app/admin-b2c/pop-ups-2/page';
 import React, { useState } from 'react';
 import { FiCheck } from 'react-icons/fi'; // Using FiCheck for the checkmark icon
 
@@ -34,7 +35,10 @@ const SettingCheckbox: React.FC<SettingCheckboxProps> = ({ label, isChecked, onT
 
 
 // --- Main Profile Settings Popup Component ---
-const ProfileSettingsPopup: React.FC = () => {
+const ProfileSettingsStudent: React.FC<PopupProp> = ({
+    isOpen,
+    onClose,
+}) => {
     // State to manage the settings
     const [settings, setSettings] = useState({
         showGender: true,
@@ -73,7 +77,7 @@ const ProfileSettingsPopup: React.FC = () => {
     };
 
     return (
-        // The dark background for the entire page
+        <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="w-full">
         <div className="bg-gray-800 min-h-screen w-full flex items-center justify-center p-4">
             
             {/* The main popup card */}
@@ -147,7 +151,8 @@ const ProfileSettingsPopup: React.FC = () => {
 
             </div>
         </div>
+        </BaseModal>
     );
 };
 
-export default ProfileSettingsPopup;
+export default ProfileSettingsStudent;

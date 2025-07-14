@@ -1,10 +1,13 @@
 "use client";
+import ProfileSettingsTeacherPopup from "@/app/admin-b2c/pop-ups-2/components/profileSettingTeacher";
 import Image from "next/image";
+import { useState } from "react";
 import { FiSettings } from "react-icons/fi";
 
 const TeacherCard = () => {
+  const [editPopup, setEditPopup] = useState(false);
   return (
-    // Outer container with background pattern and rounded corners
+    <>
     <div
       className="rounded-2xl w-full max-w-[90rem] p-3 flex flex-col lg:flex-row gap-4" // Increased outer padding and added gap
       style={{
@@ -15,8 +18,11 @@ const TeacherCard = () => {
       {/* Left Section: Teacher Info */}
       <div className="bg-white w-full lg:w-[55%] relative flex flex-col p-6 rounded-3xl "> {/* Increased padding, added subtle shadow */}
         {/* Settings Icon - Positioned absolutely within the white container */}
-        <div className="absolute top-6 lg:right-64 right-6 bg-[#faf9fb] border border-[#e5e7eb] rounded-full p-1.5  z-10"> {/* Adjusted padding and added z-index */}
-          <FiSettings className="text-black w-4 h-4 sm:w-5 sm:h-5 cursor-pointer" /> {/* Slightly lighter icon color */}
+        <div className="absolute top-6 lg:right-64 right-6 bg-[#faf9fb] border border-[#e5e7eb] rounded-full p-1.5  z-10"
+        onClick={() => setEditPopup(true)}> {/* Adjusted padding and added z-index */}
+          
+            <FiSettings className="text-black w-4 h-4 sm:w-5 sm:h-5 cursor-pointer" />
+            
         </div>
 
         {/* Profile Section: Image, Name, Tags */}
@@ -123,6 +129,8 @@ const TeacherCard = () => {
         </div>
       </div>
     </div>
+    <ProfileSettingsTeacherPopup onClose={() => setEditPopup(false)} isOpen={editPopup}/>
+    </>
   );
 };
 

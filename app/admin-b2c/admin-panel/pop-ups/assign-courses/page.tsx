@@ -4,8 +4,12 @@ import { useState } from "react";
 import GoBack from "@/components/principal/goback"; // Adjust this path if needed
 import AssignmentForm from "@/components/b2c-admin/assign-courses-students";
 import TeacherForm from "@/components/b2c-admin/assign-courses-teachers-form";
+import { BaseModal, PopupProp } from "@/app/admin-b2c/pop-ups-2/page";
 
-export default function AssignCourses() {
+const AssignCourses: React.FC<PopupProp> = ({
+    isOpen,
+    onClose,
+}) => {
   const [activeTab, setActiveTab] = useState("students");
 
   const tabClasses = (tab: string) =>
@@ -16,9 +20,10 @@ export default function AssignCourses() {
     }`;
 
   return (
-    <div className="bg-white max-w-screen-2xl mx-auto my-2 p-6 rounded-2xl shadow">
+      <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-screen-2xl">
+    <div className="bg-white  mx-auto p-6 rounded-2xl max-h-[90vh] overflow-y-auto custom-scrollbar-thin">
       {/* Header Section */}
-      <div className="flex mb-8 flex-col sm:flex-row justify-between items-start sm:items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
         <GoBack GoBackHeading="Assign Courses" />
         
         {/* Tab Switcher */}
@@ -42,5 +47,8 @@ export default function AssignCourses() {
       {activeTab === "students" && <AssignmentForm />}
       {activeTab === "teachers" && <TeacherForm />}
     </div>
+    </BaseModal>
   );
 }
+
+export default AssignCourses;
