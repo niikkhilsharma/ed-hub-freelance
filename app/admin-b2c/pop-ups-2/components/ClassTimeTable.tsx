@@ -3,19 +3,19 @@
 import React, { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+const dates = [14, 15, 16, 17, 18];
+const hours = Array.from({ length: 10 }, (_, i) => 9 + i); // 9 to 18
+
 type Slot = {
   title: string;
   subtitle: string;
   time: string;
 };
 
-const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
-const dates = [14, 15, 16, 17, 18];
-const hours = Array.from({ length: 10 }, (_, i) => 9 + i); // 9 to 18
-
 const mockSchedule: Record<string, Record<number, Slot[]>> = {
   Mon: {
-    9: [],
+    9: [{ title: 'Title', subtitle: 'Sub title', time: '9:00 AM' }],
     11: [{ title: 'Title', subtitle: 'Sub title', time: '9:00 AM' }],
     13: [{ title: 'Title', subtitle: 'Sub title', time: '9:00 AM' }],
   },
@@ -46,15 +46,18 @@ const mockSchedule: Record<string, Record<number, Slot[]>> = {
 };
 
 const ClassTimetable: React.FC = () => {
-  const [selectedCell, setSelectedCell] = useState<{ day: string; hour: number }>({ day: '', hour: -1 });
+  const [selectedCells, setSelectedCells] = useState<string[]>(['Mon-9']);
 
-  const handleCellClick = (day: string, hour: number) => {
-    // Toggle selection
-    if (selectedCell.day === day && selectedCell.hour === hour) {
-      setSelectedCell({ day: '', hour: -1 });
-    } else {
-      setSelectedCell({ day, hour });
-    }
+  const toggleCell = (day: string, hour: number) => {
+    const key = `${day}-${hour}`;
+    // Prevent toggling on cells without slot and not selected already
+    const hasSlot = mockSchedule[day]?.[hour] || key === 'Mon-9';
+
+    if (!hasSlot) return;
+
+    setSelectedCells((prev) =>
+      prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]
+    );
   };
 
   return (
@@ -83,31 +86,36 @@ const ClassTimetable: React.FC = () => {
 
           {/* Cells */}
           {days.map((day) => {
-            const cellKey = `${day}-${hour}`;
-            const isSelected = selectedCell?.day === day && selectedCell?.hour === hour;
+            const key = `${day}-${hour}`;
+            const isSelected = selectedCells.includes(key);
             const slots = mockSchedule[day]?.[hour];
 
+            const shouldRender = isSelected || (slots && slots.length);
+
             return (
-              <div key={cellKey} className="px-2 py-1 w-full h-full flex items-center justify-center">
-                {slots && slots.length ? (
-                  <div
-                    onClick={() => handleCellClick(day, hour)}
-                    className="w-full bg-[#3366FF1A] border border-[#3366ff] rounded-xl px-2 py-1 text-left cursor-pointer"
-                  >
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm font-semibold text-black">{slots[0].title}</div>
-                      <div className="text-xs text-right text-black">{slots[0].time}</div>
+              <div
+                key={key}
+                className={`px-2 py-1 w-full h-full flex items-center justify-center ${shouldRender ? 'cursor-pointer' : ''}`}
+                onClick={() => {
+                  if (shouldRender) toggleCell(day, hour);
+                }}
+              >
+                {isSelected ? (
+                  <div className="bg-[#3366ff] text-white w-full h-[50px] flex items-center justify-center rounded-xl px-2 py-1">
+                    <FaCheck className="text-xs" />
+                  </div>
+                ) : (
+                  slots &&
+                  slots.length > 0 && (
+                    <div className="w-full bg-[#3366FF1A] border border-[#3366ff] rounded-xl px-2 py-1 text-left">
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm font-semibold text-black">{slots[0].title}</div>
+                        <div className="text-xs text-right text-black">{slots[0].time}</div>
+                      </div>
+                      <div className="text-xs text-black mt-1">{slots[0].subtitle}</div>
                     </div>
-                    <div className="text-xs text-black mt-1">{slots[0].subtitle}</div>
-                  </div>
-                ) : isSelected ? (
-                  <div
-                    className="w-full h-full bg-[#3366FF] rounded-xl flex items-center justify-center cursor-pointer"
-                    onClick={() => handleCellClick(day, hour)}
-                  >
-                    <FaCheck className="text-white text-xs" />
-                  </div>
-                ) : null}
+                  )
+                )}
               </div>
             );
           })}

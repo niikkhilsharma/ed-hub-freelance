@@ -5,12 +5,15 @@ import { IoCalendarOutline, IoChevronDown, IoSearchOutline, IoTimeOutline } from
 import Image from "next/image";
 import ClassTimetable from "./ClassTimeTable";
 import { HiOutlineCalendar } from "react-icons/hi";
+import SearchFilter from "@/components/b2c-admin/common-component/SearchBarFilter";
 
 
 
 
 
-
+const filter = [
+  {id: "f1", label: "1st STD"}
+]
 
 const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   return (
@@ -29,7 +32,7 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
             <input
               type="text"
               placeholder="DD / MM / YYYY"
-              className="w-full border border-gray-200 rounded-full px-4 py-3 bg-gray-50 text-sm focus:outline-none pr-12"
+              className="w-full border border-gray-200 rounded-full px-4 py-3 bg-[#f9fafb] text-sm focus:outline-none pr-12"
             />
             <div className="absolute inset-y-0 right-4 top-[40%] flex items-center justify-center pointer-events-none">
               <HiOutlineCalendar className="text-gray-500" size={22} />
@@ -42,7 +45,7 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
             <input
               type="text"
               placeholder="Time"
-              className="w-full border border-gray-200 rounded-full px-4 py-3 bg-gray-50 text-sm focus:outline-none pr-12"
+              className="w-full border border-gray-200 rounded-full px-4 py-3 bg-[#f9fafb] text-sm focus:outline-none pr-12"
             />
             <div className="absolute inset-y-0 right-4 top-[40%] flex items-center justify-center pointer-events-none">
               <IoTimeOutline className="text-gray-500" size={22} />
@@ -53,34 +56,15 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
         {/* Layout Split */}
         <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-6">
           {/* Teacher List Panel */}
-          <div className="bg-[#f9fafb] border rounded-2xl lg:min-w-[420px] p-4">
-            <div className="flex items-center gap-2 mb-4">
+          <div className="bg-[#f9fafb] border rounded-2xl lg:min-w-[420px]  p-4">
+              
               <div className="relative w-full">
-                <IoSearchOutline className="absolute top-2.5 left-3 text-black" size={18} />
-                <input
-                  type="text"
-                  placeholder="Search Teacher"
-                  className="w-full border-2 border-gray-400 rounded-full pl-10 pr-4 py-2 text-sm focus:outline-none"
-                />
+                <SearchFilter filters={filter} />
               </div>
-              <div className="relative w-max">
-                <select
-                  className="appearance-none border border-gray-300 rounded-xl px-3 py-2 text-sm focus:outline-none pr-8"
-                >
-                  <option>1st STD</option>
-                  <option>2nd STD</option>
-                  <option>3rd STD</option>
-                </select>
-                <IoChevronDown
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-black pointer-events-none"
-                  size={16}
-                />
-              </div>
-            </div>
 
             {/* Teachers */}
-            <div className="space-y-3 max-h-[450px] overflow-y-auto custom-scrollbar-thin pr-1">
-              {[...Array(4)].map((_, i) => (
+            <div className="space-y-3 max-h-[400px] overflow-y-auto custom-scrollbar-thin pr-1">
+              {[...Array(5)].map((_, i) => (
                 <label
                   key={i}
                   className="flex items-center gap-4 py-1 px-2 rounded-2xl border border-gray-200 cursor-pointer hover:shadow-sm"
@@ -127,6 +111,7 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
           </button>
           <button
             className="rounded-full max-w-32 w-full cursor-pointer px-6 py-2.5 bg-blue-600 text-white text-sm font-medium hover:bg-blue-700"
+            onClick={onClose}
           >
             Reassign
           </button>
