@@ -25,11 +25,11 @@ export default function StudentGrid ()  {
             <img
               src={person.image}
               alt={person.name}
-              className="w-14 h-14 sm:w-24 sm:h-20 rounded-2xl object-cover" 
+              className="w-14 h-14 sm:w-20 sm:h-16 rounded-2xl object-cover" 
             />
            
             <div className="flex-grow"> 
-              <p className="text-lg font-semibold text-gray-800">{person.name}</p>
+              <p className="text-base font-semibold text-gray-800">{person.name}</p>
             </div>
           </div>
           </Link>
