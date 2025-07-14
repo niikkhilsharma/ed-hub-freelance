@@ -115,7 +115,7 @@ export const TeacherListSidebar: React.FC<TeacherListSidebarProps> = ({ teachers
         </h2>
         <div className="w-full bg-white text-black flex gap-4 items-center py-2 rounded-xl">
             {/* Search Input */}
-            <SearchFilter filters={filter}/>
+            <SearchFilter bg={"bg-white"} filters={filter}/>
         </div>
         {/* Original div: space-y-1 max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar pr-2 */}
         <div className="flex-grow space-y-0.5 sm:space-y-1 max-h-[calc(100vh-10rem)] sm:max-h-[calc(100vh-12rem)] overflow-y-auto custom-scrollbar-thin-grey pr-1 sm:pr-2">

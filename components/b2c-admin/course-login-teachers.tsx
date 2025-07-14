@@ -19,17 +19,17 @@ export default function PeopleGrid ()  {
          
           <div
             key={index}
-            className="flex items-center bg-[#f3f4f6] rounded-2xl p-3 space-x-4 shadow-sm" 
+            className="flex items-center bg-[#f3f4f6] rounded-2xl p-2 space-x-4 shadow-sm" 
           >
             {/* Image */}
             <img
               src={person.image}
               alt={person.name}
-              className="w-14 h-14 sm:w-24 sm:h-24 rounded-lg object-contain" 
+              className="w-14 h-14 sm:w-20 sm:h-20 rounded-lg object-contain" 
             />
            
             <div className="flex-grow"> 
-              <p className="text-lg font-semibold text-gray-800">{person.name}</p>
+              <p className="text-base font-semibold text-gray-800">{person.name}</p>
             </div>
           </div>
           </Link>

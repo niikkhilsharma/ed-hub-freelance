@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { FiChevronDown, FiCheck } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
 
-const subjects = Array.from({ length: 8 }, (_, i) => `Subject ${i + 1}`);
+const subjects = Array.from({ length: 10 }, (_, i) => `Subject ${i + 1}`);
 const plans = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5'];
 
 const AdminCourse: React.FC = () => {
@@ -29,7 +29,7 @@ const AdminCourse: React.FC = () => {
   return (
     <div className="flex gap-6 flex-col sm:flex-row rounded-2xl border border-gray-200 bg-white p-6">
       {/* Left Form Section */}
-      <div className="w-full max-w-sm space-y-6">
+      <div className="w-full max-w-xs space-y-6">
         <div>
           <h2 className="text-[#ff3366] text-base font-semibold mb-4">Select Membership Plan</h2>
 
@@ -123,13 +123,13 @@ const AdminCourse: React.FC = () => {
       </div>
 
       {/* Right Subject Selector */}
-      <div className="w-full max-w-xs bg-[#f9fafb] border rounded-2xl p-4">
-        <h3 className="text-lg font-semibold mb-3">Select Subjects</h3>
+      <div className="w-full max-w-[25%] bg-[#f9fafb] border rounded-2xl p-4">
+        <h3 className="text-lg md:text-xl font-semibold mb-5">Select Subjects</h3>
         <div className="space-y-5 overflow-y-auto custom-scrollbar-thin max-h-[300px]">
           {subjects.map((subject, index) => {
             const isChecked = selectedSubjects.includes(subject);
             return (
-              <label key={index} className="flex items-center gap-2 cursor-pointer text-sm font-normal text-black">
+              <label key={index} className="flex items-center gap-2 cursor-pointer text-base font-normal text-black">
                 <input
                   type="checkbox"
                   name="subject"
@@ -139,12 +139,14 @@ const AdminCourse: React.FC = () => {
                   className="peer hidden"
                 />
                 <div
-                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center
-                    ${isChecked ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-600'}`}
+                  className={`w-5 h-5 rounded-full border-2 flex items-center justify-center 
+                    ${isChecked ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-600 bg-white'}`}
                 >
-                  {isChecked && <FiCheck size={14} className="text-white" />}
+                  {isChecked && <FiCheck size={14} className="text-white" strokeWidth={3}/>}
                 </div>
-                <span className="font-medium">{subject}</span>
+                <span className="font-normal">
+                   {subject.replace(" ", "\u00A0\u00A0\u00A0\u00A0")}
+                </span>
               </label>
             );
           })}

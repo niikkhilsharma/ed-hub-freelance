@@ -13,8 +13,8 @@ import Overview from './AdminOverview'
 import ArrowUi from './ArrowUi'
 import Link from 'next/link'
 import AdminAreaChart from '@/components/admin/area-chart'
-import SearchFilterStart from '@/components/b2c-admin/common-component/SearchBarFilterStart'
 import FilterList from './FilterList'
+import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter'
 
 export default function DashboardPage() {
 	const tabs = ["Online", "Offline"]
@@ -211,7 +211,7 @@ export default function DashboardPage() {
 			{/* Institue Cards Grid */}
 			<div className="rounded-3xl bg-white py-2 ">
 				<div className="pt-2 px-4">
-					<SearchFilterStart filters={StartFilter} />
+					<SearchFilter filters={StartFilter} />
 				</div>
 				<div className="px-4 pt-4 sm:pt-6">
 					<TabSwitch tabs={tabs} selected={activeTab} onChange={setActiveTab} />
