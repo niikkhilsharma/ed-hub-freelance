@@ -96,8 +96,8 @@ const ReassignClassModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
             {/* Custom toggle circle */}
             <div
-              className={`w-6 h-6 rounded-full border-2 flex items-center justify-center
-                ${isSelected ? 'bg-[#3366ff] border-[#3366ff]' : 'border-gray-400'}
+              className={`w-6 h-6 rounded-full border flex items-center justify-center
+                
               `}
             >
               {isSelected && <FaCheck className="text-white text-[10px]" />}
