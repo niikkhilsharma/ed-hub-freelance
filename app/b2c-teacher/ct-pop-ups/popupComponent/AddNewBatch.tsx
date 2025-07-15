@@ -30,9 +30,7 @@ const AddNewBatch: React.FC<PopupPropB2CTeacher> = ({
     );
   };
 
-  const filter = [
-    { id: "f1", label: "1st STD" }
-  ]
+
 
   return (
     <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-lg">
@@ -41,15 +39,15 @@ const AddNewBatch: React.FC<PopupPropB2CTeacher> = ({
         <h2 className="text-lg font-semibold text-gray-900">Add New batch</h2>
 
         <div className="flex flex-col px-2 my-6">
-          <label htmlFor="groupName" className='font-medium mb-2'>Batch Name</label>
-          <input type="text" className="w-full rounded-full px-4 py-2 border" placeholder='Text' />
+          <label htmlFor="groupName" className=' mb-2'>Batch Name</label>
+          <input type="text" className="w-full rounded-full px-4 py-2 text-sm border" placeholder='Text' />
         </div>
-        <div className="">
+        <div className="px-2 my-6">
           <DropdownBtn title='Batch Size' filters={option}/>
         </div>
         {/* Group Name Input */}
 
-        <div className="rounded-3xl border p-2">
+        <div className="rounded-3xl border pr-3 pl-2 py-2">
           <div className="flex items-center w-full sm:w-auto flex-grow border-2 border-[#6B7280] rounded-full px-3 py-2 focus-within:ring-2 focus-within:ring-gray-400">
             <FiSearch size={20} className="text-black mr-2" />
             <input
