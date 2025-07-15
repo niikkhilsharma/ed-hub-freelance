@@ -3,8 +3,8 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FiSearch, FiChevronDown } from 'react-icons/fi';
-import { TeacherB2CBaseModal, PopupProp } from '../page'; // Assuming page.tsx is in the parent directory
+import { FiSearch,  } from 'react-icons/fi';
+import { PopupPropB2CTeacher, TeacherB2CBaseModal,  } from '../page'; // Assuming page.tsx is in the parent directory
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'; // Assuming Shadcn Select
 
 // --- Data Interfaces ---
@@ -109,7 +109,7 @@ const StyledSelect2: React.FC<{
 );
 
 // --- Main File Sharing Modal Component ---
-const FileShare: React.FC<PopupProp> = ({ isOpen, onClose }) => {
+const FileShare: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
     const [selectionType, setSelectionType] = useState<'For all' | 'For selective Students' | null>(null);
     const [selectedStudents, setSelectedStudents] = useState<Set<string>>(new Set());
     const [studentSearch, setStudentSearch] = useState(''); // State for search input
