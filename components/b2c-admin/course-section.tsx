@@ -20,7 +20,7 @@ const courseSections = [
 ];
 
 const CourseCard = () => (
-  <div className="bg-white rounded-3xl shadow-sm p-2 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[330px] flex-shrink-0 transition-transform hover:scale-105 duration-200">
+  <div className="bg-white rounded-3xl shadow-sm p-2 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[330px] flex-shrink-0">
     <div className="relative w-full h-32 sm:h-36 md:h-40 lg:h-44 rounded-2xl overflow-hidden">
       <Image
         src="/personality.png" // Place your image in public folder

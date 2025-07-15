@@ -30,6 +30,7 @@ const SuggestionPopup : React.FC<PopupProp> = ({
         <div className="flex justify-center mt-6">
           <button
             className="bg-[#3366ff] text-white px-6 sm:px-8 py-2 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors"
+            onClick={onClose}
           >
             Send
           </button>
