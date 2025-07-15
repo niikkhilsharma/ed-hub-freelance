@@ -45,23 +45,24 @@ export const TeacherB2CBaseModal: React.FC<BaseModalProps> = ({
             {isOpen && (
                 <div
                     onClick={onClose}
-                    className="fixed inset-0 bg-[#0000004a] flex items-center justify-center  z-50"
+                    className="fixed inset-0 bg-[#0000004a] flex items-start justify-center z-50 overflow-y-auto"
                 >
-                    <div className="h-full overflow-y-auto w-full flex items-center justify-center p-4">
-                    <motion.div
-                        onClick={(e) => e.stopPropagation()}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.2 }}
-                        className={`bg-white rounded-3xl mx-auto max-h-[95vh] w-full ${maxWidth} overflow-hidden`}
-                    >
-                        {children}
-                    </motion.div>
+                    <div className="min-h-screen w-full flex justify-center p-4">
+                        <motion.div
+                            onClick={(e) => e.stopPropagation()}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0, scale: 0.95 }}
+                            transition={{ duration: 0.2 }}
+                            className={`bg-white rounded-3xl w-full ${maxWidth} overflow-hidden`}
+                        >
+                            {children}
+                        </motion.div>
                     </div>
                 </div>
             )}
         </AnimatePresence>
+
     );
 };
 
@@ -92,13 +93,13 @@ export default function AllTeacherB2CPopups() {
                 ))}
             </div>
 
-                {/* the component needs to import  */}
+            {/* the component needs to import  */}
 
             <FileShare
                 isOpen={openModal === "fileShare"}
                 onClose={() => setOpenModal(null)}
             />
-           
+
         </div>
     );
 }

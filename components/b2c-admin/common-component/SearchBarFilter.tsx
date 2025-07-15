@@ -58,9 +58,10 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
 interface SearchFilterProps {
   filters: Filter[];
   bg?: String;
+  placeHolder?: String;
 }
 
-const SearchFilter: FC<SearchFilterProps> = ({ filters, bg }) => {
+const SearchFilter: FC<SearchFilterProps> = ({ filters, bg, placeHolder }) => {
   return (
     <div className={`w-full text-black flex flex-col sm:flex-row gap-4 items-center py-2 rounded-xl ${bg ? bg : "bg-white"
       }`}>
