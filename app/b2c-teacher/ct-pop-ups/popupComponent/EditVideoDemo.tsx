@@ -1,6 +1,6 @@
 import { FiX } from "react-icons/fi";
-import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "../page";
 import { IoCloudUploadOutline } from "react-icons/io5";
+import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 
 const EditDemoVideo: React.FC<PopupPropB2CTeacher> = ({
     isOpen,

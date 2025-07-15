@@ -3,7 +3,6 @@
 
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import CreateFolder from "./popupComponent/Create";
 import FileShare from "./popupComponent/FileShare";
 
 // --- Base Modal Component (for reuse and professional structure) ---
@@ -46,18 +45,20 @@ export const TeacherB2CBaseModal: React.FC<BaseModalProps> = ({
             {isOpen && (
                 <div
                     onClick={onClose}
-                    className="fixed inset-0 bg-[#0000004a] flex items-center justify-center p-4 z-50"
+                    className="fixed inset-0 bg-[#0000004a] flex items-center justify-center  z-50"
                 >
+                    <div className="h-full overflow-y-auto w-full flex items-center justify-center p-4">
                     <motion.div
                         onClick={(e) => e.stopPropagation()}
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className={`bg-white rounded-3xl max-h-[95vh] overflow-y-auto custom-scrollbar w-full ${maxWidth} overflow-hidden`}
+                        className={`bg-white rounded-3xl mx-auto max-h-[95vh] w-full ${maxWidth} overflow-hidden`}
                     >
                         {children}
                     </motion.div>
+                    </div>
                 </div>
             )}
         </AnimatePresence>
@@ -70,7 +71,6 @@ export default function AllTeacherB2CPopups() {
     // const [showActionsPopup, setShowActionsPopup] = useState(false);
 
     const modalButtons = [
-        { id: "createFolder", label: "Create Folder" },
         { id: "fileShare", label: "File Sharing" },
         // here you can add pop id and it's label to show it on the page 
     ];
@@ -94,10 +94,6 @@ export default function AllTeacherB2CPopups() {
 
                 {/* the component needs to import  */}
 
-            <CreateFolder
-                isOpen={openModal === "createFolder"}
-                onClose={() => setOpenModal(null)}
-            />
             <FileShare
                 isOpen={openModal === "fileShare"}
                 onClose={() => setOpenModal(null)}

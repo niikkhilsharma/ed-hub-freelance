@@ -1,5 +1,5 @@
 import { FiEdit2, FiEye, FiTrash2 } from "react-icons/fi";
-import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "../page";
+import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 
 const Popup: React.FC<PopupPropB2CTeacher> = ({
     isOpen,
