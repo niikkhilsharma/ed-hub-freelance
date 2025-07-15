@@ -5,6 +5,7 @@ import { FiSearch } from 'react-icons/fi';
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
 import Image from 'next/image';
+import { MdOutlineDone } from 'react-icons/md';
 
 const students = [...Array(5)].map((_, i) => ({
   id: i,
@@ -79,7 +80,7 @@ const CreateGroupPopup: React.FC<PopupPropB2CTeacher> = ({
                   }`}
                 >
                   {isSelected && (
-                    <span className="text-white text-xs font-bold">✔</span>
+                    <span className="text-white text-xs font-bold"><MdOutlineDone /></span>
                   )}
                 </div>
               </div>
