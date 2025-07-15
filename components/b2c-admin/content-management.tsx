@@ -91,7 +91,10 @@ const FolderCard: React.FC<{ folder: FolderItem, reference: React.RefObject<HTML
       <div className="w-ful flex gap-2 ">
 
         <button
-          onClick={() => setOpenModal("manageAccess")}
+          onClick={(e) => {
+            e.stopPropagation(); 
+            setOpenModal("manageAccess");
+          }}
           className="bg-gray-100 w-full rounded-full p-1 flex items-center gap-2 cursor-pointer justify-center text-gray-600 text-base hover:bg-gray-200 lg:text-lg"> <MdSettings /> Manage Access</button>
       </div>
     </div>
