@@ -150,7 +150,8 @@ const CreateFolderModal: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                             >
                                 Cancel
                             </button>
-                            <button className="rounded-full px-6 py-2 bg-[#3366ff] text-white text-sm font-medium hover:bg-blue-600">
+                            <button className="rounded-full px-6 py-2 bg-[#3366ff] text-white text-sm font-medium hover:bg-blue-600"
+                            onClick={() => setActiveTab("Folder Details")}>
                                 Continue
                             </button>
                         </div>

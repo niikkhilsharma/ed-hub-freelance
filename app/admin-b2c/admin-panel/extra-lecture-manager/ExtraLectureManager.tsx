@@ -63,11 +63,11 @@ const ExtraLectureManager = () => {
                                     <p className=""><strong className="font-medium">Remaining Topics:</strong> Lorem Ipusm</p>
                                     {index % 2 === 0 ? (
                                         <p className="">
-                                            <strong className="font-medium">Remaining Left:</strong> Lorem Ipusm
+                                            <strong className="font-medium">Remaining Subtopics:</strong> Lorem Ipusm
                                         </p>
                                     ) : (
                                         <p className="">
-                                            <strong className="font-medium">Remaining Subtopics:</strong> Lorem Ipusm
+                                            <strong className="font-medium">Remaining Left:</strong> Lorem Ipusm
                                         </p>
                                     )}
                                     <p className=""><strong className="font-medium">Deadline Missed:</strong> 22 / 6 / 25</p>

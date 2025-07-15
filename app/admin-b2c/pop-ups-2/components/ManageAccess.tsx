@@ -109,6 +109,12 @@ const ManageAccess: React.FC<PopupProp> = ({
                         </div>
                     ))}
                 </div>
+                <div className="flex justify-end items-center my-4 px-2 gap-2 md:gap-4">
+                    <button className="px-4 py-2.5 bg-[#f9fafb] border text-gray-600 rounded-full font-medium text-sm"
+                    onClick={onClose}>Cancel</button>
+                    <button className="px-4 py-2.5 bg-[#3366ff] text-white rounded-full font-medium text-sm"
+                    onClick={onClose}>Apply</button>
+                </div>
             </div>
         </ BaseModal>
     );
