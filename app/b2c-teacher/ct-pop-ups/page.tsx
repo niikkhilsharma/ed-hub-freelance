@@ -1,12 +1,9 @@
 
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import EditDemoVideo from "./popupComponent/EditVideoDemo";
 import Popup from "./popupComponent/Popup";
-
-
-
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {

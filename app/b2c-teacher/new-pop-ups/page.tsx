@@ -54,7 +54,7 @@ export const TeacherB2CBaseModal: React.FC<BaseModalProps> = ({
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.95 }}
                         transition={{ duration: 0.2 }}
-                        className={`bg-white rounded-3xl w-full ${maxWidth} overflow-hidden`}
+                        className={`bg-white rounded-3xl max-h-[95vh] overflow-y-auto custom-scrollbar w-full ${maxWidth} overflow-hidden`}
                     >
                         {children}
                     </motion.div>
