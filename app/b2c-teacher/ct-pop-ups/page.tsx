@@ -5,6 +5,7 @@ import React, { useState} from "react";
 import EditDemoVideo from "./popupComponent/EditVideoDemo";
 import Popup from "./popupComponent/Popup";
 import CreateGroupPopup from "./popupComponent/CreateGroup";
+import ManageGroupPopup from "./popupComponent/ManageGroup";
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
@@ -15,6 +16,7 @@ export default function AllTeacherB2CPopups() {
         { id: "editDemoVideo", label: "Edit Demo Video" },
         { id: "popup", label: "Popup" },
         { id: "createGroup", label: "Create Group" },
+        { id: "manageGroup", label: "Manage Group" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -49,6 +51,10 @@ export default function AllTeacherB2CPopups() {
             
             <CreateGroupPopup
                 isOpen={openModal === "createGroup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ManageGroupPopup
+                isOpen={openModal === "manageGroup"}
                 onClose={() => setOpenModal(null)}
             />
             

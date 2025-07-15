@@ -102,13 +102,13 @@ const TeachMoreCourse = () => {
               </label>
               <textarea
                 rows={4}
-                className="w-full rounded-xl border border-gray-300 bg-gray-50 p-3 resize-none"
+                className="w-full rounded-3xl border border-gray-300 bg-gray-50 p-3 resize-none"
               />
             </div>
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">Compensation Preferances</h1>
+          <h1 className="text-blue-600 py-3.5 text-lg lg:text-xl px-2 bg-gray-100 font-semibold rounded-xl">Compensation Preferences</h1>
 
           <div className="max-w-md flex flex-col gap-1 pt-2 pb-4">
             <label className='font-medium text-md' htmlFor="teachingExperience">Your Total Teaching Experience (in years)</label>
@@ -125,6 +125,16 @@ const TeachMoreCourse = () => {
           <div className="max-w-md flex flex-col gap-1 pb-4">
             <label className='font-medium text-md' htmlFor="newHourlyRate">Expected New Hourly Rate (₹)</label>
             <input id="newHourlyRate" type="number" className='rounded-full px-4 py-2 bg-gray-50 border' placeholder='40000' />
+          </div>
+          <div className="max-w-md flex flex-col gap-1 pb-4">
+             <label className="block font-medium mb-1">
+               why are you requesting a raise?
+              </label>
+              <textarea
+                rows={2}
+                className="w-full rounded-3xl border border-gray-300 bg-gray-50 p-3 resize-none"
+              />
+
           </div>
 
         </div>
@@ -208,7 +218,7 @@ const DropCourse = () => {
             <label className="block font-medium mb-1">Reason For Dropping A Subject</label>
             <textarea
               rows={4}
-              className="w-full rounded-xl border border-gray-300 bg-gray-50 p-3 resize-none"
+              className="w-full rounded-3xl border border-gray-300 bg-gray-50 p-3 resize-none"
             />
           </div>
         </div>

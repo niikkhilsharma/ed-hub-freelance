@@ -43,7 +43,7 @@ export default function RecordingsPage() {
         </div>
         <button
           onClick={() => alert("Add Videos Clicked!")}
-          className={` mb-16 mr-52 mt-4 ml-auto relative bottom-0 bg-[#FFCC00] text-white font-semibold px-4 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-1 text-sm sm:text-md`}
+          className={` mb-16 mr-10 mt-4 ml-auto relative bottom-0 bg-[#FFCC00] text-white font-semibold px-4 py-3 rounded-full hover:opacity-90 transition-opacity flex items-center gap-1 text-sm sm:text-md`}
           aria-label="Add new videos"
         >
           <FiPlus className="w-5 h-5 " />
