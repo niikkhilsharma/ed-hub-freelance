@@ -19,6 +19,11 @@ import MeetingDetailTeacher from "./popupComponent/MeetingDetailTeacher";
 import ScheduleMeeting from "./popupComponent/ScheduleMeeting";
 import RescheduleMeetingTeacher from "./popupComponent/RescheduleMeetingTeacher";
 import RescheduleMeetingStudent from "./popupComponent/RescheduleMeetingStudent";
+import Buttons from "./popupComponent/Buttons";
+import UploadVideo from "./popupComponent/UploadVideos";
+import MonthEndReportModal from "./popupComponent/MonthEndReport";
+import SubmitMonthEndReportModal from "./popupComponent/SubmitMonthEndReport";
+import AddNewBatch from "./popupComponent/AddNewBatch";
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
@@ -31,7 +36,7 @@ export default function AllTeacherB2CPopups() {
         { id: "createGroup", label: "Create Group" },
         { id: "manageGroup", label: "Manage Group" },
         { id: "deleteRecording", label: "Delete Recording" },
-        { id: "deleteRecording3", label: "Delete Recording 3" },
+        { id: "deleteRecording3", label: "Delete Video 3" },
         { id: "addVideo", label: "Add Video" },
         { id: "shareVideo", label: "Share Video" },
         { id: "shareManageAccess", label: "Share With Manage Access" },
@@ -43,6 +48,11 @@ export default function AllTeacherB2CPopups() {
         { id: "scheduleMeeting", label: "Schedule Meeting" },
         { id: "rescheduleMeetingTeacher", label: "Reschedule Meeting Teacher" },
         { id: "rescheduleMeetingStudent", label: "Reschedule Meeting Student" },
+        { id: "buttons", label: "Buttons" },
+        { id: "uploadVideo", label: "Upload Video" },
+        { id: "monthEndReport", label: "Month End Report Pop up" },
+        { id: "submitMonthEndReport", label: "Submission Month End Report Pop up" },
+        { id: "addNewBatch", label: "Add New Batch" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -133,6 +143,26 @@ export default function AllTeacherB2CPopups() {
             />
             <RescheduleMeetingStudent
                 isOpen={openModal === "rescheduleMeetingStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <Buttons
+                isOpen={openModal === "buttons"}
+                onClose={() => setOpenModal(null)}
+            />
+            <UploadVideo
+                isOpen={openModal === "uploadVideo"}
+                onClose={() => setOpenModal(null)}
+            />
+            <MonthEndReportModal
+                isOpen={openModal === "monthEndReport"}
+                onClose={() => setOpenModal(null)}
+            />
+            <SubmitMonthEndReportModal
+                isOpen={openModal === "submitMonthEndReport"}
+                onClose={() => setOpenModal(null)}
+            />
+            <AddNewBatch
+                isOpen={openModal === "addNewBatch"}
                 onClose={() => setOpenModal(null)}
             />
             
