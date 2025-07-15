@@ -192,7 +192,7 @@ interface ChapterSubTab {
 	name: string;
 	categoryId: string; // Link to TopCategoryTab
 }
-const classesAllocated = ['Class A', 'Class B', 'Class 3']
+const classesAllocated = ['AS Basic', 'Olyp M G1', 'Olyp M G3']
 const sampleChapterSubTabs: ChapterSubTab[] = [
 	{ id: "ch1", name: "Chapter 1", categoryId: "cat1" },
 	{ id: "ch2", name: "Chapter 2", categoryId: "cat1" },
@@ -208,7 +208,7 @@ const classSchedule = [
 	{ time: '10:30 AM', title: 'Fraction', subTitle: ["Course Name", "Batch Name", "5 Students"] },
 ]
 
-const tools = ['BW test', 'Assessment', 'Quiz', 'Worksheet', 'DMIT Results', 'Videos']
+const tools = ['BW test', 'Assessment', 'Quiz', 'Worksheet', 'DMIT Results', 'Videos',]
 
 const sampleChapterAccordions: ChapterAccordionItem[] = Array.from(
 	{ length: 2 },
@@ -221,7 +221,7 @@ const sampleChapterAccordions: ChapterAccordionItem[] = Array.from(
 
 const TeacherDashboard = () => {
 	const [progress] = useState(60)
-	const enrolledCount = studentData.length
+	const enrolledCount = 20
 	const averageScore = 75
 	const headerUser = {
 		name: 'Educator Name',
@@ -269,7 +269,7 @@ const TeacherDashboard = () => {
 								</div>
 
 								<div>
-									<h4 className="font-semibold text-sm mb-2">Classes Allocated</h4>
+									<h4 className="font-semibold text-sm mb-2">Classes Involved</h4>
 									<div className="flex flex-wrap gap-3">
 										{classesAllocated.map(cls => (
 											<span key={cls} className="text-sm border border-[#B0B0B0] bg-[#F3F4F6] px-2 py-2 rounded-full">
@@ -360,7 +360,7 @@ const TeacherDashboard = () => {
 													</svg>
 
 												</button>
-												<button className="text-white text-m px-4 py-1 rounded-full" style={{ backgroundColor: PALETTE.ACCENT_PINK }}>
+												<button className="text-white text-m px-5 py-4 rounded-full" style={{ backgroundColor: PALETTE.ACCENT_PINK }}>
 													Start
 												</button>
 											</div>
@@ -370,7 +370,7 @@ const TeacherDashboard = () => {
 									))}
 								</div>
 								<div className="flex justify-end">
-									<button className="mt-4 px-4 text-right bg-[#3366FF] text-white py-2.5 rounded-full">Schedule Class</button>
+									<button className="mt-4 px-4 text-right bg-[#3366FF] text-white py-2.5 rounded-full">Schedule Meeting</button>
 								</div>
 							</div>
 
@@ -452,8 +452,8 @@ const TeacherDashboard = () => {
 											{/* Progress Info Box - IDENTICAL TO YOUR ORIGINAL */}
 											<div className="flex flex-col md:flex-row justify-between items-center gap-4 rounded-2xl bg-[#F9FAFB] p-4">
 												<div className="w-full md:w-1/2 border-r-2 border-r-black pr-6">
-													<p className="text-sm font-medium text-muted-foreground">Class Completion Progress</p>
-													<p className="text-lg font-semibold">{progress} %</p>
+													<p className="text-lg font-medium text-muted-foreground">Class Completion Progress</p>
+													<p className="text-sm font-semibold">{progress} %</p>
 													<Progress value={progress} className={`h-2 mt-2 rounded-full`} />
 												</div>
 												<div className="flex gap-10 text-sm md:text-base">
@@ -464,7 +464,7 @@ const TeacherDashboard = () => {
 														</p>
 													</div>
 													<div>
-														<p className="font-semibold text-center">{averageScore} %</p>
+														<p className="font-semibold text-center">{averageScore} % </p>
 														<p className="text-muted-foreground" style={{ color: PALETTE.GREEN_DARK }}>
 															Average Score
 														</p>
@@ -600,7 +600,7 @@ const TeacherDashboard = () => {
 										{['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00'].map((time, rowIdx) => (
 											<div key={time} className="grid grid-cols-[80px_repeat(5,minmax(120px,1fr))] border-b text-sm">
 												{/* Time Label */}
-												<div className="text-[#6B7280] py-4 px-2">{time}</div>
+												<div className="text-[#6B7280] py-4 px-4">{time}</div>
 
 												{/* Time cells */}
 												{[0, 1, 2, 3, 4].map(colIdx => {

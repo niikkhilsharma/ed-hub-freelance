@@ -12,8 +12,8 @@ interface Course {
   imageSrc: string;
   // e.g., "PERSONALITY DEVELOPMENT"
   courseName: string;
-  noofbatch: string;
-  noofBtudents: string; // e.g., "Class"
+  domain: string;
+  grade: string; // e.g., "Class"
   // e.g., "00 hrs : 00 mins"
 }
 
@@ -29,20 +29,20 @@ export default function ManageCardPage() {
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
-      students: 25,
+      domain: "Self Dev",
+      grade:"Grade4"
     },
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
-      students: 25,
+      domain: "Self Dev",
+      grade:"Grade4"
     },
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
-      students: 25,
+     domain: "Self Dev",
+      grade:"Grade4"
     },
 
 
@@ -83,13 +83,13 @@ export default function ManageCardPage() {
                   />
                 </div>
                 <div className="flex flex-col gap-1 px-2 text-black">
-                  <h2 className="font-bold text-lg">{course.name}</h2>
-                  <h3 className="text-sm font-medium text-blacl">
-                    No. of Batch:{" "}
-                    <span className="text-[#6B7280]">{course.batches}</span>
+                  <h2 className="font-semibold text-lg">{course.name}</h2>
+                  <h3 className="text-sm font-medium text-black-300">
+                    Domain:{" "}
+                    <span className="text-[#6B7280]">{course.domain}</span>
                   </h3>
-                  <h3 className="text-sm font-medium text-black">
-                    No. of Students: <span className="text-[#6B7280]">{course.students}</span>
+                  <h3 className="text-sm font-medium text-black-300">
+                    Level/Grade: <span className="text-[#6B7280]">{course.grade}</span>
                   </h3>
                 </div>
               </div>

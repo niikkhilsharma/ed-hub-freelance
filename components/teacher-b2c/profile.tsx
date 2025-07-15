@@ -94,7 +94,7 @@ export default function EditStudentProfilePage() {
 										alt={formData.name}
 										width={80}
 										height={80}
-										className="w-20 h-20 rounded-full object-cover"
+										className="w-20 h-20 rounded-full object-fill"
 									/>
 									<button className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full shadow-md  focus:outline-none">
 										<FiEdit2 className="w-3 h-3" />
@@ -117,7 +117,7 @@ export default function EditStudentProfilePage() {
 								<h2 className="text-[#FF3366] text-xl font-bold">
 									EDUNIQUE-TEACHER-RONAK23
 								</h2>
-								<div className=" bg-[#3366FF33] text-[#3366FF] rounded-full px-4 py-3 flex items-center justify-center gap-1">
+								<div className=" bg-[#3366FF33] text-[#3366FF] rounded-2xl px-4 py-3 flex items-center justify-center gap-1">
 									<svg
 										width={16}
 										height={16}
@@ -218,7 +218,7 @@ export default function EditStudentProfilePage() {
 							</div>
 						</form>
 						<div className="w-full flex pt-6 justify-center">
-							<Button className="px-[20%] rounded-full text-xl h-11 mx-auto">
+							<Button className="px-[15%] rounded-full text-xl h-11 mx-auto">
 								Save
 							</Button>
 						</div>
