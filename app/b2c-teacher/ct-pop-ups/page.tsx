@@ -6,6 +6,9 @@ import EditDemoVideo from "./popupComponent/EditVideoDemo";
 import Popup from "./popupComponent/Popup";
 import CreateGroupPopup from "./popupComponent/CreateGroup";
 import ManageGroupPopup from "./popupComponent/ManageGroup";
+import DeleteRecordingModal from "./popupComponent/DeleteRecording";
+import DeleteRecordingModal3 from "./popupComponent/DeleteRecording3";
+import AddVideoModal from "./popupComponent/AddVideo";
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
@@ -17,6 +20,9 @@ export default function AllTeacherB2CPopups() {
         { id: "popup", label: "Popup" },
         { id: "createGroup", label: "Create Group" },
         { id: "manageGroup", label: "Manage Group" },
+        { id: "deleteRecording", label: "Delete Recording" },
+        { id: "deleteRecording3", label: "Delete Recording 3" },
+        { id: "addVideo", label: "Add Video" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -55,6 +61,18 @@ export default function AllTeacherB2CPopups() {
             />
             <ManageGroupPopup
                 isOpen={openModal === "manageGroup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <DeleteRecordingModal
+                isOpen={openModal === "deleteRecording"}
+                onClose={() => setOpenModal(null)}
+            />
+            <DeleteRecordingModal3
+                isOpen={openModal === "deleteRecording3"}
+                onClose={() => setOpenModal(null)}
+            />
+            <AddVideoModal
+                isOpen={openModal === "addVideo"}
                 onClose={() => setOpenModal(null)}
             />
             
