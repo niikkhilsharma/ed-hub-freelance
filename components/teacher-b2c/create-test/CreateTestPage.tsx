@@ -350,7 +350,7 @@ export function CreateTestPage({testType} : {testType:string}) {
 				<GoBack label={testType} currentStep={currentStep} />
 
 				<main className="flex-grow max-w-screen-xl mx-auto p-6 lg:p-8">
-					<CreateBWTestContent currentStep={currentStep} setCurrentStep={setCurrentStep} />
+					<CreateBWTestContent currentStep={currentStep} setCurrentStep={setCurrentStep} testType={testType}/>
 				</main>
 			</div>
 

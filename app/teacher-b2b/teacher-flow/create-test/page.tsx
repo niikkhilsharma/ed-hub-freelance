@@ -1,9 +1,9 @@
-import CreateTest from '@/components/teacher-b2b/create-test/CreateTestPage'
+import { CreateTestPage } from '@/components/teacher-b2b/create-test/CreateTestPage'
 
 export default function CourseDetail() {
 	return (
 		<div>
-			<CreateTest />
+			<CreateTestPage testType={"Test"}/>
 		</div>
 	)
 }

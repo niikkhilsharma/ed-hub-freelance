@@ -4,7 +4,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CreateFolder from "./popupComponent/Create";
-
+import FileShare from "./popupComponent/FileShare";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -71,6 +71,7 @@ export default function AllTeacherB2CPopups() {
 
     const modalButtons = [
         { id: "createFolder", label: "Create Folder" },
+        { id: "fileShare", label: "File Sharing" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -95,6 +96,10 @@ export default function AllTeacherB2CPopups() {
 
             <CreateFolder
                 isOpen={openModal === "createFolder"}
+                onClose={() => setOpenModal(null)}
+            />
+            <FileShare
+                isOpen={openModal === "fileShare"}
                 onClose={() => setOpenModal(null)}
             />
            

@@ -1,7 +1,9 @@
-import CreateTest from "@/components/teacher-b2b/create-assessment/CreateAssessmentPage";
+import { CreateTestPage } from '@/components/teacher-b2b/create-test/CreateTestPage'
 
-export default function CourseDetail(){
-    return <div>
-        <CreateTest /> 
-    </div>
+export default function CourseDetail() {
+    return (
+        <div>
+            <CreateTestPage testType={"Assessment"}/>
+        </div>
+    )
 }
