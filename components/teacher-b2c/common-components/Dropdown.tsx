@@ -9,9 +9,10 @@ interface Filter {
 
 interface FiltersProps {
     filters: Filter[];
+    title: string;
 }
 
-const Dropdown: FC<FiltersProps> = ({ filters }) => {
+const DropdownBtn: FC<FiltersProps> = ({ filters, title }) => {
     const [openFilterId, setOpenFilterId] = useState<string | null>(null);
 
     const toggleDropdown = (id: string) => {
@@ -19,19 +20,23 @@ const Dropdown: FC<FiltersProps> = ({ filters }) => {
     };
 
     return (
-        <div className="flex flex-wrap items-center gap-3 relative z-50">
+        <div className="flex w-full flex-wrap items-center gap-3 relative z-50">
             {filters.map((filter) => {
                 const isOpen = openFilterId === filter.id;
                 return (
-                    <div key={filter.id} className="relative inline-block text-left">
+                    <div key={filter.id} className="relative w-full text-left">
+                        <p className="mb-1 whitespace-nowrap">{title}</p>
                         {/* Button + border container */}
-                        <div className={`bg-[#f9fafb]  ${isOpen ? "rounded-t-xl border-t border-x" : "rounded-xl border"} box-border`}>
+                        <div className={`bg-[#f9fafb] px-3 flex justify-between gap-3 items-center ${isOpen ? "rounded-t-xl border-t border-x" : "rounded-full border"} box-border`}>
                             <button
                                 onClick={() => toggleDropdown(filter.id)}
-                                className="text-xs  sm:text-sm px-3 py-2 cursor-pointer flex items-center flex-nowrap gap-2 w-full whitespace-nowrap"
+                                className="text-xs  sm:text-sm  py-2 cursor-pointer flex items-center flex-nowrap gap-2 w-full whitespace-nowrap"
                             >
                                 {filter.label}
-                                {isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
+                                
+                            </button>
+                            <button className="" onClick={() => toggleDropdown(filter.id)}>
+                            {isOpen ? <FiChevronUp className="text-black" size={20} /> : <FiChevronDown className="text-black" size={20} />}
                             </button>
                         </div>
 
@@ -53,4 +58,4 @@ const Dropdown: FC<FiltersProps> = ({ filters }) => {
     );
 };
 
-export default Dropdown;
+export default DropdownBtn;

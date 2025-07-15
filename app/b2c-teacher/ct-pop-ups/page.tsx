@@ -7,8 +7,13 @@ import Popup from "./popupComponent/Popup";
 import CreateGroupPopup from "./popupComponent/CreateGroup";
 import ManageGroupPopup from "./popupComponent/ManageGroup";
 import DeleteRecordingModal from "./popupComponent/DeleteRecording";
-import DeleteRecordingModal3 from "./popupComponent/DeleteRecording3";
 import AddVideoModal from "./popupComponent/AddVideo";
+import ShareVideoPopup from "./popupComponent/ShareVideo";
+import ShareWithManageVideoPopup from "./popupComponent/ShareWithManage";
+import DeleteVideoModal from "./popupComponent/DeleteVideo";
+import ShareWithManage3VideoPopup from "./popupComponent/ShareWithManage3";
+import ShareVideo3Popup from "./popupComponent/ShareVideo3";
+import Popup8 from "./popupComponent/Popup8";
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
@@ -23,6 +28,11 @@ export default function AllTeacherB2CPopups() {
         { id: "deleteRecording", label: "Delete Recording" },
         { id: "deleteRecording3", label: "Delete Recording 3" },
         { id: "addVideo", label: "Add Video" },
+        { id: "shareVideo", label: "Share Video" },
+        { id: "shareManageAccess", label: "Share With Manage Access" },
+        { id: "shareVideo3Access", label: "Share Video 3" },
+        { id: "shareManage3Access", label: "Share With Manage Access 3" },
+        { id: "popup8", label: "Popup 8" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -67,12 +77,32 @@ export default function AllTeacherB2CPopups() {
                 isOpen={openModal === "deleteRecording"}
                 onClose={() => setOpenModal(null)}
             />
-            <DeleteRecordingModal3
+            <DeleteVideoModal
                 isOpen={openModal === "deleteRecording3"}
                 onClose={() => setOpenModal(null)}
             />
             <AddVideoModal
                 isOpen={openModal === "addVideo"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ShareVideoPopup
+                isOpen={openModal === "shareVideo"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ShareWithManageVideoPopup
+                isOpen={openModal === "shareManageAccess"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ShareVideo3Popup
+                isOpen={openModal === "shareVideo3Access"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ShareWithManage3VideoPopup
+                isOpen={openModal === "shareManage3Access"}
+                onClose={() => setOpenModal(null)}
+            />
+            <Popup8
+                isOpen={openModal === "popup8"}
                 onClose={() => setOpenModal(null)}
             />
             

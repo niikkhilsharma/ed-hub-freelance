@@ -2,7 +2,7 @@ import React from "react";
 import { FiX } from "react-icons/fi";
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 
-const DeleteRecordingModal3: React.FC<PopupPropB2CTeacher> = ({
+const DeleteVideoModal: React.FC<PopupPropB2CTeacher> = ({
   isOpen,
   onClose,
 }) => {
@@ -19,7 +19,7 @@ const DeleteRecordingModal3: React.FC<PopupPropB2CTeacher> = ({
 
         {/* Title */}
         <h2 className="text-center mb-6 text-base font-semibold text-gray-900">
-          Delete Recording
+          Delete Video
         </h2>
 
         {/* Subheading */}
@@ -50,4 +50,4 @@ const DeleteRecordingModal3: React.FC<PopupPropB2CTeacher> = ({
   );
 };
 
-export default DeleteRecordingModal3;
+export default DeleteVideoModal;
