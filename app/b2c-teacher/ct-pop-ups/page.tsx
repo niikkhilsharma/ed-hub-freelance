@@ -14,6 +14,11 @@ import DeleteVideoModal from "./popupComponent/DeleteVideo";
 import ShareWithManage3VideoPopup from "./popupComponent/ShareWithManage3";
 import ShareVideo3Popup from "./popupComponent/ShareVideo3";
 import Popup8 from "./popupComponent/Popup8";
+import MeetingDetailStudent from "./popupComponent/MeetingDetailStudent";
+import MeetingDetailTeacher from "./popupComponent/MeetingDetailTeacher";
+import ScheduleMeeting from "./popupComponent/ScheduleMeeting";
+import RescheduleMeetingTeacher from "./popupComponent/RescheduleMeetingTeacher";
+import RescheduleMeetingStudent from "./popupComponent/RescheduleMeetingStudent";
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
@@ -33,6 +38,11 @@ export default function AllTeacherB2CPopups() {
         { id: "shareVideo3Access", label: "Share Video 3" },
         { id: "shareManage3Access", label: "Share With Manage Access 3" },
         { id: "popup8", label: "Popup 8" },
+        { id: "viewDetailStudent", label: "View Detail Student" },
+        { id: "viewDetailTeacher", label: "View Detail Teacher" },
+        { id: "scheduleMeeting", label: "Schedule Meeting" },
+        { id: "rescheduleMeetingTeacher", label: "Reschedule Meeting Teacher" },
+        { id: "rescheduleMeetingStudent", label: "Reschedule Meeting Student" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -103,6 +113,26 @@ export default function AllTeacherB2CPopups() {
             />
             <Popup8
                 isOpen={openModal === "popup8"}
+                onClose={() => setOpenModal(null)}
+            />
+            <MeetingDetailStudent
+                isOpen={openModal === "viewDetailStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <MeetingDetailTeacher
+                isOpen={openModal === "viewDetailTeacher"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ScheduleMeeting
+                isOpen={openModal === "scheduleMeeting"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RescheduleMeetingTeacher
+                isOpen={openModal === "rescheduleMeetingTeacher"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RescheduleMeetingStudent
+                isOpen={openModal === "rescheduleMeetingStudent"}
                 onClose={() => setOpenModal(null)}
             />
             

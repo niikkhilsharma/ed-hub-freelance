@@ -1,11 +1,11 @@
 import React from 'react';
-import { FiX, FiCalendar, FiClock } from 'react-icons/fi';
+import {  FiCalendar, FiClock } from 'react-icons/fi';
 import Image from 'next/image';
-import { BaseModal, PopupProp } from '../page';
+import { PopupPropB2CTeacher, TeacherB2CBaseModal } from '../../new-pop-ups/page';
 
 
 
-const MeetingDetailTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
+const MeetingDetailTeacher: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
   const students = Array.from({ length: 3 }).map((_, i) => ({
     name: 'Name',
     subject: 'Subject',
@@ -15,9 +15,9 @@ const MeetingDetailTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
   }));
 
   return (
-    <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
+    <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
       <div className="relative bg-white rounded-2xl p-6">
-
+        
 
         <h2 className="text-lg font-semibold text-center mb-6">Meeting Details</h2>
 
@@ -72,7 +72,7 @@ const MeetingDetailTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                       alt={student.name}
                       width={75}
                       height={75}
-                      className="rounded-2xl object-cover"
+                      className="rounded-xl object-cover"
                     />
                     <div>
                       <p className="font-semibold text-sm">{student.name}</p>
@@ -89,17 +89,17 @@ const MeetingDetailTeacher: React.FC<PopupProp> = ({ isOpen, onClose }) => {
 
         {/* Buttons */}
         <div className="mt-6 flex justify-center gap-4">
-          <button className="bg-[#3366ff] max-w-28 w-full text-white px-6 py-2.5 rounded-full text-sm font-medium shadow" onClick={onClose}>
-            Edit
-          </button>
-          <button
-            onClick={onClose}
-            className="bg-gray-200 max-w-28 w-full text-gray-700 cursor-pointer px-6 py-2.5 rounded-full text-sm font-medium">
-            Discard
-          </button>
-        </div>
+                    <button className="bg-[#3366ff] max-w-28 w-full text-white px-6 py-2.5 rounded-full text-sm font-medium shadow" onClick={onClose}>
+                        Edit
+                    </button>
+                    <button
+                        onClick={onClose}
+                        className="bg-gray-200 max-w-28 w-full text-gray-700 cursor-pointer px-6 py-2.5 rounded-full text-sm font-medium">
+                        Discard
+                    </button>
+                </div>
       </div>
-    </BaseModal>
+    </TeacherB2CBaseModal>
   );
 };
 

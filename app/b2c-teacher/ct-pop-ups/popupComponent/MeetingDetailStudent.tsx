@@ -1,19 +1,19 @@
 import React from 'react';
-import { FiX, FiCalendar, FiClock } from 'react-icons/fi';
+import {  FiCalendar, FiClock } from 'react-icons/fi';
 import Image from 'next/image';
-import { BaseModal, PopupProp } from '../page';
+import { PopupPropB2CTeacher, TeacherB2CBaseModal } from '../../new-pop-ups/page';
 
 
 
-const MeetingDetailStudent: React.FC<PopupProp> = ({ isOpen, onClose }) => {
-    const students = Array.from({ length: 6 }).map((_, i) => ({
+const MeetingDetailStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
+    const students = Array.from({ length: 6 }).map((_) => ({
         name: 'Student Name',
         course: 'Level / Grade',
         image: '/common-images/full-student.jpg',
     }));
 
     return (
-        <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
+        <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
             <div className="relative bg-white rounded-2xl p-6">
 
 
@@ -52,19 +52,19 @@ const MeetingDetailStudent: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                         <input
                             type="text"
                             placeholder="Course Name"
-                            className="w-full border rounded-full px-4 py-2 bg-[#f9fafb] text-sm"
+                            className="w-full border rounded-full placeholder-black px-4 py-2 bg-[#f9fafb] text-sm"
                         />
                         <input
                             type="text"
                             placeholder="Batch Name"
-                            className="w-full border rounded-full px-4 py-2 bg-[#f9fafb] text-sm"
+                            className="w-full border rounded-full placeholder-black px-4 py-2 bg-[#f9fafb] text-sm"
                         />
                     </div>
 
                     {/* Right List */}
                     <div className='bg-[#f9fafb] px-3 pb-3 pt-4 rounded-2xl'>
                         <h3 className="text-sm font-semibold mb-3">Student List</h3>
-                        <div className="space-y-3 max-h-[20rem] overflow-y-auto custom-peach-scrollbar pr-2 ">
+                        <div className="space-y-3 max-h-[20rem] overflow-y-auto custom-scrollbar-thin pr-2 ">
                             {students.map((student, i) => (
                                 <div
                                     key={i}
@@ -90,7 +90,7 @@ const MeetingDetailStudent: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Buttons */}
-               <div className="mt-6 flex justify-center gap-4">
+                <div className="mt-6 flex justify-center gap-4">
                     <button className="bg-[#3366ff] max-w-28 w-full text-white px-6 py-2.5 rounded-full text-sm font-medium shadow" onClick={onClose}>
                         Edit
                     </button>
@@ -101,7 +101,7 @@ const MeetingDetailStudent: React.FC<PopupProp> = ({ isOpen, onClose }) => {
                     </button>
                 </div>
             </div>
-        </BaseModal>
+        </TeacherB2CBaseModal>
     );
 };
 

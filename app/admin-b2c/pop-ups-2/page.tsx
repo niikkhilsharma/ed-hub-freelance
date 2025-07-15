@@ -27,7 +27,7 @@ import CreateFolderModal from "./components/CreateFolder";
 import AddCourseModal from "@/components/b2c-admin/add-course";
 import RejectRequestPopup from "./components/reject-request-popup";
 import AddReminder from "./components/add-reminder";
-import ScheduleMeeting from "./components/scheduleMeeting";
+import ScheduleMeeting from "./components/ScheduleMeeting";
 import ProfileSettingTeacher from "./components/profileSettingTeacher";
 import ProfileSettingStudent from "./components/profileSettingStudent";
 import AllotCoursePopup from "./components/allotNewCourse";

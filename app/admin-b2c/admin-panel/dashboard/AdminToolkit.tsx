@@ -3,7 +3,7 @@ import { LuCalendarCheck, LuClipboardList, LuHash, LuPackage, LuUserCheck, LuUse
 import Link from "next/link";
 import { FiBell, FiSun } from "react-icons/fi";
 import { useState } from "react";
-import ScheduleMeeting from "../../pop-ups-2/components/scheduleMeeting";
+import ScheduleMeeting from "../../pop-ups-2/components/ScheduleMeeting";
 import AddReminder from "../../pop-ups-2/components/add-reminder";
 const AdminToolkit = () => {
   const [ButtonOne, setButtonOne] = useState(false);
