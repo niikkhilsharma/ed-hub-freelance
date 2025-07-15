@@ -13,7 +13,7 @@ interface BaseModalProps {
     children: React.ReactNode;
     maxWidth: string;
 }
-export interface PopupProp {  // this can be import as a prop
+export interface PopupPropB2CTeacher {  // this can be import as a prop
     isOpen: boolean;
     onClose: () => void;
 }
