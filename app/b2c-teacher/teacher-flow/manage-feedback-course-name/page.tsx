@@ -28,7 +28,7 @@ const feedbackData = Array.from({ length: 9 }, (_, i) => ({
 const filterOptions = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
 const barChartData = [
     { label: "Punctuality", value: 40, color: CHART_BAR_COLORS[0] },
-    { label: "Doubt Solving", value: 80, color: CHART_BAR_COLORS[1] },
+    { label: "Doubt Solving", value: 60, color: CHART_BAR_COLORS[1] },
     { label: "Friendliness", value: 50, color: CHART_BAR_COLORS[2] },
     { label: "Clarity", value: 20, color: CHART_BAR_COLORS[3] },
 ];
@@ -69,8 +69,8 @@ const ScoreChartDisplay: React.FC = () => {
     const normalizedRadius = radius - stroke / 2;
     const semiCircumference = Math.PI * normalizedRadius; // Circumference for a semi-circle
 
-    // The progress value (e.g., 0.9 represents 90%)
-    const progress = 0.9;
+    // The progress value (e.g., 0.4 represents 40%)
+    const progress = 0.4;
     const offset = semiCircumference * (1 - progress);
 
     return (

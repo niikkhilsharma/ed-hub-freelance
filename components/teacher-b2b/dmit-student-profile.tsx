@@ -470,12 +470,12 @@ const StudentReport: React.FC = () => {
                   </div>
                 </div>
                 <div className="text-[15px] font-medium text-right sm:text-left space-y-0.5 text-black">
-                  <p>Gender: Male</p>
-                  <p>DOB: 15 Jun 2015</p>
-                  <p>Email: example@gm.com</p>
+                  <p> <span className="font-semibold">Gender:</span> Male</p>
+                  <p><span  className="font-semibold">DOB:</span>15 Jun 2015</p>
+                  <p><span  className="font-semibold">Email:</span> example@gm.com</p>
 
-                  <p>City: Mumbai</p>
-                  <p>State: Maharashtra</p>
+                  <p><span  className="font-semibold">City: </span>Mumbai</p>
+                  <p><span  className="font-semibold">State:</span> Maharashtra</p>
                 </div>
               </div>
               <div className="pt-4 ">
