@@ -3,9 +3,10 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { FiSearch,  } from 'react-icons/fi';
-import { PopupPropB2CTeacher, TeacherB2CBaseModal,  } from '../page'; // Assuming page.tsx is in the parent directory
+import { FiSearch, } from 'react-icons/fi';
+import { PopupPropB2CTeacher, TeacherB2CBaseModal, } from '../page'; // Assuming page.tsx is in the parent directory
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'; // Assuming Shadcn Select
+import CreateGroupPopup from '../../ct-pop-ups/popupComponent/CreateGroup';
 
 // --- Data Interfaces ---
 interface SelectableItem {
@@ -78,7 +79,7 @@ const StyledSelect: React.FC<{
     items: { value: string; label: string }[];
 }> = ({ defaultValue, placeholder, items }) => (
     <Select defaultValue={defaultValue}>
-        <SelectTrigger className="bg-transparent w-full sm:w-auto rounded-xl py-2.5 sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
+        <SelectTrigger className="bg-transparent w-full sm:w-auto rounded-xl py-3.5 sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
             <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
@@ -94,10 +95,10 @@ const StyledSelect2: React.FC<{
     // Add onChange handler if needed
 }> = ({ defaultValue, placeholder, items }) => (
     <div className="w-full">
-        <label className="block text-sm font-medium text-gray-800 mb-1">{placeholder}</label>
+        <label className="block text-xs sm:text-sm font-medium text-black mb-1">{placeholder}</label>
         <div className="relative">
             <Select defaultValue={defaultValue}>
-                <SelectTrigger className={`bg-transparent w-full sm:py-5 border-[#D5D5D5] border rounded-full appearance-none outline-none text-sm`}>
+                <SelectTrigger className={`bg-transparent w-full py-3 sm:py-5 border-[#D5D5D5] border rounded-full appearance-none outline-none text-xs sm:text-sm`}>
                     <SelectValue placeholder={placeholder} />
                 </SelectTrigger>
                 <SelectContent>
@@ -112,6 +113,7 @@ const StyledSelect2: React.FC<{
 const FileShare: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
     const [selectionType, setSelectionType] = useState<'For all' | 'For selective Students' | null>(null);
     const [selectedStudents, setSelectedStudents] = useState<Set<string>>(new Set());
+    const [openModal, setOpenModal] = useState<string | null>(null);
     const [studentSearch, setStudentSearch] = useState(''); // State for search input
 
     const handleSelectStudent = (studentId: string) => {
@@ -127,110 +129,116 @@ const FileShare: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
     );
 
     return (
-        // Using smaller max-w-lg as requested
-        <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-lg">
-            <div className="p-4 bg-[#F9FAFB]">
-                <h1 className="text-lg sm:text-xl font-medium text-black mb-2">
-                    File Sharing
-                </h1>
+        <div className='relative'>
 
-                <div className="flex flex-wrap gap-4 justify-between items-center mb-4">
-                    <div className="flex items-center space-x-4 sm:space-x-6 lg:space-x-8">
-                        {(['For all', 'For selective Students'] as const).map((option) => {
-                            const isSelected = selectionType === option;
-                            return (
-                                <label
-                                    key={option}
-                                    className="flex items-center gap-2 cursor-pointer md:text-base text-sm"
-                                    onClick={() => setSelectionType(option)}
-                                >
-                                    <div className="relative">
-                                        <div
-                                            className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0
+            <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-lg">
+                <div className="p-4 bg-[#F9FAFB]">
+                    <h1 className="text-lg sm:text-xl font-medium text-black mb-2">
+                        File Sharing
+                    </h1>
+
+                    <div className="flex flex-wrap gap-4 justify-between items-center mb-2 sm:mb-4">
+                        <div className="flex items-center space-x-4 sm:space-x-6 lg:space-x-8">
+                            {(['For all', 'For selective Students'] as const).map((option) => {
+                                const isSelected = selectionType === option;
+                                return (
+                                    <label
+                                        key={option}
+                                        className="flex items-center gap-2 cursor-pointer md:text-base text-sm"
+                                        onClick={() => setSelectionType(option)}
+                                    >
+                                        <div className="relative">
+                                            <div
+                                                className={`w-4 h-4 rounded-full border-2 flex items-center justify-center flex-shrink-0
                                             ${isSelected ? 'border-[#3366FF] bg-[#3366FF]' : 'bg-white border-gray-400'}`}
-                                        >
-                                            {isSelected && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                                            >
+                                                {isSelected && <div className="w-2 h-2 bg-white rounded-full"></div>}
+                                            </div>
+                                            <input
+                                                type="radio"
+                                                name="shareType"
+                                                value={option}
+                                                checked={isSelected}
+                                                onChange={() => setSelectionType(option)}
+                                                className="absolute opacity-0 w-0 h-0" // Visually hidden
+                                            />
                                         </div>
-                                        <input
-                                            type="radio"
-                                            name="shareType"
-                                            value={option}
-                                            checked={isSelected}
-                                            onChange={() => setSelectionType(option)}
-                                            className="absolute opacity-0 w-0 h-0" // Visually hidden
-                                        />
-                                    </div>
-                                    {option}
-                                </label>
-                            );
-                        })}
-                    </div>
-                    <button className="px-2 py-3 text-sm text-white bg-[#FF3366] rounded-full hover:bg-pink-600 transition-colors">
-                        Create new group
-                    </button>
-                </div>
-
-                {/* Filters with Labels */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-                    <StyledSelect2
-                        defaultValue="all"
-                        placeholder="Class"
-                        items={[{ value: "all", label: "Option 1" }, { value: "batch1", label: "Batch 1" }]}
-                    />
-                    <StyledSelect2
-                        defaultValue="all"
-                        placeholder="Batch"
-                        items={[{ value: "all", label: "Option 1" }, { value: "batch1", label: "Batch 1" }]}
-                    />
-                    <StyledSelect2
-                        defaultValue="all"
-                        placeholder="Group"
-                        items={[{ value: "all", label: "Option 1" }, { value: "batch1", label: "Batch 1" }]}
-                    />
-                </div>
-
-                {/* Search & Student List - Using your provided structure */}
-                <div className="rounded-2xl space-y-3 flex flex-col">
-                    <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                        <div className="relative flex-1 w-full">
-                            <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-black"><FiSearch className="h-4 w-4" /></span>
-                            <input
-                                type="text"
-                                value={studentSearch}
-                                onChange={(e) => setStudentSearch(e.target.value)}
-                                placeholder={`Search Student`}
-                                className="placeholder:text-[#6B7280] w-full rounded-full border-2 border-[#6b7280] py-2.5 pl-8 pr-3 items-center text-[#6B7280] leading-tight focus:bg-white focus:outline-none focus:border-black"
-                            />
+                                        {option}
+                                    </label>
+                                );
+                            })}
                         </div>
-                        <div className="relative w-full sm:w-auto">
-                            <StyledSelect
-                                defaultValue="all"
-                                placeholder="Filter"
-                                items={[{ value: "all", label: "1st STD" }, { value: "batch1", label: "Batch 1" }]}
-                            />
+                        <button onClick={() => setOpenModal("createGroup")} className="px-2 py-3 text-sm text-white bg-[#FF3366] rounded-full hover:bg-pink-600 transition-colors">
+                            Create new group
+                        </button>
+                    </div>
+
+                    {/* Filters with Labels */}
+                    <div className="grid grid-cols-3 gap-1.5 sm:gap-3 mb-2 sm:mb-4">
+                        <StyledSelect2
+                            defaultValue="all"
+                            placeholder="Class"
+                            items={[{ value: "all", label: "Option 1" }, { value: "batch1", label: "Batch 1" }]}
+                        />
+                        <StyledSelect2
+                            defaultValue="all"
+                            placeholder="Batch"
+                            items={[{ value: "all", label: "Option 1" }, { value: "batch1", label: "Batch 1" }]}
+                        />
+                        <StyledSelect2
+                            defaultValue="all"
+                            placeholder="Group"
+                            items={[{ value: "all", label: "Option 1" }, { value: "batch1", label: "Batch 1" }]}
+                        />
+                    </div>
+
+                    {/* Search & Student List - Using your provided structure */}
+                    <div className="rounded-2xl space-y-3 flex flex-col">
+                        <div className="flex flex-wrap items-center gap-2 justify-center">
+                            <div className="relative flex-1 w-auto">
+                                <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-black"><FiSearch className="h-4 w-4" /></span>
+                                <input
+                                    type="text"
+                                    value={studentSearch}
+                                    onChange={(e) => setStudentSearch(e.target.value)}
+                                    placeholder={`Search Student`}
+                                    className="w-full rounded-full border-2 border-[#6b7280] py-1.5 sm:py-2.5 pl-8 pr-3 items-center text-[#6B7280] leading-tight focus:bg-white focus:outline-none focus:border-black"
+                                />
+                            </div>
+                            <div className="relative w-auto">
+                                <StyledSelect
+                                    defaultValue="all"
+                                    placeholder="Filter"
+                                    items={[{ value: "all", label: "1st STD" }, { value: "batch1", label: "Batch 1" }]}
+                                />
+                            </div>
+                        </div>
+                        {/* Scrollable list */}
+                        <div className="space-y-1.5 h-65 overflow-y-auto custom-scrollbar-thin pr-1">
+                            {filteredStudents.map(item => (
+                                <SelectableItemCard
+                                    key={item.id}
+                                    item={item}
+                                    isSelected={selectedStudents.has(item.id)}
+                                    onSelect={() => handleSelectStudent(item.id)}
+                                />
+                            ))}
                         </div>
                     </div>
-                    {/* Scrollable list */}
-                    <div className="space-y-1.5 h-65 overflow-y-auto custom-scrollbar-thin pr-1">
-                        {filteredStudents.map(item => (
-                            <SelectableItemCard
-                                key={item.id}
-                                item={item}
-                                isSelected={selectedStudents.has(item.id)}
-                                onSelect={() => handleSelectStudent(item.id)}
-                            />
-                        ))}
+
+                    {/* Confirm Button */}
+                    <div className="mt-2 flex justify-center">
+                        <button className="w-full max-w-33 px-4 py-2.5 text-base text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-colors">
+                            Share
+                        </button>
                     </div>
                 </div>
-
-                {/* Confirm Button */}
-                <div className="mt-2 flex justify-center">
-                    <button className="w-full max-w-33 px-4 py-2.5 text-base text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-colors">
-                        Share
-                    </button>
-                </div>
-            </div>
-        </TeacherB2CBaseModal>
+                <CreateGroupPopup
+                    isOpen={openModal === "createGroup"}
+                    onClose={() => setOpenModal(null)}
+                />
+            </TeacherB2CBaseModal>
+        </div>
     );
 };
 
