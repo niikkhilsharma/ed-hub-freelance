@@ -29,7 +29,7 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
             <div className={`bg-[#f9fafb]  ${isOpen ? "rounded-t-xl border-t border-x" : "rounded-xl border"} box-border`}>
               <button
                 onClick={() => toggleDropdown(filter.id)}
-                className="text-xs sm:text-sm px-3 py-2 cursor-pointer flex items-center gap-2 w-full"
+                className="text-xs  sm:text-sm px-3 py-2 cursor-pointer flex items-center flex-nowrap gap-2 w-full whitespace-nowrap"
               >
                 {filter.label}
                 {isOpen ? <FiChevronUp size={14} /> : <FiChevronDown size={14} />}
@@ -57,8 +57,8 @@ const Filters: FC<FiltersProps> = ({ filters }) => {
 // Main SearchFilter component
 interface SearchFilterProps {
   filters: Filter[];
-  bg?: String;
-  placeHolder?: String;
+  bg?: string;
+  placeHolder?: string;
 }
 
 const SearchFilter: FC<SearchFilterProps> = ({ filters, bg, placeHolder }) => {
@@ -70,7 +70,7 @@ const SearchFilter: FC<SearchFilterProps> = ({ filters, bg, placeHolder }) => {
         <FiSearch size={20} className="text-black mr-2" />
         <input
           type="text"
-          placeholder="Search"
+          placeholder={placeHolder || "Search"}
           className="w-full bg-transparent outline-none text-sm"
         />
       </div>

@@ -45,16 +45,16 @@ export const TeacherB2CBaseModal: React.FC<BaseModalProps> = ({
             {isOpen && (
                 <div
                     onClick={onClose}
-                    className="fixed inset-0 bg-[#0000004a] flex items-start justify-center z-50 overflow-y-auto"
+                    className="fixed inset-0 z-50 bg-[#0000004a] overflow-y-auto"
                 >
-                    <div className="min-h-screen w-full flex justify-center p-4">
+                    <div className="flex flex-col min-h-screen justify-center items-center p-4">
                         <motion.div
                             onClick={(e) => e.stopPropagation()}
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.2 }}
-                            className={`bg-white rounded-3xl w-full ${maxWidth} overflow-hidden`}
+                            className={`bg-white rounded-3xl w-full ${maxWidth} overflow-hidden h-fit my-auto`}
                         >
                             {children}
                         </motion.div>

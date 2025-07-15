@@ -5,7 +5,6 @@ import { FiCheck, FiSearch } from 'react-icons/fi';
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
 import Image from 'next/image';
-import { MdOutlineDone } from 'react-icons/md';
 
 const students = [...Array(5)].map((_, i) => ({
   id: i,
@@ -16,7 +15,7 @@ const students = [...Array(5)].map((_, i) => ({
   avatar: '/common-images/full-student.jpg', // Replace this with actual path
 }));
 
-const CreateGroupPopup: React.FC<PopupPropB2CTeacher> = ({
+const ManageGroupPopup: React.FC<PopupPropB2CTeacher> = ({
   isOpen,
   onClose,
 }) => {
@@ -89,10 +88,14 @@ const CreateGroupPopup: React.FC<PopupPropB2CTeacher> = ({
         </div>
 
         {/* Create Button */}
-        <div className="pt-2 flex justify-center">
+        <div className="pt-2 flex gap-2 justify-center">
+          <button className="px-4 bg-[#ff33661a] text-[#ff3366] py-2.5 rounded-full text-sm font-medium"
+          onClick={onClose}>
+            Delete Group
+          </button>
           <button className="px-4 bg-[#3366ff] text-white py-2.5 rounded-full text-sm font-medium"
           onClick={onClose}>
-            Create
+            Apply Changes
           </button>
         </div>
       </div>
@@ -100,4 +103,4 @@ const CreateGroupPopup: React.FC<PopupPropB2CTeacher> = ({
   );
 };
 
-export default CreateGroupPopup;
+export default ManageGroupPopup;
