@@ -347,7 +347,7 @@ export function CreateTestPage({testType, currentTestStep = 1 } : { testType: st
 			<Header />
 			<div className="bg-gray-100">
 
-				<GoBack label={testType === "Test" ? "BW Test" : testType} currentStep={currentStep} />
+				<GoBack label={testType} currentStep={currentStep} />
 
 				<main className="flex-grow max-w-screen-xl mx-auto p-6 lg:p-8">
 					<CreateBWTestContent currentStep={currentStep} setCurrentStep={setCurrentStep} testType={testType}/>
@@ -385,7 +385,7 @@ const GoBack: React.FC<{
 					<FiArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
 				</button>
 				{currentStep === 1 && <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366] flex gap-2">
-					Create {label}
+					Create {label === "Test" ? "BW Test" : label}
 				</h1>}
 			</div>
 

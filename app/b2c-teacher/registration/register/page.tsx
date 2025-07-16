@@ -214,7 +214,7 @@ export default function RegisterPage() {
 
                 <div className="flex justify-center items-center mt-4 text-sm">
                   <div className="flex">
-                    <p>Already Have Aan Account?</p>
+                    <p>Already Have an Account?</p>
                     <Link
                       href={"/b2c-teacher/registration/login"}
                       className="ml-2 text-[#F9326F] hover:underline"

@@ -62,7 +62,7 @@ const sampleChapterSubTabs: ChapterSubTab[] = [
 ];
 
 const sampleChapterAccordions: ChapterAccordionItem[] = Array.from(
-    { length: 6 },
+    { length: 20 },
     (_, i) => ({
         id: `acc${i + 1}`,
         name: "Chapter Name",
@@ -175,8 +175,8 @@ const ChapterAccordion: React.FC<{
                 <span className="text-sm md:text-base lg:text-lg">{item.name}</span>
                 {isOpen ? (
                     <div className="flex gap-2 text-[#6B7280] text-[10px] sm:text-xs items-center">
-                        <p>Periods: 18</p>
-                        <p>Marks: 20</p>
+                        <p>Duration : 5 Hrs/Mins</p>
+                        <p>Topic Name: Name</p>
                         <svg
                             width={20}
                             height={20}
