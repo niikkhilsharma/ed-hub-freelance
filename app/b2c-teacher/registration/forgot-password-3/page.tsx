@@ -79,7 +79,7 @@ export default function ForgotPassword3() {
 										/>
 									</div>
 
-									<Button className="self-center rounded-full w-36 h-12 font-light text-base text-white" onClick={() => { Router.push("b2c-teacher/registration/login") }}>
+									<Button className="self-center rounded-full w-36 h-12 font-light text-base text-white" onClick={() => { Router.push("/b2c-teacher/registration/login") }}>
 										Confirm
 									</Button>
 								</div>

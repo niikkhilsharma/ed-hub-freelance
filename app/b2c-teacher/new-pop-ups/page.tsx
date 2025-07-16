@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import FileShare from "./popupComponent/FileShare";
+import UploadFilePopup from "./popupComponent/UploadFile";
+import AILoadingPopup from "./popupComponent/AILoading";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -69,11 +71,19 @@ export const TeacherB2CBaseModal: React.FC<BaseModalProps> = ({
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
     const [openModal, setOpenModal] = useState<string | null>(null);
-    // const [showActionsPopup, setShowActionsPopup] = useState(false);
+    const [isAiLoading, setIsAiLoading] = useState(false);
+    const handleOpenAiLoading = () => {
+        setIsAiLoading(true);
+        // After 5 seconds, "finish" the process and hide the loader
+        setTimeout(() => {
+            setIsAiLoading(false);
+        }, 3000);
+    };
 
     const modalButtons = [
-        { id: "fileShare", label: "File Sharing" },
-        // here you can add pop id and it's label to show it on the page 
+        { id: "fileShare", label: "File Sharing", action: () => setOpenModal("fileShare") },
+        { id: "uploadFile", label: "Upload File Popup", action: () => setOpenModal("uploadFile") },
+        { id: "aiLoading", label: "AI is Loading...", action: handleOpenAiLoading },
     ];
 
     return (
@@ -85,7 +95,7 @@ export default function AllTeacherB2CPopups() {
                 {modalButtons.map((btn) => (
                     <button
                         key={btn.id}
-                        onClick={() => setOpenModal(btn.id)}
+                        onClick={btn.action}
                         className="bg-white text-[#6B7280] font-semibold py-3 px-4 rounded-lg shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
                     >
                         {btn.label}
@@ -98,6 +108,13 @@ export default function AllTeacherB2CPopups() {
             <FileShare
                 isOpen={openModal === "fileShare"}
                 onClose={() => setOpenModal(null)}
+            />
+            <UploadFilePopup
+                isOpen={openModal === "uploadFile"}
+                onClose={() => setOpenModal(null)}
+            />
+             <AILoadingPopup
+                isOpen={isAiLoading}
             />
 
         </div>

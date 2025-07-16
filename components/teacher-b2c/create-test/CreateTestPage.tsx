@@ -347,7 +347,7 @@ export function CreateTestPage({testType} : {testType:string}) {
 			<Header />
 			<div className="bg-gray-100">
 
-				<GoBack label={testType} currentStep={currentStep} />
+				<GoBack label={testType === "Test" ? "BW Test" : testType} currentStep={currentStep} />
 
 				<main className="flex-grow max-w-screen-xl mx-auto p-6 lg:p-8">
 					<CreateBWTestContent currentStep={currentStep} setCurrentStep={setCurrentStep} testType={testType}/>
