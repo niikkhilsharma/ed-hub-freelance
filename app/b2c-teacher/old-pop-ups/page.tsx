@@ -455,23 +455,19 @@ const ReScheduleMeetingTeacherModal: React.FC<BaseModalProps> = ({
 // --- 10. pin
 const PinModal: React.FC<BaseModalProps> = ({ isOpen, onClose }) => {
   return (
-    <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-[200px]">
-      <div className=" rounded-4xl p-6">
+    <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-[150px] w-full rounded-xl py-3 cursor-pointer">
         <div className="flex justify-center items-start">
-          <h2 className="text-xl  font-medium">Pin Chat</h2>
+          <h2 className="text-base  font-medium">Pin Chat</h2>
         </div>
-      </div>
     </BaseModal>
   );
 };
 const UnpinModal: React.FC<BaseModalProps> = ({ isOpen, onClose }) => {
   return (
-    <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-[200px]">
-      <div className="p-6">
+    <BaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-[150px] w-full rounded-xl py-3 cursor-pointer">
         <div className="flex justify-center items-start">
-          <h2 className="text-xl font-medium">Unpin Chat</h2>
+          <h2 className="text-base font-medium">Unpin Chat</h2>
         </div>
-      </div>
     </BaseModal>
   );
 };

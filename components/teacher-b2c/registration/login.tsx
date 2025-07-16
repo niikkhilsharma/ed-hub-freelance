@@ -90,7 +90,7 @@ export default function TeacherLoginForm() {
                   </div>
                 </div>
 
-                <Button className="self-center rounded-full w-36 h-12 font-light text-base text-white" onClick={()=>{Router.push("b2c-teacher/teacher-flow/dashboard")}}>
+                <Button className="self-center rounded-full w-36 h-12 font-light text-base text-white" onClick={()=>{Router.push("/b2c-teacher/teacher-flow/dashboard")}}>
                   Login
                 </Button>
               </div>

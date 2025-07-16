@@ -4,14 +4,10 @@ import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { FiEyeOff, FiEye } from "react-icons/fi";
 import { useRouter } from "next/navigation";
 
 export default function ForgotPassword() {
-  const [showPassword, setShowPassword] = useState(false);
   const Router = useRouter();
   return (
 	<MaxWidthWrapper> 
@@ -71,7 +67,7 @@ export default function ForgotPassword() {
 				  />
 				</div>
 
-				<Button className="self-center rounded-full w-36 h-12 font-light text-base text-white" onClick={()=>{Router.push("b2c-teacher/registration/forgot-password-3")}}>
+				<Button className="self-center rounded-full w-36 h-12 font-light text-base text-white" onClick={()=>{Router.push("/b2c-teacher/registration/forgot-password-3")}}>
 				  Proceed
 				</Button>
 			  </div>

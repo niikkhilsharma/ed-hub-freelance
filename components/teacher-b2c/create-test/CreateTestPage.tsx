@@ -338,9 +338,9 @@ export const NumOptionsInput: React.FC<{
 };
 
 // --- Main Page Export ---
-export function CreateTestPage({testType} : {testType:string}) {
+export function CreateTestPage({testType, currentTestStep = 1 } : { testType: string, currentTestStep?: number }) {
 
-	const [currentStep, setCurrentStep] = useState<number>(1);
+	const [currentStep, setCurrentStep] = useState<number>(currentTestStep);
 
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -385,7 +385,7 @@ const GoBack: React.FC<{
 					<FiArrowLeft className="w-5 h-5 sm:w-6 sm:h-6" />
 				</button>
 				{currentStep === 1 && <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366] flex gap-2">
-					Create {label}
+					Create {label === "Test" ? "BW Test" : label}
 				</h1>}
 			</div>
 
