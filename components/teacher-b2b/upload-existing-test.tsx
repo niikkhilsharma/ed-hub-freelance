@@ -158,7 +158,7 @@ export default function SelectExistingTestPage() {
 						aria-label="Go back">
 						<FiArrowLeft className="w-6 h-6" />
 					</button>
-					<h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Select Existing Test</h1>
+					<h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">Select Existing Quiz</h1>
 				</div>
 			</div>
 			<MaxWidthWrapper>
