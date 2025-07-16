@@ -34,16 +34,40 @@ const TestItemStats: React.FC<{ test: Test }> = ({ test }) => (
     </div>
 );
 
-const ActionsMenu: React.FC<{ type: TestType }> = ({ type }) => {
+const ActionsMenu: React.FC<{ type: TestType, testType?: "BW Test" | "Assessment" | "Quiz"; }> = ({ type, testType }) => {
     const actions = {
-        scheduled: [{ label: "View", icon: FiEye }, { label: "Edit", icon: FiEdit2 }, { label: "Delete", icon: FiTrash2 }],
+        scheduled: [{ label: "View", icon: FiEye, testStep: "3" }, { label: "Edit", icon: FiEdit2, testStep: "1" }, { label: "Delete", icon: FiTrash2 }],
         completed: [{ label: "View", icon: FiEye }, { label: "Edit", icon: FiEdit2 }, { label: "Delete", icon: FiTrash2 }],
-        saved: [{ label: "Edit", icon: FiEdit2 }, { label: "Delete", icon: FiTrash2 }],
+        saved: [{ label: "Edit", icon: FiEdit2, testStep: "2" }, { label: "Delete", icon: FiTrash2 }],
     };
+
+    const testLabel = () => {
+        switch (testType) {
+            case "BW Test":
+                return "test";
+            case "Assessment":
+                return "assessment";
+            case "Quiz":
+                return "quiz";
+            default:
+                return "";
+        }
+    }
+
+    const label = testLabel();
+
+    const Router = useRouter();
+    const Redirect = (testStep: string) => Router.push(`/b2c-teacher/teacher-flow/create-${label}?step=${testStep}`);
     return (
         <div className="bg-white p-1.5 rounded-2xl w-36 shadow-lg flex flex-col gap-1">
             {(actions[type] || []).map(({ label, icon: Icon }) => (
-                <button key={label} className="w-full flex items-center justify-center gap-1.5 text-left px-3 py-2 rounded-xl text-sm text-[#3366FF] bg-[#3366FF1A] hover:bg-blue-100 cursor-pointer">
+                <button onClick={() => {
+                    if(label === "View") Redirect("3");
+                    else if(label === "Edit") switch(type){
+                        case 'scheduled': Redirect("1"); break;
+                        case 'saved': Redirect("2"); break;
+                    }
+                }} key={label} className="w-full flex items-center justify-center gap-1.5 text-left px-3 py-2 rounded-xl text-sm text-[#3366FF] bg-[#3366FF1A] hover:bg-blue-100 cursor-pointer">
                     <Icon className="w-4 h-4" /> <span className="">{label}</span>
                 </button>
             ))}
@@ -92,7 +116,7 @@ const TestListItem: React.FC<{ test: Test, type: TestType, testType?: "BW Test" 
                     {type !== "completed" && (
                         <Popover>
                             <PopoverTrigger asChild><button aria-label="Actions"><Info className="h-6 w-6 cursor-pointer text-[#6B7280] hover:text-gray-800" /></button></PopoverTrigger>
-                            <PopoverContent className="w-auto p-0 border-none shadow-none"><ActionsMenu type={type} /></PopoverContent>
+                            <PopoverContent className="w-auto p-0 border-none shadow-none"><ActionsMenu type={type} testType={testType}/></PopoverContent>
                         </Popover>
                     )}
 
