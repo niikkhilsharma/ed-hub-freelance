@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Header from '@/components/teacher-b2b/layout/Header'
+import Header from '@/components/layout/header1'
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
-import MaxWidthWrapper from "@/components/max-width-wrapper";
 
 interface NotificationItemData {
   id: number;
@@ -29,12 +28,6 @@ const initialNotifications: NotificationItemData[] = Array.from(
 export default function NotificationsPage({ imageSrc }: { imageSrc?: string }) {
   const [notifications] = useState<NotificationItemData[]>(initialNotifications);
 
-  const headerUser = {
-    name: "Shlok Agheda",
-    role: "Student",
-    avatarSrc: imageSrc || "/placeholder-avatar-student.jpg",
-  };
-
   return (
    
     <div className="min-h-screen relative flex flex-col overflow-x-hidden">
@@ -52,15 +45,15 @@ export default function NotificationsPage({ imageSrc }: { imageSrc?: string }) {
 
       {/* ✅ Foreground content */}
       <div className="relative z-10">
-        <Header user={headerUser} />
+        <Header />
       </div>
 
-      <main className="relative z-10 flex-grow w-full px-4 sm:px-6 lg:px-10 py-6">
-        <div className="max-w-5xl mx-auto space-y-4">
+      <main className="relative z-10 flex-grow w-full px-4 sm:px-6 py-6 md:py-12">
+        <div className="max-w-5xl mx-auto space-y-3">
           {notifications.map((notification) => (
             <div
               key={notification.id}
-              className="flex items-start gap-4 p-4 bg-[#F9FAFB] rounded-3xl hover:shadow-sm cursor-pointer border border-[#E5E7EB]"
+              className="flex items-start gap-4 p-4 bg-[#F9FAFB] rounded-2xl hover:shadow-md cursor-pointer border border-[#E5E7EB]"
             >
               <Image
                 src={notification.iconSrc}
@@ -70,7 +63,7 @@ export default function NotificationsPage({ imageSrc }: { imageSrc?: string }) {
                 className="w-16 h-16"
               />
               <div className="flex-1">
-                <h3 className="text-md font-semibold text-[#000000] mb-1">
+                <h3 className="text-md font-medium text-[#000000] mb-1">
                   {notification.title}
                 </h3>
                 <p className="text-[0.80rem] text-[#777777] line-clamp-2">
