@@ -277,9 +277,9 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
       {/* <IndividualScoresPanel scores={summary.individualScores} /> */}
 
       {/* View Detailed Report Button */}
-      <button className={`w-full flex items-center justify-center  gap-1 sm:gap-2  py-2 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
-        <IoTimeOutline className={`w-5 h-5 ${COLOR_RATING_STARS}`} />
-        <span className={` text-sm sm:text-md font-medium  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
+      <button className={`w-full flex items-center justify-center  gap-1 sm:gap-2  py-3 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
+        <IoTimeOutline className={`w-6 h-6 ${COLOR_RATING_STARS}`} />
+        <span className={` text-lg sm:text-md font-medium  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
       </button>
 
       {/* Ratings Section */}

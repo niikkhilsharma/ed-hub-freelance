@@ -33,7 +33,7 @@ const dummyFiles: ManagedFile[] = [
   { id: "5", name: "File Name", type: "pdf", size: "300 KB" },
   { id: "6", name: "File Name", type: "pdf", size: "300 KB" },
   { id: "7", name: "File Name", type: "pdf", size: "300 KB" },
-  { id: "8", name: "File Name", type: "pdf", size: "300 KBB" },
+  { id: "8", name: "File Name", type: "pdf", size: "300 KB" },
   { id: "9", name: "File Name", type: "pdf", size: "300 KB" },
 ];
 
@@ -72,7 +72,7 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
           {file.name}
         </span>
       </div>
-      <span className="text-sm text-gray-500 flex-shrink-0 ml-4 sm:justify-self-center">
+      <span className="text-sm text-gray-500 flex-shrink-0 ml-4 justify-self-end sm:justify-self-center">
         {file.size}
       </span>
       <div className="flex gap-4 text-gray-500 justify-self-end">
@@ -169,13 +169,13 @@ const FileManagementContent: React.FC = () => {
             </p>
           </div>
         )}
-        <button
+        {/* <button
           onClick={handleUploadClick}
           className="px-5 ml-auto mt-4  text-center bg-[#FFCC00] text-white font-semibold  py-3 rounded-full shadow-lg hover:bg-yellow-300 transition-colors flex items-center justify-center gap-2 text-sm"
           aria-label="Upload new file"
         >
           Upload
-        </button>
+        </button> */}
       </div>
     </div>
   );

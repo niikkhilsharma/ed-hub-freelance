@@ -22,7 +22,7 @@ export default function StudentListPage() {
 				<button className="px-1.5 text-black hover:text-[#3366FF] focus:outline-none">
 					<FiArrowLeft className="w-5 h-5 font-extrabold cursor-pointer" />
 				</button>
-				<h1 className="text-lg font-bold text-[#FF3366]">DMIT List</h1> {/* Or dynamic course name */}
+				<h1 className="text-lg font-bold text-[#FF3366]">DMIT Test</h1> {/* Or dynamic course name */}
 			</div>
       </div>
 
