@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/header1";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiDownload, FiPaperclip, FiSend } from "react-icons/fi";
@@ -150,11 +150,6 @@ export default function ChatPage() {
   const [newMessage, setNewMessage] = useState("");
   const chatEndRef = useRef<HTMLDivElement>(null); // For scrolling to bottom
 
-  const headerUser = {
-    name: "Teacher Name",
-    role: "Student",
-    avatarSrc: "/teacher-b2b/profile.png",
-  };
   const selectedTeacher = teachersList.find((t) => t.id === activeTeacherId);
 
   const handleTeacherSelect = (teacherId: string) => {
@@ -185,7 +180,7 @@ export default function ChatPage() {
 
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col">
-      <Header user={headerUser} />
+      <Header activeState="Chat" />
       <MaxWidthWrapper>
         <div className="bg-gray-100">
           <main className=" py-2  sm:p-6 lg:p-8 flex gap-5 items-start">
@@ -290,7 +285,6 @@ export default function ChatPage() {
           </main>
         </div>
       </MaxWidthWrapper>
-
       <Footer />
     </div>
   );
