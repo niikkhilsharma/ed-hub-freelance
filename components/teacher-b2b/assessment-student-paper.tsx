@@ -185,9 +185,9 @@ const SummaryPanel: React.FC<{ summary: AssessmentSummaryData }> = ({ summary })
       </div>
 
       {/* View Detailed Report Button */}
-      <button className={`w-full flex items-center justify-center gap-2 py-1.5 ${BACKGROUND_LIGHT_GRAY_BOX} rounded-xl hover:bg-gray-200 transition-colors`}>
-        <IoTimeOutline className={`w-5 h-5 ${COLOR_RATING_STARS}`} />
-        <span className={`text-lg  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
+      <button className={`w-full flex items-center justify-center gap-2 py-4 ${BACKGROUND_LIGHT_GRAY_BOX} rounded-xl hover:bg-gray-200 transition-colors`}>
+        <IoTimeOutline className={`w-6 h-6 ${COLOR_RATING_STARS}`} />
+        <span className={`text-2xl  ${COLOR_RATING_STARS}`}>View Detailed Report</span>
       </button>
 
       {/* Ratings Section */}
