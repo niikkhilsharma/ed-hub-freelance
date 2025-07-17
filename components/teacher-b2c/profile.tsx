@@ -2,11 +2,12 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Header from "@/components/layout/Header"; // Assuming Header is in this path
+import Header from "@/components/layout/header1"; // Assuming Header is in this path
 import Footer from "@/components/layout/Footer"; // Assuming Footer is in this path
 import { FiArrowLeft, FiEdit2 } from "react-icons/fi"; // Edit icon
 import { Button } from "../ui/button";
 import Newsletter from "../common-components/Newsletter";
+import { useRouter } from "next/navigation";
 // import MaxWidthWrapper from '../max-width-wrapper'
 
 // Helper Input Component
@@ -71,16 +72,23 @@ export default function EditStudentProfilePage() {
 		avatarSrc: "/teacher-b2b/profile.png", // UPDATE PATH
 	};
 
+	const router = useRouter();
+	
+		const handleBack = () => {
+			router.push('/teacher-b2b/teacher-flow/dashboard');
+		};
+
 	return (
 		<>
-			<Header user={headerUser} />
+			<Header />
 			<div className="bg-[#eeeeee] min-h-screen flex flex-col">
 				<main className="flex-grow w-full max-w-screen-xl mx-auto p-4 sm:p-6">
 					<div className="bg-white rounded-2xl p-6  md:p-8">
 						{/* Profile Header Section */}
 						<div className="flex gap-2 ">
 							{/* Back Button */}
-							<button className="hover:text-blue-600 focus:outline-none">
+							<button className="hover:text-blue-600 focus:outline-none"
+							onClick={handleBack}>
 								<FiArrowLeft className="w-6 h-6" />
 							</button>
 							<h1 className="text-md font-semibold ">Edit Profile</h1>
@@ -94,9 +102,9 @@ export default function EditStudentProfilePage() {
 										alt={formData.name}
 										width={80}
 										height={80}
-										className="w-20 h-20 rounded-full object-fill"
+										className="w-20 h-20onClick={handleBack} rounded-full object-fill"
 									/>
-									<button className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full shadow-md  focus:outline-none">
+									<button className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full  focus:outline-none">
 										<FiEdit2 className="w-3 h-3" />
 									</button>
 								</div>
@@ -140,7 +148,7 @@ export default function EditStudentProfilePage() {
 											strokeLinejoin="round"
 										/>
 									</svg>
-									<h3 className="text-sm font-light">Copy Code</h3>
+									<h3 className="text-xs md:text-sm whitespace-nowrap font-light">Copy Code</h3>
 								</div>
 							</div>
 						</div>
@@ -218,7 +226,8 @@ export default function EditStudentProfilePage() {
 							</div>
 						</form>
 						<div className="w-full flex pt-6 justify-center">
-							<Button className="px-[15%] rounded-full text-xl h-11 mx-auto">
+							<Button className="px-[15%] rounded-full text-xl h-11 mx-auto"
+							onClick={handleBack}>
 								Save
 							</Button>
 						</div>

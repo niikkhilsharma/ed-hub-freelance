@@ -1,17 +1,13 @@
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/header1";
 import GoBack from "@/components/principal/goback";
 import TeachingForm from "@/components/teacher-b2c/manage-course-teach";
 
 const ManageTeachCourse = () => {
-    const headerUser = {
-    name: "Shlok Agheda",
-    role: "Student",
-    avatarSrc: "/teacher-b2b/profile.png",
-  }; 
+
     return (
         <>
-            <Header user={headerUser}/>
+            <Header activeState="Dashboard"/>
             <GoBack GoBackHeading="Manage Your Course" />
             <TeachingForm />
             <Footer />

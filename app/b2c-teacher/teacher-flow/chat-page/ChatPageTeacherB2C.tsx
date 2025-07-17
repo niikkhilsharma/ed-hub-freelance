@@ -303,7 +303,7 @@ const onBackClick = () => {
 
                     <div
                         className="w-full relative z-0 lg:w-[65%] bg-[#e3e3e3] rounded-2xl sm:rounded-3xl flex flex-col 
-                   h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-4rem)]">
+                   h-[calc(80vh)] sm:h-[calc(100vh-10rem)] lg:h-[calc(100vh-6rem)]">
                         <div
                             className=" absolute -z-10 opacity-10 rounded-2xl inset-0"
                             style={{

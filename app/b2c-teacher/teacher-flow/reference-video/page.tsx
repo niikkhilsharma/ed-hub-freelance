@@ -1,4 +1,4 @@
-import ReferenceVideoPage from "@/components/teacher-b2b/reference-video";
+import ReferenceVideoPage from "./components/ReferenceVideo";
 
 export default function CourseDetail(){
     return <div>
