@@ -69,7 +69,7 @@ export default function Header({ user = headerUser, isAskme = true, activeState 
 		},
 		{
 			icon: GoDatabase,
-			label: 'Materials',
+			label: 'Material',
 			href: '/student-b2b/student-dashboard/my-course', // Note: This href is the same as Students
 		},
 		{
@@ -90,7 +90,7 @@ export default function Header({ user = headerUser, isAskme = true, activeState 
 	}
 
 	return (
-		<header className={`bg-[#3366FF] text-white sticky top-0 z-50 print:hidden px-4 sm:px-6 lg:px-8`}>
+		<header className={`bg-[#3366FF] text-white print:hidden px-4 sm:px-6 lg:px-8`}>
 			<div className={` mx-auto h-20 flex justify-between items-center max-w-screen-2xl`}>
 				<div className=" flex items-center gap-4">
 					{/* Mobile Menu Toggle Button (Hamburger) */}
