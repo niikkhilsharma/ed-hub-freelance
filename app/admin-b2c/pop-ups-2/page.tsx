@@ -4,12 +4,6 @@
 import React, { useState, useEffect } from "react";
 import {
     FiX,
-    FiEye,
-    FiEyeOff,
-    FiUploadCloud,
-    FiChevronDown,
-    FiEdit,
-    FiTrash2,
 } from "react-icons/fi";
 import { AnimatePresence, motion } from "framer-motion";
 import ManageAccess from "./components/ManageAccess";

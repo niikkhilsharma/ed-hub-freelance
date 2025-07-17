@@ -5,9 +5,9 @@ import Image from 'next/image'
 import Header from '@/components/teacher-b2b/layout/Header' // Assuming Header is in this path
 import Footer from '@/components/layout/Footer' // Assuming Footer is in this path
 import { FiArrowLeft, FiEdit2 } from 'react-icons/fi' // Edit icon
-import { Button } from '../ui/button'
 import Newsletter from '../common-components/Newsletter'
 import { useRouter } from 'next/navigation'
+import TeacherB2CWrapper from '../teacher-b2c/common-components/TeacherB2CPageWrapper'
 
 // Helper Input Component
 const FormInput = ({
@@ -81,7 +81,7 @@ export default function EditStudentProfilePage() {
 	return (
 		<>
 			<Header user={headerUser} activeState='Dashboard'/>
-			<div className="bg-gray-100 min-h-screen flex flex-col">
+			<TeacherB2CWrapper>
 				<main className="flex-grow w-full max-w-screen-xl mx-auto p-4 sm:p-6">
 					<div className="bg-white rounded-2xl p-6  md:p-8">
 						{/* Profile Header Section */}
@@ -95,7 +95,7 @@ export default function EditStudentProfilePage() {
 						<div
 							className="flex items-center mt-4 mb-8 bg-none rounded-full sm:bg-[url('/teacher-b2b/profile-back.png')] sm:bg-[auto_600px]"
 						>
-							<div className="flex items-start bg-white rounded-r-3xl px-4 py-1">
+							<div className="flex items-start bg-white rounded-r-full px-4 py-1">
 								{/* Avatar and Name */}
 								<div className="relative mt-3   mr-6">
 									<Image
@@ -147,16 +147,14 @@ export default function EditStudentProfilePage() {
 
 								<FormInput label="Pin code" id="pinCode" placeholder="000000" value={formData.pinCode} onChange={handleChange} />
 
-								<Button onClick={() => {
-									router.push('/teacher-b2b/teacher-flow/dashboard');
-								}} className="px-4 h-12 rounded-full text-xl w-full mt-6 md:col-start-2">Save</Button>
 							</div>
 						</form>
+								<button type="button" onClick={handleBack} className="px-4 h-12 rounded-full text-xl w-full mt-6 md:col-start-2">Save</button>
 					</div>
 
 					<Newsletter />
 				</main>
-			</div>
+			</TeacherB2CWrapper>
 			<Footer />
 		</>
 	)

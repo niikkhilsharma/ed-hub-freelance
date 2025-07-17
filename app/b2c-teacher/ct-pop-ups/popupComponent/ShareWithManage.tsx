@@ -1,6 +1,7 @@
 // components/ShareVideoPopup.tsx
 import { ChevronDown, X } from 'lucide-react';
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from '../../new-pop-ups/page';
+import DropdownOptions5 from '@/components/common-components/Dropdown/DropdownOptions';
 
 const ShareWithManageVideoPopup: React.FC<PopupPropB2CTeacher> = ({
   isOpen,
@@ -10,7 +11,7 @@ const ShareWithManageVideoPopup: React.FC<PopupPropB2CTeacher> = ({
     <TeacherB2CBaseModal onClose={onClose} isOpen={isOpen} maxWidth='max-w-[400px]'> 
         <div className=" p-6 relative">
       {/* Close Button */}
-     <button className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black">
+     <button className="absolute top-4 right-4 p-1 text-black bg-black/5 rounded-full hover:text-black" onClick={onClose}>
         <X size={20} />
       </button>
 
@@ -19,26 +20,13 @@ const ShareWithManageVideoPopup: React.FC<PopupPropB2CTeacher> = ({
 
       {/* Select Class */}
       <div className="mb-4">
-        <label className="block mb-1 text-sm font-medium text-black-300">Select Class</label>
-        <div className="relative">
-          <select className="w-full appearance-none bg-[#F9FAFB] border border-[#D5D5D5] rounded-full px-4 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option>Option 1</option>
-            <option>Option 2</option>
-          </select>
-          <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#000000] pointer-events-none" size={18} />
-        </div>
+       <DropdownOptions5 label='Select Class' options='Option 1'/>
+        
       </div>
 
       {/* Select Group */}
       <div className="mb-6">
-        <label className="block mb-1 text-sm font-medium text-black-300">Select Group</label>
-        <div className="relative">
-          <select className="w-full appearance-none border bg-[#F9FAFB]  border-[#D5D5D5] rounded-full px-4 py-2 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option>Option 1</option>
-            <option>Option 2</option>
-          </select>
-          <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#000000] pointer-events-none" size={18} />
-        </div>
+        <DropdownOptions5 label='Select Group' options='Option 1'/>
       </div>
 
       {/* Buttons */}

@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/header1";
 import Footer from "@/components/layout/Footer";
 import ReferenceVideoContentPage from "@/components/teacher-b2b/reference-video-content-page"; // Assuming VideoContentPage.tsx is in the same directory or adjust path
 import { FiArrowLeft, FiPlus } from "react-icons/fi"; // Ensure FiArrowLeft is imported
@@ -21,7 +21,7 @@ export default function RecordingsPage() {
 
   return (
     <div className="bg-[#eeeeee] min-h-screen flex flex-col">
-      <Header user={headerUser} />
+      <Header activeState="Dashboard" />
 
       <div className="bg-gray-100">
         <div className="bg-white">
