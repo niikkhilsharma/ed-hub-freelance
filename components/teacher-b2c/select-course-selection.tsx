@@ -29,37 +29,37 @@ export default function CourseCardPage() {
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
+      batch: 2,
       students: 25,
     },
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
+      batch: 2,
       students: 25,
     },
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
+      batch: 2,
       students: 25,
     },
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
+      batch: 2,
       students: 25,
     },
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
+      batch: 2,
       students: 25,
     },
     {
       image: "/personality.png",
       name: "Course Name",
-      batches: 2,
+      batch: 2,
       students: 25,
     },
   ];
@@ -103,9 +103,9 @@ export default function CourseCardPage() {
       {/* Text section */}
       <div className="flex flex-col gap-1 px-1 text-black">
         <h2 className="font-bold text-lg">{course.name}</h2>
-        <h3 className="text-sm font-medium">
-          No. of Batches:{" "}
-          <span className="text-[#6B7280]">{course.batches}</span>
+        <h3 className="text-sm text-black">
+          No. of Batch:{" "}
+          <span className="text-[#6B7280]">{course.batch}</span>
         </h3>
         <h3 className="text-sm font-medium">
           No. of Students:{" "}

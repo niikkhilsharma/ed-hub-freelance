@@ -64,8 +64,8 @@ type ChatPopProps = {
           className={msg.sender === "Shlok" ? "text-right" : "text-left"}
         >
           <p className="text-sm font-bold text-white mt-1">{msg.sender}</p>
-          <div className="inline-block bg-white px-4 py-2 max-w-[60ch] rounded-2xl shadow text-gray-900">
-            {msg.text}
+          <div className="inline-block bg-white px-4 py-2 max-w-[70ch] rounded-2xl shadow text-gray-900">
+         {msg.text}
           </div>
         </div>
       ))}

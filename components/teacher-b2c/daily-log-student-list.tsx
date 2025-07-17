@@ -60,7 +60,7 @@ export default function CourseCardPage() {
           {batches.map((batch) => (
             <button
               key={batch}
-              className={`px-2 py-1 rounded-2xl font-semibold  text-sm sm:text-lg ${
+              className={`px-2 py-2 rounded-2xl font-semibold  text-sm sm:text-lg ${
                 activeBatch === batch
                   ? 'bg-[#FF3366] text-white'
                   : 'text-[#6B7280] hover:text-black'
@@ -74,7 +74,7 @@ export default function CourseCardPage() {
 
         {/* Filter/Search Row */}
         <div className="flex py-6 flex-wrap gap-3 items-center px-4 pb-4">
-          <div className="flex  w-1/2 items-center gap-2 border-[2px] border-[#6B7280] rounded-full px-3 py-2 bg-white">
+          <div className="flex  w-[43%] items-center gap-2 border-[2px] border-[#6B7280] rounded-full px-3 py-2 bg-white">
             <FaSearch className="text-black " />
             <input
               type="text"

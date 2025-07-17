@@ -85,7 +85,6 @@ const sampleSummaryData: ExtendedAssessmentSummaryData = {
     { id: 'r2', name: 'Critical thinking', score: 3, maxScore: 5 },
     { id: 'r3', name: 'Application of Concept', score: 5, maxScore: 5 },
     { id: 'r4', name: 'Retention', score: 4, maxScore: 5 },
-    { id: 'r4', name: 'Retention', score: 4, maxScore: 5 },
     { id: 'r5', name: 'Logical Reasoning', score: 4, maxScore: 5 },
   ],
 };
@@ -237,6 +236,7 @@ const IndividualScoresPanel: React.FC<{ scores: IndividualSkillScore[] }> = ({ s
           />
           
         </div>
+        <div className="text-sm">{score.percentage}%</div>
       </div>
     ))}
   </div>
@@ -306,7 +306,7 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
             value={feedbackText}
             onChange={(e) => setFeedbackText(e.target.value)}
             placeholder="Text"
-            className={`w-full text-[#6B7280] p-2 bg-[#F9FAFB] sm:h-40 border ${BORDER_GRAY} rounded-2xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
+            className={`w-full text-[#6B7280] mr-2 ml-2 p-2 bg-[#F9FAFB] sm:h-40 border ${BORDER_GRAY} rounded-2xl focus:ring-1 focus:ring-[#3366FF] focus:border-[#3366FF] outline-none text-sm resize-none`}
           />
         </div>
         <button

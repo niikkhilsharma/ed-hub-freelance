@@ -9,7 +9,7 @@ const CourseStudent = () => {
     return (
         <>
             <div className="bg-white rounded-3xl p-4">
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 justify-between">
                         <div className="">
                             <TabSwitch tabs={tabs} selected={activeTab} onChange={setActiveTab} />
                         </div>
