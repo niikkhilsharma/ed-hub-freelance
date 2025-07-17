@@ -111,8 +111,8 @@ export default function StudentSubmittedPapersPage() {
 
 function StudentCard({ student }: { student: any }) {
   return (
-    <div className="flex items-center justify-between bg-[#F9FAFB] px-4 py-6 rounded-2xl shadow-sm border border-[#B0B0B0]">
-      <div className="flex items-center space-x-4">
+    <div className="flex items-center justify-between bg-[#F9FAFB] px-2 py-2 rounded-2xl shadow-sm border border-[#B0B0B0]">
+      <div className="flex items-center space-x-2">
         <Image
           src={student.image}
           alt="avatar"

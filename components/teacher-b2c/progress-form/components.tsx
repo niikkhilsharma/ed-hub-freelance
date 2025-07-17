@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { FaSearch, FaCheckCircle } from "react-icons/fa";
-const students = new Array(8).fill({
+const students = new Array(20).fill({
   name: "Student Name",
   course: "Course Name",
   grade: "Level / Grade",
@@ -17,7 +17,7 @@ export default function AttendanceForm() {
       <div className="w-[40%] space-y-6">
         {/* Details Section */}
         <div>
-          <h3 className="text-lg font-bold text-black bg-[#F9FAFB]  rounded-2xl p-4 ">
+          <h3 className="text-lg font-bold text-black bg-[#E5E7EB]  rounded-2xl p-4 ">
             Details
           </h3>
           <div className="mt-2 space-y-4">
@@ -69,13 +69,13 @@ export default function AttendanceForm() {
             {/* Topics Uncovered */}
             <div>
               <p className="text-lg font-medium">Topics Uncovered</p>
-              <div className="flex flex-wrap flex-col h-20 gap-2 mt-1">
+              <div className="flex flex-wrap flex-col h-25 gap-2 mt-1 ">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <label key={i} className="flex items-center gap-2">
                     <input
                       type="radio"
                       name="uncovered"
-                      className="appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] checked:bg-[#6b7280] checked:border-[#6b7280]"
+                      className="appearance-none w-5 h-5 mb-2 rounded-full border-[4px] border-[#6b7280] checked:bg-[#6b7280] checked:border-[#6b7280]"
                     />
                     <span className="text-sm ">Subtopic {i}</span>
                   </label>
@@ -112,7 +112,7 @@ export default function AttendanceForm() {
 
         {/* Activities Section */}
         <div>
-          <h3 className="text-md font-semibold rounded-full bg-[#E5E7EB] border border-[#e5e7eb] p-4 ">
+          <h3 className="text-md font-semibold rounded-2xl bg-[#E5E7EB] border border-[#e5e7eb] p-4 ">
             Activities Conducted
           </h3>
           <div className="mt-2 space-y-4">
@@ -147,7 +147,7 @@ export default function AttendanceForm() {
       </div>
 
       {/* Right Section – Attendance */}
-      <div className="w-[40%] bg-[#F9FAFB]  space-y-4 p-4 rounded-3xl">
+      <div className="w-[40%] bg-[#F9FAFB] space-y-3 p-4 rounded-3xl">
         <h3 className="text-lg font-semibold  rounded">Attendance</h3>
         {/* Search */}
         <div className="flex  items-center gap-2 border-[2px] border-[#6B7280] rounded-full px-3 py-2 bg-white">
@@ -159,13 +159,13 @@ export default function AttendanceForm() {
           />
         </div>
         {/* Student Cards */}
-        <div className="space-y-3 max-h-[600px] overflow-y-auto pr-2">
+        <div className="space-y-3 max-h-[1200px] overflow-y-auto">
           {students.map((student, index) => (
             <div
               key={index}
-              className="flex items-center justify-between rounded-3xl bg-[#FAF9FB] border border-[#B0B0B0]  sm:px-3 sm:py-5 shadow-sm"
+              className="flex items-center justify-between rounded-3xl bg-[#FAF9FB] border border-[#B0B0B0] px-2 py-2 shadow-sm"
             >
-              <div className="flex   items-center space-y-2 space-x-4 ">
+              <div className="flex items-center">
                
                   <Image
                     src={student.image}
@@ -175,23 +175,20 @@ export default function AttendanceForm() {
                     className=" rounded-md w-20 h-20"
                   />
                 
-                <div className="text-sm">
+                <div className="text-sm ml-2">
                   <p className="font-medium">{student.name}</p>
                   <p className="text-gray-500 text-xs">{student.course}</p>
                   <p className="text-gray-500 text-xs">{student.grade}</p>
                   <p className="text-gray-500 text-xs">{student.group}</p>
                 </div>
-              
-            
-               
-              
+  
               </div>
                <Image
                 src={"/tick.png"}
                 alt="student"
-                width={40}
-                height={40}
-                className="rounded-full w-6 h-6 sm:w-10 sm:h-10"
+                width={20}
+                height={20}
+                className="rounded-full w-8 h-8 "
               />
             </div>
           ))}
