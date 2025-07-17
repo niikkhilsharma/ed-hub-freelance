@@ -1,7 +1,7 @@
-import DmitStudentPaper from "@/components/teacher-b2b/quiz-student-paper";
+import StudentPaper from "@/components/teacher-b2c/student-paper";
 
-export default function CourseDetail(){
+export default function StudentPaperPage(){
     return <div>
-        <DmitStudentPaper /> 
+        <StudentPaper /> 
     </div>
 }
