@@ -20,7 +20,6 @@ interface Question {
 }
 
 interface TestData {
-  title: string;
   description: string;
   details: {
     scheduledFor: string;
@@ -35,7 +34,6 @@ interface TestData {
 
 // --- Hardcoded Data for Initial State ---
 const initialTestPreviewData: TestData = {
-  title: "Test Title",
   description:
     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum ",
   details: {
@@ -154,11 +152,11 @@ const QuestionPreviewItem: React.FC<QuestionPreviewItemProps> = ({
 
 
 // --- Main Component ---
-const TestReviewStep: React.FC = () => {
+const TestReviewStep: React.FC<{testType: string}> = ({testType}) => {
   // Use state to make the test data interactive
   const [testData, setTestData] = useState<TestData>(initialTestPreviewData);
 
-  const { title, description, details, questions } = testData;
+  const { description, details, questions } = testData;
 
   // Handler to select an option, which marks it as the correct answer
   const handleOptionSelect = (questionId: string, selectedOptionId: string) => {
@@ -186,7 +184,7 @@ const TestReviewStep: React.FC = () => {
     // Added padding for better spacing on all screen sizes, especially mobile
     <div className="sm:p-4">
       <div className="mb-4">
-        <h1 className="text-2xl font-semibold text-black mb-5">{title}</h1>
+        <h1 className="text-2xl font-semibold text-black mb-5">{`${testType} Title`}</h1>
         <p className="text-xs sm:text-sm text-[#777777] leading-relaxed mb-5">
           {description}
         </p>

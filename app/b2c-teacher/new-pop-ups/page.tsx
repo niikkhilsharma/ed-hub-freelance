@@ -74,7 +74,6 @@ export default function AllTeacherB2CPopups() {
     const [isAiLoading, setIsAiLoading] = useState(false);
     const handleOpenAiLoading = () => {
         setIsAiLoading(true);
-        // After 5 seconds, "finish" the process and hide the loader
         setTimeout(() => {
             setIsAiLoading(false);
         }, 3000);
@@ -102,8 +101,6 @@ export default function AllTeacherB2CPopups() {
                     </button>
                 ))}
             </div>
-
-            {/* the component needs to import  */}
 
             <FileShare
                 isOpen={openModal === "fileShare"}
