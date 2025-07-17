@@ -24,6 +24,7 @@ import UploadVideo from "./popupComponent/UploadVideos";
 import MonthEndReportModal from "./popupComponent/MonthEndReport";
 import SubmitMonthEndReportModal from "./popupComponent/SubmitMonthEndReport";
 import AddNewBatch from "./popupComponent/AddNewBatch";
+import LeaveApplicationModal from "./popupComponent/ApplyLeaveModal";
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
@@ -51,8 +52,9 @@ export default function AllTeacherB2CPopups() {
         { id: "buttons", label: "Buttons" },
         { id: "uploadVideo", label: "Upload Video" },
         { id: "monthEndReport", label: "Month End Report Pop up" },
-        { id: "submitMonthEndReport", label: "Submission Month End Report Pop up" },
+        { id: "submitMonthEndReport", label: "Submission Month End & Journey Report Pop up" },
         { id: "addNewBatch", label: "Add New Batch" },
+        { id: "leaveApplicationPopup", label: "Leave Application popup" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -163,6 +165,10 @@ export default function AllTeacherB2CPopups() {
             />
             <AddNewBatch
                 isOpen={openModal === "addNewBatch"}
+                onClose={() => setOpenModal(null)}
+            />
+            <LeaveApplicationModal
+                isOpen={openModal === "leaveApplicationPopup"}
                 onClose={() => setOpenModal(null)}
             />
             

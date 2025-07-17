@@ -1,6 +1,5 @@
 import React from "react";
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
-import { MdOutlineCalendarToday } from "react-icons/md";
 
 const SubmitMonthEndReportModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
   return (
