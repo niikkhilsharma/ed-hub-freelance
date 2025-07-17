@@ -160,7 +160,7 @@ export default function StudentSubmittedPapersPage() {
     <>
       <Header activeState="Material" />
       <div className="flex items-center gap-3 bg-white justify-between px-4 sm:px-6 py-3.5 ">
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-1 md:gap-3 items-center">
           <button
             onClick={handleBackClick}
             className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md"
@@ -168,11 +168,11 @@ export default function StudentSubmittedPapersPage() {
           >
             <FiArrowLeft className="w-5 h-5" />
           </button>
-          <h1 className="text-lg sm:text-xl font-semibold text-[#FF3366]">
+          <h1 className="text-base sm:text-xl whitespace-nowrap font-medium sm:font-semibold text-[#FF3366]">
             Folder Name
           </h1>
         </div>
-        <Link href={"/b2c-teacher/teacher-flow/manage-group-share"} className="px-6 py-2 border rounded-xl bg-[#f9fafb] text-sm">
+        <Link href={"/b2c-teacher/teacher-flow/manage-group-share"} className="px-6 py-2 border rounded-xl bg-[#f9fafb] text-xs sm:text-sm whitespace-nowrap">
           Manage Group Share
         </Link>
       </div>

@@ -12,7 +12,7 @@ const TabSwitch: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) => {
   return (
     <div className="pb-4">
       <div className="w-full flex justify-center bg-white border rounded-2xl py-2">
-        <div className="flex overflow-x-auto custom-scrollbar-thin justify-center px-2 gap-4">
+        <div className="flex flex-wrap justify-start sm:justify-center px-2 gap-2 sm:gap-4">
           {tabs.map((tab) => (
             <button
               key={tab}
