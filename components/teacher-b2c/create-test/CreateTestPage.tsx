@@ -4,12 +4,15 @@ import React, { useState } from "react";
 import {
 	FiArrowLeft,
 	FiCalendar,
+	FiCheckCircle,
 } from "react-icons/fi";
 import Header from "@/components/layout/header1";
 import Footer from "@/components/layout/Footer";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
-import CreateBWTestContent from "@/components/teacher-b2b/create-test/CreateTestContent"; // We will create this next
+import CreateBWTestContent from "@/components/teacher-b2c/create-test/CreateTestContent"; // We will create this next
 import { useRouter } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
+import { FaRegCircleCheck } from "react-icons/fa6";
 
 // --- Style Constants (Global for this file) ---
 export const ACCENT_PINK = "#FF3366";
@@ -337,10 +340,47 @@ export const NumOptionsInput: React.FC<{
 	);
 };
 
+const SavedNotification: React.FC<{
+	isVisible: boolean;
+	message?: string;
+}> = ({
+	isVisible,
+	message = "Saved !"
+}) => {
+		return (
+			<AnimatePresence>
+				{isVisible && (
+					<motion.div
+						initial={{ opacity: 0, y: 50, scale: 0.9 }}
+						animate={{ opacity: 1, y: 0, scale: 1 }}
+						exit={{ opacity: 0, y: 50, scale: 0.9 }}
+						transition={{ type: "spring", stiffness: 200, damping: 20 }}
+						className="fixed top-30 left-1/2 -translate-x-1/2 z-50"
+					>
+						<div
+							className="flex w-50 sm:w-xs items-center gap-2 bg-[#00B060] text-white font-semibold px-6 py-3 rounded-xl shadow-lg"
+						>
+							<FaRegCircleCheck className="w-5 h-5" strokeWidth={2.5} />
+							<span className="text-base">{message}</span>
+						</div>
+					</motion.div>
+				)}
+			</AnimatePresence>
+		);
+	};
+
 // --- Main Page Export ---
-export function CreateTestPage({testType, currentTestStep = 1 } : { testType: string, currentTestStep?: number }) {
+export function CreateTestPage({ testType, currentTestStep = 1 }: { testType: string, currentTestStep?: number }) {
 
 	const [currentStep, setCurrentStep] = useState<number>(currentTestStep);
+	const [showSavedNotification, setShowSavedNotification] = useState(false);
+
+	const handleSaveClick = () => {
+		setShowSavedNotification(true);
+		setTimeout(() => {
+			setShowSavedNotification(false);
+		}, 3000);
+	}
 
 	return (
 		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -349,8 +389,10 @@ export function CreateTestPage({testType, currentTestStep = 1 } : { testType: st
 
 				<GoBack label={testType} currentStep={currentStep} />
 
+				<SavedNotification isVisible={showSavedNotification} />
+
 				<main className="flex-grow max-w-screen-xl mx-auto p-6 lg:p-8">
-					<CreateBWTestContent currentStep={currentStep} setCurrentStep={setCurrentStep} testType={testType}/>
+					<CreateBWTestContent currentStep={currentStep} setCurrentStep={setCurrentStep} testType={testType} handleSaveClick={handleSaveClick} />
 				</main>
 			</div>
 
