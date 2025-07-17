@@ -43,9 +43,9 @@ export default function StudentCard() {
 					<div className="flex flex-col sm:flex-row flex-wrap overflow-y-scroll no-scrollbar gap-8 sm:gap-4  justify-items-center">
 						{courses.map((course, index) => (
 							<Link key={index} href={'#'} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
-								<div key={index} className="flex flex-col gap-2 p-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-2xl ">
+								<div key={index} className="flex flex-col gap-4 p-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-2xl ">
 									<div className="rounded-xl overflow-hidden">
-										<Image src={course.image} width={260} height={200} alt={course.name} className="w-full h-full object-contain" />
+										<Image src={course.image} width={280} height={250} alt={course.name} className="h-full object-contain" />
 									</div>
 									<div className="flex flex-col gap-1 px-2 text-black">
 										<h2 className="font-semibold text-lg">{course.name}</h2>
