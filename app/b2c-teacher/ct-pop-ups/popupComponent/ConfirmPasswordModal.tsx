@@ -13,7 +13,7 @@ const ConfirmPasswordModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }
     <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
       <div className="relative bg-white p-6 rounded-3xl">
         {/* Close Button */}
-        <button onClick={onClose} className="absolute top-4 right-4 text-gray-700">
+        <button onClick={onClose} className="absolute bg-[#f9fafb] p-2 rounded-full top-4 right-4 text-gray-700">
           <FiX size={20} />
         </button>
 
