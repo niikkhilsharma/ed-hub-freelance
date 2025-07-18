@@ -163,15 +163,15 @@ export default function DmittTest_2_Page() {
 
             {/* Main Content */}
             <main className="bg-white flex-1 py-8 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-3xl mx-auto bg-white rounded-xl  p-6 md:p-8">
+                <div className="max-w-[50rem] mx-auto bg-white rounded-xl p-6 md:p-8">
                     {/* Test Title */}
                     <h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
                         DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
                     </h1>
 
                     {/* Category Tabs */}
-                    <div className="mb-8 overflow-x-auto pb-2">
-                        <div className="flex justify-between space-x-2 border-b border-gray-200 bg-[#f9fafb] rounded-full border overflow-hidden p-2">
+                    <div className="mb-8 overflow-x-auto pb-3">
+                        <div className="flex justify-between space-x-2 border-b border-gray-200 bg-[#f9fafb] rounded-full border overflow-hidden p-3">
                             {tabCategories.map(category => (
                                 <button
                                     key={category}

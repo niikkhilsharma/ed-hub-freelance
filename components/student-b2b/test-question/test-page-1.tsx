@@ -180,7 +180,7 @@ export default function DmittTestPage() {
 
       {/* Main Content */}
       <main className="bg-white flex-1 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto bg-white rounded-xl  p-6 md:p-8">
+        <div className="max-w-[62%] mx-auto bg-white rounded-xl  p-6 md:p-8">
           {/* Test Title */}
           <h1 className="text-lg md:text-xl leading-loose font-medium text-gray-800 mb-6">
             DMIT (Dermatoglyphics Multiple Intelligence Test) and skill
@@ -189,7 +189,7 @@ export default function DmittTestPage() {
 
           {/* Category Tabs */}
           <div className="mb-8 overflow-x-auto pb-2 no-scrollbar">
-            <div className="flex w-max min-w-full space-x-2 border bg-[#f9fafb] border-gray-200 rounded-full p-2">
+            <div className="flex max-w-[55%] min-w-full space-x-1 border bg-[#f9fafb] border-gray-200 rounded-full p-2">
               {tabCategories.map((category) => (
                 <button
                   key={category}
@@ -207,7 +207,7 @@ export default function DmittTestPage() {
           </div>
 
           {/* Test Info: Questions, Time Limit, Progress, Timer */}
-          <div className="flex w-max flex-col sm:flex-row justify-center items-center   sm:items-center sm:justify-between  mb-8 gap-4">
+          <div className="flex max-w-[100%] flex-col sm:flex-row justify-center items-center relative  sm:items-center sm:justify-between  mb-8 gap-4">
             <div className="sm:text-left">
               <p className="text-lg font-semibold text-[#6B7280]">
                 Questions : {TOTAL_QUESTIONS}
@@ -219,7 +219,7 @@ export default function DmittTestPage() {
                 {currentQuestionIndex + 1} / {TOTAL_QUESTIONS}
               </div>
             </div>
-            <div className="">
+            <div className="absolute right-0">
               <div className="flex items-center gap-1.5 text-[#FF3366]">
                 <FiClock className="w-5 h-5" />
                 <span className="text-lg font-extrabold">
