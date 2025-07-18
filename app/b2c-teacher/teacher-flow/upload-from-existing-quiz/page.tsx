@@ -42,24 +42,6 @@ const sampleFolders: Folder[] = [
 	{ id: 'f8', name: 'Folder Name', fileCount: 100, categoryId: 'cat2' },
 ]
 
-// --- Sub-components ---
-
-interface CategoryTabProps {
-	category: Category
-	isActive: boolean
-	onClick: () => void
-}
-
-const CategoryTab: React.FC<CategoryTabProps> = ({ category, isActive, onClick }) => {
-	return (
-		<button
-			onClick={onClick}
-			className={`px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-2xl text-xs sm:text-md md:text-lg font-medium transition-all duration-200 whitespace-nowrap
-        ${isActive ? 'bg-[#FF3366] text-white' : 'bg-transparent text-[#6B7280] hover:bg-gray-100'}`}>
-			{category.name}
-		</button>
-	)
-}
 
 interface FolderCardProps {
 	folder: Folder
