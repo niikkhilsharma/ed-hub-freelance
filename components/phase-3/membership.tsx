@@ -13,27 +13,31 @@ interface Plan {
 }
 
 const PlanCard = ({ plan }: { plan: Plan }) => (
-  <div className="w-full   md:w-1/2 lg:w-1/3 px-4 ">
-    <div className="bg-white rounded-xl max-h-[700px] h-full max-w-[480px] w-full  space-y-2 shadow-md overflow-hidden">
-      <img
-        src={plan.image}
-        alt={plan.name}
-        className="w-full h-84 object-cover"
-      />
-      <div className=" p-2 text-center">
-        <h3 className="text-xl md:font-3xl font-bold text-black mb-2">{plan.name}</h3>
-        <p className="text-lg md:text-3xl font-regular text-black mb-2">{plan.price}</p>
-        <p className="text-black font-normal text-sm mb-2">No. of Sessions: {plan.sessions}</p>
-        {plan.description && (
-          <p className="text-black max-w-[35ch] text-center text-sm mb-2">{plan.description}</p>
-        )}
-        <p className="text-gray-700 text-sm mb-4">{plan.courses}</p>
-        <button className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-2 px-4  my-2 rounded-full w-full">
-          Select Membership
-        </button>
-      </div>
+ <div className="w-full max-w-[480px] md:w-1/2 lg:w-1/3 px-4">
+  <div className="bg-white rounded-2xl max-h-[700px] h-full w-full space-y-2 shadow-md overflow-hidden">
+    <img
+      src={plan.image}
+      alt={plan.name}
+      className="w-full h-84 object-cover"
+    />
+    {/* --- CHANGES ARE HERE --- */}
+    <div className="p-2 flex flex-col items-center text-center">
+      <h3 className="text-xl md:font-3xl font-bold text-black mb-2">{plan.name}</h3>
+      <p className="text-lg md:text-3xl font-medium text-black my-3">{plan.price}</p>
+      <p className="text-black font-normal text-sm sm:text-md mb-2">No. of Session: {plan.sessions}</p>
+      
+      {/* You no longer need mx-auto here if you use the flexbox parent method */}
+      {plan.description && (
+        <p className="text-black max-w-[35ch]  font-normal text-sm sm:text-md mb-2">{plan.description}</p>
+      )}
+
+      <p className="text-black sm:text-[22px] text-sm my-2">{plan.courses}</p>
+      <button className="bg-[#3366ff] hover:bg-blue-700 text-white font-medium py-2 px-4 my-2 rounded-full w-full">
+        Select Membership
+      </button>
     </div>
   </div>
+</div>
 );
 
 const MembershipPlan = () => {
@@ -101,7 +105,7 @@ const MembershipPlan = () => {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 rounded-full font-semibold transition ${
+            className={`px-4 py-2 rounded-2xl font-medium transition ${
               activeTab === tab
                 ? 'bg-[#ff3366] text-white'
                 : ' text-[#6b7280]'
@@ -113,7 +117,7 @@ const MembershipPlan = () => {
       </div>
 
       {/* Plan Cards */}
-      <div className="flex flex-col sm:flex-row  gap-6 justify-center">
+      <div className="flex flex-col sm:flex-row  gap-5 justify-center">
         {plans[activeTab].map((plan, index) => (
           <PlanCard key={index} plan={plan} />
         ))}
