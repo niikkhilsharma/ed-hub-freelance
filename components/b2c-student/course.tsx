@@ -9,6 +9,10 @@ import { CiStar } from "react-icons/ci";
 import { MdBarChart } from "react-icons/md";
 import { IoBookOutline } from "react-icons/io5";
 import ReviewCard from './review-card';
+import GoBack from "@/components/principal/goback";
+import Header from '@/components/b2c-student/Header2';
+import Footer from '@/components/layout/Footer'
+
 interface CourseCardProps {
     image: string;
     rating: number;
@@ -112,7 +116,16 @@ const Course = () => {
         { label: 'Curriculum', icon: <MdBarChart /> },
         { label: 'Levels', icon: <IoBookOutline /> },
     ];
-    return (
+
+    const headerUser = {
+		name: 'Shlok Agheda',
+		role: 'Student',
+		avatarSrc: '/images/person.jpg',
+	}
+    return (   
+        <>
+        <Header user={headerUser} currPage='Contact'/>
+        <GoBack GoBackHeading="Course Name" />
         <div className="py-2 px-4 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-[2.5fr_1fr] bg-gray-100 md:p-4 gap-4 rounded-2xl">
                 <div className="bg-white rounded-2xl p-4 grid grid-cols-1 lg:grid-cols-[2.5fr_1.5fr]">
@@ -222,6 +235,8 @@ const Course = () => {
                 </div>
             </div>
         </div>
+        <Footer/>
+    </>
     )
 }
 
@@ -293,5 +308,6 @@ export function CourseOptionsCard() {
         </button>
       </div>
     </div>
+
   );
 }
