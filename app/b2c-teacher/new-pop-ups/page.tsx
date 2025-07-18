@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import FileShare from "./popupComponent/FileShare";
 import UploadFilePopup from "./popupComponent/UploadFile";
 import AILoadingPopup from "./popupComponent/AILoading";
+import ChatPopup from "./popupComponent/ChatPopup";
 
 // --- Base Modal Component (for reuse and professional structure) ---
 interface BaseModalProps {
@@ -83,6 +84,7 @@ export default function AllTeacherB2CPopups() {
         { id: "fileShare", label: "File Sharing", action: () => setOpenModal("fileShare") },
         { id: "uploadFile", label: "Upload File Popup", action: () => setOpenModal("uploadFile") },
         { id: "aiLoading", label: "AI is Loading...", action: handleOpenAiLoading },
+        { id: "chatPopup", label: "Chat Popup", action: () => setOpenModal("chatPopup") },
     ];
 
     return (
@@ -110,8 +112,12 @@ export default function AllTeacherB2CPopups() {
                 isOpen={openModal === "uploadFile"}
                 onClose={() => setOpenModal(null)}
             />
-             <AILoadingPopup
+            <AILoadingPopup
                 isOpen={isAiLoading}
+            />
+            <ChatPopup
+                isOpen={openModal === "chatPopup"}
+                onClose={() => setOpenModal(null)}
             />
 
         </div>

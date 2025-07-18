@@ -19,7 +19,7 @@ export default function TeacherLoginForm() {
       <div className="w-full min-h-screen flex flex-col md:flex-row items-center justify-center p-4">
 
         {/* FIXED: Reduced max-width from 6xl to 5xl for a more contained size. */}
-        <div className="relative flex flex-col md:flex-row-reverse gap-2 sm:gap-6 w-full max-w-6xl p-4 sm:p-6 bg-white rounded-2xl overflow-hidden">
+        <div className="relative flex flex-col md:flex-row-reverse gap-2 sm:gap-6 w-full max-w-6xl p-3 md:p-6 bg-white rounded-2xl overflow-hidden">
 
           {/* Decorative Images (Unchanged) */}
           <div className="hidden md:block absolute top-2 -translate-x-12 left-1/2">
@@ -42,10 +42,10 @@ export default function TeacherLoginForm() {
 
           {/* Left Column - Login Form */}
           {/* FIXED: Replaced fixed margin 'mt-16' with responsive padding for better balance. */}
-          <div className="w-full md:w-[45%] py-2 sm:py-6 md:py-8 px-2 sm:px-6 flex flex-col">
+          <div className="w-full md:w-[45%] py-2 md:py-8 px-2 md:px-6 flex flex-col">
             <div className="w-full ">
               <h2 className="font-Poppins text-2xl font-bold">Login</h2>
-              <p className="mt-2 text-xs md:text-sm max-w-[50ch] font-normal text-black">
+              <p className="mt-2 text-xs md:text-sm max-w-[50ch] font-medium text-black">
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry.
               </p>
