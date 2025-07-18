@@ -156,7 +156,7 @@ const StarRatingDisplay: React.FC<{ currentRating: number; maxRating: number }> 
     );
 }
 
-const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData, handleSubmitClick: () => void }> = ({ summary, handleSubmitClick }) => {
+const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData, handleSubmitClick: () => void, Redirect: () => void }> = ({ summary, handleSubmitClick, Redirect }) => {
     const [feedbackText, setFeedbackText] = useState('');
 
     return (
@@ -181,7 +181,7 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData, handleSub
                     </div>
 
                     {/* View Detailed Report Button */}
-                    <button className={`w-full flex items-center justify-center  gap-1 sm:gap-2 px-3 py-2 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
+                    <button onClick={Redirect} className={`w-full flex items-center justify-center  gap-1 sm:gap-2 px-3 py-2 bg-white rounded-xl hover:bg-gray-200 transition-colors`}>
                         <FiPieChart className={`w-6 h-6 ${COLOR_RATING_STARS}`} />
                         <span className={` text-base sm:text-lg lg:text-xl ${COLOR_RATING_STARS}`}>View Detailed Report</span>
                     </button>
@@ -269,7 +269,7 @@ export function StudentPaperComponent({ linkPart }:{ linkPart:string }) {
     }
 
     const Router = useRouter();
-    const Redirect = () => Router.push(`/b2c-teacher/teacher-flow/create-${linkPart}?step=3`);
+    const Redirect = () => Router.push(`/b2c-teacher/teacher-flow/student-progress-report${linkPart}`);
 
     return (
         <div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -294,7 +294,7 @@ export function StudentPaperComponent({ linkPart }:{ linkPart:string }) {
 
                         {/* Right Column: Summary Panel */}
                         <div className="w-full lg:max-w-[43%]">
-                            <SummaryPanel summary={summaryData} handleSubmitClick={handleSubmitClick} />
+                            <SummaryPanel summary={summaryData} handleSubmitClick={handleSubmitClick} Redirect={Redirect} />
                         </div>
 
                     </div>

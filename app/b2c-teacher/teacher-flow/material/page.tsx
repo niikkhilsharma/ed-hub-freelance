@@ -4,18 +4,17 @@ import React, { useState, useMemo } from "react";
 import {
     FiSearch,
     FiFilter,
-    FiChevronDown,
     FiFolder,
 } from "react-icons/fi";
 import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'; // Assuming Shadcn Select
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useRouter } from "next/navigation";
 
 // --- Style Constants ---
 const ACCENT_PINK = "#FF3366";
 const PRIMARY_BLUE = "#3366FF";
 const INPUT_BG_SEARCH = "bg-white";
-const INPUT_BG_FILTERS = "bg-[#F9FAFB]";
 const FOLDER_CARD_BG = "bg-[#F9FAFB]";
 
 // --- Data Interfaces ---
@@ -76,26 +75,31 @@ const SubjectTabButton: React.FC<{
     </button>
 );
 
-const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => (
-    <div
-        className={`${FOLDER_CARD_BG} rounded-2xl p-2 md:p-3 lg:p-4 border border-[#E5E7EB] hover:shadow-lg transition-shadow duration-200 flex items-center gap-5`}
-    >
+const FolderCard: React.FC<{ folder: FolderItem }> = ({ folder }) => {
+    const Router = useRouter();
+
+    return (
         <div
-            className={`bg-[#99DEFF] w-16 h-16 md:h-28 xl:w-31 md:w-28 xl:h-31 rounded-xl flex items-center justify-center flex-shrink-0`}
+            onClick={()=> Router.push("/b2c-teacher/teacher-flow/folder-name")}
+            className={`${FOLDER_CARD_BG} rounded-2xl p-2 md:p-3 lg:p-4 border border-[#E5E7EB] hover:shadow-lg cursor-pointer transition-shadow duration-200 flex items-center gap-5`}
         >
-            <FiFolder
-                className="w-8 h-8 md:h-14 xl:w-15 md:w-14 xl:h-15 text-black opacity-80"
-                strokeWidth={1.5}
-            />
+            <div
+                className={`bg-[#99DEFF] w-16 h-16 md:h-28 xl:w-31 md:w-28 xl:h-31 rounded-xl flex items-center justify-center flex-shrink-0`}
+            >
+                <FiFolder
+                    className="w-8 h-8 md:h-14 xl:w-15 md:w-14 xl:h-15 text-black opacity-80"
+                    strokeWidth={1.5}
+                />
+            </div>
+            <div className="min-w-0 self-start py-2">
+                <h3 className="text-base md:text-lg lg:text-xl text-black truncate font-medium">
+                    {folder.name}
+                </h3>
+                <p className="text-[13px] text-[#6B7280] mt-1">{folder.fileCount} Files</p>
+            </div>
         </div>
-        <div className="min-w-0 self-start py-2">
-            <h3 className="text-base md:text-lg lg:text-xl text-black truncate font-medium">
-                {folder.name}
-            </h3>
-            <p className="text-[13px] text-[#6B7280] mt-1">{folder.fileCount} Files</p>
-        </div>
-    </div>
-);
+    );
+}
 
 // StyledSelect (for the 1st STD filter)
 const StyledSelect: React.FC<{
@@ -104,7 +108,7 @@ const StyledSelect: React.FC<{
     items: { value: string; label: string }[];
 }> = ({ defaultValue, placeholder, items }) => (
     <Select defaultValue={defaultValue}>
-        <SelectTrigger className="bg-transparent sm:flex-none flex-1 w-auto rounded-xl py-3.5 sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
+        <SelectTrigger className="sm:flex-none flex-1 w-auto rounded-xl py-3.5 sm:py-5 bg-[#F9FAFB] text-sm sm:text-base text-black border border-[#E5E7EB]">
             <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
