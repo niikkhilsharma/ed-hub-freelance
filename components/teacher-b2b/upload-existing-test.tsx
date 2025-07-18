@@ -136,7 +136,7 @@ const UploadExistingTestContent: React.FC = () => {
 export default function SelectExistingTestPage() {
 
 	return (
-		<div className="bg-[#eeeeee] min-h-screen flex flex-col">
+		<>
 			<Header activeState="Dashboard" />
 			<BackButton Heading='Select Existing Test' />
 			<TeacherB2CWrapper>
@@ -144,6 +144,6 @@ export default function SelectExistingTestPage() {
 
 			</TeacherB2CWrapper>
 			<Footer />
-		</div>
+		</>
 	)
 }

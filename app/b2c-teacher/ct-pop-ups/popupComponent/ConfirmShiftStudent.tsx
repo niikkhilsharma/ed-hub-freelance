@@ -4,10 +4,7 @@ import Image from "next/image";
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 
 const ConfirmShiftStudentModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
-  const handleShift = () => {
-    // Trigger shift action here
-    console.log("Student shifted");
-  };
+
 
   return (
     <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-sm">
@@ -24,14 +21,14 @@ const ConfirmShiftStudentModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
         <h2 className="text-base font-semibold text-gray-900">Shift Student</h2>
 
         {/* Student Card */}
-        <div className="w-full flex items-center gap-4 px-4 py-3 rounded-xl border border-gray-300 bg-[#f9fafb]">
+        <div className="w-full flex items-center gap-4 p-1 rounded-xl border border-gray-300 bg-[#f9fafb]">
           <Image
-            src="/avatar.png" // Replace with dynamic image if needed
-            alt="Student"
-            width={48}
-            height={48}
-            className="rounded-full object-cover"
-          />
+                      src="/common-images/full-student.jpg" // Replace with real image path
+                      alt="Student"
+                      width={75}
+                      height={75}
+                      className="w-16 h-12 rounded-xl object-cover"
+                    />
           <div>
             <p className="text-sm font-medium text-gray-800">Student Name</p>
             <p className="text-xs text-gray-500">Level / Grade</p>
@@ -43,13 +40,13 @@ const ConfirmShiftStudentModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
         <div className="flex justify-end gap-4 pt-1">
           <button
             onClick={onClose}
-            className="px-6 py-2 rounded-full border border-gray-300 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+            className="px-2 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-700 bg-[#f9fafb]"
           >
             Cancel
           </button>
           <button
-            onClick={handleShift}
-            className="px-6 py-2 rounded-full text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+            onClick={onClose}
+            className="px-5 py-2.5 rounded-full text-sm font-medium text-white bg-[#3366ff]"
           >
             Shift
           </button>

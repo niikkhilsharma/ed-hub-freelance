@@ -24,28 +24,28 @@ const RemoveStudentModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) 
         <h2 className="text-base font-semibold text-gray-900">Remove Student</h2>
 
         {/* Student Display */}
-        <div className="w-full flex items-center gap-4 px-4 py-3 rounded-xl border border-gray-300 bg-[#f9fafb]">
-          <Image
-            src="/avatar.png" // Replace with dynamic student image
-            alt="Student"
-            width={40}
-            height={40}
-            className="rounded-full object-cover"
-          />
-          <p className="text-sm font-medium text-gray-800">Student Name</p>
-        </div>
+       <div className="w-full p-1 rounded-xl border border-gray-300 bg-[#f9fafb] flex items-start gap-3 text-sm font-medium text-gray-800">
+                 <Image
+                   src="/common-images/full-student.jpg" // Replace with real image path
+                   alt="Student"
+                   width={75}
+                   height={75}
+                   className="w-8 h-8 rounded-xl object-cover"
+                 />
+                 Student Name
+               </div>
 
         {/* Buttons */}
         <div className="flex justify-end gap-4 pt-1">
           <button
             onClick={onClose}
-            className="px-6 py-2 rounded-full border border-gray-300 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
+            className="px-2 py-2.5 rounded-full border border-gray-300 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
           >
             Cancel
           </button>
           <button
-            onClick={handleRemove}
-            className="px-6 py-2 rounded-full text-sm font-medium text-white bg-red-100 text-red-600 hover:bg-red-200"
+            onClick={onClose}
+            className="px-3 py-2.5 rounded-full text-sm font-medium bg-[#ff33661a] text-[#ff3366]"
           >
             Remove
           </button>
