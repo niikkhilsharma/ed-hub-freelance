@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import Header from "@/components/layout/header1"
+import Header from "@/components/layout/TeacherB2CHeader"
 import Footer from '@/components/layout/Footer'
 import { FiSearch, FiFilter } from 'react-icons/fi'
 import Image from 'next/image'

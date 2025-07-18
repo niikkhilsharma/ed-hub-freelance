@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react'
 import { FiArrowLeft, FiFolder, FiSettings } from 'react-icons/fi'
-import Header from '@/components/layout/header1' // Adjust path as needed
+import Header from '@/components/layout/TeacherB2CHeader' // Adjust path as needed
 import Footer from '@/components/layout/Footer' // Adjust path as needed
 import MaxWidthWrapper from '../admin/max-width-wrapper'
 import BackButton from '../common-components/BackButton'

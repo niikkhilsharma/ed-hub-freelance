@@ -100,7 +100,7 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
   );
 };
 
-const ChartsReport: React.FC = () => {
+const ChartsReportTeacherB2C: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -703,7 +703,7 @@ const ChartsReport: React.FC = () => {
             <h3 className="text-base font-semibold mb-3 text-[#FF3366]">
               {personalDevData.title}
             </h3>
-            <div className="space-y-3 overflow-y-scroll custom-grey-scrollbar pr-3 max-h-[424px]">
+            <div className="space-y-3 overflow-y-scroll custom-scrollbar-thin-grey pr-3 max-h-[424px]">
               {personalDevData.skills.map((skill, i) => (
                 <ProgressCircleItem
                   key={i}
@@ -868,7 +868,7 @@ const ChartsReport: React.FC = () => {
           {/* ===== Table started ===== */}
 
           <div
-            className="rounded-2xl h-full custom-scrollbar overflow-y-auto "
+            className="rounded-2xl h-full custom-scrollbar-thin overflow-y-auto "
             style={{
               backgroundColor: PALETTE.WHITE_CARD,
               borderColor: PALETTE.BORDER_GREY,
@@ -949,4 +949,4 @@ const ChartsReport: React.FC = () => {
   );
 };
 
-export default ChartsReport;
+export default ChartsReportTeacherB2C;

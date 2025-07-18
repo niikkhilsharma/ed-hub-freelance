@@ -6,7 +6,7 @@ import {
 	FiCalendar,
 	FiCheckCircle,
 } from "react-icons/fi";
-import Header from "@/components/layout/header1";
+import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select';
 import CreateBWTestContent from "@/components/teacher-b2c/create-test/CreateTestContent"; // We will create this next

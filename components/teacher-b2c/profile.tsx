@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Header from "@/components/layout/header1"; // Assuming Header is in this path
+import Header from "@/components/layout/TeacherB2CHeader"; // Assuming Header is in this path
 import Footer from "@/components/layout/Footer"; // Assuming Footer is in this path
 import { FiArrowLeft, FiEdit2 } from "react-icons/fi"; // Edit icon
 import { Button } from "../ui/button";

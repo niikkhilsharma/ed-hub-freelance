@@ -1,5 +1,5 @@
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/header1";
+import Header from "@/components/layout/TeacherB2CHeader";
 import GoBack from "@/components/principal/goback";
 import TeachingForm from "@/components/teacher-b2c/manage-course-teach";
 

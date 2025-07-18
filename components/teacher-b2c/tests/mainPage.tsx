@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import Header from '@/components/layout/header1';
+import Header from '@/components/layout/TeacherB2CHeader';
 import Footer from '@/components/layout/Footer';
 import GoBack from '@/components/principal/goback';
 import { TestListSection, TestAnalyticsCard, Test } from './components'; // Import types and sections

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { IoCheckmarkCircle, IoCloseCircle, IoTimeOutline, IoStar, IoStarOutline } from 'react-icons/io5';
 import { FiArrowLeft, FiPieChart } from 'react-icons/fi';
-import Header from "@/components/layout/header1";
+import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
 import GoBack from '../principal/goback';
 import { AnimatePresence, motion } from 'framer-motion';

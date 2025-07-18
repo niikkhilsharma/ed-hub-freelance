@@ -4,7 +4,7 @@ import ChatPop from "@/components/common-components/askmeanything";
   return (
     <div>
      
-       <ChatPop/>
+       {/* <ChatPop/> */}
     </div>
   );
 };
