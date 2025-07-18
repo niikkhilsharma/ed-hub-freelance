@@ -121,7 +121,7 @@ const StudentReport: React.FC = () => {
         <BackButton Heading="Report" />
      
       <TeacherB2CWrapper>
-          <div className="grid grid-cols-1 lg:grid-cols-3 px-4 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 pb-2 gap-6">
           {/* Student Info Card */}
 
           <div

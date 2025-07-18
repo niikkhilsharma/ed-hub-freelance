@@ -556,7 +556,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
       <div className="mt-2">
 
 
-        <div className="grid w-full max-w-[90rem] mx-auto grid-cols-1 gap-4 p-2 sm:px-4  lg:grid-cols-[2fr_1fr]">
+        <div className="grid w-full grid-cols-1 gap-4  lg:grid-cols-[2fr_1fr]">
           {/* ====== Overall Charts start ====== */}
 
           <div
