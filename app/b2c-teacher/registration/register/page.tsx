@@ -23,7 +23,7 @@ export default function RegisterPage() {
   return (
     <MaxWidthWrapper>
       <div className="relative w-full min-h-screen flex flex-col overflow-hidden">
-        <div className="relative z-10 flex items-center justify-center w-full min-h-screen py-6 px-4 md:py-12 md:px-6">
+        <div className="relative z-10 flex items-center justify-center w-full min-h-screen py-6 sm:px-4 md:py-12 md:px-6">
 
           <div className="w-full lg:max-w-[630px] mx-auto max-w-xl bg-white rounded-3xl overflow-hidden">
             <div className="flex flex-col px-4 md:px-6 md:flex-row min-h-[400px] md:min-h-[600px] h-full">
@@ -206,7 +206,7 @@ export default function RegisterPage() {
 
                   <Button
                     className="w-full mt-2 py-2 rounded-full"
-                    onClick={(handleSubmit=>{Router.push('/b2c-teacher/registration/forgot-password-3')})}
+                    onClick={()=>{Router.push('/b2c-teacher/registration/forgot-password-3')}}
                   >
                     Submit
                   </Button>

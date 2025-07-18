@@ -108,11 +108,13 @@ const OptionDisplay: React.FC<OptionDisplayProps> = ({ option, onSelect }) => {
 interface QuestionPreviewItemProps {
   question: Question;
   onSelectOption: (questionId: string, optionId: string) => void;
+  setCurrentStep: React.Dispatch<React.SetStateAction<number>>
 }
 
 const QuestionPreviewItem: React.FC<QuestionPreviewItemProps> = ({
   question,
   onSelectOption,
+  setCurrentStep
 }) => {
   return (
     <div className="p-5 sm:p-6 max-w-2xl bg-[#F9FAFB] rounded-2xl">
@@ -140,7 +142,7 @@ const QuestionPreviewItem: React.FC<QuestionPreviewItemProps> = ({
       </div>
       <div className="mt-4 text-left">
         <button
-          onClick={() => alert(`Edit question ${question.questionNumber}`)}
+          onClick={() => setCurrentStep(2)}
           className="px-5 py-2 bg-[#B0B0B01A] text-black text-xs font-medium rounded-full hover:bg-gray-300 transition-colors"
         >
           Edit
@@ -152,7 +154,7 @@ const QuestionPreviewItem: React.FC<QuestionPreviewItemProps> = ({
 
 
 // --- Main Component ---
-const TestReviewStep: React.FC<{testType: string}> = ({testType}) => {
+const TestReviewStep: React.FC<{testType: string, setCurrentStep: React.Dispatch<React.SetStateAction<number>>}> = ({testType, setCurrentStep}) => {
   // Use state to make the test data interactive
   const [testData, setTestData] = useState<TestData>(initialTestPreviewData);
 
@@ -209,7 +211,7 @@ const TestReviewStep: React.FC<{testType: string}> = ({testType}) => {
         </div>
         <div className="mt-4 text-left">
           <button
-            onClick={() => alert(`Edit Test Details`)}
+            onClick={() => setCurrentStep(1)}
             className="px-6 py-2 bg-[#F9FAFB] text-black text-sm rounded-full hover:bg-gray-300 transition-colors"
           >
             Edit
@@ -223,7 +225,8 @@ const TestReviewStep: React.FC<{testType: string}> = ({testType}) => {
           <QuestionPreviewItem
             key={question.id}
             question={{ ...question, questionNumber: index + 1 }}
-            onSelectOption={handleOptionSelect} // Pass the handler down
+            onSelectOption={handleOptionSelect}
+            setCurrentStep={setCurrentStep}
           />
         ))}
       </div>
