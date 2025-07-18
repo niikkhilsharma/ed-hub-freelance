@@ -1,5 +1,5 @@
 "use client"
-import React ,{useState} from "react";
+import React from "react";
 import { FaRegCirclePlay} from "react-icons/fa6"
 import Image from "next/image";
 import { RxCross1 } from "react-icons/rx";

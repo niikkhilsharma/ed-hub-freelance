@@ -1,6 +1,6 @@
 
 import React from 'react'
-import StudentReport from './DMITReport';
+import StudentReport from './StudentProgressReport';
 
 const StudentProgressPage = () => {
   return (
