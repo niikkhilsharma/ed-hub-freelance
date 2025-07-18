@@ -1,5 +1,6 @@
-import Curriculum from '@/components/teacher-b2b/teacher-curriculum'
+
 import React from 'react'
+import Curriculum from './Curriculum'
 
 const TeacherCurriculam = () => {
 	return <Curriculum />

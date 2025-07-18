@@ -21,6 +21,8 @@ import ShareWithManageVideoPopup from "@/app/b2c-teacher/ct-pop-ups/popupCompone
 import ShareVideoPopup from "@/app/b2c-teacher/ct-pop-ups/popupComponent/ShareVideo";
 import DeleteRecordingModal from "@/app/b2c-teacher/ct-pop-ups/popupComponent/DeleteRecording";
 import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
+import DropdownBtnXl from "@/components/teacher-b2c/common-components/DropdownXl";
+import MonthTab from "@/components/common-components/MonthTab/MonthTab";
 
 // --- Style Constants (from your original code) ---
 const ACCENT_PINK = "#FF3366";
@@ -127,7 +129,12 @@ const ClassRecordingContent: React.FC = () => {
     recordings.forEach((rec) => { (grouped[rec.date] = grouped[rec.date] || []).push(rec); });
     return grouped;
   }, [recordings]);
-
+  const option1 = [
+    { id: "o1", label: "All Batches" }
+  ]
+  const option2 = [
+    { id: "o1", label: "Subject" }
+  ]
   return (
     <>
     <div className="bg-white rounded-2xl p-4 sm:p-6">
@@ -137,9 +144,9 @@ const ClassRecordingContent: React.FC = () => {
           <div className="relative flex-grow"><FiSearch className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 sm:w-5 h-4 sm:h-5 text-black pointer-events-none" /><input type="text" placeholder="Search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className={`w-full pl-10 pr-4 py-2.5 border border-[#6B7280] bg-white rounded-full focus:ring-2 focus:ring-[#3366FF] focus:border-transparent outline-none text-sm`} /></div>
         </div>
         <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap justify-end lg:justify-start flex-shrink-0">
-          <div className="flex items-center gap-2 text-sm border border-[#E5E7EB] text-black bg-[#F9FAFB] px-3 py-2 rounded-xl"><FiArrowLeftCircle className="w-4 h-4 cursor-pointer hover:text-black" /><span>June 2025</span><FiArrowRightCircle className="w-4 h-4 cursor-pointer hover:text-black" /></div>
-          <FilterDropdown options={sampleBatchOptions} value={batchFilter} onChange={setBatchFilter} />
-          <FilterDropdown options={sampleSubjectOptions} value={subjectFilter} onChange={setSubjectFilter} />
+          <MonthTab />
+          <DropdownBtnXl filters={option1} />
+          <DropdownBtnXl filters={option2} />
         </div>
       </div>
 

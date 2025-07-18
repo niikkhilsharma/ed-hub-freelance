@@ -1,42 +1,20 @@
 "use client";
 
-import Header from "@/components/layout/Header"; // Adjust path as needed
+import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
-import React, { useState, useMemo } from "react";
 import Image from "next/image";
-import {
-  FiSearch,
-  FiFilter,
-  FiChevronDown,
-  FiFileText,
-  FiImage,
-} from "react-icons/fi";
+
 import { FiArrowLeft } from "react-icons/fi";
-import { MdOutlineFileDownload } from "react-icons/md";
-import { FiShare2 } from "react-icons/fi";
 import MaxWidthWrapper from "../../admin/max-width-wrapper";
 import AttendanceForm from '@/components/teacher-b2c/progress-form/components'
-
-
-
-
-
+import BackButton from "@/components/common-components/BackButton";
+import TeacherB2CWrapper from "../common-components/TeacherB2CPageWrapper";
 
 // Main File Management Content Component
 
 export default function StudentSubmittedPapersPage() {
-  const headerUser = {
-    name: "Shlok Agheda",
-    role: "Student",
-    avatarSrc: "/placeholder-avatar-student.jpg", // UPDATE THIS PATH
-  };
 
-  const handleBackClick = () => {
-    // Implement back navigation, e.g., using Next.js router or window.history
-    if (typeof window !== "undefined") {
-      window.history.back();
-    }
-  };
+
   const students = new Array(4).fill({
     name: "Student Name",
     grade: "Level / Grade",
@@ -46,24 +24,10 @@ export default function StudentSubmittedPapersPage() {
 
   return (
     <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
-      <Header user={headerUser} />
-      <div className="   bg-white ">
-        <div className="flex items-center  py-4  max-w-[96rem] mx-auto gap-2 ">
-          <button
-            onClick={handleBackClick}
-            className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
-            aria-label="Go back"
-          >
-            <FiArrowLeft className="w-5 h-5" />
-          </button>
-          {/* You can make this title dynamic based on context */}
-          <h1 className="text-lg sm:text-xl font-bold text-[#FF3366]">
-            Add Daily Progress
-          </h1>
-        </div>
-      </div>
-      <MaxWidthWrapper className="bg-[#eeeeee]">
-        <div className="bg-[#eeeeee]">
+      <Header activeState="Dashboard" />
+      <BackButton Heading="Add Daily Progress" />
+      <TeacherB2CWrapper>
+     
           <main className="flex-grow   px-2 py-4 sm:p-6">
             <div className="space-y-4 mt-2 rounded-2xl p-4 bg-white">
 
@@ -101,8 +65,8 @@ export default function StudentSubmittedPapersPage() {
               </div>
             </div>
           </main>
-        </div>
-      </MaxWidthWrapper>
+      
+      </TeacherB2CWrapper>
 
       <Footer />
     </div>
