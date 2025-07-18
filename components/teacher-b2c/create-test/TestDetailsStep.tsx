@@ -24,6 +24,7 @@ const sampleStudents: SelectableItem[] = Array.from({ length: 9 }, (_, i) => ({
 interface TestDetailsStepProps {
   testDetails: TestDetailsData;
   onDetailsChange: <K extends keyof TestDetailsData>(name: K, value: TestDetailsData[K]) => void;
+  testType: string
 }
 
 // Your SelectableItemCard, adapted to be generic for both students and teachers
@@ -65,6 +66,7 @@ const SelectableItemCard: React.FC<{
 const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
   testDetails,
   onDetailsChange,
+  testType
 }) => {
   // State for the right-hand column can be managed here for simplicity
   const [unitarySearch, setUnitarySearch] = useState('');
@@ -96,7 +98,7 @@ const TestDetailsStep: React.FC<TestDetailsStepProps> = ({
 
       <div className="w-full md:w-[45%] lg:w-[40%] space-y-4">
         <FormField
-          label="Test Name"
+          label={`${testType} Name`}
           name="testName"
         />
         <FormField

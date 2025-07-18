@@ -1,6 +1,6 @@
 "use client";
 
-import Header from "@/components/layout/header1";
+import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
 import ReferenceVideoContentPage from "@/components/teacher-b2b/reference-video-content-page"; // Assuming VideoContentPage.tsx is in the same directory or adjust path
 import { FiArrowLeft, FiPlus } from "react-icons/fi"; // Ensure FiArrowLeft is imported

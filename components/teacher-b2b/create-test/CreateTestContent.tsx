@@ -1,4 +1,4 @@
-"use client"; // Keep this if CreateBWTestPage is, for consistency or if it uses client hooks directly
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { StepperStep, TestDetailsData, TestQuestion, sampleClassesData, sampleGroupsData, Stepper,  PRIMARY_BLUE,  YELLOW_BUTTON_BG } from "@/components/teacher-b2b/create-test/CreateTestPage";

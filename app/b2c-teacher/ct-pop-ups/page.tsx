@@ -24,6 +24,11 @@ import UploadVideo from "./popupComponent/UploadVideos";
 import MonthEndReportModal from "./popupComponent/MonthEndReport";
 import SubmitMonthEndReportModal from "./popupComponent/SubmitMonthEndReport";
 import AddNewBatch from "./popupComponent/AddNewBatch";
+import LeaveApplicationModal from "./popupComponent/ApplyLeaveModal";
+import ShiftStudentModal from "./popupComponent/ShiftStudent";
+import RemoveStudentModal from "./popupComponent/ConfirmStudentRemove";
+import ConfirmShiftStudentModal from "./popupComponent/ConfirmShiftStudent";
+import RequestRaiseModal from "./popupComponent/RequestRaisePopup";
 
 // --- Main Page Component to trigger modals ---
 export default function AllTeacherB2CPopups() {
@@ -51,8 +56,13 @@ export default function AllTeacherB2CPopups() {
         { id: "buttons", label: "Buttons" },
         { id: "uploadVideo", label: "Upload Video" },
         { id: "monthEndReport", label: "Month End Report Pop up" },
-        { id: "submitMonthEndReport", label: "Submission Month End Report Pop up" },
+        { id: "submitMonthEndReport", label: "Submission Month End & Journey Report Pop up" },
         { id: "addNewBatch", label: "Add New Batch" },
+        { id: "leaveApplicationPopup", label: "Leave Application popup" },
+        { id: "shiftStudent", label: "Shift student" },
+        { id: "removeStudent", label: "Remove student" },
+        { id: "confirmStudent", label: "Confirm student" },
+        { id: "requestRaise", label: "Request Raise Pay" },
         // here you can add pop id and it's label to show it on the page 
     ];
 
@@ -163,6 +173,26 @@ export default function AllTeacherB2CPopups() {
             />
             <AddNewBatch
                 isOpen={openModal === "addNewBatch"}
+                onClose={() => setOpenModal(null)}
+            />
+            <LeaveApplicationModal
+                isOpen={openModal === "leaveApplicationPopup"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ShiftStudentModal
+                isOpen={openModal === "shiftStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RemoveStudentModal
+                isOpen={openModal === "removeStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <ConfirmShiftStudentModal
+                isOpen={openModal === "confirmStudent"}
+                onClose={() => setOpenModal(null)}
+            />
+            <RequestRaiseModal
+                isOpen={openModal === "requestRaise"}
                 onClose={() => setOpenModal(null)}
             />
             

@@ -35,7 +35,7 @@ const ManageGroupPopup: React.FC<PopupPropB2CTeacher> = ({
     <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-lg">
       <div className="bg-white p-4 rounded-3xl space-y-4">
         {/* Title */}
-        <h2 className="text-lg font-semibold text-gray-900">Create New Group</h2>
+        <h2 className="text-lg font-semibold text-gray-900">Manage Group</h2>
 
         <div className="flex flex-col px-2 my-2">
           <label htmlFor="groupName" className='font-medium mb-2'>Enter Group Name</label>

@@ -1,7 +1,7 @@
-import ClassRecording from "@/components/teacher-b2b/class-recording";
+import ClassRecordingPage from "./ClassRecording";
 
 export default function CourseDetail(){
     return <div>
-        <ClassRecording /> 
+        <ClassRecordingPage /> 
     </div>
 }

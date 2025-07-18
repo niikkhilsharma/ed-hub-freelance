@@ -101,8 +101,6 @@ export const ProgressCircleItem: React.FC<ProgressCircleProps> = ({
 };
 
 const ChartsReport: React.FC = () => {
-  // Dummy state for month/year filter for Overall Progress chart
-  const [currentMonth] = useState("Month"); // Default text
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import Header from "@/components/layout/header1";
+import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
 import Image from "next/image";
 import { FiArrowLeft, FiDownload, FiPaperclip, FiSearch, FiSend } from "react-icons/fi";

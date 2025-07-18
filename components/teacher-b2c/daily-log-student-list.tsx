@@ -1,12 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
 
 import { FiArrowLeft,FiFilter } from "react-icons/fi";
 
 import {  FaSearch } from 'react-icons/fa';
+import BackButton from "../common-components/BackButton";
+import TeacherB2CWrapper from "./common-components/TeacherB2CPageWrapper";
+import TabSwitch from "../common-components/TabSwitch";
+import SearchFilterIcon from "../common-components/SearchFilterIcon";
+import Link from "next/link";
+import EditBatchNameModal from "@/app/b2c-teacher/ct-pop-ups/popupComponent/EditRenameBatch";
 
 
 // --- Recording Card Component ---
@@ -21,105 +27,59 @@ interface Course {
 }
 
 export default function CourseCardPage() {
-     const [activeBatch, setActiveBatch] = useState(1);
   // Dummy user for Header
-  const headerUser = {
-    name: "Shlok Agheda",
-    role: "Student",
-    avatarSrc: "/teacher-b2b/profile.png", // UPDATE PATH
-  };
- const batches = [1, 2, 3, 4, 5];
+  const [editOpen, setEditOpen] = useState(false)
+  const batches = ["Batch 1", "Batch 2", "Batch 3", "Batch 4", "Batch 5" ];
+  const [activeBatch, setActiveBatch] = useState(batches[0]);
   const dates = [
     '16 / 6 / 25', '17 / 6 / 25', '18 / 6 / 25', '19 / 6 / 25', '20 / 6 / 25',
     '21 / 6 / 25', '22 / 6 / 25', '23 / 6 / 25', '24 / 6 / 25'
   ];
   
+  const filter = [
+	{id: "f1", label: "Filter 1"},
+	{id: "f2", label: "Filter 2"},
+	{id: "f3", label: "Filter 3"},
+]
+
   return (
     <>
-      <Header user={headerUser} />
-      <div className="bg-[#eeeeee]  min-h-screen flex flex-col">
-        <div className="   bg-white">
-          <div className="flex items-center py-4 max-w-[96rem] mx-auto gap-2 ">
-            <button
-              className="p-1.5 text-blacl hover:text-[#3366FF] focus:outline-none rounded-md"
-              aria-label="Go back"
-            >
-              <FiArrowLeft className="w-5 h-5" />
-            </button>
-            {/* You can make this title dynamic based on context */}
-            <h1 className="text-lg sm:text-2xl font-bold text-[#FF3366]">
-               Batch Daily Log 
-            </h1>
-          </div>
-        </div>
+      <Header activeState="Dashboard" />
+        <BackButton Heading="Batch Daily Log"/>
 
-        <main className="p-2  w-full sm:p-4 flex flex-col  max-w-[96rem]  mx-auto bg-white my-6  rounded-2xl">
+        <TeacherB2CWrapper>
+
+        
+        <main className="p-2  w-full sm:p-4 flex flex-col  bg-white  rounded-2xl">
          
+        <TabSwitch tabs={batches} selected={activeBatch} onChange={setActiveBatch}/>
 
-        <div className="flex justify-center gap-6 mb-4 px-4 border border-[#E5E7EB] p-4 rounded-3xl w-full ">
-          {batches.map((batch) => (
-            <button
-              key={batch}
-              className={`px-2 py-2 rounded-2xl font-semibold  text-sm sm:text-lg ${
-                activeBatch === batch
-                  ? 'bg-[#FF3366] text-white'
-                  : 'text-[#6B7280] hover:text-black'
-              }`}
-              onClick={() => setActiveBatch(batch)}
-            >
-              Batch {batch}
-            </button>
-          ))}
-        </div>
-
-        {/* Filter/Search Row */}
-        <div className="flex py-6 flex-wrap gap-3 items-center px-4 pb-4">
-          <div className="flex  w-[43%] items-center gap-2 border-[2px] border-[#6B7280] rounded-full px-3 py-2 bg-white">
-            <FaSearch className="text-black " />
-            <input
-              type="text"
-              placeholder="Search"
-              className=" text-[#6B7280] text-lg bg-transparent"
-            />
-          </div>
-
-          <FiFilter className="text-[#FF3366] w-6 h-6 text-lg" />
-
-          <select className="border border-[#E5E7EB] text-lg rounded-xl px-1 py-1 bg-[#F9FAFB]">
-            <option>Filter 1</option>
-          </select>
-          <select className="border border-[#E5E7EB] text-lg rounded-xl px-1 py-1 bg-[#F9FAFB]">
-            <option>Filter 2</option>
-          </select>
-          <select className="border border-[#E5E7EB] text-lg rounded-xl px-1 py-1 bg-[#F9FAFB]">
-            <option>Filter 3</option>
-          </select>
-
-          <button className=" border border-[#E5E7EB] text-lg  px-2 py-1 bg-[#F9FAFB] rounded-full ">
-            Edit Batch Name 
-          </button>
-          <button className="px-3 py-2 rounded-full text-lg font-semibold text-white bg-blue-600 hover:bg-blue-700">
-            Add Daily Progress
-          </button>
+        <div className="flex sm:gap-2 gap-4 md:px-4 items-center">
+          <SearchFilterIcon filters={filter} />
+          <button
+          onClick={() => setEditOpen(true)}
+          className="px-2 py-2.5 border bg-[#f9fafb] text-sm rounded-full  whitespace-nowrap">Edit Batch Name</button>
+          <Link href={"/b2c-teacher/teacher-flow/add-progress-form"} className="px-2 py-2.5 border bg-[#3366ff] text-sm rounded-full text-white  whitespace-nowrap">Add Daily Progress</Link>
         </div>
 
         {/* Date Rows */}
-        <div className="flex flex-col gap-4 mt-4 px-4 pb-6">
+        <div className="flex flex-col gap-4 mt-4 md:px-4 pb-6">
           {dates.map((date, idx) => (
-            <div
+            <Link href={"/b2c-teacher/teacher-flow/add-progress-form"}
               key={idx}
-              className="bg-[#F9FAFB] rounded-full px-4 py-2 text-black text-xl border border-[#D0D0D0] font-medium "
+              className="bg-[#F9FAFB] w-full rounded-full px-4 py-2 text-black text-base border border-[#D0D0D0] font-medium "
             >
               {date}
-            </div>
+            </Link>
           ))}
         </div>
       
          
         </main>
+</TeacherB2CWrapper>
 
         <Footer />
-      </div>
+      <EditBatchNameModal isOpen={editOpen} onClose={() => setEditOpen(false)} />
     </>
   );
 }

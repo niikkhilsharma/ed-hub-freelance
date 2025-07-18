@@ -18,7 +18,7 @@ const DropdownOptions5 = ({ label, options }: CustomSelectProps) => {
         <div>
 
             <div className="mb-2">
-                <label className="block font-medium mb-1">{label}</label>
+                <label className="block text-sm font-medium mb-1">{label}</label>
                 <motion.div
                     layout
                     transition={{ duration: 0.3 }}

@@ -1,7 +1,7 @@
-import StudentPaper from "@/components/teacher-b2c/student-paper";
+import {StudentPaperComponent} from "@/components/teacher-b2c/student-paper";
 
 export default function StudentPaperPage(){
     return <div>
-        <StudentPaper /> 
+        <StudentPaperComponent linkPart="quiz"/> 
     </div>
 }

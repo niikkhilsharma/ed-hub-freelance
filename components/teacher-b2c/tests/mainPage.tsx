@@ -2,11 +2,12 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from 'react';
-import Header from '@/components/layout/header1';
+import Header from '@/components/layout/TeacherB2CHeader';
 import Footer from '@/components/layout/Footer';
 import GoBack from '@/components/principal/goback';
 import { TestListSection, TestAnalyticsCard, Test } from './components'; // Import types and sections
 import { CustomTabButton, StyledSelect, ActionButton } from './ui-components';
+import { useRouter } from 'next/navigation';
 
 interface TestsPageProps {
 	testType?: "BW Test" | "Assessment" | "Quiz";
@@ -87,6 +88,8 @@ export default function TestsPage({ testType = "BW Test" }: TestsPageProps) {
 		}
 	}
 
+	const Router = useRouter();
+
 	return (
 		<div className="min-h-screen bg-[#eeeeee] flex flex-col">
 			<Header activeState='Dashboard' />
@@ -121,7 +124,9 @@ export default function TestsPage({ testType = "BW Test" }: TestsPageProps) {
 						{/* Right Column Content (Takes 2/7 space on desktop) */}
 						<div className="lg:col-span-2 space-y-4">
 							<div className='w-full flex justify-end'>
-								<ActionButton className='sm:px-4 sm:py-7 flex gap-1'>Create {testType}</ActionButton>
+								<ActionButton onClick={()=>{
+									Router.push(`/b2c-teacher/teacher-flow/create-${testType === "BW Test" ? "test" : testType.toLowerCase()}`)
+								}} className='sm:px-4 sm:py-7 flex gap-1'>Create {testType}</ActionButton>
 							</div>
 							<TestAnalyticsCard complete={2} incomplete={1} totalTests={20} averageScore="15%" testType={testType} />
 						</div>

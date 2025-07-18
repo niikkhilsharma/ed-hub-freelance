@@ -13,7 +13,7 @@ const BackButton: React.FC<GoBackProps> = ({ Heading }) => {
     }
   };
   return (
-    <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 sticky top-0 z-40">
+    <div className="flex items-center gap-3 bg-white px-4 sm:px-6 py-3.5 ">
       <button
         onClick={handleBackClick}
         className="p-1.5 text-black hover:text-[#FF3366] focus:outline-none rounded-md"

@@ -1,9 +1,9 @@
-import StudentListPage from '@/components/teacher-b2c/student-list'
+import { StudentListPage } from '@/components/teacher-b2c/student-list'
 
 export default function CourseDetail() {
     return (
         <div>
-            <StudentListPage />
+            <StudentListPage label="Test"/>
         </div>
     )
 }

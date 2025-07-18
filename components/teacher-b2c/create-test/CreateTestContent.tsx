@@ -1,16 +1,16 @@
-"use client"; // Keep this if CreateBWTestPage is, for consistency or if it uses client hooks directly
+"use client";
 
 import React, { useState, useEffect } from "react";
 import { StepperStep, TestDetailsData, TestQuestion, sampleClassesData, sampleGroupsData, Stepper,  PRIMARY_BLUE,  YELLOW_BUTTON_BG } from "@/components/teacher-b2b/create-test/CreateTestPage";
-import TestDetailsStep from "@/components/teacher-b2b/create-test/TestDetailsStep";
-import TestQuestionnaireStep from "@/components/teacher-b2b/create-test/TestQuestionnaireStep";
-import TestReviewStep from "@/components/teacher-b2b/create-test/TestReviewStep";
+import TestDetailsStep from "@/components/teacher-b2c/create-test/TestDetailsStep";
+import TestQuestionnaireStep from "@/components/teacher-b2c/create-test/TestQuestionnaireStep";
+import TestReviewStep from "@/components/teacher-b2c/create-test/TestReviewStep";
 
-const CreateBWTestContent: React.FC<{ currentStep: number, setCurrentStep: React.Dispatch<React.SetStateAction<number>> }> = ({ currentStep, setCurrentStep }) => {
+const CreateBWTestContent: React.FC<{ currentStep: number, setCurrentStep: React.Dispatch<React.SetStateAction<number>>, testType: string, handleSaveClick: () => void }> = ({ currentStep, setCurrentStep, testType, handleSaveClick }) => {
   const stepperSteps: StepperStep[] = [
-    { id: 1, name: 'Test Details' },
-    { id: 2, name: 'Test Questionnaire' },
-    { id: 3, name: 'Review' },
+    { id: 1, name: `${testType} Details` },
+		{ id: 2, name: `${testType} Questionnaire` },
+		{ id: 3, name: 'Review' },
   ];
 
   const [testDetails, setTestDetails] = useState<TestDetailsData>({
@@ -32,33 +32,18 @@ const CreateBWTestContent: React.FC<{ currentStep: number, setCurrentStep: React
     handleTestDetailsChange('totalPoints', String(calculatedTotalPoints).padStart(2, '0'));
   }, [questions]);
 
-  const handleNextOrSubmit = () => {
-    if (currentStep < stepperSteps.length) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      alert('Test Published!');
-      console.log("Final Test Details:", testDetails);
-      console.log("Final Questions:", questions);
-    }
-  };
-
-  const handleCancel = () => alert('Operation Cancelled');
-  const handleSave = () => {
-    alert('Test Saved!');
-    console.log("Saved Test Details:", testDetails);
-    console.log("Saved Questions:", questions);
-  };
   const renderStepContent = () => {
     switch (currentStep) {
       case 1:
         return <TestDetailsStep
           testDetails={testDetails}
           onDetailsChange={handleTestDetailsChange}
+          testType={testType}
         />;
       case 2:
         return <TestQuestionnaireStep />;
       case 3:
-        return <TestReviewStep />;
+        return <TestReviewStep testType={testType}/>;
       default: return <div>Invalid Step</div>;
     }
   };
@@ -68,10 +53,10 @@ const CreateBWTestContent: React.FC<{ currentStep: number, setCurrentStep: React
       case 1:
         return (
           <>
-            <button type="button" onClick={handleCancel} className="w-full sm:w-auto px-5 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-gray-700 border border-[#E5E7EB] hover:bg-gray-200 rounded-full transition-colors">
+            <button type="button" className="w-full sm:w-auto px-5 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-gray-700 border border-[#E5E7EB] hover:bg-gray-200 rounded-full transition-colors">
               Cancel
             </button>
-            <button type="button" onClick={handleNextOrSubmit} className={`w-full sm:w-auto px-5 py-2.5 sm:py-3 text-sm font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
+            <button type="button" onClick={() => currentStep < stepperSteps.length && setCurrentStep(currentStep + 1)} className={`w-full sm:w-auto px-5 py-2.5 sm:py-3 text-sm font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
               Continue
             </button>
           </>
@@ -79,10 +64,10 @@ const CreateBWTestContent: React.FC<{ currentStep: number, setCurrentStep: React
       case 2:
         return (
           <div className="grid grid-cols-2 w-full gap-2 sm:flex sm:justify-center sm:items-center sm:gap-4">
-            <button type="button" onClick={handleCancel} className="w-full sm:w-auto px-3 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-gray-700 border border-[#E5E7EB] hover:bg-gray-200 rounded-full transition-colors">
+            <button type="button" className="w-full sm:w-auto px-3 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-gray-700 border border-[#E5E7EB] hover:bg-gray-200 rounded-full transition-colors">
               Cancel
             </button>
-            <button type="button" onClick={handleSave} className={`w-full sm:w-auto px-3 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
+            <button type="button" onClick={handleSaveClick} className={`w-full sm:w-auto px-3 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
               Save
             </button>
             <button type="button" onClick={() => currentStep < stepperSteps.length && setCurrentStep(currentStep + 1)} className={`w-full sm:w-auto px-3 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
@@ -96,13 +81,13 @@ const CreateBWTestContent: React.FC<{ currentStep: number, setCurrentStep: React
       case 3:
         return (
           <>
-            <button type="button" onClick={handleCancel} className="w-full sm:w-auto px-5 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-gray-700 border border-[#E5E7EB] hover:bg-gray-200 rounded-full transition-colors">
+            <button type="button" className="w-full sm:w-auto px-5 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-gray-700 border border-[#E5E7EB] hover:bg-gray-200 rounded-full transition-colors">
               Cancel
             </button>
-            <button type="button" onClick={handleSave} className={`w-full sm:w-auto px-5 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
+            <button type="button" onClick={handleSaveClick} className={`w-full sm:w-auto px-5 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-md font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
               Save
             </button>
-            <button type="button" onClick={handleNextOrSubmit} className={`w-full sm:w-auto px-6 py-2.5 sm:py-3 text-sm sm:px-8 font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
+            <button type="button" className={`w-full sm:w-auto px-6 py-2.5 sm:py-3 text-sm sm:px-8 font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
               Publish
             </button>
           </>

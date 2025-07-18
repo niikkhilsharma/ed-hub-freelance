@@ -3,9 +3,12 @@
 import React, { useState } from 'react';
 import { IoCheckmarkCircle, IoCloseCircle, IoTimeOutline, IoStar, IoStarOutline } from 'react-icons/io5';
 import { FiArrowLeft, FiPieChart } from 'react-icons/fi';
-import Header from "@/components/layout/header1";
+import Header from "@/components/layout/TeacherB2CHeader";
 import Footer from "@/components/layout/Footer";
 import GoBack from '../principal/goback';
+import { AnimatePresence, motion } from 'framer-motion';
+import { FaRegCircleCheck } from 'react-icons/fa6';
+import { useRouter } from 'next/navigation';
 
 // --- Data Interfaces ---
 interface Option {
@@ -153,7 +156,7 @@ const StarRatingDisplay: React.FC<{ currentRating: number; maxRating: number }> 
     );
 }
 
-const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ summary }) => {
+const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData, handleSubmitClick: () => void }> = ({ summary, handleSubmitClick }) => {
     const [feedbackText, setFeedbackText] = useState('');
 
     return (
@@ -197,7 +200,7 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
 
 
                     {/* Write a Feedback Form */}
-                    <form className="space-y-3 pt-1">
+                    <div className="space-y-3 pt-1">
                         <div className='mt-2 space-y-1.5'>
                             <label htmlFor="feedback" className="block text-sm sm:text-base text-black">
                                 Write a Feedback
@@ -212,21 +215,61 @@ const SummaryPanel: React.FC<{ summary: ExtendedAssessmentSummaryData }> = ({ su
                             />
                         </div>
                         <button
-                            type="submit"
+                            onClick={handleSubmitClick}
                             className={`w-28 md:w-34 py-2 sm:py-2.5 ${COLOR_BUTTON_PRIMARY_BG} ${COLOR_BUTTON_PRIMARY_TEXT} rounded-full hover:opacity-90 transition-opacity text-sm sm:text-base`}
                         >
                             Submit
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     );
 };
 
-export default function StudentPaperPage() {
+const SavedNotification: React.FC<{
+    isVisible: boolean;
+    message?: string;
+}> = ({
+    isVisible,
+    message = "Submitted !"
+}) => {
+        return (
+            <AnimatePresence>
+                {isVisible && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 50, scale: 0.9 }}
+                        transition={{ type: "spring", stiffness: 200, damping: 20 }}
+                        className="fixed top-30 left-1/2 -translate-x-1/2 z-50"
+                    >
+                        <div
+                            className="flex w-50 sm:w-xs items-center gap-2 bg-[#00B060] text-white font-semibold px-6 py-3 rounded-xl shadow-lg"
+                        >
+                            <FaRegCircleCheck className="w-5 h-5" strokeWidth={2.5} />
+                            <span className="text-base">{message}</span>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        );
+    };
+
+export function StudentPaperComponent({ linkPart }:{ linkPart:string }) {
     const [questionsData] = useState<Question[]>(sampleQuestionsData);
     const [summaryData] = useState<ExtendedAssessmentSummaryData>(sampleSummaryData);
+    const [showSavedNotification, setShowSavedNotification] = useState(false);
+
+    const handleSubmitClick = () => {
+        setShowSavedNotification(true);
+        setTimeout(() => {
+            setShowSavedNotification(false);
+        }, 3000);
+    }
+
+    const Router = useRouter();
+    const Redirect = () => Router.push(`/b2c-teacher/teacher-flow/create-${linkPart}?step=3`);
 
     return (
         <div className="bg-[#eeeeee] min-h-screen flex flex-col">
@@ -236,6 +279,8 @@ export default function StudentPaperPage() {
 
                 {/* Go Back */}
                 <GoBack GoBackHeading='Student Name' />
+
+                <SavedNotification isVisible={showSavedNotification} />
 
                 <main className=" max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
                     <div className=" bg-white p-4 md:p-6 lg:p-8 rounded-2xl flex  flex-col-reverse lg:flex-row gap-4 sm:gap-6 lg:gap-8 justify-between">
@@ -249,7 +294,7 @@ export default function StudentPaperPage() {
 
                         {/* Right Column: Summary Panel */}
                         <div className="w-full lg:max-w-[43%]">
-                            <SummaryPanel summary={summaryData} />
+                            <SummaryPanel summary={summaryData} handleSubmitClick={handleSubmitClick} />
                         </div>
 
                     </div>

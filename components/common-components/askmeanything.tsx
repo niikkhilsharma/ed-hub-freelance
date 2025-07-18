@@ -38,10 +38,6 @@ type ChatPopProps = {
  export default function ChatPop ({ onClose }: ChatPopProps)  {
 
   return (
-    
-    
-    
-   
       
       <div className="w-full max-w-screen-md mx-auto  rounded-2xl  flex-grow p-3 space-y-3 overflow-y-auto custom-scrollbar sm:p-4  sm:space-y-6  py-6 px-8 shadow-xl relative "
       style={{backgroundImage:"url('/chatpopupbg.png')", backgroundSize: 'cover', backgroundPosition: 'center'}}>
