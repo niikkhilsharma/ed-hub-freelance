@@ -1,5 +1,7 @@
 "use client";
 
+import DropdownOptions5 from "@/components/common-components/Dropdown/DropdownOptions";
+import DropdownOptionSearch from "@/components/common-components/Dropdown/DropdownOptionsSearch";
 import Image from "next/image";
 import { useState } from "react";
 import { FaSearch, FaCheckCircle } from "react-icons/fa";
@@ -45,13 +47,13 @@ export default function AttendanceForm() {
       <div className="w-[40%] space-y-6">
         {/* Details Section */}
         <div>
-          <h3 className="text-lg font-bold text-black bg-[#E5E7EB]  rounded-2xl p-4 ">
+          <h3 className="text-base font-bold text-black bg-[#E5E7EB]  rounded-2xl p-4 ">
             Details
           </h3>
           <div className="mt-2 space-y-4">
             {/* Date Picker */}
             <div>
-              <label className="text-lg text-black font-medium">Date</label>
+              <label className="text-base text-black font-medium">Date</label>
               <div className="relative mt-1 w-full">
                 <input
                   type="text"
@@ -62,27 +64,14 @@ export default function AttendanceForm() {
             </div>
 
             {/* Subject Dropdown */}
-            <div>
-              <label className="text-lg  text-black font-medium">Subject</label>
-              <select className="mt-1 w-full  rounded-full bg-[#faf9fb] border border-[#d5d5d5] px-4 py-2">
-                <option>Maths</option>
-                <option>Science</option>
-                <option>English</option>
-              </select>
-            </div>
+            <DropdownOptions5 label="Subject" options="Maths" />
+            <DropdownOptions5 label="Topics Covered" options="Option 1" />
 
-            {/* Topics Covered */}
-            <div>
-              <label className="text-lg font-medium">Topics Covered</label>
-              <select className="mt-1 w-full rounded-full bg-[#faf9fb] border border-[#d5d5d5]  px-3 py-2">
-                <option>Option 1</option>
-                <option>Option 2</option>
-              </select>
-            </div>
+            
 
             {/* Subtopics Covered */}
             <div>
-              <p className="text-lg font-medium">Sub-topics Covered</p>
+              <p className="text-base font-medium">Sub-topics Covered</p>
               <div className="flex flex-col  flex-wrap h-46 gap-2 mt-1">
                 {Array.from({ length: 10 }, (_, i) => (
                   <label
@@ -104,7 +93,7 @@ export default function AttendanceForm() {
 
             {/* Topics Uncovered */}
             <div>
-              <p className="text-lg font-medium">Topics Uncovered</p>
+              <p className="text-base font-medium">Topics Uncovered</p>
               <div className="flex flex-wrap h-26 flex-col gap-2 mt-1">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <label
@@ -139,7 +128,7 @@ export default function AttendanceForm() {
             </div>
 
             {/* Alert Box */}
-            <div className="  flex items-center gap-3 p-4 rounded-2xl border border-[#e5e7eb] text-lg text-black font-medium">
+            <div className="  flex items-center gap-3 p-4 rounded-2xl border border-[#e5e7eb] text-base text-black font-medium">
               <div>
                 <FaCheckCircle className="w-6 h-6  text-[#ff3366]" />
               </div>
@@ -148,7 +137,7 @@ export default function AttendanceForm() {
 
             {/* Note */}
             <div className="space-y-3">
-              <label className="text-lg font-medium">Note for Admin</label>
+              <label className="text-base font-medium">Note for Admin</label>
               <textarea
                 className="mt-1 w-full  my-4 rounded-2xl bg-[#f9fafb] border border-[#D5D5D5] h-28 px-3 py-2"
                 placeholder="Text"
@@ -163,46 +152,24 @@ export default function AttendanceForm() {
             Activities Conducted
           </h3>
           <div className="mt-2 space-y-4">
-            <div>
-              <label className="block text-lg mb-2 font-medium text-black ">
-                Select Test
-              </label>
-              <select className="w-full bg-[#F9FAFB] border border-[#e5e7eb] rounded-full px-3 py-2">
-                <option>Math Test 1</option>
-              </select>
-            </div>
+            <DropdownOptionSearch label="Select Test" options="Math Test 1" />
+            <DropdownOptionSearch label="Select Quiz" options="Quiz Name" />
+            <DropdownOptionSearch label="Select Assessment" options="None" />
 
-            <div>
-              <label className="block text-lg  font-medium text-black mb-2">
-                Select Quiz
-              </label>
-              <select className="w-full bg-[#F9FAFB] border border-[#e5e7eb] rounded-full px-3 py-2">
-                <option>Quiz Name</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-lg font-medium text-black mb-2">
-                Other Options
-              </label>
-              <select className="w-full bg-[#F9FAFB] border border-[#e5e7eb] rounded-full px-3 py-2">
-                <option>None</option>
-              </select>
-            </div>
           </div>
         </div>
       </div>
 
       {/* Right Section – Attendance */}
       <div className="w-[40%] bg-[#F9FAFB] space-y-3 p-4 rounded-3xl">
-        <h3 className="text-lg font-semibold  rounded">Attendance</h3>
+        <h3 className="text-base font-semibold  rounded">Attendance</h3>
         {/* Search */}
         <div className="flex  items-center gap-2 border-[2px] border-[#6B7280] rounded-full px-3 py-2 bg-white">
           <FaSearch className="text-black " />
           <input
             type="text"
             placeholder="Search"
-            className=" text-[#6B7280] text-lg bg-transparent"
+            className=" text-[#6B7280] text-base bg-transparent"
           />
         </div>
         {/* Student Cards */}
