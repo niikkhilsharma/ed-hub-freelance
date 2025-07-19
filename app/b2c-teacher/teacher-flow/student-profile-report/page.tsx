@@ -1,22 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 
 import { FaInfoCircle, FaCalendarAlt } from 'react-icons/fa'
-import {
-	FiArrowLeft,
-	// FiClock,
-	// FiChevronLeft,
-	// FiChevronRight,
-	FiSearch,
-	FiPercent,
-	FiAward,
-	FiBarChart2,
-	FiChevronDown,
-	FiZap,
-	FiArrowLeftCircle,
-	FiArrowRightCircle,
-} from 'react-icons/fi' // Add icons as needed
+
 import Image from 'next/image' // For profile picture
 import Header from '@/components/layout/TeacherB2CHeader'
 import Footer from '@/components/layout/Footer'
@@ -24,6 +11,8 @@ import ChartsReportTeacherB2C from '@/components/teacher-b2c/common-components/C
 import BackButton from '@/components/common-components/BackButton'
 import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper'
 import Link from 'next/link'
+import MonthEndReportModal from '../../ct-pop-ups/popupComponent/MonthEndReport'
+import { FiCalendar, FiInfo } from 'react-icons/fi'
 // import MaxWidthWrapper from "../max-width-wrapper";
 
 // --- COLOR PALETTE (as provided) ---
@@ -51,35 +40,37 @@ const PALETTE = {
 // --- Helper Components (Simplified for hardcoding) ---
 
 const ClassesCard = () => {
+	const [month, setMonth] = useState(false);
 	return (
 		<div className="flex flex-col gap-4 p-4  rounded-2xl bg-white">
 			{/* Card 1 - Student Journey Report */}
-			<Link href="" className="bg-white rounded-2xl border p-3">
+			<Link href="/b2c-teacher/teacher-flow/student-progress-report-topics" className="bg-white rounded-2xl border p-3">
 				<div className="flex justify-between items-center mb-1">
 					<h3 className="sm:text-[24px] text-[20px] w-[15ch]  font-bold text-[#FFCC00]">Student Journey Report</h3>
 					<Image src="/teacher/b2c/map.png" alt="Shlok Agheda" width={72} height={72} className="" />
 				</div>
 				<div className="flex items-center gap-2 text-gray-600 text-sm">
-					<FaInfoCircle />
+					<FiInfo size={17}/>
 					<span>Next Update Due: October 16 2025</span>
 				</div>
 			</Link>
 
 			{/* Card 2 - Month End Report */}
-			<button className="bg-white rounded-2xl  p-3 border">
+			<button onClick={() => setMonth(true)} className="bg-white rounded-2xl  p-3 border">
 				<div className="flex justify-between items-center mb-2">
-					<h3 className="text-[24px] font-bold w-[10ch] text-[#3366FF]">Month End Report</h3>
+					<h3 className="text-[24px] font-bold w-[10ch] text-left text-[#3366FF]">Month End Report</h3>
 					<Image src="/teacher/b2c/calender.png" alt="Shlok Agheda" width={52} height={52} className="" />
 				</div>
-				<div className="flex items-center gap-2 text-[#6B7280] text-sm mb-1">
-					<FaInfoCircle />
+				<div className="flex items-center gap-2 text-gray-600 text-sm mb-1">
+					<FiInfo size={17}/>
 					<span>Month: June</span>
 				</div>
 				<div className="flex items-center gap-2 text-gray-600 text-sm">
-					<FaCalendarAlt />
+					<FiCalendar size={17}/>
 					<span>Deadline 16 / 10 / 25</span>
 				</div>
 			</button>
+			<MonthEndReportModal isOpen={month} onClose={() => setMonth(false)} />
 		</div>
 	)
 }

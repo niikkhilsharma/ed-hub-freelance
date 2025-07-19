@@ -186,39 +186,11 @@ const FeedbackRow: React.FC<{
 );
 
 // --- Main Page Component (Wrapper) ---
-export default function FeedbackDashboardPage() {
-  const [activeTab, setActiveTab] = useState("Attitude");
+export default function Attitude() {
 
-  const headerUser = {
-    name: "Educator Name",
-    role: "Teacher",
-    avatarSrc: "/teacher-b2b/profile.png",
-  };
   return (
     <>
-      <Header user={headerUser} />
-      <div className="bg-[#eeeeee] min-h-screen flex  flex-col">
-        <div className="p-2 bg-white">
-          <div className="flex max-w-[96rem]  mx-auto items-center gap-4 mb-2">
-          <button className="p-2 h-8 rounded-full hover:bg-gray-100">
-            <FiArrowLeft className="w-5 h-5" strokeWidth={2} />
-          </button>
-          <h1 className="sm:text-xl  text-lg font-semibold text-[#FF3366]">
-            Student Progress Report
-          </h1>
-        </div>
-        </div>
-        {/* <AcademicFeedbackPage /> */}
-
-        <div className="w-full my-2 max-w-7xl mx-auto">
-          <TopTabs activeTab={activeTab} onTabChange={setActiveTab} />
-        </div>
-
-        <div className="w-full  max-w-7xl mx-auto ">
           <StudentAtitude />
-        </div>
-      </div>
-      <Footer />
     </>
   );
 }

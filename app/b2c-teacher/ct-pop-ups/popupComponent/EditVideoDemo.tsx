@@ -1,16 +1,19 @@
+"use client"
 import { FiX } from "react-icons/fi";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
+import { useState } from "react";
 
 const EditDemoVideo: React.FC<PopupPropB2CTeacher> = ({
     isOpen,
     onClose,
 }) => {
+
     return (
         <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
             <div className="rounded-3xl px-4 pt-6 pb-4 ">
                 <div className="flex justify-between items-center">
-                    <h2 className="text-base font-semibold">EditDemoVideo</h2>
+                    <h2 className="text-base font-semibold">Edit Demo Video</h2>
                     <button
                         onClick={onClose}
                         className="p-1.5 bg-[#F9FAFB] rounded-full hover:bg-gray-200"

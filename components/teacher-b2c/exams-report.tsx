@@ -93,8 +93,8 @@ export default function ExamReport() {
       <div className="flex-grow container mx-auto p-4 space-y-6 bg-white rounded-2xl ">
 
         {/* Exams Header */}
-        <div className="text-2xl sm:text-3xl font-bold p-4 rounded-2xl bg-[#b0b0b0]/5 text-[#3366ff] mb-6 sm:mb-8 pb-2 ">
-          Exams
+        <div className="py-3 px-4 bg-[#B0B0B014] rounded-2xl mb-6">
+          <h1 className="text-xl sm:text-2xl font-semibold text-[#3366FF]">Exams</h1>
         </div>
 
         <ExamResultsTable />

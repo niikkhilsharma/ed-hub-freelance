@@ -41,7 +41,6 @@ const PALETTE = {
 
 
 const ClassesCard = () => {
-    const [month] = useState('June 2025');
 
     return (
         <div className="rounded-2xl  bg-white p-6 w-full max-w-md">

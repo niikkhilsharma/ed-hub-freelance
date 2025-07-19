@@ -60,11 +60,11 @@ export default function StudentAtitude() {
   return (
     // Main container with responsive padding and background matching the overall design
 
-    <div className="bg-white   p-6 sm:p-8 mb-4  rounded-2xl ">
+    <div className="bg-white p-4 mb-4 rounded-2xl ">
       {/* Header for the assessment */}
-      <h1 className="text-xl sm:text-2xl font-bold text-[#3366ff] mb-6 sm:mb-8 pb-2 ">
-        Attitude
-      </h1>
+      <div className="py-3 px-4 bg-[#B0B0B014] rounded-2xl mb-6">
+        <h1 className="text-xl sm:text-2xl font-semibold text-[#3366FF]">Attitude</h1>
+      </div>
 
       {/* Grid Container for the Assessment Table */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 mb-8">
@@ -99,7 +99,7 @@ export default function StudentAtitude() {
                 >
                   <input
                     type="radio"
-                    className="appearance-none w-5 h-5 rounded-full border-[4px] border-[#6b7280] checked:bg-[#6b7280] checked:border-[#6b7280]"
+                    className="appearance-none w-5 h-5 rounded-full border-[3px] border-[#6b7280] "
                     name={`attitude-${category.id}`} // Unique name for each row's radio group
                     value={option}
                   />

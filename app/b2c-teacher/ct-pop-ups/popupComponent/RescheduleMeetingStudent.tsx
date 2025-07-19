@@ -1,26 +1,28 @@
-
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import { FiCalendar, FiChevronDown, FiClock, FiSearch } from 'react-icons/fi';
 import Image from 'next/image';
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from '../../new-pop-ups/page';
-import { FC } from 'react';
+
 import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
+import DropdownOptions5 from '@/components/common-components/Dropdown/DropdownOptions';
+import ConfirmPasswordModal from './ConfirmPasswordModal';
 
-interface FilterOption {
-    id: string;
-    label: string;
-}
-
-// Filters component
-interface FiltersProps {
-    filters: FilterOption[];
-}
 
 
 
 const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
 
+    const [passwordOpen, setPasswordOpen] = useState(false);
 
+    // helper to close first and then open confirm modal
+    const handleAction = () => {
+        onClose();
+
+        setTimeout(() => {
+            setPasswordOpen(true); // open the next after 300ms
+        }, 300); // same as your modal transition duration
+    };
     const students = Array.from({ length: 5 }).map((_, i) => ({
         name: 'Name',
         subject: 'Subject',
@@ -32,7 +34,7 @@ const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
         { id: "f1", label: "1st STD" },
     ];
     return (
-        <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
+        <>        <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-4xl">
             <div className="relative bg-white rounded-2xl p-6">
 
 
@@ -44,7 +46,7 @@ const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
                     <div className="space-y-4 mt-2">
                         {/* Meeting Title */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Lecture Title</label>
+                            <label className="block text-sm font-medium text-black mb-1">Lecture Title</label>
                             <input
                                 type="text"
                                 placeholder="Text"
@@ -54,7 +56,7 @@ const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
 
                         {/* Meeting URL */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Meeting URL</label>
+                            <label className="block text-sm font-medium text-black mb-1">Meeting URL</label>
                             <input
                                 type="text"
                                 placeholder="Text"
@@ -64,7 +66,7 @@ const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
 
                         {/* Date */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                            <label className="block text-sm font-medium text-black mb-1">Date</label>
                             <div className="relative">
                                 <input
                                     type="text"
@@ -77,7 +79,7 @@ const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
 
                         {/* Time */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                            <label className="block text-sm font-medium text-black mb-1">Time</label>
                             <div className="relative">
                                 <input
                                     type="text"
@@ -89,30 +91,9 @@ const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
                         </div>
 
                         {/* Select Course */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Select Course</label>
-                            <div className="relative">
-                                <select className="w-full appearance-none border rounded-full px-4 py-2 bg-[#f9fafb] text-sm pr-10">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                                <FiChevronDown className="absolute right-3 top-2.5  pointer-events-none" size={16} />
-                            </div>
-                        </div>
+                        <DropdownOptions5 label='Select Course' options='Option 1' />
+                        <DropdownOptions5 label='Select Batch' options='Option 1' />
 
-                        {/* Select Batch */}
-                        <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-1">Select Batch</label>
-                            <div className="relative">
-                                <select className="w-full appearance-none border rounded-full px-4 py-2 bg-[#f9fafb] text-sm pr-10">
-                                    <option>Option 1</option>
-                                    <option>Option 2</option>
-                                    <option>Option 3</option>
-                                </select>
-                                <FiChevronDown className="absolute right-3 top-2.5  pointer-events-none" size={16} />
-                            </div>
-                        </div>
                     </div>
 
                     {/* Right List */}
@@ -171,22 +152,25 @@ const RescheduleMeetingStudent: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClo
                 {/* Buttons */}
                 <div className="mt-8 flex justify-center flex-wrap gap-3">
                     <button className="bg-[#3366ff] text-white px-4 py-2.5 max-w-36 w-full rounded-full text-sm font-medium "
-                    onClick={onClose}>
+                        onClick={handleAction}>
                         Reschedule
                     </button>
                     <button className="bg-pink-100 text-[#ff3366] px-4 py-2.5 max-w-36 w-full rounded-full text-sm font-medium "
-                    onClick={onClose}>
+                        onClick={handleAction}>
                         Cancel Meeting
                     </button>
                     <button
-                        onClick={onClose}
-                        className="bg-gray-200 text-gray-700 px-4 py-2.5 max-w-36 w-full rounded-full text-sm font-medium"
+                        onClick={handleAction}
+                        className="bg-gray-200 text-black px-4 py-2.5 max-w-36 w-full rounded-full text-sm font-medium"
                     >
                         Discard
                     </button>
                 </div>
             </div>
         </TeacherB2CBaseModal>
+            <ConfirmPasswordModal isOpen={passwordOpen} onClose={() => setPasswordOpen(false)} />
+        </>
+
     );
 };
 

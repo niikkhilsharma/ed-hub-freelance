@@ -1,10 +1,17 @@
 // /app/your-page-path/page.tsx
 "use client";
 
+import BackButton from "@/components/common-components/BackButton";
+import TabSwitch from "@/components/common-components/TabSwitch";
 import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/TeacherB2CHeader";
+import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
 import React, { useState } from "react";
 import { FiArrowLeft } from "react-icons/fi";
+import Attitude from "../student-progress-report-attitude/page";
+import StudentAtitude from "@/components/teacher-b2c/attitude";
+import ExamReport from "@/components/teacher-b2c/exams-report";
+import AcademicsReport from "../student-progess-report-academics/page";
 
 // --- NEW, UPDATED DATA STRUCTURES & DATA ---
 
@@ -29,9 +36,9 @@ interface FeedbackQuestion {
 const tabData = ["Student Engagement", "Attitude", "Academics", "Exams"];
 
 const questions: FeedbackQuestion[] = [
-    { 
-        id: 'q1', 
-        number: 1, 
+    {
+        id: 'q1',
+        number: 1,
         text: 'Attendance & Punctuality',
         options: {
             emerging: [
@@ -50,9 +57,9 @@ const questions: FeedbackQuestion[] = [
             ],
         }
     },
-    { 
-        id: 'q2', 
-        number: 2, 
+    {
+        id: 'q2',
+        number: 2,
         text: 'Preparation for class',
         options: {
             emerging: [
@@ -71,9 +78,9 @@ const questions: FeedbackQuestion[] = [
             ],
         }
     },
-    { 
-        id: 'q3', 
-        number: 3, 
+    {
+        id: 'q3',
+        number: 3,
         text: 'Homework completion',
         options: {
             emerging: [
@@ -88,9 +95,9 @@ const questions: FeedbackQuestion[] = [
             ],
         }
     },
-    { 
-        id: 'q4', 
-        number: 4, 
+    {
+        id: 'q4',
+        number: 4,
         text: 'In-class time on task, work ethic &participation; Shows a willingness to question, to discuss and take risk',
         options: {
             emerging: [
@@ -117,9 +124,9 @@ const questions: FeedbackQuestion[] = [
             ],
         }
     },
-    { 
-        id: 'q5', 
-        number: 5, 
+    {
+        id: 'q5',
+        number: 5,
         text: 'Sets specific goals',
         options: {
             emerging: [
@@ -134,9 +141,9 @@ const questions: FeedbackQuestion[] = [
             ],
         }
     },
-    { 
-        id: 'q6', 
-        number: 6, 
+    {
+        id: 'q6',
+        number: 6,
         text: 'Implements plans for improvement',
         options: {
             emerging: [
@@ -160,7 +167,7 @@ const ratingHeaders = ["Emerging", "Developing", "Established"];
 const TopTabs: React.FC<{ activeTab: string; onTabChange: (tab: string) => void }> = ({ activeTab, onTabChange }) => (
     <div className="flex justify-center items-center gap-2 mb-6 p-1.5 bg-white rounded-2xl">
         {tabData.map(tab => (
-            <button key={tab} onClick={() => onTabChange(tab)} className={`px-4 sm:px-6 py-2 rounded-xl text-sm font-semibold transition-colors duration-200 ${ activeTab === tab ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-gray-200'}`}>
+            <button key={tab} onClick={() => onTabChange(tab)} className={`px-4 sm:px-6 py-2 rounded-xl text-sm font-semibold transition-colors duration-200 ${activeTab === tab ? 'bg-[#FF3366] text-white' : 'text-[#6B7280] hover:bg-gray-200'}`}>
                 {tab}
             </button>
         ))}
@@ -173,7 +180,7 @@ const FeedbackRow: React.FC<{ question: FeedbackQuestion; selectedAnswers: Recor
         <div className="p-4 flex items-center justify-center bg-[#F9FAFB] rounded-2xl">
             <p className="font-semibold text-black text-sm">{question.number}. <span className="text-center">{question.text}</span></p>
         </div>
-        
+
         {/* Option Cells */}
         {ratingHeaders.map(header => {
             const category = header.toLowerCase() as keyof QuestionOptions;
@@ -198,7 +205,6 @@ const FeedbackRow: React.FC<{ question: FeedbackQuestion; selectedAnswers: Recor
 
 
 function AcademicFeedbackPage() {
-    const [activeTab, setActiveTab] = useState("Student Engagement");
     const [answers, setAnswers] = useState<Record<string, Record<string, string>>>({});
 
     const handleSelect = (questionId: string, ratingHeader: string, optionId: string) => {
@@ -212,54 +218,65 @@ function AcademicFeedbackPage() {
     };
 
     return (
-        <div className="bg-[#eeeeee] p-4 sm:p-8">
-            <div className="w-full max-w-7xl mx-auto">
-                <TopTabs activeTab={activeTab} onTabChange={setActiveTab} />
-                <div className="bg-white rounded-2xl p-4 ">
-                    <div className="py-3 px-4 bg-[#B0B0B014] rounded-2xl mb-6">
-                        <h1 className="text-xl sm:text-2xl font-semibold text-[#3366FF]">Student Engagement</h1>
-                    </div>
-                    <div className="overflow-x-auto custom-scrollbar-thin">
-                        <div className="grid grid-cols-4 gap-x-4 gap-y-4 min-w-[900px]">
-                            <div className="p-4 rounded-xl bg-[#99DEFF] font-semibold text-black text-sm text-center">Commitment</div>
-                            {ratingHeaders.map(header => <div key={header} className="p-4 rounded-xl bg-[#99DEFF] font-semibold text-black text-sm text-center">{header}</div>)}
-                            
-                            {questions.map((question) => (
-                                <React.Fragment key={question.id}>
-                                    <FeedbackRow 
-                                        question={question}
-                                        selectedAnswers={answers[question.id] || {}}
-                                        onSelect={(ratingHeader, optionId) => handleSelect(question.id, ratingHeader, optionId)}
-                                    />
-                                </React.Fragment>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="mt-8 flex justify-center">
-                        <button className="bg-[#3366FF] text-white font-semibold text-lg px-12 py-3 rounded-full hover:bg-blue-700 transition-colors hover:shadow-xl">
-                            Continue
-                        </button>
+
+        <>
+            <div className="bg-white rounded-2xl p-4 ">
+                <div className="py-3 px-4 bg-[#B0B0B014] rounded-2xl mb-6">
+                    <h1 className="text-xl sm:text-2xl font-semibold text-[#3366FF]">Student Engagement</h1>
+                </div>
+                <div className="overflow-x-auto custom-scrollbar-thin">
+                    <div className="grid grid-cols-4 gap-x-4 gap-y-4 min-w-[900px]">
+                        <div className="p-4 rounded-xl bg-[#99DEFF] font-semibold text-black text-sm text-center">Commitment</div>
+                        {ratingHeaders.map(header => <div key={header} className="p-4 rounded-xl bg-[#99DEFF] font-semibold text-black text-sm text-center">{header}</div>)}
+
+                        {questions.map((question) => (
+                            <React.Fragment key={question.id}>
+                                <FeedbackRow
+                                    question={question}
+                                    selectedAnswers={answers[question.id] || {}}
+                                    onSelect={(ratingHeader, optionId) => handleSelect(question.id, ratingHeader, optionId)}
+                                />
+                            </React.Fragment>
+                        ))}
                     </div>
                 </div>
+                <div className="mt-8 flex justify-center">
+                    <button className="bg-[#3366FF] text-white font-semibold text-lg px-12 py-3 rounded-full hover:bg-blue-700 transition-colors">
+                        Continue
+                    </button>
+                </div>
             </div>
-        </div>
+        </>
+
     );
 }
 
 // --- Main Page Component (Wrapper) ---
 export default function FeedbackDashboardPage() {
-  const headerUser = { name: "Educator Name", role: "Teacher", avatarSrc: "/teacher-b2b/profile.png" };
-  return (
-    <>
-      <Header user={headerUser} />
-      <div className="bg-[#eeeeee] min-h-screen">
-        <div className="flex bg-white py-3 px-8 items-center gap-4 mb-2">
-          <button className="p-2 h-8 rounded-full hover:bg-gray-100"><FiArrowLeft className="w-5 h-5" strokeWidth={2} /></button>
-          <h1 className="text-2xl font-semibold text-[#FF3366]">Student Progress Report</h1>
-        </div>
-        <AcademicFeedbackPage />
-      </div>
-      <Footer />
-    </>
-  );
+    const tabData = ["Student Engagement", "Attitude", "Academics", "Exams"];
+    const [activeTab, setActiveTab] = useState(tabData[0]);
+    return (
+        <>
+            <Header activeState="Dashboard" />
+            <BackButton Heading="Student Progress Report" />
+            <TeacherB2CWrapper>
+                <div className="">
+                    <TabSwitch tabs={tabData} selected={activeTab} onChange={setActiveTab} />
+                </div>
+                {activeTab==="Student Engagement" && (
+                <AcademicFeedbackPage />
+                )}
+                {activeTab==="Attitude" && (
+                <StudentAtitude />
+                )}
+                {activeTab==="Academics" && (
+                <AcademicsReport />
+                )}
+                {activeTab==="Exams" && (
+                <ExamReport />
+                )}
+            </TeacherB2CWrapper>
+            <Footer />
+        </>
+    );
 }

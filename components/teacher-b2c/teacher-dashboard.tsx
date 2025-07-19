@@ -1,16 +1,15 @@
 'use client'
-import Header from '@/components/layout/Header'
+import Header from '@/components/layout/TeacherB2CHeader'
 import React from 'react'
-import MaxWidthWrapper from '../admin/max-width-wrapper'
 import Footer from '../layout/Footer'
 import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { useState } from 'react'
 import { Progress } from '@/components/ui/progress'
 import { FaSearch } from 'react-icons/fa'
 import { Star as StarIcon } from "lucide-react";
-
+import { TfiMenuAlt } from "react-icons/tfi";
+import { HiOutlineArchiveBox } from "react-icons/hi2";
 const PALETTE = {
 	GREEN_LIGHT: '#8DD9B3', // Basic Academic Skills BG
 	GREEN_DARK: '#4BC4B6', // Not explicitly used but similar to progress bar
@@ -208,8 +207,6 @@ const classSchedule = [
 	{ time: '10:30 AM', title: 'Fraction', subTitle: ["Course Name", "Batch Name", "5 Students"] },
 ]
 
-const tools = ['BW test', 'Assessment', 'Quiz', 'Worksheet', 'DMIT Results', 'Videos',]
-
 const sampleChapterAccordions: ChapterAccordionItem[] = Array.from(
 	{ length: 2 },
 	(_, i) => ({
@@ -220,14 +217,12 @@ const sampleChapterAccordions: ChapterAccordionItem[] = Array.from(
 );
 
 const TeacherDashboard = () => {
+	const [meeting, setMeeting] = useState(false)
+	const [uploadImage, setUploadImage] = useState(false);
+	const [meetingDetails, setMeetingDetails] = useState(false);
 	const [progress] = useState(60)
 	const enrolledCount = 20
 	const averageScore = 75
-	const headerUser = {
-		name: 'Educator Name',
-		role: 'Teacher',
-		avatarSrc: '/teacher-b2b/profile.png',
-	}
 	const [activeTab, setActiveTab] = useState('class-a');
 	const [openAccordionId, setOpenAccordionId] = useState<string | null>("acc1");
 	const [activeIndex, setActiveIndex] = useState<number | null>(0);
@@ -237,14 +232,14 @@ const TeacherDashboard = () => {
 			prevId === accordionId ? null : accordionId
 		);
 	};
-
+	 const router = useRouter();
 	return (
 		<div className="bg-[#F9FAFB]">
-			<Header user={headerUser} />
-			<MaxWidthWrapper>
-				<section className="bg-[#F9FAFB] ">
+			<Header activeState="Dashboard" />
+			<TeacherB2CWrapper>
+				<section className="bg-[#e3e3e3]">
 					<main className="p-2">
-						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[5fr_3fr_3fr] gap-4">
+						<div className="grid grid-cols-1 mb-4 md:grid-cols-2 lg:grid-cols-[4.5fr_3fr_2.5fr] gap-4">
 							{/* Profile Card */}
 							<div className="bg-white rounded-2xl p-4  space-y-4">
 								<div className="flex items-center justify-between gap-4">
@@ -288,6 +283,7 @@ const TeacherDashboard = () => {
 										<div className="flex justify-between items-center">
 											<span className="text-m font-medium">Demo Video</span>
 											<button
+											onClick={() => setUploadImage(true)}
 												className="text-sm font-medium py-1 px-4 rounded-full text-black"
 												style={{ backgroundColor: PALETTE.GREEN_LIGHT }}>
 												Edit
@@ -317,13 +313,14 @@ const TeacherDashboard = () => {
 							{/* Classes List */}
 							<div className="bg-white rounded-2xl p-4 ">
 								<div className="flex justify-center items-center mb-4">
-									<h2 className="font-semibold text-lg">Classes</h2>
+									<h2 className="font-medium text-base">Scheduled Classes</h2>
 								</div>
 								<div className="space-y-3">
 									{classSchedule.map((cls, index) => (
-										<div key={index} className="flex justify-between gap-2 items-center bg-[#F9FAFB] p-2 rounded-2xl">
+										<div key={index} className="flex gap-2 justify-between items-center bg-[#F9FAFB] p-2 rounded-2xl">
+											<div className="flex items-center h-full gap-2">
 											<div>
-												<p className="text-sm rounded-2xl font-semibold bg-[#F3F4F6] p-4 leading-tight text-center">
+												<p className="text-sm flex items-center justify-center flex-col rounded-2xl font-semibold bg-[#F3F4F6] p-4 leading-tight min-h-[80px] text-center">
 													{cls.time.split(' ').map((part, i) => (
 														<span key={i} className="block">
 															{part}
@@ -332,7 +329,7 @@ const TeacherDashboard = () => {
 												</p>
 											</div>
 											<div className='space-y-1'>
-												<p className="text-base font-semibold">{cls.title}</p>
+												<p className="text-sm font-semibold">{cls.title}</p>
 												{cls.subTitle.map((text, i) => {
 													return (
 
@@ -340,9 +337,9 @@ const TeacherDashboard = () => {
 													)
 												})}
 											</div>
-
+</div>
 											<div className='flex flex-col gap-1'>
-												<button className="text-black text-m px-4 py-1 rounded-full flex items-center justify-center bg-[#F3F4F6]">
+												<button onClick={() => setMeetingDetails(true)} className="text-black text-m px-4 py-1 rounded-full flex items-center justify-center bg-[#F3F4F6]">
 													<svg
 														width={24}
 														height={24}
@@ -360,7 +357,7 @@ const TeacherDashboard = () => {
 													</svg>
 
 												</button>
-												<button className="text-white text-m px-5 py-4 rounded-full" style={{ backgroundColor: PALETTE.ACCENT_PINK }}>
+												<button className="text-white text-m px-5 py-3 rounded-full" style={{ backgroundColor: PALETTE.ACCENT_PINK }}>
 													Start
 												</button>
 											</div>
@@ -370,12 +367,12 @@ const TeacherDashboard = () => {
 									))}
 								</div>
 								<div className="flex justify-end">
-									<button className="mt-4 px-4 text-right bg-[#3366FF] text-white py-2.5 rounded-full">Schedule Meeting</button>
+									<button className="mt-4 px-3 font-medium text-right bg-[#3366FF] text-white py-3 rounded-full">Schedule Meeting</button>
 								</div>
 							</div>
 
 							{/* Teacher Toolkit */}
-							<div className="bg-white rounded-2xl p-6  w-full max-w-sm mx-auto max-h-138 custom-scrollbar overflow-y-auto">
+							<div className="bg-white rounded-2xl p-3  w-full max-w-sm mx-auto max-h-[568px] custom-scrollbar overflow-y-auto">
 								<h2 className="font-semibold text-lg text-black mb-4">
 									Teacher Toolkit
 								</h2>
@@ -536,9 +533,9 @@ const TeacherDashboard = () => {
 												className="w-full pl-10 pr-4 py-2 border border-[#6B7280] rounded-full  focus:outline-none focus:ring-2 focus:ring-[#3366FF1A]0"
 											/>
 										</div>
-										<Button className="rounded-full bg-[#3366FF1A] font-medium text-[#3366FF]" variant="outline">
+										<button      onClick={() => router.push('/b2c-teacher/teacher-flow/pedagogy')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
 											View All
-										</Button>
+										</button>
 									</div>
 
 									{/* Chapter Accordions */}
@@ -608,7 +605,9 @@ const TeacherDashboard = () => {
 													return (
 														<div key={colIdx} className="p-2">
 															{slot ? (
-																<div className={`rounded-xl p-2 text-xs border ${slot.bg} ${slot.bor} flex justify-between items-start`}>
+																<div 
+																onClick={() => setMeeting(true)}
+																className={`rounded-xl p-2 text-xs border ${slot.bg} ${slot.bor} flex cursor-pointer justify-between items-start`}>
 																	<div className="flex flex-col justify-between items-start">
 																		<div className="font-medium">{slot.title}</div>
 																		<div className="text-black">{slot.subtitle}</div>
@@ -631,9 +630,9 @@ const TeacherDashboard = () => {
 									{/* Top Bar */}
 									<div className="flex items-center justify-between gap-2">
 										<h1 className="text-lg font-semibold">Curriculum</h1>
-										<Button className="rounded-full bg-[#3366FF1A] font-medium text-[#3366FF]" variant="outline">
+										<button onClick={() => router.push('/b2c-teacher/teacher-flow/curriculum')} className="rounded-full bg-[#3366FF1A] px-4 py-2 whitespace-nowrap font-medium text-[#3366FF]" >
 											View All
-										</Button>
+										</button>
 									</div>
 
 
@@ -720,8 +719,11 @@ const TeacherDashboard = () => {
 						</div>
 					</main>
 				</section>
-			</MaxWidthWrapper>
+			</TeacherB2CWrapper>
 			<Footer />
+			<RescheduleMeetingStudent isOpen={meeting} onClose={() => setMeeting(false)} />
+			<EditDemoVideo isOpen={uploadImage} onClose={() => setUploadImage(false)}/>
+			<MeetingDetailStudent isOpen={meetingDetails} onClose={() => setMeetingDetails(false)}/>
 		</div>
 	)
 }
@@ -741,6 +743,12 @@ import {
 } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion'
 import { IoIosArrowDown } from 'react-icons/io'
+import TeacherB2CWrapper from './common-components/TeacherB2CPageWrapper'
+import { useRouter } from 'next/navigation'
+import MeetingDetailStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/MeetingDetailStudent'
+import RescheduleMeetingStudent from '@/app/b2c-teacher/ct-pop-ups/popupComponent/RescheduleMeetingStudent'
+import EditDemoVideo from '@/app/b2c-teacher/ct-pop-ups/popupComponent/EditVideoDemo'
+import { PiSquaresFourLight } from 'react-icons/pi'
 
 // A custom icon component for "Assessment" to match the design
 const AssessmentIcon = () => (
@@ -751,15 +759,18 @@ const AssessmentIcon = () => (
 
 // Array of tool items with their labels, icons, and links
 const toolkitItems = [
-	{ label: 'BW test', icon: FiCalendar, href: '/teacher/bw-test' },
-	{ label: 'Assessment', icon: AssessmentIcon, href: '/teacher/assessment' },
-	{ label: 'Quiz', icon: FiHelpCircle, href: '/teacher/quiz' },
-	{ label: 'Worksheet', icon: FiFileText, href: '/teacher/worksheet' },
-	{ label: 'DMIT Results', icon: FiAward, href: '/teacher/dmit-results' },
-	{ label: 'Videos', icon: FiVideo, href: '/teacher/videos' },
-	{ label: 'Apply for leave', icon: FiSun, href: '/teacher/apply-leave' },
-	{ label: 'Manage Course', icon: FiClipboard, href: '/teacher/manage-course' },
-	{ label: 'Daily Log', icon: FiCheckSquare, href: '/teacher/daily-log' },
+	{ label: 'BW test', icon: FiCalendar, href: '/b2c-teacher/teacher-flow/create-test' },
+	{ label: 'Assessment', icon: AssessmentIcon, href: '/b2c-teacher/teacher-flow/create-assessment' },
+	{ label: 'Quiz', icon: FiHelpCircle, href: '/b2c-teacher/teacher-flow/create-quiz' },
+	{ label: 'Worksheet', icon: FiFileText, href: '/b2c-teacher/teacher-flow/worksheet' },
+	{ label: 'DMIT Results', icon: FiAward, href: '/b2c-teacher/teacher-flow/dmit-student-list' },
+	{ label: 'Videos', icon: FiVideo, href: '/b2c-teacher/teacher-flow/referance-video' },
+	{ label: 'Apply for leave', icon: FiSun, href: '/b2c-teacher/teacher-flow/apply-leave' },
+	{ label: 'Manage Course', icon: FiClipboard, href: '/b2c-teacher/teacher-flow/manage-course-teach' },
+	{ label: 'Daily Log', icon: FiCheckSquare, href: '/b2c-teacher/teacher-flow/daily-log-select-course' },
+	{ label: 'Manage Reports', icon: PiSquaresFourLight, href: '/b2c-teacher/teacher-flow/student-list-report' },
+	{ label: 'Manage Feedbacks', icon: HiOutlineArchiveBox, href: '/b2c-teacher/teacher-flow/manage-feedback' },
+	{ label: 'Advance Plan', icon: TfiMenuAlt, href: '#' },
 ];
 const ChapterAccordion: React.FC<{
 	item: ChapterAccordionItem;

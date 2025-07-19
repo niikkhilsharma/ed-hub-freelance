@@ -1,8 +1,14 @@
 import React from "react";
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 import { MdOutlineCalendarToday } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const MonthEndReportModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
+  const router = useRouter();
+
+  const handlePublish = () => {
+    router.push("/b2c-teacher/teacher-flow/dashboard");
+  };
   return (
     <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-sm">
       <div className="bg-white p-6 rounded-3xl space-y-5">
@@ -38,7 +44,7 @@ const MonthEndReportModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose })
         {/* Generate Button */}
         <div className="pt-1 flex justify-center">
           <button className=" rounded-full py-2.5 px-4 text-white bg-[#3366FF] text-sm font-medium"
-          onClick={onClose}>
+          onClick={handlePublish}>
             Generate
           </button>
         </div>
