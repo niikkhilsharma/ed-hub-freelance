@@ -2,9 +2,7 @@
 
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
-import SuccessCard from "@/components/student/auth/success-card";
 import Link from "next/link";
 import {
   Select,
@@ -14,85 +12,97 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Calendar } from "@/components/ui/calender";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Textarea } from "@/components/ui/textarea";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
-  const [success, setSuccess] = useState(false);
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [date, setDate] = React.useState<Date>();
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password && password === confirmPassword) {
-      setSuccess(true);
-    }
-  };
+  const Router = useRouter();
+  const [selectedBoard, setSelectedBoard] = useState<string>("ICSE");
+
   return (
     <MaxWidthWrapper>
       <div className="relative w-full min-h-screen flex flex-col overflow-hidden">
-        <div className="relative z-10 flex items-center justify-center w-full min-h-screen p-4">
-          {success ? (
-            <SuccessCard successUrl="/student/auth/login" />
-          ) : (
-            <div className="w-2/3 m-auto max-w-2xl bg-white rounded-3xl overflow-hidden shadow-lg">
-              <div className="flex flex-col px-12 md:flex-row min-h-[400px] md:min-h-[600px] h-full">
-                <div className="w-full p-8 flex flex-col justify-center">
-                  <div className="flex items-start gap-4">
+        <div className="relative z-10 flex items-center justify-center w-full min-h-screen py-6 sm:px-4 md:py-12 md:px-6">
+
+          <div className="w-full lg:max-w-[630px] mx-auto max-w-xl bg-white rounded-3xl overflow-hidden">
+            <div className="flex flex-col px-4 md:px-6 md:flex-row min-h-[400px] md:min-h-[600px] h-full">
+
+              <div className="w-full p-4 sm:p-8 flex flex-col justify-center">
+
+                <div className="flex flex-col gap-2">
+
+                  <div className="flex items-start gap-2 sm:gap-4">
                     <Image
                       src="/student/auth/register.png"
                       alt="teacher and student"
-                      width={60}
-                      height={60}
-                      className="object-contain h-full w-fit"
+                      width={86}
+                      height={86}
+                      className="self-center object-contain h-full w-fit"
                       priority
                     />
                     <div>
-                      <h2 className="font-adlam text-3xl">
+                      <h2 className="font-adlam text-xl sm:text-2xl lg:text-3xl">
                         Student/Parent Registration
                       </h2>
-                      <p className="mt-2 max-w-[50ch] text-gray-600">
+                      <p className="md:block hidden mt-2 text-sm sm:text-base max-w-[50ch] text-black">
                         Lorem Ipsum is simply dummy text of the printing and
                         typesetting industry.
                       </p>
                     </div>
                   </div>
-                  <div className="mt-8 space-y-4">
-                    <div>
-                      <Label htmlFor="guardian">Student Name</Label>
-                      <Input
-                        type="text"
-                        placeholder="Student Name"
-                        className=" rounded-full bg-[#F9FAFB]"
-                      />
-                    </div>
 
-                    <div>
-                      <Label htmlFor="school">Class</Label>
-                      <Select>
-                        <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
-                          <SelectValue placeholder="Class" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="light">Light</SelectItem>
-                          <SelectItem value="dark">Dark</SelectItem>
-                          <SelectItem value="system">System</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                  <p className="block md:hidden mt-2 text-sm sm:text-base max-w-[50ch] text-black">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry.
+                  </p>
 
-                    <div className="w-full">
-                      <Label htmlFor="school">Student DOB</Label>
+                </div>
+
+                <div className="mt-8 space-y-4">
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="guardian">Name</label>
+                    <Input
+                      type="text"
+                      placeholder="Enter Name"
+                      className=" rounded-full bg-[#F9FAFB]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="guardian">Class</label>
+                    <Input
+                      type="text"
+                      placeholder="Enter Class"
+                      className=" rounded-full bg-[#F9FAFB]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-black" htmlFor="school">Board</label>
+                    <Select value={selectedBoard} onValueChange={setSelectedBoard}>
+                      <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
+                        <SelectValue placeholder="Class" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="ICSE">ICSE</SelectItem>
+                        <SelectItem value="CBSE">CBSE</SelectItem>
+                        <SelectItem value="RBSE">RBSE</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="guardian">Date of Birth</label>
+                    <Input
+                      type="text"
+                      placeholder="DD/MM/YY"
+                      className=" rounded-full bg-[#F9FAFB]"
+                    />
+                  </div>
+
+                  {/* <div className="w-full">
+                      <label className="text-black" htmlFor="school">Student DOB</label>
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button
@@ -115,149 +125,107 @@ export default function RegisterPage() {
                           />
                         </PopoverContent>
                       </Popover>
-                    </div>
+                    </div> */}
 
-                    <div>
-                      <Label htmlFor="email">Email Id</Label>
-                      <Input
-                        type="email"
-                        placeholder="Email Id"
-                        className=" rounded-full bg-[#F9FAFB]"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="phone">Mobile Number</Label>
-                      <Input
-                        type="text"
-                        placeholder="Enter Mobile Number"
-                        className=" rounded-full bg-[#F9FAFB]"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="guardian">Parents/Guardian Name</Label>
-                      <Input
-                        type="text"
-                        placeholder="Enter Parent/Guardian Name"
-                        className=" rounded-full bg-[#F9FAFB]"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="address">Address</Label>
-                      <Input
-                        type="text"
-                        placeholder="Enter Address"
-                        className=" rounded-full bg-[#F9FAFB]"
-                      />
-                    </div>
-
-                    <div>
-                      <Label htmlFor="country">Country</Label>
-                      <Select>
-                        <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
-                          <SelectValue placeholder="Select Country" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="light">Light</SelectItem>
-                          <SelectItem value="dark">Dark</SelectItem>
-                          <SelectItem value="system">System</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="state">State</Label>
-                      <Select>
-                        <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
-                          <SelectValue placeholder="Select State" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="light">Light</SelectItem>
-                          <SelectItem value="dark">Dark</SelectItem>
-                          <SelectItem value="system">System</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div>
-                      <Label htmlFor="city">City</Label>
-                      <Select>
-                        <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
-                          <SelectValue placeholder="Select City" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="light">Light</SelectItem>
-                          <SelectItem value="dark">Dark</SelectItem>
-                          <SelectItem value="system">System</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="password">New Password</Label>
-                      <Input
-                        id="password"
-                        type="password"
-                        placeholder="Enter new password"
-                        masked
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                        className=" rounded-full bg-[#F9FAFB]"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="confirmPassword">Confirm Password</Label>
-                      <Input
-                        id="confirmPassword"
-                        type="password"
-                        masked
-                        placeholder="Confirm new password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                        className=" rounded-full bg-[#F9FAFB]"
-                      />
-                      {password &&
-                        confirmPassword &&
-                        password !== confirmPassword && (
-                          <p className="text-red-500 text-sm">
-                            Passwords do not match
-                          </p>
-                        )}
-                    </div>
-
-                    <Button
-                      className="w-full mt-2 rounded-full"
-                      onClick={handleSubmit}
-                      disabled={
-                        !password ||
-                        !confirmPassword ||
-                        password !== confirmPassword
-                      }
-                    >
-                      Submit
-                    </Button>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="guardian">Parents / Guardian Name</label>
+                    <Input
+                      type="text"
+                      placeholder="Enter Parent/Guardian Name"
+                      className=" rounded-full bg-[#F9FAFB]"
+                    />
                   </div>
 
-                  <div className="flex justify-center items-center mt-4 text-sm">
-                    <div className="flex">
-                      <p>Already Have Aan Account?</p>
-                      <Link
-                        href={"/student/auth/register"}
-                        className="ml-2 text-[#F9326F] hover:underline"
-                      >
-                        Login
-                      </Link>
-                    </div>
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="email">Email Id</label>
+                    <Input
+                      type="email"
+                      placeholder="Enter Email Id"
+                      className=" rounded-full bg-[#F9FAFB]"
+                    />
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="phone">Mobile Number</label>
+                    <Input
+                      type="text"
+                      placeholder="+91 1234567890"
+                      className=" rounded-full bg-[#F9FAFB]"
+                    />
+                  </div>
+
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="country">Country</label>
+                    <Select value="Option1">
+                      <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
+                        <SelectValue placeholder="Select Country" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Option1">Option 1</SelectItem>
+                        <SelectItem value="Option2">Option 2</SelectItem>
+                        <SelectItem value="Option3">Option 3</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="state">State</label>
+                    <Select value="Option1">
+                      <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
+                        <SelectValue placeholder="Select State" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Option1">Option 1</SelectItem>
+                        <SelectItem value="Option2">Option 2</SelectItem>
+                        <SelectItem value="Option3">Option 3</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="city">City</label>
+                    <Select value="Option1">
+                      <SelectTrigger className="w-full  rounded-full bg-[#F9FAFB]">
+                        <SelectValue placeholder="Select City" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Option1">Option 1</SelectItem>
+                        <SelectItem value="Option2">Option 2</SelectItem>
+                        <SelectItem value="Option3">Option 3</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <label className="text-black" htmlFor="address">Address</label>
+                    <Textarea
+                      className="resize-none h-16 rounded-2xl bg-[#F9FAFB]"
+                    />
+                  </div>
+
+                  <Button
+                    className="w-full mt-2 py-2 rounded-full"
+                    onClick={()=>{Router.push('/b2c-student/registration/forgot-password-2')}}
+                  >
+                    Submit
+                  </Button>
+                </div>
+
+                <div className="flex justify-center items-center mt-4 text-sm">
+                  <div className="flex">
+                    <p>Already Have an Account?</p>
+                    <Link
+                      href={"/b2c-student/registration/login"}
+                      className="ml-2 text-[#F9326F] hover:underline"
+                    >
+                      Login
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </MaxWidthWrapper>

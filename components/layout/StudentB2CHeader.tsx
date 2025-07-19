@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bell, ShoppingCart } from "lucide-react";
 
-export default function Navbar({ activeState = "Home" }:{ activeState?: string }) {
+export default function StudentB2CHeader({ activeState = "Home" }:{ activeState?: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 

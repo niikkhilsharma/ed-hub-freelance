@@ -6,13 +6,15 @@ import StudentNavbarNew from "./student-navbar-new";
 export default function StudentWrapper({
   children,
   student = false,
+  activeState,
 }: {
   children: React.ReactNode;
   student?: boolean;
+  activeState?: string;
 }) {
   return (
     <div>
-      {student ? <StudentNavbarNew /> : <StudentNavbar />}
+      {student ? <StudentNavbarNew activeState={activeState}/> : <StudentNavbar activeState={activeState}/>}
       {children}
     </div>
   );

@@ -28,9 +28,11 @@ function SelectTrigger({
   className,
   size = "default",
   children,
+  downArrowColor = "black",
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: "sm" | "default";
+  downArrowColor?: string;
 }) {
   return (
     <SelectPrimitive.Trigger
@@ -44,7 +46,7 @@ function SelectTrigger({
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        <ChevronDownIcon className="size-4 text-black" />
+        <ChevronDownIcon className={`size-4 text-${downArrowColor}`} />
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
