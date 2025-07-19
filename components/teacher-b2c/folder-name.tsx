@@ -68,7 +68,7 @@ const FileItem: React.FC<{ file: ManagedFile }> = ({ file }) => {
         <MdOutlineFileDownload size={20} />
         <button className="" onClick={() => setFileShare(true)}>
           <FiShare2 size={20} />
-          </button>
+        </button>
       </div>
       <FileShare isOpen={fileShare} onClose={() => setFileShare(false)} />
     </div>
