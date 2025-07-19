@@ -10,12 +10,6 @@ const UploadFilePopup: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => 
     const [url, setUrl] = useState('');
     const [fileName, setFileName] = useState('');
 
-    const handleAdd = () => {
-        console.log("Adding:", { url, fileName });
-        alert("File Added! (Check console)");
-        onClose();
-    }
-
     return (
         <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-md">
             <div className="bg-white w-full rounded-2xl p-4 sm:p-5 space-y-2 relative">
@@ -58,7 +52,7 @@ const UploadFilePopup: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => 
                     <button onClick={onClose} className="rounded-full px-3.5 py-2 w-full max-w-20 sm:py-3 border border-[#E5E7EB] text-[#6B7280] font-semibold text-sm hover:bg-gray-100 transition-colors">
                         Cancel
                     </button>
-                    <button onClick={handleAdd} className="rounded-full px-3.5 py-2 w-full max-w-20 sm:py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 transition">
+                    <button onClick={onClose} className="rounded-full px-3.5 py-2 w-full max-w-20 sm:py-3 bg-[#3366FF] text-white font-semibold text-sm hover:bg-blue-700 transition">
                         Add
                     </button>
                 </div>

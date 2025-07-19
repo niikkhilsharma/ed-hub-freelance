@@ -7,6 +7,7 @@ import { FaRegSmile } from 'react-icons/fa'
 import { GoDatabase, GoPeople } from 'react-icons/go'
 import { useState } from 'react' // Import useState
 import ChatPop from '@/components/common-components/askmeanything'
+import ChatPopup from '@/app/b2c-teacher/new-pop-ups/popupComponent/ChatPopup'
 
 // Separate NavItem component - Can potentially accept an onClick for mobile menu closing
 const NavItem = ({
@@ -26,11 +27,10 @@ const NavItem = ({
 	return (
 		<Link
 			href={href}
-			className={`flex items-center gap-1 px-2 lg:gap-2 lg:px-3 py-2 text-sm font-semibold rounded-full transition-colors ${
-				active
-					? 'text-[#FFCC00]' // Active: Yellow
-					: 'text-white hover:bg-[#3366FF]/70'
-			}`}
+			className={`flex items-center gap-1 px-2 lg:gap-2 lg:px-3 py-2 text-sm font-semibold rounded-full transition-colors ${active
+				? 'text-[#FFCC00]' // Active: Yellow
+				: 'text-white hover:bg-[#3366FF]/70'
+				}`}
 			onClick={onLinkClick}>
 			<Icon className="w-5 h-5" />
 			{label}
@@ -60,7 +60,7 @@ export default function Header({ user = headerUser, isAskme = true, activeState 
 		{
 			icon: FaRegSmile,
 			label: 'Dashboard',
-			href: '/student-b2b/student-dashboard/dashboard',
+			href: '/b2c-teacher/teacher-flow/dashboard',
 		},
 		{
 			icon: GoPeople,
@@ -70,17 +70,17 @@ export default function Header({ user = headerUser, isAskme = true, activeState 
 		{
 			icon: GoDatabase,
 			label: 'Material',
-			href: '/student-b2b/student-dashboard/my-course', // Note: This href is the same as Students
+			href: '/b2c-teacher/teacher-flow/material',
 		},
 		{
 			icon: FiVideo,
 			label: 'Recordings',
-			href: '/student-b2b/student-dashboard/recording',
+			href: '/b2c-teacher/teacher-flow/class-recording',
 		},
 		{
 			icon: FiMessageSquare,
 			label: 'Chat',
-			href: '/student-b2b/student-dashboard/chat',
+			href: '/b2c-teacher/teacher-flow/chat-page',
 		},
 	]
 
@@ -146,16 +146,10 @@ export default function Header({ user = headerUser, isAskme = true, activeState 
 							</button>
 
 							{isChatOpen && (
-								<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 ">
-									<div className="relative w-[360px]  sm:w-[600px] md:w-[800px] max-w-[90vw]">
-										<ChatPop
-											onClose={() => {
-												console.log('Closing chat')
-												setIsChatOpen(false)
-											}}
-										/>
-									</div>
-								</div>
+								<ChatPopup
+									isOpen={isChatOpen}
+									onClose={() => setIsChatOpen(false)}
+								/>
 							)}
 						</>
 					)}

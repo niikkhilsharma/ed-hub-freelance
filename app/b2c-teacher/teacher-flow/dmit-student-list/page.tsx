@@ -1,4 +1,5 @@
-import StudentListPage from "@/components/teacher-b2b/dmit-student-list";
+import StudentListPage from "./StudentList";
+
 
 export default function CourseDetail(){
     return <div>

@@ -65,17 +65,12 @@ export default function EditStudentProfilePage() {
 		// API call to save profile data
 	};
 
-	// Sample user data for the Header
-	const headerUser = {
-		name: formData.name,
-		role: "Teacher",
-		avatarSrc: "/teacher-b2b/profile.png", // UPDATE PATH
-	};
+
 
 	const router = useRouter();
 	
 		const handleBack = () => {
-			router.push('/teacher-b2b/teacher-flow/dashboard');
+			router.push('/b2c-teacher/teacher-flow/dashboard');
 		};
 
 	return (
@@ -102,9 +97,9 @@ export default function EditStudentProfilePage() {
 										alt={formData.name}
 										width={80}
 										height={80}
-										className="w-20 h-20onClick={handleBack} rounded-full object-fill"
+										className="w-20 h-20  rounded-full object-fill"
 									/>
-									<button className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full  focus:outline-none">
+									<button onClick={handleBack} className="absolute bottom-0 right-0 p-1.5 bg-[#E5E7EB] text-[#FF3366] rounded-full  focus:outline-none">
 										<FiEdit2 className="w-3 h-3" />
 									</button>
 								</div>

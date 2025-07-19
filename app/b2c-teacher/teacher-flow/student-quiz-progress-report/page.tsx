@@ -1,5 +1,6 @@
-import StudentReport from '@/components/teacher-b2b/quiz-student-profile';
+
 import React from 'react'
+import StudentReport from './StudentQuizReport';
 
 const StudentProgressPage = () => {
   return (

@@ -9,6 +9,9 @@ import ReviewCard from './review-card';
 import { FaLinkedin, FaCheck, FaStar, FaCircle } from 'react-icons/fa';
 import { RiSofaLine } from "react-icons/ri";
 import { FaRegEnvelope } from "react-icons/fa6";
+import Header from './Header2';
+import Footer from '@/components/layout/Footer'
+import GoBack from "@/components/principal/goback";
 
 const images = [
     '/b2c-student/card-banner-1.png',
@@ -298,9 +301,18 @@ const qualifications: Qualification[] = [
 ];
 
 const Profile = () => {
+    const headerUser = {
+		name: 'Shlok Agheda',
+		role: 'Student',
+		avatarSrc: '/images/person.jpg',
+	}
     return (
         <>
+        <Header user={headerUser} currPage='teacher-profile'/>
+        <GoBack GoBackHeading="Teacher Name"/>
             <div className="py-2 px-8">
+                
+                
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.75fr_1fr_1fr] my-4 gap-4">
                     <div className="bg-white rounded-2xl p-6 sm:col-span-2 lg:col-span-1">
                         {/* Top section */}
@@ -482,6 +494,7 @@ const Profile = () => {
 
 
             </div>
+            <Footer/>
         </>
 
     )

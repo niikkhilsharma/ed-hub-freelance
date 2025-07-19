@@ -462,7 +462,7 @@ export function AIGeneratedPage({ testType }: { testType: string }) {
                             {/* Right Column: Selections */}
                             <div className="w-full md:w-[55%] lg:w-[50%] space-y-6">
                                 {/* Unitary Selection */}
-                                <div className={`p-4 rounded-2xl border ${INPUT_BORDER} bg-[#F9FAFB]`}>
+                                <div className={`p-4 rounded-3xl border ${INPUT_BORDER} bg-[#F9FAFB]`}>
                                     <div className="relative mb-3">
                                         <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-black" />
                                         <input
@@ -486,7 +486,7 @@ export function AIGeneratedPage({ testType }: { testType: string }) {
                                 </div>
 
                                 {/* newStudent Selection */}
-                                <div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-2xl p-4 space-y-3 flex flex-col">
+                                <div className="bg-[#F9FAFB] border border-[#B0B0B0] rounded-3xl p-4 space-y-3 flex flex-col">
                                     <div className="flex items-center space-x-4">
                                         <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For all" checked={selectionType === 'For all'} onChange={() => setSelectionType('For all')} className="form-radio text-[#3366FF]" />For all</label>
                                         <label className="flex items-center gap-2 cursor-pointer text-sm"><input type="radio" name="selectionType" value="For Selective" checked={selectionType === 'For Selective'} onChange={() => setSelectionType('For Selective')} className="form-radio text-[#3366FF]" />For Selective Students</label>
@@ -530,7 +530,7 @@ export function AIGeneratedPage({ testType }: { testType: string }) {
                                 Cancel
                             </button>
                             <button onClick={handleOpenAiLoading} type="button" className={`w-full sm:w-auto px-5 py-2.5 sm:py-3 text-sm font-medium text-white bg-[${PRIMARY_BLUE}] hover:opacity-90 rounded-full transition-opacity`}>
-                                Continue
+                                Create
                             </button>
                         </div>
 

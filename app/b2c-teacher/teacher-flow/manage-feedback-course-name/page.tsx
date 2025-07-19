@@ -1,31 +1,31 @@
 // /app/feedback/page.tsx
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { FiArrowLeft, FiSearch, FiFilter, FiChevronDown, FiStar, FiSmile } from 'react-icons/fi';
 import Footer from '@/components/layout/Footer';
-import Header from '@/components/layout/Header';
+import Header from '@/components/layout/TeacherB2CHeader';
+import BackButton from '@/components/common-components/BackButton';
+import TeacherB2CWrapper from '@/components/teacher-b2c/common-components/TeacherB2CPageWrapper';
+import SearchFilterIcon from '@/components/common-components/SearchFilterIcon';
 
 // --- COLOR & STYLE CONSTANTS ---
 const PINK_COLOR = "#FF3366";
 const LIGHT_PINK_BG = "#FF33661A";
 const LIGHT_GREEN = "#8DD9B3";
-const BLUE_COLOR = "#3366FF";
-const INPUT_BG_FILTERS = "bg-gray-100";
 const CHART_BAR_COLORS = ["#3366FF", "#FFCC00", "#FF99B7", "#8DD9B3"];
 
 // --- DATA ---
-const feedbackData = Array.from({ length: 9 }, (_, i) => ({
+const feedbackData = Array.from({ length: 18 }, (_, i) => ({
     id: `fb${i}`,
     name: "Customer Name",
     role: "Student / Parent",
     rating: 4,
-    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin lectus et leo fermentum aliquet. Duis non molestie augue.",
+    review: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque placerat lectus et leo fermentum aliquet. Curabitur sollicitudin lectus et leo.",
     date: "Date",
 }));
 
-const filterOptions = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
 const barChartData = [
     { label: "Punctuality", value: 40, color: CHART_BAR_COLORS[0] },
     { label: "Doubt Solving", value: 60, color: CHART_BAR_COLORS[1] },
@@ -42,25 +42,6 @@ const GeneralFilterButton: React.FC<{ filter: { label: string }, onClick: () => 
         <FiChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-black" />
     </button>
 );
-
-const FiltersBar = () => (
-    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-4">
-        <div className="relative flex-grow w-full">
-            <FiSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-black w-5 h-5" />
-            <input type="text" placeholder="Search" className="w-full  pl-11 pr-4 py-3 bg-white border-2 border-[#6B7280] rounded-full focus:ring-2 focus:ring-blue-500 outline-none text-base" />
-        </div>
-        <div className="flex items-center gap-2">
-            <button
-                onClick={() => alert('Main filter icon clicked.')}
-                className={`p-2.5 sm:p-3 rounded-2xl hover:bg-gray-100 text-[#FF3366] flex-shrink-0 transition-colors`}
-                aria-label="Open main filters">
-                <FiFilter className="w-5 h-5 " strokeWidth={2} />
-            </button>
-            {filterOptions.map(filter => <GeneralFilterButton key={filter.id} filter={filter} onClick={() => { }} />)}
-        </div>
-    </div>
-);
-
 
 const ScoreChartDisplay: React.FC = () => {
     // --- SVG & Animation Calculations ---
@@ -110,8 +91,8 @@ const ScoreChartDisplay: React.FC = () => {
     );
 };
 
-const FeedbackCard: React.FC<typeof feedbackData[0]> = ({ name, role, rating, review, date }) => (
-    <div className="bg-[#F3F4F6] px-6 py-4 rounded-2xl flex flex-col h-full">
+const FeedbackCard: React.FC<typeof feedbackData[0]> = ({ name, role,  review, date }) => (
+    <div className="bg-[#F3F4F6] px-3 py-4 rounded-2xl flex flex-col h-full">
         <div className="flex items-center mb-3">
             <Image src="/images/profile2.jpg" alt={name} width={70} height={70} className="w-15 h-15 rounded-full object-cover mr-4" />
             <div>
@@ -123,7 +104,7 @@ const FeedbackCard: React.FC<typeof feedbackData[0]> = ({ name, role, rating, re
             </div>
         </div>
         <p className="text-xs text-[#6B7280] leading-tight flex-grow mb-1 ">{review}</p>
-        <span className="text-xs text-[#6B7280]">{date}</span>
+        <span className="text-xs text-[#6B7280] font-medium mt-1">{date}</span>
         <div className="flex justify-end items-center">
             <button className="px-5 py-1.5 text-sm font-semibold rounded-full" style={{ backgroundColor: LIGHT_PINK_BG, color: PINK_COLOR }}>Hide</button>
         </div>
@@ -131,7 +112,7 @@ const FeedbackCard: React.FC<typeof feedbackData[0]> = ({ name, role, rating, re
 );
 
 const PositiveFeedbackChart = () => (
-    <div className="bg-[#F9FAFB] px-6 py-12 min-h-80 rounded-2xl border border-[#E5E7EB] text-center relative flex flex-col items-center justify-end">
+    <div className="bg-[#F9FAFB] px-6 py-6 min-h-60 rounded-2xl border border-[#E5E7EB] text-center relative flex flex-col items-center justify-end">
         <ScoreChartDisplay />
         <p className="font-bold text-2xl" style={{ color: LIGHT_GREEN }}>40% Positive Feedbacks</p>
     </div>
@@ -159,40 +140,31 @@ const BarChartAnalytics = () => (
 
 // --- MAIN PAGE COMPONENT ---
 export default function FeedbackDashboardPage() {
-    const headerUser = {
-        name: "Educator Name",
-        role: "Teacher",
-        avatarSrc: "/teacher-b2b/profile.png",
-    };
+const filterOptions = [{ id: 'f1', label: 'Filter 1' }, { id: 'f2', label: 'Filter 2' }, { id: 'f3', label: 'Filter 3' }];
     return (
         <>
-            <Header user={headerUser} />
-            <div className="bg-[#eeeeee] min-h-screen">
-                <div className="flex bg-white py-3 px-8 items-center gap-4 mb-2">
-                    <button className="h-8 rounded-full  hover:bg-gray-100"><FiArrowLeft className="w-5 h-5" strokeWidth={2} /></button>
-                    <h1 className="text-2xl font-semibold" style={{ color: PINK_COLOR }}>Course Name</h1>
-                </div>
-                <div className="p-4 sm:p-6 lg:p-8">
-                    {/* Main Content */}
-                    <div className="bg-white p-4 sm:p-6 rounded-3xl max-w-screen-xl mx-auto">
+            <Header activeState="Dashboard" />
+            <BackButton Heading='Course Name' />
+            <TeacherB2CWrapper>
+               
+                    <div className="bg-white p-2 rounded-3xl max-w-screen-xl mx-auto">
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                             {/* Left Column: Feedback Cards */}
                             <div className='lg:col-span-2'>
-                                <FiltersBar />
-                                <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1.5  max-h-194 overflow-y-auto">
+                                <SearchFilterIcon filters={filterOptions}/>
+                                <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-1.5 pr-2 max-h-170 overflow-y-auto custom-scrollbar-thin">
                                     {feedbackData.map(item => <FeedbackCard key={item.id} {...item} />)}
                                 </div>
                             </div>
                             {/* Right Column: Analytics */}
-                            <div className="lg:col-span-1 space-y-6">
+                            <div className="lg:col-span-1 space-y-4">
                                 <PositiveFeedbackChart />
                                 <BarChartAnalytics />
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+            </TeacherB2CWrapper>
             <Footer />
         </>
     );

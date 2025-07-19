@@ -157,14 +157,14 @@ export const TestAnalyticsCard: React.FC<TestAnalyticsProps> = ({ complete, inco
                     <DateNavigator date="June 2025" />
                 </div>
                 <div className="flex justify-around items-baseline text-center sm:justify-between sm:mx-2">
-                    <div><p className="text-sm sm:text-base text-[#6B7280]">Complete</p><p className="text-base font-semibold mt-1">{complete}/{totalTests}</p></div>
-                    <div><p className="text-sm sm:text-base text-[#6B7280]">Incomplete</p><p className="text-base font-semibold text-[#FF3366] mt-1">{incomplete}</p></div>
+                    <div><p className="text-sm sm:text-base font-normal text-[#6B7280]">Complete</p><p className="text-base font-medium mt-1">{complete}/{totalTests}</p></div>
+                    <div><p className="text-sm sm:text-base font-normal text-[#6B7280]">Incomplete</p><p className="text-base font-semibold text-[#FF3366] mt-1">{incomplete}</p></div>
                 </div>
             </div>
             <div className="bg-[#F3F4F6] rounded-2xl p-3 sm:p-4">
                 <div className="flex justify-between items-center">
                     <p className="text-base text-[#6B7280]">Average Scores</p>
-                    <p className="text-base font-medium text-[#3366FF]">{averageScore}</p>
+                    <p className="text-base text-[#3366FF]">{averageScore}</p>
                 </div>
             </div>
         </div>

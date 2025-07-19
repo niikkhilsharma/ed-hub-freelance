@@ -82,7 +82,7 @@ const QuestionPanel = ({
 				DMIT (Dermatoglyphics Multiple Intelligence Test) and skill assessment
 			</h1>
 			<div className="mb-8 overflow-x-auto pb-2">
-				<div className="flex justify-between space-x-2 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
+				<div className="flex justify-between space-x-1 border-b bg-[#f9fafb] border-gray-200 rounded-full border overflow-hidden p-2">
 					{tabCategories.map(category => (
 						<button key={category} onClick={() => setActiveCategory(category)} className={`p-2 px-3 text-sm font-medium whitespace-nowrap focus:outline-none transition-colors duration-150 rounded-full ${activeCategory === category ? 'bg-[#FF3366] text-white' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'}`}>
 							{category}
@@ -193,8 +193,8 @@ export default function DmittTest_3_Page() {
 			<TestHeader />
 
 			{/* This container defines the fixed height area below the header */}
-			<div className="flex-1 flex w-full h-[calc(100dvh-64px)] p-4 sm:p-6 lg:p-8">
-				<main className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
+			<div className="flex-1 flex h-[calc(100dvh-64px)] p-4 sm:p-6 lg:p-8">
+				<main className="w-full max-w-7xl ml-2  flex flex-col lg:flex-row gap-8">
 					<QuestionPanel
 						activeCategory={activeCategory}
 						setActiveCategory={setActiveCategory}

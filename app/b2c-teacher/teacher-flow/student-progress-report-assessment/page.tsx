@@ -1,5 +1,6 @@
-import StudentReport from '@/components/teacher-b2b/assessment-student-profile';
+
 import React from 'react'
+import StudentReport from './StudentAssessmentProgressReport';
 
 const StudentProgressPage = () => {
   return (

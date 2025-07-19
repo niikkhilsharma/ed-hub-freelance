@@ -22,7 +22,7 @@ const PALETTE = {
   GREEN_LIGHT: "#8DD9B3", // Basic Academic Skills BG
   GREEN_DARK: "#4BC4B6", // Not explicitly used but similar to progress bar
   PURPLE_LIGHT: "#EEDAFE", // Critical Academic Skills BG
-  PURPLE_DARK: "#A866DD", // Critical Academic Skills Progress
+  PURPLE_DARK: "#37085C", // Critical Academic Skills Progress
   PINK_LIGHT: "#FBD2D9", // Life Skill / Personal Dev BG
   PINK_DARK: "#893544", // Life Skill Progress (this is quite dark, using a lighter shade for text if needed)
 
@@ -144,15 +144,16 @@ const ChartsReportTeacherB2C: React.FC = () => {
   // Skill Card Data
   const skillCardData = [
     {
-      title: "Parameter 2",
+      title: "Basic Academic Skills",
       bgColor: PALETTE.GREEN_LIGHT,
       progressColor: PALETTE.GREEN_DARK, // Assuming this is for progress bar
       overallProgress: "4/5",
       progressPercent: 80,
+      color: "#1D5851",
       iconSet: [
-        <LuOmega key="s" className="w-4 h-4" />,
-        <FiPercent key="p" className="w-4 mt-4.5 h-4" />,
-        <MdOutlineSuperscript key="a" className="w-4 h-4" />,
+        <LuOmega key="s" className="w-4 h-4 " />,
+        <FiPercent key="p" className="w-4 mt-4.5 h-4 " />,
+        <MdOutlineSuperscript key="a" className="w-4 h-4 " />,
       ],
       skills: Array(7).fill({
         name: "Subject 1",
@@ -161,15 +162,16 @@ const ChartsReportTeacherB2C: React.FC = () => {
       }),
     },
     {
-      title: "Parameter 3",
+      title: "Critical Academic Skills",
       bgColor: PALETTE.PURPLE_LIGHT,
-      progressColor: PALETTE.PURPLE_DARK,
+      progressColor: PALETTE.ACCENT_PURPLE,
       overallProgress: "4/5",
       progressPercent: 80,
+      color: "#37085C",
       iconSet: [
-        <MdOutlineFunctions key="b" className="w-4 h-4" />,
-        < RiPsychotherapyLine key="a" className="w-4 mt-4.5 h-4" />,
-        <TbMathFunction key="z" className="w-4 h-4" />,
+        <MdOutlineFunctions key="b" className="w-4 h-4 " />,
+        < RiPsychotherapyLine key="a" className="w-4 mt-4.5 h-4 " />,
+        <TbMathFunction key="z" className="w-4 h-4 " />,
       ],
       skills: [
         {
@@ -188,7 +190,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
   ];
 
   const lifeSkillsData = {
-    title: "Parameter 4",
+    title: "Life skill Enhancements",
     bgColor: PALETTE.PINK_LIGHT,
     progressColor: PALETTE.PINK_DARK, // Using the darker pink for progress
     overallProgress: "4/5",
@@ -274,7 +276,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
   };
   const personalDevData = {
     // Copied structure from Life Skills for Personal Development
-    title: "Parameter 1",
+    title: "Personal Development",
     bgColor: PALETTE.PINK_LIGHT, // Re-using for consistency with right column
     skills: [
       {
@@ -551,10 +553,10 @@ const ChartsReportTeacherB2C: React.FC = () => {
   return (
     <>
 
-      <div className="">
+      <div className="mt-2">
 
 
-        <div className="grid w-full max-w-[90rem] mx-auto grid-cols-1 gap-4 p-2 sm:p-4  lg:grid-cols-[2fr_1fr] lg:gap-6">
+        <div className="grid w-full grid-cols-1 gap-4  lg:grid-cols-[2fr_1fr]">
           {/* ====== Overall Charts start ====== */}
 
           <div
@@ -717,7 +719,7 @@ const ChartsReportTeacherB2C: React.FC = () => {
           </div>
         </div>
         <main
-          className="grid h-full  max-w-[93rem] mx-auto  my-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 "
+          className="grid h-full  mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr] gap-4 p-4 "
         >
 
           <div className="grid bg-white rounded-2xl h-full overflow-y-auto custom-scrollbar grid-cols-1 lg:grid-cols-2 p-4 gap-4 items-start">
@@ -735,20 +737,20 @@ const ChartsReportTeacherB2C: React.FC = () => {
                   <div className="flex justify-between items-center mb-2">
                     <h3
                       className="text-base font-bold"
-                      style={{ color: PALETTE.TEXT_DARK }}
+                      style={{ color: card.color }}
                     >
                       {card.title}
                     </h3>
                     <div
                       className="flex space-x-1.5 text-xs"
-                      style={{ color: PALETTE.TEXT_MEDIUM }}
+                      style={{ color: card.color }}
                     >
                       {card.iconSet}
                     </div>
                   </div>
                   <p
                     className="text-xs mb-1"
-                    style={{ color: card.progressColor }}
+                    style={{ color: card.color }}
                   >
                     Overall Progress
                   </p>
@@ -807,13 +809,13 @@ const ChartsReportTeacherB2C: React.FC = () => {
               <div className="flex justify-between items-center mb-2">
                 <h3
                   className="text-base font-bold"
-                  style={{ color: PALETTE.TEXT_DARK }}
+                  style={{ color: lifeSkillsData.progressColor }}
                 >
                   {lifeSkillsData.title}
                 </h3>
                 <div
                   className="flex space-x-1.5 text-xs"
-                  style={{ color: PALETTE.TEXT_MEDIUM }}
+                  style={{ color: lifeSkillsData.progressColor }}
                 >
                   {lifeSkillsData.iconSet}
                 </div>

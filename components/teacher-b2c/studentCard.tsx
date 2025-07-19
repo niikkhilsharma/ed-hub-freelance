@@ -6,12 +6,9 @@ import Image from 'next/image'
 import MaxWidthWrapper from '../admin/max-width-wrapper'
 
 import Link from 'next/link'
+import TeacherB2CWrapper from './common-components/TeacherB2CPageWrapper'
 export default function StudentCard() {
-	const headerUser = {
-		name: 'Shlok Agheda',
-		role: 'Student',
-		avatarSrc: '/teacher-b2b/profile.png',
-	}
+	
 
 	const courses = [
 		{
@@ -35,17 +32,17 @@ export default function StudentCard() {
 	]
 
 	return (
-		<div className="bg-[#eeeeee]">
-			<Header user={headerUser} />
+		<>
+			<Header activeState='Students' />
 
-			<MaxWidthWrapper className="bg-[#eeeeee] min-h-screen px-4 flex flex-col">
+			<TeacherB2CWrapper>
 				<main className="p-4  bg-white my-4 lg:my-6  rounded-3xl min-h-screen">
-					<div className="flex flex-col sm:flex-row flex-wrap overflow-y-scroll no-scrollbar gap-8 sm:gap-4  justify-items-center">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4  justify-items-center">
 						{courses.map((course, index) => (
-							<Link key={index} href={'#'} className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4">
+							<div key={index} className="w-full ">
 								<div key={index} className="flex flex-col gap-4 p-2 border border-[#E5E7EB] bg-[#FAF9FB] rounded-2xl ">
 									<div className="rounded-xl overflow-hidden">
-										<Image src={course.image} width={280} height={250} alt={course.name} className="h-full object-contain" />
+										<Image src={course.image} width={280} height={250} alt={course.name} className="h-full w-full object-cover" />
 									</div>
 									<div className="flex flex-col gap-1 px-2 text-black">
 										<h2 className="font-semibold text-lg">{course.name}</h2>
@@ -57,12 +54,12 @@ export default function StudentCard() {
 										</p>
 									</div>
 								</div>
-							</Link>
+							</div>
 						))}
 					</div>
 				</main>
-			</MaxWidthWrapper>
+			</TeacherB2CWrapper>
 			<Footer />
-		</div>
+		</>
 	)
 }

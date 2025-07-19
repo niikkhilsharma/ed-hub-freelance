@@ -355,7 +355,7 @@ const SavedNotification: React.FC<{
 						animate={{ opacity: 1, y: 0, scale: 1 }}
 						exit={{ opacity: 0, y: 50, scale: 0.9 }}
 						transition={{ type: "spring", stiffness: 200, damping: 20 }}
-						className="fixed top-30 left-1/2 -translate-x-1/2 z-50"
+						className="fixed top-20 md:top-30 left-1/2 -translate-x-1/2 z-50"
 					>
 						<div
 							className="flex w-50 sm:w-xs items-center gap-2 bg-[#00B060] text-white font-semibold px-6 py-3 rounded-xl shadow-lg"
@@ -433,21 +433,18 @@ const GoBack: React.FC<{
 
 			{currentStep === 1 && <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
 				<button
-					onClick={() => alert("Choose From Existing Test clicked")}
-					// Original: w-full sm:w-fit
-					// Correction: Added whitespace-nowrap to prevent text wrapping on small buttons
+					onClick={() => Router.push( `/b2c-teacher/teacher-flow/upload-from-existing${label==="Test" ? "" : `-${label.toLocaleLowerCase()}`}` )}
 					className={`w-full sm:w-auto justify-center flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm font-medium text-white hover:opacity-90 rounded-full transition-opacity whitespace-nowrap`}
 					style={{ backgroundColor: PRIMARY_BLUE }}
 				>
-					Choose From Existing {label}
+					Choose From Existing {label}		
 					<svg width={24} height={24} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 sm:w-4 sm:h-4">
 						<g clipPath="url(#clip0_405_26717)"><path d="M17.9982 10H16.7382C16.364 8.551 15.591 7.23599 14.5068 6.2044C13.4226 5.1728 12.0709 4.46599 10.6051 4.16428C9.13928 3.86256 7.61825 3.97804 6.21481 4.49759C4.81137 5.01714 3.5818 5.91993 2.66581 7.10338C1.74982 8.28683 1.18415 9.70348 1.03306 11.1924C0.881982 12.6812 1.15155 14.1826 1.81113 15.526C2.47072 16.8693 3.49387 18.0007 4.76434 18.7916C6.0348 19.5824 7.50164 20.0011 8.99816 20H17.9982C19.3242 20 20.596 19.4732 21.5337 18.5355C22.4714 17.5979 22.9982 16.3261 22.9982 15C22.9982 13.6739 22.4714 12.4021 21.5337 11.4645C20.596 10.5268 19.3242 10 17.9982 10Z" stroke="white" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" /></g>
 						<defs><clipPath id="clip0_405_26717"><rect width={24} height={24} fill="white" /></clipPath></defs>
 					</svg>
 				</button>
 				<button
-					onClick={() => alert("AI Generated Test clicked")}
-					// Original: w-full sm:w-fit
+					onClick={() => Router.push(`/b2c-teacher/teacher-flow/create-ai-generate-${label.toLocaleLowerCase()}`)}
 					className={`w-full sm:w-auto justify-center flex items-center gap-1.5 px-3 py-2 sm:px-4 sm:py-3 text-xs sm:text-sm font-medium text-white hover:opacity-90 rounded-full transition-opacity whitespace-nowrap`}
 					style={{ backgroundColor: PRIMARY_BLUE }}
 				>
