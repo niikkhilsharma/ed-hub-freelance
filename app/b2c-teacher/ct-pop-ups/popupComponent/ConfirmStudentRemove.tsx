@@ -4,10 +4,7 @@ import Image from "next/image";
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
 
 const RemoveStudentModal: React.FC<PopupPropB2CTeacher> = ({ isOpen, onClose }) => {
-  const handleRemove = () => {
-    // Perform remove logic
-    console.log("Student removed");
-  };
+
 
   return (
     <TeacherB2CBaseModal isOpen={isOpen} onClose={onClose} maxWidth="max-w-sm">

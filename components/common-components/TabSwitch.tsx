@@ -13,9 +13,9 @@ const TabSwitch: React.FC<TabSwitchProps> = ({ tabs, selected, onChange }) => {
     <div className="pb-4">
       <div className="w-full flex justify-center bg-white border rounded-2xl py-2">
         <div className="flex flex-wrap justify-start sm:justify-center px-2 gap-2 sm:gap-4">
-          {tabs.map((tab) => (
+          {tabs.map((tab, id) => (
             <button
-              key={tab}
+              key={id}
               onClick={() => onChange(tab)}
               className={`
                 relative px-2 py-2 rounded-xl text-xs sm:text-sm md:text-md cursor-pointer font-medium transition-colors duration-200
