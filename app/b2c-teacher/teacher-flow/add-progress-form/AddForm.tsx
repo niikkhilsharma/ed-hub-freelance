@@ -6,9 +6,9 @@ import Image from "next/image";
 
 import AttendanceForm from '@/components/teacher-b2c/progress-form/components'
 import BackButton from "@/components/common-components/BackButton";
-import TeacherB2CWrapper from "../common-components/TeacherB2CPageWrapper";
 import DailyLogSavedPopup from "@/app/b2c-teacher/ct-pop-ups/popupComponent/DailySaved";
 import { useState } from "react";
+import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
 
 // Main File Management Content Component
 
