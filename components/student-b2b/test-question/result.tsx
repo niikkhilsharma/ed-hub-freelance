@@ -15,7 +15,8 @@ interface SummaryStat {
 }
 
 const ResultsCard: React.FC = () => {
-  const overallScore = 40;
+  const overallScore = 15;
+  const displayScore = 40;
 
   const individualScores: ScoreItem[] = [
     { name: 'Academic Skills', score: 40, color: 'bg-[#3366FF]' },
@@ -94,7 +95,7 @@ const ResultsCard: React.FC = () => {
               />
             </div>
           </div>
-          <div className="text-3xl font-bold text-[#8DD9B3] mt-0 mb-5">{overallScore}%</div>
+          <div className="text-3xl font-bold text-[#8DD9B3] mt-0 mb-5">{displayScore}%</div>
           <p className="text-base text-black font-semibold text-center max-w-xs">
             Great effort! A little <br />more focus will take <br />you to the top.
           </p>
