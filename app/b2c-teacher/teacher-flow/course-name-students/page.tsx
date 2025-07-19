@@ -1,5 +1,5 @@
 import BackButton from "@/components/common-components/BackButton";
-import Header from "@/components/layout/Header";
+import Header from "@/components/layout/TeacherB2CHeader";
 import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
 import CourseStudent from "./CourseComponent";
 
@@ -11,7 +11,7 @@ const CourseName = () => {
     };
     return (
         <>
-            <Header user={headerUser} />
+            <Header activeState="Students" />
             <BackButton Heading="Course Name" />
             <TeacherB2CWrapper>
                 <CourseStudent />

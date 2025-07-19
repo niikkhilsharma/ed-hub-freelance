@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import { FiCheck, FiSearch } from 'react-icons/fi';
 import { PopupPropB2CTeacher, TeacherB2CBaseModal } from "@/app/b2c-teacher/new-pop-ups/page";
-import SearchFilter from '@/components/b2c-admin/common-component/SearchBarFilter';
 import Image from 'next/image';
 import DropdownBtn from '@/components/teacher-b2c/common-components/Dropdown';
 

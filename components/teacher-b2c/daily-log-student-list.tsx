@@ -65,7 +65,7 @@ export default function CourseCardPage() {
         {/* Date Rows */}
         <div className="flex flex-col gap-4 mt-4 md:px-4 pb-6">
           {dates.map((date, idx) => (
-            <Link href={"/b2c-teacher/teacher-flow/add-progress-form"}
+            <Link href={"/b2c-teacher/teacher-flow/add-progress-form-edit"}
               key={idx}
               className="bg-[#F9FAFB] w-full rounded-full px-4 py-2 text-black text-base border border-[#D0D0D0] font-medium "
             >

@@ -1,5 +1,5 @@
+import StudentSubmittedPapersPage from "./WorkSheetSelection";
 
-import   StudentSubmittedPapersPage from "@/components/teacher-b2c/folder-name";
 
 export default function CourseDetail(){
     return <div>

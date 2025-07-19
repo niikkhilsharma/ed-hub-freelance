@@ -13,7 +13,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<div className="font-main overflow-x-hidden">
-			<MaxWidthWrapper>{children}</MaxWidthWrapper>
+			<>{children}</>
 		</div>
 	)
 }

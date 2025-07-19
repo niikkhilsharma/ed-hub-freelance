@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 
 import Header from "@/components/layout/TeacherB2CHeader"; // Adjust path as needed
 import Footer from "@/components/layout/Footer"; // Adjust path as needed
@@ -6,15 +7,19 @@ import Image from "next/image";
 
 import AttendanceForm from '@/components/teacher-b2c/progress-form/components'
 import BackButton from "@/components/common-components/BackButton";
-import TeacherB2CWrapper from "../common-components/TeacherB2CPageWrapper";
 import DailyLogSavedPopup from "@/app/b2c-teacher/ct-pop-ups/popupComponent/DailySaved";
 import { useState } from "react";
+import TeacherB2CWrapper from "@/components/teacher-b2c/common-components/TeacherB2CPageWrapper";
 
 // Main File Management Content Component
 
 export default function StudentSubmittedPapersPage() {
 
+ const router = useRouter();
 
+  const handleDelete = () => {
+    router.push("/b2c-teacher/teacher-flow/daily-log-student-list");
+  };
 
   const students = new Array(4).fill({
     name: "Student Name",
@@ -60,9 +65,12 @@ export default function StudentSubmittedPapersPage() {
             </div>
 
             {/* Save Button */}
-            <div className="text-center">
-              <button onClick={() => setDailyLog(true)} className="bg-[#3366ff] text-white px-6 py-2 rounded-full ">
-                Save Log
+            <div className="text-center flex gap-3 items-center justify-center">
+              <button onClick={handleDelete} className="max-w-32 w-full bg-[#ff33661a] text-[#ff3366] px-6 py-2 rounded-full ">
+                Delete
+              </button>
+              <button onClick={() => setDailyLog(true)} className="max-w-32 w-full bg-[#3366ff] text-white px-6 py-2 rounded-full ">
+                Update
               </button>
             </div>
           </div>
