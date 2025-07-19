@@ -4,6 +4,7 @@ import { useState, useMemo } from 'react'
 import Header from '@/components/b2c-student/Header'
 import { FiArrowLeft, FiArrowLeftCircle, FiArrowRightCircle, FiChevronDown } from 'react-icons/fi'
 import Image from 'next/image'
+import Footer from '@/components/layout/Footer';
 
 
 // --- Main Category Tab Component ---
@@ -169,7 +170,7 @@ export default function WorksheetViewPage() {
                 </div>
             </main>
 
-           
+           <Footer/>
         </div>
     )
 }
