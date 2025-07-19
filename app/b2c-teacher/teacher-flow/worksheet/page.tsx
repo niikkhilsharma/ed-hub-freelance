@@ -1,7 +1,8 @@
-import UploadExistingTestPage from "@/components/teacher-b2b/worksheet";
+import SelectExistingTestPage from "./Worksheet";
+
 
 export default function CourseDetail(){
     return <div>
-        <UploadExistingTestPage /> 
+        <SelectExistingTestPage /> 
     </div>
 }

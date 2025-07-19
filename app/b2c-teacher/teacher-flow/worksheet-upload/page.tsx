@@ -1,7 +1,8 @@
-import WorksheetUpload from "@/components/teacher-b2b/worksheet-upload";
+import CreateAIAssessmentPage from "./WorkSheetUpload";
+
 
 export default function CourseDetail(){
     return <div>
-        <WorksheetUpload /> 
+        <CreateAIAssessmentPage /> 
     </div>
 }
