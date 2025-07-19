@@ -4,12 +4,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Bell, ShoppingCart } from "lucide-react";
-import { usePathname } from "next/navigation";
 
-export default function Navbar() {
+export default function Navbar({ activeState = "Home" }:{ activeState?: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,7 +68,7 @@ export default function Navbar() {
                   key={`${href}-${idx}`}
                   href={href}
                   className={`text-base font-medium hover:text-gray-200 transition-colors duration-200 px-3 py-2 rounded-full ${
-                    pathname === href ? "bg-white/20 bg-opacity-20" : ""
+                    navLabels[idx] === activeState ? "bg-white/20 bg-opacity-20" : ""
                   }`}
                 >
                   {navLabels[idx]}

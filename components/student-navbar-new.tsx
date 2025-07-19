@@ -13,12 +13,10 @@ import {
   LayoutGrid,
   Database,
 } from "lucide-react";
-import { usePathname } from "next/navigation";
 
-export default function StudentNavbarNew() {
+export default function StudentNavbarNew({ activeState = "My Learnings" }:{ activeState?: string }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,31 +36,26 @@ export default function StudentNavbarNew() {
       href: "/student/my-learnings",
       label: "My Learnings",
       icon: Smile,
-      isActive: true,
     },
     {
       href: "/student/courses",
       label: "My course",
       icon: LayoutGrid,
-      isActive: false,
     },
     {
       href: "/student/material",
       label: "Material",
       icon: Database,
-      isActive: false,
     },
     {
       href: "/student/chat",
       label: "Chat",
       icon: MessageCircle,
-      isActive: false,
     },
     {
       href: "/student/recordings",
       label: "Recordings",
       icon: Video,
-      isActive: false,
     },
   ];
 
@@ -102,7 +95,7 @@ export default function StudentNavbarNew() {
                     key={item.href}
                     href={item.href}
                     className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 ${
-                      item.isActive || pathname === item.href
+                      activeState === item.label
                         ? "text-[#FFCC00]"
                         : "hover:bg-white/10"
                     }`}
@@ -183,7 +176,7 @@ export default function StudentNavbarNew() {
                     key={item.href}
                     href={item.href}
                     className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-200 ${
-                      item.isActive || pathname === item.href
+                      activeState === item.label
                         ? "bg-orange-400 text-white"
                         : "hover:bg-white/10"
                     }`}
