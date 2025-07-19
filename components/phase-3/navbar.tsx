@@ -4,15 +4,8 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  FaRegSmile,
-  FaBell,
-  FaBars,
-  FaTimes
-} from "react-icons/fa";
-
-
-
+import { FaBars, FaTimes } from "react-icons/fa";
+import { FiBell } from "react-icons/fi";
 
 interface NavbarProps {
   user: {
@@ -26,15 +19,12 @@ const Navbar = ({ user }: NavbarProps) => {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
+  const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
   return (
     <div className="bg-[#3366ff]">
-      <nav className="text-white px-4 py-2 sm:px-4 max-w-[96rem] mx-auto sm:py-6 relative">
-        <div className="flex items-center gap-4 justify-between">
+      <nav className="text-white px-4 sm:px-6 py-2 max-w-[96rem] mx-auto  relative">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Image
@@ -46,25 +36,39 @@ const Navbar = ({ user }: NavbarProps) => {
             />
           </div>
 
-        
-          {/* Right Side + Mobile Menu Toggle */}
-         <div className="flex items-center gap-3  px-4 py-2 rounded-full text-white">
-      <FaBell className="text-white text-xl cursor-pointer" />
+          {/* Desktop Right Side */}
+          <div className="hidden sm:flex items-center gap-5 px-4 py-2 rounded-full">
+            <FiBell className="text-white text-xl sm:text-3xl cursor-pointer" />
 
-      <div className="flex items-center gap-3">
-        <Image
-          src={user.avatarSrc || "/admin/usernav.jpg"}
-          alt={user.name}
-          width={40}
-          height={40}
-          className="rounded-full w-10 h-10 object-cover"
-        />
-        <div className="leading-tight">
-          <div className="font-semibold text-sm">{user.name}</div>
-          <div className="text-yellow-400 text-xs">Student</div>
-        </div>
-      </div>
-    </div>
+            <div className="flex items-center gap-3">
+              <Image
+                src={user.avatarSrc || "/admin/usernav.jpg"}
+                alt={user.name}
+                width={40}
+                height={40}
+                className="rounded-full w-10 sm:w-14 sm:h-14 object-cover"
+              />
+              <div className="leading-tight space-y-1">
+                <div className="font-semibold sm:text-lg text-sm">
+                  {user.name}
+                </div>
+                <div className="text-[#FFCC00] sm:text-sm text-xs">
+                  {user.role}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Toggle Button */}
+          <div className="sm:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              className="text-white text-2xl focus:outline-none"
+              aria-label="Toggle mobile menu"
+            >
+              {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Overlay */}
@@ -76,7 +80,7 @@ const Navbar = ({ user }: NavbarProps) => {
           />
         )}
 
-        {/* Mobile Menu Slide-In */}
+        {/* Mobile Slide-in Menu */}
         <div
           className={`fixed top-0 left-0 bottom-0 w-64 bg-[#3366FF] z-40 transition-transform duration-300 ease-in-out sm:hidden ${
             isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -99,9 +103,20 @@ const Navbar = ({ user }: NavbarProps) => {
             </button>
           </div>
 
-          
+          {/* You can add navigation links here if needed */}
+          <div className="flex flex-col gap-4 p-4 text-white text-sm">
+            <Link href="/dashboard" onClick={toggleMobileMenu}>
+              Dashboard
+            </Link>
+            <Link href="/profile" onClick={toggleMobileMenu}>
+              Profile
+            </Link>
+            <Link href="/settings" onClick={toggleMobileMenu}>
+              Settings
+            </Link>
+          </div>
 
-          {/* Optional: User Info at bottom */}
+          {/* User Info in Mobile Menu */}
           <div className="p-4 border-t border-white/20 mt-auto flex items-center gap-2">
             <Image
               src={user.avatarSrc || "/admin/usernav.jpg"}
@@ -110,8 +125,8 @@ const Navbar = ({ user }: NavbarProps) => {
               height={32}
               className="w-8 h-8 rounded-full object-cover"
             />
-            <div className="space-y-2">
-              <div className="text-sm md:text-md font-semibold text-white">{user.name}</div>
+            <div>
+              <div className="text-sm font-semibold">{user.name}</div>
               <div className="text-xs text-white/80">{user.role}</div>
             </div>
           </div>
